@@ -1,0 +1,136 @@
+/*:
+ * @target MZ
+ * @plugindesc スキル実行
+ * @author しもや
+ * @help
+ * ・プラグインコマンド
+ *   CallEmo
+ * @command SkillCheck
+ * @text スキル実行条件チェック
+ * @desc スキルの実行条件の成否を返します。
+ * 
+ * @arg skillid
+ * @text スキルID変数
+ * @desc スキルID変数
+ * @default 61
+ * @type variable
+ * 
+ * @arg actorid
+ * @text アクターID
+ * @desc アクターID
+ * @default 1
+ * @type number
+ *
+ * 
+ * @command SkillActivate
+ * @text スキル有効化
+ * @desc スキルの実行処理をします。
+ * 
+ * @arg skillid
+ * @text スキルID変数
+ * @desc スキルID変数
+ * @default 61
+ * @type variable
+ * 
+ * @arg actorid
+ * @text アクターID
+ * @desc アクターID
+ * @default 1
+ * @type number
+ * 
+ * @command SkillCommon
+ * @text スキルコモン
+ * @desc スキルに設定されたコモンの実行
+ * 
+ * @arg skillid
+ * @text スキルID変数
+ * @desc スキルID変数
+ * @default 61
+ * @type variable
+ */
+
+
+(() => {
+  const pluginName = "SH_SkillCheck";
+  PluginManager.registerCommand(pluginName, "SkillCheck", function(args){
+
+    var SkillId = $gameVariables.value(args.skillid)
+    var ActorId = args.actorid
+    $gameVariables._data[63] = $dataSkills[SkillId].name
+    SkillConditionsHp(SkillId,ActorId)
+  });
+
+  PluginManager.registerCommand(pluginName, "SkillActivate", function(args){
+
+    var SkillId = $gameVariables.value(args.skillid)
+    var ActorId = args.actorid
+    SkillActive(SkillId,ActorId)
+  });
+
+  PluginManager.registerCommand(pluginName, "SkillCommon", function(args){
+    var SkillId = $gameVariables.value(args.skillid)
+    if($dataSkills[SkillId].meta.CommonEvent){
+        var CommonId = Number($dataSkills[SkillId].meta.CommonEvent)
+        this.setupChild($dataCommonEvents[CommonId].list, 0)
+    }
+  });
+
+
+function SkillConditionsHp(SkillId,ActorId){
+    if($gameActors.actor(ActorId).hp >= Number($dataSkills[SkillId].meta.LoseHP)){
+        //分岐成功
+        $gameSwitches.setValue(41,true)
+    }else{
+        $gameSwitches.setValue(41,false)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function SkillActive(SkillId,ActorId){
+    var LoseHP = Number($dataSkills[SkillId].meta.LoseHP) || 0
+    var LoseMP = Number($dataSkills[SkillId].meta.LoseMP) || 0
+    var GainHP = Number($dataSkills[SkillId].meta.GainHP) || 0
+    var GainMP = Number($dataSkills[SkillId].meta.GainMP) || 0
+    
+    var Rewards = Number($dataSkills[SkillId].meta.Rewards) || 0
+    var LustEXP = Number($dataSkills[SkillId].meta.GetLustEXP) || 0
+    var GetSP = Number($dataSkills[SkillId].meta.GetSP) || 0
+    var LoseTime = Number($dataSkills[SkillId].meta.LoseTime) || 0
+
+    LoseHP = -(LoseHP)
+    LoseMP = -(LoseMP)
+
+    console.log(LoseHP)
+    console.log(GainHP)
+    Game_Interpreter.prototype.changeHp($gameActors.actor(ActorId), LoseHP, false)
+    Game_Interpreter.prototype.changeHp($gameActors.actor(ActorId), GainHP, false)
+    $gameActors.actor(ActorId).gainMp(GainMP)
+
+    $gameVariables._data[111] -= Rewards
+    $gameVariables._data[205] += LustEXP
+    $gameVariables._data[29] = LoseTime
+    skt_gainSp(ActorId, GetSP)
+
+}
+
+
+
+
+
+
+})();

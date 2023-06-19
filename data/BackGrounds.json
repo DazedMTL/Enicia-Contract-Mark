@@ -1,0 +1,6 @@
+{
+  "TOWN01": { "Morning":"HAIKEI_bg003a", "Evening":"HAIKEI_bg003b", "Night":"HAIKEI_bg003d", "Midnight":"HAIKEI_bg003d"},
+  "": { "Morning":"", "Evening":"", "Night":"", "Midnight":""},
+  "": { "Morning":"", "Evening":"", "Night":"", "Midnight":""},
+  "": { "Morning":"", "Evening":"", "Night":"", "Midnight":""}
+}

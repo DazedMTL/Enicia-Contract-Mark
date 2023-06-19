@@ -1,0 +1,49 @@
+
+
+
+
+
+
+
+
+
+//収集クエスト
+
+PluginManager.registerCommand(pluginName, "ItemQuest", function(args){
+
+    var questid = 105;   // データベースから1番のアイテムを取得
+    var questType = $dataItems[questid].meta.Type;
+    if(questType == 'Item'){
+        var ItemId = Number($dataItems[questid].meta.NeedItemId) 
+        var ItemNum = Number($dataItems[questid].meta.NeedItemNum)
+        $gameVariables._data[601] = ItemId;$gameVariables._data[611] = ItemNum
+
+        if($dataItems[questid].meta.NeedItemId2){
+            var ItemId2 = Number($dataItems[questid].meta.NeedItemId2) 
+            var ItemNum2 = Number($dataItems[questid].meta.NeedItemNum2)
+            $gameVariables._data[602] = ItemId2;$gameVariables._data[612] = ItemNum2
+        }
+
+        if($dataItems[questid].meta.NeedItemId3){
+            var ItemId3 = Number($dataItems[questid].meta.NeedItemId3) 
+            var ItemNum3 = Number($dataItems[questid].meta.NeedItemNum3)
+            $gameVariables._data[603] = ItemId3;$gameVariables._data[613] = ItemNum3
+        }
+    }
+
+    if(ItemNum >= $gameParty.numItems($dataItems[ItemId]) && ItemNum2 >= $gameParty.numItems($dataItems[ItemId2]) && ItemNum3 >= $gameParty.numItems($dataItems[ItemId3])){
+        $gameVariables._data[620] = 1
+    }else{
+        $gameVariables._data[620] = 0
+    }
+
+});
+
+PluginManager.registerCommand(pluginName, "HasQuestItem", function(args){
+
+    var questid = 105;   // データベースから1番のアイテムを取得
+    var questType = $dataItems[questid].meta.Type;
+
+    
+
+});
