@@ -21612,7 +21612,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "A perfume made by diluting the ingredients of Zimer's black grass. The bad odor disappears\ndue to dilution, and it has a unique and pleasant fragrance.",
+        "description": "A perfume made by diluting the ingredients of Zimel's black grass. The bad odor disappears\ndue to dilution, and it has a unique and pleasant fragrance.",
         "effects": [],
         "hitType": 0,
         "iconIndex": 598,
@@ -51838,7 +51838,7 @@
         "iconIndex": 0,
         "itypeId": 4,
         "name": "Contract Points",
-        "note": "<SG種別:2> <SGカテゴリ:ヘルプ><help>\n<SG説明:\nThrough the Contract Mark's effect, \\n[1] is now able to obtain \\c[6]Contract Points\\c[0].\nIn exchange, it's possible to extend the repayment date or exchange them for items.\n\nThere are no downsides to using the points.\nLet's use them actively if obtained.\nThe Contract Points can be used at the Jimeito Company in Nisshinko Street.\n\n> \n",
+        "note": "<SG種別:2> <SGカテゴリ:ヘルプ><help>\n<SG説明:\nThrough the Contract Mark's effect, \\n[1] is now able to obtain \\c[6]Contract Points\\c[0].\nIn exchange, it's possible to extend the repayment date or exchange them for items.\n\nThere are no downsides to using the points.\nLet's use them actively if obtained.\nThe Contract Points can be used at the Jimet Company in Nisshinko Street.\n\n> \n",
         "occasion": 3,
         "price": 0,
         "repeats": 1,
