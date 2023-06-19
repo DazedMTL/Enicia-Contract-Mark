@@ -21,7 +21,7 @@ Things that are needed:
 1. Fork the repo using the fork button at the top.
 2. Open the terminal in your game folder by shift + right clicking and clicking Terminal. Then clone the repo using the following:
 
-`git clone [REPOURL]`
+`git clone [FORKURL]`
 
 3. Grab everything inside that folder that just got created and paste it in the main game directory, replace all. Use `git status` and make sure its clean. Now you are all setup, all you need to do is play the game and look for any changes that need to be made. Stuff like spelling errors, wrong names, inconsistencies, spacing issues, etc.
 4. When you do find a change that needs to be made, do the following to make things easy. Right click on the `data` folder and click `open with VScode`. If you dont see that option see [this](https://dev.to/matheusgomes062/how-to-open-your-files-with-vs-code-from-the-context-menu-on-windows-5fi9) or you can just open vscode and drag it in.
