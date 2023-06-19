@@ -1,10 +1,31 @@
 {
-    "atmosphere1": { "Jp":"Sanctity", "En":"Sanctity"},
-    "atmosphere2": { "Jp":"Chaste", "En":"Chaste"},
-    "atmosphere3": { "Jp":"Vulgarity", "En":"Vulgarity"},
-    "atmosphere4": { "Jp":"Impurity", "En":"Impurity"},
-    "atmosphere5": { "Jp":"Depravity", "En":"Depravity"},
-    "virgin": { "Jp":"Virgin", "En":"Virgin"},
-    "nonvirgin": { "Jp":"Non-Virgin", "En":"Non-Virgin"},
-    "": {}
-  }
+  "atmosphere1": {
+    "Jp": "Sanctity",
+    "En": "Sanctity"
+  },
+  "atmosphere2": {
+    "Jp": "Chaste",
+    "En": "Chaste"
+  },
+  "atmosphere3": {
+    "Jp": "Vulgarity",
+    "En": "Vulgarity"
+  },
+  "atmosphere4": {
+    "Jp": "Impurity",
+    "En": "Impurity"
+  },
+  "atmosphere5": {
+    "Jp": "Depravity",
+    "En": "Depravity"
+  },
+  "virgin": {
+    "Jp": "Virgin",
+    "En": "Virgin"
+  },
+  "nonvirgin": {
+    "Jp": "Non-Virgin",
+    "En": "Non-Virgin"
+  },
+  "": {}
+}

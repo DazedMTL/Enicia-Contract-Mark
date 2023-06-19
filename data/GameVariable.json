@@ -1,1001 +1,7994 @@
 {
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "holy": { "varId":"130", "name":"Sanctity", "icon":"843", "min":"-100", "max":"100", "hide":""},
-  "service": { "varId":"166", "name":"Service EXP", "icon":"373", "min":"0", "max":"9999", "hide":""},
-  "magic": { "varId":"167", "name":"Sacred Art EXP", "icon":"845", "min":"0", "max":"9999", "hide":""},
-  "church": { "varId":"165", "name":"Church EXP", "icon":"229", "min":"0", "max":"9999", "hide":""},
-  "town": { "varId":"170", "name":"Exorcism EXP", "icon":"343", "min":"0", "max":"9999", "hide":""},
-  "erotec": { "varId":"171", "name":"Sexual TECH", "icon":"86", "min":"0", "max":"9999", "hide":""},
-  "dance": { "varId":"172", "name":"Dancing EXP", "icon":"566", "min":"0", "max":"9999", "hide":""},
-  "e_desire": { "varId":"342", "name":"Partners Lust", "icon":"84", "min":"0", "max":"100", "hide":""},
-  "shameLv": { "varId":"208", "name":"Shame LV", "icon":"84", "min":"0", "max":"999", "hide":"hide"},
-  "penis": { "varId":"215", "name":"Penis", "icon":"84", "min":"0", "max":"1", "hide":"hide"},
-  "orgasm": { "varId":"214", "name":"Climax EXP", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "sexExp": { "varId":"153", "name":"Sexual Partners", "icon":"84", "min":"0", "max":"999", "hide":"hide"},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "lust": { "varId":"205", "name":"Lust EXP", "icon":"84", "min":"0", "max":"999", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "kuchi": { "varId":"217", "name":"Oral DEV", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "mune": { "varId":"218", "name":"Breast DEV", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "vagina": { "varId":"219", "name":"Pussy DEV", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "anus": { "varId":"220", "name":"Butt DEV", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "kiss": { "varId":"221", "name":"Kissing DEV", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "houshi": { "varId":"222", "name":"Sexual Service", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "aibu": { "varId":"223", "name":"Fondling", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"224", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "haru": { "varId":"225", "name":"Prostituion EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "jii": { "varId":"226", "name":"Masturbation EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"227", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"228", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"229", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"230", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "sex": { "varId":"231", "name":"Sex EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "analsex": { "varId":"232", "name":"Anal EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "semen": { "varId":"233", "name":"Semen EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "shame": { "varId":"234", "name":"Shame EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "rankou": { "varId":"235", "name":"Orgy EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "ninshin": { "varId":"236", "name":"Pregnacy EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"237", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "maso": { "varId":"238", "name":"Abuse EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "chikan": { "varId":"239", "name":"Perversion EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "saimin": { "varId":"240", "name":"Hypno EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "mamono": { "varId":"241", "name":"Monster EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "shota": { "varId":"242", "name":"Shota EXP", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "ojisan": { "varId":"243", "name":"Uncle EXP", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "slum": { "varId":"244", "name":"Slum EXP", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "": { "varId":"245", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "bath": { "varId":"246", "name":"Bath", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "exbWalk": { "varId":"247", "name":"Exposure EXP", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "forceExb": { "varId":"248", "name":"Forced Exposure EXP", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "club": { "varId":"249", "name":"Dancing EXP", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "loseRape": { "varId":"250", "name":"Defeat EXP", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"251", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"252", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"253", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "searcher": { "varId":"254", "name":"Search", "icon":"84", "min":"0", "max":"9999", "hide":"hide"},
-  "": { "varId":"255", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"256", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"257", "name":"", "icon":"84", "min":"0", "max":"9999", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""},
-  "": { "varId":"", "name":"", "icon":"", "min":"", "max":"", "hide":""}
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "holy": {
+    "varId": "130",
+    "name": "Sanctity",
+    "icon": "843",
+    "min": "-100",
+    "max": "100",
+    "hide": ""
+  },
+  "service": {
+    "varId": "166",
+    "name": "Service EXP",
+    "icon": "373",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "magic": {
+    "varId": "167",
+    "name": "Sacred Art EXP",
+    "icon": "845",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "church": {
+    "varId": "165",
+    "name": "Church EXP",
+    "icon": "229",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "town": {
+    "varId": "170",
+    "name": "Exorcism EXP",
+    "icon": "343",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "erotec": {
+    "varId": "171",
+    "name": "Sexual TECH",
+    "icon": "86",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "dance": {
+    "varId": "172",
+    "name": "Dancing EXP",
+    "icon": "566",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "e_desire": {
+    "varId": "342",
+    "name": "Partners Lust",
+    "icon": "84",
+    "min": "0",
+    "max": "100",
+    "hide": ""
+  },
+  "shameLv": {
+    "varId": "208",
+    "name": "Shame LV",
+    "icon": "84",
+    "min": "0",
+    "max": "999",
+    "hide": "hide"
+  },
+  "penis": {
+    "varId": "215",
+    "name": "Penis",
+    "icon": "84",
+    "min": "0",
+    "max": "1",
+    "hide": "hide"
+  },
+  "orgasm": {
+    "varId": "214",
+    "name": "Climax EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "sexExp": {
+    "varId": "153",
+    "name": "Sexual Partners",
+    "icon": "84",
+    "min": "0",
+    "max": "999",
+    "hide": "hide"
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "lust": {
+    "varId": "205",
+    "name": "Lust EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "999",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "kuchi": {
+    "varId": "217",
+    "name": "Oral DEV",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "mune": {
+    "varId": "218",
+    "name": "Breast DEV",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "vagina": {
+    "varId": "219",
+    "name": "Pussy DEV",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "anus": {
+    "varId": "220",
+    "name": "Butt DEV",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "kiss": {
+    "varId": "221",
+    "name": "Kissing DEV",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "houshi": {
+    "varId": "222",
+    "name": "Sexual Service",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "aibu": {
+    "varId": "223",
+    "name": "Fondling",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "224",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "haru": {
+    "varId": "225",
+    "name": "Prostituion EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "jii": {
+    "varId": "226",
+    "name": "Masturbation EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "227",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "228",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "229",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "230",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "sex": {
+    "varId": "231",
+    "name": "Sex EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "analsex": {
+    "varId": "232",
+    "name": "Anal EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "semen": {
+    "varId": "233",
+    "name": "Semen EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "shame": {
+    "varId": "234",
+    "name": "Shame EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "rankou": {
+    "varId": "235",
+    "name": "Orgy EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "ninshin": {
+    "varId": "236",
+    "name": "Pregnacy EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "237",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "maso": {
+    "varId": "238",
+    "name": "Abuse EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "chikan": {
+    "varId": "239",
+    "name": "Perversion EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "saimin": {
+    "varId": "240",
+    "name": "Hypno EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "mamono": {
+    "varId": "241",
+    "name": "Monster EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "shota": {
+    "varId": "242",
+    "name": "Shota EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "ojisan": {
+    "varId": "243",
+    "name": "Uncle EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "slum": {
+    "varId": "244",
+    "name": "Slum EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "": {
+    "varId": "245",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "bath": {
+    "varId": "246",
+    "name": "Bath",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "exbWalk": {
+    "varId": "247",
+    "name": "Exposure EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "forceExb": {
+    "varId": "248",
+    "name": "Forced Exposure EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "club": {
+    "varId": "249",
+    "name": "Dancing EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "loseRape": {
+    "varId": "250",
+    "name": "Defeat EXP",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "251",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "252",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "253",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "searcher": {
+    "varId": "254",
+    "name": "Search",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": "hide"
+  },
+  "": {
+    "varId": "255",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "256",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "257",
+    "name": "",
+    "icon": "84",
+    "min": "0",
+    "max": "9999",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  },
+  "": {
+    "varId": "",
+    "name": "",
+    "icon": "",
+    "min": "",
+    "max": "",
+    "hide": ""
+  }
 }
