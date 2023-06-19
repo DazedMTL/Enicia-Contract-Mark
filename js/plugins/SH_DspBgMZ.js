@@ -44,27 +44,27 @@
 
 (() => {
   const pluginName = "SH_DspBgMZ";
-  PluginManager.registerCommand(pluginName, "DspBG", function(args){
-      var parameters = PluginManager.parameters('SH_DspBgMZ');
-      var Time = Number(parameters['TimeVariable'])
-      var PictureId = Number(parameters['PictureId'])
-      var bgid = args.bgtype
-      if(bgid == "map" || bgid == "MAP"){bgid = $dataMap.meta.MAPBG}//戦闘中はエラーが出るかも
-      if($gameVariables.value(Time) <= 0 || $gameVariables.value(Time) >= 6){var CurrentTime = 'Midnight'};
-      if($gameVariables.value(Time) >= 1 && $gameVariables.value(Time) < 4){var CurrentTime = 'Morning'};
-      if($gameVariables.value(Time) == 4){var CurrentTime = 'Evening'};
-      if($gameVariables.value(Time) == 5){var CurrentTime = 'Night'};
-      if(bgid != -1){
-          var bgfile =  "BG/" + $dataUniques.backgrounds[bgid][CurrentTime];
-          $gameScreen.showPicture(PictureId,bgfile,0,0,0,100,100,255,0);
-        }else{
-            console.error(bgid + ' は見つかりません');
-        }
+  PluginManager.registerCommand(pluginName, "DspBG", function (args) {
+    var parameters = PluginManager.parameters('SH_DspBgMZ');
+    var Time = Number(parameters['TimeVariable'])
+    var PictureId = Number(parameters['PictureId'])
+    var bgid = args.bgtype
+    if (bgid == "map" || bgid == "MAP") { bgid = $dataMap.meta.MAPBG }//戦闘中はエラーが出るかも
+    if ($gameVariables.value(Time) <= 0 || $gameVariables.value(Time) >= 6) { var CurrentTime = 'Midnight' };
+    if ($gameVariables.value(Time) >= 1 && $gameVariables.value(Time) < 4) { var CurrentTime = 'Morning' };
+    if ($gameVariables.value(Time) == 4) { var CurrentTime = 'Evening' };
+    if ($gameVariables.value(Time) == 5) { var CurrentTime = 'Night' };
+    if (bgid != -1) {
+      var bgfile = "BG/" + $dataUniques.backgrounds[bgid][CurrentTime];
+      $gameScreen.showPicture(PictureId, bgfile, 0, 0, 0, 100, 100, 255, 0);
+    } else {
+      console.error(bgid + ' は見つかりません');
+    }
   });
 
-  PluginManager.registerCommand(pluginName, "EraceBG", function(args){
-      var parameters = PluginManager.parameters('SH_DspBgMZ');
-      var PictureId = Number(parameters['PictureId'])
-      $gameScreen.erasePicture(PictureId)
-    });
+  PluginManager.registerCommand(pluginName, "EraceBG", function (args) {
+    var parameters = PluginManager.parameters('SH_DspBgMZ');
+    var PictureId = Number(parameters['PictureId'])
+    $gameScreen.erasePicture(PictureId)
+  });
 })();

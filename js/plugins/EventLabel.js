@@ -170,9 +170,9 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
-    PluginManager.registerCommand(PluginManagerEx.findPluginName(script), 'SHOW_LABEL', function(args) {
+    PluginManager.registerCommand(PluginManagerEx.findPluginName(script), 'SHOW_LABEL', function (args) {
         const id = PluginManagerEx.convertVariables(args.eventId) || this.eventId();
         const event = $gameMap.event(id);
         if (event) {
@@ -183,8 +183,8 @@
     /**
      * Game_Event
      */
-    const _Game_Event_initialize    = Game_Event.prototype.initialize;
-    Game_Event.prototype.initialize = function() {
+    const _Game_Event_initialize = Game_Event.prototype.initialize;
+    Game_Event.prototype.initialize = function () {
         _Game_Event_initialize.apply(this, arguments);
         this._labelText = this.findLabelName();
         this._labelSize = 13;
@@ -193,19 +193,19 @@
         this._labelSwitch = PluginManagerEx.findMetaValue(this.event(), 'LB_S') || null;
     };
 
-    Game_Event.prototype.findLabelX = function() {
+    Game_Event.prototype.findLabelX = function () {
         return this.screenX() + this._labelX;
     };
 
-    Game_Event.prototype.findLabelY = function() {
+    Game_Event.prototype.findLabelY = function () {
         return this.screenY() + this._labelY - $gameMap.tileHeight();
     };
 
-    Game_Event.prototype.findLabelZ = function() {
+    Game_Event.prototype.findLabelZ = function () {
         return this.screenZ() + 1;
     };
 
-    Game_Event.prototype.findLabelName = function() {
+    Game_Event.prototype.findLabelName = function () {
         const metaLabel = PluginManagerEx.findMetaValue(this.event(), 'LB');
         if (metaLabel && metaLabel !== true) {
             return metaLabel;
@@ -214,7 +214,7 @@
         }
     };
 
-    Game_Event.prototype.findLabelEventName = function() {
+    Game_Event.prototype.findLabelEventName = function () {
         if (PluginManagerEx.findMetaValue(this.event(), 'LB_No')) {
             return null;
         }
@@ -226,28 +226,28 @@
         }
     };
 
-    Game_Event.prototype.setEventLabel = function(text, size) {
+    Game_Event.prototype.setEventLabel = function (text, size) {
         this._labelText = text;
         if (size > 0) {
             this._labelSize = size;
         }
     };
 
-    Game_Event.prototype.getEventLabel = function() {
+    Game_Event.prototype.getEventLabel = function () {
         if (this.isValidEventLabel()) {
-            return {text: this._labelText, size: this._labelSize};
+            return { text: this._labelText, size: this._labelSize };
         } else {
             return null;
         }
     };
 
-    Game_Event.prototype.isValidEventLabel = function() {
+    Game_Event.prototype.isValidEventLabel = function () {
         return this._labelText && !this._erased &&
             !this.isHideLabelBecauseOfNoImage() && this.isNearTheScreen() &&
             this.isValidEventLabelSwitch();
     };
 
-    Game_Event.prototype.isValidEventLabelSwitch = function() {
+    Game_Event.prototype.isValidEventLabelSwitch = function () {
         if (!this._labelSwitch) {
             return true;
         } else if (isFinite(this._labelSwitch)) {
@@ -258,26 +258,26 @@
         }
     };
 
-    Game_Event.prototype.isHideLabelBecauseOfNoImage = function() {
+    Game_Event.prototype.isHideLabelBecauseOfNoImage = function () {
         return param.hideNoImage && !this._characterName && !this._tileId;
     };
 
     /**
      * Spriteset_Map
      */
-    const _Spriteset_Map_initialize    = Spriteset_Map.prototype.initialize;
-    Spriteset_Map.prototype.initialize = function() {
+    const _Spriteset_Map_initialize = Spriteset_Map.prototype.initialize;
+    Spriteset_Map.prototype.initialize = function () {
         _Spriteset_Map_initialize.apply(this, arguments);
         this._eventLabelSprites = {};
     };
 
-    const _Spriteset_Map_update    = Spriteset_Map.prototype.update;
-    Spriteset_Map.prototype.update = function() {
+    const _Spriteset_Map_update = Spriteset_Map.prototype.update;
+    Spriteset_Map.prototype.update = function () {
         _Spriteset_Map_update.apply(this, arguments);
         this.updateEventLabel();
     };
 
-    Spriteset_Map.prototype.updateEventLabel = function() {
+    Spriteset_Map.prototype.updateEventLabel = function () {
         for (const event of $gameMap.events()) {
             if (event.getEventLabel()) {
                 this.addEventLabel(event.eventId());
@@ -287,16 +287,16 @@
         }
     };
 
-    Spriteset_Map.prototype.addEventLabel = function(id) {
+    Spriteset_Map.prototype.addEventLabel = function (id) {
         if (this._eventLabelSprites[id]) {
             return;
         }
-        const sprite                = new Sprite_EventLabel(id);
+        const sprite = new Sprite_EventLabel(id);
         this._eventLabelSprites[id] = sprite
         this._tilemap.addChild(sprite);
     };
 
-    Spriteset_Map.prototype.removeEventLabel = function(id) {
+    Spriteset_Map.prototype.removeEventLabel = function (id) {
         if (!this._eventLabelSprites[id]) {
             return;
         }
@@ -311,8 +311,8 @@
         constructor(eventId) {
             super();
             this._eventId = eventId;
-            this._text    = null;
-            this._size    = 0;
+            this._text = null;
+            this._size = 0;
             this.anchor.x = 0.5;
             this.anchor.y = 0.5;
             this.update();
@@ -335,7 +335,7 @@
         }
 
         updateLabel(event) {
-            const label   = event.getEventLabel();
+            const label = event.getEventLabel();
             if (!label) {
                 return;
             }
@@ -353,7 +353,7 @@
 
         refresh() {
             const dummyWindow = new Window_Dummy();
-            this.bitmap       = dummyWindow.createTextBitmap(this._text, this._size);
+            this.bitmap = dummyWindow.createTextBitmap(this._text, this._size);
         }
     }
 
@@ -370,12 +370,12 @@
             this.resetFontSettings();
             const bitmapSize = this.textSizeEx(text);
             const p = param.padding || 0;
-            this.padding     = 0;
+            this.padding = 0;
             this.move(0, 0, bitmapSize.width + p * 2, bitmapSize.height + p * 2);
             this.createContents();
             this.contents.fillAll(param.backColor || 'rgba(0,0,0,0.5)');
             this.drawTextEx(text, p, p, bitmapSize.width + p * 2);
-            const bitmap  = this.contents;
+            const bitmap = this.contents;
             this.contents = null;
             this.destroy();
             return bitmap;

@@ -331,9 +331,9 @@ function Game_PrefabEvent() {
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
-    const searchDataItem = function(dataArray, columnName, columnValue) {
+    const searchDataItem = function (dataArray, columnName, columnValue) {
         let result = 0;
         dataArray.some(dataItem => {
             if (dataItem && dataItem[columnName] === columnValue) {
@@ -345,7 +345,7 @@ function Game_PrefabEvent() {
         return result;
     };
 
-    PluginManagerEx.registerCommand(script, 'MAKE', function(args) {
+    PluginManagerEx.registerCommand(script, 'MAKE', function (args) {
         const template = args.template;
         const xByVariableId = args.xByVariableId;
         const yByVariableId = args.yByVariableId;
@@ -354,19 +354,19 @@ function Game_PrefabEvent() {
         $gameMap.spawnEvent(this.getEventIdForEventReSpawn(args.id, template), x, y, template);
     });
 
-    PluginManagerEx.registerCommand(script, 'MAKE_RANDOM', function(args) {
+    PluginManagerEx.registerCommand(script, 'MAKE_RANDOM', function (args) {
         const template = args.template;
         $gameMap.spawnEventRandom(this.getEventIdForEventReSpawn(args.id, template), args, template, args.algorithm);
     });
 
-    Game_Interpreter.prototype.getEventIdForEventReSpawn = function(idOrName, isTemplate) {
+    Game_Interpreter.prototype.getEventIdForEventReSpawn = function (idOrName, isTemplate) {
         let id = 0;
         if (!isNaN(idOrName)) {
             id = idOrName;
         } else {
             const dataList = isTemplate ? $dataTemplateEvents : $dataMap.events;
-            const event    = searchDataItem(dataList, 'name', idOrName);
-            id             = event ? event.id : 0;
+            const event = searchDataItem(dataList, 'name', idOrName);
+            id = event ? event.id : 0;
         }
         return id > 0 ? id : this._eventId;
     };
@@ -375,8 +375,8 @@ function Game_PrefabEvent() {
     // Game_Map
     //  イベントのスポーン処理を追加定義します。
     //=============================================================================
-    const _Game_Map_setupEvents    = Game_Map.prototype.setupEvents;
-    Game_Map.prototype.setupEvents = function() {
+    const _Game_Map_setupEvents = Game_Map.prototype.setupEvents;
+    Game_Map.prototype.setupEvents = function () {
         if ($gamePlayer.isNeedMapReload()) {
             this.unlinkPrefabEvents();
         }
@@ -384,13 +384,13 @@ function Game_PrefabEvent() {
         this._eventIdSequence = this._events.length || 1;
     };
 
-    Game_Map.prototype.spawnEvent = function(originalEventId, x, y, isTemplate) {
+    Game_Map.prototype.spawnEvent = function (originalEventId, x, y, isTemplate) {
         if (this.isExistEventData(originalEventId, isTemplate) && $gameMap.isValid(x, y)) {
             const eventId = this.getEventIdSequence();
             if (!isTemplate) {
                 const originalEvent = this.event(originalEventId);
                 if (this.isTemplateSpawn(originalEventId)) {
-                    isTemplate      = true;
+                    isTemplate = true;
                     originalEventId = originalEvent.getTemplateId();
                 }
                 if (originalEvent.isPrefab()) {
@@ -399,18 +399,18 @@ function Game_PrefabEvent() {
             }
             const event = new Game_PrefabEvent(this._mapId, eventId, originalEventId, x, y, isTemplate);
             this.setLastSpawnEventId(eventId);
-            this._events[eventId]  = event;
+            this._events[eventId] = event;
         } else {
             throw new Error('無効なイベントIDもしくは座標のためイベントを作成できませんでした。');
         }
     };
 
-    Game_Map.prototype.isTemplateSpawn = function(originalEventId) {
+    Game_Map.prototype.isTemplateSpawn = function (originalEventId) {
         const event = this.event(originalEventId);
         return event.hasTemplate && event.hasTemplate();
     };
 
-    Game_Map.prototype.setLastSpawnEventId = function(value) {
+    Game_Map.prototype.setLastSpawnEventId = function (value) {
         this._lastSpawnEventId = value;
         if (param.variableSpawnEventId > 0) {
             $gameVariables.setValue(param.variableSpawnEventId, value);
@@ -418,15 +418,15 @@ function Game_PrefabEvent() {
     };
 
     // Called by Script
-    Game_Map.prototype.getLastSpawnEventId = function() {
+    Game_Map.prototype.getLastSpawnEventId = function () {
         return this._lastSpawnEventId;
     };
 
-    Game_Map.prototype.isExistEventData = function(eventId, isTemplate) {
+    Game_Map.prototype.isExistEventData = function (eventId, isTemplate) {
         return isTemplate ? !!$dataTemplateEvents[eventId] : !!this.event(eventId);
     };
 
-    Game_Map.prototype.spawnEventRandom = function(originalEventId, conditionMap, isTemplate, algorithm) {
+    Game_Map.prototype.spawnEventRandom = function (originalEventId, conditionMap, isTemplate, algorithm) {
         const conditions = [];
         conditions.push(this.isValid.bind(this));
         if (conditionMap.passable) {
@@ -453,93 +453,93 @@ function Game_PrefabEvent() {
         }
     };
 
-    const _Game_Map_eraseEvent    = Game_Map.prototype.eraseEvent;
-    Game_Map.prototype.eraseEvent = function(eventId) {
+    const _Game_Map_eraseEvent = Game_Map.prototype.eraseEvent;
+    Game_Map.prototype.eraseEvent = function (eventId) {
         _Game_Map_eraseEvent.apply(this, arguments);
         if (this._events[eventId].isExtinct()) {
             delete this._events[eventId];
         }
     };
 
-    Game_Map.prototype.getEventIdSequence = function() {
+    Game_Map.prototype.getEventIdSequence = function () {
         return this._eventIdSequence++;
     };
 
-    Game_Map.prototype.getPrefabEvents = function() {
-        return this.events().filter(function(event) {
+    Game_Map.prototype.getPrefabEvents = function () {
+        return this.events().filter(function (event) {
             return event.isPrefab();
         });
     };
 
-    Game_Map.prototype.resetSelfSwitchForPrefabEvent = function() {
-        this.getPrefabEvents().forEach(function(prefabEvent) {
+    Game_Map.prototype.resetSelfSwitchForPrefabEvent = function () {
+        this.getPrefabEvents().forEach(function (prefabEvent) {
             prefabEvent.eraseSelfSwitch();
         });
     };
 
-    Game_Map.prototype.restoreLinkPrefabEvents = function() {
+    Game_Map.prototype.restoreLinkPrefabEvents = function () {
         if (!this.isSameMapReload()) return;
-        this.getPrefabEvents().forEach(function(prefabEvent) {
+        this.getPrefabEvents().forEach(function (prefabEvent) {
             prefabEvent.linkEventData();
         });
     };
 
-    Game_Map.prototype.unlinkPrefabEvents = function() {
-        this.getPrefabEvents().forEach(function(prefabEvent) {
+    Game_Map.prototype.unlinkPrefabEvents = function () {
+        this.getPrefabEvents().forEach(function (prefabEvent) {
             prefabEvent.unlinkEventData();
         });
     };
 
-    Game_Map.prototype.isSameMapReload = function() {
+    Game_Map.prototype.isSameMapReload = function () {
         return !$gamePlayer.isTransferring() || this.mapId() === $gamePlayer.newMapId();
     };
 
-    Game_Map.prototype.getConditionalValidPosition = function(conditions, algorithm) {
+    Game_Map.prototype.getConditionalValidPosition = function (conditions, algorithm) {
         if (algorithm === 0) {
             let x, y, count = 0;
             do {
                 x = Math.randomInt($dataMap.width);
                 y = Math.randomInt($dataMap.height);
             } while (!conditions.every(this.checkValidPosition.bind(this, x, y)) && ++count < 1000);
-            return count < 1000 ? {x: x, y: y} : null;
+            return count < 1000 ? { x: x, y: y } : null;
         } else {
             const positions = [];
             for (let ix = 0; ix < $dataMap.width; ++ix) for (let iy = 0; iy < $dataMap.height; ++iy) {
                 if (conditions.every(this.checkValidPosition.bind(this, ix, iy))) {
-                    positions.push({x: ix, y: iy});
+                    positions.push({ x: ix, y: iy });
                 }
             }
             return positions.length ? positions[Math.randomInt(positions.length)] : null;
         }
     };
 
-    Game_Map.prototype.checkValidPosition = function(x, y, condition) {
+    Game_Map.prototype.checkValidPosition = function (x, y, condition) {
         return condition(x, y);
     };
 
-    Game_Map.prototype.isErsCheckAnyDirectionPassable = function(x, y) {
-        return [2, 4, 6, 8].some(function(direction) {
+    Game_Map.prototype.isErsCheckAnyDirectionPassable = function (x, y) {
+        return [2, 4, 6, 8].some(function (direction) {
             return $gamePlayer.isMapPassable(x, y, direction);
         });
     };
 
-    Game_Map.prototype.isErsCheckScreenInOut = function(type, x, y) {
+    Game_Map.prototype.isErsCheckScreenInOut = function (type, x, y) {
         return type === 1 ? this.isErsCheckInnerScreen(x, y) : this.isErsCheckOuterScreen(x, y);
     };
 
-    Game_Map.prototype.isErsCheckInnerScreen = function(x, y) {
+    Game_Map.prototype.isErsCheckInnerScreen = function (x, y) {
         const ax = this.adjustX(x);
         const ay = this.adjustY(y);
         return ax >= 0 && ay >= 0 && ax <= this.screenTileX() - 1 && ay <= this.screenTileY() - 1;
     };
 
-    Game_Map.prototype.isErsCheckOuterScreen = function(x, y) {
+    Game_Map.prototype.isErsCheckOuterScreen = function (x, y) {
         const ax = this.adjustX(x);
         const ay = this.adjustY(y);
         return ax < -1 || ay < -1 || ax > this.screenTileX() || ay > this.screenTileY();
     };
 
-    Game_Map.prototype.isErsCheckCollidedSomeone = function(type, x, y) {
+    Game_Map.prototype.isErsCheckCollidedSomeone = function (type, x, y) {
         if ((type === 1 || type === 3) && $gamePlayer.isCollided(x, y)) {
             return false;
         }
@@ -549,14 +549,14 @@ function Game_PrefabEvent() {
         return true;
     };
 
-    Game_Map.prototype.isErsCheckTerrainTag = function(type, x, y) {
-        return type.some(function(id) {
+    Game_Map.prototype.isErsCheckTerrainTag = function (type, x, y) {
+        return type.some(function (id) {
             return id === this.terrainTag(x, y);
         }, this);
     };
 
-    Game_Map.prototype.isErsCheckRegionId = function(type, x, y) {
-        return type.some(function(id) {
+    Game_Map.prototype.isErsCheckRegionId = function (type, x, y) {
+        return type.some(function (id) {
             return id === this.regionId(x, y);
         }, this);
     };
@@ -565,11 +565,11 @@ function Game_PrefabEvent() {
     // Game_CharacterBase
     //   プレハブイベントとそうでないキャラクターを区別します。
     //=============================================================================
-    Game_CharacterBase.prototype.isPrefab = function() {
+    Game_CharacterBase.prototype.isPrefab = function () {
         return false;
     };
 
-    Game_CharacterBase.prototype.isExtinct = function() {
+    Game_CharacterBase.prototype.isExtinct = function () {
         return this.isPrefab() && this._erased;
     };
 
@@ -577,13 +577,13 @@ function Game_PrefabEvent() {
     // Game_PrefabEvent
     //  動的に生成されるイベントオブジェクトです。
     //=============================================================================
-    Game_PrefabEvent.prototype             = Object.create(Game_Event.prototype);
+    Game_PrefabEvent.prototype = Object.create(Game_Event.prototype);
     Game_PrefabEvent.prototype.constructor = Game_PrefabEvent;
 
-    Game_PrefabEvent.prototype.initialize = function(mapId, eventId, originalEventId, x, y, isTemplate) {
+    Game_PrefabEvent.prototype.initialize = function (mapId, eventId, originalEventId, x, y, isTemplate) {
         this._originalEventId = originalEventId;
-        this._eventId         = eventId;
-        this._isTemplate      = isTemplate;
+        this._eventId = eventId;
+        this._isTemplate = isTemplate;
         this.linkEventData();
         Game_Event.prototype.initialize.call(this, mapId, eventId);
         if (typeof Yanfly !== 'undefined' && Yanfly.SEL) {
@@ -596,59 +596,59 @@ function Game_PrefabEvent() {
         this._spritePrepared = false;
     };
 
-    Game_PrefabEvent.prototype.locateWithoutStraighten = function(x, y) {
+    Game_PrefabEvent.prototype.locateWithoutStraighten = function (x, y) {
         this.setPosition(x, y);
         this.refreshBushDepth();
     };
 
     // for TemplateEvent.js
-    Game_PrefabEvent.prototype.generateTemplateId = function(event) {
+    Game_PrefabEvent.prototype.generateTemplateId = function (event) {
         return this._isTemplate ? this._originalEventId : null;
     };
 
-    Game_PrefabEvent.prototype.linkEventData = function() {
+    Game_PrefabEvent.prototype.linkEventData = function () {
         $dataMap.events[this._eventId] = (this._isTemplate ?
             $dataTemplateEvents[this._originalEventId] : $dataMap.events[this._originalEventId]);
     };
 
-    Game_PrefabEvent.prototype.unlinkEventData = function() {
+    Game_PrefabEvent.prototype.unlinkEventData = function () {
         $dataMap.events[this._eventId] = null;
     };
 
-    Game_PrefabEvent.prototype.isPrefab = function() {
+    Game_PrefabEvent.prototype.isPrefab = function () {
         return true;
     };
 
-    Game_PrefabEvent.prototype.erase = function() {
+    Game_PrefabEvent.prototype.erase = function () {
         Game_Event.prototype.erase.call(this);
         this.eraseSelfSwitch();
         delete $dataMap.events[this._eventId];
     };
 
-    Game_PrefabEvent.prototype.isSpritePrepared = function() {
+    Game_PrefabEvent.prototype.isSpritePrepared = function () {
         return this._spritePrepared;
     };
 
-    Game_PrefabEvent.prototype.setSpritePrepared = function() {
+    Game_PrefabEvent.prototype.setSpritePrepared = function () {
         this._spritePrepared = true;
     };
 
-    Game_PrefabEvent.prototype.eraseSelfSwitch = function() {
-        ['A', 'B', 'C', 'D'].forEach(function(swCode) {
+    Game_PrefabEvent.prototype.eraseSelfSwitch = function () {
+        ['A', 'B', 'C', 'D'].forEach(function (swCode) {
             const key = [this._mapId, this._eventId, swCode];
             $gameSelfSwitches.setValue(key, undefined);
         }.bind(this));
     };
 
-    Game_PrefabEvent.prototype.getOriginalEventId = function() {
+    Game_PrefabEvent.prototype.getOriginalEventId = function () {
         return this._originalEventId;
     };
 
-    Game_Event.prototype.getOriginalEventId = function() {
+    Game_Event.prototype.getOriginalEventId = function () {
         return 0;
     };
 
-    Game_Player.prototype.isNeedMapReload = function() {
+    Game_Player.prototype.isNeedMapReload = function () {
         return this._needsMapReload;
     };
 
@@ -656,7 +656,7 @@ function Game_PrefabEvent() {
     // Sprite
     //  SpriteIDの付与に使用するカウンターを取得します。
     //=============================================================================
-    Sprite.getCounter = function() {
+    Sprite.getCounter = function () {
         return this._counter;
     };
 
@@ -664,7 +664,7 @@ function Game_PrefabEvent() {
     // Sprite_Character
     //  対象キャラクターの消去判定を追加定義します。
     //=============================================================================
-    Sprite_Character.prototype.isCharacterExtinct = function() {
+    Sprite_Character.prototype.isCharacterExtinct = function () {
         return this._character.isExtinct();
     };
 
@@ -672,20 +672,20 @@ function Game_PrefabEvent() {
     // Spriteset_Map
     //  プレハブイベントのスプライトを管理します。
     //=============================================================================
-    const _Spriteset_Map_createCharacters    = Spriteset_Map.prototype.createCharacters;
-    Spriteset_Map.prototype.createCharacters = function() {
+    const _Spriteset_Map_createCharacters = Spriteset_Map.prototype.createCharacters;
+    Spriteset_Map.prototype.createCharacters = function () {
         this._prefabSpriteId = Sprite.getCounter() + 1;
         _Spriteset_Map_createCharacters.apply(this, arguments);
     };
 
-    const _Spriteset_Map_update    = Spriteset_Map.prototype.update;
-    Spriteset_Map.prototype.update = function() {
+    const _Spriteset_Map_update = Spriteset_Map.prototype.update;
+    Spriteset_Map.prototype.update = function () {
         _Spriteset_Map_update.apply(this, arguments);
         this.updatePrefabEvent();
     };
 
-    Spriteset_Map.prototype.updatePrefabEvent = function() {
-        $gameMap.getPrefabEvents().forEach(function(event) {
+    Spriteset_Map.prototype.updatePrefabEvent = function () {
+        $gameMap.getPrefabEvents().forEach(function (event) {
             if (!event.isSpritePrepared()) {
                 this.makePrefabEventSprite(event);
             }
@@ -698,9 +698,9 @@ function Game_PrefabEvent() {
         }
     };
 
-    Spriteset_Map.prototype.makePrefabEventSprite = function(event) {
+    Spriteset_Map.prototype.makePrefabEventSprite = function (event) {
         event.setSpritePrepared();
-        const sprite    = new Sprite_Character(event);
+        const sprite = new Sprite_Character(event);
         sprite.spriteId = this._prefabSpriteId;
         this._characterSprites.push(sprite);
         this._tilemap.addChild(sprite);
@@ -714,7 +714,7 @@ function Game_PrefabEvent() {
     };
 
     // Resolve conflict by MOG_EventText.js
-    Spriteset_Map.prototype.refresh_event_text_field = function() {
+    Spriteset_Map.prototype.refresh_event_text_field = function () {
         for (let i = 0; i < this._characterSprites.length; i++) {
             if (!this._sprite_char_text[i]) {
                 this._sprite_char_text[i] = new Sprite_CharText(this._characterSprites[i]);
@@ -723,7 +723,7 @@ function Game_PrefabEvent() {
         }
     };
 
-    Spriteset_Map.prototype.removePrefabEventSprite = function(index) {
+    Spriteset_Map.prototype.removePrefabEventSprite = function (index) {
         const sprite = this._characterSprites[index];
         this._characterSprites.splice(index, 1);
         this._tilemap.removeChild(sprite);
@@ -738,8 +738,8 @@ function Game_PrefabEvent() {
     // Scene_Map
     //  場所移動時にセルフスイッチの情報を初期化します。
     //=============================================================================
-    const _Scene_Map_create    = Scene_Map.prototype.create;
-    Scene_Map.prototype.create = function() {
+    const _Scene_Map_create = Scene_Map.prototype.create;
+    Scene_Map.prototype.create = function () {
         _Scene_Map_create.apply(this, arguments);
         if (this._transfer && !param.keepSelfSwitch) {
             $gameMap.resetSelfSwitchForPrefabEvent();
@@ -751,14 +751,14 @@ function Game_PrefabEvent() {
     //  マップデータのロード完了時にプレハブイベントのリンク先を復元します。
     //=============================================================================
     const _DataManager_onLoad = DataManager.onLoad;
-    DataManager.onLoad        = function(object) {
+    DataManager.onLoad = function (object) {
         _DataManager_onLoad.apply(this, arguments);
         if (object === $dataMap && $gameMap) $gameMap.restoreLinkPrefabEvents();
     };
 
     if (typeof Window_EventMiniLabel !== 'undefined') {
-        const _Window_EventMiniLabel_gatherDisplayData    = Window_EventMiniLabel.prototype.gatherDisplayData;
-        Window_EventMiniLabel.prototype.gatherDisplayData = function() {
+        const _Window_EventMiniLabel_gatherDisplayData = Window_EventMiniLabel.prototype.gatherDisplayData;
+        Window_EventMiniLabel.prototype.gatherDisplayData = function () {
             if (!this._character.event()) {
                 return;
             }

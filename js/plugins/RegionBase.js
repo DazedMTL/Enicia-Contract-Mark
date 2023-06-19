@@ -301,10 +301,10 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
     const _DataManager_onLoad = DataManager.onLoad;
-    DataManager.onLoad = function(object) {
+    DataManager.onLoad = function (object) {
         _DataManager_onLoad.apply(this, arguments);
         if ($dataSystem && $dataClasses && !$dataSystem.regions) {
             PluginManagerEx.setupRegionData(param.regionList, 'regions');
@@ -312,7 +312,7 @@
         }
     };
 
-    PluginManagerEx.setupRegionData = function(paramList, prop) {
+    PluginManagerEx.setupRegionData = function (paramList, prop) {
         const dataList = [];
         $dataSystem[prop] = dataList;
         if (!Array.isArray(paramList)) {
@@ -332,20 +332,20 @@
      * Game_CharacterBase
      */
     const _Game_CharacterBase_isMapPassable = Game_CharacterBase.prototype.isMapPassable;
-    Game_CharacterBase.prototype.isMapPassable = function(x, y, d) {
+    Game_CharacterBase.prototype.isMapPassable = function (x, y, d) {
         $gameMap.setPassableSubject(this);
         return _Game_CharacterBase_isMapPassable.apply(this, arguments)
     };
 
-    Game_CharacterBase.prototype.findCollisionData = function(x, y) {
+    Game_CharacterBase.prototype.findCollisionData = function (x, y) {
         // abstract
     };
 
-    Game_Event.prototype.findCollisionData = function(x, y) {
+    Game_Event.prototype.findCollisionData = function (x, y) {
         return $gameMap.findArrayDataRegionAndTerrain(x, y, 'collisionForEvent');
     };
 
-    Game_Player.prototype.findCollisionData = function(x, y) {
+    Game_Player.prototype.findCollisionData = function (x, y) {
         return $gameMap.findArrayDataRegionAndTerrain(x, y, 'collisionForPlayer');
     };
 
@@ -353,7 +353,7 @@
      * Game_Player
      */
     const _Game_Player_update = Game_Player.prototype.update;
-    Game_Player.prototype.update = function(sceneActive) {
+    Game_Player.prototype.update = function (sceneActive) {
         const wasMoving = this.isMoving();
         _Game_Player_update.apply(this, arguments);
         if (!this.isMoving() && wasMoving) {
@@ -362,24 +362,24 @@
         }
     };
 
-    Game_Player.prototype.updateCurrentRegion = function() {
+    Game_Player.prototype.updateCurrentRegion = function () {
         this._region = $gameMap.findCurrentRegion(this.x, this.y);
         this.updateCurrentRegionAndTerrain(this._region, this._prevRegion);
         this._prevRegion = this._region;
     };
 
-    Game_Player.prototype.updateCurrentTerrainTags = function() {
+    Game_Player.prototype.updateCurrentTerrainTags = function () {
         this._terrainTags = $gameMap.findCurrentTerrainTag(this.x, this.y);
         this.updateCurrentRegionAndTerrain(this._terrainTags, this._prevTerrainTags);
         this._prevTerrainTags = this._terrainTags;
     };
 
-    Game_Player.prototype.updateCurrentRegionAndTerrain = function(current, prev) {
+    Game_Player.prototype.updateCurrentRegionAndTerrain = function (current, prev) {
         this.checkRegionCommonTrigger(current || {}, prev || {});
         this.checkRegionSwitch(current || {}, prev || {});
     };
 
-    Game_Player.prototype.checkRegionCommonTrigger = function(current, prev) {
+    Game_Player.prototype.checkRegionCommonTrigger = function (current, prev) {
         (current.commonEvent || []).forEach(event => {
             if (event.trigger === 0 && current.id !== prev.id) {
                 $gameMap.setupDynamicCommon(event.id);
@@ -394,7 +394,7 @@
         });
     };
 
-    Game_Player.prototype.checkRegionSwitch = function(current, prev) {
+    Game_Player.prototype.checkRegionSwitch = function (current, prev) {
         if (current.id !== prev.id) {
             if (current.switchId > 0) {
                 $gameSwitches.setValue(current.switchId, true);
@@ -405,7 +405,7 @@
         }
     };
 
-    Game_Player.prototype.appendRegionTraits = function(traitsObjects) {
+    Game_Player.prototype.appendRegionTraits = function (traitsObjects) {
         if ($gameMap.mapId() <= 0 || !$dataMap) {
             return traitsObjects;
         }
@@ -424,7 +424,7 @@
      * Game_Actor
      */
     const _Game_Actor_traitObjects = Game_Actor.prototype.traitObjects;
-    Game_Actor.prototype.traitObjects = function() {
+    Game_Actor.prototype.traitObjects = function () {
         const traitsObjects = _Game_Actor_traitObjects.apply(this, arguments);
         return $gamePlayer.appendRegionTraits(traitsObjects);
     };
@@ -432,12 +432,12 @@
     /**
      * Game_Map
      */
-    Game_Map.prototype.setPassableSubject = function(character) {
+    Game_Map.prototype.setPassableSubject = function (character) {
         this._passableSubject = character;
     };
 
     const _Game_Map_isPassable = Game_Map.prototype.isPassable;
-    Game_Map.prototype.isPassable = function(x, y, d) {
+    Game_Map.prototype.isPassable = function (x, y, d) {
         const passable = _Game_Map_isPassable.apply(this, arguments);
         if (this.isCollidedByRegion(x, y, d)) {
             return false;
@@ -448,7 +448,7 @@
         }
     };
 
-    Game_Map.prototype.isCollidedByRegion = function(x, y, d) {
+    Game_Map.prototype.isCollidedByRegion = function (x, y, d) {
         const collision = this._passableSubject.findCollisionData(x, y);
         if (collision.length === 0) {
             return false;
@@ -460,12 +460,12 @@
             (collision.includes('collision_down') && d === 2);
     };
 
-    Game_Map.prototype.isThroughByRegion = function(x, y) {
+    Game_Map.prototype.isThroughByRegion = function (x, y) {
         return this.findDataRegionAndTerrain(x, y, 'through');
     };
 
     const _Game_Map_checkLayeredTilesFlags = Game_Map.prototype.checkLayeredTilesFlags;
-    Game_Map.prototype.checkLayeredTilesFlags = function(x, y, bit) {
+    Game_Map.prototype.checkLayeredTilesFlags = function (x, y, bit) {
         const result = _Game_Map_checkLayeredTilesFlags.apply(this, arguments);
         if (result) {
             return true;
@@ -484,7 +484,7 @@
         return false;
     };
 
-    Game_Map.prototype.findArrayDataRegionAndTerrain = function(x, y, prop) {
+    Game_Map.prototype.findArrayDataRegionAndTerrain = function (x, y, prop) {
         const region = this.findCurrentRegion(x, y);
         const regionValue = region ? region[prop] : [];
         const terrain = this.findCurrentTerrainTag(x, y);
@@ -492,7 +492,7 @@
         return regionValue.concat(terrainValue);
     };
 
-    Game_Map.prototype.findDataRegionAndTerrain = function(x, y, prop) {
+    Game_Map.prototype.findDataRegionAndTerrain = function (x, y, prop) {
         const region = this.findCurrentRegion(x, y);
         if (region && region[prop]) {
             return region[prop];
@@ -504,11 +504,11 @@
         return null;
     };
 
-    Game_Map.prototype.findCurrentRegion = function(x, y) {
+    Game_Map.prototype.findCurrentRegion = function (x, y) {
         return $dataSystem.regions[this.regionId(x, y)];
     };
 
-    Game_Map.prototype.findCurrentTerrainTag = function(x, y) {
+    Game_Map.prototype.findCurrentTerrainTag = function (x, y) {
         return $dataSystem.terrainTags[this.terrainTag(x, y)];
     };
 })();

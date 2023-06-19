@@ -52,7 +52,7 @@
     this._backgroundSprite.bitmap = ImageManager.loadParallax('mini_church');
     this.addChild(this._backgroundSprite);
   };
-  
+
   Scene_Skill.prototype.createBackground = function () {
     this._backgroundSprite = new Sprite();
     this._backgroundSprite.bitmap = ImageManager.loadParallax('mini_church');

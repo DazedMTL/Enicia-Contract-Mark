@@ -61,50 +61,50 @@
  * @type string
  */
 
- /*:ja
- * @target MZ
- * @plugindesc オリジナルのデータJSONファイルを読み込んで変数に格納します。
- * @author トリアコンタン
- * @base PluginCommonBase
- * @orderAfter PluginCommonBase
- * @url
- *
- * @param GlobalVariableName
- * @text グローバル変数名
- * @desc 固有データが定義されるグローバルオブジェクトの名称です。登録した変数はこの変数の配下に生成されます。
- * @default $dataUniques
- * @type string
- *
- * @param UniqueDataList
- * @text データリスト
- * @desc 固有データのリストです。dataフォルダ配下に任意のjsonファイルを配置してください。
- * @default []
- * @type struct<Data>[]
- *
- * @help UniqueDataLoader.js
- *
- * dataフォルダ配下に存在する任意のjsonファイルを読み込みます。
- * jsonファイルはJSONとしてparse可能なテキストファイルとして作成してください。
- * 定義したファイルはゲーム起動時に読み込まれます。
- *
- * データは指定した名称のグローバルオブジェクトに格納されます。
- * グローバル変数名に「window」を指定すると、各オブジェクトがそれぞれ
- * グローバル変数として定義されますが、名称の競合には注意してください。
- *
- * データベースコンバータMZで作成したデータや独自のプラグインで追加したデータ
- * の読み込みなどに使えます。
- *
- * 読み込んだデータは、独自のプラグインやスクリプトで以下の通り参照できます。
- *
- * グローバル変数を[$dataUniques]プロパティ名を[property]にした場合の参照例
- * $dataUniques.property
- *
- * すべての固有データを正常に読み込むと以下のメソッドが呼ばれます。
- * 必要であれば再定義してください。
- * Scene_Boot.prototype.onUniqueDataLoad
- *
- *
- */
+/*:ja
+* @target MZ
+* @plugindesc オリジナルのデータJSONファイルを読み込んで変数に格納します。
+* @author トリアコンタン
+* @base PluginCommonBase
+* @orderAfter PluginCommonBase
+* @url
+*
+* @param GlobalVariableName
+* @text グローバル変数名
+* @desc 固有データが定義されるグローバルオブジェクトの名称です。登録した変数はこの変数の配下に生成されます。
+* @default $dataUniques
+* @type string
+*
+* @param UniqueDataList
+* @text データリスト
+* @desc 固有データのリストです。dataフォルダ配下に任意のjsonファイルを配置してください。
+* @default []
+* @type struct<Data>[]
+*
+* @help UniqueDataLoader.js
+*
+* dataフォルダ配下に存在する任意のjsonファイルを読み込みます。
+* jsonファイルはJSONとしてparse可能なテキストファイルとして作成してください。
+* 定義したファイルはゲーム起動時に読み込まれます。
+*
+* データは指定した名称のグローバルオブジェクトに格納されます。
+* グローバル変数名に「window」を指定すると、各オブジェクトがそれぞれ
+* グローバル変数として定義されますが、名称の競合には注意してください。
+*
+* データベースコンバータMZで作成したデータや独自のプラグインで追加したデータ
+* の読み込みなどに使えます。
+*
+* 読み込んだデータは、独自のプラグインやスクリプトで以下の通り参照できます。
+*
+* グローバル変数を[$dataUniques]プロパティ名を[property]にした場合の参照例
+* $dataUniques.property
+*
+* すべての固有データを正常に読み込むと以下のメソッドが呼ばれます。
+* 必要であれば再定義してください。
+* Scene_Boot.prototype.onUniqueDataLoad
+*
+*
+*/
 
 /*~struct~Data:Ja
  *
@@ -124,7 +124,7 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
     let uniqueList;
     if (param.GlobalVariableName === 'window') {
@@ -135,13 +135,13 @@
     }
 
     const _Scene_Boot_create = Scene_Boot.prototype.create;
-    Scene_Boot.prototype.create = function() {
+    Scene_Boot.prototype.create = function () {
         _Scene_Boot_create.apply(this, arguments);
         UniqueDataManager.loadDataList();
     };
 
     const _Scene_Boot_isReady = Scene_Boot.prototype.isReady;
-    Scene_Boot.prototype.isReady = function() {
+    Scene_Boot.prototype.isReady = function () {
         if (!this._uniqueDataLoaded) {
             if (UniqueDataManager.isDataLoaded()) {
                 this._uniqueDataLoaded = true;
@@ -153,7 +153,7 @@
         return _Scene_Boot_isReady.apply(this, arguments);
     };
 
-    Scene_Boot.prototype.onUniqueDataLoad = function() {};
+    Scene_Boot.prototype.onUniqueDataLoad = function () { };
 
     /**
      * UniqueDataManager
@@ -164,13 +164,13 @@
         throw new Error("This is a static class");
     }
 
-    UniqueDataManager.loadDataList = function() {
+    UniqueDataManager.loadDataList = function () {
         for (const dataFile of param.UniqueDataList) {
             this.loadDataFile(dataFile.PropertyName, dataFile.JsonFileName + '.json');
         }
     };
 
-    UniqueDataManager.loadDataFile = function(name, src) {
+    UniqueDataManager.loadDataFile = function (name, src) {
         const xhr = new XMLHttpRequest();
         const url = "data/" + src;
         xhr.open("GET", url);
@@ -180,7 +180,7 @@
         xhr.send();
     };
 
-    UniqueDataManager.onXhrDataLoad = function(xhr, name, src, url) {
+    UniqueDataManager.onXhrDataLoad = function (xhr, name, src, url) {
         if (xhr.status < 400) {
             uniqueList[name] = JSON.parse(xhr.responseText);
         } else {
@@ -188,7 +188,7 @@
         }
     };
 
-    UniqueDataManager.isDataLoaded = function() {
+    UniqueDataManager.isDataLoaded = function () {
         DataManager.checkError();
         return param.UniqueDataList.every(data => !!uniqueList[data.PropertyName]);
     };

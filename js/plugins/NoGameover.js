@@ -62,33 +62,33 @@
  *　ありがとうございます。
  */
 
-(function() {
+(function () {
 
     var parameters = PluginManager.parameters('NoGameover');
     var switchId = Number(parameters['Switch ID'] || 0);
 
-//rpg_managers.jsより（戦闘で全滅した場合）
-BattleManager.updateBattleEnd = function() {
-    if (this.isBattleTest()) {
-        AudioManager.stopBgm();
-        SceneManager.exit();
-    } else if (!this._escaped && $gameParty.isAllDead()) {
-        if (this._canLose) {
-            $gameParty.reviveBattleMembers();
-            SceneManager.pop();
+    //rpg_managers.jsより（戦闘で全滅した場合）
+    BattleManager.updateBattleEnd = function () {
+        if (this.isBattleTest()) {
+            AudioManager.stopBgm();
+            SceneManager.exit();
+        } else if (!this._escaped && $gameParty.isAllDead()) {
+            if (this._canLose) {
+                $gameParty.reviveBattleMembers();
+                SceneManager.pop();
+            } else {
+                //SceneManager.goto(Scene_Gameover);//ゲームオーバーを表示するぜ
+                //$gameSystem.disableMenu()//メニューを禁止するぜ
+                //$gameScreen.startFadeOut(10); //フェードアウトするぜ
+                $gameSwitches.setValue(switchId, true); //全滅したぜ
+                $gameParty.reviveBattleMembers(); //みんな生き返るぜ
+                SceneManager.pop(); //マップ画面へ移動するぜ
+            }
         } else {
-            //SceneManager.goto(Scene_Gameover);//ゲームオーバーを表示するぜ
-	    //$gameSystem.disableMenu()//メニューを禁止するぜ
-            //$gameScreen.startFadeOut(10); //フェードアウトするぜ
-	    $gameSwitches.setValue(switchId, true); //全滅したぜ
-            $gameParty.reviveBattleMembers(); //みんな生き返るぜ
-            SceneManager.pop(); //マップ画面へ移動するぜ
+            SceneManager.pop();
         }
-    } else {
-        SceneManager.pop();
-    }
-    this._phase = "";
-};
+        this._phase = "";
+    };
 
 
 })();

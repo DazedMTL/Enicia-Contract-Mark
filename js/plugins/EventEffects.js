@@ -185,10 +185,10 @@
  * http://opensource.org/licenses/mit-license.php
  */
 
-(function() {
+(function () {
 
   var _Game_CharacterBase_initialize = Game_CharacterBase.prototype.initialize;
-  Game_CharacterBase.prototype.initialize = function() {
+  Game_CharacterBase.prototype.initialize = function () {
     _Game_CharacterBase_initialize.call(this);
     this.initTone();
     this.initEffects();
@@ -196,7 +196,7 @@
   };
 
   var _Game_CharacterBase_update = Game_CharacterBase.prototype.update;
-  Game_CharacterBase.prototype.update = function() {
+  Game_CharacterBase.prototype.update = function () {
     this.updateTone();
     this.updateOpacity();
     this.updateImageGrid();
@@ -204,7 +204,7 @@
   };
 
   var _Sprite_Character_update = Sprite_Character.prototype.update;
-  Sprite_Character.prototype.update = function() {
+  Sprite_Character.prototype.update = function () {
     _Sprite_Character_update.call(this);
     this.updateTone();
     this.updateAngle();
@@ -214,7 +214,7 @@
   // ----------------------------------------
   // set tone and opacity
   //
-  Game_CharacterBase.prototype.initTone = function() {
+  Game_CharacterBase.prototype.initTone = function () {
     this._tone = null;
     this._toneTarget = null;
     this._toneDuration = 0;
@@ -223,7 +223,7 @@
   };
 
   // this function is called from 'Move Route' -> 'Script'.
-  Game_CharacterBase.prototype.tint = function(tone, duration, needsWait) {
+  Game_CharacterBase.prototype.tint = function (tone, duration, needsWait) {
     if (!this._tone) {
       this._tone = [0, 0, 0, 0];
     }
@@ -243,23 +243,23 @@
   Game_CharacterBase.prototype.tintB = function (duration, needsWait) {
     duration = duration != null ? duration : 60;
     needsWait = needsWait != null ? needsWait : true;
-    this.tint([-255,-255,-255,0], duration, needsWait);
+    this.tint([-255, -255, -255, 0], duration, needsWait);
   };
 
   Game_CharacterBase.prototype.tintW = function (duration, needsWait) {
     duration = duration != null ? duration : 60;
     needsWait = needsWait != null ? needsWait : true;
-    this.tint([255,255,255,0], duration, needsWait);
+    this.tint([255, 255, 255, 0], duration, needsWait);
   };
 
   Game_CharacterBase.prototype.tintN = function (duration, needsWait) {
     duration = duration != null ? duration : 60;
     needsWait = needsWait != null ? needsWait : true;
-    this.tint([0,0,0,0], duration, needsWait);
+    this.tint([0, 0, 0, 0], duration, needsWait);
   };
 
   // this function is called from 'Move Route' -> 'Script'.
-  Game_CharacterBase.prototype.opaque = function(opacity, duration, fWait) {
+  Game_CharacterBase.prototype.opaque = function (opacity, duration, fWait) {
     this._opacityTarget = opacity;
     this._opacityDuration = duration;
     if (this._opacityDuration === 0) {
@@ -271,12 +271,12 @@
   };
 
   // this function is called from 'Move Route' -> 'Script'.
-  Game_CharacterBase.prototype.tint2 = function(tone, opacity, d, wait) {
+  Game_CharacterBase.prototype.tint2 = function (tone, opacity, d, wait) {
     this.tint(tone, d, false);
     this.opaque(opacity, d, wait);
   };
 
-  Game_CharacterBase.prototype.updateTone = function() {
+  Game_CharacterBase.prototype.updateTone = function () {
     this._toneDuration = this._toneDuration || 0;
     if (this._toneDuration > 0) {
       var d = this._toneDuration;
@@ -287,7 +287,7 @@
     }
   };
 
-  Game_CharacterBase.prototype.updateOpacity = function() {
+  Game_CharacterBase.prototype.updateOpacity = function () {
     this._opacityDuration = this._opacityDuration || 0;
     if (this._opacityDuration > 0) {
       var d = this._opacityDuration;
@@ -296,11 +296,11 @@
     }
   };
 
-  Game_CharacterBase.prototype.tone = function() {
+  Game_CharacterBase.prototype.tone = function () {
     return this._tone;
   };
 
-  Sprite_Character.prototype.updateTone = function() {
+  Sprite_Character.prototype.updateTone = function () {
     if (this._character.tone()) {
       this.setColorTone(this._character.tone());
     }
@@ -309,7 +309,7 @@
   // ----------------------------------------
   // set ballon icon
   //
-  Game_CharacterBase.prototype.balloon = function(num, wait, ox, oy) {
+  Game_CharacterBase.prototype.balloon = function (num, wait, ox, oy) {
     this.ballonX = ox || 0;
     this.ballonY = oy || 0;
     if ('requestBalloon' in $gameTemp) {
@@ -326,7 +326,7 @@
   // ----------------------------------------
   // set offset, upSideDown, angle
   //
-  Game_CharacterBase.prototype.initEffects = function() {
+  Game_CharacterBase.prototype.initEffects = function () {
     this._offsetX = 0;
     this._offsetY = 0;
     this._upSideDown = false;
@@ -334,14 +334,14 @@
     this.resetOffset2();
   };
 
-  Game_CharacterBase.prototype.setEffects = function(x, y, u, a) {
+  Game_CharacterBase.prototype.setEffects = function (x, y, u, a) {
     this._offsetX = x;
     this._offsetY = y;
     this._upSideDown = u;
     this._angle = a;
   };
 
-  Game_CharacterBase.prototype.setOffsets = function(x, y) {
+  Game_CharacterBase.prototype.setOffsets = function (x, y) {
     this._offsetX = x;
     this._offsetY = y;
   };
@@ -365,20 +365,20 @@
   var addingY = function (d) {
     return d === 2 ? 1 : d === 8 ? -1 : 0;
   };
-  
-  Game_CharacterBase.prototype.moveOffsets = function(x, y) {
+
+  Game_CharacterBase.prototype.moveOffsets = function (x, y) {
     checkOffsets();
     this._offsetX += x;
     this._offsetY += y;
   };
 
-  Game_CharacterBase.prototype.setOffsetFwd = function(p) {
+  Game_CharacterBase.prototype.setOffsetFwd = function (p) {
     var d = this.direction();
     this._offsetX = p * addingX(d);
     this._offsetY = p * addingY(d);
   };
 
-  Game_CharacterBase.prototype.moveOffsetFwd = function(p) {
+  Game_CharacterBase.prototype.moveOffsetFwd = function (p) {
     checkOffsets();
     var d = this.direction();
     this._offsetX += p * addingX(d);
@@ -389,34 +389,34 @@
   //
 
 
-  Game_CharacterBase.prototype.setOffset2 = function(dx, dy, slx, sly, srx, sry
+  Game_CharacterBase.prototype.setOffset2 = function (dx, dy, slx, sly, srx, sry
   ) {
     slx = slx || 0;
     sly = sly || 0;
     srx = srx || slx;
     sry = sry || sly;
     this._offsets2 = new Point(dx, dy);
-    this._frameOffsets = new Rectangle(slx, sly, srx-slx, sry-sly);
+    this._frameOffsets = new Rectangle(slx, sly, srx - slx, sry - sly);
   };
 
-  Game_CharacterBase.prototype.resetOffset2 = function() {
+  Game_CharacterBase.prototype.resetOffset2 = function () {
     this._offsets2 = null;
     this._frameOffsets = null;
   };
 
-  Game_CharacterBase.prototype.setUpSideDown = function() {
+  Game_CharacterBase.prototype.setUpSideDown = function () {
     this._upSideDown = true;
   };
 
-  Game_CharacterBase.prototype.resetUpSideDown = function() {
+  Game_CharacterBase.prototype.resetUpSideDown = function () {
     this._upSideDown = false;
   };
 
-  Game_CharacterBase.prototype.setAngle = function(d) {
+  Game_CharacterBase.prototype.setAngle = function (d) {
     this._angle = d;
   };
 
-  Sprite_Character.prototype.updateAngle = function() {
+  Sprite_Character.prototype.updateAngle = function () {
     if (this._character._upSideDown) {
       this.anchor.y = 0;
       this.rotation = Math.PI + this._character._angle * Math.PI / 180;
@@ -428,7 +428,7 @@
 
   var _Sprite_Character_updatePosition =
     Sprite_Character.prototype.updatePosition;
-  Sprite_Character.prototype.updatePosition = function() {
+  Sprite_Character.prototype.updatePosition = function () {
     _Sprite_Character_updatePosition.call(this);
     // null or undefined : compatibility for older version
     if (this._character._offsetX == null) {
@@ -450,8 +450,8 @@
   };
 
   var _Sprite_Balloon_updatePosition = Sprite_Balloon.prototype.updatePosition;
-  Sprite_Balloon.prototype.updatePosition = function() {
-     _Sprite_Balloon_updatePosition.call(this);
+  Sprite_Balloon.prototype.updatePosition = function () {
+    _Sprite_Balloon_updatePosition.call(this);
     var character = this._target._character;
     if (character.ballonX) {
       this.offsetX = character.ballonX;
@@ -474,7 +474,7 @@
   };
 
   var _Sprite_Character_setFrame = Sprite_Character.prototype.setFrame;
-  Sprite_Character.prototype.setFrame = function(sx, sy, pw, ph) {
+  Sprite_Character.prototype.setFrame = function (sx, sy, pw, ph) {
     if (this._character._offsets2) {
       var frameOffsets = this._character._frameOffsets;
       frameOffsets.width = frameOffsets.width || this.patternWidth();
@@ -497,7 +497,7 @@
   // ----------------------------------------
   // perform cross fade
   //
-  Game_CharacterBase.prototype.initImageGrid = function() {
+  Game_CharacterBase.prototype.initImageGrid = function () {
     this._hasChildSprite = false;
     this._newIgName = null;
     this._newIgIndex = 0;
@@ -508,7 +508,7 @@
     this._IgDuration = 0;
   };
 
-  Game_CharacterBase.prototype.setImageGrid2 = function(name, index, dir,
+  Game_CharacterBase.prototype.setImageGrid2 = function (name, index, dir,
     pattern, duration, needsWait
   ) {
     if (duration > 1) {
@@ -542,7 +542,7 @@
     }
   };
 
-  Game_CharacterBase.prototype.setGrid2 = function(dir, pattern, duration,
+  Game_CharacterBase.prototype.setGrid2 = function (dir, pattern, duration,
     needsWait
   ) {
     if (duration > 1) {
@@ -559,7 +559,7 @@
       this._originalDirection = dir;
       this.setDirection(dir);
       this._originalPattern = pattern;
-      this.setPattern(pattern);  
+      this.setPattern(pattern);
     }
   };
 
@@ -571,12 +571,12 @@
     this._originalDirection = this._newIgDirection;
     this.setDirection(this._newIgDirection);
     this._originalPattern = this._newIgPattern;
-    this.setPattern(this._newIgPattern);  
+    this.setPattern(this._newIgPattern);
   };
 
   Game_CharacterBase.prototype.makeCrossFadeSpriteRequested = function () {
     return this._IgDuration > 0 && this._IgFrames === this._IgDuration &&
-     !this._hasChildSprite;
+      !this._hasChildSprite;
   };
 
   Game_CharacterBase.prototype.igOpacity = function () {
@@ -602,7 +602,7 @@
     }
   };
 
-  Sprite_Character.prototype.updateCrossFade = function() {
+  Sprite_Character.prototype.updateCrossFade = function () {
     var spriteset = SceneManager._scene._spriteset;
     if (spriteset) {
       if (this._character && this._character.makeCrossFadeSpriteRequested()) {
@@ -619,12 +619,12 @@
   Sprite_CrossFade.prototype = Object.create(Sprite_Character.prototype);
   Sprite_CrossFade.prototype.constructor = Sprite_CrossFade;
 
-  Sprite_CrossFade.prototype.initialize = function(character) {
+  Sprite_CrossFade.prototype.initialize = function (character) {
     Sprite_Character.prototype.initialize.call(this, character);
     Sprite_Character.prototype.update.call(this);
   };
 
-   Sprite_CrossFade.prototype.update = function() {
+  Sprite_CrossFade.prototype.update = function () {
     this.opacity = this._character.igOpacity();
     this.updatePosition();
     if (this._character._IgDuration === 1) {

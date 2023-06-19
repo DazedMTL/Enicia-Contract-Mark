@@ -148,589 +148,589 @@
  * @default normal
  */
 
- /*~struct~Motion:
- * @param name
- * @text モーション名
- * @desc コマンドで呼び出す際の名称
- * @type text
- *
- * @param animationSet
- * @text アニメーション設定
- * @desc アニメーションの流れを設定。上から順に実行。1つめは0フレームで初期値の処理推奨。
- * @type struct<AnimationSet>[]
- * @default []
- */
+/*~struct~Motion:
+* @param name
+* @text モーション名
+* @desc コマンドで呼び出す際の名称
+* @type text
+*
+* @param animationSet
+* @text アニメーション設定
+* @desc アニメーションの流れを設定。上から順に実行。1つめは0フレームで初期値の処理推奨。
+* @type struct<AnimationSet>[]
+* @default []
+*/
 
- /*~struct~AnimationSet:
- * @param frame
- * @text フレーム数
- * @desc このアニメーションにかける時間。0にするとすぐに
- * @type number
- * @min 0
- * @default 0
- *
- * @param animations
- * @text アニメーション
- * @desc フレーム内で実行するアニメーションを設定。全て同時に実行。
- * @type struct<Animation>[]
- * @default ["{\"param\":\"wait\",\"value\":\"0\"}"]
- */
+/*~struct~AnimationSet:
+* @param frame
+* @text フレーム数
+* @desc このアニメーションにかける時間。0にするとすぐに
+* @type number
+* @min 0
+* @default 0
+*
+* @param animations
+* @text アニメーション
+* @desc フレーム内で実行するアニメーションを設定。全て同時に実行。
+* @type struct<Animation>[]
+* @default ["{\"param\":\"wait\",\"value\":\"0\"}"]
+*/
 
- /*~struct~Animation:
- * @param param
- * @text パラメータ
- * @desc 変化させるパラメータの種類。(scaleはscaleX/scaleYと同時に使えないので注意)
- * @type select
- * @option wait/待機
- * @value wait
- * @option scale/拡大率(1で等倍)
- * @value scale
- * @option scaleX/横方向の拡大率(1で等倍)
- * @value scaleX
- * @option scaleY/縦方向の拡大率(1で等倍)
- * @value scaleY
- * @option opacity/不透明度(0~255)
- * @value opacity
- * @option angle/角度
- * @value angle
- * @option x/横方向への移動
- * @value x
- * @option y/縦方向への移動
- * @value y
- * @default wait
- *
- * @param value
- * @text 値
- * @desc 対象パラメータの変化後の値。(waitは値の指定不要)
- * @type number
- * @min -9999999
- * @default 0
- * @decimals 2
- *
- * 
- */
+/*~struct~Animation:
+* @param param
+* @text パラメータ
+* @desc 変化させるパラメータの種類。(scaleはscaleX/scaleYと同時に使えないので注意)
+* @type select
+* @option wait/待機
+* @value wait
+* @option scale/拡大率(1で等倍)
+* @value scale
+* @option scaleX/横方向の拡大率(1で等倍)
+* @value scaleX
+* @option scaleY/縦方向の拡大率(1で等倍)
+* @value scaleY
+* @option opacity/不透明度(0~255)
+* @value opacity
+* @option angle/角度
+* @value angle
+* @option x/横方向への移動
+* @value x
+* @option y/縦方向への移動
+* @value y
+* @default wait
+*
+* @param value
+* @text 値
+* @desc 対象パラメータの変化後の値。(waitは値の指定不要)
+* @type number
+* @min -9999999
+* @default 0
+* @decimals 2
+*
+* 
+*/
 //============================================================================= 
 
 
-(function(){
-'use strict';
+(function () {
+	'use strict';
 
-const pluginName = 'IconBalloon';
-const parameters = JSON.parse(JSON.stringify(PluginManager.parameters(pluginName), function(key, value) {
-	try {
-		return JSON.parse(value);
-	} catch (e) {
+	const pluginName = 'IconBalloon';
+	const parameters = JSON.parse(JSON.stringify(PluginManager.parameters(pluginName), function (key, value) {
 		try {
-			return eval(value);
+			return JSON.parse(value);
 		} catch (e) {
-			return value;
-		}
-	}
-}));
-
-
-const emptyBaloonId = Number(parameters.emptyBaloonId)||11;
-const defaultMotion = parameters.defaultMotion || 'normal';
-const MOTIONS = {};
-
-(function(){
-	const motionArr = parameters.motions;
-	const length = motionArr.length;
-    for(let i = 0; i<length; i=(i+1)|0){
-    	const motion = motionArr[i];
-        const data = [];
-        MOTIONS[motion.name] = data;
-
-        const setLen = motion.animationSet.length;
-	    for(let j = 0; j<setLen; j=(j+1)|0){
-	        const set = motion.animationSet[j];
-	        data.push(set.frame);
-
-	        const animLen = set.animations.length;
-		    for(let k = 0; k<animLen; k=(k+1)|0){
-		        const anim = set.animations[k];
-		        data.push(anim.param);
-
-		        if(anim.param!=='wait'){
-		        	data.push(anim.value);
-		        }
-		    }
-	    }
-    }
-})();
-
-
-
-/*
- 【スクリプト内でのモーション設定】
- □データの順番
- フレーム数、パラメータ名、値、パラメータ名、値、...
- (次のアニメーションの)フレーム数、パラメータ名、値、パラメータ名、値、...
-　 ︙
-
- □パラメータ名
- ※waitのみ直後の値をとらないので注意
-
- scale:拡大率
- scaleX:横方向の拡大率(scaleと一緒に使用不可)
- scaleY:縦方向の拡大率(scaleと一緒に使用不可)
- opacity:不透明度(0~255)
- angle:角度
- x:横方向の座標移動
- y:縦方向の座標移動
- wait:何もせず待機(直後の値を取らないので注意)
- */
-
-const fs = 8; //frame speed
-
-MOTIONS['normal'] = MOTIONS['normal'] || [
-	0,'scale',0,	//瞬時に拡大率を0%で初期化
-	4,'wait',		//4フレーム待機
-	10,'scale',1.15,//10フレームかけて拡大率を115%に
-	5,'scale',0.9,	//5フレームかけて拡大率を90%に
-	5,'scale',1 	//5フレームかけて拡大率を100%に
-];
-MOTIONS['normal_f'] = MOTIONS['normal_f'] || [
-	0,'scale',0, 				//瞬時に拡大率を0%で初期化
-	fs,'wait', 0,'scale',0.9, 	//fs(8フレーム)だけ待機した直後に0フレームで拡大率を90%に
-	fs,'wait', 0,'scale', 1.1,
-	fs,'wait', 0,'scale', 0.9,
-	fs,'wait', 0,'scale', 1
-];
-MOTIONS['flip'] = MOTIONS['flip'] || [
-	0,'scaleX',0,
-	4,'wait',
-	10,'scaleX',-1,
-	12,'scaleX',1.4,
-	4,'scaleX',1
-];
-MOTIONS['flip_f'] = MOTIONS['flip_f'] || [
-	0,'scaleX',0,				
-	fs,'wait', 0,'scaleX',-0.4,
-	fs,'wait', 0,'scaleX',-1,
-	fs,'wait', 0,'scaleX',-0.4,
-	fs,'wait', 0,'scaleX',0.6,
-	fs,'wait', 0,'scaleX',1,
-];
-MOTIONS['rock'] = MOTIONS['rock'] || [
-	0,'scale',0,				//瞬時にX方向拡大率を0%で初期化
-	4,'wait',					//4フレーム待機
-	8,'scale',0.8,				//8フレームかけて拡大率を80%に
-	8,'scale',1.15,'angle',15,	//8フレームかけて拡大率を115%に&角度を15度に
-	8,'scale',1,'angle',0,
-	8,'angle',-15,
-	8,'angle',0,
-	8,'angle',15,
-	8,'angle',0,
-];
-MOTIONS['rock_f'] = MOTIONS['rock_f'] || [
-	0,'scale',0,
-	fs,'wait', 0,'scale',0.8,
-	fs,'wait', 0,'scale',1.15,'angle',15,
-	fs,'wait', 0,'scale',1,'angle',0,
-	fs,'wait', 0,'angle',-15,
-	fs,'wait', 0,'angle',0,
-	fs,'wait', 0,'angle',15,
-	fs,'wait', 0,'angle',0,
-];
-MOTIONS['shake'] = MOTIONS['shake'] || [
-	0,'scale',0,
-	2,'wait',
-	0,'scale',1.3,
-	7,'scale',1,
-	5,'wait',
-	1,'x',-2,
-	1,'x',2,
-	1,'x',-2,
-	1,'x',2,
-	1,'x',-1,
-	1,'x',1,
-	1,'x',-1,
-	1,'x',1,
-	1,'x',-1,
-	1,'x',1,
-	1,'x',0,
-];
-MOTIONS['shake_f'] = MOTIONS['shake_f'] || [
-	0,'scale',0,
-	fs,'wait', 0,'scale',1.2,
-	fs,'wait', 0,'scale',1,'x',1,
-	fs,'wait', 0,'x',-1,
-	fs,'wait', 0,'x',1,
-	fs,'wait', 0,'x',-1,
-	fs,'wait', 0,'x',1,
-	fs,'wait', 0,'x',0,
-];
-
-
-MOTIONS['rocket'] = MOTIONS['rocket'] || [
-	0,'scale',0,
-	12,'scale',1.3,'angle',30,
-	5,'scale',1,
-	5,'wait',
-	1,'x',-1,
-	1,'x',1,
-	1,'x',-1,
-	1,'x',1,
-	1,'x',-2,
-	1,'x',2,
-	1,'x',-2,
-	1,'x',2,
-	1,'x',-2,
-	1,'x',2,
-	1,'x',0,
-	4,'wait',
-	15,'x',-600,
-];
-
-MOTIONS['rocket2'] = MOTIONS['rocket2'] || [
-	0,'scale',0,
-	7,'scale',1.3,'angle',30,
-	3,'scale',1,
-	1,'x',-2,
-	1,'x',2,
-	1,'x',0,
-	2,'wait',
-	8,'x',-400,'opacity',0,
-];
-MOTIONS['evade'] = MOTIONS['evade'] || [
-	0,'scale',0,
-	10,'scale',1.3,
-	4,'scale',1,
-	4,'wait',
-	4,'x',24,
-	4,'wait',
-	4,'x',0,
-	4,'wait',
-	4,'x',-24,
-	4,'wait',
-	4,'x',0,
-	4,'wait',
-	4,'x',24,
-	4,'wait',
-	4,'x',0,
-	4,'wait',
-	4,'x',-24,
-	4,'wait',
-	4,'x',0,
-	4,'wait',
-];
-
-
-
-
-
-
-
-
-PluginManager.registerCommand(pluginName, 'show', function(args){
-	var argsArr = Object.values(args)
-
-	this._processIconBalloon(argsArr);
-});
-
-
-//=============================================================================
-// Game_Interpreter
-//=============================================================================
-
-var _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
-Game_Interpreter.prototype.pluginCommand = function(command, args){
-	switch(command.toLowerCase()){
-	case 'iconballoon':
-	case 'iconb':
-	case 'アイコンバルーン':
-		this._processIconBalloon(args);
-		break;
-	default:
-		_Game_Interpreter_pluginCommand.call(this,command,args);
-	}
-};
-
-Game_Interpreter.prototype._processIconBalloon = function(args){
-	var target;
-	if(isNaN(args[0])){
-		var elems = args[0].split(':');
-		var targetType = elems[0];
-		if(targetType==='player'||targetType==='プレイヤー'){
-			target = $gamePlayer;
-		}else if(targetType==='event'||targetType==='イベント'){
-			target = $gameMap.event(Number(elems[1]));
-		}else if(targetType==='this'){
-			target = $gameMap.event(this._eventId);	
-		}else{
-			target = $gamePlayer._followers.follower(Number(elems[1])-1);
-		}
-	}else{
-		var targetId = Number(args[0]);
-		if(targetId===0){
-			target = $gamePlayer;
-		}else if(targetId>0){
-			target = $gameMap.event(targetId);
-		}else{
-			target = $gamePlayer._followers.follower(-targetId-1);
-		}
-	}
-
-	if(!target)return;
-
-	var iconId = Number(args[1]);
-	var motion = args[2];
-	$gameTemp.requestIconBalloon(target,iconId,motion);
-};
-
-
-//=============================================================================
-// Game_Temp
-//=============================================================================
-Game_Temp.prototype.requestIconBalloon = function(target,iconId,motion=defaultMotion){
-	//console.log(target,iconId,motion)
-	const request = { target: target, balloonId: -iconId, motion:motion};
-    this._balloonQueue.push(request);
-    if (target.startBalloon) {
-        target.startBalloon();
-    }
-};
-
-
-//=============================================================================
-// Spriteset_Map
-//=============================================================================
-Spriteset_Map.prototype.createBalloon = function(request) {
-    const targetSprite = this.findTargetSprite(request.target);
-    if (targetSprite) {
-        const sprite = new Sprite_Balloon();
-        sprite.targetObject = request.target;
-        sprite.setup(targetSprite, request.balloonId, request.motion||'');
-        this._effectsContainer.addChild(sprite);
-        this._balloonSprites.push(sprite);
-    }
-};
-
-
-//=============================================================================
-// Sprite_Balloon
-//=============================================================================
-const _Sprite_Balloon_initMembers = Sprite_Balloon.prototype.initMembers;
-Sprite_Balloon.prototype.initMembers = function() {
-	_Sprite_Balloon_initMembers.call(this);
-	this._iconSprite = null;
-	this._iconMotion = '';
-
-	this._iconMotionIdx = 0;
-	this._iconMotionDuration = 0;
-};
-
-const _Sprite_Balloon_setup = Sprite_Balloon.prototype.setup;
-Sprite_Balloon.prototype.setup = function(targetSprite,balloonId,motion='') {
-	_Sprite_Balloon_setup.call(this,targetSprite,balloonId);
-
-	if(balloonId>=0){
-		if(this._iconSprite){
-			this.removeChild(this._iconSprite);
-			this._iconSprite = null;
-		}
-		this._iconMoiton = '';
-	}else{
-		this.setupIconSprite(-balloonId,motion);
-		this.setIconMotion(motion);
-	}
-};
-
-Sprite_Balloon.prototype.setupIconSprite = function(iconId){
-	let sprite = this._iconSprite;
-	if(!sprite){
-		sprite = new Sprite();
-		sprite.bitmap = ImageManager.loadSystem('IconSet');
-		sprite.bitmap.smooth = true;
-
-		sprite.anchor.set(0.5,0.5);
-		this._iconSprite = sprite;
-		this.addChild(sprite);
-	}
-	sprite.x = 0;
-	sprite.y = -27;
-	sprite.opacity = 255;
-	sprite.scale.set(1,1);
-	sprite.rotation = 0;
-
-	this._balloonId = emptyBaloonId;
-	sprite.setFrame(
-		iconId%16*32,
-		Math.floor(iconId/16)*32,
-		32,
-		32
-	);
-	sprite.visible = false;
-};
-
-Sprite_Balloon.prototype.setIconMotion = function(motion=defaultMotion){
-	this._iconMotion = motion;
-	if(motion){
-		this._iconMotionDuration = this.iconMotionData()[0];
-		this._iconMotionIdx = 1;
-	}else{
-		this._iconMotionDuration = 0;
-		this._iconMotionIdx = 0;
-	}
-};
-
-const _Sprite_Balloon_update = Sprite_Balloon.prototype.update;
-Sprite_Balloon.prototype.update = function() {
-	_Sprite_Balloon_update.call(this);
-
-	if(this._iconMotion){
-		this.updateIconMotion();
-	}
-};
-
-const ANGLE = Math.PI/180;
-Sprite_Balloon.prototype.updateIconMotion = function(){
-	const data = this.iconMotionData();
-	const icon = this._iconSprite;
-	const d = this._iconMotionDuration;
-
-	if(!icon.visible)icon.visible = true;
-
-	let i = this._iconMotionIdx;
-	for(; typeof data[i] === 'string'; i+=2){
-		const type = data[i];
-		const target = data[i+1];
-		let value;
-		switch(type){
-		case 'wait':
-			i -= 1;
-			break;
-		case 'scale':
-			value = d<=1 ? target : icon.scale.x+(target-icon.scale.x)/(d-1);
-			icon.scale.set(value,value);
-			break;
-		case 'scaleX':
-			icon.scale.x = d<=1 ? target : icon.scale.x+(target-icon.scale.x)/(d-1);
-			break;
-		case 'scalY':
-			icon.scale.y = d<=1 ? target : icon.scale.y+(target-icon.scale.y)/(d-1);
-			break;
-		case 'opacity':
-			icon.opacity = d<=1 ? target : icon.opacity+(target-icon.opacity)/(d-1);
-			break;
-		case 'angle':
-			icon.rotation = d<=1 ? target*ANGLE : icon.rotation+(target*ANGLE-icon.rotation)/(d-1);
-			break;
-		case 'x':
-			icon.x = d<=1 ? target : icon.x+(target-icon.x)/(d-1);
-			break;
-		case 'y':
-			icon.y = d<=1 ? target : icon.y+(target-icon.y)/(d-1);
-			break;
-		}
-	}
-
-	this._iconMotionDuration -= 1;
-	if(this._iconMotionDuration<0){
-		this._iconMotionIdx = i;
-		if(i>=data.length){
-			this._iconMotionDuration = 0;
-			this._iconMotion = '';
-		}else{
-			this._iconMotionDuration = data[i];
-			this._iconMotionIdx += 1;
-			if(this._iconMotionDuration===0){
-				this.updateIconMotion();
+			try {
+				return eval(value);
+			} catch (e) {
+				return value;
 			}
 		}
-	}
-};
-
-var _Sprite_Balloon_isPlaying = Sprite_Balloon.prototype.isPlaying;
-Sprite_Balloon.prototype.isPlaying = function() {
-	if(this._iconMotion)return true;
-	return _Sprite_Balloon_isPlaying.call(this);
-};
+	}));
 
 
+	const emptyBaloonId = Number(parameters.emptyBaloonId) || 11;
+	const defaultMotion = parameters.defaultMotion || 'normal';
+	const MOTIONS = {};
 
-Sprite_Balloon.prototype.iconMotionData = function(){
-	return MOTIONS[this._iconMotion];
-};
+	(function () {
+		const motionArr = parameters.motions;
+		const length = motionArr.length;
+		for (let i = 0; i < length; i = (i + 1) | 0) {
+			const motion = motionArr[i];
+			const data = [];
+			MOTIONS[motion.name] = data;
 
-Sprite_Balloon.prototype._updateIconSpriteRock = function(){
-	var sprite = this._iconSprite;
+			const setLen = motion.animationSet.length;
+			for (let j = 0; j < setLen; j = (j + 1) | 0) {
+				const set = motion.animationSet[j];
+				data.push(set.frame);
 
-    var idx = this.frameIndex();;
-   	switch(idx){
-   	case 0:
-   		sprite.opacity = 0;
-   		break;
-   	case 1:
-   		sprite.opacity = 255;
-   		sprite.scale.set(0.8,0.8);
-	   	break;
-   	case 2:
-	   	sprite.scale.set(1.15,1.15);
-	   	sprite.rotation = 15*Math.ANGLE;
-	   	break;
-   	case 3:
-	   	sprite.scale.set(1,1);
-	   	sprite.rotation = 0*Math.ANGLE;
-	   	break;
-   	case 4:
-	   	sprite.scale.set(1,1);
-	   	sprite.rotation = -15*Math.ANGLE;
-	   	break;
-   	case 5:
-	   	sprite.scale.set(1,1);
-	   	sprite.rotation = 0*Math.ANGLE;
-	   	break;
-   	case 6:
-	   	sprite.scale.set(1,1);
-	   	sprite.rotation = 15*Math.ANGLE;
-	   	break;
-   	case 7:
-	   	sprite.scale.set(1,1);
-	   	sprite.rotation = 0*Math.ANGLE;
-	   	break;
-   	}
-};
+				const animLen = set.animations.length;
+				for (let k = 0; k < animLen; k = (k + 1) | 0) {
+					const anim = set.animations[k];
+					data.push(anim.param);
 
-Sprite_Balloon.prototype._updateIconSpriteMv = function(){
-	var sprite = this._iconSprite;
+					if (anim.param !== 'wait') {
+						data.push(anim.value);
+					}
+				}
+			}
+		}
+	})();
 
-    var idx = this.frameIndex();;
-   	switch(idx){
-   	case 0:
-   		sprite.opacity = 0;
-   		break;
-   	case 1:
-   		sprite.opacity = 255;
-   		sprite.scale.set(0.6,0.6);
-	   	break;
-   	case 2:
-	   	sprite.scale.set(0.8,0.8);
-	   	sprite.rotation = 10*Math.ANGLE;
-	   	break;
-   	case 3:
-	   	sprite.scale.set(0.8,0.8);
-	   	sprite.rotation = 0*Math.ANGLE;
-	   	break;
-   	case 4:
-	   	sprite.scale.set(0.8,0.8);
-	   	sprite.rotation = -10*Math.ANGLE;
-	   	break;
-   	case 5:
-	   	sprite.scale.set(0.8,0.8);
-	   	sprite.rotation = 0*Math.ANGLE;
-	   	break;
-   	case 6:
-	   	sprite.scale.set(0.8,0.8);
-	   	sprite.rotation = 10*Math.ANGLE;
-	   	break;
-   	case 7:
-	   	sprite.scale.set(0.8,0.8);
-	   	sprite.rotation = 0*Math.ANGLE;
-	   	break;
-   	}
-};
+
+
+	/*
+	 【スクリプト内でのモーション設定】
+	 □データの順番
+	 フレーム数、パラメータ名、値、パラメータ名、値、...
+	 (次のアニメーションの)フレーム数、パラメータ名、値、パラメータ名、値、...
+	  ︙
+	
+	 □パラメータ名
+	 ※waitのみ直後の値をとらないので注意
+	
+	 scale:拡大率
+	 scaleX:横方向の拡大率(scaleと一緒に使用不可)
+	 scaleY:縦方向の拡大率(scaleと一緒に使用不可)
+	 opacity:不透明度(0~255)
+	 angle:角度
+	 x:横方向の座標移動
+	 y:縦方向の座標移動
+	 wait:何もせず待機(直後の値を取らないので注意)
+	 */
+
+	const fs = 8; //frame speed
+
+	MOTIONS['normal'] = MOTIONS['normal'] || [
+		0, 'scale', 0,	//瞬時に拡大率を0%で初期化
+		4, 'wait',		//4フレーム待機
+		10, 'scale', 1.15,//10フレームかけて拡大率を115%に
+		5, 'scale', 0.9,	//5フレームかけて拡大率を90%に
+		5, 'scale', 1 	//5フレームかけて拡大率を100%に
+	];
+	MOTIONS['normal_f'] = MOTIONS['normal_f'] || [
+		0, 'scale', 0, 				//瞬時に拡大率を0%で初期化
+		fs, 'wait', 0, 'scale', 0.9, 	//fs(8フレーム)だけ待機した直後に0フレームで拡大率を90%に
+		fs, 'wait', 0, 'scale', 1.1,
+		fs, 'wait', 0, 'scale', 0.9,
+		fs, 'wait', 0, 'scale', 1
+	];
+	MOTIONS['flip'] = MOTIONS['flip'] || [
+		0, 'scaleX', 0,
+		4, 'wait',
+		10, 'scaleX', -1,
+		12, 'scaleX', 1.4,
+		4, 'scaleX', 1
+	];
+	MOTIONS['flip_f'] = MOTIONS['flip_f'] || [
+		0, 'scaleX', 0,
+		fs, 'wait', 0, 'scaleX', -0.4,
+		fs, 'wait', 0, 'scaleX', -1,
+		fs, 'wait', 0, 'scaleX', -0.4,
+		fs, 'wait', 0, 'scaleX', 0.6,
+		fs, 'wait', 0, 'scaleX', 1,
+	];
+	MOTIONS['rock'] = MOTIONS['rock'] || [
+		0, 'scale', 0,				//瞬時にX方向拡大率を0%で初期化
+		4, 'wait',					//4フレーム待機
+		8, 'scale', 0.8,				//8フレームかけて拡大率を80%に
+		8, 'scale', 1.15, 'angle', 15,	//8フレームかけて拡大率を115%に&角度を15度に
+		8, 'scale', 1, 'angle', 0,
+		8, 'angle', -15,
+		8, 'angle', 0,
+		8, 'angle', 15,
+		8, 'angle', 0,
+	];
+	MOTIONS['rock_f'] = MOTIONS['rock_f'] || [
+		0, 'scale', 0,
+		fs, 'wait', 0, 'scale', 0.8,
+		fs, 'wait', 0, 'scale', 1.15, 'angle', 15,
+		fs, 'wait', 0, 'scale', 1, 'angle', 0,
+		fs, 'wait', 0, 'angle', -15,
+		fs, 'wait', 0, 'angle', 0,
+		fs, 'wait', 0, 'angle', 15,
+		fs, 'wait', 0, 'angle', 0,
+	];
+	MOTIONS['shake'] = MOTIONS['shake'] || [
+		0, 'scale', 0,
+		2, 'wait',
+		0, 'scale', 1.3,
+		7, 'scale', 1,
+		5, 'wait',
+		1, 'x', -2,
+		1, 'x', 2,
+		1, 'x', -2,
+		1, 'x', 2,
+		1, 'x', -1,
+		1, 'x', 1,
+		1, 'x', -1,
+		1, 'x', 1,
+		1, 'x', -1,
+		1, 'x', 1,
+		1, 'x', 0,
+	];
+	MOTIONS['shake_f'] = MOTIONS['shake_f'] || [
+		0, 'scale', 0,
+		fs, 'wait', 0, 'scale', 1.2,
+		fs, 'wait', 0, 'scale', 1, 'x', 1,
+		fs, 'wait', 0, 'x', -1,
+		fs, 'wait', 0, 'x', 1,
+		fs, 'wait', 0, 'x', -1,
+		fs, 'wait', 0, 'x', 1,
+		fs, 'wait', 0, 'x', 0,
+	];
+
+
+	MOTIONS['rocket'] = MOTIONS['rocket'] || [
+		0, 'scale', 0,
+		12, 'scale', 1.3, 'angle', 30,
+		5, 'scale', 1,
+		5, 'wait',
+		1, 'x', -1,
+		1, 'x', 1,
+		1, 'x', -1,
+		1, 'x', 1,
+		1, 'x', -2,
+		1, 'x', 2,
+		1, 'x', -2,
+		1, 'x', 2,
+		1, 'x', -2,
+		1, 'x', 2,
+		1, 'x', 0,
+		4, 'wait',
+		15, 'x', -600,
+	];
+
+	MOTIONS['rocket2'] = MOTIONS['rocket2'] || [
+		0, 'scale', 0,
+		7, 'scale', 1.3, 'angle', 30,
+		3, 'scale', 1,
+		1, 'x', -2,
+		1, 'x', 2,
+		1, 'x', 0,
+		2, 'wait',
+		8, 'x', -400, 'opacity', 0,
+	];
+	MOTIONS['evade'] = MOTIONS['evade'] || [
+		0, 'scale', 0,
+		10, 'scale', 1.3,
+		4, 'scale', 1,
+		4, 'wait',
+		4, 'x', 24,
+		4, 'wait',
+		4, 'x', 0,
+		4, 'wait',
+		4, 'x', -24,
+		4, 'wait',
+		4, 'x', 0,
+		4, 'wait',
+		4, 'x', 24,
+		4, 'wait',
+		4, 'x', 0,
+		4, 'wait',
+		4, 'x', -24,
+		4, 'wait',
+		4, 'x', 0,
+		4, 'wait',
+	];
+
+
+
+
+
+
+
+
+	PluginManager.registerCommand(pluginName, 'show', function (args) {
+		var argsArr = Object.values(args)
+
+		this._processIconBalloon(argsArr);
+	});
+
+
+	//=============================================================================
+	// Game_Interpreter
+	//=============================================================================
+
+	var _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
+	Game_Interpreter.prototype.pluginCommand = function (command, args) {
+		switch (command.toLowerCase()) {
+			case 'iconballoon':
+			case 'iconb':
+			case 'アイコンバルーン':
+				this._processIconBalloon(args);
+				break;
+			default:
+				_Game_Interpreter_pluginCommand.call(this, command, args);
+		}
+	};
+
+	Game_Interpreter.prototype._processIconBalloon = function (args) {
+		var target;
+		if (isNaN(args[0])) {
+			var elems = args[0].split(':');
+			var targetType = elems[0];
+			if (targetType === 'player' || targetType === 'プレイヤー') {
+				target = $gamePlayer;
+			} else if (targetType === 'event' || targetType === 'イベント') {
+				target = $gameMap.event(Number(elems[1]));
+			} else if (targetType === 'this') {
+				target = $gameMap.event(this._eventId);
+			} else {
+				target = $gamePlayer._followers.follower(Number(elems[1]) - 1);
+			}
+		} else {
+			var targetId = Number(args[0]);
+			if (targetId === 0) {
+				target = $gamePlayer;
+			} else if (targetId > 0) {
+				target = $gameMap.event(targetId);
+			} else {
+				target = $gamePlayer._followers.follower(-targetId - 1);
+			}
+		}
+
+		if (!target) return;
+
+		var iconId = Number(args[1]);
+		var motion = args[2];
+		$gameTemp.requestIconBalloon(target, iconId, motion);
+	};
+
+
+	//=============================================================================
+	// Game_Temp
+	//=============================================================================
+	Game_Temp.prototype.requestIconBalloon = function (target, iconId, motion = defaultMotion) {
+		//console.log(target,iconId,motion)
+		const request = { target: target, balloonId: -iconId, motion: motion };
+		this._balloonQueue.push(request);
+		if (target.startBalloon) {
+			target.startBalloon();
+		}
+	};
+
+
+	//=============================================================================
+	// Spriteset_Map
+	//=============================================================================
+	Spriteset_Map.prototype.createBalloon = function (request) {
+		const targetSprite = this.findTargetSprite(request.target);
+		if (targetSprite) {
+			const sprite = new Sprite_Balloon();
+			sprite.targetObject = request.target;
+			sprite.setup(targetSprite, request.balloonId, request.motion || '');
+			this._effectsContainer.addChild(sprite);
+			this._balloonSprites.push(sprite);
+		}
+	};
+
+
+	//=============================================================================
+	// Sprite_Balloon
+	//=============================================================================
+	const _Sprite_Balloon_initMembers = Sprite_Balloon.prototype.initMembers;
+	Sprite_Balloon.prototype.initMembers = function () {
+		_Sprite_Balloon_initMembers.call(this);
+		this._iconSprite = null;
+		this._iconMotion = '';
+
+		this._iconMotionIdx = 0;
+		this._iconMotionDuration = 0;
+	};
+
+	const _Sprite_Balloon_setup = Sprite_Balloon.prototype.setup;
+	Sprite_Balloon.prototype.setup = function (targetSprite, balloonId, motion = '') {
+		_Sprite_Balloon_setup.call(this, targetSprite, balloonId);
+
+		if (balloonId >= 0) {
+			if (this._iconSprite) {
+				this.removeChild(this._iconSprite);
+				this._iconSprite = null;
+			}
+			this._iconMoiton = '';
+		} else {
+			this.setupIconSprite(-balloonId, motion);
+			this.setIconMotion(motion);
+		}
+	};
+
+	Sprite_Balloon.prototype.setupIconSprite = function (iconId) {
+		let sprite = this._iconSprite;
+		if (!sprite) {
+			sprite = new Sprite();
+			sprite.bitmap = ImageManager.loadSystem('IconSet');
+			sprite.bitmap.smooth = true;
+
+			sprite.anchor.set(0.5, 0.5);
+			this._iconSprite = sprite;
+			this.addChild(sprite);
+		}
+		sprite.x = 0;
+		sprite.y = -27;
+		sprite.opacity = 255;
+		sprite.scale.set(1, 1);
+		sprite.rotation = 0;
+
+		this._balloonId = emptyBaloonId;
+		sprite.setFrame(
+			iconId % 16 * 32,
+			Math.floor(iconId / 16) * 32,
+			32,
+			32
+		);
+		sprite.visible = false;
+	};
+
+	Sprite_Balloon.prototype.setIconMotion = function (motion = defaultMotion) {
+		this._iconMotion = motion;
+		if (motion) {
+			this._iconMotionDuration = this.iconMotionData()[0];
+			this._iconMotionIdx = 1;
+		} else {
+			this._iconMotionDuration = 0;
+			this._iconMotionIdx = 0;
+		}
+	};
+
+	const _Sprite_Balloon_update = Sprite_Balloon.prototype.update;
+	Sprite_Balloon.prototype.update = function () {
+		_Sprite_Balloon_update.call(this);
+
+		if (this._iconMotion) {
+			this.updateIconMotion();
+		}
+	};
+
+	const ANGLE = Math.PI / 180;
+	Sprite_Balloon.prototype.updateIconMotion = function () {
+		const data = this.iconMotionData();
+		const icon = this._iconSprite;
+		const d = this._iconMotionDuration;
+
+		if (!icon.visible) icon.visible = true;
+
+		let i = this._iconMotionIdx;
+		for (; typeof data[i] === 'string'; i += 2) {
+			const type = data[i];
+			const target = data[i + 1];
+			let value;
+			switch (type) {
+				case 'wait':
+					i -= 1;
+					break;
+				case 'scale':
+					value = d <= 1 ? target : icon.scale.x + (target - icon.scale.x) / (d - 1);
+					icon.scale.set(value, value);
+					break;
+				case 'scaleX':
+					icon.scale.x = d <= 1 ? target : icon.scale.x + (target - icon.scale.x) / (d - 1);
+					break;
+				case 'scalY':
+					icon.scale.y = d <= 1 ? target : icon.scale.y + (target - icon.scale.y) / (d - 1);
+					break;
+				case 'opacity':
+					icon.opacity = d <= 1 ? target : icon.opacity + (target - icon.opacity) / (d - 1);
+					break;
+				case 'angle':
+					icon.rotation = d <= 1 ? target * ANGLE : icon.rotation + (target * ANGLE - icon.rotation) / (d - 1);
+					break;
+				case 'x':
+					icon.x = d <= 1 ? target : icon.x + (target - icon.x) / (d - 1);
+					break;
+				case 'y':
+					icon.y = d <= 1 ? target : icon.y + (target - icon.y) / (d - 1);
+					break;
+			}
+		}
+
+		this._iconMotionDuration -= 1;
+		if (this._iconMotionDuration < 0) {
+			this._iconMotionIdx = i;
+			if (i >= data.length) {
+				this._iconMotionDuration = 0;
+				this._iconMotion = '';
+			} else {
+				this._iconMotionDuration = data[i];
+				this._iconMotionIdx += 1;
+				if (this._iconMotionDuration === 0) {
+					this.updateIconMotion();
+				}
+			}
+		}
+	};
+
+	var _Sprite_Balloon_isPlaying = Sprite_Balloon.prototype.isPlaying;
+	Sprite_Balloon.prototype.isPlaying = function () {
+		if (this._iconMotion) return true;
+		return _Sprite_Balloon_isPlaying.call(this);
+	};
+
+
+
+	Sprite_Balloon.prototype.iconMotionData = function () {
+		return MOTIONS[this._iconMotion];
+	};
+
+	Sprite_Balloon.prototype._updateIconSpriteRock = function () {
+		var sprite = this._iconSprite;
+
+		var idx = this.frameIndex();;
+		switch (idx) {
+			case 0:
+				sprite.opacity = 0;
+				break;
+			case 1:
+				sprite.opacity = 255;
+				sprite.scale.set(0.8, 0.8);
+				break;
+			case 2:
+				sprite.scale.set(1.15, 1.15);
+				sprite.rotation = 15 * Math.ANGLE;
+				break;
+			case 3:
+				sprite.scale.set(1, 1);
+				sprite.rotation = 0 * Math.ANGLE;
+				break;
+			case 4:
+				sprite.scale.set(1, 1);
+				sprite.rotation = -15 * Math.ANGLE;
+				break;
+			case 5:
+				sprite.scale.set(1, 1);
+				sprite.rotation = 0 * Math.ANGLE;
+				break;
+			case 6:
+				sprite.scale.set(1, 1);
+				sprite.rotation = 15 * Math.ANGLE;
+				break;
+			case 7:
+				sprite.scale.set(1, 1);
+				sprite.rotation = 0 * Math.ANGLE;
+				break;
+		}
+	};
+
+	Sprite_Balloon.prototype._updateIconSpriteMv = function () {
+		var sprite = this._iconSprite;
+
+		var idx = this.frameIndex();;
+		switch (idx) {
+			case 0:
+				sprite.opacity = 0;
+				break;
+			case 1:
+				sprite.opacity = 255;
+				sprite.scale.set(0.6, 0.6);
+				break;
+			case 2:
+				sprite.scale.set(0.8, 0.8);
+				sprite.rotation = 10 * Math.ANGLE;
+				break;
+			case 3:
+				sprite.scale.set(0.8, 0.8);
+				sprite.rotation = 0 * Math.ANGLE;
+				break;
+			case 4:
+				sprite.scale.set(0.8, 0.8);
+				sprite.rotation = -10 * Math.ANGLE;
+				break;
+			case 5:
+				sprite.scale.set(0.8, 0.8);
+				sprite.rotation = 0 * Math.ANGLE;
+				break;
+			case 6:
+				sprite.scale.set(0.8, 0.8);
+				sprite.rotation = 10 * Math.ANGLE;
+				break;
+			case 7:
+				sprite.scale.set(0.8, 0.8);
+				sprite.rotation = 0 * Math.ANGLE;
+				break;
+		}
+	};
 
 
 

@@ -164,7 +164,7 @@
 
         setup(parameter) {
             this._parameter = parameter;
-            for(let paramName in parameter) {
+            for (let paramName in parameter) {
                 if (!parameter.hasOwnProperty(paramName)) {
                     continue;
                 }
@@ -333,7 +333,7 @@
         }
 
         static findPluginName(currentScript) {
-            return currentScript.src.replace(/^.*\/(.*).js$/, function() {
+            return currentScript.src.replace(/^.*\/(.*).js$/, function () {
                 return arguments[1];
             });
         }
@@ -345,7 +345,7 @@
             if (!func) {
                 throw new Error(`Not found function Game_Interpreter : ${funcName}`)
             }
-            PluginManager.registerCommand(pluginName, commandName, function(args) {
+            PluginManager.registerCommand(pluginName, commandName, function (args) {
                 func.call(this, PluginManagerEx.createCommandArgs(args, key));
             });
         }
@@ -416,19 +416,19 @@
     }
 
     const _PluginManager_callCommand = PluginManager.callCommand;
-    PluginManager.callCommand = function(self, pluginName, commandName, args) {
+    PluginManager.callCommand = function (self, pluginName, commandName, args) {
         PluginManagerEx.generateSelfSwitchKey(self.eventId());
         _PluginManager_callCommand.apply(this, arguments);
     };
 
     const _Window_Base_convertEscapeCharacters = Window_Base.prototype.convertEscapeCharacters;
-    Window_Base.prototype.convertEscapeCharacters = function(text) {
+    Window_Base.prototype.convertEscapeCharacters = function (text) {
         text = _Window_Base_convertEscapeCharacters.apply(this, arguments);
         return PluginManagerEx.convertEscapeCharacters(text);
     };
 
     const _Game_System_onAfterLoad = Game_System.prototype.onAfterLoad;
-    Game_System.prototype.onAfterLoad = function() {
+    Game_System.prototype.onAfterLoad = function () {
         _Game_System_onAfterLoad.apply(this, arguments);
         $gameMap.initDynamicEvents();
     };
@@ -438,29 +438,29 @@
      * Support dynamic events.
      */
     const _Game_Map_setupEvents = Game_Map.prototype.setupEvents;
-    Game_Map.prototype.setupEvents = function() {
+    Game_Map.prototype.setupEvents = function () {
         _Game_Map_setupEvents.apply(this, arguments);
         this.initDynamicEvents();
     };
 
-    Game_Map.prototype.initDynamicEvents = function() {
+    Game_Map.prototype.initDynamicEvents = function () {
         if (!this._dynamicEvents) {
             this._dynamicEvents = [];
         }
     };
 
-    Game_Map.prototype.isInterpreterOf = function(interpreter) {
+    Game_Map.prototype.isInterpreterOf = function (interpreter) {
         return this._interpreter === interpreter;
     };
 
-    Game_Map.prototype.setupDynamicCommon = function(id) {
+    Game_Map.prototype.setupDynamicCommon = function (id) {
         const event = $dataCommonEvents[id];
         if (event) {
             this.setupDynamicInterpreter(event.list);
         }
     };
 
-    Game_Map.prototype.setupDynamicInterpreter = function(list) {
+    Game_Map.prototype.setupDynamicInterpreter = function (list) {
         const interpreter = new Game_Interpreter();
         interpreter.setup(list, 0);
         this._dynamicEvents.push(interpreter);
@@ -469,7 +469,7 @@
     };
 
     const _Game_Map_updateEvents = Game_Map.prototype.updateEvents;
-    Game_Map.prototype.updateEvents = function() {
+    Game_Map.prototype.updateEvents = function () {
         _Game_Map_updateEvents.apply(this, arguments);
         this._dynamicEvents.forEach(interpreter => interpreter.update());
     };
@@ -477,7 +477,7 @@
     /**
      * Game_Event
      */
-    Game_Event.prototype.findMeta = function(metaNames) {
+    Game_Event.prototype.findMeta = function (metaNames) {
         return PluginManagerEx.findMetaValue(this.event(), metaNames)
     };
 
@@ -485,7 +485,7 @@
      * Game_Interpreter
      */
     const _Game_Interpreter_setup = Game_Interpreter.prototype.setup;
-    Game_Interpreter.prototype.setup = function(list, eventId) {
+    Game_Interpreter.prototype.setup = function (list, eventId) {
         _Game_Interpreter_setup.apply(this, arguments);
         if (eventId) {
             PluginManagerEx.generateSelfSwitchKey(eventId);

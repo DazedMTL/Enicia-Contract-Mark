@@ -262,10 +262,10 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
-    const _Scene_Base_create    = Scene_Base.prototype.create;
-    Scene_Base.prototype.create = function() {
+    const _Scene_Base_create = Scene_Base.prototype.create;
+    Scene_Base.prototype.create = function () {
         _Scene_Base_create.apply(this, arguments);
         this._extraWindows = this.findExtraWindowList().map(windowData => {
             if (!windowData.height) {
@@ -276,8 +276,8 @@
         });
     };
 
-    const _Scene_Base_start    = Scene_Base.prototype.start;
-    Scene_Base.prototype.start = function() {
+    const _Scene_Base_start = Scene_Base.prototype.start;
+    Scene_Base.prototype.start = function () {
         _Scene_Base_start.apply(this, arguments);
         this._extraWindows.forEach(extraWindow => {
             if (this._windowLayer) {
@@ -288,9 +288,9 @@
         });
     };
 
-    Scene_Base.prototype.findExtraWindowList = function() {
+    Scene_Base.prototype.findExtraWindowList = function () {
         const currentSceneName = PluginManagerEx.findClassName(this);
-        return (param.WindowList || []).filter(function(data) {
+        return (param.WindowList || []).filter(function (data) {
             return data.SceneName === currentSceneName;
         }, this);
     };
@@ -355,7 +355,7 @@
         }
 
         isValid() {
-            if($gameSwitches.value(131))return null
+            if ($gameSwitches.value(131)) return null
             return !this._data.SwitchId || $gameSwitches.value(this._data.SwitchId);
         }
 

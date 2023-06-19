@@ -81,60 +81,60 @@
   const pluginName = 'MenuCallCommonMZ';
   const parameters = PluginManager.parameters(pluginName);
   const CommonEventOpen = Number(parameters['CommonEventOpen'] || 1);
-  const CommonEventClose = Number(parameters['CommonEventClose']||1);
-  const CommonEventSwitch = Number(parameters['CommonEventSwitch']||1);
-  const EventMoveOk = Number(parameters['EventMoveOk']||1);
+  const CommonEventClose = Number(parameters['CommonEventClose'] || 1);
+  const CommonEventSwitch = Number(parameters['CommonEventSwitch'] || 1);
+  const EventMoveOk = Number(parameters['EventMoveOk'] || 1);
 
   //=============================================================================
   // メニューの代わりにコモンイベント（MenuCallCommon.jsより）
   //=============================================================================
 
-Scene_Map.prototype.updateCallMenu = function() {
-  if (this.isMenuEnabled()) {
+  Scene_Map.prototype.updateCallMenu = function () {
+    if (this.isMenuEnabled()) {
       if (this.isMenuCalled()) {
-          this.menuCalling = true;
+        this.menuCalling = true;
       }
       if (this.menuCalling && !$gamePlayer.isMoving()) {
-        if(!$gameSwitches._data[CommonEventSwitch] == true){
+        if (!$gameSwitches._data[CommonEventSwitch] == true) {
           $gameTemp.reserveCommonEvent(CommonEventOpen);
           this.menuCalling = false;
-        }else if(!$gameSwitches._data[CommonEventSwitch] == false){
+        } else if (!$gameSwitches._data[CommonEventSwitch] == false) {
           $gameTemp.reserveCommonEvent(CommonEventClose);
           this.menuCalling = false;
         }
       }
-      
-  } else {
+
+    } else {
       this.menuCalling = false;
-  }
-};
+    }
+  };
   //=============================================================================
   // イベントの動きを停止（CharacterFreeze.jsより）
   //=============================================================================
 
-    let _Game_Map_update      = Game_Map.prototype.update;
-    Game_Map.prototype.update = function(sceneActive) {
-        _Game_Map_update.apply(this, arguments);
-    };
+  let _Game_Map_update = Game_Map.prototype.update;
+  Game_Map.prototype.update = function (sceneActive) {
+    _Game_Map_update.apply(this, arguments);
+  };
 
-    Game_Map.prototype.isFreeze = function() {
-        return $gameSwitches.value(EventMoveOk);
-    };
+  Game_Map.prototype.isFreeze = function () {
+    return $gameSwitches.value(EventMoveOk);
+  };
 
-    Game_CharacterBase.prototype.isFreeze = function() {
-        return $gameMap.isFreeze();
-    };
+  Game_CharacterBase.prototype.isFreeze = function () {
+    return $gameMap.isFreeze();
+  };
 
-    let _Game_CharacterBase_update      = Game_CharacterBase.prototype.update;
-    Game_CharacterBase.prototype.update = function() {
-        if (this.isFreeze()) return;
-        _Game_CharacterBase_update.apply(this, arguments);
-    };
+  let _Game_CharacterBase_update = Game_CharacterBase.prototype.update;
+  Game_CharacterBase.prototype.update = function () {
+    if (this.isFreeze()) return;
+    _Game_CharacterBase_update.apply(this, arguments);
+  };
 
-    let _Game_Player_canMove      = Game_Player.prototype.canMove;
-    Game_Player.prototype.canMove = function() {
-        return !this.isFreeze() && _Game_Player_canMove.apply(this, arguments);
-    };
-  
+  let _Game_Player_canMove = Game_Player.prototype.canMove;
+  Game_Player.prototype.canMove = function () {
+    return !this.isFreeze() && _Game_Player_canMove.apply(this, arguments);
+  };
+
 })();
 

@@ -54,35 +54,35 @@
  *  このプラグインはもうあなたのものです。
  */
 
-(()=> {
+(() => {
     'use strict';
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
 
     const _Game_Action_applyItemUserEffect = Game_Action.prototype.applyItemUserEffect;
-    Game_Action.prototype.applyItemUserEffect = function(target) {
+    Game_Action.prototype.applyItemUserEffect = function (target) {
         _Game_Action_applyItemUserEffect.apply(this, arguments);
         this.applyItemScript(target);
     };
 
     const _Game_Action_applyGlobal = Game_Action.prototype.applyGlobal;
-    Game_Action.prototype.applyGlobal = function() {
+    Game_Action.prototype.applyGlobal = function () {
         _Game_Action_applyGlobal.apply(this, arguments);
         if (this.isForNone()) {
             this.applyItemScript(null);
         }
     };
 
-    Game_Action.prototype.isForNone = function() {
+    Game_Action.prototype.isForNone = function () {
         return this.checkItemScope([0]);
     };
 
     const _Game_Action_testApply = Game_Action.prototype.testApply;
-    Game_Action.prototype.testApply = function(target) {
+    Game_Action.prototype.testApply = function (target) {
         return _Game_Action_testApply.apply(this, arguments) || !!this.getItemScript();
     };
 
-    Game_Action.prototype.applyItemScript = function(target) {
+    Game_Action.prototype.applyItemScript = function (target) {
         const script = this.getItemScript();
         const user = this.subject();
         if (script) {
@@ -94,7 +94,7 @@
         }
     };
 
-    Game_Action.prototype.getItemScript = function() {
+    Game_Action.prototype.getItemScript = function () {
         return PluginManagerEx.findMetaValue(this.item(), param.scriptTagName || 'SCRIPT');
     };
 })();

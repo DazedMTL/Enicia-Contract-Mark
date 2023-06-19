@@ -65,7 +65,7 @@
 var Imported = Imported || {};
 Imported.TMRegionPassable = true;
 
-(function() {
+(function () {
     'use strict';
 
     var parameters = PluginManager.parameters('TMRegionPassable');
@@ -78,7 +78,7 @@ Imported.TMRegionPassable = true;
     //
 
     var _Game_Map_checkPassage = Game_Map.prototype.checkPassage;
-    Game_Map.prototype.checkPassage = function(x, y, bit) {
+    Game_Map.prototype.checkPassage = function (x, y, bit) {
         var regionId = this.regionId(x, y);
         if (passableRegions.indexOf(regionId) >= 0) return true;
         if (dontPassRegions.indexOf(regionId) >= 0) return false;
@@ -86,7 +86,7 @@ Imported.TMRegionPassable = true;
     };
 
     var _Game_Map_isCounter = Game_Map.prototype.isCounter;
-    Game_Map.prototype.isCounter = function(x, y) {
+    Game_Map.prototype.isCounter = function (x, y) {
         var regionId = this.regionId(x, y);
         if (counterRegions.indexOf(regionId) >= 0) return true;
         return _Game_Map_isCounter.call(this, x, y);

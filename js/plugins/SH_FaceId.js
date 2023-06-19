@@ -23,26 +23,26 @@
 (() => {
   'use strict';
   const pluginName = "SH_FaceId";
-  PluginManager.registerCommand(pluginName, "FaceId", function(args){
-        var faceid = 0
-        faceid = Number(args.id)
-        if(faceid === 0){
-          faceid = 1
-        }
+  PluginManager.registerCommand(pluginName, "FaceId", function (args) {
+    var faceid = 0
+    faceid = Number(args.id)
+    if (faceid === 0) {
+      faceid = 1
+    }
 
-        for (var i = 101; i < 151; i++) {
-            $gameActors.actor(1).removeState(i)
-          }
-        
-
-        $gameVariables._data[1011] = faceid
-
-        
-        $gameActors.actor(1).addState(faceid+100)
+    for (var i = 101; i < 151; i++) {
+      $gameActors.actor(1).removeState(i)
+    }
 
 
+    $gameVariables._data[1011] = faceid
 
-});
+
+    $gameActors.actor(1).addState(faceid + 100)
+
+
+
+  });
 
 
 

@@ -48,188 +48,188 @@
  */
 
 
-(function(){
-var parameters = PluginManager.parameters('TRP_ParticleMZ_ExOption');
-parameters = JSON.parse(JSON.stringify(parameters, function(key, value) {
-    try {
-        return JSON.parse(value);
-    } catch (e) {
+(function () {
+    var parameters = PluginManager.parameters('TRP_ParticleMZ_ExOption');
+    parameters = JSON.parse(JSON.stringify(parameters, function (key, value) {
         try {
-            if(value[0]==='['||value[0]==='{'){
-                if(value.contains(' ')){
+            return JSON.parse(value);
+        } catch (e) {
+            try {
+                if (value[0] === '[' || value[0] === '{') {
+                    if (value.contains(' ')) {
+                        return value;
+                    }
+                    return eval(value);
+                } else if (value === '') {
+                    return value;
+                } else if (!isNaN(value)) {
+                    return Number(value);
+                } else if (value === 'true') {
+                    return true;
+                } else if (value === 'false') {
+                    return false;
+                } else {
                     return value;
                 }
-                return eval(value);
-            }else if(value===''){
-                return value;
-            }else if(!isNaN(value)){
-                return Number(value);
-            }else if(value==='true'){
-                return true;
-            }else if(value==='false'){
-                return false;
-            }else{
+            } catch (e) {
                 return value;
             }
-        } catch (e) {
-            return value;
         }
-    }
-}));
+    }));
 
-var commandIndex = Number(parameters.index);
-var commandName = parameters.name;
-var commandLevels = parameters.levels || [{"name":"最高","value":"0"},{"name":"高","value":"2000"},{"name":"中","value":"1000"},{"name":"低","value":"300"},{"name":"最低","value":"100"}];
+    var commandIndex = Number(parameters.index);
+    var commandName = parameters.name;
+    var commandLevels = parameters.levels || [{ "name": "最高", "value": "0" }, { "name": "高", "value": "2000" }, { "name": "中", "value": "1000" }, { "name": "低", "value": "300" }, { "name": "最低", "value": "100" }];
 
-var DEFAULT_LEVEL = {name:'無制限',value:0};
-var TARGET_SYMBOL = 'trpParticleNumLevel';
-
-
-//=============================================================================
-// ConfigManager
-//=============================================================================
-ConfigManager.trpParticleNumLevel = 0;
-
-var _ConfigManager_load = ConfigManager.load;
-ConfigManager.load = function() {
-	_ConfigManager_load.call(this);
-	this.applyTrpParticleNum();
-};
-
-var _ConfigManager_save = ConfigManager.save;
-ConfigManager.save = function() {
-	_ConfigManager_save.call(this);
-    this.applyTrpParticleNum();
-};
-
-var _ConfigManager_makeData = ConfigManager.makeData;
-ConfigManager.makeData = function() {
-	var config = _ConfigManager_makeData.call(this);
-	config.trpParticleNumLevel = this.trpParticleNumLevel||0;
-    return config;
-};
-
-var _ConfigManager_applyData = ConfigManager.applyData;
-ConfigManager.applyData = function(config) {
-	_ConfigManager_applyData.call(this,config);
-
-	this.trpParticleNumLevel = Number(config.trpParticleNumLevel)||0;
-};
-
-ConfigManager.applyTrpParticleNum = function(){
-	if($gameScreen && $gameScreen._particle){
-		$gameScreen._particle.resetMaxParticlesIfNotCustomValueSet();
-	}
-};
-
-ConfigManager.trpParticleNum = function(){
-	var level = commandLevels[this.trpParticleNumLevel]||commandLevels[0]||DEFAULT_LEVEL;
-	return level.value;
-};
+    var DEFAULT_LEVEL = { name: '無制限', value: 0 };
+    var TARGET_SYMBOL = 'trpParticleNumLevel';
 
 
-//=============================================================================
-// Game_Particle
-//=============================================================================
-Game_Particle.prototype.resetMaxParticlesIfNotCustomValueSet = function(){
-	if(this._customMaxValueSet)return;
-	this._maxParticles = ConfigManager.trpParticleNum();
-};
+    //=============================================================================
+    // ConfigManager
+    //=============================================================================
+    ConfigManager.trpParticleNumLevel = 0;
 
-Game_Particle.prototype.resetMaxParticles = function(){
-	this._maxParticles = ConfigManager.trpParticleNum();
-	this._customMaxValueSet = false;
-};
+    var _ConfigManager_load = ConfigManager.load;
+    ConfigManager.load = function () {
+        _ConfigManager_load.call(this);
+        this.applyTrpParticleNum();
+    };
 
-Object.defineProperty(Game_Particle.prototype, 'maxParticles', {
-    get: function() {
-        return this._maxParticles||0;
-    },set: function(value){
-        this._maxParticles = value||0;
-        this._customMaxValueSet = true;
-    },
-    configurable: true
-});
+    var _ConfigManager_save = ConfigManager.save;
+    ConfigManager.save = function () {
+        _ConfigManager_save.call(this);
+        this.applyTrpParticleNum();
+    };
 
+    var _ConfigManager_makeData = ConfigManager.makeData;
+    ConfigManager.makeData = function () {
+        var config = _ConfigManager_makeData.call(this);
+        config.trpParticleNumLevel = this.trpParticleNumLevel || 0;
+        return config;
+    };
+
+    var _ConfigManager_applyData = ConfigManager.applyData;
+    ConfigManager.applyData = function (config) {
+        _ConfigManager_applyData.call(this, config);
+
+        this.trpParticleNumLevel = Number(config.trpParticleNumLevel) || 0;
+    };
+
+    ConfigManager.applyTrpParticleNum = function () {
+        if ($gameScreen && $gameScreen._particle) {
+            $gameScreen._particle.resetMaxParticlesIfNotCustomValueSet();
+        }
+    };
+
+    ConfigManager.trpParticleNum = function () {
+        var level = commandLevels[this.trpParticleNumLevel] || commandLevels[0] || DEFAULT_LEVEL;
+        return level.value;
+    };
+
+
+    //=============================================================================
+    // Game_Particle
+    //=============================================================================
+    Game_Particle.prototype.resetMaxParticlesIfNotCustomValueSet = function () {
+        if (this._customMaxValueSet) return;
+        this._maxParticles = ConfigManager.trpParticleNum();
+    };
+
+    Game_Particle.prototype.resetMaxParticles = function () {
+        this._maxParticles = ConfigManager.trpParticleNum();
+        this._customMaxValueSet = false;
+    };
+
+    Object.defineProperty(Game_Particle.prototype, 'maxParticles', {
+        get: function () {
+            return this._maxParticles || 0;
+        }, set: function (value) {
+            this._maxParticles = value || 0;
+            this._customMaxValueSet = true;
+        },
+        configurable: true
+    });
 
 
 
 
 
-//=============================================================================
-// Window_Options
-//=============================================================================
-var _Window_Options_makeCommandList = Window_Options.prototype.makeCommandList;
-Window_Options.prototype.makeCommandList = function() {
-	_Window_Options_makeCommandList.call(this);
-		
-	this.addCommand(commandName, TARGET_SYMBOL);
-	var command = this._list.pop();
-	var index = commandIndex.clamp(0,this._list.length);
-	this._list.splice(index,0,command);
-};
 
-var _Window_Options_statusText = Window_Options.prototype.statusText;
-Window_Options.prototype.statusText = function(index) {
-    var symbol = this.commandSymbol(index);
-    if(symbol === TARGET_SYMBOL){
-    	var value = this.getConfigValue(symbol);
-    	return this.trpParticleNumText(value);
-    }else{
-    	return _Window_Options_statusText.call(this,index);
-    }
-};
+    //=============================================================================
+    // Window_Options
+    //=============================================================================
+    var _Window_Options_makeCommandList = Window_Options.prototype.makeCommandList;
+    Window_Options.prototype.makeCommandList = function () {
+        _Window_Options_makeCommandList.call(this);
 
-Window_Options.prototype.trpParticleNumText = function(value){
-	var level = commandLevels[value];
-	if(!level)level = commandLevels[0]||DEFAULT_LEVEL;
-	return level.name;
-};
+        this.addCommand(commandName, TARGET_SYMBOL);
+        var command = this._list.pop();
+        var index = commandIndex.clamp(0, this._list.length);
+        this._list.splice(index, 0, command);
+    };
 
+    var _Window_Options_statusText = Window_Options.prototype.statusText;
+    Window_Options.prototype.statusText = function (index) {
+        var symbol = this.commandSymbol(index);
+        if (symbol === TARGET_SYMBOL) {
+            var value = this.getConfigValue(symbol);
+            return this.trpParticleNumText(value);
+        } else {
+            return _Window_Options_statusText.call(this, index);
+        }
+    };
 
-var _Window_Options_processOk = Window_Options.prototype.processOk;
-Window_Options.prototype.processOk = function() {
-    var index = this.index();
-    var symbol = this.commandSymbol(index);
-    if (symbol === TARGET_SYMBOL) {
-        this.changeTrpParticleNumValue(symbol,-1);
-    } else {
-        _Window_Options_processOk.call(this);
-    }
-};
-
-Window_Options.prototype.changeTrpParticleNumValue = function(symbol, delta){
-    var value = this.getConfigValue(symbol);
-    value += delta;
-    value = value.clamp(0,commandLevels.length-1);
+    Window_Options.prototype.trpParticleNumText = function (value) {
+        var level = commandLevels[value];
+        if (!level) level = commandLevels[0] || DEFAULT_LEVEL;
+        return level.name;
+    };
 
 
-    this.setConfigValue(symbol, value);
-    this.redrawItem(this.findSymbol(symbol));
-    SoundManager.playCursor();
-};
+    var _Window_Options_processOk = Window_Options.prototype.processOk;
+    Window_Options.prototype.processOk = function () {
+        var index = this.index();
+        var symbol = this.commandSymbol(index);
+        if (symbol === TARGET_SYMBOL) {
+            this.changeTrpParticleNumValue(symbol, -1);
+        } else {
+            _Window_Options_processOk.call(this);
+        }
+    };
 
-var _Window_Options_cursorRight = Window_Options.prototype.cursorRight;
-Window_Options.prototype.cursorRight = function(wrap) {
-	var index = this.index();
-    var symbol = this.commandSymbol(index);
-    if(symbol === TARGET_SYMBOL){
-    	this.changeTrpParticleNumValue(symbol,-1);
-    }else{
-    	_Window_Options_cursorRight.call(this,wrap);
-    }
-};
+    Window_Options.prototype.changeTrpParticleNumValue = function (symbol, delta) {
+        var value = this.getConfigValue(symbol);
+        value += delta;
+        value = value.clamp(0, commandLevels.length - 1);
 
-var _Window_Options_cursorLeft = Window_Options.prototype.cursorLeft;
-Window_Options.prototype.cursorLeft = function(wrap) {
-	var index = this.index();
-    var symbol = this.commandSymbol(index);
-    if(symbol === TARGET_SYMBOL){
-    	this.changeTrpParticleNumValue(symbol,1);
-    }else{
-    	_Window_Options_cursorLeft.call(this);
-    }
-};
+
+        this.setConfigValue(symbol, value);
+        this.redrawItem(this.findSymbol(symbol));
+        SoundManager.playCursor();
+    };
+
+    var _Window_Options_cursorRight = Window_Options.prototype.cursorRight;
+    Window_Options.prototype.cursorRight = function (wrap) {
+        var index = this.index();
+        var symbol = this.commandSymbol(index);
+        if (symbol === TARGET_SYMBOL) {
+            this.changeTrpParticleNumValue(symbol, -1);
+        } else {
+            _Window_Options_cursorRight.call(this, wrap);
+        }
+    };
+
+    var _Window_Options_cursorLeft = Window_Options.prototype.cursorLeft;
+    Window_Options.prototype.cursorLeft = function (wrap) {
+        var index = this.index();
+        var symbol = this.commandSymbol(index);
+        if (symbol === TARGET_SYMBOL) {
+            this.changeTrpParticleNumValue(symbol, 1);
+        } else {
+            _Window_Options_cursorLeft.call(this);
+        }
+    };
 
 
 

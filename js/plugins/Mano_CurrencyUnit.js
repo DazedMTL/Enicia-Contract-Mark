@@ -86,214 +86,214 @@
 
 
 
-(function(){
+(function () {
     'use strict';
-    const PLUGIN_NAME='Mano_CurrencyUnit';
+    const PLUGIN_NAME = 'Mano_CurrencyUnit';
 
-class WalletBase{
+    class WalletBase {
+
+        /**
+         * @param {String} unit 
+         */
+        constructor(unit) {
+            this.setUnit(unit || TextManager.currencyUnit);
+        }
+        /**
+         * @param {String} unit 
+         */
+        setUnit(unit) {
+            this._unit = unit;
+        }
+
+        value() {
+            return 0;
+        }
+        pay(value) {
+        }
+
+        loseValue(value) {
+            this.pay(value);
+        }
+
+        gainValue(value) {
+            this.pay(-value);
+        }
+        unit() {
+            return this._unit;
+        }
+
+        canSeil() {
+            return false;
+        }
+
+        isGold() {
+            return false;
+        }
+    }
+
+    class WalletGold extends WalletBase {
+        constructor() {
+            super(TextManager.currencyUnit);
+        }
+        value() {
+            return $gameParty.gold();
+        }
+        pay(value) {
+            $gameParty.loseGold(value);
+        }
+        canSeil() {
+            return true;
+        }
+        isGold() {
+            return true;
+        }
+    }
+
+    class WalletItem extends WalletBase {
+        /**
+         * @param {Number} itemId 
+         */
+        constructor(itemId) {
+            super();
+            this._itemId = itemId;
+        }
+
+        item() {
+            return $dataItems[this._itemId];
+        }
+
+        value() {
+            return $gameParty.numItems(this.item());
+        }
+
+        pay(value) {
+            $gameParty.loseItem(this.item(), value);
+        }
+
+    }
+    window[WalletItem.name] = WalletItem;
+
+    class WalletVariable extends WalletBase {
+        /**
+         * @param {Number} id 
+         */
+        constructor(id) {
+            super();
+            this._variableId = id;
+        }
+        value() {
+            return $gameVariables.value(this._variableId);
+        }
+
+        pay(value) {
+            const lastValue = this.value();
+            $gameVariables.setValue(this._variableId, lastValue - value);
+        }
+    }
 
     /**
-     * @param {String} unit 
+     * @param {WalletBase} wallet 
      */
-    constructor(unit){
-        this.setUnit(unit ||TextManager.currencyUnit);
+    function setupWallet(wallet) {
+        g_wallet = wallet;
     }
+
+
     /**
-     * @param {String} unit 
-     */
-    setUnit(unit){
-        this._unit = unit;
-    }
-
-    value(){
-        return 0;
-    }
-    pay(value){
-    }
-
-    loseValue(value){
-        this.pay(value);
-    }
-
-    gainValue(value){
-        this.pay(-value);
-    }
-    unit(){
-        return this._unit;
-    }
-
-    canSeil(){
-        return false;
-    }
-
-    isGold(){
-        return false;
-    }
-}
-
-class WalletGold extends WalletBase{
-    constructor(){
-        super(TextManager.currencyUnit);
-    }
-    value(){
-        return $gameParty.gold();
-    }
-    pay(value){
-        $gameParty.loseGold(value);
-    }
-    canSeil(){
-        return true;
-    }
-    isGold(){
-        return true;
-    }
-}
-
-class WalletItem extends WalletBase{
-    /**
+     * アイテムと引き換えに交換を行うショップの設定
      * @param {Number} itemId 
+     * @param {string} unit 
      */
-    constructor(itemId){
-        super();
-        this._itemId=itemId;
+    function setupItemWallet(itemId, unit) {
+        const wallet = new WalletItem(itemId);
+        wallet.setUnit(unit);
+        setupWallet(wallet);
     }
 
-    item(){
-        return $dataItems[this._itemId];
-    }
-
-    value(){
-        return $gameParty.numItems(this.item());
-    }
-
-    pay(value){
-        $gameParty.loseItem( this.item(), value);
-    }
-
-}
-window[WalletItem.name] =WalletItem;
-
-class WalletVariable extends WalletBase{
     /**
-     * @param {Number} id 
+     * @description  変数と引き換えに交換を行うショップの設定
+     * @param {Number} variableId
+     * @param {string} unit 
      */
-    constructor(id){
-        super();
-        this._variableId=id;
-    }
-    value(){
-        return $gameVariables.value(this._variableId);
+    function setupVariableWallet(variableId, unit) {
+        const wallet = new WalletVariable(variableId);
+        wallet.setUnit(unit);
+        setupWallet(wallet);
     }
 
-    pay(value){
-        const lastValue = this.value();
-        $gameVariables.setValue(this._variableId, lastValue-value );
+    function resetWallet() {
+        setupWallet(null);
     }
-}
 
-/**
- * @param {WalletBase} wallet 
- */
-function setupWallet(wallet){
-    g_wallet = wallet;
-}
-
-
-/**
- * アイテムと引き換えに交換を行うショップの設定
- * @param {Number} itemId 
- * @param {string} unit 
- */
-function setupItemWallet(itemId,unit){
-    const wallet = new WalletItem(itemId);
-    wallet.setUnit(unit);
-    setupWallet(wallet);    
-}
-
-/**
- * @description  変数と引き換えに交換を行うショップの設定
- * @param {Number} variableId
- * @param {string} unit 
- */
-function setupVariableWallet(variableId,unit){
-    const wallet = new WalletVariable(variableId);
-    wallet.setUnit(unit);
-    setupWallet(wallet);
-}
-
-function resetWallet(){
-    setupWallet(null);
-}
-
-let g_wallet =null;
-const Game_Interpreter_pluginCommand=Game_Interpreter.prototype.pluginCommand;
-Game_Interpreter.prototype.pluginCommand =function(cmd,args){
-    if(cmd ==="ShopModeItem"){
-        setupItemWallet( Number(args[0],args[1]));
-        return;
-    }
-    if(cmd ==="ShopModeVariable"){
-        setupVariableWallet( Number(args[0],args[1]));
-    }
-    Game_Interpreter_pluginCommand.call(this,cmd,args);
-};
+    let g_wallet = null;
+    const Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
+    Game_Interpreter.prototype.pluginCommand = function (cmd, args) {
+        if (cmd === "ShopModeItem") {
+            setupItemWallet(Number(args[0], args[1]));
+            return;
+        }
+        if (cmd === "ShopModeVariable") {
+            setupVariableWallet(Number(args[0], args[1]));
+        }
+        Game_Interpreter_pluginCommand.call(this, cmd, args);
+    };
 
 
-PluginManager.registerCommand(PLUGIN_NAME,"setWalletVariable",
-    (arg)=>{setupVariableWallet(Number(arg.variableId),arg.unit);}
-);
-PluginManager.registerCommand(PLUGIN_NAME,"setWalletItem",
-    (arg)=>{setupItemWallet( Number(arg.itemId),arg.unit)}
-);
-PluginManager.registerCommand(PLUGIN_NAME,"resetWallet",
-    resetWallet
-);
+    PluginManager.registerCommand(PLUGIN_NAME, "setWalletVariable",
+        (arg) => { setupVariableWallet(Number(arg.variableId), arg.unit); }
+    );
+    PluginManager.registerCommand(PLUGIN_NAME, "setWalletItem",
+        (arg) => { setupItemWallet(Number(arg.itemId), arg.unit) }
+    );
+    PluginManager.registerCommand(PLUGIN_NAME, "resetWallet",
+        resetWallet
+    );
 
 
-const Scene_Load_onLoadSuccess=Scene_Load.prototype.onLoadSuccess
-Scene_Load.prototype.onLoadSuccess =function(){
-    resetWallet();
-    g_wallet=null;
-    Scene_Load_onLoadSuccess.call(this);
-};
+    const Scene_Load_onLoadSuccess = Scene_Load.prototype.onLoadSuccess
+    Scene_Load.prototype.onLoadSuccess = function () {
+        resetWallet();
+        g_wallet = null;
+        Scene_Load_onLoadSuccess.call(this);
+    };
 
-Window_Gold.prototype.setupWallet =function(){
-    const w = g_wallet || new WalletGold();
-    this._wallet =w;
-    g_wallet =null;
-};
-Window_Gold.prototype.value = function() {
-    return this._wallet.value();
-};
+    Window_Gold.prototype.setupWallet = function () {
+        const w = g_wallet || new WalletGold();
+        this._wallet = w;
+        g_wallet = null;
+    };
+    Window_Gold.prototype.value = function () {
+        return this._wallet.value();
+    };
 
-Window_Gold.prototype.currencyUnit = function() {
-    return this._wallet.unit();
-};
-Window_Gold.prototype.wallet =function(){
-    return this._wallet;
-};
+    Window_Gold.prototype.currencyUnit = function () {
+        return this._wallet.unit();
+    };
+    Window_Gold.prototype.wallet = function () {
+        return this._wallet;
+    };
 
-const Window_Gold_initialize =Window_Gold.prototype.initialize;
-Window_Gold.prototype.initialize =function(){
-    this.setupWallet();
-    Window_Gold_initialize.apply(this,arguments);
-};
-const Scene_Shop_createGoldWindow =Scene_Shop.prototype.createGoldWindow;
-Scene_Shop.prototype.createGoldWindow =function(){
-    Scene_Shop_createGoldWindow.call(this);
-    this._purchaseOnly =this._purchaseOnly || !this._goldWindow.wallet().canSeil();
-};
+    const Window_Gold_initialize = Window_Gold.prototype.initialize;
+    Window_Gold.prototype.initialize = function () {
+        this.setupWallet();
+        Window_Gold_initialize.apply(this, arguments);
+    };
+    const Scene_Shop_createGoldWindow = Scene_Shop.prototype.createGoldWindow;
+    Scene_Shop.prototype.createGoldWindow = function () {
+        Scene_Shop_createGoldWindow.call(this);
+        this._purchaseOnly = this._purchaseOnly || !this._goldWindow.wallet().canSeil();
+    };
 
-Scene_Shop.prototype.doBuy = function(number) {
-    this._goldWindow.wallet().loseValue(number * this.buyingPrice());
-    $gameParty.gainItem(this._item, number);
-};
+    Scene_Shop.prototype.doBuy = function (number) {
+        this._goldWindow.wallet().loseValue(number * this.buyingPrice());
+        $gameParty.gainItem(this._item, number);
+    };
 
-Scene_Shop.prototype.doSell = function(number) {
-    const p =number * this.sellingPrice();
-    this._goldWindow.wallet().gainValue(p);
-    $gameParty.loseItem(this._item, number);
-};
+    Scene_Shop.prototype.doSell = function (number) {
+        const p = number * this.sellingPrice();
+        this._goldWindow.wallet().gainValue(p);
+        $gameParty.loseItem(this._item, number);
+    };
 
 
 

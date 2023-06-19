@@ -392,8 +392,8 @@
         param.GaugeList = [];
     }
 
-    const _Scene_Base_create    = Scene_Base.prototype.create;
-    Scene_Base.prototype.create = function() {
+    const _Scene_Base_create = Scene_Base.prototype.create;
+    Scene_Base.prototype.create = function () {
         _Scene_Base_create.apply(this, arguments);
         if (!(this instanceof Scene_Map)) {
             this.createExtraGauges();
@@ -401,32 +401,32 @@
     };
 
     const _Scene_Map_create = Scene_Map.prototype.create;
-    Scene_Map.prototype.create = function() {
+    Scene_Map.prototype.create = function () {
         _Scene_Map_create.apply(this, arguments);
         this.createExtraGauges();
     };
 
-    Scene_Base.prototype.createExtraGauges = function() {
+    Scene_Base.prototype.createExtraGauges = function () {
         this._extraGauges = this.findExtraGaugeList().map(data => {
             return new Sprite_ExtraGaugeContainer(data, data.Detail || {}, data.Layout || {});
         });
     };
 
     const _Scene_Base_createWindowLayer = Scene_Base.prototype.createWindowLayer;
-    Scene_Base.prototype.createWindowLayer = function() {
+    Scene_Base.prototype.createWindowLayer = function () {
         if (this instanceof Scene_Message) {
             this.addExtraGauge();
         }
         _Scene_Base_createWindowLayer.apply(this, arguments);
     };
 
-    const _Scene_Base_start    = Scene_Base.prototype.start;
-    Scene_Base.prototype.start = function() {
+    const _Scene_Base_start = Scene_Base.prototype.start;
+    Scene_Base.prototype.start = function () {
         _Scene_Base_start.apply(this, arguments);
         this.addExtraGauge();
     };
 
-    Scene_Base.prototype.addExtraGauge = function() {
+    Scene_Base.prototype.addExtraGauge = function () {
         if (this._extraGaugesAdd) {
             return;
         }
@@ -436,15 +436,15 @@
         this._extraGaugesAdd = true;
     };
 
-    Scene_Base.prototype.findExtraGaugeList = function() {
+    Scene_Base.prototype.findExtraGaugeList = function () {
         const currentSceneName = PluginManagerEx.findClassName(this);
-        return (param.GaugeList || []).filter(function(data) {
+        return (param.GaugeList || []).filter(function (data) {
             return data.SceneName === currentSceneName;
         }, this);
     };
 
     const _Sprite_Gauge_initialize = Sprite_Gauge.prototype.initialize;
-    Sprite_Gauge.prototype.initialize = function(data, detail, layout) {
+    Sprite_Gauge.prototype.initialize = function (data, detail, layout) {
         if (data) {
             this._data = data;
             this._detail = detail;

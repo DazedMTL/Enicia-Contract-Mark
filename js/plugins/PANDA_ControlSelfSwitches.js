@@ -109,34 +109,34 @@
 
 (() => {
 	'use strict';
-	
+
 	// This Plugin Name
 	const pluginName = 'PANDA_ControlSelfSwitches';
-	
+
 	//--------------------------------------------------
 	// Plugin Command "Reset Self Switches"
 	//--------------------------------------------------
-	PluginManager.registerCommand(pluginName, 'RESET', function(args) {
-		
+	PluginManager.registerCommand(pluginName, 'RESET', function (args) {
+
 		// get arguments
 		let mapID = parseInt(args['mapID']);
 		let eventID = parseInt(args['eventID']);
 		let switchID = args['switchID'] || '';
-		
+
 		// get current mapID when -1
 		if (mapID < 0) {
 			mapID = this.character(0)._mapId;
 		}
-		
+
 		// get all self switches
 		for (let k in $gameSelfSwitches._data) {
-			
+
 			// split self switch key (map, event, switch)
 			let key = k.split(',');
 			let m = parseInt(key[0]);
 			let e = parseInt(key[1]);
 			let s = key[2];
-			
+
 			// check key match
 			if (mapID === 0 || m === mapID) {
 				if (eventID === 0 || e === eventID) {
@@ -146,12 +146,12 @@
 					}
 				}
 			}
-			
+
 		}
-		
+
 		// refresh
 		$gameMap.requestRefresh();
-		
+
 	});
-	
+
 })();

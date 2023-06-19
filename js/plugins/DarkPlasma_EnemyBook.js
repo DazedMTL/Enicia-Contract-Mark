@@ -728,7 +728,7 @@
       };
     })(
       pluginParameters.debuffStatusIcons ||
-        '{"mhp":{"small":"48", "large":"56"}, "mmp":{"small":"49", "large":"57"}, "atk":{"small":"50", "large":"58"}, "def":{"small":"51", "large":"59"}, "mat":{"small":"52", "large":"60"}, "mdf":{"small":"53", "large":"61"}, "agi":{"small":"54", "large":"62"}, "luk":{"small":"55", "large":"63"}}'
+      '{"mhp":{"small":"48", "large":"56"}, "mmp":{"small":"49", "large":"57"}, "atk":{"small":"50", "large":"58"}, "def":{"small":"51", "large":"59"}, "mat":{"small":"52", "large":"60"}, "mdf":{"small":"53", "large":"61"}, "agi":{"small":"54", "large":"62"}, "luk":{"small":"55", "large":"63"}}'
     ),
     debuffStatusThreshold: ((parameter) => {
       const parsed = JSON.parse(parameter);
@@ -750,7 +750,7 @@
       };
     })(
       pluginParameters.debuffStatusThreshold ||
-        '{"weak":{"small":"100", "large":"150"}, "resist":{"small":"100", "large":"50"}}'
+      '{"weak":{"small":"100", "large":"150"}, "resist":{"small":"100", "large":"50"}}'
     ),
     enableInBattle: String(pluginParameters.enableInBattle || true) === 'true',
     openKeyInBattle: String(pluginParameters.openKeyInBattle || 'shift'),
@@ -862,9 +862,9 @@
         $dataEnemies.map((enemy) => {
           return isRegisterableEnemy(enemy)
             ? new EnemyBookPage(
-                false,
-                enemy.dropItems.map((_) => false)
-              )
+              false,
+              enemy.dropItems.map((_) => false)
+            )
             : null;
         })
       );
@@ -880,9 +880,9 @@
           $dataEnemies.slice(this._pages.length).map((enemy) => {
             return isRegisterableEnemy(enemy)
               ? new EnemyBookPage(
-                  false,
-                  enemy.dropItems.map((_) => false)
-                )
+                false,
+                enemy.dropItems.map((_) => false)
+              )
               : null;
           })
         );
@@ -898,10 +898,10 @@
         .filter((enemy) => isRegisterableEnemy(enemy) && this._pages[enemy.id] === null)
         .forEach(
           (enemy) =>
-            (this._pages[enemy.id] = new EnemyBookPage(
-              false,
-              enemy.dropItems.map((_) => false)
-            ))
+          (this._pages[enemy.id] = new EnemyBookPage(
+            false,
+            enemy.dropItems.map((_) => false)
+          ))
         );
     }
 
@@ -1284,7 +1284,7 @@
       }
     }
 
-    processOk() {}
+    processOk() { }
 
     processCancel() {
       super.processCancel();
@@ -1445,14 +1445,14 @@
         this.drawTextEx(enemy.meta.desc2, this.descriptionX(), this.descriptionY() + lineHeight, descWidth);
       }
       var race = enemy.meta["race"] ? enemy.meta.race : "unknown"
-      if(race != "unknown"){
+      if (race != "unknown") {
         var raceId = SH_raceStateId(race)
         var raceText = `\\c[16][Race: ${race}]\\c[0]` + $dataStates[raceId].meta.raceDesc
-        raceText = raceText.replace("弱点属性","\\c[6]Weak\\c[0]")
-        raceText = raceText.replace("耐性属性","\\c[29]Resistance\\c[0]")
-        raceText = raceText.replace("BS耐性","\\c[29]BS Resistance\\c[0]")
+        raceText = raceText.replace("弱点属性", "\\c[6]Weak\\c[0]")
+        raceText = raceText.replace("耐性属性", "\\c[29]Resistance\\c[0]")
+        raceText = raceText.replace("BS耐性", "\\c[29]BS Resistance\\c[0]")
         raceText = SH_TextIconReplace(raceText)
-        this.drawTextEx(raceText, this.descriptionX(),this.descriptionY() + lineHeight + 60), descWidth;
+        this.drawTextEx(raceText, this.descriptionX(), this.descriptionY() + lineHeight + 60), descWidth;
       }
     }
 
@@ -1500,7 +1500,7 @@
       this.resetTextColor();
       this.drawText(enemy.params[i], x + 160, y, 60, 'right');
       y += lineHeight;
-      
+
       i = 1
       this.changeTextColor(this.systemColor());
       this.drawText(TextManager.param(i), x, y, 160);

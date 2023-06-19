@@ -112,56 +112,56 @@
 
 (() => {
   const pluginName = "SH_PlayBGMMZ";
-  PluginManager.registerCommand(pluginName, "PlayBGM", function(args){
-      var parameters = PluginManager.parameters('SH_PlayBGMMZ');
-      var Time = Number(parameters['TimeVariable'])
-      var bgmid = args.bgmid
-      var bgmvolume = args.volume
-      var bgmpan = args.pan
-      var bgmpitch = args.pitch
-      if (bgmid == "MAP"){bgmid = "map"}
-      if (bgmvolume = "default"){bgmvolume = parameters.defvolume}
-      if (bgmvolume = "variable"){bgmvolume = $gameVariables.value(parameters.varvolume)}
-      if (bgmvolume > 100){bgmvolume = 100}
-      if(bgmid == "map"){
-        if($dataMap.meta.MAPBGM){
-          bgmid = $dataMap.meta.MAPBGM
-          if($gameVariables.value(Time) >= 0 && $gameVariables.value(Time) < 2){bgmid = $dataMap.meta.MAPBGM};
-          if($gameVariables.value(Time) == 2 && $dataMap.meta.MAPBGM_E){bgmid = $dataMap.meta.MAPBGM_E};
-          if($gameVariables.value(Time) >= 3 && $dataMap.meta.MAPBGM_N){bgmid = $dataMap.meta.MAPBGM_N};
-        }
-      }//戦闘中はエラーが出るかも
-      
-      //console.log(bgmid)
+  PluginManager.registerCommand(pluginName, "PlayBGM", function (args) {
+    var parameters = PluginManager.parameters('SH_PlayBGMMZ');
+    var Time = Number(parameters['TimeVariable'])
+    var bgmid = args.bgmid
+    var bgmvolume = args.volume
+    var bgmpan = args.pan
+    var bgmpitch = args.pitch
+    if (bgmid == "MAP") { bgmid = "map" }
+    if (bgmvolume = "default") { bgmvolume = parameters.defvolume }
+    if (bgmvolume = "variable") { bgmvolume = $gameVariables.value(parameters.varvolume) }
+    if (bgmvolume > 100) { bgmvolume = 100 }
+    if (bgmid == "map") {
+      if ($dataMap.meta.MAPBGM) {
+        bgmid = $dataMap.meta.MAPBGM
+        if ($gameVariables.value(Time) >= 0 && $gameVariables.value(Time) < 2) { bgmid = $dataMap.meta.MAPBGM };
+        if ($gameVariables.value(Time) == 2 && $dataMap.meta.MAPBGM_E) { bgmid = $dataMap.meta.MAPBGM_E };
+        if ($gameVariables.value(Time) >= 3 && $dataMap.meta.MAPBGM_N) { bgmid = $dataMap.meta.MAPBGM_N };
+      }
+    }//戦闘中はエラーが出るかも
 
-      if(bgmid != -1 && bgmid != "map"){
-        //var index = $dataUniques.bgmlist.Id.indexOf(bgmid);
+    //console.log(bgmid)
 
-          var bgmfile = $dataUniques.bgmlist[bgmid];
-          //var bgmfile = $dataUniques.bgmlist[bgmid].File;
-          AudioManager.playBgm({
-                      name: bgmfile,
-                      volume: isNaN(bgmvolume) ? 90 : bgmvolume,
-                      pitch: isNaN(bgmpitch) ? 100 : bgmpitch,
-                      pan: isNaN(bgmpan) ? 0 : bgmpan
-                    });
-        }else{
-            //console.error(bgmid + ' は見つかりません');
-        }
+    if (bgmid != -1 && bgmid != "map") {
+      //var index = $dataUniques.bgmlist.Id.indexOf(bgmid);
+
+      var bgmfile = $dataUniques.bgmlist[bgmid];
+      //var bgmfile = $dataUniques.bgmlist[bgmid].File;
+      AudioManager.playBgm({
+        name: bgmfile,
+        volume: isNaN(bgmvolume) ? 90 : bgmvolume,
+        pitch: isNaN(bgmpitch) ? 100 : bgmpitch,
+        pan: isNaN(bgmpan) ? 0 : bgmpan
+      });
+    } else {
+      //console.error(bgmid + ' は見つかりません');
+    }
   });
 
-  PluginManager.registerCommand(pluginName, "SetBattleBGM", function(args){
+  PluginManager.registerCommand(pluginName, "SetBattleBGM", function (args) {
     var parameters = PluginManager.parameters('SH_PlayBGMMZ');
     var bgmid = args.bbgmid
     var bgmvolume = args.bbgvolume
     var bgmpan = args.bbgpan
     var bgmpitch = args.bbgpitch
-    if (bgmvolume == "default"){bgmvolume = parameters.defvolume}
-    if (bgmvolume == "variable"){bgmvolume = $gameVariables.value(parameters.varvolume)}
-    if(bgmvolume > 100){bgmvolume = 100}
-    if(bgmid == "valuable")bgmid = $gameVariables.value(740)
+    if (bgmvolume == "default") { bgmvolume = parameters.defvolume }
+    if (bgmvolume == "variable") { bgmvolume = $gameVariables.value(parameters.varvolume) }
+    if (bgmvolume > 100) { bgmvolume = 100 }
+    if (bgmid == "valuable") bgmid = $gameVariables.value(740)
     console.log(bgmvolume)
-    if(bgmid != -1){
+    if (bgmid != -1) {
 
       var bgmfile = $dataUniques.bgmlist[bgmid];
       $gameSystem.setBattleBgm({
@@ -169,11 +169,11 @@
         volume: isNaN(bgmvolume) ? 90 : bgmvolume,
         pitch: isNaN(bgmpitch) ? 100 : bgmpitch,
         pan: isNaN(bgmpan) ? 0 : bgmpan
-        })
-    }else{
-        console.error(bgmid + ' は見つかりません');
+      })
+    } else {
+      console.error(bgmid + ' は見つかりません');
     }
-      
+
   });
 
 })();

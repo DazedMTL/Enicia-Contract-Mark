@@ -128,7 +128,7 @@
  *  についても制限はありません。
  *  このプラグインはもうあなたのものです。
  */
-(function() {
+(function () {
     'use strict';
 
     /**
@@ -136,8 +136,8 @@
      * @param pluginName plugin name(EncounterSwitchConditions)
      * @returns {Object} Created parameter
      */
-    const createPluginParameter = function(pluginName) {
-        const paramReplacer = function(key, value) {
+    const createPluginParameter = function (pluginName) {
+        const paramReplacer = function (key, value) {
             if (value === 'null') {
                 return value;
             }
@@ -150,7 +150,7 @@
                 return value;
             }
         };
-        const parameter     = JSON.parse(JSON.stringify(PluginManager.parameters(pluginName), paramReplacer));
+        const parameter = JSON.parse(JSON.stringify(PluginManager.parameters(pluginName), paramReplacer));
         PluginManager.setParameters(pluginName, parameter);
         return parameter;
     };
@@ -160,8 +160,8 @@
     // Game_Picture
     //  メッセージウィンドウの表示可否と連動します。
     //=============================================================================
-    Game_Picture.prototype.linkWithMessageWindow = function(opacity) {
-        this._opacity       = opacity;
+    Game_Picture.prototype.linkWithMessageWindow = function (opacity) {
+        this._opacity = opacity;
         this._targetOpacity = opacity;
     };
 
@@ -169,8 +169,8 @@
     // Window_Message
     //  指定されたボタン押下時にウィンドウとサブウィンドウを非表示にします。
     //=============================================================================
-    const _Window_Message_updateWait      = Window_Message.prototype.updateWait;
-    Window_Message.prototype.updateWait = function() {
+    const _Window_Message_updateWait = Window_Message.prototype.updateWait;
+    Window_Message.prototype.updateWait = function () {
         if (!this.isClosed() && this.isTriggeredHidden() && this.isEnableInChoice()) {
             if (!this.isHidden()) {
                 this.hideAllWindow();
@@ -192,13 +192,13 @@
         return wait;
     };
 
-    Window_Message.prototype.isEnableInChoice = function() {
+    Window_Message.prototype.isEnableInChoice = function () {
         return !(param.disableInChoice && $gameMessage.isChoice());
     };
 
-    Window_Message.prototype.hideAllWindow = function() {
+    Window_Message.prototype.hideAllWindow = function () {
         this.hide();
-        this.subWindows().forEach(function(subWindow) {
+        this.subWindows().forEach(function (subWindow) {
             this.hideSubWindow(subWindow);
         }.bind(this));
         this._originalPictureOpacities = {};
@@ -207,16 +207,16 @@
         this._hideByMessageWindowHidden = true;
     };
 
-    Window_Message.prototype.subWindows = function() {
+    Window_Message.prototype.subWindows = function () {
         return [this._goldWindow, this._nameBoxWindow,
-            this._choiceListWindow, this._numberInputWindow,
-            this._eventItemWindow
+        this._choiceListWindow, this._numberInputWindow,
+        this._eventItemWindow
         ];
     };
 
-    Window_Message.prototype.showAllWindow = function() {
+    Window_Message.prototype.showAllWindow = function () {
         this.show();
-        this.subWindows().forEach(function(subWindow) {
+        this.subWindows().forEach(function (subWindow) {
             this.showSubWindow(subWindow);
         }.bind(this));
         this.linkPictures(null, param.linkShowPictureNumbers);
@@ -224,20 +224,20 @@
         this._hideByMessageWindowHidden = false;
     };
 
-    Window_Message.prototype.isHidden = function() {
+    Window_Message.prototype.isHidden = function () {
         return this._hideByMessageWindowHidden;
     };
 
-    Window_Message.prototype.linkPictures = function(opacity, pictureNumbers) {
+    Window_Message.prototype.linkPictures = function (opacity, pictureNumbers) {
         if (!pictureNumbers || $gameSwitches.value(param.disableLinkSwitchId)) {
             return;
         }
-        pictureNumbers.forEach(function(pictureId) {
+        pictureNumbers.forEach(function (pictureId) {
             this.linkPicture(opacity, pictureId);
         }, this);
     };
 
-    Window_Message.prototype.linkPicture = function(opacity, pictureId) {
+    Window_Message.prototype.linkPicture = function (opacity, pictureId) {
         const picture = $gameScreen.picture(pictureId);
         if (!picture) {
             return;
@@ -253,23 +253,23 @@
         picture.linkWithMessageWindow(opacity);
     };
 
-    Window_Message.prototype.hideSubWindow = function(subWindow) {
+    Window_Message.prototype.hideSubWindow = function (subWindow) {
         subWindow.prevVisible = subWindow.visible;
         subWindow.hide();
     };
 
-    Window_Message.prototype.showSubWindow = function(subWindow) {
+    Window_Message.prototype.showSubWindow = function (subWindow) {
         if (subWindow.prevVisible) subWindow.show();
         subWindow.prevVisible = undefined;
     };
 
-    Window_Message.prototype.hasNameWindow = function() {
+    Window_Message.prototype.hasNameWindow = function () {
         return this._nameWindow && typeof Window_NameBox !== 'undefined';
     };
 
     // 古いYEP_MessageCore.jsでは、ネーム表示ウィンドウはsubWindowsに含まれる
-    Window_Message.prototype.nameWindowIsSubWindow = function() {
-        return this.subWindows().filter(function(subWindow) {
+    Window_Message.prototype.nameWindowIsSubWindow = function () {
+        return this.subWindows().filter(function (subWindow) {
             return subWindow === this._nameWindow;
         }, this).length > 0;
     };
@@ -279,14 +279,14 @@
             (param.disableInBattle && $gameParty.inBattle());
     };
 
-    Window_Message.prototype.isTriggeredHidden = function() {
+    Window_Message.prototype.isTriggeredHidden = function () {
         if (this.disableWindowHidden()) {
             return false;
         }
         if (param.triggerSwitch > 0 && this.isTriggeredHiddenSwitch()) {
             return true;
         }
-        const result = param.triggerButton.some(function(button) {
+        const result = param.triggerButton.some(function (button) {
             switch (button) {
                 case '':
                 case '右クリック':
@@ -304,7 +304,7 @@
         return result;
     };
 
-    Window_Message.prototype.isTriggeredHiddenSwitch = function() {
+    Window_Message.prototype.isTriggeredHiddenSwitch = function () {
         const triggerSwitch = $gameSwitches.value(param.triggerSwitch);
         if (triggerSwitch && !this.isHidden()) {
             return true;
@@ -315,8 +315,8 @@
         return false;
     };
 
-    const _Window_Message_updateInput      = Window_Message.prototype.updateInput;
-    Window_Message.prototype.updateInput = function() {
+    const _Window_Message_updateInput = Window_Message.prototype.updateInput;
+    Window_Message.prototype.updateInput = function () {
         if (this.isHidden()) return true;
         return _Window_Message_updateInput.apply(this, arguments);
     };
@@ -325,20 +325,20 @@
     // Window_ChoiceList、Window_NumberInput、Window_EventItem
     //  非表示の間は更新を停止します。
     //=============================================================================
-    const _Window_ChoiceList_update      = Window_ChoiceList.prototype.update;
-    Window_ChoiceList.prototype.update = function() {
+    const _Window_ChoiceList_update = Window_ChoiceList.prototype.update;
+    Window_ChoiceList.prototype.update = function () {
         if (!this.visible) return;
         _Window_ChoiceList_update.apply(this, arguments);
     };
 
-    const _Window_NumberInput_update      = Window_NumberInput.prototype.update;
-    Window_NumberInput.prototype.update = function() {
+    const _Window_NumberInput_update = Window_NumberInput.prototype.update;
+    Window_NumberInput.prototype.update = function () {
         if (!this.visible) return;
         _Window_NumberInput_update.apply(this, arguments);
     };
 
-    const _Window_EventItem_update      = Window_EventItem.prototype.update;
-    Window_EventItem.prototype.update = function() {
+    const _Window_EventItem_update = Window_EventItem.prototype.update;
+    Window_EventItem.prototype.update = function () {
         if (!this.visible) return;
         _Window_EventItem_update.apply(this, arguments);
     };

@@ -61,7 +61,7 @@ DataManager._databaseFiles = [
     { name: "$dataMapInfos", src: "MapInfos.json" }
 ];
 
-DataManager.loadGlobalInfo = function() {
+DataManager.loadGlobalInfo = function () {
     StorageManager.loadObject("global")
         .then(globalInfo => {
             this._globalInfo = globalInfo;
@@ -73,7 +73,7 @@ DataManager.loadGlobalInfo = function() {
         });
 };
 
-DataManager.removeInvalidGlobalInfo = function() {
+DataManager.removeInvalidGlobalInfo = function () {
     const globalInfo = this._globalInfo;
     for (const info of globalInfo) {
         const savefileId = globalInfo.indexOf(info);
@@ -83,15 +83,15 @@ DataManager.removeInvalidGlobalInfo = function() {
     }
 };
 
-DataManager.saveGlobalInfo = function() {
+DataManager.saveGlobalInfo = function () {
     StorageManager.saveObject("global", this._globalInfo);
 };
 
-DataManager.isGlobalInfoLoaded = function() {
+DataManager.isGlobalInfoLoaded = function () {
     return !!this._globalInfo;
 };
 
-DataManager.loadDatabase = function() {
+DataManager.loadDatabase = function () {
     const test = this.isBattleTest() || this.isEventTest();
     const prefix = test ? "Test_" : "";
     for (const databaseFile of this._databaseFiles) {
@@ -102,7 +102,7 @@ DataManager.loadDatabase = function() {
     }
 };
 
-DataManager.loadDataFile = function(name, src) {
+DataManager.loadDataFile = function (name, src) {
     const xhr = new XMLHttpRequest();
     const url = "data/" + src;
     window[name] = null;
@@ -113,7 +113,7 @@ DataManager.loadDataFile = function(name, src) {
     xhr.send();
 };
 
-DataManager.onXhrLoad = function(xhr, name, src, url) {
+DataManager.onXhrLoad = function (xhr, name, src, url) {
     if (xhr.status < 400) {
         window[name] = JSON.parse(xhr.responseText);
         this.onLoad(window[name]);
@@ -122,12 +122,12 @@ DataManager.onXhrLoad = function(xhr, name, src, url) {
     }
 };
 
-DataManager.onXhrError = function(name, src, url) {
+DataManager.onXhrError = function (name, src, url) {
     const error = { name: name, src: src, url: url };
     this._errors.push(error);
 };
 
-DataManager.isDatabaseLoaded = function() {
+DataManager.isDatabaseLoaded = function () {
     this.checkError();
     for (const databaseFile of this._databaseFiles) {
         if (!window[databaseFile.name]) {
@@ -137,7 +137,7 @@ DataManager.isDatabaseLoaded = function() {
     return true;
 };
 
-DataManager.loadMapData = function(mapId) {
+DataManager.loadMapData = function (mapId) {
     if (mapId > 0) {
         const filename = "Map%1.json".format(mapId.padZero(3));
         this.loadDataFile("$dataMap", filename);
@@ -146,7 +146,7 @@ DataManager.loadMapData = function(mapId) {
     }
 };
 
-DataManager.makeEmptyMap = function() {
+DataManager.makeEmptyMap = function () {
     $dataMap = {};
     $dataMap.data = [];
     $dataMap.events = [];
@@ -155,12 +155,12 @@ DataManager.makeEmptyMap = function() {
     $dataMap.scrollType = 3;
 };
 
-DataManager.isMapLoaded = function() {
+DataManager.isMapLoaded = function () {
     this.checkError();
     return !!$dataMap;
 };
 
-DataManager.onLoad = function(object) {
+DataManager.onLoad = function (object) {
     if (this.isMapObject(object)) {
         this.extractMetadata(object);
         this.extractArrayMetadata(object.events);
@@ -169,11 +169,11 @@ DataManager.onLoad = function(object) {
     }
 };
 
-DataManager.isMapObject = function(object) {
+DataManager.isMapObject = function (object) {
     return !!(object.data && object.events);
 };
 
-DataManager.extractArrayMetadata = function(array) {
+DataManager.extractArrayMetadata = function (array) {
     if (Array.isArray(array)) {
         for (const data of array) {
             if (data && "note" in data) {
@@ -183,10 +183,10 @@ DataManager.extractArrayMetadata = function(array) {
     }
 };
 
-DataManager.extractMetadata = function(data) {
+DataManager.extractMetadata = function (data) {
     const regExp = /<([^<>:]+)(:?)([^>]*)>/g;
     data.meta = {};
-    for (;;) {
+    for (; ;) {
         const match = regExp.exec(data.note);
         if (match) {
             if (match[2] === ":") {
@@ -200,7 +200,7 @@ DataManager.extractMetadata = function(data) {
     }
 };
 
-DataManager.checkError = function() {
+DataManager.checkError = function () {
     if (this._errors.length > 0) {
         const error = this._errors.shift();
         const retry = () => {
@@ -210,31 +210,31 @@ DataManager.checkError = function() {
     }
 };
 
-DataManager.isBattleTest = function() {
+DataManager.isBattleTest = function () {
     return Utils.isOptionValid("btest");
 };
 
-DataManager.isEventTest = function() {
+DataManager.isEventTest = function () {
     return Utils.isOptionValid("etest");
 };
 
-DataManager.isSkill = function(item) {
+DataManager.isSkill = function (item) {
     return item && $dataSkills.includes(item);
 };
 
-DataManager.isItem = function(item) {
+DataManager.isItem = function (item) {
     return item && $dataItems.includes(item);
 };
 
-DataManager.isWeapon = function(item) {
+DataManager.isWeapon = function (item) {
     return item && $dataWeapons.includes(item);
 };
 
-DataManager.isArmor = function(item) {
+DataManager.isArmor = function (item) {
     return item && $dataArmors.includes(item);
 };
 
-DataManager.createGameObjects = function() {
+DataManager.createGameObjects = function () {
     $gameTemp = new Game_Temp();
     $gameSystem = new Game_System();
     $gameScreen = new Game_Screen();
@@ -250,7 +250,7 @@ DataManager.createGameObjects = function() {
     $gamePlayer = new Game_Player();
 };
 
-DataManager.setupNewGame = function() {
+DataManager.setupNewGame = function () {
     this.createGameObjects();
     this.selectSavefileForNewGame();
     $gameParty.setupStartingMembers();
@@ -258,7 +258,7 @@ DataManager.setupNewGame = function() {
     Graphics.frameCount = 0;
 };
 
-DataManager.setupBattleTest = function() {
+DataManager.setupBattleTest = function () {
     this.createGameObjects();
     $gameParty.setupBattleTest();
     BattleManager.setup($dataSystem.testTroopId, true, false);
@@ -266,7 +266,7 @@ DataManager.setupBattleTest = function() {
     BattleManager.playBattleBgm();
 };
 
-DataManager.setupEventTest = function() {
+DataManager.setupEventTest = function () {
     this.createGameObjects();
     this.selectSavefileForNewGame();
     $gameParty.setupStartingMembers();
@@ -274,11 +274,11 @@ DataManager.setupEventTest = function() {
     $gamePlayer.setTransparent(false);
 };
 
-DataManager.isAnySavefileExists = function() {
+DataManager.isAnySavefileExists = function () {
     return this._globalInfo.some(x => x);
 };
 
-DataManager.latestSavefileId = function() {
+DataManager.latestSavefileId = function () {
     const globalInfo = this._globalInfo;
     const validInfo = globalInfo.slice(1).filter(x => x);
     const latest = Math.max(...validInfo.map(x => x.timestamp));
@@ -286,7 +286,7 @@ DataManager.latestSavefileId = function() {
     return index > 0 ? index : 0;
 };
 
-DataManager.earliestSavefileId = function() {
+DataManager.earliestSavefileId = function () {
     const globalInfo = this._globalInfo;
     const validInfo = globalInfo.slice(1).filter(x => x);
     const earliest = Math.min(...validInfo.map(x => x.timestamp));
@@ -294,7 +294,7 @@ DataManager.earliestSavefileId = function() {
     return index > 0 ? index : 0;
 };
 
-DataManager.emptySavefileId = function() {
+DataManager.emptySavefileId = function () {
     const globalInfo = this._globalInfo;
     const maxSavefiles = this.maxSavefiles();
     if (globalInfo.length < maxSavefiles) {
@@ -305,13 +305,13 @@ DataManager.emptySavefileId = function() {
     }
 };
 
-DataManager.loadAllSavefileImages = function() {
+DataManager.loadAllSavefileImages = function () {
     for (const info of this._globalInfo.filter(x => x)) {
         this.loadSavefileImages(info);
     }
 };
 
-DataManager.loadSavefileImages = function(info) {
+DataManager.loadSavefileImages = function (info) {
     if (info.characters && Symbol.iterator in info.characters) {
         for (const character of info.characters) {
             ImageManager.loadCharacter(character[0]);
@@ -324,21 +324,21 @@ DataManager.loadSavefileImages = function(info) {
     }
 };
 
-DataManager.maxSavefiles = function() {
+DataManager.maxSavefiles = function () {
     return 20;
 };
 
-DataManager.savefileInfo = function(savefileId) {
+DataManager.savefileInfo = function (savefileId) {
     const globalInfo = this._globalInfo;
     return globalInfo[savefileId] ? globalInfo[savefileId] : null;
 };
 
-DataManager.savefileExists = function(savefileId) {
+DataManager.savefileExists = function (savefileId) {
     const saveName = this.makeSavename(savefileId);
     return StorageManager.exists(saveName);
 };
 
-DataManager.saveGame = function(savefileId) {
+DataManager.saveGame = function (savefileId) {
     const contents = this.makeSaveContents();
     const saveName = this.makeSavename(savefileId);
     return StorageManager.saveObject(saveName, contents).then(() => {
@@ -348,7 +348,7 @@ DataManager.saveGame = function(savefileId) {
     });
 };
 
-DataManager.loadGame = function(savefileId) {
+DataManager.loadGame = function (savefileId) {
     const saveName = this.makeSavename(savefileId);
     return StorageManager.loadObject(saveName).then(contents => {
         this.createGameObjects();
@@ -358,11 +358,11 @@ DataManager.loadGame = function(savefileId) {
     });
 };
 
-DataManager.makeSavename = function(savefileId) {
+DataManager.makeSavename = function (savefileId) {
     return "file%1".format(savefileId);
 };
 
-DataManager.selectSavefileForNewGame = function() {
+DataManager.selectSavefileForNewGame = function () {
     const emptySavefileId = this.emptySavefileId();
     const earliestSavefileId = this.earliestSavefileId();
     if (emptySavefileId > 0) {
@@ -372,7 +372,7 @@ DataManager.selectSavefileForNewGame = function() {
     }
 };
 
-DataManager.makeSavefileInfo = function() {
+DataManager.makeSavefileInfo = function () {
     const info = {};
     info.title = $dataSystem.gameTitle;
     info.characters = $gameParty.charactersForSavefile();
@@ -382,7 +382,7 @@ DataManager.makeSavefileInfo = function() {
     return info;
 };
 
-DataManager.makeSaveContents = function() {
+DataManager.makeSaveContents = function () {
     // A save data does not contain $gameTemp, $gameMessage, and $gameTroop.
     const contents = {};
     contents.system = $gameSystem;
@@ -398,7 +398,7 @@ DataManager.makeSaveContents = function() {
     return contents;
 };
 
-DataManager.extractSaveContents = function(contents) {
+DataManager.extractSaveContents = function (contents) {
     $gameSystem = contents.system;
     $gameScreen = contents.screen;
     $gameTimer = contents.timer;
@@ -411,7 +411,7 @@ DataManager.extractSaveContents = function(contents) {
     $gamePlayer = contents.player;
 };
 
-DataManager.correctDataErrors = function() {
+DataManager.correctDataErrors = function () {
     $gameParty.removeInvalidMembers();
 };
 
@@ -430,46 +430,46 @@ ConfigManager.touchUI = true;
 ConfigManager._isLoaded = false;
 
 Object.defineProperty(ConfigManager, "bgmVolume", {
-    get: function() {
+    get: function () {
         return AudioManager._bgmVolume;
     },
-    set: function(value) {
+    set: function (value) {
         AudioManager.bgmVolume = value;
     },
     configurable: true
 });
 
 Object.defineProperty(ConfigManager, "bgsVolume", {
-    get: function() {
+    get: function () {
         return AudioManager.bgsVolume;
     },
-    set: function(value) {
+    set: function (value) {
         AudioManager.bgsVolume = value;
     },
     configurable: true
 });
 
 Object.defineProperty(ConfigManager, "meVolume", {
-    get: function() {
+    get: function () {
         return AudioManager.meVolume;
     },
-    set: function(value) {
+    set: function (value) {
         AudioManager.meVolume = value;
     },
     configurable: true
 });
 
 Object.defineProperty(ConfigManager, "seVolume", {
-    get: function() {
+    get: function () {
         return AudioManager.seVolume;
     },
-    set: function(value) {
+    set: function (value) {
         AudioManager.seVolume = value;
     },
     configurable: true
 });
 
-ConfigManager.load = function() {
+ConfigManager.load = function () {
     StorageManager.loadObject("config")
         .then(config => this.applyData(config || {}))
         .catch(() => 0)
@@ -480,15 +480,15 @@ ConfigManager.load = function() {
         .catch(() => 0);
 };
 
-ConfigManager.save = function() {
+ConfigManager.save = function () {
     StorageManager.saveObject("config", this.makeData());
 };
 
-ConfigManager.isLoaded = function() {
+ConfigManager.isLoaded = function () {
     return this._isLoaded;
 };
 
-ConfigManager.makeData = function() {
+ConfigManager.makeData = function () {
     const config = {};
     config.alwaysDash = this.alwaysDash;
     config.commandRemember = this.commandRemember;
@@ -500,7 +500,7 @@ ConfigManager.makeData = function() {
     return config;
 };
 
-ConfigManager.applyData = function(config) {
+ConfigManager.applyData = function (config) {
     this.alwaysDash = this.readFlag(config, "alwaysDash", false);
     this.commandRemember = this.readFlag(config, "commandRemember", false);
     this.touchUI = this.readFlag(config, "touchUI", true);
@@ -510,7 +510,7 @@ ConfigManager.applyData = function(config) {
     this.seVolume = this.readVolume(config, "seVolume");
 };
 
-ConfigManager.readFlag = function(config, name, defaultValue) {
+ConfigManager.readFlag = function (config, name, defaultValue) {
     if (name in config) {
         return !!config[name];
     } else {
@@ -518,7 +518,7 @@ ConfigManager.readFlag = function(config, name, defaultValue) {
     }
 };
 
-ConfigManager.readVolume = function(config, name) {
+ConfigManager.readVolume = function (config, name) {
     if (name in config) {
         return Number(config[name]).clamp(0, 100);
     } else {
@@ -538,23 +538,23 @@ function StorageManager() {
 StorageManager._forageKeys = [];
 StorageManager._forageKeysUpdated = false;
 
-StorageManager.isLocalMode = function() {
+StorageManager.isLocalMode = function () {
     return Utils.isNwjs();
 };
 
-StorageManager.saveObject = function(saveName, object) {
+StorageManager.saveObject = function (saveName, object) {
     return this.objectToJson(object)
         .then(json => this.jsonToZip(json))
         .then(zip => this.saveZip(saveName, zip));
 };
 
-StorageManager.loadObject = function(saveName) {
+StorageManager.loadObject = function (saveName) {
     return this.loadZip(saveName)
         .then(zip => this.zipToJson(zip))
         .then(json => this.jsonToObject(json));
 };
 
-StorageManager.objectToJson = function(object) {
+StorageManager.objectToJson = function (object) {
     return new Promise((resolve, reject) => {
         try {
             const json = JsonEx.stringify(object);
@@ -565,7 +565,7 @@ StorageManager.objectToJson = function(object) {
     });
 };
 
-StorageManager.jsonToObject = function(json) {
+StorageManager.jsonToObject = function (json) {
     return new Promise((resolve, reject) => {
         try {
             const object = JsonEx.parse(json);
@@ -576,7 +576,7 @@ StorageManager.jsonToObject = function(json) {
     });
 };
 
-StorageManager.jsonToZip = function(json) {
+StorageManager.jsonToZip = function (json) {
     return new Promise((resolve, reject) => {
         try {
             const zip = pako.deflate(json, { to: "string", level: 1 });
@@ -590,7 +590,7 @@ StorageManager.jsonToZip = function(json) {
     });
 };
 
-StorageManager.zipToJson = function(zip) {
+StorageManager.zipToJson = function (zip) {
     return new Promise((resolve, reject) => {
         try {
             if (zip) {
@@ -605,7 +605,7 @@ StorageManager.zipToJson = function(zip) {
     });
 };
 
-StorageManager.saveZip = function(saveName, zip) {
+StorageManager.saveZip = function (saveName, zip) {
     if (this.isLocalMode()) {
         return this.saveToLocalFile(saveName, zip);
     } else {
@@ -613,7 +613,7 @@ StorageManager.saveZip = function(saveName, zip) {
     }
 };
 
-StorageManager.loadZip = function(saveName) {
+StorageManager.loadZip = function (saveName) {
     if (this.isLocalMode()) {
         return this.loadFromLocalFile(saveName);
     } else {
@@ -621,7 +621,7 @@ StorageManager.loadZip = function(saveName) {
     }
 };
 
-StorageManager.exists = function(saveName) {
+StorageManager.exists = function (saveName) {
     if (this.isLocalMode()) {
         return this.localFileExists(saveName);
     } else {
@@ -629,7 +629,7 @@ StorageManager.exists = function(saveName) {
     }
 };
 
-StorageManager.remove = function(saveName) {
+StorageManager.remove = function (saveName) {
     if (this.isLocalMode()) {
         return this.removeLocalFile(saveName);
     } else {
@@ -637,7 +637,7 @@ StorageManager.remove = function(saveName) {
     }
 };
 
-StorageManager.saveToLocalFile = function(saveName, zip) {
+StorageManager.saveToLocalFile = function (saveName, zip) {
     const dirPath = this.fileDirectoryPath();
     const filePath = this.filePath(saveName);
     const backupFilePath = filePath + "_";
@@ -661,7 +661,7 @@ StorageManager.saveToLocalFile = function(saveName, zip) {
     });
 };
 
-StorageManager.loadFromLocalFile = function(saveName) {
+StorageManager.loadFromLocalFile = function (saveName) {
     const filePath = this.filePath(saveName);
     return new Promise((resolve, reject) => {
         const data = this.fsReadFile(filePath);
@@ -673,16 +673,16 @@ StorageManager.loadFromLocalFile = function(saveName) {
     });
 };
 
-StorageManager.localFileExists = function(saveName) {
+StorageManager.localFileExists = function (saveName) {
     const fs = require("fs");
     return fs.existsSync(this.filePath(saveName));
 };
 
-StorageManager.removeLocalFile = function(saveName) {
+StorageManager.removeLocalFile = function (saveName) {
     this.fsUnlink(this.filePath(saveName));
 };
 
-StorageManager.saveToForage = function(saveName, zip) {
+StorageManager.saveToForage = function (saveName, zip) {
     const key = this.forageKey(saveName);
     const testKey = this.forageTestKey();
     setTimeout(() => localforage.removeItem(testKey));
@@ -692,22 +692,22 @@ StorageManager.saveToForage = function(saveName, zip) {
         .then(() => this.updateForageKeys());
 };
 
-StorageManager.loadFromForage = function(saveName) {
+StorageManager.loadFromForage = function (saveName) {
     const key = this.forageKey(saveName);
     return localforage.getItem(key);
 };
 
-StorageManager.forageExists = function(saveName) {
+StorageManager.forageExists = function (saveName) {
     const key = this.forageKey(saveName);
     return this._forageKeys.includes(key);
 };
 
-StorageManager.removeForage = function(saveName) {
+StorageManager.removeForage = function (saveName) {
     const key = this.forageKey(saveName);
     return localforage.removeItem(key).then(() => this.updateForageKeys());
 };
 
-StorageManager.updateForageKeys = function() {
+StorageManager.updateForageKeys = function () {
     this._forageKeysUpdated = false;
     return localforage.keys().then(keys => {
         this._forageKeys = keys;
@@ -716,32 +716,32 @@ StorageManager.updateForageKeys = function() {
     });
 };
 
-StorageManager.forageKeysUpdated = function() {
+StorageManager.forageKeysUpdated = function () {
     return this._forageKeysUpdated;
 };
 
-StorageManager.fsMkdir = function(path) {
+StorageManager.fsMkdir = function (path) {
     const fs = require("fs");
     if (!fs.existsSync(path)) {
         fs.mkdirSync(path);
     }
 };
 
-StorageManager.fsRename = function(oldPath, newPath) {
+StorageManager.fsRename = function (oldPath, newPath) {
     const fs = require("fs");
     if (fs.existsSync(oldPath)) {
         fs.renameSync(oldPath, newPath);
     }
 };
 
-StorageManager.fsUnlink = function(path) {
+StorageManager.fsUnlink = function (path) {
     const fs = require("fs");
     if (fs.existsSync(path)) {
         fs.unlinkSync(path);
     }
 };
 
-StorageManager.fsReadFile = function(path) {
+StorageManager.fsReadFile = function (path) {
     const fs = require("fs");
     if (fs.existsSync(path)) {
         return fs.readFileSync(path, { encoding: "utf8" });
@@ -750,28 +750,28 @@ StorageManager.fsReadFile = function(path) {
     }
 };
 
-StorageManager.fsWriteFile = function(path, data) {
+StorageManager.fsWriteFile = function (path, data) {
     const fs = require("fs");
     fs.writeFileSync(path, data);
 };
 
-StorageManager.fileDirectoryPath = function() {
+StorageManager.fileDirectoryPath = function () {
     const path = require("path");
     const base = path.dirname(process.mainModule.filename);
     return path.join(base, "save/");
 };
 
-StorageManager.filePath = function(saveName) {
+StorageManager.filePath = function (saveName) {
     const dir = this.fileDirectoryPath();
     return dir + saveName + ".rmmzsave";
 };
 
-StorageManager.forageKey = function(saveName) {
+StorageManager.forageKey = function (saveName) {
     const gameId = $dataSystem.advanced.gameId;
     return "rmmzsave." + gameId + "." + saveName;
 };
 
-StorageManager.forageTestKey = function() {
+StorageManager.forageTestKey = function () {
     return "rmmzsave.test";
 };
 
@@ -787,7 +787,7 @@ function FontManager() {
 FontManager._urls = {};
 FontManager._states = {};
 
-FontManager.load = function(family, filename) {
+FontManager.load = function (family, filename) {
     if (this._states[family] !== "loaded") {
         if (filename) {
             const url = this.makeUrl(filename);
@@ -799,7 +799,7 @@ FontManager.load = function(family, filename) {
     }
 };
 
-FontManager.isReady = function() {
+FontManager.isReady = function () {
     for (const family in this._states) {
         const state = this._states[family];
         if (state === "loading") {
@@ -812,7 +812,7 @@ FontManager.isReady = function() {
     return true;
 };
 
-FontManager.startLoading = function(family, url) {
+FontManager.startLoading = function (family, url) {
     const source = "url(" + url + ")";
     const font = new FontFace(family, source);
     this._urls[family] = url;
@@ -828,13 +828,13 @@ FontManager.startLoading = function(family, url) {
         });
 };
 
-FontManager.throwLoadError = function(family) {
+FontManager.throwLoadError = function (family) {
     const url = this._urls[family];
     const retry = () => this.startLoading(family, url);
     throw ["LoadError", url, retry];
 };
 
-FontManager.makeUrl = function(filename) {
+FontManager.makeUrl = function (filename) {
     return "fonts/" + Utils.encodeURI(filename);
 };
 
@@ -856,63 +856,63 @@ ImageManager._cache = {};
 ImageManager._system = {};
 ImageManager._emptyBitmap = new Bitmap(1, 1);
 
-ImageManager.loadAnimation = function(filename) {
+ImageManager.loadAnimation = function (filename) {
     return this.loadBitmap("img/animations/", filename);
 };
 
-ImageManager.loadBattleback1 = function(filename) {
+ImageManager.loadBattleback1 = function (filename) {
     return this.loadBitmap("img/battlebacks1/", filename);
 };
 
-ImageManager.loadBattleback2 = function(filename) {
+ImageManager.loadBattleback2 = function (filename) {
     return this.loadBitmap("img/battlebacks2/", filename);
 };
 
-ImageManager.loadEnemy = function(filename) {
+ImageManager.loadEnemy = function (filename) {
     return this.loadBitmap("img/enemies/", filename);
 };
 
-ImageManager.loadCharacter = function(filename) {
+ImageManager.loadCharacter = function (filename) {
     return this.loadBitmap("img/characters/", filename);
 };
 
-ImageManager.loadFace = function(filename) {
+ImageManager.loadFace = function (filename) {
     return this.loadBitmap("img/faces/", filename);
 };
 
-ImageManager.loadParallax = function(filename) {
+ImageManager.loadParallax = function (filename) {
     return this.loadBitmap("img/parallaxes/", filename);
 };
 
-ImageManager.loadPicture = function(filename) {
+ImageManager.loadPicture = function (filename) {
     return this.loadBitmap("img/pictures/", filename);
 };
 
-ImageManager.loadSvActor = function(filename) {
+ImageManager.loadSvActor = function (filename) {
     return this.loadBitmap("img/sv_actors/", filename);
 };
 
-ImageManager.loadSvEnemy = function(filename) {
+ImageManager.loadSvEnemy = function (filename) {
     return this.loadBitmap("img/sv_enemies/", filename);
 };
 
-ImageManager.loadSystem = function(filename) {
+ImageManager.loadSystem = function (filename) {
     return this.loadBitmap("img/system/", filename);
 };
 
-ImageManager.loadTileset = function(filename) {
+ImageManager.loadTileset = function (filename) {
     return this.loadBitmap("img/tilesets/", filename);
 };
 
-ImageManager.loadTitle1 = function(filename) {
+ImageManager.loadTitle1 = function (filename) {
     return this.loadBitmap("img/titles1/", filename);
 };
 
-ImageManager.loadTitle2 = function(filename) {
+ImageManager.loadTitle2 = function (filename) {
     return this.loadBitmap("img/titles2/", filename);
 };
 
-ImageManager.loadBitmap = function(folder, filename) {
+ImageManager.loadBitmap = function (folder, filename) {
     if (filename) {
         const url = folder + Utils.encodeURI(filename) + ".png";
         return this.loadBitmapFromUrl(url);
@@ -921,7 +921,7 @@ ImageManager.loadBitmap = function(folder, filename) {
     }
 };
 
-ImageManager.loadBitmapFromUrl = function(url) {
+ImageManager.loadBitmapFromUrl = function (url) {
     const cache = url.includes("/system/") ? this._system : this._cache;
     if (!cache[url]) {
         cache[url] = Bitmap.load(url);
@@ -929,7 +929,7 @@ ImageManager.loadBitmapFromUrl = function(url) {
     return cache[url];
 };
 
-ImageManager.clear = function() {
+ImageManager.clear = function () {
     const cache = this._cache;
     for (const url in cache) {
         cache[url].destroy();
@@ -937,7 +937,7 @@ ImageManager.clear = function() {
     this._cache = {};
 };
 
-ImageManager.isReady = function() {
+ImageManager.isReady = function () {
     for (const cache of [this._cache, this._system]) {
         for (const url in cache) {
             const bitmap = cache[url];
@@ -952,22 +952,22 @@ ImageManager.isReady = function() {
     return true;
 };
 
-ImageManager.throwLoadError = function(bitmap) {
+ImageManager.throwLoadError = function (bitmap) {
     const retry = bitmap.retry.bind(bitmap);
     throw ["LoadError", bitmap.url, retry];
 };
 
-ImageManager.isObjectCharacter = function(filename) {
+ImageManager.isObjectCharacter = function (filename) {
     const sign = Utils.extractFileName(filename).match(/^[!$]+/);
     return sign && sign[0].includes("!");
 };
 
-ImageManager.isBigCharacter = function(filename) {
+ImageManager.isBigCharacter = function (filename) {
     const sign = Utils.extractFileName(filename).match(/^[!$]+/);
     return sign && sign[0].includes("$");
 };
 
-ImageManager.isZeroParallax = function(filename) {
+ImageManager.isZeroParallax = function (filename) {
     return Utils.extractFileName(filename).charAt(0) === "!";
 };
 
@@ -983,7 +983,7 @@ function EffectManager() {
 EffectManager._cache = {};
 EffectManager._errorUrls = [];
 
-EffectManager.load = function(filename) {
+EffectManager.load = function (filename) {
     if (filename) {
         const url = this.makeUrl(filename);
         const cache = this._cache;
@@ -996,7 +996,7 @@ EffectManager.load = function(filename) {
     }
 };
 
-EffectManager.startLoading = function(url) {
+EffectManager.startLoading = function (url) {
     const onLoad = () => this.onLoad(url);
     const onError = (message, url) => this.onError(url);
     const effect = Graphics.effekseer.loadEffect(url, 1, onLoad, onError);
@@ -1004,7 +1004,7 @@ EffectManager.startLoading = function(url) {
     return effect;
 };
 
-EffectManager.clear = function() {
+EffectManager.clear = function () {
     for (const url in this._cache) {
         const effect = this._cache[url];
         Graphics.effekseer.releaseEffect(effect);
@@ -1012,31 +1012,31 @@ EffectManager.clear = function() {
     this._cache = {};
 };
 
-EffectManager.onLoad = function(/*url*/) {
+EffectManager.onLoad = function (/*url*/) {
     //
 };
 
-EffectManager.onError = function(url) {
+EffectManager.onError = function (url) {
     this._errorUrls.push(url);
 };
 
-EffectManager.makeUrl = function(filename) {
+EffectManager.makeUrl = function (filename) {
     return "effects/" + Utils.encodeURI(filename) + ".efkefc";
 };
 
-EffectManager.checkErrors = function() {
+EffectManager.checkErrors = function () {
     const url = this._errorUrls.shift();
     if (url) {
         this.throwLoadError(url);
     }
 };
 
-EffectManager.throwLoadError = function(url) {
+EffectManager.throwLoadError = function (url) {
     const retry = () => this.startLoading(url);
     throw ["LoadError", url, retry];
 };
 
-EffectManager.isReady = function() {
+EffectManager.isReady = function () {
     this.checkErrors();
     for (const url in this._cache) {
         const effect = this._cache[url];
@@ -1071,10 +1071,10 @@ AudioManager._replayFadeTime = 0.5;
 AudioManager._path = "audio/";
 
 Object.defineProperty(AudioManager, "bgmVolume", {
-    get: function() {
+    get: function () {
         return this._bgmVolume;
     },
-    set: function(value) {
+    set: function (value) {
         this._bgmVolume = value;
         this.updateBgmParameters(this._currentBgm);
     },
@@ -1082,10 +1082,10 @@ Object.defineProperty(AudioManager, "bgmVolume", {
 });
 
 Object.defineProperty(AudioManager, "bgsVolume", {
-    get: function() {
+    get: function () {
         return this._bgsVolume;
     },
-    set: function(value) {
+    set: function (value) {
         this._bgsVolume = value;
         this.updateBgsParameters(this._currentBgs);
     },
@@ -1093,10 +1093,10 @@ Object.defineProperty(AudioManager, "bgsVolume", {
 });
 
 Object.defineProperty(AudioManager, "meVolume", {
-    get: function() {
+    get: function () {
         return this._meVolume;
     },
-    set: function(value) {
+    set: function (value) {
         this._meVolume = value;
         this.updateMeParameters(this._currentMe);
     },
@@ -1104,16 +1104,16 @@ Object.defineProperty(AudioManager, "meVolume", {
 });
 
 Object.defineProperty(AudioManager, "seVolume", {
-    get: function() {
+    get: function () {
         return this._seVolume;
     },
-    set: function(value) {
+    set: function (value) {
         this._seVolume = value;
     },
     configurable: true
 });
 
-AudioManager.playBgm = function(bgm, pos) {
+AudioManager.playBgm = function (bgm, pos) {
     if (this.isCurrentBgm(bgm)) {
         this.updateBgmParameters(bgm);
     } else {
@@ -1129,7 +1129,7 @@ AudioManager.playBgm = function(bgm, pos) {
     this.updateCurrentBgm(bgm, pos);
 };
 
-AudioManager.replayBgm = function(bgm) {
+AudioManager.replayBgm = function (bgm) {
     if (this.isCurrentBgm(bgm)) {
         this.updateBgmParameters(bgm);
     } else {
@@ -1140,7 +1140,7 @@ AudioManager.replayBgm = function(bgm) {
     }
 };
 
-AudioManager.isCurrentBgm = function(bgm) {
+AudioManager.isCurrentBgm = function (bgm) {
     return (
         this._currentBgm &&
         this._bgmBuffer &&
@@ -1148,11 +1148,11 @@ AudioManager.isCurrentBgm = function(bgm) {
     );
 };
 
-AudioManager.updateBgmParameters = function(bgm) {
+AudioManager.updateBgmParameters = function (bgm) {
     this.updateBufferParameters(this._bgmBuffer, this._bgmVolume, bgm);
 };
 
-AudioManager.updateCurrentBgm = function(bgm, pos) {
+AudioManager.updateCurrentBgm = function (bgm, pos) {
     this._currentBgm = {
         name: bgm.name,
         volume: bgm.volume,
@@ -1162,7 +1162,7 @@ AudioManager.updateCurrentBgm = function(bgm, pos) {
     };
 };
 
-AudioManager.stopBgm = function() {
+AudioManager.stopBgm = function () {
     if (this._bgmBuffer) {
         this._bgmBuffer.destroy();
         this._bgmBuffer = null;
@@ -1170,20 +1170,20 @@ AudioManager.stopBgm = function() {
     }
 };
 
-AudioManager.fadeOutBgm = function(duration) {
+AudioManager.fadeOutBgm = function (duration) {
     if (this._bgmBuffer && this._currentBgm) {
         this._bgmBuffer.fadeOut(duration);
         this._currentBgm = null;
     }
 };
 
-AudioManager.fadeInBgm = function(duration) {
+AudioManager.fadeInBgm = function (duration) {
     if (this._bgmBuffer && this._currentBgm) {
         this._bgmBuffer.fadeIn(duration);
     }
 };
 
-AudioManager.playBgs = function(bgs, pos) {
+AudioManager.playBgs = function (bgs, pos) {
     if (this.isCurrentBgs(bgs)) {
         this.updateBgsParameters(bgs);
     } else {
@@ -1197,7 +1197,7 @@ AudioManager.playBgs = function(bgs, pos) {
     this.updateCurrentBgs(bgs, pos);
 };
 
-AudioManager.replayBgs = function(bgs) {
+AudioManager.replayBgs = function (bgs) {
     if (this.isCurrentBgs(bgs)) {
         this.updateBgsParameters(bgs);
     } else {
@@ -1208,7 +1208,7 @@ AudioManager.replayBgs = function(bgs) {
     }
 };
 
-AudioManager.isCurrentBgs = function(bgs) {
+AudioManager.isCurrentBgs = function (bgs) {
     return (
         this._currentBgs &&
         this._bgsBuffer &&
@@ -1216,11 +1216,11 @@ AudioManager.isCurrentBgs = function(bgs) {
     );
 };
 
-AudioManager.updateBgsParameters = function(bgs) {
+AudioManager.updateBgsParameters = function (bgs) {
     this.updateBufferParameters(this._bgsBuffer, this._bgsVolume, bgs);
 };
 
-AudioManager.updateCurrentBgs = function(bgs, pos) {
+AudioManager.updateCurrentBgs = function (bgs, pos) {
     this._currentBgs = {
         name: bgs.name,
         volume: bgs.volume,
@@ -1230,7 +1230,7 @@ AudioManager.updateCurrentBgs = function(bgs, pos) {
     };
 };
 
-AudioManager.stopBgs = function() {
+AudioManager.stopBgs = function () {
     if (this._bgsBuffer) {
         this._bgsBuffer.destroy();
         this._bgsBuffer = null;
@@ -1238,20 +1238,20 @@ AudioManager.stopBgs = function() {
     }
 };
 
-AudioManager.fadeOutBgs = function(duration) {
+AudioManager.fadeOutBgs = function (duration) {
     if (this._bgsBuffer && this._currentBgs) {
         this._bgsBuffer.fadeOut(duration);
         this._currentBgs = null;
     }
 };
 
-AudioManager.fadeInBgs = function(duration) {
+AudioManager.fadeInBgs = function (duration) {
     if (this._bgsBuffer && this._currentBgs) {
         this._bgsBuffer.fadeIn(duration);
     }
 };
 
-AudioManager.playMe = function(me) {
+AudioManager.playMe = function (me) {
     this.stopMe();
     if (me.name) {
         if (this._bgmBuffer && this._currentBgm) {
@@ -1265,17 +1265,17 @@ AudioManager.playMe = function(me) {
     }
 };
 
-AudioManager.updateMeParameters = function(me) {
+AudioManager.updateMeParameters = function (me) {
     this.updateBufferParameters(this._meBuffer, this._meVolume, me);
 };
 
-AudioManager.fadeOutMe = function(duration) {
+AudioManager.fadeOutMe = function (duration) {
     if (this._meBuffer) {
         this._meBuffer.fadeOut(duration);
     }
 };
 
-AudioManager.stopMe = function() {
+AudioManager.stopMe = function () {
     if (this._meBuffer) {
         this._meBuffer.destroy();
         this._meBuffer = null;
@@ -1290,7 +1290,7 @@ AudioManager.stopMe = function() {
     }
 };
 
-AudioManager.playSe = function(se) {
+AudioManager.playSe = function (se) {
     if (se.name) {
         // [Note] Do not play the same sound in the same frame.
         const latestBuffers = this._seBuffers.filter(
@@ -1307,11 +1307,11 @@ AudioManager.playSe = function(se) {
     }
 };
 
-AudioManager.updateSeParameters = function(buffer, se) {
+AudioManager.updateSeParameters = function (buffer, se) {
     this.updateBufferParameters(buffer, this._seVolume, se);
 };
 
-AudioManager.cleanupSe = function() {
+AudioManager.cleanupSe = function () {
     for (const buffer of this._seBuffers) {
         if (!buffer.isPlaying()) {
             buffer.destroy();
@@ -1320,14 +1320,14 @@ AudioManager.cleanupSe = function() {
     this._seBuffers = this._seBuffers.filter(buffer => buffer.isPlaying());
 };
 
-AudioManager.stopSe = function() {
+AudioManager.stopSe = function () {
     for (const buffer of this._seBuffers) {
         buffer.destroy();
     }
     this._seBuffers = [];
 };
 
-AudioManager.playStaticSe = function(se) {
+AudioManager.playStaticSe = function (se) {
     if (se.name) {
         this.loadStaticSe(se);
         for (const buffer of this._staticBuffers) {
@@ -1341,14 +1341,14 @@ AudioManager.playStaticSe = function(se) {
     }
 };
 
-AudioManager.loadStaticSe = function(se) {
+AudioManager.loadStaticSe = function (se) {
     if (se.name && !this.isStaticSe(se)) {
         const buffer = this.createBuffer("se/", se.name);
         this._staticBuffers.push(buffer);
     }
 };
 
-AudioManager.isStaticSe = function(se) {
+AudioManager.isStaticSe = function (se) {
     for (const buffer of this._staticBuffers) {
         if (buffer.name === se.name) {
             return true;
@@ -1357,14 +1357,14 @@ AudioManager.isStaticSe = function(se) {
     return false;
 };
 
-AudioManager.stopAll = function() {
+AudioManager.stopAll = function () {
     this.stopMe();
     this.stopBgm();
     this.stopBgs();
     this.stopSe();
 };
 
-AudioManager.saveBgm = function() {
+AudioManager.saveBgm = function () {
     if (this._currentBgm) {
         const bgm = this._currentBgm;
         return {
@@ -1379,7 +1379,7 @@ AudioManager.saveBgm = function() {
     }
 };
 
-AudioManager.saveBgs = function() {
+AudioManager.saveBgs = function () {
     if (this._currentBgs) {
         const bgs = this._currentBgs;
         return {
@@ -1394,11 +1394,11 @@ AudioManager.saveBgs = function() {
     }
 };
 
-AudioManager.makeEmptyAudioObject = function() {
+AudioManager.makeEmptyAudioObject = function () {
     return { name: "", volume: 0, pitch: 0 };
 };
 
-AudioManager.createBuffer = function(folder, name) {
+AudioManager.createBuffer = function (folder, name) {
     const ext = this.audioFileExt();
     const url = this._path + folder + Utils.encodeURI(name) + ext;
     const buffer = new WebAudio(url);
@@ -1407,7 +1407,7 @@ AudioManager.createBuffer = function(folder, name) {
     return buffer;
 };
 
-AudioManager.updateBufferParameters = function(buffer, configVolume, audio) {
+AudioManager.updateBufferParameters = function (buffer, configVolume, audio) {
     if (buffer && audio) {
         buffer.volume = (configVolume * (audio.volume || 0)) / 10000;
         buffer.pitch = (audio.pitch || 0) / 100;
@@ -1415,11 +1415,11 @@ AudioManager.updateBufferParameters = function(buffer, configVolume, audio) {
     }
 };
 
-AudioManager.audioFileExt = function() {
+AudioManager.audioFileExt = function () {
     return ".ogg";
 };
 
-AudioManager.checkErrors = function() {
+AudioManager.checkErrors = function () {
     const buffers = [this._bgmBuffer, this._bgsBuffer, this._meBuffer];
     buffers.push(...this._seBuffers);
     buffers.push(...this._staticBuffers);
@@ -1430,7 +1430,7 @@ AudioManager.checkErrors = function() {
     }
 };
 
-AudioManager.throwLoadError = function(webAudio) {
+AudioManager.throwLoadError = function (webAudio) {
     const retry = webAudio.retry.bind(webAudio);
     throw ["LoadError", webAudio.url, retry];
 };
@@ -1444,118 +1444,118 @@ function SoundManager() {
     throw new Error("This is a static class");
 }
 
-SoundManager.preloadImportantSounds = function() {
+SoundManager.preloadImportantSounds = function () {
     this.loadSystemSound(0);
     this.loadSystemSound(1);
     this.loadSystemSound(2);
     this.loadSystemSound(3);
 };
 
-SoundManager.loadSystemSound = function(n) {
+SoundManager.loadSystemSound = function (n) {
     if ($dataSystem) {
         AudioManager.loadStaticSe($dataSystem.sounds[n]);
     }
 };
 
-SoundManager.playSystemSound = function(n) {
+SoundManager.playSystemSound = function (n) {
     if ($dataSystem) {
         AudioManager.playStaticSe($dataSystem.sounds[n]);
     }
 };
 
-SoundManager.playCursor = function() {
+SoundManager.playCursor = function () {
     this.playSystemSound(0);
 };
 
-SoundManager.playOk = function() {
+SoundManager.playOk = function () {
     this.playSystemSound(1);
 };
 
-SoundManager.playCancel = function() {
+SoundManager.playCancel = function () {
     this.playSystemSound(2);
 };
 
-SoundManager.playBuzzer = function() {
+SoundManager.playBuzzer = function () {
     this.playSystemSound(3);
 };
 
-SoundManager.playEquip = function() {
+SoundManager.playEquip = function () {
     this.playSystemSound(4);
 };
 
-SoundManager.playSave = function() {
+SoundManager.playSave = function () {
     this.playSystemSound(5);
 };
 
-SoundManager.playLoad = function() {
+SoundManager.playLoad = function () {
     this.playSystemSound(6);
 };
 
-SoundManager.playBattleStart = function() {
+SoundManager.playBattleStart = function () {
     this.playSystemSound(7);
 };
 
-SoundManager.playEscape = function() {
+SoundManager.playEscape = function () {
     this.playSystemSound(8);
 };
 
-SoundManager.playEnemyAttack = function() {
+SoundManager.playEnemyAttack = function () {
     this.playSystemSound(9);
 };
 
-SoundManager.playEnemyDamage = function() {
+SoundManager.playEnemyDamage = function () {
     this.playSystemSound(10);
 };
 
-SoundManager.playEnemyCollapse = function() {
+SoundManager.playEnemyCollapse = function () {
     this.playSystemSound(11);
 };
 
-SoundManager.playBossCollapse1 = function() {
+SoundManager.playBossCollapse1 = function () {
     this.playSystemSound(12);
 };
 
-SoundManager.playBossCollapse2 = function() {
+SoundManager.playBossCollapse2 = function () {
     this.playSystemSound(13);
 };
 
-SoundManager.playActorDamage = function() {
+SoundManager.playActorDamage = function () {
     this.playSystemSound(14);
 };
 
-SoundManager.playActorCollapse = function() {
+SoundManager.playActorCollapse = function () {
     this.playSystemSound(15);
 };
 
-SoundManager.playRecovery = function() {
+SoundManager.playRecovery = function () {
     this.playSystemSound(16);
 };
 
-SoundManager.playMiss = function() {
+SoundManager.playMiss = function () {
     this.playSystemSound(17);
 };
 
-SoundManager.playEvasion = function() {
+SoundManager.playEvasion = function () {
     this.playSystemSound(18);
 };
 
-SoundManager.playMagicEvasion = function() {
+SoundManager.playMagicEvasion = function () {
     this.playSystemSound(19);
 };
 
-SoundManager.playReflection = function() {
+SoundManager.playReflection = function () {
     this.playSystemSound(20);
 };
 
-SoundManager.playShop = function() {
+SoundManager.playShop = function () {
     this.playSystemSound(21);
 };
 
-SoundManager.playUseItem = function() {
+SoundManager.playUseItem = function () {
     this.playSystemSound(22);
 };
 
-SoundManager.playUseSkill = function() {
+SoundManager.playUseSkill = function () {
     this.playSystemSound(23);
 };
 
@@ -1568,25 +1568,25 @@ function TextManager() {
     throw new Error("This is a static class");
 }
 
-TextManager.basic = function(basicId) {
+TextManager.basic = function (basicId) {
     return $dataSystem.terms.basic[basicId] || "";
 };
 
-TextManager.param = function(paramId) {
+TextManager.param = function (paramId) {
     return $dataSystem.terms.params[paramId] || "";
 };
 
-TextManager.command = function(commandId) {
+TextManager.command = function (commandId) {
     return $dataSystem.terms.commands[commandId] || "";
 };
 
-TextManager.message = function(messageId) {
+TextManager.message = function (messageId) {
     return $dataSystem.terms.messages[messageId] || "";
 };
 
-TextManager.getter = function(method, param) {
+TextManager.getter = function (method, param) {
     return {
-        get: function() {
+        get: function () {
             return this[method](param);
         },
         configurable: true
@@ -1594,7 +1594,7 @@ TextManager.getter = function(method, param) {
 };
 
 Object.defineProperty(TextManager, "currencyUnit", {
-    get: function() {
+    get: function () {
         return $dataSystem.currencyUnit;
     },
     configurable: true
@@ -1699,89 +1699,89 @@ function ColorManager() {
     throw new Error("This is a static class");
 }
 
-ColorManager.loadWindowskin = function() {
+ColorManager.loadWindowskin = function () {
     this._windowskin = ImageManager.loadSystem("Window");
 };
 
-ColorManager.textColor = function(n) {
+ColorManager.textColor = function (n) {
     const px = 96 + (n % 8) * 12 + 6;
     const py = 144 + Math.floor(n / 8) * 12 + 6;
     return this._windowskin.getPixel(px, py);
 };
 
-ColorManager.normalColor = function() {
+ColorManager.normalColor = function () {
     return this.textColor(0);
 };
 
-ColorManager.systemColor = function() {
+ColorManager.systemColor = function () {
     return this.textColor(16);
 };
 
-ColorManager.crisisColor = function() {
+ColorManager.crisisColor = function () {
     return this.textColor(17);
 };
 
-ColorManager.deathColor = function() {
+ColorManager.deathColor = function () {
     return this.textColor(18);
 };
 
-ColorManager.gaugeBackColor = function() {
+ColorManager.gaugeBackColor = function () {
     return this.textColor(19);
 };
 
-ColorManager.hpGaugeColor1 = function() {
+ColorManager.hpGaugeColor1 = function () {
     return this.textColor(20);
 };
 
-ColorManager.hpGaugeColor2 = function() {
+ColorManager.hpGaugeColor2 = function () {
     return this.textColor(21);
 };
 
-ColorManager.mpGaugeColor1 = function() {
+ColorManager.mpGaugeColor1 = function () {
     return this.textColor(22);
 };
 
-ColorManager.mpGaugeColor2 = function() {
+ColorManager.mpGaugeColor2 = function () {
     return this.textColor(23);
 };
 
-ColorManager.mpCostColor = function() {
+ColorManager.mpCostColor = function () {
     return this.textColor(23);
 };
 
-ColorManager.powerUpColor = function() {
+ColorManager.powerUpColor = function () {
     return this.textColor(24);
 };
 
-ColorManager.powerDownColor = function() {
+ColorManager.powerDownColor = function () {
     return this.textColor(25);
 };
 
-ColorManager.ctGaugeColor1 = function() {
+ColorManager.ctGaugeColor1 = function () {
     return this.textColor(26);
 };
 
-ColorManager.ctGaugeColor2 = function() {
+ColorManager.ctGaugeColor2 = function () {
     return this.textColor(27);
 };
 
-ColorManager.tpGaugeColor1 = function() {
+ColorManager.tpGaugeColor1 = function () {
     return this.textColor(28);
 };
 
-ColorManager.tpGaugeColor2 = function() {
+ColorManager.tpGaugeColor2 = function () {
     return this.textColor(29);
 };
 
-ColorManager.tpCostColor = function() {
+ColorManager.tpCostColor = function () {
     return this.textColor(29);
 };
 
-ColorManager.pendingColor = function() {
+ColorManager.pendingColor = function () {
     return this._windowskin.getPixel(120, 120);
 };
 
-ColorManager.hpColor = function(actor) {
+ColorManager.hpColor = function (actor) {
     if (!actor) {
         return this.normalColor();
     } else if (actor.isDead()) {
@@ -1793,15 +1793,15 @@ ColorManager.hpColor = function(actor) {
     }
 };
 
-ColorManager.mpColor = function(/*actor*/) {
+ColorManager.mpColor = function (/*actor*/) {
     return this.normalColor();
 };
 
-ColorManager.tpColor = function(/*actor*/) {
+ColorManager.tpColor = function (/*actor*/) {
     return this.normalColor();
 };
 
-ColorManager.paramchangeTextColor = function(change) {
+ColorManager.paramchangeTextColor = function (change) {
     if (change > 0) {
         return this.powerUpColor();
     } else if (change < 0) {
@@ -1811,7 +1811,7 @@ ColorManager.paramchangeTextColor = function(change) {
     }
 };
 
-ColorManager.damageColor = function(colorType) {
+ColorManager.damageColor = function (colorType) {
     switch (colorType) {
         case 0: // HP damage
             return "#ffffff";
@@ -1826,23 +1826,23 @@ ColorManager.damageColor = function(colorType) {
     }
 };
 
-ColorManager.outlineColor = function() {
+ColorManager.outlineColor = function () {
     return "rgba(0, 0, 0, 0.6)";
 };
 
-ColorManager.dimColor1 = function() {
+ColorManager.dimColor1 = function () {
     return "rgba(0, 0, 0, 0.6)";
 };
 
-ColorManager.dimColor2 = function() {
+ColorManager.dimColor2 = function () {
     return "rgba(0, 0, 0, 0)";
 };
 
-ColorManager.itemBackColor1 = function() {
+ColorManager.itemBackColor1 = function () {
     return "rgba(32, 32, 32, 0.5)";
 };
 
-ColorManager.itemBackColor2 = function() {
+ColorManager.itemBackColor2 = function () {
     return "rgba(0, 0, 0, 0.5)";
 };
 
@@ -1865,7 +1865,7 @@ SceneManager._backgroundBitmap = null;
 SceneManager._smoothDeltaTime = 1;
 SceneManager._elapsedTime = 0;
 
-SceneManager.run = function(sceneClass) {
+SceneManager.run = function (sceneClass) {
     try {
         this.initialize();
         this.goto(sceneClass);
@@ -1875,7 +1875,7 @@ SceneManager.run = function(sceneClass) {
     }
 };
 
-SceneManager.initialize = function() {
+SceneManager.initialize = function () {
     this.checkBrowser();
     this.checkPluginErrors();
     this.initGraphics();
@@ -1885,7 +1885,7 @@ SceneManager.initialize = function() {
     this.setupEventHandlers();
 };
 
-SceneManager.checkBrowser = function() {
+SceneManager.checkBrowser = function () {
     if (!Utils.canUseWebGL()) {
         throw new Error("Your browser does not support WebGL.");
     }
@@ -1900,38 +1900,38 @@ SceneManager.checkBrowser = function() {
     }
 };
 
-SceneManager.checkPluginErrors = function() {
+SceneManager.checkPluginErrors = function () {
     PluginManager.checkErrors();
 };
 
-SceneManager.initGraphics = function() {
+SceneManager.initGraphics = function () {
     if (!Graphics.initialize()) {
         throw new Error("Failed to initialize graphics.");
     }
     Graphics.setTickHandler(this.update.bind(this));
 };
 
-SceneManager.initAudio = function() {
+SceneManager.initAudio = function () {
     WebAudio.initialize();
 };
 
-SceneManager.initVideo = function() {
+SceneManager.initVideo = function () {
     Video.initialize(Graphics.width, Graphics.height);
 };
 
-SceneManager.initInput = function() {
+SceneManager.initInput = function () {
     Input.initialize();
     TouchInput.initialize();
 };
 
-SceneManager.setupEventHandlers = function() {
+SceneManager.setupEventHandlers = function () {
     window.addEventListener("error", this.onError.bind(this));
     window.addEventListener("unhandledrejection", this.onReject.bind(this));
     window.addEventListener("unload", this.onUnload.bind(this));
     document.addEventListener("keydown", this.onKeyDown.bind(this));
 };
 
-SceneManager.update = function(deltaTime) {
+SceneManager.update = function (deltaTime) {
     try {
         const n = this.determineRepeatNumber(deltaTime);
         for (let i = 0; i < n; i++) {
@@ -1942,7 +1942,7 @@ SceneManager.update = function(deltaTime) {
     }
 };
 
-SceneManager.determineRepeatNumber = function(deltaTime) {
+SceneManager.determineRepeatNumber = function (deltaTime) {
     // [Note] We consider environments where the refresh rate is higher than
     //   60Hz, but ignore sudden irregular deltaTime.
     this._smoothDeltaTime *= 0.8;
@@ -1960,11 +1960,11 @@ SceneManager.determineRepeatNumber = function(deltaTime) {
     }
 };
 
-SceneManager.terminate = function() {
+SceneManager.terminate = function () {
     window.close();
 };
 
-SceneManager.onError = function(event) {
+SceneManager.onError = function (event) {
     console.error(event.message);
     console.error(event.filename, event.lineno);
     try {
@@ -1976,19 +1976,19 @@ SceneManager.onError = function(event) {
     }
 };
 
-SceneManager.onReject = function(event) {
+SceneManager.onReject = function (event) {
     // Catch uncaught exception in Promise
     event.message = event.reason;
     this.onError(event);
 };
 
-SceneManager.onUnload = function() {
+SceneManager.onUnload = function () {
     ImageManager.clear();
     EffectManager.clear();
     AudioManager.stopAll();
 };
 
-SceneManager.onKeyDown = function(event) {
+SceneManager.onKeyDown = function (event) {
     if (!event.ctrlKey && !event.altKey) {
         switch (event.keyCode) {
             case 116: // F5
@@ -2001,19 +2001,19 @@ SceneManager.onKeyDown = function(event) {
     }
 };
 
-SceneManager.reloadGame = function() {
+SceneManager.reloadGame = function () {
     if (Utils.isNwjs()) {
         chrome.runtime.reload();
     }
 };
 
-SceneManager.showDevTools = function() {
+SceneManager.showDevTools = function () {
     if (Utils.isNwjs() && Utils.isOptionValid("test")) {
         nw.Window.get().showDevTools();
     }
 };
 
-SceneManager.catchException = function(e) {
+SceneManager.catchException = function (e) {
     if (e instanceof Error) {
         this.catchNormalError(e);
     } else if (e instanceof Array && e[0] === "LoadError") {
@@ -2024,13 +2024,13 @@ SceneManager.catchException = function(e) {
     this.stop();
 };
 
-SceneManager.catchNormalError = function(e) {
+SceneManager.catchNormalError = function (e) {
     Graphics.printError(e.name, e.message, e);
     AudioManager.stopAll();
     console.error(e.stack);
 };
 
-SceneManager.catchLoadError = function(e) {
+SceneManager.catchLoadError = function (e) {
     const url = e[1];
     const retry = e[2];
     Graphics.printError("Failed to load", url);
@@ -2044,12 +2044,12 @@ SceneManager.catchLoadError = function(e) {
     }
 };
 
-SceneManager.catchUnknownError = function(e) {
+SceneManager.catchUnknownError = function (e) {
     Graphics.printError("UnknownError", String(e));
     AudioManager.stopAll();
 };
 
-SceneManager.updateMain = function() {
+SceneManager.updateMain = function () {
     this.updateFrameCount();
     this.updateInputData();
     this.updateEffekseer();
@@ -2057,22 +2057,22 @@ SceneManager.updateMain = function() {
     this.updateScene();
 };
 
-SceneManager.updateFrameCount = function() {
+SceneManager.updateFrameCount = function () {
     Graphics.frameCount++;
 };
 
-SceneManager.updateInputData = function() {
+SceneManager.updateInputData = function () {
     Input.update();
     TouchInput.update();
 };
 
-SceneManager.updateEffekseer = function() {
+SceneManager.updateEffekseer = function () {
     if (Graphics.effekseer && this.isGameActive()) {
         Graphics.effekseer.update();
     }
 };
 
-SceneManager.changeScene = function() {
+SceneManager.changeScene = function () {
     if (this.isSceneChanging() && !this.isCurrentSceneBusy()) {
         if (this._scene) {
             this._scene.terminate();
@@ -2090,7 +2090,7 @@ SceneManager.changeScene = function() {
     }
 };
 
-SceneManager.updateScene = function() {
+SceneManager.updateScene = function () {
     if (this._scene) {
         if (this._scene.isStarted()) {
             if (this.isGameActive()) {
@@ -2104,7 +2104,7 @@ SceneManager.updateScene = function() {
     }
 };
 
-SceneManager.isGameActive = function() {
+SceneManager.isGameActive = function () {
     // [Note] We use "window.top" to support an iframe.
     try {
         return window.top.document.hasFocus();
@@ -2114,17 +2114,17 @@ SceneManager.isGameActive = function() {
     }
 };
 
-SceneManager.onSceneTerminate = function() {
+SceneManager.onSceneTerminate = function () {
     this._previousScene = this._scene;
     this._previousClass = this._scene.constructor;
     Graphics.setStage(null);
 };
 
-SceneManager.onSceneCreate = function() {
+SceneManager.onSceneCreate = function () {
     Graphics.startLoading();
 };
 
-SceneManager.onBeforeSceneStart = function() {
+SceneManager.onBeforeSceneStart = function () {
     if (this._previousScene) {
         this._previousScene.destroy();
         this._previousScene = null;
@@ -2134,28 +2134,28 @@ SceneManager.onBeforeSceneStart = function() {
     }
 };
 
-SceneManager.onSceneStart = function() {
+SceneManager.onSceneStart = function () {
     Graphics.endLoading();
     Graphics.setStage(this._scene);
 };
 
-SceneManager.isSceneChanging = function() {
+SceneManager.isSceneChanging = function () {
     return this._exiting || !!this._nextScene;
 };
 
-SceneManager.isCurrentSceneBusy = function() {
+SceneManager.isCurrentSceneBusy = function () {
     return this._scene && this._scene.isBusy();
 };
 
-SceneManager.isNextScene = function(sceneClass) {
+SceneManager.isNextScene = function (sceneClass) {
     return this._nextScene && this._nextScene.constructor === sceneClass;
 };
 
-SceneManager.isPreviousScene = function(sceneClass) {
+SceneManager.isPreviousScene = function (sceneClass) {
     return this._previousClass === sceneClass;
 };
 
-SceneManager.goto = function(sceneClass) {
+SceneManager.goto = function (sceneClass) {
     if (sceneClass) {
         this._nextScene = new sceneClass();
     }
@@ -2164,12 +2164,12 @@ SceneManager.goto = function(sceneClass) {
     }
 };
 
-SceneManager.push = function(sceneClass) {
+SceneManager.push = function (sceneClass) {
     this._stack.push(this._scene.constructor);
     this.goto(sceneClass);
 };
 
-SceneManager.pop = function() {
+SceneManager.pop = function () {
     if (this._stack.length > 0) {
         this.goto(this._stack.pop());
     } else {
@@ -2177,39 +2177,39 @@ SceneManager.pop = function() {
     }
 };
 
-SceneManager.exit = function() {
+SceneManager.exit = function () {
     this.goto(null);
     this._exiting = true;
 };
 
-SceneManager.clearStack = function() {
+SceneManager.clearStack = function () {
     this._stack = [];
 };
 
-SceneManager.stop = function() {
+SceneManager.stop = function () {
     Graphics.stopGameLoop();
 };
 
-SceneManager.prepareNextScene = function() {
+SceneManager.prepareNextScene = function () {
     this._nextScene.prepare(...arguments);
 };
 
-SceneManager.snap = function() {
+SceneManager.snap = function () {
     return Bitmap.snap(this._scene);
 };
 
-SceneManager.snapForBackground = function() {
+SceneManager.snapForBackground = function () {
     if (this._backgroundBitmap) {
         this._backgroundBitmap.destroy();
     }
     this._backgroundBitmap = this.snap();
 };
 
-SceneManager.backgroundBitmap = function() {
+SceneManager.backgroundBitmap = function () {
     return this._backgroundBitmap;
 };
 
-SceneManager.resume = function() {
+SceneManager.resume = function () {
     TouchInput.update();
     Graphics.startGameLoop();
 };
@@ -2223,7 +2223,7 @@ function BattleManager() {
     throw new Error("This is a static class");
 }
 
-BattleManager.setup = function(troopId, canEscape, canLose) {
+BattleManager.setup = function (troopId, canEscape, canLose) {
     this.initMembers();
     this._canEscape = canEscape;
     this._canLose = canLose;
@@ -2232,7 +2232,7 @@ BattleManager.setup = function(troopId, canEscape, canLose) {
     this.makeEscapeRatio();
 };
 
-BattleManager.initMembers = function() {
+BattleManager.initMembers = function () {
     this._phase = "";
     this._inputting = false;
     this._canEscape = false;
@@ -2257,66 +2257,66 @@ BattleManager.initMembers = function() {
     this._tpbNeedsPartyCommand = true;
 };
 
-BattleManager.isTpb = function() {
+BattleManager.isTpb = function () {
     return $dataSystem.battleSystem >= 1;
 };
 
-BattleManager.isActiveTpb = function() {
+BattleManager.isActiveTpb = function () {
     return $dataSystem.battleSystem === 1;
 };
 
-BattleManager.isBattleTest = function() {
+BattleManager.isBattleTest = function () {
     return this._battleTest;
 };
 
-BattleManager.setBattleTest = function(battleTest) {
+BattleManager.setBattleTest = function (battleTest) {
     this._battleTest = battleTest;
 };
 
-BattleManager.setEventCallback = function(callback) {
+BattleManager.setEventCallback = function (callback) {
     this._eventCallback = callback;
 };
 
-BattleManager.setLogWindow = function(logWindow) {
+BattleManager.setLogWindow = function (logWindow) {
     this._logWindow = logWindow;
 };
 
-BattleManager.setSpriteset = function(spriteset) {
+BattleManager.setSpriteset = function (spriteset) {
     this._spriteset = spriteset;
 };
 
-BattleManager.onEncounter = function() {
+BattleManager.onEncounter = function () {
     this._preemptive = Math.random() < this.ratePreemptive();
     this._surprise = Math.random() < this.rateSurprise() && !this._preemptive;
 };
 
-BattleManager.ratePreemptive = function() {
+BattleManager.ratePreemptive = function () {
     return $gameParty.ratePreemptive($gameTroop.agility());
 };
 
-BattleManager.rateSurprise = function() {
+BattleManager.rateSurprise = function () {
     return $gameParty.rateSurprise($gameTroop.agility());
 };
 
-BattleManager.saveBgmAndBgs = function() {
+BattleManager.saveBgmAndBgs = function () {
     this._mapBgm = AudioManager.saveBgm();
     this._mapBgs = AudioManager.saveBgs();
 };
 
-BattleManager.playBattleBgm = function() {
+BattleManager.playBattleBgm = function () {
     AudioManager.playBgm($gameSystem.battleBgm());
     AudioManager.stopBgs();
 };
 
-BattleManager.playVictoryMe = function() {
+BattleManager.playVictoryMe = function () {
     AudioManager.playMe($gameSystem.victoryMe());
 };
 
-BattleManager.playDefeatMe = function() {
+BattleManager.playDefeatMe = function () {
     AudioManager.playMe($gameSystem.defeatMe());
 };
 
-BattleManager.replayBgmAndBgs = function() {
+BattleManager.replayBgmAndBgs = function () {
     if (this._mapBgm) {
         AudioManager.replayBgm(this._mapBgm);
     } else {
@@ -2327,11 +2327,11 @@ BattleManager.replayBgmAndBgs = function() {
     }
 };
 
-BattleManager.makeEscapeRatio = function() {
+BattleManager.makeEscapeRatio = function () {
     this._escapeRatio = (0.5 * $gameParty.agility()) / $gameTroop.agility();
 };
 
-BattleManager.update = function(timeActive) {
+BattleManager.update = function (timeActive) {
     if (!this.isBusy() && !this.updateEvent()) {
         this.updatePhase(timeActive);
     }
@@ -2340,7 +2340,7 @@ BattleManager.update = function(timeActive) {
     }
 };
 
-BattleManager.updatePhase = function(timeActive) {
+BattleManager.updatePhase = function (timeActive) {
     switch (this._phase) {
         case "start":
             this.updateStart();
@@ -2360,7 +2360,7 @@ BattleManager.updatePhase = function(timeActive) {
     }
 };
 
-BattleManager.updateEvent = function() {
+BattleManager.updateEvent = function () {
     switch (this._phase) {
         case "start":
         case "turn":
@@ -2375,7 +2375,7 @@ BattleManager.updateEvent = function() {
     return this.checkAbort();
 };
 
-BattleManager.updateEventMain = function() {
+BattleManager.updateEventMain = function () {
     $gameTroop.updateInterpreter();
     $gameParty.requestMotionRefresh();
     if ($gameTroop.isEventRunning() || this.checkBattleEnd()) {
@@ -2388,7 +2388,7 @@ BattleManager.updateEventMain = function() {
     return false;
 };
 
-BattleManager.isBusy = function() {
+BattleManager.isBusy = function () {
     return (
         $gameMessage.isBusy() ||
         this._spriteset.isBusy() ||
@@ -2396,7 +2396,7 @@ BattleManager.isBusy = function() {
     );
 };
 
-BattleManager.updateTpbInput = function() {
+BattleManager.updateTpbInput = function () {
     if (this._inputting) {
         this.checkTpbInputClose();
     } else {
@@ -2404,7 +2404,7 @@ BattleManager.updateTpbInput = function() {
     }
 };
 
-BattleManager.checkTpbInputClose = function() {
+BattleManager.checkTpbInputClose = function () {
     if (!this.isPartyTpbInputtable() || this.needsActorInputCancel()) {
         this.cancelActorInput();
         this._currentActor = null;
@@ -2412,7 +2412,7 @@ BattleManager.checkTpbInputClose = function() {
     }
 };
 
-BattleManager.checkTpbInputOpen = function() {
+BattleManager.checkTpbInputOpen = function () {
     if (this.isPartyTpbInputtable()) {
         if (this._tpbNeedsPartyCommand) {
             this._inputting = true;
@@ -2423,55 +2423,55 @@ BattleManager.checkTpbInputOpen = function() {
     }
 };
 
-BattleManager.isPartyTpbInputtable = function() {
+BattleManager.isPartyTpbInputtable = function () {
     return $gameParty.canInput() && this.isTpbMainPhase();
 };
 
-BattleManager.needsActorInputCancel = function() {
+BattleManager.needsActorInputCancel = function () {
     return this._currentActor && !this._currentActor.canInput();
 };
 
-BattleManager.isTpbMainPhase = function() {
+BattleManager.isTpbMainPhase = function () {
     return ["turn", "turnEnd", "action"].includes(this._phase);
 };
 
-BattleManager.isInputting = function() {
+BattleManager.isInputting = function () {
     return this._inputting;
 };
 
-BattleManager.isInTurn = function() {
+BattleManager.isInTurn = function () {
     return this._phase === "turn";
 };
 
-BattleManager.isTurnEnd = function() {
+BattleManager.isTurnEnd = function () {
     return this._phase === "turnEnd";
 };
 
-BattleManager.isAborting = function() {
+BattleManager.isAborting = function () {
     return this._phase === "aborting";
 };
 
-BattleManager.isBattleEnd = function() {
+BattleManager.isBattleEnd = function () {
     return this._phase === "battleEnd";
 };
 
-BattleManager.canEscape = function() {
+BattleManager.canEscape = function () {
     return this._canEscape;
 };
 
-BattleManager.canLose = function() {
+BattleManager.canLose = function () {
     return this._canLose;
 };
 
-BattleManager.isEscaped = function() {
+BattleManager.isEscaped = function () {
     return this._escaped;
 };
 
-BattleManager.actor = function() {
+BattleManager.actor = function () {
     return this._currentActor;
 };
 
-BattleManager.startBattle = function() {
+BattleManager.startBattle = function () {
     this._phase = "start";
     $gameSystem.onBattleStart();
     $gameParty.onBattleStart(this._preemptive);
@@ -2479,7 +2479,7 @@ BattleManager.startBattle = function() {
     this.displayStartMessages();
 };
 
-BattleManager.displayStartMessages = function() {
+BattleManager.displayStartMessages = function () {
     for (const name of $gameTroop.enemyNames()) {
         $gameMessage.add(TextManager.emerge.format(name));
     }
@@ -2490,7 +2490,7 @@ BattleManager.displayStartMessages = function() {
     }
 };
 
-BattleManager.startInput = function() {
+BattleManager.startInput = function () {
     this._phase = "input";
     this._inputting = true;
     $gameParty.makeActions();
@@ -2501,11 +2501,11 @@ BattleManager.startInput = function() {
     }
 };
 
-BattleManager.inputtingAction = function() {
+BattleManager.inputtingAction = function () {
     return this._currentActor ? this._currentActor.inputtingAction() : null;
 };
 
-BattleManager.selectNextCommand = function() {
+BattleManager.selectNextCommand = function () {
     if (this._currentActor) {
         if (this._currentActor.selectNextCommand()) {
             return;
@@ -2515,7 +2515,7 @@ BattleManager.selectNextCommand = function() {
     this.selectNextActor();
 };
 
-BattleManager.selectNextActor = function() {
+BattleManager.selectNextActor = function () {
     this.changeCurrentActor(true);
     if (!this._currentActor) {
         if (this.isTpb()) {
@@ -2526,7 +2526,7 @@ BattleManager.selectNextActor = function() {
     }
 };
 
-BattleManager.selectPreviousCommand = function() {
+BattleManager.selectPreviousCommand = function () {
     if (this._currentActor) {
         if (this._currentActor.selectPreviousCommand()) {
             return;
@@ -2536,7 +2536,7 @@ BattleManager.selectPreviousCommand = function() {
     this.selectPreviousActor();
 };
 
-BattleManager.selectPreviousActor = function() {
+BattleManager.selectPreviousActor = function () {
     if (this.isTpb()) {
         this.changeCurrentActor(true);
         if (!this._currentActor) {
@@ -2547,10 +2547,10 @@ BattleManager.selectPreviousActor = function() {
     }
 };
 
-BattleManager.changeCurrentActor = function(forward) {
+BattleManager.changeCurrentActor = function (forward) {
     const members = $gameParty.battleMembers();
     let actor = this._currentActor;
-    for (;;) {
+    for (; ;) {
         const currentIndex = members.indexOf(actor);
         actor = members[currentIndex + (forward ? 1 : -1)];
         if (!actor || actor.canInput()) {
@@ -2561,14 +2561,14 @@ BattleManager.changeCurrentActor = function(forward) {
     this.startActorInput();
 };
 
-BattleManager.startActorInput = function() {
+BattleManager.startActorInput = function () {
     if (this._currentActor) {
         this._currentActor.setActionState("inputting");
         this._inputting = true;
     }
 };
 
-BattleManager.finishActorInput = function() {
+BattleManager.finishActorInput = function () {
     if (this._currentActor) {
         if (this.isTpb()) {
             this._currentActor.startTpbCasting();
@@ -2577,13 +2577,13 @@ BattleManager.finishActorInput = function() {
     }
 };
 
-BattleManager.cancelActorInput = function() {
+BattleManager.cancelActorInput = function () {
     if (this._currentActor) {
         this._currentActor.setActionState("undecided");
     }
 };
 
-BattleManager.updateStart = function() {
+BattleManager.updateStart = function () {
     if (this.isTpb()) {
         this._phase = "turn";
     } else {
@@ -2591,7 +2591,7 @@ BattleManager.updateStart = function() {
     }
 };
 
-BattleManager.startTurn = function() {
+BattleManager.startTurn = function () {
     this._phase = "turn";
     $gameTroop.increaseTurn();
     $gameParty.requestMotionRefresh();
@@ -2602,7 +2602,7 @@ BattleManager.startTurn = function() {
     }
 };
 
-BattleManager.updateTurn = function(timeActive) {
+BattleManager.updateTurn = function (timeActive) {
     $gameParty.requestMotionRefresh();
     if (this.isTpb() && timeActive) {
         this.updateTpb();
@@ -2617,20 +2617,20 @@ BattleManager.updateTurn = function(timeActive) {
     }
 };
 
-BattleManager.updateTpb = function() {
+BattleManager.updateTpb = function () {
     $gameParty.updateTpb();
     $gameTroop.updateTpb();
     this.updateAllTpbBattlers();
     this.checkTpbTurnEnd();
 };
 
-BattleManager.updateAllTpbBattlers = function() {
+BattleManager.updateAllTpbBattlers = function () {
     for (const battler of this.allBattleMembers()) {
         this.updateTpbBattler(battler);
     }
 };
 
-BattleManager.updateTpbBattler = function(battler) {
+BattleManager.updateTpbBattler = function (battler) {
     if (battler.isTpbTurnEnd()) {
         battler.onTurnEnd();
         battler.startTpbTurn();
@@ -2644,13 +2644,13 @@ BattleManager.updateTpbBattler = function(battler) {
     }
 };
 
-BattleManager.checkTpbTurnEnd = function() {
+BattleManager.checkTpbTurnEnd = function () {
     if ($gameTroop.isTpbTurnEnd()) {
         this.endTurn();
     }
 };
 
-BattleManager.processTurn = function() {
+BattleManager.processTurn = function () {
     const subject = this._subject;
     const action = subject.currentAction();
     if (action) {
@@ -2665,20 +2665,20 @@ BattleManager.processTurn = function() {
     }
 };
 
-BattleManager.endBattlerActions = function(battler) {
+BattleManager.endBattlerActions = function (battler) {
     battler.setActionState(this.isTpb() ? "undecided" : "done");
     battler.onAllActionsEnd();
     battler.clearTpbChargeTime();
     this.displayBattlerStatus(battler, true);
 };
 
-BattleManager.endTurn = function() {
+BattleManager.endTurn = function () {
     this._phase = "turnEnd";
     this._preemptive = false;
     this._surprise = false;
 };
 
-BattleManager.updateTurnEnd = function() {
+BattleManager.updateTurnEnd = function () {
     if (this.isTpb()) {
         this.startTurn();
     } else {
@@ -2687,14 +2687,14 @@ BattleManager.updateTurnEnd = function() {
     }
 };
 
-BattleManager.endAllBattlersTurn = function() {
+BattleManager.endAllBattlersTurn = function () {
     for (const battler of this.allBattleMembers()) {
         battler.onTurnEnd();
         this.displayBattlerStatus(battler, false);
     }
 };
 
-BattleManager.displayBattlerStatus = function(battler, current) {
+BattleManager.displayBattlerStatus = function (battler, current) {
     this._logWindow.displayAutoAffectedStatus(battler);
     if (current) {
         this._logWindow.displayCurrentState(battler);
@@ -2702,8 +2702,8 @@ BattleManager.displayBattlerStatus = function(battler, current) {
     this._logWindow.displayRegeneration(battler);
 };
 
-BattleManager.getNextSubject = function() {
-    for (;;) {
+BattleManager.getNextSubject = function () {
+    for (; ;) {
         const battler = this._actionBattlers.shift();
         if (!battler) {
             return null;
@@ -2714,11 +2714,11 @@ BattleManager.getNextSubject = function() {
     }
 };
 
-BattleManager.allBattleMembers = function() {
+BattleManager.allBattleMembers = function () {
     return $gameParty.battleMembers().concat($gameTroop.members());
 };
 
-BattleManager.makeActionOrders = function() {
+BattleManager.makeActionOrders = function () {
     const battlers = [];
     if (!this._surprise) {
         battlers.push(...$gameParty.battleMembers());
@@ -2733,7 +2733,7 @@ BattleManager.makeActionOrders = function() {
     this._actionBattlers = battlers;
 };
 
-BattleManager.startAction = function() {
+BattleManager.startAction = function () {
     const subject = this._subject;
     const action = subject.currentAction();
     const targets = action.makeTargets();
@@ -2746,7 +2746,7 @@ BattleManager.startAction = function() {
     this._logWindow.startAction(subject, action, targets);
 };
 
-BattleManager.updateAction = function() {
+BattleManager.updateAction = function () {
     const target = this._targets.shift();
     if (target) {
         this.invokeAction(this._subject, target);
@@ -2755,7 +2755,7 @@ BattleManager.updateAction = function() {
     }
 };
 
-BattleManager.endAction = function() {
+BattleManager.endAction = function () {
     this._logWindow.endAction(this._subject);
     this._phase = "turn";
     if (this._subject.numActions() === 0) {
@@ -2764,7 +2764,7 @@ BattleManager.endAction = function() {
     }
 };
 
-BattleManager.invokeAction = function(subject, target) {
+BattleManager.invokeAction = function (subject, target) {
     this._logWindow.push("pushBaseLine");
     if (Math.random() < this._action.itemCnt(target)) {
         this.invokeCounterAttack(subject, target);
@@ -2777,13 +2777,13 @@ BattleManager.invokeAction = function(subject, target) {
     this._logWindow.push("popBaseLine");
 };
 
-BattleManager.invokeNormalAction = function(subject, target) {
+BattleManager.invokeNormalAction = function (subject, target) {
     const realTarget = this.applySubstitute(target);
     this._action.apply(realTarget);
     this._logWindow.displayActionResults(subject, realTarget);
 };
 
-BattleManager.invokeCounterAttack = function(subject, target) {
+BattleManager.invokeCounterAttack = function (subject, target) {
     const action = new Game_Action(target);
     action.setAttack();
     action.apply(subject);
@@ -2791,14 +2791,14 @@ BattleManager.invokeCounterAttack = function(subject, target) {
     this._logWindow.displayActionResults(target, subject);
 };
 
-BattleManager.invokeMagicReflection = function(subject, target) {
+BattleManager.invokeMagicReflection = function (subject, target) {
     this._action._reflectionTarget = target;
     this._logWindow.displayReflection(target);
     this._action.apply(subject);
     this._logWindow.displayActionResults(target, subject);
 };
 
-BattleManager.applySubstitute = function(target) {
+BattleManager.applySubstitute = function (target) {
     if (this.checkSubstitute(target)) {
         const substitute = target.friendsUnit().substituteBattler();
         if (substitute && target !== substitute) {
@@ -2809,20 +2809,20 @@ BattleManager.applySubstitute = function(target) {
     return target;
 };
 
-BattleManager.checkSubstitute = function(target) {
+BattleManager.checkSubstitute = function (target) {
     return target.isDying() && !this._action.isCertainHit();
 };
 
-BattleManager.isActionForced = function() {
+BattleManager.isActionForced = function () {
     return !!this._actionForcedBattler;
 };
 
-BattleManager.forceAction = function(battler) {
+BattleManager.forceAction = function (battler) {
     this._actionForcedBattler = battler;
     this._actionBattlers.remove(battler);
 };
 
-BattleManager.processForcedAction = function() {
+BattleManager.processForcedAction = function () {
     if (this._actionForcedBattler) {
         if (this._subject) {
             this.endBattlerActions(this._subject);
@@ -2834,11 +2834,11 @@ BattleManager.processForcedAction = function() {
     }
 };
 
-BattleManager.abort = function() {
+BattleManager.abort = function () {
     this._phase = "aborting";
 };
 
-BattleManager.checkBattleEnd = function() {
+BattleManager.checkBattleEnd = function () {
     if (this._phase) {
         if ($gameParty.isEscaped()) {
             this.processPartyEscape();
@@ -2854,7 +2854,7 @@ BattleManager.checkBattleEnd = function() {
     return false;
 };
 
-BattleManager.checkAbort = function() {
+BattleManager.checkAbort = function () {
     if (this.isAborting()) {
         this.processAbort();
         return true;
@@ -2862,7 +2862,7 @@ BattleManager.checkAbort = function() {
     return false;
 };
 
-BattleManager.processVictory = function() {
+BattleManager.processVictory = function () {
     $gameParty.removeBattleStates();
     $gameParty.performVictory();
     this.playVictoryMe();
@@ -2874,7 +2874,7 @@ BattleManager.processVictory = function() {
     this.endBattle(0);
 };
 
-BattleManager.processEscape = function() {
+BattleManager.processEscape = function () {
     $gameParty.performEscape();
     SoundManager.playEscape();
     const success = this._preemptive || Math.random() < this._escapeRatio;
@@ -2886,13 +2886,13 @@ BattleManager.processEscape = function() {
     return success;
 };
 
-BattleManager.onEscapeSuccess = function() {
+BattleManager.onEscapeSuccess = function () {
     this.displayEscapeSuccessMessage();
     this._escaped = true;
     this.processAbort();
 };
 
-BattleManager.onEscapeFailure = function() {
+BattleManager.onEscapeFailure = function () {
     $gameParty.onEscapeFailure();
     this.displayEscapeFailureMessage();
     this._escapeRatio += 0.1;
@@ -2901,19 +2901,19 @@ BattleManager.onEscapeFailure = function() {
     }
 };
 
-BattleManager.processPartyEscape = function() {
+BattleManager.processPartyEscape = function () {
     this._escaped = true;
     this.processAbort();
 };
 
-BattleManager.processAbort = function() {
+BattleManager.processAbort = function () {
     $gameParty.removeBattleStates();
     this._logWindow.clear();
     this.replayBgmAndBgs();
     this.endBattle(1);
 };
 
-BattleManager.processDefeat = function() {
+BattleManager.processDefeat = function () {
     this.displayDefeatMessage();
     this.playDefeatMe();
     if (this._canLose) {
@@ -2924,7 +2924,7 @@ BattleManager.processDefeat = function() {
     this.endBattle(2);
 };
 
-BattleManager.endBattle = function(result) {
+BattleManager.endBattle = function (result) {
     this._phase = "battleEnd";
     this.cancelActorInput();
     this._inputting = false;
@@ -2939,7 +2939,7 @@ BattleManager.endBattle = function(result) {
     $gameTemp.clearCommonEventReservation();
 };
 
-BattleManager.updateBattleEnd = function() {
+BattleManager.updateBattleEnd = function () {
     if (this.isBattleTest()) {
         AudioManager.stopBgm();
         SceneManager.exit();
@@ -2956,7 +2956,7 @@ BattleManager.updateBattleEnd = function() {
     this._phase = "";
 };
 
-BattleManager.makeRewards = function() {
+BattleManager.makeRewards = function () {
     this._rewards = {
         gold: $gameTroop.goldTotal(),
         exp: $gameTroop.expTotal(),
@@ -2964,30 +2964,30 @@ BattleManager.makeRewards = function() {
     };
 };
 
-BattleManager.displayVictoryMessage = function() {
+BattleManager.displayVictoryMessage = function () {
     $gameMessage.add(TextManager.victory.format($gameParty.name()));
 };
 
-BattleManager.displayDefeatMessage = function() {
+BattleManager.displayDefeatMessage = function () {
     $gameMessage.add(TextManager.defeat.format($gameParty.name()));
 };
 
-BattleManager.displayEscapeSuccessMessage = function() {
+BattleManager.displayEscapeSuccessMessage = function () {
     $gameMessage.add(TextManager.escapeStart.format($gameParty.name()));
 };
 
-BattleManager.displayEscapeFailureMessage = function() {
+BattleManager.displayEscapeFailureMessage = function () {
     $gameMessage.add(TextManager.escapeStart.format($gameParty.name()));
     $gameMessage.add("\\." + TextManager.escapeFailure);
 };
 
-BattleManager.displayRewards = function() {
+BattleManager.displayRewards = function () {
     this.displayExp();
     this.displayGold();
     this.displayDropItems();
 };
 
-BattleManager.displayExp = function() {
+BattleManager.displayExp = function () {
     const exp = this._rewards.exp;
     if (exp > 0) {
         const text = TextManager.obtainExp.format(exp, TextManager.exp);
@@ -2995,14 +2995,14 @@ BattleManager.displayExp = function() {
     }
 };
 
-BattleManager.displayGold = function() {
+BattleManager.displayGold = function () {
     const gold = this._rewards.gold;
     if (gold > 0) {
         $gameMessage.add("\\." + TextManager.obtainGold.format(gold));
     }
 };
 
-BattleManager.displayDropItems = function() {
+BattleManager.displayDropItems = function () {
     const items = this._rewards.items;
     if (items.length > 0) {
         $gameMessage.newPage();
@@ -3012,24 +3012,24 @@ BattleManager.displayDropItems = function() {
     }
 };
 
-BattleManager.gainRewards = function() {
+BattleManager.gainRewards = function () {
     this.gainExp();
     this.gainGold();
     this.gainDropItems();
 };
 
-BattleManager.gainExp = function() {
+BattleManager.gainExp = function () {
     const exp = this._rewards.exp;
     for (const actor of $gameParty.allMembers()) {
         actor.gainExp(exp);
     }
 };
 
-BattleManager.gainGold = function() {
+BattleManager.gainGold = function () {
     $gameParty.gainGold(this._rewards.gold);
 };
 
-BattleManager.gainDropItems = function() {
+BattleManager.gainDropItems = function () {
     const items = this._rewards.items;
     for (const item of items) {
         $gameParty.gainItem(item, 1);
@@ -3050,7 +3050,7 @@ PluginManager._errorUrls = [];
 PluginManager._parameters = {};
 PluginManager._commands = {};
 
-PluginManager.setup = function(plugins) {
+PluginManager.setup = function (plugins) {
     for (const plugin of plugins) {
         const pluginName = Utils.extractFileName(plugin.name);
         if (plugin.status && !this._scripts.includes(pluginName)) {
@@ -3061,15 +3061,15 @@ PluginManager.setup = function(plugins) {
     }
 };
 
-PluginManager.parameters = function(name) {
+PluginManager.parameters = function (name) {
     return this._parameters[name.toLowerCase()] || {};
 };
 
-PluginManager.setParameters = function(name, parameters) {
+PluginManager.setParameters = function (name, parameters) {
     this._parameters[name.toLowerCase()] = parameters;
 };
 
-PluginManager.loadScript = function(filename) {
+PluginManager.loadScript = function (filename) {
     const url = this.makeUrl(filename);
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -3081,31 +3081,31 @@ PluginManager.loadScript = function(filename) {
     document.body.appendChild(script);
 };
 
-PluginManager.onError = function(e) {
+PluginManager.onError = function (e) {
     this._errorUrls.push(e.target._url);
 };
 
-PluginManager.makeUrl = function(filename) {
+PluginManager.makeUrl = function (filename) {
     return "js/plugins/" + Utils.encodeURI(filename) + ".js";
 };
 
-PluginManager.checkErrors = function() {
+PluginManager.checkErrors = function () {
     const url = this._errorUrls.shift();
     if (url) {
         this.throwLoadError(url);
     }
 };
 
-PluginManager.throwLoadError = function(url) {
+PluginManager.throwLoadError = function (url) {
     throw new Error("Failed to load: " + url);
 };
 
-PluginManager.registerCommand = function(pluginName, commandName, func) {
+PluginManager.registerCommand = function (pluginName, commandName, func) {
     const key = pluginName + ":" + commandName;
     this._commands[key] = func;
 };
 
-PluginManager.callCommand = function(self, pluginName, commandName, args) {
+PluginManager.callCommand = function (self, pluginName, commandName, args) {
     const key = pluginName + ":" + commandName;
     const func = this._commands[key];
     if (typeof func === "function") {

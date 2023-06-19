@@ -299,7 +299,7 @@
  *
  */
 
-(function() {
+(function () {
     'use strict';
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
@@ -436,15 +436,15 @@
         }
     }
 
-    Game_Action.prototype.isCounter = function() {
+    Game_Action.prototype.isCounter = function () {
         return false;
     };
 
-    Game_Action.prototype.getCounter = function() {
+    Game_Action.prototype.getCounter = function () {
         return {};
     };
 
-    Game_Action.prototype.hasElement = function(elementId) {
+    Game_Action.prototype.hasElement = function (elementId) {
         if (this.item().damage.type === 0) {
             return false;
         }
@@ -470,13 +470,13 @@
     });
 
     const _Game_Battler_onDamage = Game_Battler.prototype.onDamage;
-    Game_Battler.prototype.onDamage = function(value) {
+    Game_Battler.prototype.onDamage = function (value) {
         _Game_Battler_onDamage.apply(this, arguments);
         this.lastHpDamage = value;
     };
 
     const _Game_Battler_performActionStart = Game_Battler.prototype.performActionStart;
-    Game_Battler.prototype.performActionStart = function(action) {
+    Game_Battler.prototype.performActionStart = function (action) {
         if (action.isCounter()) {
             return;
         }
@@ -484,7 +484,7 @@
     };
 
     const _BattleManager_endBattlerActions = BattleManager.endBattlerActions;
-    BattleManager.endBattlerActions = function(battler) {
+    BattleManager.endBattlerActions = function (battler) {
         if (this._action && this._action.isCounter()) {
             return;
         }
@@ -496,14 +496,14 @@
      * 反撃を処理します。
      */
     const _BattleManager_initMembers = BattleManager.initMembers;
-    BattleManager.initMembers = function() {
+    BattleManager.initMembers = function () {
         _BattleManager_initMembers.apply(this, arguments);
         this._counterQueue = [];
         $gameParty.members().forEach(member => member.lastHpDamage = 0);
     };
 
     const _BattleManager_invokeNormalAction = BattleManager.invokeNormalAction;
-    BattleManager.invokeNormalAction = function(subject, target) {
+    BattleManager.invokeNormalAction = function (subject, target) {
         const counterAction = this.createCounterAction(subject, this._action, target);
         const counter = counterAction.getCounter();
         if (!counter || counter.CrossCounter || counter.Interceptor) {
@@ -514,13 +514,13 @@
         }
     };
 
-    BattleManager.createCounterAction = function(subject, action, target) {
+    BattleManager.createCounterAction = function (subject, action, target) {
         const counterAction = new Game_CounterAction(target);
         counterAction.setup(action, subject);
         return counterAction;
     };
 
-    BattleManager.requestCounterAction = function(counterSubject, subject, counterAction) {
+    BattleManager.requestCounterAction = function (counterSubject, subject, counterAction) {
         const counter = counterAction.getCounter();
         if (!this.checkCrossCounterCondition(counterSubject.result(), counter)) {
             return;
@@ -537,12 +537,12 @@
         });
     };
 
-    BattleManager.filterInvalidCounter = function() {
+    BattleManager.filterInvalidCounter = function () {
         this._counterQueue = this._counterQueue.filter(data => data.subject.canMove());
     };
 
     const _BattleManager_endAction = BattleManager.endAction;
-    BattleManager.endAction = function() {
+    BattleManager.endAction = function () {
         _BattleManager_endAction.apply(this, arguments);
         // 行動回数が追加されたバトラーの行動の場合、行動し終わるまでカウンター発動を待機
         if (this._subject && this._subject !== this._currentActor && !this._counterSubject) {
@@ -558,14 +558,14 @@
     };
 
     const _BattleManager_processTurn = BattleManager.processTurn;
-    BattleManager.processTurn = function() {
+    BattleManager.processTurn = function () {
         _BattleManager_processTurn.apply(this, arguments);
         if (!this._subject && this._counterSubject) {
             this._subject = this._counterSubject;
         }
     };
 
-    BattleManager.invokeCounterAction = function(subject, target, counterAction) {
+    BattleManager.invokeCounterAction = function (subject, target, counterAction) {
         if (!subject.canMove() || subject.isDead()) {
             return;
         }
@@ -584,7 +584,7 @@
         this._logWindow.startAction(subject, counterAction, this._targets);
     };
 
-    BattleManager.checkCrossCounterCondition = function(result, counter) {
+    BattleManager.checkCrossCounterCondition = function (result, counter) {
         if (counter.CrossCounter) {
             if (!result.isHit() && counter.CrossCounterCondition === 1) {
                 return false;
@@ -600,7 +600,7 @@
      * Window_BattleLog
      * 反撃の演出とメッセージ表示
      */
-    Window_BattleLog.prototype.displaySkillCounter = function(subject, counter) {
+    Window_BattleLog.prototype.displaySkillCounter = function (subject, counter) {
         if (counter.Message) {
             this.push("addText", counter.Message.format(subject.name()));
         }
@@ -610,8 +610,8 @@
         }
     };
 
-    const _Window_BattleLog_updateWaitMode      = Window_BattleLog.prototype.updateWaitMode;
-    Window_BattleLog.prototype.updateWaitMode = function() {
+    const _Window_BattleLog_updateWaitMode = Window_BattleLog.prototype.updateWaitMode;
+    Window_BattleLog.prototype.updateWaitMode = function () {
         let waiting = false;
         if (this._waitMode === 'animation') {
             waiting = this._spriteset.isAnimationPlaying();
@@ -622,12 +622,12 @@
         return waiting;
     };
 
-    Window_BattleLog.prototype.waitForAnimation = function() {
+    Window_BattleLog.prototype.waitForAnimation = function () {
         this.setWaitMode('animation');
     };
 
     const _BattleManager_startAction = BattleManager.startAction;
-    BattleManager.startAction = function() {
+    BattleManager.startAction = function () {
         const subject = this._subject;
         const action = subject.currentAction();
         const targets = action.makeTargets();
@@ -652,7 +652,7 @@
         }
     }
 
-    Window_BattleLog.prototype.startInterceptedAction = function(subject, action) {
+    Window_BattleLog.prototype.startInterceptedAction = function (subject, action) {
         const item = action.item();
         this.push("performActionStart", subject, action);
         this.push("waitForMovement");

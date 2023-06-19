@@ -16,7 +16,7 @@
  * @memberof JsExtensions
  * @returns {array} A shallow copy of the array.
  */
-Array.prototype.clone = function() {
+Array.prototype.clone = function () {
     return this.slice(0);
 };
 
@@ -32,7 +32,7 @@ Object.defineProperty(Array.prototype, "clone", {
  * @returns {boolean} True if the array contains a given element.
  * @deprecated includes() should be used instead.
  */
-Array.prototype.contains = function(element) {
+Array.prototype.contains = function (element) {
     return this.includes(element);
 };
 
@@ -47,7 +47,7 @@ Object.defineProperty(Array.prototype, "contains", {
  * @param {array} array - The array to compare to.
  * @returns {boolean} True if the two arrays are the same.
  */
-Array.prototype.equals = function(array) {
+Array.prototype.equals = function (array) {
     if (!array || this.length !== array.length) {
         return false;
     }
@@ -74,8 +74,8 @@ Object.defineProperty(Array.prototype, "equals", {
  * @param {any} element - The element to remove.
  * @returns {array} The array after remove.
  */
-Array.prototype.remove = function(element) {
-    for (;;) {
+Array.prototype.remove = function (element) {
+    for (; ;) {
         const index = this.indexOf(element);
         if (index >= 0) {
             this.splice(index, 1);
@@ -96,7 +96,7 @@ Object.defineProperty(Array.prototype, "remove", {
  * @param {number} max - The upper boundary (excluded).
  * @returns {number} A random integer.
  */
-Math.randomInt = function(max) {
+Math.randomInt = function (max) {
     return Math.floor(max * Math.random());
 };
 
@@ -108,7 +108,7 @@ Math.randomInt = function(max) {
  * @param {number} max - The upper boundary.
  * @returns {number} A number in the range (min, max).
  */
-Number.prototype.clamp = function(min, max) {
+Number.prototype.clamp = function (min, max) {
     return Math.min(Math.max(this, min), max);
 };
 
@@ -119,7 +119,7 @@ Number.prototype.clamp = function(min, max) {
  * @param {number} n - The divisor.
  * @returns {number} A modulo value.
  */
-Number.prototype.mod = function(n) {
+Number.prototype.mod = function (n) {
     return ((this % n) + n) % n;
 };
 
@@ -130,7 +130,7 @@ Number.prototype.mod = function(n) {
  * @param {number} length - The length of the output string.
  * @returns {string} A string with leading zeros.
  */
-Number.prototype.padZero = function(length) {
+Number.prototype.padZero = function (length) {
     return String(this).padZero(length);
 };
 
@@ -142,7 +142,7 @@ Number.prototype.padZero = function(length) {
  * @returns {boolean} True if the string contains a given string.
  * @deprecated includes() should be used instead.
  */
-String.prototype.contains = function(string) {
+String.prototype.contains = function (string) {
     return this.includes(string);
 };
 
@@ -153,7 +153,7 @@ String.prototype.contains = function(string) {
  * @param {any} ...args The objects to format.
  * @returns {string} A formatted string.
  */
-String.prototype.format = function() {
+String.prototype.format = function () {
     return this.replace(/%([0-9]+)/g, (s, n) => arguments[Number(n) - 1]);
 };
 
@@ -164,7 +164,7 @@ String.prototype.format = function() {
  * @param {number} length - The length of the output string.
  * @returns {string} A string with leading zeros.
  */
-String.prototype.padZero = function(length) {
+String.prototype.padZero = function (length) {
     return this.padStart(length, "0");
 };
 
@@ -202,7 +202,7 @@ Utils.RPGMAKER_VERSION = "1.4.4";
  * @returns {boolean} True if the current version is greater than or equal
  *                    to the given version.
  */
-Utils.checkRMVersion = function(version) {
+Utils.checkRMVersion = function (version) {
     const array1 = this.RPGMAKER_VERSION.split(".");
     const array2 = String(version).split(".");
     for (let i = 0; i < array1.length; i++) {
@@ -223,7 +223,7 @@ Utils.checkRMVersion = function(version) {
  * @param {string} name - The option name.
  * @returns {boolean} True if the option is in the query string.
  */
-Utils.isOptionValid = function(name) {
+Utils.isOptionValid = function (name) {
     const args = location.search.slice(1);
     if (args.split("&").includes(name)) {
         return true;
@@ -239,7 +239,7 @@ Utils.isOptionValid = function(name) {
  *
  * @returns {boolean} True if the platform is NW.js.
  */
-Utils.isNwjs = function() {
+Utils.isNwjs = function () {
     return typeof require === "function" && typeof process === "object";
 };
 
@@ -248,7 +248,7 @@ Utils.isNwjs = function() {
  *
  * @returns {boolean} True if the platform is a mobile device.
  */
-Utils.isMobileDevice = function() {
+Utils.isMobileDevice = function () {
     const r = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/i;
     return !!navigator.userAgent.match(r);
 };
@@ -258,7 +258,7 @@ Utils.isMobileDevice = function() {
  *
  * @returns {boolean} True if the browser is Mobile Safari.
  */
-Utils.isMobileSafari = function() {
+Utils.isMobileSafari = function () {
     const agent = navigator.userAgent;
     return !!(
         agent.match(/iPhone|iPad|iPod/) &&
@@ -272,7 +272,7 @@ Utils.isMobileSafari = function() {
  *
  * @returns {boolean} True if the browser is Android Chrome.
  */
-Utils.isAndroidChrome = function() {
+Utils.isAndroidChrome = function () {
     const agent = navigator.userAgent;
     return !!(agent.match(/Android/) && agent.match(/Chrome/));
 };
@@ -282,7 +282,7 @@ Utils.isAndroidChrome = function() {
  *
  * @returns {boolean} True if the browser is accessing local files.
  */
-Utils.isLocal = function() {
+Utils.isLocal = function () {
     return window.location.href.startsWith("file:");
 };
 
@@ -291,7 +291,7 @@ Utils.isLocal = function() {
  *
  * @returns {boolean} True if the browser supports WebGL.
  */
-Utils.canUseWebGL = function() {
+Utils.canUseWebGL = function () {
     try {
         const canvas = document.createElement("canvas");
         return !!canvas.getContext("webgl");
@@ -305,7 +305,7 @@ Utils.canUseWebGL = function() {
  *
  * @returns {boolean} True if the browser supports Web Audio API.
  */
-Utils.canUseWebAudioAPI = function() {
+Utils.canUseWebAudioAPI = function () {
     return !!(window.AudioContext || window.webkitAudioContext);
 };
 
@@ -314,7 +314,7 @@ Utils.canUseWebAudioAPI = function() {
  *
  * @returns {boolean} True if the browser supports CSS Font Loading.
  */
-Utils.canUseCssFontLoading = function() {
+Utils.canUseCssFontLoading = function () {
     return !!(document.fonts && document.fonts.ready);
 };
 
@@ -323,7 +323,7 @@ Utils.canUseCssFontLoading = function() {
  *
  * @returns {boolean} True if the browser supports IndexedDB.
  */
-Utils.canUseIndexedDB = function() {
+Utils.canUseIndexedDB = function () {
     return !!(
         window.indexedDB ||
         window.mozIndexedDB ||
@@ -336,7 +336,7 @@ Utils.canUseIndexedDB = function() {
  *
  * @returns {boolean} True if the browser can play ogg files.
  */
-Utils.canPlayOgg = function() {
+Utils.canPlayOgg = function () {
     if (!Utils._audioElement) {
         Utils._audioElement = document.createElement("audio");
     }
@@ -351,7 +351,7 @@ Utils.canPlayOgg = function() {
  *
  * @returns {boolean} True if the browser can play webm files.
  */
-Utils.canPlayWebm = function() {
+Utils.canPlayWebm = function () {
     if (!Utils._videoElement) {
         Utils._videoElement = document.createElement("video");
     }
@@ -367,7 +367,7 @@ Utils.canPlayWebm = function() {
  * @param {string} str - The input string.
  * @returns {string} Encoded string.
  */
-Utils.encodeURI = function(str) {
+Utils.encodeURI = function (str) {
     return encodeURIComponent(str).replace(/%2F/g, "/");
 };
 
@@ -377,7 +377,7 @@ Utils.encodeURI = function(str) {
  * @param {string} filename - The filename with subfolders.
  * @returns {string} The filename without subfolders.
  */
-Utils.extractFileName = function(filename) {
+Utils.extractFileName = function (filename) {
     return filename.split("/").pop();
 };
 
@@ -387,7 +387,7 @@ Utils.extractFileName = function(filename) {
  * @param {string} str - The input string.
  * @returns {string} Escaped string.
  */
-Utils.escapeHtml = function(str) {
+Utils.escapeHtml = function (str) {
     const entityMap = {
         "&": "&amp;",
         "<": "&lt;",
@@ -404,7 +404,7 @@ Utils.escapeHtml = function(str) {
  *
  * @returns {boolean} True if the string contains any Arabic characters.
  */
-Utils.containsArabic = function(str) {
+Utils.containsArabic = function (str) {
     const regExp = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/;
     return regExp.test(str);
 };
@@ -416,7 +416,7 @@ Utils.containsArabic = function(str) {
  * @param {boolean} hasAudio - Whether the audio files are encrypted.
  * @param {string} key - The encryption key.
  */
-Utils.setEncryptionInfo = function(hasImages, hasAudio, key) {
+Utils.setEncryptionInfo = function (hasImages, hasAudio, key) {
     // [Note] This function is implemented for module independence.
     this._hasEncryptedImages = hasImages;
     this._hasEncryptedAudio = hasAudio;
@@ -428,7 +428,7 @@ Utils.setEncryptionInfo = function(hasImages, hasAudio, key) {
  *
  * @returns {boolean} True if the image files are encrypted.
  */
-Utils.hasEncryptedImages = function() {
+Utils.hasEncryptedImages = function () {
     return this._hasEncryptedImages;
 };
 
@@ -437,7 +437,7 @@ Utils.hasEncryptedImages = function() {
  *
  * @returns {boolean} True if the audio files are encrypted.
  */
-Utils.hasEncryptedAudio = function() {
+Utils.hasEncryptedAudio = function () {
     return this._hasEncryptedAudio;
 };
 
@@ -447,7 +447,7 @@ Utils.hasEncryptedAudio = function() {
  * @param {ArrayBuffer} source - The data to be decrypted.
  * @returns {ArrayBuffer} The decrypted data.
  */
-Utils.decryptArrayBuffer = function(source) {
+Utils.decryptArrayBuffer = function (source) {
     const header = new Uint8Array(source, 0, 16);
     const headerHex = Array.from(header, x => x.toString(16)).join(",");
     if (headerHex !== "52,50,47,4d,56,0,0,0,0,3,1,0,0,0,0,0") {
@@ -477,7 +477,7 @@ function Graphics() {
  *
  * @returns {boolean} True if the graphics system is available.
  */
-Graphics.initialize = function() {
+Graphics.initialize = function () {
     this._width = 0;
     this._height = 0;
     this._defaultScale = 1;
@@ -534,7 +534,7 @@ Graphics.initialize = function() {
  * @name Graphics.app
  */
 Object.defineProperty(Graphics, "app", {
-    get: function() {
+    get: function () {
         return this._app;
     },
     configurable: true
@@ -548,7 +548,7 @@ Object.defineProperty(Graphics, "app", {
  * @name Graphics.effekseer
  */
 Object.defineProperty(Graphics, "effekseer", {
-    get: function() {
+    get: function () {
         return this._effekseer;
     },
     configurable: true
@@ -559,14 +559,14 @@ Object.defineProperty(Graphics, "effekseer", {
  *
  * @param {function} handler - The listener function to be added for updates.
  */
-Graphics.setTickHandler = function(handler) {
+Graphics.setTickHandler = function (handler) {
     this._tickHandler = handler;
 };
 
 /**
  * Starts the game loop.
  */
-Graphics.startGameLoop = function() {
+Graphics.startGameLoop = function () {
     if (this._app) {
         this._app.start();
     }
@@ -575,7 +575,7 @@ Graphics.startGameLoop = function() {
 /**
  * Stops the game loop.
  */
-Graphics.stopGameLoop = function() {
+Graphics.stopGameLoop = function () {
     if (this._app) {
         this._app.stop();
     }
@@ -586,7 +586,7 @@ Graphics.stopGameLoop = function() {
  *
  * @param {Stage} stage - The stage object to be rendered.
  */
-Graphics.setStage = function(stage) {
+Graphics.setStage = function (stage) {
     if (this._app) {
         this._app.stage = stage;
     }
@@ -595,7 +595,7 @@ Graphics.setStage = function(stage) {
 /**
  * Shows the loading spinner.
  */
-Graphics.startLoading = function() {
+Graphics.startLoading = function () {
     if (!document.getElementById("loadingSpinner")) {
         document.body.appendChild(this._loadingSpinner);
     }
@@ -606,7 +606,7 @@ Graphics.startLoading = function() {
  *
  * @returns {boolean} True if the loading spinner was active.
  */
-Graphics.endLoading = function() {
+Graphics.endLoading = function () {
     if (document.getElementById("loadingSpinner")) {
         document.body.removeChild(this._loadingSpinner);
         return true;
@@ -622,7 +622,7 @@ Graphics.endLoading = function() {
  * @param {string} message - The message of the error.
  * @param {Error} [error] - The error object.
  */
-Graphics.printError = function(name, message, error = null) {
+Graphics.printError = function (name, message, error = null) {
     if (!this._errorPrinter) {
         this._createErrorPrinter();
     }
@@ -637,7 +637,7 @@ Graphics.printError = function(name, message, error = null) {
  * @param {function} retry - The callback function to be called when the button
  *                           is pressed.
  */
-Graphics.showRetryButton = function(retry) {
+Graphics.showRetryButton = function (retry) {
     const button = document.createElement("button");
     button.id = "retryButton";
     button.innerHTML = "Retry";
@@ -654,7 +654,7 @@ Graphics.showRetryButton = function(retry) {
 /**
  * Erases the loading error text.
  */
-Graphics.eraseError = function() {
+Graphics.eraseError = function () {
     if (this._errorPrinter) {
         this._errorPrinter.innerHTML = this._makeErrorHtml();
         if (this._wasLoading) {
@@ -671,7 +671,7 @@ Graphics.eraseError = function() {
  * @param {number} x - The x coordinate on the page to be converted.
  * @returns {number} The x coordinate on the canvas area.
  */
-Graphics.pageToCanvasX = function(x) {
+Graphics.pageToCanvasX = function (x) {
     if (this._canvas) {
         const left = this._canvas.offsetLeft;
         return Math.round((x - left) / this._realScale);
@@ -687,7 +687,7 @@ Graphics.pageToCanvasX = function(x) {
  * @param {number} y - The y coordinate on the page to be converted.
  * @returns {number} The y coordinate on the canvas area.
  */
-Graphics.pageToCanvasY = function(y) {
+Graphics.pageToCanvasY = function (y) {
     if (this._canvas) {
         const top = this._canvas.offsetTop;
         return Math.round((y - top) / this._realScale);
@@ -703,21 +703,21 @@ Graphics.pageToCanvasY = function(y) {
  * @param {number} y - The y coordinate on the canvas area.
  * @returns {boolean} True if the specified point is inside the game canvas area.
  */
-Graphics.isInsideCanvas = function(x, y) {
+Graphics.isInsideCanvas = function (x, y) {
     return x >= 0 && x < this._width && y >= 0 && y < this._height;
 };
 
 /**
  * Shows the game screen.
  */
-Graphics.showScreen = function() {
+Graphics.showScreen = function () {
     this._canvas.style.opacity = 1;
 };
 
 /**
  * Hides the game screen.
  */
-Graphics.hideScreen = function() {
+Graphics.hideScreen = function () {
     this._canvas.style.opacity = 0;
 };
 
@@ -727,7 +727,7 @@ Graphics.hideScreen = function() {
  * @param {number} width - The width of the game screen.
  * @param {number} height - The height of the game screen.
  */
-Graphics.resize = function(width, height) {
+Graphics.resize = function (width, height) {
     this._width = width;
     this._height = height;
     this._app.renderer.resize(width, height);
@@ -741,10 +741,10 @@ Graphics.resize = function(width, height) {
  * @name Graphics.width
  */
 Object.defineProperty(Graphics, "width", {
-    get: function() {
+    get: function () {
         return this._width;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._width !== value) {
             this._width = value;
             this._updateAllElements();
@@ -760,10 +760,10 @@ Object.defineProperty(Graphics, "width", {
  * @name Graphics.height
  */
 Object.defineProperty(Graphics, "height", {
-    get: function() {
+    get: function () {
         return this._height;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._height !== value) {
             this._height = value;
             this._updateAllElements();
@@ -779,10 +779,10 @@ Object.defineProperty(Graphics, "height", {
  * @name Graphics.defaultScale
  */
 Object.defineProperty(Graphics, "defaultScale", {
-    get: function() {
+    get: function () {
         return this._defaultScale;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._defaultScale !== value) {
             this._defaultScale = value;
             this._updateAllElements();
@@ -791,21 +791,21 @@ Object.defineProperty(Graphics, "defaultScale", {
     configurable: true
 });
 
-Graphics._createAllElements = function() {
+Graphics._createAllElements = function () {
     this._createErrorPrinter();
     this._createCanvas();
     this._createLoadingSpinner();
     this._createFPSCounter();
 };
 
-Graphics._updateAllElements = function() {
+Graphics._updateAllElements = function () {
     this._updateRealScale();
     this._updateErrorPrinter();
     this._updateCanvas();
     this._updateVideo();
 };
 
-Graphics._onTick = function(deltaTime) {
+Graphics._onTick = function (deltaTime) {
     this._fpsCounter.startTick();
     if (this._tickHandler) {
         this._tickHandler(deltaTime);
@@ -816,11 +816,11 @@ Graphics._onTick = function(deltaTime) {
     this._fpsCounter.endTick();
 };
 
-Graphics._canRender = function() {
+Graphics._canRender = function () {
     return !!this._app.stage;
 };
 
-Graphics._updateRealScale = function() {
+Graphics._updateRealScale = function () {
     if (this._stretchEnabled && this._width > 0 && this._height > 0) {
         const h = this._stretchWidth() / this._width;
         const v = this._stretchHeight() / this._height;
@@ -831,7 +831,7 @@ Graphics._updateRealScale = function() {
     }
 };
 
-Graphics._stretchWidth = function() {
+Graphics._stretchWidth = function () {
     if (Utils.isMobileDevice()) {
         return document.documentElement.clientWidth;
     } else {
@@ -839,7 +839,7 @@ Graphics._stretchWidth = function() {
     }
 };
 
-Graphics._stretchHeight = function() {
+Graphics._stretchHeight = function () {
     if (Utils.isMobileDevice()) {
         // [Note] Mobile browsers often have special operations at the top and
         //   bottom of the screen.
@@ -850,7 +850,7 @@ Graphics._stretchHeight = function() {
     }
 };
 
-Graphics._makeErrorHtml = function(name, message /*, error*/) {
+Graphics._makeErrorHtml = function (name, message /*, error*/) {
     const nameDiv = document.createElement("div");
     const messageDiv = document.createElement("div");
     nameDiv.id = "errorName";
@@ -860,45 +860,45 @@ Graphics._makeErrorHtml = function(name, message /*, error*/) {
     return nameDiv.outerHTML + messageDiv.outerHTML;
 };
 
-Graphics._defaultStretchMode = function() {
+Graphics._defaultStretchMode = function () {
     return Utils.isNwjs() || Utils.isMobileDevice();
 };
 
-Graphics._createErrorPrinter = function() {
+Graphics._createErrorPrinter = function () {
     this._errorPrinter = document.createElement("div");
     this._errorPrinter.id = "errorPrinter";
     this._errorPrinter.innerHTML = this._makeErrorHtml();
     document.body.appendChild(this._errorPrinter);
 };
 
-Graphics._updateErrorPrinter = function() {
+Graphics._updateErrorPrinter = function () {
     const width = 640 * this._realScale;
     const height = 100 * this._realScale;
     this._errorPrinter.style.width = width + "px";
     this._errorPrinter.style.height = height + "px";
 };
 
-Graphics._createCanvas = function() {
+Graphics._createCanvas = function () {
     this._canvas = document.createElement("canvas");
     this._canvas.id = "gameCanvas";
     this._updateCanvas();
     document.body.appendChild(this._canvas);
 };
 
-Graphics._updateCanvas = function() {
+Graphics._updateCanvas = function () {
     this._canvas.width = this._width;
     this._canvas.height = this._height;
     this._canvas.style.zIndex = 1;
     this._centerElement(this._canvas);
 };
 
-Graphics._updateVideo = function() {
+Graphics._updateVideo = function () {
     const width = this._width * this._realScale;
     const height = this._height * this._realScale;
     Video.resize(width, height);
 };
 
-Graphics._createLoadingSpinner = function() {
+Graphics._createLoadingSpinner = function () {
     const loadingSpinner = document.createElement("div");
     const loadingSpinnerImage = document.createElement("div");
     loadingSpinner.id = "loadingSpinner";
@@ -907,11 +907,11 @@ Graphics._createLoadingSpinner = function() {
     this._loadingSpinner = loadingSpinner;
 };
 
-Graphics._createFPSCounter = function() {
+Graphics._createFPSCounter = function () {
     this._fpsCounter = new Graphics.FPSCounter();
 };
 
-Graphics._centerElement = function(element) {
+Graphics._centerElement = function (element) {
     const width = element.width * this._realScale;
     const height = element.height * this._realScale;
     element.style.position = "absolute";
@@ -924,7 +924,7 @@ Graphics._centerElement = function(element) {
     element.style.height = height + "px";
 };
 
-Graphics._disableContextMenu = function() {
+Graphics._disableContextMenu = function () {
     const elements = document.body.getElementsByTagName("*");
     const oncontextmenu = () => false;
     for (const element of elements) {
@@ -932,7 +932,7 @@ Graphics._disableContextMenu = function() {
     }
 };
 
-Graphics._applyCanvasFilter = function() {
+Graphics._applyCanvasFilter = function () {
     if (this._canvas) {
         this._canvas.style.opacity = 0.5;
         this._canvas.style.filter = "blur(8px)";
@@ -940,7 +940,7 @@ Graphics._applyCanvasFilter = function() {
     }
 };
 
-Graphics._clearCanvasFilter = function() {
+Graphics._clearCanvasFilter = function () {
     if (this._canvas) {
         this._canvas.style.opacity = 1;
         this._canvas.style.filter = "";
@@ -948,16 +948,16 @@ Graphics._clearCanvasFilter = function() {
     }
 };
 
-Graphics._setupEventHandlers = function() {
+Graphics._setupEventHandlers = function () {
     window.addEventListener("resize", this._onWindowResize.bind(this));
     document.addEventListener("keydown", this._onKeyDown.bind(this));
 };
 
-Graphics._onWindowResize = function() {
+Graphics._onWindowResize = function () {
     this._updateAllElements();
 };
 
-Graphics._onKeyDown = function(event) {
+Graphics._onKeyDown = function (event) {
     if (!event.ctrlKey && !event.altKey) {
         switch (event.keyCode) {
             case 113: // F2
@@ -976,16 +976,16 @@ Graphics._onKeyDown = function(event) {
     }
 };
 
-Graphics._switchFPSCounter = function() {
+Graphics._switchFPSCounter = function () {
     this._fpsCounter.switchMode();
 };
 
-Graphics._switchStretchMode = function() {
+Graphics._switchStretchMode = function () {
     this._stretchEnabled = !this._stretchEnabled;
     this._updateAllElements();
 };
 
-Graphics._switchFullScreen = function() {
+Graphics._switchFullScreen = function () {
     if (this._isFullScreen()) {
         this._cancelFullScreen();
     } else {
@@ -993,7 +993,7 @@ Graphics._switchFullScreen = function() {
     }
 };
 
-Graphics._isFullScreen = function() {
+Graphics._isFullScreen = function () {
     return (
         document.fullScreenElement ||
         document.mozFullScreen ||
@@ -1001,7 +1001,7 @@ Graphics._isFullScreen = function() {
     );
 };
 
-Graphics._requestFullScreen = function() {
+Graphics._requestFullScreen = function () {
     const element = document.body;
     if (element.requestFullScreen) {
         element.requestFullScreen();
@@ -1012,7 +1012,7 @@ Graphics._requestFullScreen = function() {
     }
 };
 
-Graphics._cancelFullScreen = function() {
+Graphics._cancelFullScreen = function () {
     if (document.cancelFullScreen) {
         document.cancelFullScreen();
     } else if (document.mozCancelFullScreen) {
@@ -1022,7 +1022,7 @@ Graphics._cancelFullScreen = function() {
     }
 };
 
-Graphics._createPixiApp = function() {
+Graphics._createPixiApp = function () {
     try {
         this._setupPixi();
         this._app = new PIXI.Application({
@@ -1036,12 +1036,12 @@ Graphics._createPixiApp = function() {
     }
 };
 
-Graphics._setupPixi = function() {
+Graphics._setupPixi = function () {
     PIXI.utils.skipHello();
     PIXI.settings.GC_MAX_IDLE = 600;
 };
 
-Graphics._createEffekseerContext = function() {
+Graphics._createEffekseerContext = function () {
     if (this._app && window.effekseer) {
         try {
             this._effekseer = effekseer.createContext();
@@ -1061,11 +1061,11 @@ Graphics._createEffekseerContext = function() {
 // This is based on Darsain's FPSMeter which is under the MIT license.
 // The original can be found at https://github.com/Darsain/fpsmeter.
 
-Graphics.FPSCounter = function() {
+Graphics.FPSCounter = function () {
     this.initialize(...arguments);
 };
 
-Graphics.FPSCounter.prototype.initialize = function() {
+Graphics.FPSCounter.prototype.initialize = function () {
     this._tickCount = 0;
     this._frameTime = 100;
     this._frameStart = 0;
@@ -1077,11 +1077,11 @@ Graphics.FPSCounter.prototype.initialize = function() {
     this._update();
 };
 
-Graphics.FPSCounter.prototype.startTick = function() {
+Graphics.FPSCounter.prototype.startTick = function () {
     this._frameStart = performance.now();
 };
 
-Graphics.FPSCounter.prototype.endTick = function() {
+Graphics.FPSCounter.prototype.endTick = function () {
     const time = performance.now();
     const thisFrameTime = time - this._lastLoop;
     this._frameTime += (thisFrameTime - this._frameTime) / 12;
@@ -1093,7 +1093,7 @@ Graphics.FPSCounter.prototype.endTick = function() {
     }
 };
 
-Graphics.FPSCounter.prototype.switchMode = function() {
+Graphics.FPSCounter.prototype.switchMode = function () {
     if (this._boxDiv.style.display === "none") {
         this._boxDiv.style.display = "block";
         this._showFps = true;
@@ -1105,7 +1105,7 @@ Graphics.FPSCounter.prototype.switchMode = function() {
     this._update();
 };
 
-Graphics.FPSCounter.prototype._createElements = function() {
+Graphics.FPSCounter.prototype._createElements = function () {
     this._boxDiv = document.createElement("div");
     this._labelDiv = document.createElement("div");
     this._numberDiv = document.createElement("div");
@@ -1118,7 +1118,7 @@ Graphics.FPSCounter.prototype._createElements = function() {
     document.body.appendChild(this._boxDiv);
 };
 
-Graphics.FPSCounter.prototype._update = function() {
+Graphics.FPSCounter.prototype._update = function () {
     const count = this._showFps ? this.fps : this.duration;
     this._labelDiv.textContent = this._showFps ? "FPS" : "ms";
     this._numberDiv.textContent = count.toFixed(0);
@@ -1140,7 +1140,7 @@ function Point() {
 Point.prototype = Object.create(PIXI.Point.prototype);
 Point.prototype.constructor = Point;
 
-Point.prototype.initialize = function(x, y) {
+Point.prototype.initialize = function (x, y) {
     PIXI.Point.call(this, x, y);
 };
 
@@ -1162,7 +1162,7 @@ function Rectangle() {
 Rectangle.prototype = Object.create(PIXI.Rectangle.prototype);
 Rectangle.prototype.constructor = Rectangle;
 
-Rectangle.prototype.initialize = function(x, y, width, height) {
+Rectangle.prototype.initialize = function (x, y, width, height) {
     PIXI.Rectangle.call(this, x, y, width, height);
 };
 
@@ -1178,7 +1178,7 @@ function Bitmap() {
     this.initialize(...arguments);
 }
 
-Bitmap.prototype.initialize = function(width, height) {
+Bitmap.prototype.initialize = function (width, height) {
     this._canvas = null;
     this._context = null;
     this._baseTexture = null;
@@ -1251,7 +1251,7 @@ Bitmap.prototype.initialize = function(width, height) {
  * @param {string} url - The image url of the texture.
  * @returns {Bitmap} The new bitmap object.
  */
-Bitmap.load = function(url) {
+Bitmap.load = function (url) {
     const bitmap = Object.create(Bitmap.prototype);
     bitmap.initialize();
     bitmap._url = url;
@@ -1265,7 +1265,7 @@ Bitmap.load = function(url) {
  * @param {Stage} stage - The stage object.
  * @returns {Bitmap} The new bitmap object.
  */
-Bitmap.snap = function(stage) {
+Bitmap.snap = function (stage) {
     const width = Graphics.width;
     const height = Graphics.height;
     const bitmap = new Bitmap(width, height);
@@ -1289,7 +1289,7 @@ Bitmap.snap = function(stage) {
  *
  * @returns {boolean} True if the bitmap is ready to render.
  */
-Bitmap.prototype.isReady = function() {
+Bitmap.prototype.isReady = function () {
     return this._loadingState === "loaded" || this._loadingState === "none";
 };
 
@@ -1298,7 +1298,7 @@ Bitmap.prototype.isReady = function() {
  *
  * @returns {boolean} True if a loading error has occurred.
  */
-Bitmap.prototype.isError = function() {
+Bitmap.prototype.isError = function () {
     return this._loadingState === "error";
 };
 
@@ -1310,7 +1310,7 @@ Bitmap.prototype.isError = function() {
  * @name Bitmap#url
  */
 Object.defineProperty(Bitmap.prototype, "url", {
-    get: function() {
+    get: function () {
         return this._url;
     },
     configurable: true
@@ -1324,7 +1324,7 @@ Object.defineProperty(Bitmap.prototype, "url", {
  * @name Bitmap#baseTexture
  */
 Object.defineProperty(Bitmap.prototype, "baseTexture", {
-    get: function() {
+    get: function () {
         return this._baseTexture;
     },
     configurable: true
@@ -1338,7 +1338,7 @@ Object.defineProperty(Bitmap.prototype, "baseTexture", {
  * @name Bitmap#image
  */
 Object.defineProperty(Bitmap.prototype, "image", {
-    get: function() {
+    get: function () {
         return this._image;
     },
     configurable: true
@@ -1352,7 +1352,7 @@ Object.defineProperty(Bitmap.prototype, "image", {
  * @name Bitmap#canvas
  */
 Object.defineProperty(Bitmap.prototype, "canvas", {
-    get: function() {
+    get: function () {
         this._ensureCanvas();
         return this._canvas;
     },
@@ -1367,7 +1367,7 @@ Object.defineProperty(Bitmap.prototype, "canvas", {
  * @name Bitmap#context
  */
 Object.defineProperty(Bitmap.prototype, "context", {
-    get: function() {
+    get: function () {
         this._ensureCanvas();
         return this._context;
     },
@@ -1382,7 +1382,7 @@ Object.defineProperty(Bitmap.prototype, "context", {
  * @name Bitmap#width
  */
 Object.defineProperty(Bitmap.prototype, "width", {
-    get: function() {
+    get: function () {
         const image = this._canvas || this._image;
         return image ? image.width : 0;
     },
@@ -1397,7 +1397,7 @@ Object.defineProperty(Bitmap.prototype, "width", {
  * @name Bitmap#height
  */
 Object.defineProperty(Bitmap.prototype, "height", {
-    get: function() {
+    get: function () {
         const image = this._canvas || this._image;
         return image ? image.height : 0;
     },
@@ -1412,7 +1412,7 @@ Object.defineProperty(Bitmap.prototype, "height", {
  * @name Bitmap#rect
  */
 Object.defineProperty(Bitmap.prototype, "rect", {
-    get: function() {
+    get: function () {
         return new Rectangle(0, 0, this.width, this.height);
     },
     configurable: true
@@ -1425,10 +1425,10 @@ Object.defineProperty(Bitmap.prototype, "rect", {
  * @name Bitmap#smooth
  */
 Object.defineProperty(Bitmap.prototype, "smooth", {
-    get: function() {
+    get: function () {
         return this._smooth;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._smooth !== value) {
             this._smooth = value;
             this._updateScaleMode();
@@ -1444,10 +1444,10 @@ Object.defineProperty(Bitmap.prototype, "smooth", {
  * @name Bitmap#paintOpacity
  */
 Object.defineProperty(Bitmap.prototype, "paintOpacity", {
-    get: function() {
+    get: function () {
         return this._paintOpacity;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._paintOpacity !== value) {
             this._paintOpacity = value;
             this.context.globalAlpha = this._paintOpacity / 255;
@@ -1459,7 +1459,7 @@ Object.defineProperty(Bitmap.prototype, "paintOpacity", {
 /**
  * Destroys the bitmap.
  */
-Bitmap.prototype.destroy = function() {
+Bitmap.prototype.destroy = function () {
     if (this._baseTexture) {
         this._baseTexture.destroy();
         this._baseTexture = null;
@@ -1473,7 +1473,7 @@ Bitmap.prototype.destroy = function() {
  * @param {number} width - The new width of the bitmap.
  * @param {number} height - The new height of the bitmap.
  */
-Bitmap.prototype.resize = function(width, height) {
+Bitmap.prototype.resize = function (width, height) {
     width = Math.max(width || 0, 1);
     height = Math.max(height || 0, 1);
     this.canvas.width = width;
@@ -1495,7 +1495,7 @@ Bitmap.prototype.resize = function(width, height) {
  * @param {number} [dw=sw] The width to draw the image in the destination.
  * @param {number} [dh=sh] The height to draw the image in the destination.
  */
-Bitmap.prototype.blt = function(source, sx, sy, sw, sh, dx, dy, dw, dh) {
+Bitmap.prototype.blt = function (source, sx, sy, sw, sh, dx, dy, dw, dh) {
     dw = dw || sw;
     dh = dh || sh;
     try {
@@ -1515,7 +1515,7 @@ Bitmap.prototype.blt = function(source, sx, sy, sw, sh, dx, dy, dw, dh) {
  * @param {number} y - The y coordinate of the pixel in the bitmap.
  * @returns {string} The pixel color (hex format).
  */
-Bitmap.prototype.getPixel = function(x, y) {
+Bitmap.prototype.getPixel = function (x, y) {
     const data = this.context.getImageData(x, y, 1, 1).data;
     let result = "#";
     for (let i = 0; i < 3; i++) {
@@ -1531,7 +1531,7 @@ Bitmap.prototype.getPixel = function(x, y) {
  * @param {number} y - The y coordinate of the pixel in the bitmap.
  * @returns {string} The alpha value.
  */
-Bitmap.prototype.getAlphaPixel = function(x, y) {
+Bitmap.prototype.getAlphaPixel = function (x, y) {
     const data = this.context.getImageData(x, y, 1, 1).data;
     return data[3];
 };
@@ -1544,7 +1544,7 @@ Bitmap.prototype.getAlphaPixel = function(x, y) {
  * @param {number} width - The width of the rectangle to clear.
  * @param {number} height - The height of the rectangle to clear.
  */
-Bitmap.prototype.clearRect = function(x, y, width, height) {
+Bitmap.prototype.clearRect = function (x, y, width, height) {
     this.context.clearRect(x, y, width, height);
     this._baseTexture.update();
 };
@@ -1552,7 +1552,7 @@ Bitmap.prototype.clearRect = function(x, y, width, height) {
 /**
  * Clears the entire bitmap.
  */
-Bitmap.prototype.clear = function() {
+Bitmap.prototype.clear = function () {
     this.clearRect(0, 0, this.width, this.height);
 };
 
@@ -1565,7 +1565,7 @@ Bitmap.prototype.clear = function() {
  * @param {number} height - The height of the rectangle to fill.
  * @param {string} color - The color of the rectangle in CSS format.
  */
-Bitmap.prototype.fillRect = function(x, y, width, height, color) {
+Bitmap.prototype.fillRect = function (x, y, width, height, color) {
     const context = this.context;
     context.save();
     context.fillStyle = color;
@@ -1579,7 +1579,7 @@ Bitmap.prototype.fillRect = function(x, y, width, height, color) {
  *
  * @param {string} color - The color of the rectangle in CSS format.
  */
-Bitmap.prototype.fillAll = function(color) {
+Bitmap.prototype.fillAll = function (color) {
     this.fillRect(0, 0, this.width, this.height, color);
 };
 
@@ -1592,7 +1592,7 @@ Bitmap.prototype.fillAll = function(color) {
  * @param {number} height - The height of the rectangle to fill.
  * @param {string} color - The color of the rectangle in CSS format.
  */
-Bitmap.prototype.strokeRect = function(x, y, width, height, color) {
+Bitmap.prototype.strokeRect = function (x, y, width, height, color) {
     const context = this.context;
     context.save();
     context.strokeStyle = color;
@@ -1613,7 +1613,7 @@ Bitmap.prototype.strokeRect = function(x, y, width, height, color) {
  * @param {string} color2 - The gradient ending color.
  * @param {boolean} vertical - Whether the gradient should be draw as vertical or not.
  */
-Bitmap.prototype.gradientFillRect = function(
+Bitmap.prototype.gradientFillRect = function (
     x, y, width, height, color1, color2, vertical
 ) {
     const context = this.context;
@@ -1637,7 +1637,7 @@ Bitmap.prototype.gradientFillRect = function(
  * @param {number} radius - The radius of the circle.
  * @param {string} color - The color of the circle in CSS format.
  */
-Bitmap.prototype.drawCircle = function(x, y, radius, color) {
+Bitmap.prototype.drawCircle = function (x, y, radius, color) {
     const context = this.context;
     context.save();
     context.fillStyle = color;
@@ -1658,7 +1658,7 @@ Bitmap.prototype.drawCircle = function(x, y, radius, color) {
  * @param {number} lineHeight - The height of the text line.
  * @param {string} align - The alignment of the text.
  */
-Bitmap.prototype.drawText = function(text, x, y, maxWidth, lineHeight, align) {
+Bitmap.prototype.drawText = function (text, x, y, maxWidth, lineHeight, align) {
     // [Note] Different browser makes different rendering with
     //   textBaseline == 'top'. So we use 'alphabetic' here.
     const context = this.context;
@@ -1690,7 +1690,7 @@ Bitmap.prototype.drawText = function(text, x, y, maxWidth, lineHeight, align) {
  * @param {string} text - The text to be measured.
  * @returns {number} The width of the text in pixels.
  */
-Bitmap.prototype.measureTextWidth = function(text) {
+Bitmap.prototype.measureTextWidth = function (text) {
     const context = this.context;
     context.save();
     context.font = this._makeFontNameText();
@@ -1704,7 +1704,7 @@ Bitmap.prototype.measureTextWidth = function(text) {
  *
  * @param {function} listner - The callback function.
  */
-Bitmap.prototype.addLoadListener = function(listner) {
+Bitmap.prototype.addLoadListener = function (listner) {
     if (!this.isReady()) {
         this._loadListeners.push(listner);
     } else {
@@ -1715,17 +1715,17 @@ Bitmap.prototype.addLoadListener = function(listner) {
 /**
  * Tries to load the image again.
  */
-Bitmap.prototype.retry = function() {
+Bitmap.prototype.retry = function () {
     this._startLoading();
 };
 
-Bitmap.prototype._makeFontNameText = function() {
+Bitmap.prototype._makeFontNameText = function () {
     const italic = this.fontItalic ? "Italic " : "";
     const bold = this.fontBold ? "Bold " : "";
     return italic + bold + this.fontSize + "px " + this.fontFace;
 };
 
-Bitmap.prototype._drawTextOutline = function(text, tx, ty, maxWidth) {
+Bitmap.prototype._drawTextOutline = function (text, tx, ty, maxWidth) {
     const context = this.context;
     context.strokeStyle = this.outlineColor;
     context.lineWidth = this.outlineWidth;
@@ -1733,13 +1733,13 @@ Bitmap.prototype._drawTextOutline = function(text, tx, ty, maxWidth) {
     context.strokeText(text, tx, ty, maxWidth);
 };
 
-Bitmap.prototype._drawTextBody = function(text, tx, ty, maxWidth) {
+Bitmap.prototype._drawTextBody = function (text, tx, ty, maxWidth) {
     const context = this.context;
     context.fillStyle = this.textColor;
     context.fillText(text, tx, ty, maxWidth);
 };
 
-Bitmap.prototype._createCanvas = function(width, height) {
+Bitmap.prototype._createCanvas = function (width, height) {
     this._canvas = document.createElement("canvas");
     this._context = this._canvas.getContext("2d");
     this._canvas.width = width;
@@ -1747,7 +1747,7 @@ Bitmap.prototype._createCanvas = function(width, height) {
     this._createBaseTexture(this._canvas);
 };
 
-Bitmap.prototype._ensureCanvas = function() {
+Bitmap.prototype._ensureCanvas = function () {
     if (!this._canvas) {
         if (this._image) {
             this._createCanvas(this._image.width, this._image.height);
@@ -1758,7 +1758,7 @@ Bitmap.prototype._ensureCanvas = function() {
     }
 };
 
-Bitmap.prototype._destroyCanvas = function() {
+Bitmap.prototype._destroyCanvas = function () {
     if (this._canvas) {
         this._canvas.width = 0;
         this._canvas.height = 0;
@@ -1766,7 +1766,7 @@ Bitmap.prototype._destroyCanvas = function() {
     }
 };
 
-Bitmap.prototype._createBaseTexture = function(source) {
+Bitmap.prototype._createBaseTexture = function (source) {
     this._baseTexture = new PIXI.BaseTexture(source);
     this._baseTexture.mipmap = false;
     this._baseTexture.width = source.width;
@@ -1774,7 +1774,7 @@ Bitmap.prototype._createBaseTexture = function(source) {
     this._updateScaleMode();
 };
 
-Bitmap.prototype._updateScaleMode = function() {
+Bitmap.prototype._updateScaleMode = function () {
     if (this._baseTexture) {
         if (this._smooth) {
             this._baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR;
@@ -1784,7 +1784,7 @@ Bitmap.prototype._updateScaleMode = function() {
     }
 };
 
-Bitmap.prototype._startLoading = function() {
+Bitmap.prototype._startLoading = function () {
     this._image = new Image();
     this._image.onload = this._onLoad.bind(this);
     this._image.onerror = this._onError.bind(this);
@@ -1797,7 +1797,7 @@ Bitmap.prototype._startLoading = function() {
     }
 };
 
-Bitmap.prototype._startDecrypting = function() {
+Bitmap.prototype._startDecrypting = function () {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", this._url + "_");
     xhr.responseType = "arraybuffer";
@@ -1806,7 +1806,7 @@ Bitmap.prototype._startDecrypting = function() {
     xhr.send();
 };
 
-Bitmap.prototype._onXhrLoad = function(xhr) {
+Bitmap.prototype._onXhrLoad = function (xhr) {
     if (xhr.status < 400) {
         const arrayBuffer = Utils.decryptArrayBuffer(xhr.response);
         const blob = new Blob([arrayBuffer]);
@@ -1816,7 +1816,7 @@ Bitmap.prototype._onXhrLoad = function(xhr) {
     }
 };
 
-Bitmap.prototype._onLoad = function() {
+Bitmap.prototype._onLoad = function () {
     if (Utils.hasEncryptedImages()) {
         URL.revokeObjectURL(this._image.src);
     }
@@ -1825,14 +1825,14 @@ Bitmap.prototype._onLoad = function() {
     this._callLoadListeners();
 };
 
-Bitmap.prototype._callLoadListeners = function() {
+Bitmap.prototype._callLoadListeners = function () {
     while (this._loadListeners.length > 0) {
         const listener = this._loadListeners.shift();
         listener(this);
     }
 };
 
-Bitmap.prototype._onError = function() {
+Bitmap.prototype._onError = function () {
     this._loadingState = "error";
 };
 
@@ -1851,7 +1851,7 @@ function Sprite() {
 Sprite.prototype = Object.create(PIXI.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
-Sprite.prototype.initialize = function(bitmap) {
+Sprite.prototype.initialize = function (bitmap) {
     if (!Sprite._emptyBaseTexture) {
         Sprite._emptyBaseTexture = new PIXI.BaseTexture();
         Sprite._emptyBaseTexture.setSize(1, 1);
@@ -1881,10 +1881,10 @@ Sprite._counter = 0;
  * @name Sprite#bitmap
  */
 Object.defineProperty(Sprite.prototype, "bitmap", {
-    get: function() {
+    get: function () {
         return this._bitmap;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._bitmap !== value) {
             this._bitmap = value;
             this._onBitmapChange();
@@ -1900,10 +1900,10 @@ Object.defineProperty(Sprite.prototype, "bitmap", {
  * @name Sprite#width
  */
 Object.defineProperty(Sprite.prototype, "width", {
-    get: function() {
+    get: function () {
         return this._frame.width;
     },
-    set: function(value) {
+    set: function (value) {
         this._frame.width = value;
         this._refresh();
     },
@@ -1917,10 +1917,10 @@ Object.defineProperty(Sprite.prototype, "width", {
  * @name Sprite#height
  */
 Object.defineProperty(Sprite.prototype, "height", {
-    get: function() {
+    get: function () {
         return this._frame.height;
     },
-    set: function(value) {
+    set: function (value) {
         this._frame.height = value;
         this._refresh();
     },
@@ -1934,10 +1934,10 @@ Object.defineProperty(Sprite.prototype, "height", {
  * @name Sprite#opacity
  */
 Object.defineProperty(Sprite.prototype, "opacity", {
-    get: function() {
+    get: function () {
         return this.alpha * 255;
     },
-    set: function(value) {
+    set: function (value) {
         this.alpha = value.clamp(0, 255) / 255;
     },
     configurable: true
@@ -1950,14 +1950,14 @@ Object.defineProperty(Sprite.prototype, "opacity", {
  * @name Sprite#blendMode
  */
 Object.defineProperty(Sprite.prototype, "blendMode", {
-    get: function() {
+    get: function () {
         if (this._colorFilter) {
             return this._colorFilter.blendMode;
         } else {
             return this._blendMode;
         }
     },
-    set: function(value) {
+    set: function (value) {
         this._blendMode = value;
         if (this._colorFilter) {
             this._colorFilter.blendMode = value;
@@ -1969,7 +1969,7 @@ Object.defineProperty(Sprite.prototype, "blendMode", {
 /**
  * Destroys the sprite.
  */
-Sprite.prototype.destroy = function() {
+Sprite.prototype.destroy = function () {
     const options = { children: true, texture: true };
     PIXI.Sprite.prototype.destroy.call(this, options);
 };
@@ -1977,7 +1977,7 @@ Sprite.prototype.destroy = function() {
 /**
  * Updates the sprite for each frame.
  */
-Sprite.prototype.update = function() {
+Sprite.prototype.update = function () {
     for (const child of this.children) {
         if (child.update) {
             child.update();
@@ -1988,7 +1988,7 @@ Sprite.prototype.update = function() {
 /**
  * Makes the sprite "hidden".
  */
-Sprite.prototype.hide = function() {
+Sprite.prototype.hide = function () {
     this._hidden = true;
     this.updateVisibility();
 };
@@ -1996,7 +1996,7 @@ Sprite.prototype.hide = function() {
 /**
  * Releases the "hidden" state of the sprite.
  */
-Sprite.prototype.show = function() {
+Sprite.prototype.show = function () {
     this._hidden = false;
     this.updateVisibility();
 };
@@ -2004,7 +2004,7 @@ Sprite.prototype.show = function() {
 /**
  * Reflects the "hidden" state of the sprite to the visible state.
  */
-Sprite.prototype.updateVisibility = function() {
+Sprite.prototype.updateVisibility = function () {
     this.visible = !this._hidden;
 };
 
@@ -2014,7 +2014,7 @@ Sprite.prototype.updateVisibility = function() {
  * @param {number} x - The x coordinate of the sprite.
  * @param {number} y - The y coordinate of the sprite.
  */
-Sprite.prototype.move = function(x, y) {
+Sprite.prototype.move = function (x, y) {
     this.x = x;
     this.y = y;
 };
@@ -2027,7 +2027,7 @@ Sprite.prototype.move = function(x, y) {
  * @param {number} width - The width of the frame.
  * @param {number} height - The height of the frame.
  */
-Sprite.prototype.setFrame = function(x, y, width, height) {
+Sprite.prototype.setFrame = function (x, y, width, height) {
     this._refreshFrame = false;
     const frame = this._frame;
     if (
@@ -2049,7 +2049,7 @@ Sprite.prototype.setFrame = function(x, y, width, height) {
  *
  * @param {number} hue - The hue value (-360, 360).
  */
-Sprite.prototype.setHue = function(hue) {
+Sprite.prototype.setHue = function (hue) {
     if (this._hue !== Number(hue)) {
         this._hue = Number(hue);
         this._updateColorFilter();
@@ -2061,7 +2061,7 @@ Sprite.prototype.setHue = function(hue) {
  *
  * @returns {array} The blend color [r, g, b, a].
  */
-Sprite.prototype.getBlendColor = function() {
+Sprite.prototype.getBlendColor = function () {
     return this._blendColor.clone();
 };
 
@@ -2070,7 +2070,7 @@ Sprite.prototype.getBlendColor = function() {
  *
  * @param {array} color - The blend color [r, g, b, a].
  */
-Sprite.prototype.setBlendColor = function(color) {
+Sprite.prototype.setBlendColor = function (color) {
     if (!(color instanceof Array)) {
         throw new Error("Argument must be an array");
     }
@@ -2085,7 +2085,7 @@ Sprite.prototype.setBlendColor = function(color) {
  *
  * @returns {array} The color tone [r, g, b, gray].
  */
-Sprite.prototype.getColorTone = function() {
+Sprite.prototype.getColorTone = function () {
     return this._colorTone.clone();
 };
 
@@ -2094,7 +2094,7 @@ Sprite.prototype.getColorTone = function() {
  *
  * @param {array} tone - The color tone [r, g, b, gray].
  */
-Sprite.prototype.setColorTone = function(tone) {
+Sprite.prototype.setColorTone = function (tone) {
     if (!(tone instanceof Array)) {
         throw new Error("Argument must be an array");
     }
@@ -2104,7 +2104,7 @@ Sprite.prototype.setColorTone = function(tone) {
     }
 };
 
-Sprite.prototype._onBitmapChange = function() {
+Sprite.prototype._onBitmapChange = function () {
     if (this._bitmap) {
         this._refreshFrame = true;
         this._bitmap.addLoadListener(this._onBitmapLoad.bind(this));
@@ -2114,7 +2114,7 @@ Sprite.prototype._onBitmapChange = function() {
     }
 };
 
-Sprite.prototype._onBitmapLoad = function(bitmapLoaded) {
+Sprite.prototype._onBitmapLoad = function (bitmapLoaded) {
     if (bitmapLoaded === this._bitmap) {
         if (this._refreshFrame && this._bitmap) {
             this._refreshFrame = false;
@@ -2125,7 +2125,7 @@ Sprite.prototype._onBitmapLoad = function(bitmapLoaded) {
     this._refresh();
 };
 
-Sprite.prototype._refresh = function() {
+Sprite.prototype._refresh = function () {
     const texture = this.texture;
     const frameX = Math.floor(this._frame.x);
     const frameY = Math.floor(this._frame.y);
@@ -2154,7 +2154,7 @@ Sprite.prototype._refresh = function() {
     }
 };
 
-Sprite.prototype._createColorFilter = function() {
+Sprite.prototype._createColorFilter = function () {
     this._colorFilter = new ColorFilter();
     if (!this.filters) {
         this.filters = [];
@@ -2162,7 +2162,7 @@ Sprite.prototype._createColorFilter = function() {
     this.filters.push(this._colorFilter);
 };
 
-Sprite.prototype._updateColorFilter = function() {
+Sprite.prototype._updateColorFilter = function () {
     if (!this._colorFilter) {
         this._createColorFilter();
     }
@@ -2185,7 +2185,7 @@ function Tilemap() {
 Tilemap.prototype = Object.create(PIXI.Container.prototype);
 Tilemap.prototype.constructor = Tilemap;
 
-Tilemap.prototype.initialize = function() {
+Tilemap.prototype.initialize = function () {
     PIXI.Container.call(this);
 
     this._width = Graphics.width;
@@ -2244,10 +2244,10 @@ Tilemap.prototype.initialize = function() {
  * @name Tilemap#width
  */
 Object.defineProperty(Tilemap.prototype, "width", {
-    get: function() {
+    get: function () {
         return this._width;
     },
-    set: function(value) {
+    set: function (value) {
         this._width = value;
     },
     configurable: true
@@ -2260,10 +2260,10 @@ Object.defineProperty(Tilemap.prototype, "width", {
  * @name Tilemap#height
  */
 Object.defineProperty(Tilemap.prototype, "height", {
-    get: function() {
+    get: function () {
         return this._height;
     },
-    set: function(value) {
+    set: function (value) {
         this._height = value;
     },
     configurable: true
@@ -2272,7 +2272,7 @@ Object.defineProperty(Tilemap.prototype, "height", {
 /**
  * Destroys the tilemap.
  */
-Tilemap.prototype.destroy = function() {
+Tilemap.prototype.destroy = function () {
     const options = { children: true, texture: true };
     PIXI.Container.prototype.destroy.call(this, options);
 };
@@ -2284,7 +2284,7 @@ Tilemap.prototype.destroy = function() {
  * @param {number} height - The height of the map in number of tiles.
  * @param {array} data - The one dimensional array for the map data.
  */
-Tilemap.prototype.setData = function(width, height, data) {
+Tilemap.prototype.setData = function (width, height, data) {
     this._mapWidth = width;
     this._mapHeight = height;
     this._mapData = data;
@@ -2296,7 +2296,7 @@ Tilemap.prototype.setData = function(width, height, data) {
  * @type boolean
  * @returns {boolean} True if the tilemap is ready.
  */
-Tilemap.prototype.isReady = function() {
+Tilemap.prototype.isReady = function () {
     for (const bitmap of this._bitmaps) {
         if (bitmap && !bitmap.isReady()) {
             return false;
@@ -2308,7 +2308,7 @@ Tilemap.prototype.isReady = function() {
 /**
  * Updates the tilemap for each frame.
  */
-Tilemap.prototype.update = function() {
+Tilemap.prototype.update = function () {
     this.animationCount++;
     this.animationFrame = Math.floor(this.animationCount / 30);
     for (const child of this.children) {
@@ -2323,7 +2323,7 @@ Tilemap.prototype.update = function() {
  *
  * @param {array} bitmaps - The array of the tileset bitmaps.
  */
-Tilemap.prototype.setBitmaps = function(bitmaps) {
+Tilemap.prototype.setBitmaps = function (bitmaps) {
     // [Note] We wait for the images to finish loading. Creating textures
     //   from bitmaps that are not yet loaded here brings some maintenance
     //   difficulties. e.g. PIXI overwrites img.onload internally.
@@ -2341,14 +2341,14 @@ Tilemap.prototype.setBitmaps = function(bitmaps) {
 /**
  * Forces to repaint the entire tilemap.
  */
-Tilemap.prototype.refresh = function() {
+Tilemap.prototype.refresh = function () {
     this._needsRepaint = true;
 };
 
 /**
  * Updates the transform on all children of this container for rendering.
  */
-Tilemap.prototype.updateTransform = function() {
+Tilemap.prototype.updateTransform = function () {
     const ox = Math.ceil(this.origin.x);
     const oy = Math.ceil(this.origin.y);
     const startX = Math.floor((ox - this._margin) / this._tileWidth);
@@ -2373,7 +2373,7 @@ Tilemap.prototype.updateTransform = function() {
     PIXI.Container.prototype.updateTransform.call(this);
 };
 
-Tilemap.prototype._createLayers = function() {
+Tilemap.prototype._createLayers = function () {
     /*
      * [Z coordinate]
      *  0 : Lower tiles
@@ -2395,7 +2395,7 @@ Tilemap.prototype._createLayers = function() {
     this._needsRepaint = true;
 };
 
-Tilemap.prototype._updateBitmaps = function() {
+Tilemap.prototype._updateBitmaps = function () {
     if (this._needsBitmapsUpdate && this.isReady()) {
         this._lowerLayer.setBitmaps(this._bitmaps);
         this._needsBitmapsUpdate = false;
@@ -2403,7 +2403,7 @@ Tilemap.prototype._updateBitmaps = function() {
     }
 };
 
-Tilemap.prototype._addAllSpots = function(startX, startY) {
+Tilemap.prototype._addAllSpots = function (startX, startY) {
     this._lowerLayer.clear();
     this._upperLayer.clear();
     const widthWithMatgin = this.width + this._margin * 2;
@@ -2417,7 +2417,7 @@ Tilemap.prototype._addAllSpots = function(startX, startY) {
     }
 };
 
-Tilemap.prototype._addSpot = function(startX, startY, x, y) {
+Tilemap.prototype._addSpot = function (startX, startY, x, y) {
     const mx = startX + x;
     const my = startY + y;
     const dx = x * this._tileWidth;
@@ -2446,7 +2446,7 @@ Tilemap.prototype._addSpot = function(startX, startY, x, y) {
     }
 };
 
-Tilemap.prototype._addSpotTile = function(tileId, dx, dy) {
+Tilemap.prototype._addSpotTile = function (tileId, dx, dy) {
     if (this._isHigherTile(tileId)) {
         this._addTile(this._upperLayer, tileId, dx, dy);
     } else {
@@ -2454,7 +2454,7 @@ Tilemap.prototype._addSpotTile = function(tileId, dx, dy) {
     }
 };
 
-Tilemap.prototype._addTile = function(layer, tileId, dx, dy) {
+Tilemap.prototype._addTile = function (layer, tileId, dx, dy) {
     if (Tilemap.isVisibleTile(tileId)) {
         if (Tilemap.isAutotile(tileId)) {
             this._addAutotile(layer, tileId, dx, dy);
@@ -2464,7 +2464,7 @@ Tilemap.prototype._addTile = function(layer, tileId, dx, dy) {
     }
 };
 
-Tilemap.prototype._addNormalTile = function(layer, tileId, dx, dy) {
+Tilemap.prototype._addNormalTile = function (layer, tileId, dx, dy) {
     let setNumber = 0;
 
     if (Tilemap.isTileA5(tileId)) {
@@ -2481,7 +2481,7 @@ Tilemap.prototype._addNormalTile = function(layer, tileId, dx, dy) {
     layer.addRect(setNumber, sx, sy, dx, dy, w, h);
 };
 
-Tilemap.prototype._addAutotile = function(layer, tileId, dx, dy) {
+Tilemap.prototype._addAutotile = function (layer, tileId, dx, dy) {
     const kind = Tilemap.getAutotileKind(tileId);
     const shape = Tilemap.getAutotileShape(tileId);
     const tx = kind % 8;
@@ -2560,7 +2560,7 @@ Tilemap.prototype._addAutotile = function(layer, tileId, dx, dy) {
     }
 };
 
-Tilemap.prototype._addTableEdge = function(layer, tileId, dx, dy) {
+Tilemap.prototype._addTableEdge = function (layer, tileId, dx, dy) {
     if (Tilemap.isTileA2(tileId)) {
         const autotileTable = Tilemap.FLOOR_AUTOTILE_TABLE;
         const kind = Tilemap.getAutotileKind(tileId);
@@ -2585,7 +2585,7 @@ Tilemap.prototype._addTableEdge = function(layer, tileId, dx, dy) {
     }
 };
 
-Tilemap.prototype._addShadow = function(layer, shadowBits, dx, dy) {
+Tilemap.prototype._addShadow = function (layer, shadowBits, dx, dy) {
     if (shadowBits & 0x0f) {
         const w1 = this._tileWidth / 2;
         const h1 = this._tileHeight / 2;
@@ -2599,7 +2599,7 @@ Tilemap.prototype._addShadow = function(layer, shadowBits, dx, dy) {
     }
 };
 
-Tilemap.prototype._readMapData = function(x, y, z) {
+Tilemap.prototype._readMapData = function (x, y, z) {
     if (this._mapData) {
         const width = this._mapWidth;
         const height = this._mapHeight;
@@ -2619,23 +2619,23 @@ Tilemap.prototype._readMapData = function(x, y, z) {
     }
 };
 
-Tilemap.prototype._isHigherTile = function(tileId) {
+Tilemap.prototype._isHigherTile = function (tileId) {
     return this.flags[tileId] & 0x10;
 };
 
-Tilemap.prototype._isTableTile = function(tileId) {
+Tilemap.prototype._isTableTile = function (tileId) {
     return Tilemap.isTileA2(tileId) && this.flags[tileId] & 0x80;
 };
 
-Tilemap.prototype._isOverpassPosition = function(/*mx, my*/) {
+Tilemap.prototype._isOverpassPosition = function (/*mx, my*/) {
     return false;
 };
 
-Tilemap.prototype._sortChildren = function() {
+Tilemap.prototype._sortChildren = function () {
     this.children.sort(this._compareChildOrder.bind(this));
 };
 
-Tilemap.prototype._compareChildOrder = function(a, b) {
+Tilemap.prototype._compareChildOrder = function (a, b) {
     if (a.z !== b.z) {
         return a.z - b.z;
     } else if (a.y !== b.y) {
@@ -2659,27 +2659,27 @@ Tilemap.TILE_ID_A3 = 4352;
 Tilemap.TILE_ID_A4 = 5888;
 Tilemap.TILE_ID_MAX = 8192;
 
-Tilemap.isVisibleTile = function(tileId) {
+Tilemap.isVisibleTile = function (tileId) {
     return tileId > 0 && tileId < this.TILE_ID_MAX;
 };
 
-Tilemap.isAutotile = function(tileId) {
+Tilemap.isAutotile = function (tileId) {
     return tileId >= this.TILE_ID_A1;
 };
 
-Tilemap.getAutotileKind = function(tileId) {
+Tilemap.getAutotileKind = function (tileId) {
     return Math.floor((tileId - this.TILE_ID_A1) / 48);
 };
 
-Tilemap.getAutotileShape = function(tileId) {
+Tilemap.getAutotileShape = function (tileId) {
     return (tileId - this.TILE_ID_A1) % 48;
 };
 
-Tilemap.makeAutotileId = function(kind, shape) {
+Tilemap.makeAutotileId = function (kind, shape) {
     return this.TILE_ID_A1 + kind * 48 + shape;
 };
 
-Tilemap.isSameKindTile = function(tileID1, tileID2) {
+Tilemap.isSameKindTile = function (tileID1, tileID2) {
     if (this.isAutotile(tileID1) && this.isAutotile(tileID2)) {
         return this.getAutotileKind(tileID1) === this.getAutotileKind(tileID2);
     } else {
@@ -2687,27 +2687,27 @@ Tilemap.isSameKindTile = function(tileID1, tileID2) {
     }
 };
 
-Tilemap.isTileA1 = function(tileId) {
+Tilemap.isTileA1 = function (tileId) {
     return tileId >= this.TILE_ID_A1 && tileId < this.TILE_ID_A2;
 };
 
-Tilemap.isTileA2 = function(tileId) {
+Tilemap.isTileA2 = function (tileId) {
     return tileId >= this.TILE_ID_A2 && tileId < this.TILE_ID_A3;
 };
 
-Tilemap.isTileA3 = function(tileId) {
+Tilemap.isTileA3 = function (tileId) {
     return tileId >= this.TILE_ID_A3 && tileId < this.TILE_ID_A4;
 };
 
-Tilemap.isTileA4 = function(tileId) {
+Tilemap.isTileA4 = function (tileId) {
     return tileId >= this.TILE_ID_A4 && tileId < this.TILE_ID_MAX;
 };
 
-Tilemap.isTileA5 = function(tileId) {
+Tilemap.isTileA5 = function (tileId) {
     return tileId >= this.TILE_ID_A5 && tileId < this.TILE_ID_A1;
 };
 
-Tilemap.isWaterTile = function(tileId) {
+Tilemap.isWaterTile = function (tileId) {
     if (this.isTileA1(tileId)) {
         return !(
             tileId >= this.TILE_ID_A1 + 96 && tileId < this.TILE_ID_A1 + 192
@@ -2717,7 +2717,7 @@ Tilemap.isWaterTile = function(tileId) {
     }
 };
 
-Tilemap.isWaterfallTile = function(tileId) {
+Tilemap.isWaterfallTile = function (tileId) {
     if (tileId >= this.TILE_ID_A1 + 192 && tileId < this.TILE_ID_A2) {
         return this.getAutotileKind(tileId) % 2 === 1;
     } else {
@@ -2725,36 +2725,36 @@ Tilemap.isWaterfallTile = function(tileId) {
     }
 };
 
-Tilemap.isGroundTile = function(tileId) {
+Tilemap.isGroundTile = function (tileId) {
     return (
         this.isTileA1(tileId) || this.isTileA2(tileId) || this.isTileA5(tileId)
     );
 };
 
-Tilemap.isShadowingTile = function(tileId) {
+Tilemap.isShadowingTile = function (tileId) {
     return this.isTileA3(tileId) || this.isTileA4(tileId);
 };
 
-Tilemap.isRoofTile = function(tileId) {
+Tilemap.isRoofTile = function (tileId) {
     return this.isTileA3(tileId) && this.getAutotileKind(tileId) % 16 < 8;
 };
 
-Tilemap.isWallTopTile = function(tileId) {
+Tilemap.isWallTopTile = function (tileId) {
     return this.isTileA4(tileId) && this.getAutotileKind(tileId) % 16 < 8;
 };
 
-Tilemap.isWallSideTile = function(tileId) {
+Tilemap.isWallSideTile = function (tileId) {
     return (
         (this.isTileA3(tileId) || this.isTileA4(tileId)) &&
         this.getAutotileKind(tileId) % 16 >= 8
     );
 };
 
-Tilemap.isWallTile = function(tileId) {
+Tilemap.isWallTile = function (tileId) {
     return this.isWallTopTile(tileId) || this.isWallSideTile(tileId);
 };
 
-Tilemap.isFloorTypeAutotile = function(tileId) {
+Tilemap.isFloorTypeAutotile = function (tileId) {
     return (
         (this.isTileA1(tileId) && !this.isWaterfallTile(tileId)) ||
         this.isTileA2(tileId) ||
@@ -2762,11 +2762,11 @@ Tilemap.isFloorTypeAutotile = function(tileId) {
     );
 };
 
-Tilemap.isWallTypeAutotile = function(tileId) {
+Tilemap.isWallTypeAutotile = function (tileId) {
     return this.isRoofTile(tileId) || this.isWallSideTile(tileId);
 };
 
-Tilemap.isWaterfallTypeAutotile = function(tileId) {
+Tilemap.isWaterfallTypeAutotile = function (tileId) {
     return this.isWaterfallTile(tileId);
 };
 
@@ -2856,14 +2856,14 @@ Tilemap.WATERFALL_AUTOTILE_TABLE = [
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // Internal classes
 
-Tilemap.Layer = function() {
+Tilemap.Layer = function () {
     this.initialize(...arguments);
 };
 
 Tilemap.Layer.prototype = Object.create(PIXI.Container.prototype);
 Tilemap.Layer.prototype.constructor = Tilemap.Layer;
 
-Tilemap.Layer.prototype.initialize = function() {
+Tilemap.Layer.prototype.initialize = function () {
     PIXI.Container.call(this);
     this._elements = [];
     this._indexBuffer = null;
@@ -2881,7 +2881,7 @@ Tilemap.Layer.prototype.initialize = function() {
 Tilemap.Layer.MAX_GL_TEXTURES = 3;
 Tilemap.Layer.VERTEX_STRIDE = 9 * 4;
 
-Tilemap.Layer.prototype.destroy = function() {
+Tilemap.Layer.prototype.destroy = function () {
     if (this._vao) {
         this._vao.destroy();
         this._indexBuffer.destroy();
@@ -2892,21 +2892,21 @@ Tilemap.Layer.prototype.destroy = function() {
     this._vao = null;
 };
 
-Tilemap.Layer.prototype.setBitmaps = function(bitmaps) {
+Tilemap.Layer.prototype.setBitmaps = function (bitmaps) {
     this._images = bitmaps.map(bitmap => bitmap.image || bitmap.canvas);
     this._needsTexturesUpdate = true;
 };
 
-Tilemap.Layer.prototype.clear = function() {
+Tilemap.Layer.prototype.clear = function () {
     this._elements.length = 0;
     this._needsVertexUpdate = true;
 };
 
-Tilemap.Layer.prototype.addRect = function(setNumber, sx, sy, dx, dy, w, h) {
+Tilemap.Layer.prototype.addRect = function (setNumber, sx, sy, dx, dy, w, h) {
     this._elements.push([setNumber, sx, sy, dx, dy, w, h]);
 };
 
-Tilemap.Layer.prototype.render = function(renderer) {
+Tilemap.Layer.prototype.render = function (renderer) {
     const gl = renderer.gl;
     const tilemapRenderer = renderer.plugins.rpgtilemap;
     const shader = tilemapRenderer.getShader();
@@ -2937,7 +2937,7 @@ Tilemap.Layer.prototype.render = function(renderer) {
     }
 };
 
-Tilemap.Layer.prototype.isReady = function() {
+Tilemap.Layer.prototype.isReady = function () {
     if (this._images.length === 0) {
         return false;
     }
@@ -2949,7 +2949,7 @@ Tilemap.Layer.prototype.isReady = function() {
     return true;
 };
 
-Tilemap.Layer.prototype._createVao = function() {
+Tilemap.Layer.prototype._createVao = function () {
     const ib = new PIXI.Buffer(null, true, true);
     const vb = new PIXI.Buffer(null, true, false);
     const stride = Tilemap.Layer.VERTEX_STRIDE;
@@ -2965,7 +2965,7 @@ Tilemap.Layer.prototype._createVao = function() {
         .addAttribute("aDest", vb, 2, false, type, stride, 7 * 4);
 };
 
-Tilemap.Layer.prototype._updateIndexBuffer = function() {
+Tilemap.Layer.prototype._updateIndexBuffer = function () {
     const numElements = this._elements.length;
     if (this._indexArray.length < numElements * 6 * 2) {
         this._indexArray = PIXI.utils.createIndicesForQuads(numElements * 2);
@@ -2973,7 +2973,7 @@ Tilemap.Layer.prototype._updateIndexBuffer = function() {
     }
 };
 
-Tilemap.Layer.prototype._updateVertexBuffer = function() {
+Tilemap.Layer.prototype._updateVertexBuffer = function () {
     const numElements = this._elements.length;
     const required = numElements * Tilemap.Layer.VERTEX_STRIDE;
     if (this._vertexArray.length < required) {
@@ -3036,14 +3036,14 @@ Tilemap.Layer.prototype._updateVertexBuffer = function() {
     this._vertexBuffer.update(vertexArray);
 };
 
-Tilemap.Renderer = function() {
+Tilemap.Renderer = function () {
     this.initialize(...arguments);
 };
 
 Tilemap.Renderer.prototype = Object.create(PIXI.ObjectRenderer.prototype);
 Tilemap.Renderer.prototype.constructor = Tilemap.Renderer;
 
-Tilemap.Renderer.prototype.initialize = function(renderer) {
+Tilemap.Renderer.prototype.initialize = function (renderer) {
     PIXI.ObjectRenderer.call(this, renderer);
     this._shader = null;
     this._images = [];
@@ -3052,24 +3052,24 @@ Tilemap.Renderer.prototype.initialize = function(renderer) {
     this.contextChange();
 };
 
-Tilemap.Renderer.prototype.destroy = function() {
+Tilemap.Renderer.prototype.destroy = function () {
     PIXI.ObjectRenderer.prototype.destroy.call(this);
     this._destroyInternalTextures();
     this._shader.destroy();
     this._shader = null;
 };
 
-Tilemap.Renderer.prototype.getShader = function() {
+Tilemap.Renderer.prototype.getShader = function () {
     return this._shader;
 };
 
-Tilemap.Renderer.prototype.contextChange = function() {
+Tilemap.Renderer.prototype.contextChange = function () {
     this._shader = this._createShader();
     this._images = [];
     this._createInternalTextures();
 };
 
-Tilemap.Renderer.prototype._createShader = function() {
+Tilemap.Renderer.prototype._createShader = function () {
     const vertexSrc =
         "attribute float aTextureId;" +
         "attribute vec4 aFrame;" +
@@ -3117,7 +3117,7 @@ Tilemap.Renderer.prototype._createShader = function() {
     });
 };
 
-Tilemap.Renderer.prototype._createInternalTextures = function() {
+Tilemap.Renderer.prototype._createInternalTextures = function () {
     this._destroyInternalTextures();
     for (let i = 0; i < Tilemap.Layer.MAX_GL_TEXTURES; i++) {
         const baseTexture = new PIXI.BaseRenderTexture();
@@ -3127,14 +3127,14 @@ Tilemap.Renderer.prototype._createInternalTextures = function() {
     }
 };
 
-Tilemap.Renderer.prototype._destroyInternalTextures = function() {
+Tilemap.Renderer.prototype._destroyInternalTextures = function () {
     for (const internalTexture of this._internalTextures) {
         internalTexture.destroy();
     }
     this._internalTextures = [];
 };
 
-Tilemap.Renderer.prototype.updateTextures = function(renderer, images) {
+Tilemap.Renderer.prototype.updateTextures = function (renderer, images) {
     for (let i = 0; i < images.length; i++) {
         const internalTexture = this._internalTextures[i >> 2];
         renderer.texture.bind(internalTexture, 0);
@@ -3146,13 +3146,13 @@ Tilemap.Renderer.prototype.updateTextures = function(renderer, images) {
         gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 0);
         // prettier-ignore
         gl.texSubImage2D(gl.TEXTURE_2D, 0, x, y, 1024, 1024, format, type,
-                         this._clearBuffer);
+            this._clearBuffer);
         gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
         gl.texSubImage2D(gl.TEXTURE_2D, 0, x, y, format, type, images[i]);
     }
 };
 
-Tilemap.Renderer.prototype.bindTextures = function(renderer) {
+Tilemap.Renderer.prototype.bindTextures = function (renderer) {
     for (let ti = 0; ti < Tilemap.Layer.MAX_GL_TEXTURES; ti++) {
         renderer.texture.bind(this._internalTextures[ti], ti);
     }
@@ -3175,7 +3175,7 @@ function TilingSprite() {
 TilingSprite.prototype = Object.create(PIXI.TilingSprite.prototype);
 TilingSprite.prototype.constructor = TilingSprite;
 
-TilingSprite.prototype.initialize = function(bitmap) {
+TilingSprite.prototype.initialize = function (bitmap) {
     if (!TilingSprite._emptyBaseTexture) {
         TilingSprite._emptyBaseTexture = new PIXI.BaseTexture();
         TilingSprite._emptyBaseTexture.setSize(1, 1);
@@ -3207,10 +3207,10 @@ TilingSprite._emptyBaseTexture = null;
  * @name TilingSprite#bitmap
  */
 Object.defineProperty(TilingSprite.prototype, "bitmap", {
-    get: function() {
+    get: function () {
         return this._bitmap;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._bitmap !== value) {
             this._bitmap = value;
             this._onBitmapChange();
@@ -3226,10 +3226,10 @@ Object.defineProperty(TilingSprite.prototype, "bitmap", {
  * @name TilingSprite#opacity
  */
 Object.defineProperty(TilingSprite.prototype, "opacity", {
-    get: function() {
+    get: function () {
         return this.alpha * 255;
     },
-    set: function(value) {
+    set: function (value) {
         this.alpha = value.clamp(0, 255) / 255;
     },
     configurable: true
@@ -3238,7 +3238,7 @@ Object.defineProperty(TilingSprite.prototype, "opacity", {
 /**
  * Destroys the tiling sprite.
  */
-TilingSprite.prototype.destroy = function() {
+TilingSprite.prototype.destroy = function () {
     const options = { children: true, texture: true };
     PIXI.TilingSprite.prototype.destroy.call(this, options);
 };
@@ -3246,7 +3246,7 @@ TilingSprite.prototype.destroy = function() {
 /**
  * Updates the tiling sprite for each frame.
  */
-TilingSprite.prototype.update = function() {
+TilingSprite.prototype.update = function () {
     for (const child of this.children) {
         if (child.update) {
             child.update();
@@ -3262,7 +3262,7 @@ TilingSprite.prototype.update = function() {
  * @param {number} width - The width of the tiling sprite.
  * @param {number} height - The height of the tiling sprite.
  */
-TilingSprite.prototype.move = function(x, y, width, height) {
+TilingSprite.prototype.move = function (x, y, width, height) {
     this.x = x || 0;
     this.y = y || 0;
     this._width = width || 0;
@@ -3277,7 +3277,7 @@ TilingSprite.prototype.move = function(x, y, width, height) {
  * @param {number} width - The width of the frame.
  * @param {number} height - The height of the frame.
  */
-TilingSprite.prototype.setFrame = function(x, y, width, height) {
+TilingSprite.prototype.setFrame = function (x, y, width, height) {
     this._frame.x = x;
     this._frame.y = y;
     this._frame.width = width;
@@ -3288,13 +3288,13 @@ TilingSprite.prototype.setFrame = function(x, y, width, height) {
 /**
  * Updates the transform on all children of this container for rendering.
  */
-TilingSprite.prototype.updateTransform = function() {
+TilingSprite.prototype.updateTransform = function () {
     this.tilePosition.x = Math.round(-this.origin.x);
     this.tilePosition.y = Math.round(-this.origin.y);
     PIXI.TilingSprite.prototype.updateTransform.call(this);
 };
 
-TilingSprite.prototype._onBitmapChange = function() {
+TilingSprite.prototype._onBitmapChange = function () {
     if (this._bitmap) {
         this._bitmap.addLoadListener(this._onBitmapLoad.bind(this));
     } else {
@@ -3302,12 +3302,12 @@ TilingSprite.prototype._onBitmapChange = function() {
     }
 };
 
-TilingSprite.prototype._onBitmapLoad = function() {
+TilingSprite.prototype._onBitmapLoad = function () {
     this.texture.baseTexture = this._bitmap.baseTexture;
     this._refresh();
 };
 
-TilingSprite.prototype._refresh = function() {
+TilingSprite.prototype._refresh = function () {
     const texture = this.texture;
     const frame = this._frame.clone();
     if (frame.width === 0 && frame.height === 0 && this._bitmap) {
@@ -3340,7 +3340,7 @@ function ScreenSprite() {
 ScreenSprite.prototype = Object.create(PIXI.Container.prototype);
 ScreenSprite.prototype.constructor = ScreenSprite;
 
-ScreenSprite.prototype.initialize = function() {
+ScreenSprite.prototype.initialize = function () {
     PIXI.Container.call(this);
     this._graphics = new PIXI.Graphics();
     this.addChild(this._graphics);
@@ -3358,10 +3358,10 @@ ScreenSprite.prototype.initialize = function() {
  * @name ScreenSprite#opacity
  */
 Object.defineProperty(ScreenSprite.prototype, "opacity", {
-    get: function() {
+    get: function () {
         return this.alpha * 255;
     },
-    set: function(value) {
+    set: function (value) {
         this.alpha = value.clamp(0, 255) / 255;
     },
     configurable: true
@@ -3370,7 +3370,7 @@ Object.defineProperty(ScreenSprite.prototype, "opacity", {
 /**
  * Destroys the screen sprite.
  */
-ScreenSprite.prototype.destroy = function() {
+ScreenSprite.prototype.destroy = function () {
     const options = { children: true, texture: true };
     PIXI.Container.prototype.destroy.call(this, options);
 };
@@ -3378,14 +3378,14 @@ ScreenSprite.prototype.destroy = function() {
 /**
  * Sets black to the color of the screen sprite.
  */
-ScreenSprite.prototype.setBlack = function() {
+ScreenSprite.prototype.setBlack = function () {
     this.setColor(0, 0, 0);
 };
 
 /**
  * Sets white to the color of the screen sprite.
  */
-ScreenSprite.prototype.setWhite = function() {
+ScreenSprite.prototype.setWhite = function () {
     this.setColor(255, 255, 255);
 };
 
@@ -3396,7 +3396,7 @@ ScreenSprite.prototype.setWhite = function() {
  * @param {number} g - The green value in the range (0, 255).
  * @param {number} b - The blue value in the range (0, 255).
  */
-ScreenSprite.prototype.setColor = function(r, g, b) {
+ScreenSprite.prototype.setColor = function (r, g, b) {
     if (this._red !== r || this._green !== g || this._blue !== b) {
         r = Math.round(r || 0).clamp(0, 255);
         g = Math.round(g || 0).clamp(0, 255);
@@ -3425,7 +3425,7 @@ function Window() {
 Window.prototype = Object.create(PIXI.Container.prototype);
 Window.prototype.constructor = Window;
 
-Window.prototype.initialize = function() {
+Window.prototype.initialize = function () {
     PIXI.Container.call(this);
 
     this._isWindow = true;
@@ -3510,10 +3510,10 @@ Window.prototype.initialize = function() {
  * @name Window#windowskin
  */
 Object.defineProperty(Window.prototype, "windowskin", {
-    get: function() {
+    get: function () {
         return this._windowskin;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._windowskin !== value) {
             this._windowskin = value;
             this._windowskin.addLoadListener(this._onWindowskinLoad.bind(this));
@@ -3529,10 +3529,10 @@ Object.defineProperty(Window.prototype, "windowskin", {
  * @name Window#contents
  */
 Object.defineProperty(Window.prototype, "contents", {
-    get: function() {
+    get: function () {
         return this._contentsSprite.bitmap;
     },
-    set: function(value) {
+    set: function (value) {
         this._contentsSprite.bitmap = value;
     },
     configurable: true
@@ -3545,10 +3545,10 @@ Object.defineProperty(Window.prototype, "contents", {
  * @name Window#contentsBack
  */
 Object.defineProperty(Window.prototype, "contentsBack", {
-    get: function() {
+    get: function () {
         return this._contentsBackSprite.bitmap;
     },
-    set: function(value) {
+    set: function (value) {
         this._contentsBackSprite.bitmap = value;
     },
     configurable: true
@@ -3561,10 +3561,10 @@ Object.defineProperty(Window.prototype, "contentsBack", {
  * @name Window#width
  */
 Object.defineProperty(Window.prototype, "width", {
-    get: function() {
+    get: function () {
         return this._width;
     },
-    set: function(value) {
+    set: function (value) {
         this._width = value;
         this._refreshAllParts();
     },
@@ -3578,10 +3578,10 @@ Object.defineProperty(Window.prototype, "width", {
  * @name Window#height
  */
 Object.defineProperty(Window.prototype, "height", {
-    get: function() {
+    get: function () {
         return this._height;
     },
-    set: function(value) {
+    set: function (value) {
         this._height = value;
         this._refreshAllParts();
     },
@@ -3595,10 +3595,10 @@ Object.defineProperty(Window.prototype, "height", {
  * @name Window#padding
  */
 Object.defineProperty(Window.prototype, "padding", {
-    get: function() {
+    get: function () {
         return this._padding;
     },
-    set: function(value) {
+    set: function (value) {
         this._padding = value;
         this._refreshAllParts();
     },
@@ -3612,10 +3612,10 @@ Object.defineProperty(Window.prototype, "padding", {
  * @name Window#margin
  */
 Object.defineProperty(Window.prototype, "margin", {
-    get: function() {
+    get: function () {
         return this._margin;
     },
-    set: function(value) {
+    set: function (value) {
         this._margin = value;
         this._refreshAllParts();
     },
@@ -3629,10 +3629,10 @@ Object.defineProperty(Window.prototype, "margin", {
  * @name Window#opacity
  */
 Object.defineProperty(Window.prototype, "opacity", {
-    get: function() {
+    get: function () {
         return this._container.alpha * 255;
     },
-    set: function(value) {
+    set: function (value) {
         this._container.alpha = value.clamp(0, 255) / 255;
     },
     configurable: true
@@ -3645,10 +3645,10 @@ Object.defineProperty(Window.prototype, "opacity", {
  * @name Window#backOpacity
  */
 Object.defineProperty(Window.prototype, "backOpacity", {
-    get: function() {
+    get: function () {
         return this._backSprite.alpha * 255;
     },
-    set: function(value) {
+    set: function (value) {
         this._backSprite.alpha = value.clamp(0, 255) / 255;
     },
     configurable: true
@@ -3661,10 +3661,10 @@ Object.defineProperty(Window.prototype, "backOpacity", {
  * @name Window#contentsOpacity
  */
 Object.defineProperty(Window.prototype, "contentsOpacity", {
-    get: function() {
+    get: function () {
         return this._contentsSprite.alpha * 255;
     },
-    set: function(value) {
+    set: function (value) {
         this._contentsSprite.alpha = value.clamp(0, 255) / 255;
     },
     configurable: true
@@ -3677,10 +3677,10 @@ Object.defineProperty(Window.prototype, "contentsOpacity", {
  * @name Window#openness
  */
 Object.defineProperty(Window.prototype, "openness", {
-    get: function() {
+    get: function () {
         return this._openness;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._openness !== value) {
             this._openness = value.clamp(0, 255);
             this._container.scale.y = this._openness / 255;
@@ -3698,7 +3698,7 @@ Object.defineProperty(Window.prototype, "openness", {
  * @name Window#innerWidth
  */
 Object.defineProperty(Window.prototype, "innerWidth", {
-    get: function() {
+    get: function () {
         return Math.max(0, this._width - this._padding * 2);
     },
     configurable: true
@@ -3712,7 +3712,7 @@ Object.defineProperty(Window.prototype, "innerWidth", {
  * @name Window#innerHeight
  */
 Object.defineProperty(Window.prototype, "innerHeight", {
-    get: function() {
+    get: function () {
         return Math.max(0, this._height - this._padding * 2);
     },
     configurable: true
@@ -3726,7 +3726,7 @@ Object.defineProperty(Window.prototype, "innerHeight", {
  * @name Window#innerRect
  */
 Object.defineProperty(Window.prototype, "innerRect", {
-    get: function() {
+    get: function () {
         return new Rectangle(
             this._padding,
             this._padding,
@@ -3740,7 +3740,7 @@ Object.defineProperty(Window.prototype, "innerRect", {
 /**
  * Destroys the window.
  */
-Window.prototype.destroy = function() {
+Window.prototype.destroy = function () {
     const options = { children: true, texture: true };
     PIXI.Container.prototype.destroy.call(this, options);
 };
@@ -3748,7 +3748,7 @@ Window.prototype.destroy = function() {
 /**
  * Updates the window for each frame.
  */
-Window.prototype.update = function() {
+Window.prototype.update = function () {
     if (this.active) {
         this._animationCount++;
     }
@@ -3767,7 +3767,7 @@ Window.prototype.update = function() {
  * @param {number} width - The width of the window.
  * @param {number} height - The height of the window.
  */
-Window.prototype.move = function(x, y, width, height) {
+Window.prototype.move = function (x, y, width, height) {
     this.x = x || 0;
     this.y = y || 0;
     if (this._width !== width || this._height !== height) {
@@ -3782,7 +3782,7 @@ Window.prototype.move = function(x, y, width, height) {
  *
  * @returns {boolean} True if the window is open.
  */
-Window.prototype.isOpen = function() {
+Window.prototype.isOpen = function () {
     return this._openness >= 255;
 };
 
@@ -3791,7 +3791,7 @@ Window.prototype.isOpen = function() {
  *
  * @returns {boolean} True if the window is closed.
  */
-Window.prototype.isClosed = function() {
+Window.prototype.isClosed = function () {
     return this._openness <= 0;
 };
 
@@ -3803,7 +3803,7 @@ Window.prototype.isClosed = function() {
  * @param {number} width - The width of the cursor.
  * @param {number} height - The height of the cursor.
  */
-Window.prototype.setCursorRect = function(x, y, width, height) {
+Window.prototype.setCursorRect = function (x, y, width, height) {
     const cw = Math.floor(width || 0);
     const ch = Math.floor(height || 0);
     this._cursorRect.x = Math.floor(x || 0);
@@ -3821,7 +3821,7 @@ Window.prototype.setCursorRect = function(x, y, width, height) {
  * @param {number} x - The amount of horizontal movement.
  * @param {number} y - The amount of vertical movement.
  */
-Window.prototype.moveCursorBy = function(x, y) {
+Window.prototype.moveCursorBy = function (x, y) {
     this._cursorRect.x += x;
     this._cursorRect.y += y;
 };
@@ -3832,7 +3832,7 @@ Window.prototype.moveCursorBy = function(x, y) {
  * @param {number} x - The amount of horizontal movement.
  * @param {number} y - The amount of vertical movement.
  */
-Window.prototype.moveInnerChildrenBy = function(x, y) {
+Window.prototype.moveInnerChildrenBy = function (x, y) {
     for (const child of this._innerChildren) {
         child.x += x;
         child.y += y;
@@ -3846,7 +3846,7 @@ Window.prototype.moveInnerChildrenBy = function(x, y) {
  * @param {number} g - The green value in the range (-255, 255).
  * @param {number} b - The blue value in the range (-255, 255).
  */
-Window.prototype.setTone = function(r, g, b) {
+Window.prototype.setTone = function (r, g, b) {
     const tone = this._colorTone;
     if (r !== tone[0] || g !== tone[1] || b !== tone[2]) {
         this._colorTone = [r, g, b, 0];
@@ -3860,7 +3860,7 @@ Window.prototype.setTone = function(r, g, b) {
  * @param {object} child - The child to add.
  * @returns {object} The child that was added.
  */
-Window.prototype.addChildToBack = function(child) {
+Window.prototype.addChildToBack = function (child) {
     const containerIndex = this.children.indexOf(this._container);
     return this.addChildAt(child, containerIndex + 1);
 };
@@ -3871,7 +3871,7 @@ Window.prototype.addChildToBack = function(child) {
  * @param {object} child - The child to add.
  * @returns {object} The child that was added.
  */
-Window.prototype.addInnerChild = function(child) {
+Window.prototype.addInnerChild = function (child) {
     this._innerChildren.push(child);
     return this._clientArea.addChild(child);
 };
@@ -3879,7 +3879,7 @@ Window.prototype.addInnerChild = function(child) {
 /**
  * Updates the transform on all children of this container for rendering.
  */
-Window.prototype.updateTransform = function() {
+Window.prototype.updateTransform = function () {
     this._updateClientArea();
     this._updateFrame();
     this._updateContentsBack();
@@ -3894,7 +3894,7 @@ Window.prototype.updateTransform = function() {
 /**
  * Draws the window shape into PIXI.Graphics object. Used by WindowLayer.
  */
-Window.prototype.drawShape = function(graphics) {
+Window.prototype.drawShape = function (graphics) {
     if (graphics) {
         const width = this.width;
         const height = (this.height * this._openness) / 255;
@@ -3906,7 +3906,7 @@ Window.prototype.drawShape = function(graphics) {
     }
 };
 
-Window.prototype._createAllParts = function() {
+Window.prototype._createAllParts = function () {
     this._createContainer();
     this._createBackSprite();
     this._createFrameSprite();
@@ -3918,18 +3918,18 @@ Window.prototype._createAllParts = function() {
     this._createPauseSignSprites();
 };
 
-Window.prototype._createContainer = function() {
+Window.prototype._createContainer = function () {
     this._container = new PIXI.Container();
     this.addChild(this._container);
 };
 
-Window.prototype._createBackSprite = function() {
+Window.prototype._createBackSprite = function () {
     this._backSprite = new Sprite();
     this._backSprite.addChild(new TilingSprite());
     this._container.addChild(this._backSprite);
 };
 
-Window.prototype._createFrameSprite = function() {
+Window.prototype._createFrameSprite = function () {
     this._frameSprite = new Sprite();
     for (let i = 0; i < 8; i++) {
         this._frameSprite.addChild(new Sprite());
@@ -3937,7 +3937,7 @@ Window.prototype._createFrameSprite = function() {
     this._container.addChild(this._frameSprite);
 };
 
-Window.prototype._createClientArea = function() {
+Window.prototype._createClientArea = function () {
     this._clientArea = new Sprite();
     this._clientArea.filters = [new PIXI.filters.AlphaFilter()];
     this._clientArea.filterArea = new Rectangle();
@@ -3945,12 +3945,12 @@ Window.prototype._createClientArea = function() {
     this.addChild(this._clientArea);
 };
 
-Window.prototype._createContentsBackSprite = function() {
+Window.prototype._createContentsBackSprite = function () {
     this._contentsBackSprite = new Sprite();
     this._clientArea.addChild(this._contentsBackSprite);
 };
 
-Window.prototype._createCursorSprite = function() {
+Window.prototype._createCursorSprite = function () {
     this._cursorSprite = new Sprite();
     for (let i = 0; i < 9; i++) {
         this._cursorSprite.addChild(new Sprite());
@@ -3958,28 +3958,28 @@ Window.prototype._createCursorSprite = function() {
     this._clientArea.addChild(this._cursorSprite);
 };
 
-Window.prototype._createContentsSprite = function() {
+Window.prototype._createContentsSprite = function () {
     this._contentsSprite = new Sprite();
     this._clientArea.addChild(this._contentsSprite);
 };
 
-Window.prototype._createArrowSprites = function() {
+Window.prototype._createArrowSprites = function () {
     this._downArrowSprite = new Sprite();
     this.addChild(this._downArrowSprite);
     this._upArrowSprite = new Sprite();
     this.addChild(this._upArrowSprite);
 };
 
-Window.prototype._createPauseSignSprites = function() {
+Window.prototype._createPauseSignSprites = function () {
     this._pauseSignSprite = new Sprite();
     this.addChild(this._pauseSignSprite);
 };
 
-Window.prototype._onWindowskinLoad = function() {
+Window.prototype._onWindowskinLoad = function () {
     this._refreshAllParts();
 };
 
-Window.prototype._refreshAllParts = function() {
+Window.prototype._refreshAllParts = function () {
     this._refreshBack();
     this._refreshFrame();
     this._refreshCursor();
@@ -3987,7 +3987,7 @@ Window.prototype._refreshAllParts = function() {
     this._refreshPauseSign();
 };
 
-Window.prototype._refreshBack = function() {
+Window.prototype._refreshBack = function () {
     const m = this._margin;
     const w = Math.max(0, this._width - m * 2);
     const h = Math.max(0, this._height - m * 2);
@@ -4007,7 +4007,7 @@ Window.prototype._refreshBack = function() {
     sprite.setColorTone(this._colorTone);
 };
 
-Window.prototype._refreshFrame = function() {
+Window.prototype._refreshFrame = function () {
     const drect = { x: 0, y: 0, width: this._width, height: this._height };
     const srect = { x: 96, y: 0, width: 96, height: 96 };
     const m = 24;
@@ -4017,7 +4017,7 @@ Window.prototype._refreshFrame = function() {
     this._setRectPartsGeometry(this._frameSprite, srect, drect, m);
 };
 
-Window.prototype._refreshCursor = function() {
+Window.prototype._refreshCursor = function () {
     const drect = this._cursorRect.clone();
     const srect = { x: 96, y: 96, width: 48, height: 48 };
     const m = 4;
@@ -4027,7 +4027,7 @@ Window.prototype._refreshCursor = function() {
     this._setRectPartsGeometry(this._cursorSprite, srect, drect, m);
 };
 
-Window.prototype._setRectPartsGeometry = function(sprite, srect, drect, m) {
+Window.prototype._setRectPartsGeometry = function (sprite, srect, drect, m) {
     const sx = srect.x;
     const sy = srect.y;
     const sw = srect.width;
@@ -4077,7 +4077,7 @@ Window.prototype._setRectPartsGeometry = function(sprite, srect, drect, m) {
     }
 };
 
-Window.prototype._refreshArrows = function() {
+Window.prototype._refreshArrows = function () {
     const w = this._width;
     const h = this._height;
     const p = 24;
@@ -4096,7 +4096,7 @@ Window.prototype._refreshArrows = function() {
     this._upArrowSprite.move(w / 2, q);
 };
 
-Window.prototype._refreshPauseSign = function() {
+Window.prototype._refreshPauseSign = function () {
     const sx = 144;
     const sy = 96;
     const p = 24;
@@ -4108,7 +4108,7 @@ Window.prototype._refreshPauseSign = function() {
     this._pauseSignSprite.alpha = 0;
 };
 
-Window.prototype._updateClientArea = function() {
+Window.prototype._updateClientArea = function () {
     const pad = this._padding;
     this._clientArea.move(pad, pad);
     this._clientArea.x = pad - this.origin.x;
@@ -4120,25 +4120,25 @@ Window.prototype._updateClientArea = function() {
     }
 };
 
-Window.prototype._updateFrame = function() {
+Window.prototype._updateFrame = function () {
     this._frameSprite.visible = this.frameVisible;
 };
 
-Window.prototype._updateContentsBack = function() {
+Window.prototype._updateContentsBack = function () {
     const bitmap = this._contentsBackSprite.bitmap;
     if (bitmap) {
         this._contentsBackSprite.setFrame(0, 0, bitmap.width, bitmap.height);
     }
 };
 
-Window.prototype._updateCursor = function() {
+Window.prototype._updateCursor = function () {
     this._cursorSprite.alpha = this._makeCursorAlpha();
     this._cursorSprite.visible = this.isOpen() && this.cursorVisible;
     this._cursorSprite.x = this._cursorRect.x;
     this._cursorSprite.y = this._cursorRect.y;
 };
 
-Window.prototype._makeCursorAlpha = function() {
+Window.prototype._makeCursorAlpha = function () {
     const blinkCount = this._animationCount % 40;
     const baseAlpha = this.contentsOpacity / 255;
     if (this.active) {
@@ -4151,19 +4151,19 @@ Window.prototype._makeCursorAlpha = function() {
     return baseAlpha;
 };
 
-Window.prototype._updateContents = function() {
+Window.prototype._updateContents = function () {
     const bitmap = this._contentsSprite.bitmap;
     if (bitmap) {
         this._contentsSprite.setFrame(0, 0, bitmap.width, bitmap.height);
     }
 };
 
-Window.prototype._updateArrows = function() {
+Window.prototype._updateArrows = function () {
     this._downArrowSprite.visible = this.isOpen() && this.downArrowVisible;
     this._upArrowSprite.visible = this.isOpen() && this.upArrowVisible;
 };
 
-Window.prototype._updatePauseSign = function() {
+Window.prototype._updatePauseSign = function () {
     const sprite = this._pauseSignSprite;
     const x = Math.floor(this._animationCount / 16) % 2;
     const y = Math.floor(this._animationCount / 16 / 2) % 2;
@@ -4179,7 +4179,7 @@ Window.prototype._updatePauseSign = function() {
     sprite.visible = this.isOpen();
 };
 
-Window.prototype._updateFilterArea = function() {
+Window.prototype._updateFilterArea = function () {
     const pos = this._clientArea.worldTransform.apply(new Point(0, 0));
     const filterArea = this._clientArea.filterArea;
     filterArea.x = pos.x + this.origin.x;
@@ -4202,14 +4202,14 @@ function WindowLayer() {
 WindowLayer.prototype = Object.create(PIXI.Container.prototype);
 WindowLayer.prototype.constructor = WindowLayer;
 
-WindowLayer.prototype.initialize = function() {
+WindowLayer.prototype.initialize = function () {
     PIXI.Container.call(this);
 };
 
 /**
  * Updates the window layer for each frame.
  */
-WindowLayer.prototype.update = function() {
+WindowLayer.prototype.update = function () {
     for (const child of this.children) {
         if (child.update) {
             child.update();
@@ -4282,7 +4282,7 @@ function Weather() {
 Weather.prototype = Object.create(PIXI.Container.prototype);
 Weather.prototype.constructor = Weather;
 
-Weather.prototype.initialize = function() {
+Weather.prototype.initialize = function () {
     PIXI.Container.call(this);
 
     this._width = Graphics.width;
@@ -4317,7 +4317,7 @@ Weather.prototype.initialize = function() {
 /**
  * Destroys the weather.
  */
-Weather.prototype.destroy = function() {
+Weather.prototype.destroy = function () {
     const options = { children: true, texture: true };
     PIXI.Container.prototype.destroy.call(this, options);
     this._rainBitmap.destroy();
@@ -4328,12 +4328,12 @@ Weather.prototype.destroy = function() {
 /**
  * Updates the weather for each frame.
  */
-Weather.prototype.update = function() {
+Weather.prototype.update = function () {
     this._updateDimmer();
     this._updateAllSprites();
 };
 
-Weather.prototype._createBitmaps = function() {
+Weather.prototype._createBitmaps = function () {
     this._rainBitmap = new Bitmap(1, 60);
     this._rainBitmap.fillAll("white");
     this._stormBitmap = new Bitmap(2, 100);
@@ -4342,17 +4342,17 @@ Weather.prototype._createBitmaps = function() {
     this._snowBitmap.drawCircle(4, 4, 4, "white");
 };
 
-Weather.prototype._createDimmer = function() {
+Weather.prototype._createDimmer = function () {
     this._dimmerSprite = new ScreenSprite();
     this._dimmerSprite.setColor(80, 80, 80);
     this.addChild(this._dimmerSprite);
 };
 
-Weather.prototype._updateDimmer = function() {
+Weather.prototype._updateDimmer = function () {
     this._dimmerSprite.opacity = Math.floor(this.power * 6);
 };
 
-Weather.prototype._updateAllSprites = function() {
+Weather.prototype._updateAllSprites = function () {
     const maxSprites = Math.floor(this.power * 10);
     while (this._sprites.length < maxSprites) {
         this._addSprite();
@@ -4367,18 +4367,18 @@ Weather.prototype._updateAllSprites = function() {
     }
 };
 
-Weather.prototype._addSprite = function() {
+Weather.prototype._addSprite = function () {
     const sprite = new Sprite(this.viewport);
     sprite.opacity = 0;
     this._sprites.push(sprite);
     this.addChild(sprite);
 };
 
-Weather.prototype._removeSprite = function() {
+Weather.prototype._removeSprite = function () {
     this.removeChild(this._sprites.pop());
 };
 
-Weather.prototype._updateSprite = function(sprite) {
+Weather.prototype._updateSprite = function (sprite) {
     switch (this.type) {
         case "rain":
             this._updateRainSprite(sprite);
@@ -4395,7 +4395,7 @@ Weather.prototype._updateSprite = function(sprite) {
     }
 };
 
-Weather.prototype._updateRainSprite = function(sprite) {
+Weather.prototype._updateRainSprite = function (sprite) {
     sprite.bitmap = this._rainBitmap;
     sprite.rotation = Math.PI / 16;
     sprite.ax -= 6 * Math.sin(sprite.rotation);
@@ -4403,7 +4403,7 @@ Weather.prototype._updateRainSprite = function(sprite) {
     sprite.opacity -= 6;
 };
 
-Weather.prototype._updateStormSprite = function(sprite) {
+Weather.prototype._updateStormSprite = function (sprite) {
     sprite.bitmap = this._stormBitmap;
     sprite.rotation = Math.PI / 8;
     sprite.ax -= 8 * Math.sin(sprite.rotation);
@@ -4411,7 +4411,7 @@ Weather.prototype._updateStormSprite = function(sprite) {
     sprite.opacity -= 8;
 };
 
-Weather.prototype._updateSnowSprite = function(sprite) {
+Weather.prototype._updateSnowSprite = function (sprite) {
     sprite.bitmap = this._snowBitmap;
     sprite.rotation = Math.PI / 16;
     sprite.ax -= 3 * Math.sin(sprite.rotation);
@@ -4419,7 +4419,7 @@ Weather.prototype._updateSnowSprite = function(sprite) {
     sprite.opacity -= 3;
 };
 
-Weather.prototype._rebornSprite = function(sprite) {
+Weather.prototype._rebornSprite = function (sprite) {
     sprite.ax = Math.randomInt(Graphics.width + 100) - 100 + this.origin.x;
     sprite.ay = Math.randomInt(Graphics.height + 200) - 200 + this.origin.y;
     sprite.opacity = 160 + Math.randomInt(60);
@@ -4439,7 +4439,7 @@ function ColorFilter() {
 ColorFilter.prototype = Object.create(PIXI.Filter.prototype);
 ColorFilter.prototype.constructor = ColorFilter;
 
-ColorFilter.prototype.initialize = function() {
+ColorFilter.prototype.initialize = function () {
     PIXI.Filter.call(this, null, this._fragmentSrc());
     this.uniforms.hue = 0;
     this.uniforms.colorTone = [0, 0, 0, 0];
@@ -4452,7 +4452,7 @@ ColorFilter.prototype.initialize = function() {
  *
  * @param {number} hue - The hue value (-360, 360).
  */
-ColorFilter.prototype.setHue = function(hue) {
+ColorFilter.prototype.setHue = function (hue) {
     this.uniforms.hue = Number(hue);
 };
 
@@ -4461,7 +4461,7 @@ ColorFilter.prototype.setHue = function(hue) {
  *
  * @param {array} tone - The color tone [r, g, b, gray].
  */
-ColorFilter.prototype.setColorTone = function(tone) {
+ColorFilter.prototype.setColorTone = function (tone) {
     if (!(tone instanceof Array)) {
         throw new Error("Argument must be an array");
     }
@@ -4473,7 +4473,7 @@ ColorFilter.prototype.setColorTone = function(tone) {
  *
  * @param {array} color - The blend color [r, g, b, a].
  */
-ColorFilter.prototype.setBlendColor = function(color) {
+ColorFilter.prototype.setBlendColor = function (color) {
     if (!(color instanceof Array)) {
         throw new Error("Argument must be an array");
     }
@@ -4485,11 +4485,11 @@ ColorFilter.prototype.setBlendColor = function(color) {
  *
  * @param {number} brightness - The brightness (0 to 255).
  */
-ColorFilter.prototype.setBrightness = function(brightness) {
+ColorFilter.prototype.setBrightness = function (brightness) {
     this.uniforms.brightness = Number(brightness);
 };
 
-ColorFilter.prototype._fragmentSrc = function() {
+ColorFilter.prototype._fragmentSrc = function () {
     const src =
         "varying vec2 vTextureCoord;" +
         "uniform sampler2D uSampler;" +
@@ -4590,14 +4590,14 @@ function Stage() {
 Stage.prototype = Object.create(PIXI.Container.prototype);
 Stage.prototype.constructor = Stage;
 
-Stage.prototype.initialize = function() {
+Stage.prototype.initialize = function () {
     PIXI.Container.call(this);
 };
 
 /**
  * Destroys the stage.
  */
-Stage.prototype.destroy = function() {
+Stage.prototype.destroy = function () {
     const options = { children: true, texture: true };
     PIXI.Container.prototype.destroy.call(this, options);
 };
@@ -4613,7 +4613,7 @@ function WebAudio() {
     this.initialize(...arguments);
 }
 
-WebAudio.prototype.initialize = function(url) {
+WebAudio.prototype.initialize = function (url) {
     this.clear();
     this._url = url;
     this._startLoading();
@@ -4624,7 +4624,7 @@ WebAudio.prototype.initialize = function(url) {
  *
  * @returns {boolean} True if the audio system is available.
  */
-WebAudio.initialize = function() {
+WebAudio.initialize = function () {
     this._context = null;
     this._masterGainNode = null;
     this._masterVolume = 1;
@@ -4639,12 +4639,12 @@ WebAudio.initialize = function() {
  *
  * @param {number} value - The master volume (0 to 1).
  */
-WebAudio.setMasterVolume = function(value) {
+WebAudio.setMasterVolume = function (value) {
     this._masterVolume = value;
     this._resetVolume();
 };
 
-WebAudio._createContext = function() {
+WebAudio._createContext = function () {
     try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         this._context = new AudioContext();
@@ -4653,11 +4653,11 @@ WebAudio._createContext = function() {
     }
 };
 
-WebAudio._currentTime = function() {
+WebAudio._currentTime = function () {
     return this._context ? this._context.currentTime : 0;
 };
 
-WebAudio._createMasterGainNode = function() {
+WebAudio._createMasterGainNode = function () {
     const context = this._context;
     if (context) {
         this._masterGainNode = context.createGain();
@@ -4666,7 +4666,7 @@ WebAudio._createMasterGainNode = function() {
     }
 };
 
-WebAudio._setupEventHandlers = function() {
+WebAudio._setupEventHandlers = function () {
     const onUserGesture = this._onUserGesture.bind(this);
     const onVisibilityChange = this._onVisibilityChange.bind(this);
     document.addEventListener("keydown", onUserGesture);
@@ -4675,14 +4675,14 @@ WebAudio._setupEventHandlers = function() {
     document.addEventListener("visibilitychange", onVisibilityChange);
 };
 
-WebAudio._onUserGesture = function() {
+WebAudio._onUserGesture = function () {
     const context = this._context;
     if (context && context.state === "suspended") {
         context.resume();
     }
 };
 
-WebAudio._onVisibilityChange = function() {
+WebAudio._onVisibilityChange = function () {
     if (document.visibilityState === "hidden") {
         this._onHide();
     } else {
@@ -4690,23 +4690,23 @@ WebAudio._onVisibilityChange = function() {
     }
 };
 
-WebAudio._onHide = function() {
+WebAudio._onHide = function () {
     if (this._shouldMuteOnHide()) {
         this._fadeOut(1);
     }
 };
 
-WebAudio._onShow = function() {
+WebAudio._onShow = function () {
     if (this._shouldMuteOnHide()) {
         this._fadeIn(1);
     }
 };
 
-WebAudio._shouldMuteOnHide = function() {
+WebAudio._shouldMuteOnHide = function () {
     return Utils.isMobileDevice() && !window.navigator.standalone;
 };
 
-WebAudio._resetVolume = function() {
+WebAudio._resetVolume = function () {
     if (this._masterGainNode) {
         const gain = this._masterGainNode.gain;
         const volume = this._masterVolume;
@@ -4715,7 +4715,7 @@ WebAudio._resetVolume = function() {
     }
 };
 
-WebAudio._fadeIn = function(duration) {
+WebAudio._fadeIn = function (duration) {
     if (this._masterGainNode) {
         const gain = this._masterGainNode.gain;
         const volume = this._masterVolume;
@@ -4725,7 +4725,7 @@ WebAudio._fadeIn = function(duration) {
     }
 };
 
-WebAudio._fadeOut = function(duration) {
+WebAudio._fadeOut = function (duration) {
     if (this._masterGainNode) {
         const gain = this._masterGainNode.gain;
         const volume = this._masterVolume;
@@ -4738,7 +4738,7 @@ WebAudio._fadeOut = function(duration) {
 /**
  * Clears the audio data.
  */
-WebAudio.prototype.clear = function() {
+WebAudio.prototype.clear = function () {
     this.stop();
     this._data = null;
     this._fetchedSize = 0;
@@ -4776,7 +4776,7 @@ WebAudio.prototype.clear = function() {
  * @name WebAudio#url
  */
 Object.defineProperty(WebAudio.prototype, "url", {
-    get: function() {
+    get: function () {
         return this._url;
     },
     configurable: true
@@ -4789,10 +4789,10 @@ Object.defineProperty(WebAudio.prototype, "url", {
  * @name WebAudio#volume
  */
 Object.defineProperty(WebAudio.prototype, "volume", {
-    get: function() {
+    get: function () {
         return this._volume;
     },
-    set: function(value) {
+    set: function (value) {
         this._volume = value;
         if (this._gainNode) {
             this._gainNode.gain.setValueAtTime(
@@ -4811,10 +4811,10 @@ Object.defineProperty(WebAudio.prototype, "volume", {
  * @name WebAudio#pitch
  */
 Object.defineProperty(WebAudio.prototype, "pitch", {
-    get: function() {
+    get: function () {
         return this._pitch;
     },
-    set: function(value) {
+    set: function (value) {
         if (this._pitch !== value) {
             this._pitch = value;
             if (this.isPlaying()) {
@@ -4832,10 +4832,10 @@ Object.defineProperty(WebAudio.prototype, "pitch", {
  * @name WebAudio#pan
  */
 Object.defineProperty(WebAudio.prototype, "pan", {
-    get: function() {
+    get: function () {
         return this._pan;
     },
-    set: function(value) {
+    set: function (value) {
         this._pan = value;
         this._updatePanner();
     },
@@ -4847,7 +4847,7 @@ Object.defineProperty(WebAudio.prototype, "pan", {
  *
  * @returns {boolean} True if the audio data is ready to play.
  */
-WebAudio.prototype.isReady = function() {
+WebAudio.prototype.isReady = function () {
     return this._buffers && this._buffers.length > 0;
 };
 
@@ -4856,7 +4856,7 @@ WebAudio.prototype.isReady = function() {
  *
  * @returns {boolean} True if a loading error has occurred.
  */
-WebAudio.prototype.isError = function() {
+WebAudio.prototype.isError = function () {
     return this._isError;
 };
 
@@ -4865,7 +4865,7 @@ WebAudio.prototype.isError = function() {
  *
  * @returns {boolean} True if the audio is playing.
  */
-WebAudio.prototype.isPlaying = function() {
+WebAudio.prototype.isPlaying = function () {
     return this._isPlaying;
 };
 
@@ -4875,7 +4875,7 @@ WebAudio.prototype.isPlaying = function() {
  * @param {boolean} loop - Whether the audio data play in a loop.
  * @param {number} offset - The start position to play in seconds.
  */
-WebAudio.prototype.play = function(loop, offset) {
+WebAudio.prototype.play = function (loop, offset) {
     this._loop = loop;
     if (this.isReady()) {
         offset = offset || 0;
@@ -4889,7 +4889,7 @@ WebAudio.prototype.play = function(loop, offset) {
 /**
  * Stops the audio.
  */
-WebAudio.prototype.stop = function() {
+WebAudio.prototype.stop = function () {
     this._isPlaying = false;
     this._removeEndTimer();
     this._removeNodes();
@@ -4905,7 +4905,7 @@ WebAudio.prototype.stop = function() {
 /**
  * Destroys the audio.
  */
-WebAudio.prototype.destroy = function() {
+WebAudio.prototype.destroy = function () {
     this._destroyDecoder();
     this.clear();
 };
@@ -4915,7 +4915,7 @@ WebAudio.prototype.destroy = function() {
  *
  * @param {number} duration - Fade-in time in seconds.
  */
-WebAudio.prototype.fadeIn = function(duration) {
+WebAudio.prototype.fadeIn = function (duration) {
     if (this.isReady()) {
         if (this._gainNode) {
             const gain = this._gainNode.gain;
@@ -4933,7 +4933,7 @@ WebAudio.prototype.fadeIn = function(duration) {
  *
  * @param {number} duration - Fade-out time in seconds.
  */
-WebAudio.prototype.fadeOut = function(duration) {
+WebAudio.prototype.fadeOut = function (duration) {
     if (this._gainNode) {
         const gain = this._gainNode.gain;
         const currentTime = WebAudio._currentTime();
@@ -4947,7 +4947,7 @@ WebAudio.prototype.fadeOut = function(duration) {
 /**
  * Gets the seek position of the audio.
  */
-WebAudio.prototype.seek = function() {
+WebAudio.prototype.seek = function () {
     if (WebAudio._context) {
         let pos = (WebAudio._currentTime() - this._startTime) * this._pitch;
         if (this._loopLengthTime > 0) {
@@ -4966,7 +4966,7 @@ WebAudio.prototype.seek = function() {
  *
  * @param {function} listner - The callback function.
  */
-WebAudio.prototype.addLoadListener = function(listner) {
+WebAudio.prototype.addLoadListener = function (listner) {
     this._loadListeners.push(listner);
 };
 
@@ -4975,21 +4975,21 @@ WebAudio.prototype.addLoadListener = function(listner) {
  *
  * @param {function} listner - The callback function.
  */
-WebAudio.prototype.addStopListener = function(listner) {
+WebAudio.prototype.addStopListener = function (listner) {
     this._stopListeners.push(listner);
 };
 
 /**
  * Tries to load the audio again.
  */
-WebAudio.prototype.retry = function() {
+WebAudio.prototype.retry = function () {
     this._startLoading();
     if (this._isPlaying) {
         this.play(this._loop, 0);
     }
 };
 
-WebAudio.prototype._startLoading = function() {
+WebAudio.prototype._startLoading = function () {
     if (WebAudio._context) {
         const url = this._realUrl();
         if (Utils.isLocal()) {
@@ -5008,11 +5008,11 @@ WebAudio.prototype._startLoading = function() {
     }
 };
 
-WebAudio.prototype._shouldUseDecoder = function() {
+WebAudio.prototype._shouldUseDecoder = function () {
     return !Utils.canPlayOgg() && typeof VorbisDecoder === "function";
 };
 
-WebAudio.prototype._createDecoder = function() {
+WebAudio.prototype._createDecoder = function () {
     this._decoder = new VorbisDecoder(
         WebAudio._context,
         this._onDecode.bind(this),
@@ -5020,18 +5020,18 @@ WebAudio.prototype._createDecoder = function() {
     );
 };
 
-WebAudio.prototype._destroyDecoder = function() {
+WebAudio.prototype._destroyDecoder = function () {
     if (this._decoder) {
         this._decoder.destroy();
         this._decoder = null;
     }
 };
 
-WebAudio.prototype._realUrl = function() {
+WebAudio.prototype._realUrl = function () {
     return this._url + (Utils.hasEncryptedAudio() ? "_" : "");
 };
 
-WebAudio.prototype._startXhrLoading = function(url) {
+WebAudio.prototype._startXhrLoading = function (url) {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", url);
     xhr.responseType = "arraybuffer";
@@ -5040,14 +5040,14 @@ WebAudio.prototype._startXhrLoading = function(url) {
     xhr.send();
 };
 
-WebAudio.prototype._startFetching = function(url) {
+WebAudio.prototype._startFetching = function (url) {
     const options = { credentials: "same-origin" };
     fetch(url, options)
         .then(response => this._onFetch(response))
         .catch(() => this._onError());
 };
 
-WebAudio.prototype._onXhrLoad = function(xhr) {
+WebAudio.prototype._onXhrLoad = function (xhr) {
     if (xhr.status < 400) {
         this._data = new Uint8Array(xhr.response);
         this._isLoaded = true;
@@ -5057,7 +5057,7 @@ WebAudio.prototype._onXhrLoad = function(xhr) {
     }
 };
 
-WebAudio.prototype._onFetch = function(response) {
+WebAudio.prototype._onFetch = function (response) {
     if (response.ok) {
         const reader = response.body.getReader();
         const readChunk = ({ done, value }) => {
@@ -5083,7 +5083,7 @@ WebAudio.prototype._onFetch = function(response) {
     }
 };
 
-WebAudio.prototype._onError = function() {
+WebAudio.prototype._onError = function () {
     if (this._sourceNodes.length > 0) {
         this._stopSourceNode();
     }
@@ -5091,13 +5091,13 @@ WebAudio.prototype._onError = function() {
     this._isError = true;
 };
 
-WebAudio.prototype._onFetchProcess = function(value) {
+WebAudio.prototype._onFetchProcess = function (value) {
     this._fetchedSize += value.length;
     this._fetchedData.push(value);
     this._updateBufferOnFetch();
 };
 
-WebAudio.prototype._updateBufferOnFetch = function() {
+WebAudio.prototype._updateBufferOnFetch = function () {
     const currentTime = WebAudio._currentTime();
     const deltaTime = currentTime - this._lastUpdateTime;
     const currentData = this._data;
@@ -5109,7 +5109,7 @@ WebAudio.prototype._updateBufferOnFetch = function() {
     }
 };
 
-WebAudio.prototype._concatenateFetchedData = function() {
+WebAudio.prototype._concatenateFetchedData = function () {
     const currentData = this._data;
     const currentSize = currentData ? currentData.length : 0;
     const newData = new Uint8Array(currentSize + this._fetchedSize);
@@ -5127,13 +5127,13 @@ WebAudio.prototype._concatenateFetchedData = function() {
     this._fetchedSize = 0;
 };
 
-WebAudio.prototype._updateBuffer = function() {
+WebAudio.prototype._updateBuffer = function () {
     const arrayBuffer = this._readableBuffer();
     this._readLoopComments(arrayBuffer);
     this._decodeAudioData(arrayBuffer);
 };
 
-WebAudio.prototype._readableBuffer = function() {
+WebAudio.prototype._readableBuffer = function () {
     if (Utils.hasEncryptedAudio()) {
         return Utils.decryptArrayBuffer(this._data.buffer);
     } else {
@@ -5141,7 +5141,7 @@ WebAudio.prototype._readableBuffer = function() {
     }
 };
 
-WebAudio.prototype._decodeAudioData = function(arrayBuffer) {
+WebAudio.prototype._decodeAudioData = function (arrayBuffer) {
     if (this._shouldUseDecoder()) {
         if (this._decoder) {
             this._decoder.send(arrayBuffer, this._isLoaded);
@@ -5156,7 +5156,7 @@ WebAudio.prototype._decodeAudioData = function(arrayBuffer) {
     }
 };
 
-WebAudio.prototype._onDecode = function(buffer) {
+WebAudio.prototype._onDecode = function (buffer) {
     if (!this._shouldUseDecoder()) {
         this._buffers = [];
         this._totalTime = 0;
@@ -5176,7 +5176,7 @@ WebAudio.prototype._onDecode = function(buffer) {
     this._onLoad();
 };
 
-WebAudio.prototype._refreshSourceNode = function() {
+WebAudio.prototype._refreshSourceNode = function () {
     if (this._shouldUseDecoder()) {
         const index = this._buffers.length - 1;
         this._createSourceNode(index);
@@ -5196,7 +5196,7 @@ WebAudio.prototype._refreshSourceNode = function() {
     }
 };
 
-WebAudio.prototype._startPlaying = function(offset) {
+WebAudio.prototype._startPlaying = function (offset) {
     if (this._loopLengthTime > 0) {
         while (offset >= this._loopStartTime + this._loopLengthTime) {
             offset -= this._loopLengthTime;
@@ -5212,13 +5212,13 @@ WebAudio.prototype._startPlaying = function(offset) {
     this._createEndTimer();
 };
 
-WebAudio.prototype._startAllSourceNodes = function() {
+WebAudio.prototype._startAllSourceNodes = function () {
     for (let i = 0; i < this._sourceNodes.length; i++) {
         this._startSourceNode(i);
     }
 };
 
-WebAudio.prototype._startSourceNode = function(index) {
+WebAudio.prototype._startSourceNode = function (index) {
     const sourceNode = this._sourceNodes[index];
     const seekPos = this.seek();
     const currentTime = WebAudio._currentTime();
@@ -5273,7 +5273,7 @@ WebAudio.prototype._startSourceNode = function(index) {
     chunkStart += sourceNode.buffer.duration;
 };
 
-WebAudio.prototype._stopSourceNode = function() {
+WebAudio.prototype._stopSourceNode = function () {
     for (const sourceNode of this._sourceNodes) {
         try {
             sourceNode.onended = null;
@@ -5284,27 +5284,27 @@ WebAudio.prototype._stopSourceNode = function() {
     }
 };
 
-WebAudio.prototype._createPannerNode = function() {
+WebAudio.prototype._createPannerNode = function () {
     this._pannerNode = WebAudio._context.createPanner();
     this._pannerNode.panningModel = "equalpower";
     this._pannerNode.connect(WebAudio._masterGainNode);
     this._updatePanner();
 };
 
-WebAudio.prototype._createGainNode = function() {
+WebAudio.prototype._createGainNode = function () {
     const currentTime = WebAudio._currentTime();
     this._gainNode = WebAudio._context.createGain();
     this._gainNode.gain.setValueAtTime(this._volume, currentTime);
     this._gainNode.connect(this._pannerNode);
 };
 
-WebAudio.prototype._createAllSourceNodes = function() {
+WebAudio.prototype._createAllSourceNodes = function () {
     for (let i = 0; i < this._buffers.length; i++) {
         this._createSourceNode(i);
     }
 };
 
-WebAudio.prototype._createSourceNode = function(index) {
+WebAudio.prototype._createSourceNode = function (index) {
     const sourceNode = WebAudio._context.createBufferSource();
     const currentTime = WebAudio._currentTime();
     sourceNode.buffer = this._buffers[index];
@@ -5316,7 +5316,7 @@ WebAudio.prototype._createSourceNode = function(index) {
     this._sourceNodes[index] = sourceNode;
 };
 
-WebAudio.prototype._removeNodes = function() {
+WebAudio.prototype._removeNodes = function () {
     if (this._sourceNodes && this._sourceNodes.length > 0) {
         this._stopSourceNode();
         this._sourceNodes = [];
@@ -5325,7 +5325,7 @@ WebAudio.prototype._removeNodes = function() {
     }
 };
 
-WebAudio.prototype._createEndTimer = function() {
+WebAudio.prototype._createEndTimer = function () {
     if (this._sourceNodes.length > 0 && !this._loop) {
         const endTime = this._startTime + this._totalTime / this._pitch;
         const delay = endTime - WebAudio._currentTime();
@@ -5333,14 +5333,14 @@ WebAudio.prototype._createEndTimer = function() {
     }
 };
 
-WebAudio.prototype._removeEndTimer = function() {
+WebAudio.prototype._removeEndTimer = function () {
     if (this._endTimer) {
         clearTimeout(this._endTimer);
         this._endTimer = null;
     }
 };
 
-WebAudio.prototype._updatePanner = function() {
+WebAudio.prototype._updatePanner = function () {
     if (this._pannerNode) {
         const x = this._pan;
         const z = 1 - Math.abs(x);
@@ -5348,14 +5348,14 @@ WebAudio.prototype._updatePanner = function() {
     }
 };
 
-WebAudio.prototype._onLoad = function() {
+WebAudio.prototype._onLoad = function () {
     while (this._loadListeners.length > 0) {
         const listner = this._loadListeners.shift();
         listner();
     }
 };
 
-WebAudio.prototype._readLoopComments = function(arrayBuffer) {
+WebAudio.prototype._readLoopComments = function (arrayBuffer) {
     const view = new DataView(arrayBuffer);
     let index = 0;
     while (index < view.byteLength - 30) {
@@ -5398,7 +5398,7 @@ WebAudio.prototype._readLoopComments = function(arrayBuffer) {
     }
 };
 
-WebAudio.prototype._readMetaData = function(view, index, size) {
+WebAudio.prototype._readMetaData = function (view, index, size) {
     for (let i = index; i < index + size - 10; i++) {
         if (this._readFourCharacters(view, i) === "LOOP") {
             let text = "";
@@ -5427,7 +5427,7 @@ WebAudio.prototype._readMetaData = function(view, index, size) {
     }
 };
 
-WebAudio.prototype._readFourCharacters = function(view, index) {
+WebAudio.prototype._readFourCharacters = function (view, index) {
     let string = "";
     if (index <= view.byteLength - 4) {
         for (let i = 0; i < 4; i++) {
@@ -5453,7 +5453,7 @@ function Video() {
  * @param {number} width - The width of the video.
  * @param {number} height - The height of the video.
  */
-Video.initialize = function(width, height) {
+Video.initialize = function (width, height) {
     this._element = null;
     this._loading = false;
     this._volume = 1;
@@ -5468,7 +5468,7 @@ Video.initialize = function(width, height) {
  * @param {number} width - The width of the video.
  * @param {number} height - The height of the video.
  */
-Video.resize = function(width, height) {
+Video.resize = function (width, height) {
     if (this._element) {
         this._element.style.width = width + "px";
         this._element.style.height = height + "px";
@@ -5480,7 +5480,7 @@ Video.resize = function(width, height) {
  *
  * @param {string} src - The url of the video.
  */
-Video.play = function(src) {
+Video.play = function (src) {
     this._element.src = src;
     this._element.onloadeddata = this._onLoad.bind(this);
     this._element.onerror = this._onError.bind(this);
@@ -5494,7 +5494,7 @@ Video.play = function(src) {
  *
  * @returns {boolean} True if the video is playing.
  */
-Video.isPlaying = function() {
+Video.isPlaying = function () {
     return this._loading || this._isVisible();
 };
 
@@ -5503,14 +5503,14 @@ Video.isPlaying = function() {
  *
  * @param {number} volume - The volume for videos (0 to 1).
  */
-Video.setVolume = function(volume) {
+Video.setVolume = function (volume) {
     this._volume = volume;
     if (this._element) {
         this._element.volume = this._volume;
     }
 };
 
-Video._createElement = function() {
+Video._createElement = function () {
     this._element = document.createElement("video");
     this._element.id = "gameVideo";
     this._element.style.position = "absolute";
@@ -5526,14 +5526,14 @@ Video._createElement = function() {
     document.body.appendChild(this._element);
 };
 
-Video._onLoad = function() {
+Video._onLoad = function () {
     this._element.volume = this._volume;
     this._element.play();
     this._updateVisibility(true);
     this._loading = false;
 };
 
-Video._onError = function() {
+Video._onError = function () {
     this._updateVisibility(false);
     const retry = () => {
         this._element.load();
@@ -5541,11 +5541,11 @@ Video._onError = function() {
     throw ["LoadError", this._element.src, retry];
 };
 
-Video._onEnd = function() {
+Video._onEnd = function () {
     this._updateVisibility(false);
 };
 
-Video._updateVisibility = function(videoVisible) {
+Video._updateVisibility = function (videoVisible) {
     if (videoVisible) {
         Graphics.hideScreen();
     } else {
@@ -5554,18 +5554,18 @@ Video._updateVisibility = function(videoVisible) {
     this._element.style.opacity = videoVisible ? 1 : 0;
 };
 
-Video._isVisible = function() {
+Video._isVisible = function () {
     return this._element.style.opacity > 0;
 };
 
-Video._setupEventHandlers = function() {
+Video._setupEventHandlers = function () {
     const onUserGesture = this._onUserGesture.bind(this);
     document.addEventListener("keydown", onUserGesture);
     document.addEventListener("mousedown", onUserGesture);
     document.addEventListener("touchend", onUserGesture);
 };
 
-Video._onUserGesture = function() {
+Video._onUserGesture = function () {
     if (!this._element.src && this._element.paused) {
         this._element.play().catch(() => 0);
     }
@@ -5584,7 +5584,7 @@ function Input() {
 /**
  * Initializes the input system.
  */
-Input.initialize = function() {
+Input.initialize = function () {
     this.clear();
     this._setupEventHandlers();
 };
@@ -5656,7 +5656,7 @@ Input.gamepadMapper = {
 /**
  * Clears all the input data.
  */
-Input.clear = function() {
+Input.clear = function () {
     this._currentState = {};
     this._previousState = {};
     this._gamepadStates = [];
@@ -5672,7 +5672,7 @@ Input.clear = function() {
 /**
  * Updates the input data.
  */
-Input.update = function() {
+Input.update = function () {
     this._pollGamepads();
     if (this._currentState[this._latestButton]) {
         this._pressedTime++;
@@ -5701,7 +5701,7 @@ Input.update = function() {
  * @param {string} keyName - The mapped name of the key.
  * @returns {boolean} True if the key is pressed.
  */
-Input.isPressed = function(keyName) {
+Input.isPressed = function (keyName) {
     if (this._isEscapeCompatible(keyName) && this.isPressed("escape")) {
         return true;
     } else {
@@ -5715,7 +5715,7 @@ Input.isPressed = function(keyName) {
  * @param {string} keyName - The mapped name of the key.
  * @returns {boolean} True if the key is triggered.
  */
-Input.isTriggered = function(keyName) {
+Input.isTriggered = function (keyName) {
     if (this._isEscapeCompatible(keyName) && this.isTriggered("escape")) {
         return true;
     } else {
@@ -5729,7 +5729,7 @@ Input.isTriggered = function(keyName) {
  * @param {string} keyName - The mapped name of the key.
  * @returns {boolean} True if the key is repeated.
  */
-Input.isRepeated = function(keyName) {
+Input.isRepeated = function (keyName) {
     if (this._isEscapeCompatible(keyName) && this.isRepeated("escape")) {
         return true;
     } else {
@@ -5748,7 +5748,7 @@ Input.isRepeated = function(keyName) {
  * @param {string} keyName - The mapped name of the key.
  * @returns {boolean} True if the key is long-pressed.
  */
-Input.isLongPressed = function(keyName) {
+Input.isLongPressed = function (keyName) {
     if (this._isEscapeCompatible(keyName) && this.isLongPressed("escape")) {
         return true;
     } else {
@@ -5767,7 +5767,7 @@ Input.isLongPressed = function(keyName) {
  * @name Input.dir4
  */
 Object.defineProperty(Input, "dir4", {
-    get: function() {
+    get: function () {
         return this._dir4;
     },
     configurable: true
@@ -5781,7 +5781,7 @@ Object.defineProperty(Input, "dir4", {
  * @name Input.dir8
  */
 Object.defineProperty(Input, "dir8", {
-    get: function() {
+    get: function () {
         return this._dir8;
     },
     configurable: true
@@ -5795,23 +5795,23 @@ Object.defineProperty(Input, "dir8", {
  * @name Input.date
  */
 Object.defineProperty(Input, "date", {
-    get: function() {
+    get: function () {
         return this._date;
     },
     configurable: true
 });
 
-Input.virtualClick = function(buttonName) {
+Input.virtualClick = function (buttonName) {
     this._virtualButton = buttonName;
 };
 
-Input._setupEventHandlers = function() {
+Input._setupEventHandlers = function () {
     document.addEventListener("keydown", this._onKeyDown.bind(this));
     document.addEventListener("keyup", this._onKeyUp.bind(this));
     window.addEventListener("blur", this._onLostFocus.bind(this));
 };
 
-Input._onKeyDown = function(event) {
+Input._onKeyDown = function (event) {
     if (this._shouldPreventDefault(event.keyCode)) {
         event.preventDefault();
     }
@@ -5825,7 +5825,7 @@ Input._onKeyDown = function(event) {
     }
 };
 
-Input._shouldPreventDefault = function(keyCode) {
+Input._shouldPreventDefault = function (keyCode) {
     switch (keyCode) {
         case 8: // backspace
         case 9: // tab
@@ -5840,18 +5840,18 @@ Input._shouldPreventDefault = function(keyCode) {
     return false;
 };
 
-Input._onKeyUp = function(event) {
+Input._onKeyUp = function (event) {
     const buttonName = this.keyMapper[event.keyCode];
     if (buttonName) {
         this._currentState[buttonName] = false;
     }
 };
 
-Input._onLostFocus = function() {
+Input._onLostFocus = function () {
     this.clear();
 };
 
-Input._pollGamepads = function() {
+Input._pollGamepads = function () {
     if (navigator.getGamepads) {
         const gamepads = navigator.getGamepads();
         if (gamepads) {
@@ -5864,7 +5864,7 @@ Input._pollGamepads = function() {
     }
 };
 
-Input._updateGamepadState = function(gamepad) {
+Input._updateGamepadState = function (gamepad) {
     const lastState = this._gamepadStates[gamepad.index] || [];
     const newState = [];
     const buttons = gamepad.buttons;
@@ -5898,7 +5898,7 @@ Input._updateGamepadState = function(gamepad) {
     this._gamepadStates[gamepad.index] = newState;
 };
 
-Input._updateDirection = function() {
+Input._updateDirection = function () {
     let x = this._signX();
     let y = this._signY();
     this._dir8 = this._makeNumpadDirection(x, y);
@@ -5916,19 +5916,19 @@ Input._updateDirection = function() {
     this._dir4 = this._makeNumpadDirection(x, y);
 };
 
-Input._signX = function() {
+Input._signX = function () {
     const left = this.isPressed("left") ? 1 : 0;
     const right = this.isPressed("right") ? 1 : 0;
     return right - left;
 };
 
-Input._signY = function() {
+Input._signY = function () {
     const up = this.isPressed("up") ? 1 : 0;
     const down = this.isPressed("down") ? 1 : 0;
     return down - up;
 };
 
-Input._makeNumpadDirection = function(x, y) {
+Input._makeNumpadDirection = function (x, y) {
     if (x === 0 && y === 0) {
         return 0;
     } else {
@@ -5936,7 +5936,7 @@ Input._makeNumpadDirection = function(x, y) {
     }
 };
 
-Input._isEscapeCompatible = function(keyName) {
+Input._isEscapeCompatible = function (keyName) {
     return keyName === "cancel" || keyName === "menu";
 };
 
@@ -5953,7 +5953,7 @@ function TouchInput() {
 /**
  * Initializes the touch system.
  */
-TouchInput.initialize = function() {
+TouchInput.initialize = function () {
     this.clear();
     this._setupEventHandlers();
 };
@@ -5982,7 +5982,7 @@ TouchInput.moveThreshold = 10;
 /**
  * Clears all the touch data.
  */
-TouchInput.clear = function() {
+TouchInput.clear = function () {
     this._mousePressed = false;
     this._screenPressed = false;
     this._pressedTime = 0;
@@ -6000,7 +6000,7 @@ TouchInput.clear = function() {
 /**
  * Updates the touch data.
  */
-TouchInput.update = function() {
+TouchInput.update = function () {
     this._currentState = this._newState;
     this._newState = this._createNewState();
     this._clicked = this._currentState.released && !this._moved;
@@ -6015,7 +6015,7 @@ TouchInput.update = function() {
  *
  * @returns {boolean} True if the mouse button or touchscreen is clicked.
  */
-TouchInput.isClicked = function() {
+TouchInput.isClicked = function () {
     return this._clicked;
 };
 
@@ -6024,7 +6024,7 @@ TouchInput.isClicked = function() {
  *
  * @returns {boolean} True if the mouse button or touchscreen is pressed.
  */
-TouchInput.isPressed = function() {
+TouchInput.isPressed = function () {
     return this._mousePressed || this._screenPressed;
 };
 
@@ -6033,7 +6033,7 @@ TouchInput.isPressed = function() {
  *
  * @returns {boolean} True if the mouse button or touchscreen is triggered.
  */
-TouchInput.isTriggered = function() {
+TouchInput.isTriggered = function () {
     return this._currentState.triggered;
 };
 
@@ -6043,7 +6043,7 @@ TouchInput.isTriggered = function() {
  *
  * @returns {boolean} True if the mouse button or touchscreen is repeated.
  */
-TouchInput.isRepeated = function() {
+TouchInput.isRepeated = function () {
     return (
         this.isPressed() &&
         (this._currentState.triggered ||
@@ -6057,7 +6057,7 @@ TouchInput.isRepeated = function() {
  *
  * @returns {boolean} True if the left mouse button or touchscreen is long-pressed.
  */
-TouchInput.isLongPressed = function() {
+TouchInput.isLongPressed = function () {
     return this.isPressed() && this._pressedTime >= this.keyRepeatWait;
 };
 
@@ -6066,7 +6066,7 @@ TouchInput.isLongPressed = function() {
  *
  * @returns {boolean} True if the right mouse button is just pressed.
  */
-TouchInput.isCancelled = function() {
+TouchInput.isCancelled = function () {
     return this._currentState.cancelled;
 };
 
@@ -6075,7 +6075,7 @@ TouchInput.isCancelled = function() {
  *
  * @returns {boolean} True if the mouse or a finger on the touchscreen is moved.
  */
-TouchInput.isMoved = function() {
+TouchInput.isMoved = function () {
     return this._currentState.moved;
 };
 
@@ -6084,7 +6084,7 @@ TouchInput.isMoved = function() {
  *
  * @returns {boolean} True if the mouse is hovered.
  */
-TouchInput.isHovered = function() {
+TouchInput.isHovered = function () {
     return this._currentState.hovered;
 };
 
@@ -6093,7 +6093,7 @@ TouchInput.isHovered = function() {
  *
  * @returns {boolean} True if the mouse button or touchscreen is released.
  */
-TouchInput.isReleased = function() {
+TouchInput.isReleased = function () {
     return this._currentState.released;
 };
 
@@ -6105,7 +6105,7 @@ TouchInput.isReleased = function() {
  * @name TouchInput.wheelX
  */
 Object.defineProperty(TouchInput, "wheelX", {
-    get: function() {
+    get: function () {
         return this._currentState.wheelX;
     },
     configurable: true
@@ -6119,7 +6119,7 @@ Object.defineProperty(TouchInput, "wheelX", {
  * @name TouchInput.wheelY
  */
 Object.defineProperty(TouchInput, "wheelY", {
-    get: function() {
+    get: function () {
         return this._currentState.wheelY;
     },
     configurable: true
@@ -6133,7 +6133,7 @@ Object.defineProperty(TouchInput, "wheelY", {
  * @name TouchInput.x
  */
 Object.defineProperty(TouchInput, "x", {
-    get: function() {
+    get: function () {
         return this._x;
     },
     configurable: true
@@ -6147,7 +6147,7 @@ Object.defineProperty(TouchInput, "x", {
  * @name TouchInput.y
  */
 Object.defineProperty(TouchInput, "y", {
-    get: function() {
+    get: function () {
         return this._y;
     },
     configurable: true
@@ -6161,13 +6161,13 @@ Object.defineProperty(TouchInput, "y", {
  * @name TouchInput.date
  */
 Object.defineProperty(TouchInput, "date", {
-    get: function() {
+    get: function () {
         return this._date;
     },
     configurable: true
 });
 
-TouchInput._createNewState = function() {
+TouchInput._createNewState = function () {
     return {
         triggered: false,
         cancelled: false,
@@ -6179,7 +6179,7 @@ TouchInput._createNewState = function() {
     };
 };
 
-TouchInput._setupEventHandlers = function() {
+TouchInput._setupEventHandlers = function () {
     const pf = { passive: false };
     document.addEventListener("mousedown", this._onMouseDown.bind(this));
     document.addEventListener("mousemove", this._onMouseMove.bind(this));
@@ -6192,7 +6192,7 @@ TouchInput._setupEventHandlers = function() {
     window.addEventListener("blur", this._onLostFocus.bind(this));
 };
 
-TouchInput._onMouseDown = function(event) {
+TouchInput._onMouseDown = function (event) {
     if (event.button === 0) {
         this._onLeftButtonDown(event);
     } else if (event.button === 1) {
@@ -6202,7 +6202,7 @@ TouchInput._onMouseDown = function(event) {
     }
 };
 
-TouchInput._onLeftButtonDown = function(event) {
+TouchInput._onLeftButtonDown = function (event) {
     const x = Graphics.pageToCanvasX(event.pageX);
     const y = Graphics.pageToCanvasY(event.pageY);
     if (Graphics.isInsideCanvas(x, y)) {
@@ -6212,11 +6212,11 @@ TouchInput._onLeftButtonDown = function(event) {
     }
 };
 
-TouchInput._onMiddleButtonDown = function(/*event*/) {
+TouchInput._onMiddleButtonDown = function (/*event*/) {
     //
 };
 
-TouchInput._onRightButtonDown = function(event) {
+TouchInput._onRightButtonDown = function (event) {
     const x = Graphics.pageToCanvasX(event.pageX);
     const y = Graphics.pageToCanvasY(event.pageY);
     if (Graphics.isInsideCanvas(x, y)) {
@@ -6224,7 +6224,7 @@ TouchInput._onRightButtonDown = function(event) {
     }
 };
 
-TouchInput._onMouseMove = function(event) {
+TouchInput._onMouseMove = function (event) {
     const x = Graphics.pageToCanvasX(event.pageX);
     const y = Graphics.pageToCanvasY(event.pageY);
     if (this._mousePressed) {
@@ -6234,7 +6234,7 @@ TouchInput._onMouseMove = function(event) {
     }
 };
 
-TouchInput._onMouseUp = function(event) {
+TouchInput._onMouseUp = function (event) {
     if (event.button === 0) {
         const x = Graphics.pageToCanvasX(event.pageX);
         const y = Graphics.pageToCanvasY(event.pageY);
@@ -6243,13 +6243,13 @@ TouchInput._onMouseUp = function(event) {
     }
 };
 
-TouchInput._onWheel = function(event) {
+TouchInput._onWheel = function (event) {
     this._newState.wheelX += event.deltaX;
     this._newState.wheelY += event.deltaY;
     event.preventDefault();
 };
 
-TouchInput._onTouchStart = function(event) {
+TouchInput._onTouchStart = function (event) {
     for (const touch of event.changedTouches) {
         const x = Graphics.pageToCanvasX(touch.pageX);
         const y = Graphics.pageToCanvasY(touch.pageY);
@@ -6269,7 +6269,7 @@ TouchInput._onTouchStart = function(event) {
     }
 };
 
-TouchInput._onTouchMove = function(event) {
+TouchInput._onTouchMove = function (event) {
     for (const touch of event.changedTouches) {
         const x = Graphics.pageToCanvasX(touch.pageX);
         const y = Graphics.pageToCanvasY(touch.pageY);
@@ -6277,7 +6277,7 @@ TouchInput._onTouchMove = function(event) {
     }
 };
 
-TouchInput._onTouchEnd = function(event) {
+TouchInput._onTouchEnd = function (event) {
     for (const touch of event.changedTouches) {
         const x = Graphics.pageToCanvasX(touch.pageX);
         const y = Graphics.pageToCanvasY(touch.pageY);
@@ -6286,15 +6286,15 @@ TouchInput._onTouchEnd = function(event) {
     }
 };
 
-TouchInput._onTouchCancel = function(/*event*/) {
+TouchInput._onTouchCancel = function (/*event*/) {
     this._screenPressed = false;
 };
 
-TouchInput._onLostFocus = function() {
+TouchInput._onLostFocus = function () {
     this.clear();
 };
 
-TouchInput._onTrigger = function(x, y) {
+TouchInput._onTrigger = function (x, y) {
     this._newState.triggered = true;
     this._x = x;
     this._y = y;
@@ -6304,13 +6304,13 @@ TouchInput._onTrigger = function(x, y) {
     this._date = Date.now();
 };
 
-TouchInput._onCancel = function(x, y) {
+TouchInput._onCancel = function (x, y) {
     this._newState.cancelled = true;
     this._x = x;
     this._y = y;
 };
 
-TouchInput._onMove = function(x, y) {
+TouchInput._onMove = function (x, y) {
     const dx = Math.abs(x - this._triggerX);
     const dy = Math.abs(y - this._triggerY);
     if (dx > this.moveThreshold || dy > this.moveThreshold) {
@@ -6323,13 +6323,13 @@ TouchInput._onMove = function(x, y) {
     }
 };
 
-TouchInput._onHover = function(x, y) {
+TouchInput._onHover = function (x, y) {
     this._newState.hovered = true;
     this._x = x;
     this._y = y;
 };
 
-TouchInput._onRelease = function(x, y) {
+TouchInput._onRelease = function (x, y) {
     this._newState.released = true;
     this._x = x;
     this._y = y;
@@ -6359,7 +6359,7 @@ JsonEx.maxDepth = 100;
  * @param {object} object - The object to be converted.
  * @returns {string} The JSON string.
  */
-JsonEx.stringify = function(object) {
+JsonEx.stringify = function (object) {
     return JSON.stringify(this._encode(object, 0));
 };
 
@@ -6369,7 +6369,7 @@ JsonEx.stringify = function(object) {
  * @param {string} json - The JSON string.
  * @returns {object} The reconstructed object.
  */
-JsonEx.parse = function(json) {
+JsonEx.parse = function (json) {
     return this._decode(JSON.parse(json));
 };
 
@@ -6379,11 +6379,11 @@ JsonEx.parse = function(json) {
  * @param {object} object - The object to be copied.
  * @returns {object} The copied object.
  */
-JsonEx.makeDeepCopy = function(object) {
+JsonEx.makeDeepCopy = function (object) {
     return this.parse(this.stringify(object));
 };
 
-JsonEx._encode = function(value, depth) {
+JsonEx._encode = function (value, depth) {
     // [Note] The handling code for circular references in certain versions of
     //   MV has been removed because it was too complicated and expensive.
     if (depth >= this.maxDepth) {
@@ -6402,7 +6402,7 @@ JsonEx._encode = function(value, depth) {
     return value;
 };
 
-JsonEx._decode = function(value) {
+JsonEx._decode = function (value) {
     const type = Object.prototype.toString.call(value);
     if (type === "[object Object]" || type === "[object Array]") {
         if (value["@"]) {

@@ -93,7 +93,7 @@
  *  このプラグインはもうあなたのものです。
  */
 
-(()=> {
+(() => {
     'use strict';
 
     if (!Utils.isNwjs()) {
@@ -103,12 +103,12 @@
     const param = PluginManagerEx.createParameter(script);
 
     const _SceneManager_initialize = SceneManager.initialize;
-    SceneManager.initialize = function() {
+    SceneManager.initialize = function () {
         _SceneManager_initialize.apply(this, arguments);
         DataManager.backupAllData();
     };
 
-    DataManager.backupAllData = function() {
+    DataManager.backupAllData = function () {
         if (!Utils.isOptionValid('test') || this.isBattleTest() || this.isEventTest()) {
             return;
         }
@@ -187,8 +187,8 @@
         }
 
         async copyAllFiles(fileReqExp = null) {
-            await this._fs.mkdir(this._dist, {recursive: true});
-            const dirents = await this._fs.readdir(this._src, {withFileTypes: true});
+            await this._fs.mkdir(this._dist, { recursive: true });
+            const dirents = await this._fs.readdir(this._src, { withFileTypes: true });
             for (const dirent of dirents) {
                 const name = dirent.name;
                 if (fileReqExp && !fileReqExp.test(name)) {
@@ -206,7 +206,7 @@
             const path = require('path');
             const src = path.join(this._src, dirName);
             const dist = path.join(this._dist, dirName);
-            await this._fs.mkdir(dist, {recursive: true});
+            await this._fs.mkdir(dist, { recursive: true });
             const subCopyModel = new FileCopyModel(src, dist);
             await subCopyModel.copyAllFiles();
         }

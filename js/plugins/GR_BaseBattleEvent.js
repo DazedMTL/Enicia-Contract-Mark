@@ -25,7 +25,7 @@
     'use strict';
 
     //pagesに敵グループ0001のバトルイベントを持たせるように修正
-    Game_Troop.prototype.setupBattleEvent = function() {
+    Game_Troop.prototype.setupBattleEvent = function () {
         if (!this._interpreter.isRunning()) {
             if (this._interpreter.setupReservedCommonEvent()) {
                 return;
@@ -45,7 +45,7 @@
     };
 
     //ターン経過時のフラグ戻しでも同様にpagesを変更
-    Game_Troop.prototype.increaseTurn = function() {
+    Game_Troop.prototype.increaseTurn = function () {
         const pages = $dataTroops[1].pages.concat(this.troop().pages);
         for (let i = 0; i < pages.length; i++) {
             const page = pages[i];

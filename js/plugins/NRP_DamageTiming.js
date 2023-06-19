@@ -169,417 +169,417 @@
  * @default boss
  * @desc 撃破時のウェイト方法を設定します。
  */
-(function() {
-"use strict";
-
-/**
- * ●構造体をJSで扱えるように変換
- */
-function parseStruct1(arg) {
-    var ret = [];
-
-    JSON.parse(arg).forEach(function(str) {
-        ret.push(str);
-    });
-
-    return ret;
-}
-function toBoolean(str) {
-    if (str == true) {
-        return true;
-    }
-    return (str == "true") ? true : false;
-}
-function toNumber(str, def) {
-    return isNaN(str) ? def : +(str || def);
-}
-function setDefault(str, def) {
-    return str ? str : def;
-}
-
-var parameters = PluginManager.parameters("NRP_DamageTiming");
-var pDamageSameTime = toBoolean(parameters["damageSameTime"], true);
-var pSameTimeCondition = parseStruct1(parameters["sameTimeCondition"]);
-var pDamageInterval = toNumber(parameters["damageInterval"]);
-var pDamageWait = toNumber(parameters["damageWait"]);
-var pNormalWait = toNumber(parameters["normalWait"]);
-var pStateWaitFlg = toBoolean(parameters["stateWaitFlg"], false);
-var pCollapseWaitType = parameters["collapseWaitType"];
-
-var priorityWait = 0;
-var damageWaitFlg = false;
-
-/**
- * ●ダメージ一括表示の場合
- */
-if (pDamageSameTime) {
-    /**
-     * ●初期化処理
-     */
-    var _BattleManager_initMembers = BattleManager.initMembers;
-    BattleManager.initMembers = function() {
-        _BattleManager_initMembers.apply(this, arguments);
-
-        this._refrectTargets = [];
-    }
+(function () {
+    "use strict";
 
     /**
-     * 【上書】ダメージ処理などの更新
+     * ●構造体をJSで扱えるように変換
      */
-    BattleManager.updateAction = function() {
-        var targets = this._targets;
-        var subject = BattleManager._subject;
+    function parseStruct1(arg) {
+        var ret = [];
 
-        // 行動主体が取得できなければ処理終了
-        if (!subject) {
-            return;
-        }
-
-        // 対象がなければ
-        if (!targets.length) {
-            // 反射対象がある場合
-            if (this._refrectTargets && this._refrectTargets.length) {
-                // 一体ずつダメージ処理
-                // ただし、再反射禁止フラグを立てておく
-                let target = this._refrectTargets.shift();
-                this._action._noRefrection = true;
-                this.invokeAction(subject, target);
-                this._action._noRefrection = false;
-                return;
-            }
-
-            // 処理終了
-            this.endAction();
-            return;
-        }
-
-        // ランダム型の場合
-        if (this._action.isForRandom()) {
-            // 一体ずつダメージ処理
-            let target = targets.shift();
-            this.invokeAction(subject, target);
-            return;
-        }
-
-        // 範囲に従ってダメージ処理
-        // 重複ターゲットを削除して再作成
-        var distinctTargets = targets.filter(function(target, i) {
-            return targets.indexOf(target) == i;
+        JSON.parse(arg).forEach(function (str) {
+            ret.push(str);
         });
 
-        // 対象の人数分ダメージ処理を実行
-        for (let target of distinctTargets) {
-            // 処理した要素を削除
-            for (let i = 0; i < targets.length; i++) {
-                let t = targets[i];
-                // 一致した最初の１件を削除
-                if (t == target) {
-                    targets.splice(i, 1);
-                    break;
-                }
-            }
-            // ダメージ処理実行
-            this.invokeAction(subject, target);
-        }
-    };
-
-    /**
-     * 【上書】魔法反射処理
-     */
-    BattleManager.invokeMagicReflection = function(subject, target) {
-        this._action._reflectionTarget = target;
-        this._logWindow.displayReflection(target);
-
-        // ここではダメージ処理を行わず、ターゲットの追加だけを行う
-        if (!this._refrectTargets) {
-            this._refrectTargets = [];
-        }
-        this._refrectTargets.push(subject);
-    };
-
-    /**
-     * ●魔法反射率取得
-     */
-    var _Game_Action_itemMrf = Game_Action.prototype.itemMrf;
-    Game_Action.prototype.itemMrf = function(target) {
-        // 再反射禁止
-        if (this._noRefrection) {
-            return 0;
-        }
-        return _Game_Action_itemMrf.apply(this, arguments);
-    };
-
-    /**
-     * ●初期化
-     */
-    var _Window_BattleLog_initialize = Window_BattleLog.prototype.initialize;
-    Window_BattleLog.prototype.initialize = function() {
-        _Window_BattleLog_initialize.apply(this, arguments);
-
-        this._methodsSameTime = [];
-    };
-
-    /**
-     * ●処理の蓄積
-     */
-    var _Window_BattleLog_push = Window_BattleLog.prototype.push;
-    Window_BattleLog.prototype.push = function(methodName) {
-        // ウェイトがかかるため不要
-        if (methodName == "waitForNewLine"
-                || methodName == "pushBaseLine"
-                || methodName == "popBaseLine") {
-            return;
-        }
-
-        // 一括表示の対象条件なら
-        if (isSameCondition(methodName)) {
-            var methodArgs = Array.prototype.slice.call(arguments, 1);
-            this._methodsSameTime.push({ name: methodName, params: methodArgs });
-            return;
-        }
-
-        _Window_BattleLog_push.apply(this, arguments);
-    };
-
-    /**
-     * ●結果クリア
-     */
-    var _Game_Battler_clearResult = Game_Battler.prototype.clearResult;
-    Game_Battler.prototype.clearResult = function() {
-        // 行動中はクリアしない。
-        // ※行動主体の回復表示が消えてしまうため。
-        if (this.isActing()) {
-            return;
-        }
-        
-        _Game_Battler_clearResult.apply(this, arguments);
-    };
-
-    /**
-     * ●行動開始時
-     */
-    const _BattleManager_startAction = BattleManager.startAction;
-    BattleManager.startAction = function() {
-        // 行動主体の結果をクリアする。
-        // ※clearResultの修正の影響で、結果が残る不具合に対処するため。
-        const subject = this._subject;
-        subject._result.clear();
-
-        _BattleManager_startAction.apply(this, arguments);
-    };
-    
-}
-
-/**
- * ●順次実行処理
- */
-var _Window_BattleLog_callNextMethod = Window_BattleLog.prototype.callNextMethod;
-Window_BattleLog.prototype.callNextMethod = function() {
-    if (pDamageSameTime) {
-        // 一括で処理する。
-        while (this._methodsSameTime.length > 0) {
-            var method = this._methodsSameTime.shift();
-            if (method.name && this[method.name]) {
-                this[method.name].apply(this, method.params);
-            } else {
-                throw new Error('Method not found: ' + method.name);
-            }
-        }
+        return ret;
     }
-
-    _Window_BattleLog_callNextMethod.apply(this, arguments);
-
-    // 優先ウェイトがある場合は上書き
-    if (priorityWait) {
-        this._waitCount = priorityWait;
-        priorityWait = 0;
-    }
-};
-
-/**
- * ●一括表示の対象かどうかを判定
- */
-function isSameCondition(methodName) {
-    return pSameTimeCondition.some(function(condition) {
-        return eval(condition);
-    });
-}
-
-/**
- * ●ウェイト
- */
-var _Window_BattleLog_wait = Window_BattleLog.prototype.wait;
-Window_BattleLog.prototype.wait = function() {
-    // ウェイト変更フラグが立っていた場合
-    if (damageWaitFlg) {
-        damageWaitFlg = false;
-        setDamageWait();
-        return;
-    }
-
-    _Window_BattleLog_wait.apply(this, arguments);
-};
-
-/**
- * ●メッセージ速度
- */
-const _Window_BattleLog_messageSpeed = Window_BattleLog.prototype.messageSpeed;
-Window_BattleLog.prototype.messageSpeed = function() {
-    if (pNormalWait != undefined) {
-        return pNormalWait;
-    }
-
-    return _Window_BattleLog_messageSpeed.apply(this, arguments);;
-};
-
-/**
- * ●ダメージ後のウェイト
- */
-function setDamageWait() {
-    // ダメージ間隔
-    if (BattleManager._targets.length > 0) {
-        if (pDamageInterval != undefined) {
-            priorityWait = pDamageInterval;
-        }
-
-    // 最終ヒット
-    } else if (BattleManager._targets.length == 0) {
-        if (pDamageWait != undefined) {
-            priorityWait = pDamageInterval;
-        }
-    }
-}
-
-/**
- * ●失敗
- */
-var _Window_BattleLog_displayFailure = Window_BattleLog.prototype.displayFailure;
-Window_BattleLog.prototype.displayFailure = function(target) {
-    if (target.result().isHit() && !target.result().success) {
-        damageWaitFlg = true;
-    }
-
-    _Window_BattleLog_displayFailure.apply(this, arguments);
-};
-
-/**
- * ●ミス
- */
-var _Window_BattleLog_displayMiss = Window_BattleLog.prototype.displayMiss;
-Window_BattleLog.prototype.displayMiss = function(target) {
-    damageWaitFlg = true;
-    
-    _Window_BattleLog_displayMiss.apply(this, arguments);
-};
-
-/**
- * ●回避
- */
-var _Window_BattleLog_displayEvasion = Window_BattleLog.prototype.displayEvasion;
-Window_BattleLog.prototype.displayEvasion = function(target) {
-    damageWaitFlg = true;
-
-    _Window_BattleLog_displayEvasion.apply(this, arguments);
-};
-
-/**
- * ●ＨＰダメージ
- */
-var _Window_BattleLog_displayHpDamage = Window_BattleLog.prototype.displayHpDamage;
-Window_BattleLog.prototype.displayHpDamage = function(target) {
-    if (target.result().hpAffected) {
-        damageWaitFlg = true;
-    }
-
-    _Window_BattleLog_displayHpDamage.apply(this, arguments);
-};
-
-/**
- * ●ＭＰダメージ
- */
-var _Window_BattleLog_displayMpDamage = Window_BattleLog.prototype.displayMpDamage;
-Window_BattleLog.prototype.displayMpDamage = function(target) {
-    if (target.isAlive() && target.result().mpDamage !== 0) {
-        damageWaitFlg = true;
-    }
-
-    _Window_BattleLog_displayMpDamage.apply(this, arguments);
-};
-
-/**
- * ●ＴＰダメージ
- */
-var _Window_BattleLog_displayTpDamage = Window_BattleLog.prototype.displayTpDamage;
-Window_BattleLog.prototype.displayTpDamage = function(target) {
-    if (target.isAlive() && target.result().tpDamage !== 0) {
-        damageWaitFlg = true;
-    }
-
-    _Window_BattleLog_displayTpDamage.apply(this, arguments);
-};
-
-if (pStateWaitFlg) {
-    /**
-     * ●ステート付加（死亡処理含む）
-     */
-    var _Window_BattleLog_displayAddedStates = Window_BattleLog.prototype.displayAddedStates;
-    Window_BattleLog.prototype.displayAddedStates = function(target) {
-        target.result().addedStateObjects().forEach(function(state) {
-            var stateMsg = target.isActor() ? state.message1 : state.message2;
-            if (stateMsg) {
-                damageWaitFlg = true;
-                return;
-            }
-        }, this);
-
-        _Window_BattleLog_displayAddedStates.apply(this, arguments);
-    };
-
-    // とりあえず対象外
-    // /**
-    //  * ●ステート消去
-    //  */
-    // var _Window_BattleLog_displayRemovedStates = Window_BattleLog.prototype.displayRemovedStates;
-    // Window_BattleLog.prototype.displayRemovedStates = function(target) {
-    //     target.result().removedStateObjects().forEach(function(state) {
-    //         if (state.message4) {
-    //             damageWaitFlg = true;
-    //             return;
-    //         }
-    //     }, this);
-    //     _Window_BattleLog_displayRemovedStates.apply(this, arguments);
-    // };
-
-    /**
-     * ●バフ
-     */
-    var _Window_BattleLog_displayBuffs = Window_BattleLog.prototype.displayBuffs;
-    Window_BattleLog.prototype.displayBuffs = function(target, buffs, fmt) {
-        buffs.forEach(function(paramId) {
-            damageWaitFlg = true;
-            return;
-        }, this);
-
-        _Window_BattleLog_displayBuffs.apply(this, arguments);
-    };
-}
-
-if (pCollapseWaitType) {
-    /**
-     * 【上書】撃破演出時のウェイト
-     */
-    Sprite_Enemy.prototype.isEffecting = function() {
-        // ボス
-        if (pCollapseWaitType == "boss" && this._effectType == 'bossCollapse') {
+    function toBoolean(str) {
+        if (str == true) {
             return true;
         }
-        // 敵全滅時はウェイトをかける
-        if ($gameTroop.aliveMembers().length == 0) {
-            return this._effectType !== null;
+        return (str == "true") ? true : false;
+    }
+    function toNumber(str, def) {
+        return isNaN(str) ? def : +(str || def);
+    }
+    function setDefault(str, def) {
+        return str ? str : def;
+    }
+
+    var parameters = PluginManager.parameters("NRP_DamageTiming");
+    var pDamageSameTime = toBoolean(parameters["damageSameTime"], true);
+    var pSameTimeCondition = parseStruct1(parameters["sameTimeCondition"]);
+    var pDamageInterval = toNumber(parameters["damageInterval"]);
+    var pDamageWait = toNumber(parameters["damageWait"]);
+    var pNormalWait = toNumber(parameters["normalWait"]);
+    var pStateWaitFlg = toBoolean(parameters["stateWaitFlg"], false);
+    var pCollapseWaitType = parameters["collapseWaitType"];
+
+    var priorityWait = 0;
+    var damageWaitFlg = false;
+
+    /**
+     * ●ダメージ一括表示の場合
+     */
+    if (pDamageSameTime) {
+        /**
+         * ●初期化処理
+         */
+        var _BattleManager_initMembers = BattleManager.initMembers;
+        BattleManager.initMembers = function () {
+            _BattleManager_initMembers.apply(this, arguments);
+
+            this._refrectTargets = [];
         }
-        // 通常
-        return false;
+
+        /**
+         * 【上書】ダメージ処理などの更新
+         */
+        BattleManager.updateAction = function () {
+            var targets = this._targets;
+            var subject = BattleManager._subject;
+
+            // 行動主体が取得できなければ処理終了
+            if (!subject) {
+                return;
+            }
+
+            // 対象がなければ
+            if (!targets.length) {
+                // 反射対象がある場合
+                if (this._refrectTargets && this._refrectTargets.length) {
+                    // 一体ずつダメージ処理
+                    // ただし、再反射禁止フラグを立てておく
+                    let target = this._refrectTargets.shift();
+                    this._action._noRefrection = true;
+                    this.invokeAction(subject, target);
+                    this._action._noRefrection = false;
+                    return;
+                }
+
+                // 処理終了
+                this.endAction();
+                return;
+            }
+
+            // ランダム型の場合
+            if (this._action.isForRandom()) {
+                // 一体ずつダメージ処理
+                let target = targets.shift();
+                this.invokeAction(subject, target);
+                return;
+            }
+
+            // 範囲に従ってダメージ処理
+            // 重複ターゲットを削除して再作成
+            var distinctTargets = targets.filter(function (target, i) {
+                return targets.indexOf(target) == i;
+            });
+
+            // 対象の人数分ダメージ処理を実行
+            for (let target of distinctTargets) {
+                // 処理した要素を削除
+                for (let i = 0; i < targets.length; i++) {
+                    let t = targets[i];
+                    // 一致した最初の１件を削除
+                    if (t == target) {
+                        targets.splice(i, 1);
+                        break;
+                    }
+                }
+                // ダメージ処理実行
+                this.invokeAction(subject, target);
+            }
+        };
+
+        /**
+         * 【上書】魔法反射処理
+         */
+        BattleManager.invokeMagicReflection = function (subject, target) {
+            this._action._reflectionTarget = target;
+            this._logWindow.displayReflection(target);
+
+            // ここではダメージ処理を行わず、ターゲットの追加だけを行う
+            if (!this._refrectTargets) {
+                this._refrectTargets = [];
+            }
+            this._refrectTargets.push(subject);
+        };
+
+        /**
+         * ●魔法反射率取得
+         */
+        var _Game_Action_itemMrf = Game_Action.prototype.itemMrf;
+        Game_Action.prototype.itemMrf = function (target) {
+            // 再反射禁止
+            if (this._noRefrection) {
+                return 0;
+            }
+            return _Game_Action_itemMrf.apply(this, arguments);
+        };
+
+        /**
+         * ●初期化
+         */
+        var _Window_BattleLog_initialize = Window_BattleLog.prototype.initialize;
+        Window_BattleLog.prototype.initialize = function () {
+            _Window_BattleLog_initialize.apply(this, arguments);
+
+            this._methodsSameTime = [];
+        };
+
+        /**
+         * ●処理の蓄積
+         */
+        var _Window_BattleLog_push = Window_BattleLog.prototype.push;
+        Window_BattleLog.prototype.push = function (methodName) {
+            // ウェイトがかかるため不要
+            if (methodName == "waitForNewLine"
+                || methodName == "pushBaseLine"
+                || methodName == "popBaseLine") {
+                return;
+            }
+
+            // 一括表示の対象条件なら
+            if (isSameCondition(methodName)) {
+                var methodArgs = Array.prototype.slice.call(arguments, 1);
+                this._methodsSameTime.push({ name: methodName, params: methodArgs });
+                return;
+            }
+
+            _Window_BattleLog_push.apply(this, arguments);
+        };
+
+        /**
+         * ●結果クリア
+         */
+        var _Game_Battler_clearResult = Game_Battler.prototype.clearResult;
+        Game_Battler.prototype.clearResult = function () {
+            // 行動中はクリアしない。
+            // ※行動主体の回復表示が消えてしまうため。
+            if (this.isActing()) {
+                return;
+            }
+
+            _Game_Battler_clearResult.apply(this, arguments);
+        };
+
+        /**
+         * ●行動開始時
+         */
+        const _BattleManager_startAction = BattleManager.startAction;
+        BattleManager.startAction = function () {
+            // 行動主体の結果をクリアする。
+            // ※clearResultの修正の影響で、結果が残る不具合に対処するため。
+            const subject = this._subject;
+            subject._result.clear();
+
+            _BattleManager_startAction.apply(this, arguments);
+        };
+
+    }
+
+    /**
+     * ●順次実行処理
+     */
+    var _Window_BattleLog_callNextMethod = Window_BattleLog.prototype.callNextMethod;
+    Window_BattleLog.prototype.callNextMethod = function () {
+        if (pDamageSameTime) {
+            // 一括で処理する。
+            while (this._methodsSameTime.length > 0) {
+                var method = this._methodsSameTime.shift();
+                if (method.name && this[method.name]) {
+                    this[method.name].apply(this, method.params);
+                } else {
+                    throw new Error('Method not found: ' + method.name);
+                }
+            }
+        }
+
+        _Window_BattleLog_callNextMethod.apply(this, arguments);
+
+        // 優先ウェイトがある場合は上書き
+        if (priorityWait) {
+            this._waitCount = priorityWait;
+            priorityWait = 0;
+        }
     };
-}
+
+    /**
+     * ●一括表示の対象かどうかを判定
+     */
+    function isSameCondition(methodName) {
+        return pSameTimeCondition.some(function (condition) {
+            return eval(condition);
+        });
+    }
+
+    /**
+     * ●ウェイト
+     */
+    var _Window_BattleLog_wait = Window_BattleLog.prototype.wait;
+    Window_BattleLog.prototype.wait = function () {
+        // ウェイト変更フラグが立っていた場合
+        if (damageWaitFlg) {
+            damageWaitFlg = false;
+            setDamageWait();
+            return;
+        }
+
+        _Window_BattleLog_wait.apply(this, arguments);
+    };
+
+    /**
+     * ●メッセージ速度
+     */
+    const _Window_BattleLog_messageSpeed = Window_BattleLog.prototype.messageSpeed;
+    Window_BattleLog.prototype.messageSpeed = function () {
+        if (pNormalWait != undefined) {
+            return pNormalWait;
+        }
+
+        return _Window_BattleLog_messageSpeed.apply(this, arguments);;
+    };
+
+    /**
+     * ●ダメージ後のウェイト
+     */
+    function setDamageWait() {
+        // ダメージ間隔
+        if (BattleManager._targets.length > 0) {
+            if (pDamageInterval != undefined) {
+                priorityWait = pDamageInterval;
+            }
+
+            // 最終ヒット
+        } else if (BattleManager._targets.length == 0) {
+            if (pDamageWait != undefined) {
+                priorityWait = pDamageInterval;
+            }
+        }
+    }
+
+    /**
+     * ●失敗
+     */
+    var _Window_BattleLog_displayFailure = Window_BattleLog.prototype.displayFailure;
+    Window_BattleLog.prototype.displayFailure = function (target) {
+        if (target.result().isHit() && !target.result().success) {
+            damageWaitFlg = true;
+        }
+
+        _Window_BattleLog_displayFailure.apply(this, arguments);
+    };
+
+    /**
+     * ●ミス
+     */
+    var _Window_BattleLog_displayMiss = Window_BattleLog.prototype.displayMiss;
+    Window_BattleLog.prototype.displayMiss = function (target) {
+        damageWaitFlg = true;
+
+        _Window_BattleLog_displayMiss.apply(this, arguments);
+    };
+
+    /**
+     * ●回避
+     */
+    var _Window_BattleLog_displayEvasion = Window_BattleLog.prototype.displayEvasion;
+    Window_BattleLog.prototype.displayEvasion = function (target) {
+        damageWaitFlg = true;
+
+        _Window_BattleLog_displayEvasion.apply(this, arguments);
+    };
+
+    /**
+     * ●ＨＰダメージ
+     */
+    var _Window_BattleLog_displayHpDamage = Window_BattleLog.prototype.displayHpDamage;
+    Window_BattleLog.prototype.displayHpDamage = function (target) {
+        if (target.result().hpAffected) {
+            damageWaitFlg = true;
+        }
+
+        _Window_BattleLog_displayHpDamage.apply(this, arguments);
+    };
+
+    /**
+     * ●ＭＰダメージ
+     */
+    var _Window_BattleLog_displayMpDamage = Window_BattleLog.prototype.displayMpDamage;
+    Window_BattleLog.prototype.displayMpDamage = function (target) {
+        if (target.isAlive() && target.result().mpDamage !== 0) {
+            damageWaitFlg = true;
+        }
+
+        _Window_BattleLog_displayMpDamage.apply(this, arguments);
+    };
+
+    /**
+     * ●ＴＰダメージ
+     */
+    var _Window_BattleLog_displayTpDamage = Window_BattleLog.prototype.displayTpDamage;
+    Window_BattleLog.prototype.displayTpDamage = function (target) {
+        if (target.isAlive() && target.result().tpDamage !== 0) {
+            damageWaitFlg = true;
+        }
+
+        _Window_BattleLog_displayTpDamage.apply(this, arguments);
+    };
+
+    if (pStateWaitFlg) {
+        /**
+         * ●ステート付加（死亡処理含む）
+         */
+        var _Window_BattleLog_displayAddedStates = Window_BattleLog.prototype.displayAddedStates;
+        Window_BattleLog.prototype.displayAddedStates = function (target) {
+            target.result().addedStateObjects().forEach(function (state) {
+                var stateMsg = target.isActor() ? state.message1 : state.message2;
+                if (stateMsg) {
+                    damageWaitFlg = true;
+                    return;
+                }
+            }, this);
+
+            _Window_BattleLog_displayAddedStates.apply(this, arguments);
+        };
+
+        // とりあえず対象外
+        // /**
+        //  * ●ステート消去
+        //  */
+        // var _Window_BattleLog_displayRemovedStates = Window_BattleLog.prototype.displayRemovedStates;
+        // Window_BattleLog.prototype.displayRemovedStates = function(target) {
+        //     target.result().removedStateObjects().forEach(function(state) {
+        //         if (state.message4) {
+        //             damageWaitFlg = true;
+        //             return;
+        //         }
+        //     }, this);
+        //     _Window_BattleLog_displayRemovedStates.apply(this, arguments);
+        // };
+
+        /**
+         * ●バフ
+         */
+        var _Window_BattleLog_displayBuffs = Window_BattleLog.prototype.displayBuffs;
+        Window_BattleLog.prototype.displayBuffs = function (target, buffs, fmt) {
+            buffs.forEach(function (paramId) {
+                damageWaitFlg = true;
+                return;
+            }, this);
+
+            _Window_BattleLog_displayBuffs.apply(this, arguments);
+        };
+    }
+
+    if (pCollapseWaitType) {
+        /**
+         * 【上書】撃破演出時のウェイト
+         */
+        Sprite_Enemy.prototype.isEffecting = function () {
+            // ボス
+            if (pCollapseWaitType == "boss" && this._effectType == 'bossCollapse') {
+                return true;
+            }
+            // 敵全滅時はウェイトをかける
+            if ($gameTroop.aliveMembers().length == 0) {
+                return this._effectType !== null;
+            }
+            // 通常
+            return false;
+        };
+    }
 
 })();

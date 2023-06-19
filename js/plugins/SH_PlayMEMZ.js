@@ -71,33 +71,33 @@
 
 (() => {
   const pluginName = "SH_PlayMEMZ";
-  PluginManager.registerCommand(pluginName, "PlayME", function(args){
-      var parameters = PluginManager.parameters('SH_PlayMEMZ');
-      var meid = args.meid
-      var mevolume = args.volume
-      var mepan = args.pan
-      var mepitch = args.pitch
-      if (mevolume == "default"){mevolume = parameters.defvolume}
-      if (mevolume == "variable"){mevolume = $gameVariables.value(parameters.varvolume)}
-      if(mevolume > 100){mevolume = 100}
+  PluginManager.registerCommand(pluginName, "PlayME", function (args) {
+    var parameters = PluginManager.parameters('SH_PlayMEMZ');
+    var meid = args.meid
+    var mevolume = args.volume
+    var mepan = args.pan
+    var mepitch = args.pitch
+    if (mevolume == "default") { mevolume = parameters.defvolume }
+    if (mevolume == "variable") { mevolume = $gameVariables.value(parameters.varvolume) }
+    if (mevolume > 100) { mevolume = 100 }
 
+    console.log(meid)
+
+    if (meid != -1) {
       console.log(meid)
+      console.log($dataUniques.melist)
+      var index = $dataUniques.melist.Id.indexOf(meid);
 
-      if(meid != -1){
-        console.log(meid)
-        console.log($dataUniques.melist)
-          var index = $dataUniques.melist.Id.indexOf(meid);
-
-          var mefile = $dataUniques.melist.File[index];          
-          AudioManager.playMe({
-                      name: mefile,
-                      volume: isNaN(mevolume) ? 90 : mevolume,
-                      pitch: isNaN(mepitch) ? 100 : mepitch,
-                      pan: isNaN(mepan) ? 0 : mepan
-                    });
-        }else{
-            console.error(meid + ' は見つかりません');
-        }
+      var mefile = $dataUniques.melist.File[index];
+      AudioManager.playMe({
+        name: mefile,
+        volume: isNaN(mevolume) ? 90 : mevolume,
+        pitch: isNaN(mepitch) ? 100 : mepitch,
+        pan: isNaN(mepan) ? 0 : mepan
+      });
+    } else {
+      console.error(meid + ' は見つかりません');
+    }
   });
 
 

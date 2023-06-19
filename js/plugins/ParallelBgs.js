@@ -79,7 +79,7 @@
  *  このプラグインはもうあなたのものです。
  */
 
-(function() {
+(function () {
     'use strict';
     const script = document.currentScript;
 
@@ -100,48 +100,48 @@
     // Game_System
     //  BGS演奏ラインを変更します。
     //=============================================================================
-    const _Game_System_initialize      = Game_System.prototype.initialize;
-    Game_System.prototype.initialize = function() {
+    const _Game_System_initialize = Game_System.prototype.initialize;
+    Game_System.prototype.initialize = function () {
         _Game_System_initialize.apply(this, arguments);
         this.initBgsMember();
     };
 
-    Game_System.prototype.initBgsMember = function() {
+    Game_System.prototype.initBgsMember = function () {
         this.setBgsLine(this.getBgsLine());
         this.setBgsFadeForSe(this.getBgsFadeForSe(), this.getBgsFadeTime());
     };
 
-    Game_System.prototype.getBgsLine = function() {
+    Game_System.prototype.getBgsLine = function () {
         return this._bgsLine || 1;
     };
 
-    Game_System.prototype.setBgsLine = function(value) {
+    Game_System.prototype.setBgsLine = function (value) {
         this._bgsLine = value;
         AudioManager.setBgsLineIndex(value);
     };
 
-    Game_System.prototype.getBgsFadeForSe = function() {
+    Game_System.prototype.getBgsFadeForSe = function () {
         return this._bgsFadeForPlayingSe || 0;
     };
 
-    Game_System.prototype.setBgsFadeForSe = function(se, time) {
+    Game_System.prototype.setBgsFadeForSe = function (se, time) {
         this._bgsFadeForPlayingSe = se;
         this._bgsFadeTime = time;
         AudioManager.setBgsFadeForSe(se);
     };
 
-    Game_System.prototype.getBgsFadeTime = function() {
+    Game_System.prototype.getBgsFadeTime = function () {
         return this._bgsFadeTime || 1;
     };
 
-    const _Game_System_onAfterLoad      = Game_System.prototype.onAfterLoad;
-    Game_System.prototype.onAfterLoad = function() {
+    const _Game_System_onAfterLoad = Game_System.prototype.onAfterLoad;
+    Game_System.prototype.onAfterLoad = function () {
         _Game_System_onAfterLoad.apply(this, arguments);
         this.initBgsMember();
     };
 
-    const _Game_Map_autoplay      = Game_Map.prototype.autoplay;
-    Game_Map.prototype.autoplay = function() {
+    const _Game_Map_autoplay = Game_Map.prototype.autoplay;
+    Game_Map.prototype.autoplay = function () {
         AudioManager.multiLineDisable = true;
         _Game_Map_autoplay.apply(this, arguments);
         AudioManager.multiLineDisable = false;
@@ -152,26 +152,26 @@
     //  複数のBGS演奏ラインを管理します。
     //=============================================================================
     AudioManager.multiLineDisable = false;
-    AudioManager._bgsLineIndex    = 1;
-    AudioManager._bgsFadeForSe    = 0;
-    AudioManager._bgsFadeTime     = 1;
-    AudioManager._allBgsBuffer    = [];
-    AudioManager._currentAllBgs   = [];
-    AudioManager._delaySeStack    = [];
-    AudioManager._allStop         = false;
-    AudioManager._stopAllBgs      = true;
-    AudioManager._bgsFading       = false;
-    AudioManager._bgsFadeCounter  = 0;
+    AudioManager._bgsLineIndex = 1;
+    AudioManager._bgsFadeForSe = 0;
+    AudioManager._bgsFadeTime = 1;
+    AudioManager._allBgsBuffer = [];
+    AudioManager._currentAllBgs = [];
+    AudioManager._delaySeStack = [];
+    AudioManager._allStop = false;
+    AudioManager._stopAllBgs = true;
+    AudioManager._bgsFading = false;
+    AudioManager._bgsFadeCounter = 0;
 
     const _AudioManager_bgsVolume = Object.getOwnPropertyDescriptor(AudioManager, 'bgsVolume');
     Object.defineProperty(AudioManager, 'bgsVolume', {
-        get: function() {
+        get: function () {
             return _AudioManager_bgsVolume.get.call(this);
         },
-        set: function(value) {
+        set: function (value) {
             _AudioManager_bgsVolume.set.call(this, value);
             const nowBgs = this._currentBgs;
-            this.iterateAllBgs(function() {
+            this.iterateAllBgs(function () {
                 if (nowBgs !== this._currentBgs) this.updateBgsParameters(this._currentBgs);
             }.bind(this));
         },
@@ -179,41 +179,41 @@
     });
 
     Object.defineProperty(AudioManager, '_bgsBuffer', {
-        get: function() {
+        get: function () {
             return this._allBgsBuffer[this.getBgsLineIndex()];
         },
-        set: function(value) {
+        set: function (value) {
             this._allBgsBuffer[this.getBgsLineIndex()] = value;
         }
     });
 
     Object.defineProperty(AudioManager, '_currentBgs', {
-        get: function() {
+        get: function () {
             return this._currentAllBgs[this.getBgsLineIndex()];
         },
-        set: function(value) {
+        set: function (value) {
             this._currentAllBgs[this.getBgsLineIndex()] = value;
         }
     });
 
-    AudioManager.getBgsLineIndex = function() {
+    AudioManager.getBgsLineIndex = function () {
         return this.multiLineDisable ? 1 : this._bgsLineIndex;
     };
 
-    AudioManager.setBgsLineIndex = function(index) {
+    AudioManager.setBgsLineIndex = function (index) {
         this._bgsLineIndex = index;
     };
 
-    AudioManager.setBgsFadeForSe = function(value) {
+    AudioManager.setBgsFadeForSe = function (value) {
         this._bgsFadeForSe = value;
     };
 
-    AudioManager.setBgsFadeTime = function(value) {
+    AudioManager.setBgsFadeTime = function (value) {
         this._bgsFadeTime = value;
     };
 
     const _AudioManager_playBgs = AudioManager.playBgs;
-    AudioManager.playBgs      = function(bgs, pos) {
+    AudioManager.playBgs = function (bgs, pos) {
         if (!bgs) return;
         this._stopAllBgs = false;
         if (Array.isArray(bgs)) {
@@ -224,11 +224,11 @@
         this._stopAllBgs = true;
     };
 
-    AudioManager.playAllBgs = function(bgsArray) {
+    AudioManager.playAllBgs = function (bgsArray) {
         this.stopAllBgs();
-        const prevIndex      = this._bgsLineIndex;
+        const prevIndex = this._bgsLineIndex;
         this._bgsLineIndex = 1;
-        bgsArray.forEach(function(bgs, index) {
+        bgsArray.forEach(function (bgs, index) {
             this._bgsLineIndex = index;
             this.playBgs(bgs, null);
         }, this);
@@ -236,7 +236,7 @@
     };
 
     const _AudioManager_replayBgs = AudioManager.replayBgs;
-    AudioManager.replayBgs      = function(bgs) {
+    AudioManager.replayBgs = function (bgs) {
         if (!bgs) return;
         if (Array.isArray(bgs)) {
             this.replayAllBgs(bgs);
@@ -245,11 +245,11 @@
         }
     };
 
-    AudioManager.replayAllBgs = function(bgsArray) {
+    AudioManager.replayAllBgs = function (bgsArray) {
         this.stopAllBgs();
-        const prevIndex      = this._bgsLineIndex;
+        const prevIndex = this._bgsLineIndex;
         this._bgsLineIndex = 1;
-        bgsArray.forEach(function(bgs, index) {
+        bgsArray.forEach(function (bgs, index) {
             this._bgsLineIndex = index;
             this.replayBgs(bgs);
         }, this);
@@ -257,16 +257,16 @@
     };
 
     const _AudioManager_saveBgs = AudioManager.saveBgs;
-    AudioManager.saveBgs      = function() {
+    AudioManager.saveBgs = function () {
         const bgsArray = [];
-        this.iterateAllBgs(function() {
+        this.iterateAllBgs(function () {
             bgsArray[this._bgsLineIndex] = _AudioManager_saveBgs.apply(this, arguments);
         }.bind(this));
         return bgsArray.length > 1 ? bgsArray : bgsArray[0];
     };
 
     const _AudioManager_stopBgs = AudioManager.stopBgs;
-    AudioManager.stopBgs      = function() {
+    AudioManager.stopBgs = function () {
         if (!this._stopAllBgs) {
             _AudioManager_stopBgs.apply(this, arguments);
         } else {
@@ -274,22 +274,22 @@
         }
     };
 
-    AudioManager.stopAllBgs = function() {
-        this.iterateAllBgs(function() {
+    AudioManager.stopAllBgs = function () {
+        this.iterateAllBgs(function () {
             _AudioManager_stopBgs.apply(this, arguments);
         }.bind(this));
     };
 
     const _AudioManager_fadeOutBgs = AudioManager.fadeOutBgs;
-    AudioManager.fadeOutBgs      = function(time) {
-        this.iterateAllBgs(function() {
+    AudioManager.fadeOutBgs = function (time) {
+        this.iterateAllBgs(function () {
             _AudioManager_fadeOutBgs.call(this, time);
         }.bind(this));
     };
 
-    AudioManager.iterateAllBgs = function(callBack) {
+    AudioManager.iterateAllBgs = function (callBack) {
         const prevIndex = this._bgsLineIndex;
-        Object.keys(this._allBgsBuffer).forEach(function(index) {
+        Object.keys(this._allBgsBuffer).forEach(function (index) {
             this._bgsLineIndex = index;
             callBack(this._bgsBuffer);
         }, this);
@@ -297,7 +297,7 @@
     };
 
     const _AudioManager_playSe = AudioManager.playSe;
-    AudioManager.playSe      = function(se) {
+    AudioManager.playSe = function (se) {
         if (this.isNeedFadeOut()) {
             this.fadeOutBgsForSe();
         }
@@ -308,7 +308,7 @@
         }
     };
 
-    AudioManager.updateBgsFade = function() {
+    AudioManager.updateBgsFade = function () {
         if (this.isNeedFadeIn()) {
             this.fadeInBgsForSe();
         }
@@ -320,36 +320,36 @@
         }
     };
 
-    AudioManager.fadeOutBgsForSe = function() {
+    AudioManager.fadeOutBgsForSe = function () {
         const prevCurrentBgs = this._currentBgs;
         this.fadeOutBgs(this._bgsFadeTime);
-        this._currentBgs     = prevCurrentBgs;
-        this._bgsFading      = true;
+        this._currentBgs = prevCurrentBgs;
+        this._bgsFading = true;
         this._bgsFadeCounter = this._bgsFadeTime * 60;
     };
 
-    AudioManager.isNeedFadeOut = function() {
+    AudioManager.isNeedFadeOut = function () {
         return !this._bgsFading && this._bgsFadeForSe !== 0;
     };
 
-    AudioManager.fadeInBgsForSe = function() {
+    AudioManager.fadeInBgsForSe = function () {
         this.fadeInBgs(this._bgsFadeTime);
-        this._bgsFading      = false;
+        this._bgsFading = false;
         this._bgsFadeCounter = 0;
     };
 
-    AudioManager.isNeedFadeIn = function() {
+    AudioManager.isNeedFadeIn = function () {
         return this._bgsFading && !this.isPlayingAnySe() && this._bgsFadeCounter === 0;
     };
 
-    AudioManager.playDelayedSe = function() {
+    AudioManager.playDelayedSe = function () {
         while (this._delaySeStack.length > 0) {
             _AudioManager_playSe.call(this, this._delaySeStack.pop());
         }
     };
 
-    AudioManager.isPlayingAnySe = function() {
-        return this._seBuffers.some(function(audio) {
+    AudioManager.isPlayingAnySe = function () {
+        return this._seBuffers.some(function (audio) {
             return audio.isExist();
         });
     };
@@ -358,7 +358,7 @@
     // WebAudio
     //  演奏が要求済みかどうかを返します。
     //=============================================================================
-    WebAudio.prototype.isExist = function() {
+    WebAudio.prototype.isExist = function () {
         return this._autoPlay;
     };
 
@@ -367,7 +367,7 @@
     //  AudioManagerの更新処理を呼び出します。
     //=============================================================================
     const _SceneManager_updateScene = SceneManager.updateScene;
-    SceneManager.updateScene      = function() {
+    SceneManager.updateScene = function () {
         _SceneManager_updateScene.apply(this, arguments);
         if (this._scene) {
             AudioManager.updateBgsFade();

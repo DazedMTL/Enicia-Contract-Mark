@@ -794,7 +794,7 @@
 (() => {
 
     const PNAME = "ARTM_PlayerSensorMZ";
-    const CheckParam = function(type, name, value, def, min, max, options) {
+    const CheckParam = function (type, name, value, def, min, max, options) {
         if (min === undefined || min === null) {
             min = -Infinity;
         }
@@ -827,8 +827,8 @@
                     } else {
                         value =
                             isFinite(value) ?
-                            parseInt(value, 10) :
-                            isFinite(def) ? parseInt(def, 10) : 0;
+                                parseInt(value, 10) :
+                                isFinite(def) ? parseInt(def, 10) : 0;
                         value = value.clamp(min, max);
                     }
                     break;
@@ -838,8 +838,8 @@
                     } else {
                         value =
                             isFinite(value) ?
-                            parseFloat(value) :
-                            isFinite(def) ? parseFloat(def) : 0;
+                                parseFloat(value) :
+                                isFinite(def) ? parseFloat(def) : 0;
                         value = value.clamp(min, max);
                     }
                     break;
@@ -854,23 +854,23 @@
                     }
                     if (name === "Lost_Sensor_Switch" && (
                         value === null || value === undefined)) {
-                         value = "";
+                        value = "";
                     }
                     if (name !== "Lost_Sensor_Switch" &&
                         !value.match(/^([A-D]|\d+)$/i)) {
-                         const msbErr = "Plugin parameter value is not switch : "
-                         throw new Error(msbErr + name + " : "+value);
+                        const msbErr = "Plugin parameter value is not switch : "
+                        throw new Error(msbErr + name + " : " + value);
                     }
                     break;
                 default:
                     const msbErrs = ["[CheckParam] ", "のタイプが不正です: "];
-                    throw new Error(msbErrs[0] + name + msbErrs[1]  + type);
+                    throw new Error(msbErrs[0] + name + msbErrs[1] + type);
             }
         }
         return [value, type, def, min, max];
     };
 
-    const CEC = function(params) {
+    const CEC = function (params) {
         const text = (param => {
             let t = String(param);
             t = t.replace(/\\/g, '\x1b');
@@ -906,8 +906,8 @@
     };
 
     function CEC_bool(text, def, min, max) {
-       if (text === "") {
-           return def ? true : false;
+        if (text === "") {
+            return def ? true : false;
         } else {
             return (
                 text === true ||
@@ -921,7 +921,7 @@
     function CEC_num(text, def, min, max) {
         return (
             (isFinite(text) ? parseInt(text, 10) :
-             isFinite(def) ? parseInt(def, 10) : 0
+                isFinite(def) ? parseInt(def, 10) : 0
             ).clamp(min, max)
         );
     }
@@ -929,7 +929,7 @@
     function CEC_float(text, def, min, max) {
         return (
             (isFinite(text) ? parseFloat(text) :
-            isFinite(def) ? parseFloat(def) : 0
+                isFinite(def) ? parseFloat(def) : 0
             ).clamp(min, max)
         );
     }
@@ -952,33 +952,33 @@
         }
     }
 
-    const convertEscapeCharacters = function(text) {
+    const convertEscapeCharacters = function (text) {
         if (typeof text !== "string") {
             return text;
         }
         const scene = SceneManager._scene;
         if (scene && scene._windowLayer) {
-             const windowChild = scene._windowLayer.children[0];
-             return (
-                 windowChild ?
-                 windowChild.convertEscapeCharacters(text) :
-                 text
-             );
+            const windowChild = scene._windowLayer.children[0];
+            return (
+                windowChild ?
+                    windowChild.convertEscapeCharacters(text) :
+                    text
+            );
         } else {
             return ConvVb(text);
         }
     };
 
-    const ConvVb = function(text) {
+    const ConvVb = function (text) {
         const regExp = /^\x1bV\[(\d+)\]$/i;
         if (typeof text === "string") {
             text = text.replace(/\\/g, '\x1b');
             text = text.replace(/\x1b\x1b/g, '\\');
-            text = text.replace(regExp, function() {
+            text = text.replace(regExp, function () {
                 const num = parseInt(arguments[1]);
                 return $gameVariables.value(num);
             });
-            text = text.replace(regExp, function() {
+            text = text.replace(regExp, function () {
                 const num = parseInt(arguments[1]);
                 return $gameVariables.value(num);
             });
@@ -986,26 +986,26 @@
         return text;
     };
 
-    const ConvSw = function(text, target) {
+    const ConvSw = function (text, target) {
         const regExp = /^\x1bV\[\d+\]$|^\x1bS\[\d+\]$/i;
         if (typeof text === "string") {
             text = text.replace(/\\/g, '\x1b');
             text = text.replace(/\x1b\x1b/g, '\\');
-            text = text.replace(/\x1bS\[(\d+)\]/i, function() {
+            text = text.replace(/\x1bS\[(\d+)\]/i, function () {
                 const num = parseInt(arguments[1]);
                 return $gameSwitches.value(num);
             });
-            text = text.replace(/\x1bS\[([A-D])\]/i, function() {
+            text = text.replace(/\x1bS\[([A-D])\]/i, function () {
                 if (target) {
                     const key = [target._mapId, target._eventId,
-                                 arguments[1].toUpperCase()];
+                    arguments[1].toUpperCase()];
                     return $gameSelfSwitches.value(key);
                 }
                 return false;
             });
             if (text === true ||
-               text.toLowerCase() === "true" ||
-               text === "1") {
+                text.toLowerCase() === "true" ||
+                text === "1") {
                 text = 1;
             } else {
                 text = 0;
@@ -1014,11 +1014,11 @@
         return text;
     };
 
-    const paramParse = function(obj) {
+    const paramParse = function (obj) {
         return JSON.parse(JSON.stringify(obj, paramReplace));
     };
 
-    const paramReplace = function(key, value) {
+    const paramReplace = function (key, value) {
         try {
             return JSON.parse(value || null);
         } catch (e) {
@@ -1046,7 +1046,7 @@
     DefAutoSensor = CheckParam("bool", "Auto_Sensor", Parameters["Auto_Sensor"], false);
     DefEventDecision = CheckParam("bool", "Event_Decision", Parameters["Event_Decision"], false);
     DefRegionDecisions = [];
-    Parameters["Region_Decision"].forEach(function(region) {
+    Parameters["Region_Decision"].forEach(function (region) {
         DefRegionDecisions.push(CheckParam("string", "Region_Decision", region, 0));
     });
     DefRealRangeX = CheckParam("float", "Real_Range_X", Parameters["Real_Range_X"], 0.000, 0.000, 0.999);
@@ -1055,19 +1055,19 @@
     DefFoundCommon = CheckParam("num", "Player_Found.Common_Event", Parameters["Player_Found"]["Common_Event"], 0, 0);
     DefFoundDelay = CheckParam("num", "Player_Found.Delay", Parameters["Player_Found"]["Delay"], 0, 0);
     DefFoundSe = {
-        "name" : CheckParam("string", "Player_Found.Se.Name", Parameters["Player_Found"]["Se"]["Name"], "")[0],
-        "volume" : CheckParam("num", "Player_Found.Se.Volume", Parameters["Player_Found"]["Se"]["Volume"], 90, 0, 100)[0],
-        "pitch" : CheckParam("num", "Player_Found.Se.Pitch", Parameters["Player_Found"]["Se"]["Pitch"], 100, 50, 150)[0],
-        "pan" : CheckParam("num", "Player_Found.Se.Pan", Parameters["Player_Found"]["Se"]["Pan"], 0, -100, 100)[0],
+        "name": CheckParam("string", "Player_Found.Se.Name", Parameters["Player_Found"]["Se"]["Name"], "")[0],
+        "volume": CheckParam("num", "Player_Found.Se.Volume", Parameters["Player_Found"]["Se"]["Volume"], 90, 0, 100)[0],
+        "pitch": CheckParam("num", "Player_Found.Se.Pitch", Parameters["Player_Found"]["Se"]["Pitch"], 100, 50, 150)[0],
+        "pan": CheckParam("num", "Player_Found.Se.Pan", Parameters["Player_Found"]["Se"]["Pan"], 0, -100, 100)[0],
     }
     DefLostBallon = CheckParam("num", "Player_Lost.Ballon", Parameters["Player_Lost"]["Ballon"], 0, 0);
     DefLostCommon = CheckParam("num", "Player_Lost.Common_Event", Parameters["Player_Lost"]["Common_Event"], 0, 0);
     DefLostDelay = CheckParam("num", "Player_Lost.Delay", Parameters["Player_Lost"]["Delay"], 0, 0);
     DefLostSe = {
-        "name" : CheckParam("string", "Player_Lost.Se.Name", Parameters["Player_Lost"]["Se"]["Name"], "")[0],
-        "volume" : CheckParam("num", "Player_Lost.Se.Volume", Parameters["Player_Lost"]["Se"]["Volume"], 90, 0, 100)[0],
-        "pitch" : CheckParam("num", "Player_Lost.Se.Pitch", Parameters["Player_Lost"]["Se"]["Pitch"], 100, 50, 150)[0],
-        "pan" : CheckParam("num", "Player_Lost.Se.Pan", Parameters["Player_Lost"]["Se"]["Pan"], 0, -100, 100)[0],
+        "name": CheckParam("string", "Player_Lost.Se.Name", Parameters["Player_Lost"]["Se"]["Name"], "")[0],
+        "volume": CheckParam("num", "Player_Lost.Se.Volume", Parameters["Player_Lost"]["Se"]["Volume"], 90, 0, 100)[0],
+        "pitch": CheckParam("num", "Player_Lost.Se.Pitch", Parameters["Player_Lost"]["Se"]["Pitch"], 100, 50, 150)[0],
+        "pan": CheckParam("num", "Player_Lost.Se.Pan", Parameters["Player_Lost"]["Se"]["Pan"], 0, -100, 100)[0],
     }
     DefTrackingPriority = CheckParam("bool", "Tracking_Priority", Parameters["Tracking_Priority"], false);
     DefFollowerThrough = CheckParam("bool", "Follower_Through", Parameters["Follower_Through"], false);
@@ -1148,16 +1148,16 @@
     //  ・MZ専用処理を定義
     //=========================================================================
     const _Game_Temp_initialize = Game_Temp.prototype.initialize;
-    Game_Temp.prototype.initialize = function() {
+    Game_Temp.prototype.initialize = function () {
         _Game_Temp_initialize.call(this);
         this._eventId_MKR = 0;
     };
 
-    Game_Temp.prototype.getEventId_MKR = function() {
+    Game_Temp.prototype.getEventId_MKR = function () {
         return this._eventId_MKR;
     };
 
-    Game_Temp.prototype.setEventId_MKR = function(eventId) {
+    Game_Temp.prototype.setEventId_MKR = function (eventId) {
         if (this.getEventId_MKR() !== eventId) {
             this._eventId_MKR = eventId;
         }
@@ -1167,7 +1167,7 @@
     // Game_Interpreter
     //  ・イベントをプレイヤー近くまで移動させるコマンドを定義
     //=========================================================================
-    Game_Interpreter.prototype.moveNearPlayer = function(speed) {
+    Game_Interpreter.prototype.moveNearPlayer = function (speed) {
         const event = $gameMap.event(this._eventId);
         const oldSpeed = event.moveSpeed();
         const sx = Math.abs(event.deltaXFrom($gamePlayer.x));
@@ -1180,23 +1180,23 @@
                 newSpeed = parseInt(speed, 10);
             }
             // 移動ルート設定
-            list.push({"code":29,"parameters":[newSpeed]}, {"code":25})
+            list.push({ "code": 29, "parameters": [newSpeed] }, { "code": 25 })
             for (let i = 1; i < sx + sy; i++) {
-                list.push({"code":10});
+                list.push({ "code": 10 });
             }
-            list.push({"code":25}, {"code":29,"parameters":[oldSpeed]}, {"code":0});
+            list.push({ "code": 25 }, { "code": 29, "parameters": [oldSpeed] }, { "code": 0 });
             // 移動開始
             this.setWaitMode('route');
             event.forceMoveRoute({
-                "list":list,
-                "repeat":false,
-                "skippable":true,
-                "wait":true
+                "list": list,
+                "repeat": false,
+                "skippable": true,
+                "wait": true
             });
         }
     };
 
-    Game_Interpreter.prototype.setupReservedCommonEventEx = function(eventId) {
+    Game_Interpreter.prototype.setupReservedCommonEventEx = function (eventId) {
         if ($gameTemp.isCommonEventReserved()) {
             this.setup($gameTemp.reservedCommonEvent().list, eventId);
             $gameTemp.clearCommonEvent();
@@ -1207,13 +1207,13 @@
     };
 
     const _Game_Interpreter_setup = Game_Interpreter.prototype.setup;
-    Game_Interpreter.prototype.setup = function(list, eventId) {
+    Game_Interpreter.prototype.setup = function (list, eventId) {
         _Game_Interpreter_setup.call(this, list, eventId);
         $gameTemp.setEventId_MKR(eventId);
     };
 
     const _Game_Interpreter_executeCommand = Game_Interpreter.prototype.executeCommand;
-    Game_Interpreter.prototype.executeCommand = function() {
+    Game_Interpreter.prototype.executeCommand = function () {
         $gameTemp.setEventId_MKR(this.eventId());
         return _Game_Interpreter_executeCommand.call(this);
     };
@@ -1223,40 +1223,40 @@
     //  プレイヤー探索制御を定義
     //=========================================================================
     const _Game_System_initialize = Game_System.prototype.initialize;
-    Game_System.prototype.initialize = function(){
+    Game_System.prototype.initialize = function () {
         _Game_System_initialize.call(this);
         this._sensorStart = false
-        this._switchStatuses  = {};
+        this._switchStatuses = {};
     };
 
-    Game_System.prototype.startSensor = function(type) {
+    Game_System.prototype.startSensor = function (type) {
         this.setSensorStart(true);
         this.setSensorStatusAll(1, type || 0);
         this.setViewRangeStatusAll(2);
     };
 
-    Game_System.prototype.stopSensor = function() {
+    Game_System.prototype.stopSensor = function () {
         this.setSensorStart(false);
         this.setSensorStatusAll(0);
         this.setViewRangeStatusAll(0);
     };
 
-    Game_System.prototype.resetSensor = function(args) {
-        $gameMap.events().forEach(function(event) {
+    Game_System.prototype.resetSensor = function (args) {
+        $gameMap.events().forEach(function (event) {
             if (event.getSensorType() !== null) {
                 $gameSystem.neutralSensor(event.eventId(), args)
             }
         }, this);
     };
 
-    Game_System.prototype.onSensor = function(eventId) {
+    Game_System.prototype.onSensor = function (eventId) {
         const event = $gameMap.event(eventId);
         if (event && event.getSensorType() !== null) {
             event.setSensorStatus(1);
         }
     };
 
-    Game_System.prototype.offSensor = function(eventId) {
+    Game_System.prototype.offSensor = function (eventId) {
         const event = $gameMap.event(eventId);
         if (event && event.getSensorType() !== null) {
             event.setSensorStatus(0);
@@ -1264,7 +1264,7 @@
         }
     };
 
-    Game_System.prototype.neutralSensor = function(eventId, args) {
+    Game_System.prototype.neutralSensor = function (eventId, args) {
         const mapId = $gameMap.mapId();
         const event = $gameMap.event(eventId);
         const switches = args && args.length >= 2 ? args.slice(1) : [];
@@ -1273,9 +1273,9 @@
         if (event.getSensorType() !== null) {
             const sw =
                 event.getSensorSwitch() !== null ?
-                event.getSensorSwitch() : sensorSwitch;
+                    event.getSensorSwitch() : sensorSwitch;
             switches.push(sw);
-            switches.forEach(function(sw) {
+            switches.forEach(function (sw) {
                 if (isFinite(sw)) {
                     $gameSwitches.setValue(sw, false);
                 } else if (sw.match(/[a-dA-D]/)) {
@@ -1287,22 +1287,22 @@
         }
     };
 
-    Game_System.prototype.isSensorStart = function() {
+    Game_System.prototype.isSensorStart = function () {
         return this._sensorStart;
     };
 
-    Game_System.prototype.setSensorStart = function(sensorStart) {
+    Game_System.prototype.setSensorStart = function (sensorStart) {
         this._sensorStart = sensorStart || false;
     };
 
-    Game_System.prototype.getSensorStart = function() {
+    Game_System.prototype.getSensorStart = function () {
         return this._sensorStart;
     };
 
-    Game_System.prototype.setSensorStatusAll = function(status, type) {
+    Game_System.prototype.setSensorStatusAll = function (status, type) {
         if (!type) type = 0;
         if (type) {
-            $gameMap.events().forEach(function(event) {
+            $gameMap.events().forEach(function (event) {
                 if (event.getSensorType() !== null) {
                     event.setSensorStatus(status);
                     event.setFoundStatus(0);
@@ -1310,22 +1310,22 @@
             }, this);
             return;
         }
-        $gameMap.events().forEach(function(event) {
+        $gameMap.events().forEach(function (event) {
             if (event.getSensorType() !== null &&
                 event.getSensorStatus() !== -1) {
-                 event.setSensorStatus(status);
-                 event.setFoundStatus(0);
+                event.setSensorStatus(status);
+                event.setFoundStatus(0);
             }
         }, this);
     }
 
-    Game_System.prototype.setViewRangeStatusAll = function(status) {
-        $gameMap.events().forEach(function(event) {
+    Game_System.prototype.setViewRangeStatusAll = function (status) {
+        $gameMap.events().forEach(function (event) {
             if (event.getSensorType() !== null) event.setViewRangeStatus(status);
         }, this);
     }
 
-    Game_System.prototype.getEventSensorStatus = function(eventId) {
+    Game_System.prototype.getEventSensorStatus = function (eventId) {
         let event;
         if (eventId && isFinite(eventId) && $gameMap.event(eventId)) {
             event = $gameMap.event(eventId);
@@ -1335,16 +1335,16 @@
         }
     };
 
-    Game_System.prototype.getSwitchStatuses = function() {
+    Game_System.prototype.getSwitchStatuses = function () {
         return this._switchStatuses;
     };
 
-    Game_System.prototype.setSwitchStatuses = function(sw, eventId) {
+    Game_System.prototype.setSwitchStatuses = function (sw, eventId) {
         if (this._switchStatuses[sw]) {
             if (this._switchStatuses[sw] instanceof Array &&
                 this._switchStatuses[sw].length > 0 &&
                 !this._switchStatuses[sw].contains(eventId)) {
-                 this._switchStatuses[sw].push(eventId);
+                this._switchStatuses[sw].push(eventId);
             } else {
                 this._switchStatuses[sw] = [eventId];
             }
@@ -1353,7 +1353,7 @@
         }
     };
 
-    Game_System.prototype.isSwitchStatuses = function(sw, eventId) {
+    Game_System.prototype.isSwitchStatuses = function (sw, eventId) {
         if (!sw || !isFinite(sw)) {
             return false;
         }
@@ -1364,14 +1364,14 @@
                 if (this._switchStatuses[sw] instanceof Array &&
                     this._switchStatuses[sw].length > 0 &&
                     this._switchStatuses[sw].contains(eventId)) {
-                     return true;
+                    return true;
                 }
             }
         }
         return false;
     };
 
-    Game_System.prototype.removeSwitchStatuses = function(sw, eventId) {
+    Game_System.prototype.removeSwitchStatuses = function (sw, eventId) {
         if (!this._switchStatuses[sw]) return;
         if (!eventId) {
             delete this._switchStatuses[sw];
@@ -1380,35 +1380,35 @@
         if (this._switchStatuses[sw] instanceof Array &&
             this._switchStatuses[sw].length > 0 &&
             this._switchStatuses[sw].contains(eventId)) {
-             this._switchStatuses[sw].some((v, i) => {
-                 if (v === eventId) {
-                     this._switchStatuses[sw].splice(i, 1);
-                 }
-             }, this);
+            this._switchStatuses[sw].some((v, i) => {
+                if (v === eventId) {
+                    this._switchStatuses[sw].splice(i, 1);
+                }
+            }, this);
         }
         if (this._switchStatuses[sw].length === 0) {
             delete this._switchStatuses[sw];
         }
     };
 
-    Game_System.prototype.isFoundPlayer = function() {
+    Game_System.prototype.isFoundPlayer = function () {
         if (!this.isSensorStart()) return false;
         return $gameMap.events().some(e => e.isSensorFound());
     };
 
-    Game_System.prototype.allForceLost = function() {
+    Game_System.prototype.allForceLost = function () {
         if (!this.isSensorStart()) return false;
         $gameMap.events().filter(e => {
             return e.getFoundStatus() === 1;
         }).forEach(e => e.setForceLost(1));
     };
 
-    Game_System.prototype.forceLost = function(eventId) {
+    Game_System.prototype.forceLost = function (eventId) {
         if (!this.isSensorStart() ||
             !eventId ||
             !isFinite(eventId) ||
             !$gameMap.event(eventId)) {
-             return ;
+            return;
         }
         const event = $gameMap.event(eventId);
         if (event.getFoundStatus() === 1) {
@@ -1422,11 +1422,11 @@
     //
     //=========================================================================
     const _Game_Player_reserveTransfer = Game_Player.prototype.reserveTransfer;
-    Game_Player.prototype.reserveTransfer = function(mapId, x, y, d, fadeType) {
+    Game_Player.prototype.reserveTransfer = function (mapId, x, y, d, fadeType) {
         if (DefLocationReset[0] &&
             !$gameParty.inBattle() &&
             !$gameMessage.isBusy()) {
-             $gameSystem.resetSensor();
+            $gameSystem.resetSensor();
         }
         _Game_Player_reserveTransfer.apply(this, arguments);
     };
@@ -1454,7 +1454,7 @@
     //    2 = 即ロスト
     //=========================================================================
     const _Game_CharacterBaseInitMembers = Game_CharacterBase.prototype.initMembers;
-    Game_CharacterBase.prototype.initMembers = function() {
+    Game_CharacterBase.prototype.initMembers = function () {
         _Game_CharacterBaseInitMembers.call(this);
         const foundBallon = DefFoundBallon[0];
         const foundCommon = DefFoundCommon[0];
@@ -1497,126 +1497,126 @@
     };
 
     const _Game_CharacterBaseMoveStraight = Game_CharacterBase.prototype.moveStraight;
-    Game_CharacterBase.prototype.moveStraight = function(d) {
+    Game_CharacterBase.prototype.moveStraight = function (d) {
         const status = this.direction() === d ? 1 : 2;
-        _Game_CharacterBaseMoveStraight.call(this,d);
+        _Game_CharacterBaseMoveStraight.call(this, d);
         if (this.isMovementSucceeded() && d &&
             this.getSensorStatus() === 1) {
-             this.setViewRangeStatus(status);
+            this.setViewRangeStatus(status);
         }
     };
 
     const _Game_CharacterBaseMoveDiagonally = Game_CharacterBase.prototype.moveDiagonally;
-    Game_CharacterBase.prototype.moveDiagonally = function(horz, vert) {
-        _Game_CharacterBaseMoveDiagonally.call(this,horz, vert);
+    Game_CharacterBase.prototype.moveDiagonally = function (horz, vert) {
+        _Game_CharacterBaseMoveDiagonally.call(this, horz, vert);
         if (this.isMovementSucceeded() &&
             this.getSensorStatus() === 1) {
-             this.setViewRangeStatus(2);
+            this.setViewRangeStatus(2);
         }
     };
 
     const _Game_CharacterBaseSetDirection = Game_CharacterBase.prototype.setDirection;
-    Game_CharacterBase.prototype.setDirection = function(d) {
+    Game_CharacterBase.prototype.setDirection = function (d) {
         const status = (this.direction() === d) ? 1 : 2;
         if (!this.isDirectionFixed() && d &&
             this.getSensorStatus() === 1) {
-             this.setViewRangeStatus(status);
+            this.setViewRangeStatus(status);
         }
-        _Game_CharacterBaseSetDirection.call(this,d);
+        _Game_CharacterBaseSetDirection.call(this, d);
     }
-    Game_CharacterBase.prototype.startViewRange = function() {
+    Game_CharacterBase.prototype.startViewRange = function () {
         this.setViewRangeStatus(1);
     };
 
-    Game_CharacterBase.prototype.setSensorStatus = function(sensorStatus) {
+    Game_CharacterBase.prototype.setSensorStatus = function (sensorStatus) {
         this._sensorStatus = sensorStatus;
     };
 
-    Game_CharacterBase.prototype.getSensorStatus = function() {
+    Game_CharacterBase.prototype.getSensorStatus = function () {
         return this._sensorStatus;
     };
 
-    Game_CharacterBase.prototype.setFoundStatus = function(foundStatus) {
+    Game_CharacterBase.prototype.setFoundStatus = function (foundStatus) {
         this._foundStatus = foundStatus;
     };
 
-    Game_CharacterBase.prototype.getFoundStatus = function() {
+    Game_CharacterBase.prototype.getFoundStatus = function () {
         return this._foundStatus;
     };
 
-    Game_CharacterBase.prototype.setSensorType = function(sensorType) {
+    Game_CharacterBase.prototype.setSensorType = function (sensorType) {
         this._sensorType = sensorType;
     };
 
-    Game_CharacterBase.prototype.getSensorType = function() {
+    Game_CharacterBase.prototype.getSensorType = function () {
         return this._sensorType;
     };
 
-    Game_CharacterBase.prototype.setSensorRange = function(sensorRange) {
+    Game_CharacterBase.prototype.setSensorRange = function (sensorRange) {
         this._sensorRange = sensorRange;
     };
 
-    Game_CharacterBase.prototype.getSensorRange = function() {
+    Game_CharacterBase.prototype.getSensorRange = function () {
         const value1 = parseInt(ConvVb(this._sensorRange), 10);
         const value2 = value1 % 2 ? 2 : value1;
-        return this.getSensorType() === "df" ?  value2 : value1;
+        return this.getSensorType() === "df" ? value2 : value1;
     };
 
-    Game_CharacterBase.prototype.setSensorRangeC = function(sensorRangeC) {
+    Game_CharacterBase.prototype.setSensorRangeC = function (sensorRangeC) {
         this._sensorRangeC = sensorRangeC;
     };
 
-    Game_CharacterBase.prototype.getSensorRangeC = function() {
+    Game_CharacterBase.prototype.getSensorRangeC = function () {
         const value1 = parseInt(ConvVb(this._sensorRangeC), 10);
         const value2 = value1 % 2 ? 2 : value1
         return this.getSensorType() === "df" ? value2 : value1;
     };
 
-    Game_CharacterBase.prototype.setViewRangeStatus = function(viewRangeStatus) {
+    Game_CharacterBase.prototype.setViewRangeStatus = function (viewRangeStatus) {
         this._viewRangeStatus = viewRangeStatus;
     };
 
-    Game_CharacterBase.prototype.getViewRangeStatus = function() {
+    Game_CharacterBase.prototype.getViewRangeStatus = function () {
         return this._viewRangeStatus;
     };
 
-    Game_CharacterBase.prototype.setCoordinate = function(x, y, status) {
+    Game_CharacterBase.prototype.setCoordinate = function (x, y, status) {
         this._coordinate.push([x, y, status, -1]);
     };
 
-    Game_CharacterBase.prototype.getCoordinate = function() {
+    Game_CharacterBase.prototype.getCoordinate = function () {
         return this._coordinate;
     };
 
-    Game_CharacterBase.prototype.clearCoordinate = function() {
+    Game_CharacterBase.prototype.clearCoordinate = function () {
         this._coordinate = [];
     };
 
-    Game_CharacterBase.prototype.setBothSensorRight = function(bothSensor) {
+    Game_CharacterBase.prototype.setBothSensorRight = function (bothSensor) {
         this._bothSensorR = bothSensor;
     };
 
-    Game_CharacterBase.prototype.getBothSensorRight = function() {
+    Game_CharacterBase.prototype.getBothSensorRight = function () {
         return this._bothSensorR;
     };
 
-    Game_CharacterBase.prototype.setBothSensorLeft = function(bothSensor) {
+    Game_CharacterBase.prototype.setBothSensorLeft = function (bothSensor) {
         this._bothSensorL = bothSensor;
     };
 
-    Game_CharacterBase.prototype.getBothSensorLeft = function() {
+    Game_CharacterBase.prototype.getBothSensorLeft = function () {
         return this._bothSensorL;
     };
 
-    Game_CharacterBase.prototype.setBothSensor = function(bothSensor) {
+    Game_CharacterBase.prototype.setBothSensor = function (bothSensor) {
         this._sideSensor = bothSensor;
     };
 
-    Game_CharacterBase.prototype.getBothSensor = function() {
+    Game_CharacterBase.prototype.getBothSensor = function () {
         return parseInt(ConvSw(this._sideSensor, this), 10);
     };
 
-    Game_CharacterBase.prototype.setSensorSwitch = function(sensorSwitch) {
+    Game_CharacterBase.prototype.setSensorSwitch = function (sensorSwitch) {
         if (isFinite(sensorSwitch)) {
             this._sensorSwitch = parseInt(sensorSwitch, 10);
         } else if (sensorSwitch.toLowerCase().match(/[a-d]/)) {
@@ -1624,11 +1624,11 @@
         }
     };
 
-    Game_CharacterBase.prototype.getSensorSwitch = function() {
+    Game_CharacterBase.prototype.getSensorSwitch = function () {
         return this._sensorSwitch;
     };
 
-    Game_CharacterBase.prototype.setLostSensorSwitch = function(sensorSwitch) {
+    Game_CharacterBase.prototype.setLostSensorSwitch = function (sensorSwitch) {
         if (isFinite(sensorSwitch)) {
             this._lostSensorSwitch = parseInt(sensorSwitch, 10);
         } else if (sensorSwitch.toLowerCase().match(/[a-d]/)) {
@@ -1636,45 +1636,45 @@
         }
     };
 
-    Game_CharacterBase.prototype.getLostSensorSwitch = function() {
+    Game_CharacterBase.prototype.getLostSensorSwitch = function () {
         return this._lostSensorSwitch;
     };
 
-    Game_CharacterBase.prototype.setRangeVisible = function(rangeVisible) {
+    Game_CharacterBase.prototype.setRangeVisible = function (rangeVisible) {
         this._rangeVisible = rangeVisible;
     };
 
-    Game_CharacterBase.prototype.getRangeVisible = function() {
+    Game_CharacterBase.prototype.getRangeVisible = function () {
         return parseInt(ConvSw(this._rangeVisible, this), 10);
     };
 
-    Game_CharacterBase.prototype.setTerrainDecision = function(terrainDecision) {
+    Game_CharacterBase.prototype.setTerrainDecision = function (terrainDecision) {
         this._terrainDecision = terrainDecision;
     };
 
-    Game_CharacterBase.prototype.getTerrainDecision = function() {
+    Game_CharacterBase.prototype.getTerrainDecision = function () {
         return parseInt(ConvSw(this._terrainDecision, this), 10);
     };
 
-    Game_CharacterBase.prototype.setEventDecision = function(eventDecision) {
+    Game_CharacterBase.prototype.setEventDecision = function (eventDecision) {
         this._eventDecision = eventDecision;
     };
 
-    Game_CharacterBase.prototype.getEventDecision = function() {
+    Game_CharacterBase.prototype.getEventDecision = function () {
         return parseInt(ConvSw(this._eventDecision, this), 10);
     };
 
-    Game_CharacterBase.prototype.setRegionDecision = function(regionDecision) {
+    Game_CharacterBase.prototype.setRegionDecision = function (regionDecision) {
         this._regionDecision = String(regionDecision);
     };
 
-    Game_CharacterBase.prototype.getRegionDecision = function() {
+    Game_CharacterBase.prototype.getRegionDecision = function () {
         return parseInt(ConvVb(this._regionDecision), 10);
     };
 
-    Game_CharacterBase.prototype.setDirectionFixed = function(directionFixed) {
+    Game_CharacterBase.prototype.setDirectionFixed = function (directionFixed) {
         let direction;
-        switch(directionFixed) {
+        switch (directionFixed) {
             case "u":
                 direction = DIR_UP;
                 break;
@@ -1693,11 +1693,11 @@
         this._directionFixed = parseInt(direction, 10);
     };
 
-    Game_CharacterBase.prototype.getDirectionFixed = function() {
+    Game_CharacterBase.prototype.getDirectionFixed = function () {
         return this._directionFixed;
     };
 
-    Game_CharacterBase.prototype.isMapPassableEx = function(x, y, d) {
+    Game_CharacterBase.prototype.isMapPassableEx = function (x, y, d) {
         const x2 = $gameMap.roundXWithDirection(x, d);
         const y2 = $gameMap.roundYWithDirection(y, d);
         const d2 = this.reverseDir(d);
@@ -1707,10 +1707,10 @@
         if ($gameMap.isPassable(x, y, d) && $gameMap.isPassable(x2, y2, d2)) {
             if (this.getEventDecision() === 1 ||
                 (this.getEventDecision() === -1 && eventDecision)) {
-                 const events = $gameMap.eventsXyNt(x2, y2);
-                 passableFlag = !events.some(function(event) {
-                     return event.isNormalPriority();
-                 });
+                const events = $gameMap.eventsXyNt(x2, y2);
+                passableFlag = !events.some(function (event) {
+                    return event.isNormalPriority();
+                });
             }
             if (regDec.length > 0 && !!passableFlag) {
                 const id = $gameMap.regionId(x2, y2);
@@ -1722,103 +1722,103 @@
         return passableFlag;
     };
 
-    Game_CharacterBase.prototype.isCreateRange = function() {
+    Game_CharacterBase.prototype.isCreateRange = function () {
         return this._createRange;
     };
 
-    Game_CharacterBase.prototype.enableCreateRange = function() {
+    Game_CharacterBase.prototype.enableCreateRange = function () {
         this._createRange = true;
     };
 
-    Game_CharacterBase.prototype.setFoundBallon = function(ballon) {
+    Game_CharacterBase.prototype.setFoundBallon = function (ballon) {
         this._foundBallon = ballon;
     };
 
-    Game_CharacterBase.prototype.getFoundBallon = function() {
+    Game_CharacterBase.prototype.getFoundBallon = function () {
         return parseInt(ConvVb(this._foundBallon), 10);
     };
 
-    Game_CharacterBase.prototype.setFoundCommon = function(common) {
+    Game_CharacterBase.prototype.setFoundCommon = function (common) {
         this._foundCommon = common;
     };
 
-    Game_CharacterBase.prototype.getFoundCommon = function() {
+    Game_CharacterBase.prototype.getFoundCommon = function () {
         return parseInt(ConvVb(this._foundCommon), 10);
     };
 
-    Game_CharacterBase.prototype.setFoundDelay = function(delay) {
+    Game_CharacterBase.prototype.setFoundDelay = function (delay) {
         this._foundDelay = parseInt(ConvVb(delay), 10);
     };
 
-    Game_CharacterBase.prototype.getFoundDelay = function() {
+    Game_CharacterBase.prototype.getFoundDelay = function () {
         return this._foundDelay;
     };
 
-    Game_CharacterBase.prototype.resetFoundDelay = function() {
+    Game_CharacterBase.prototype.resetFoundDelay = function () {
         this._foundDelay = this.getFoundMaxDelay();
     };
 
-    Game_CharacterBase.prototype.setFoundMaxDelay = function(delay) {
+    Game_CharacterBase.prototype.setFoundMaxDelay = function (delay) {
         this._foundMaxDelay = delay;
     };
 
-    Game_CharacterBase.prototype.getFoundMaxDelay = function() {
+    Game_CharacterBase.prototype.getFoundMaxDelay = function () {
         return parseInt(ConvVb(this._foundMaxDelay), 10);
     };
 
-    Game_CharacterBase.prototype.setLostBallon = function(ballon) {
+    Game_CharacterBase.prototype.setLostBallon = function (ballon) {
         this._lostBallon = ballon;
     };
 
-    Game_CharacterBase.prototype.getLostBallon = function() {
+    Game_CharacterBase.prototype.getLostBallon = function () {
         return parseInt(ConvVb(this._lostBallon), 10);
     };
 
-    Game_CharacterBase.prototype.setLostCommon = function(common) {
+    Game_CharacterBase.prototype.setLostCommon = function (common) {
         this._lostCommon = common;
     };
 
-    Game_CharacterBase.prototype.getLostCommon = function() {
+    Game_CharacterBase.prototype.getLostCommon = function () {
         return parseInt(ConvVb(this._lostCommon), 10);
     };
 
-    Game_CharacterBase.prototype.setLostDelay = function(delay) {
+    Game_CharacterBase.prototype.setLostDelay = function (delay) {
         this._lostDelay = parseInt(ConvVb(delay), 10);
     };
 
-    Game_CharacterBase.prototype.getLostDelay = function() {
+    Game_CharacterBase.prototype.getLostDelay = function () {
         return this._lostDelay;
     };
 
-    Game_CharacterBase.prototype.resetLostDelay = function() {
+    Game_CharacterBase.prototype.resetLostDelay = function () {
         this._lostDelay = this.getLostMaxDelay();
     };
 
-    Game_CharacterBase.prototype.setLostMaxDelay = function(delay) {
+    Game_CharacterBase.prototype.setLostMaxDelay = function (delay) {
         this._lostMaxDelay = delay;
     };
 
-    Game_CharacterBase.prototype.getLostMaxDelay = function() {
+    Game_CharacterBase.prototype.getLostMaxDelay = function () {
         return parseInt(ConvVb(this._lostMaxDelay), 10);
     };
 
-    Game_CharacterBase.prototype.setActiveMode = function(mode) {
+    Game_CharacterBase.prototype.setActiveMode = function (mode) {
         this._activeMode = mode;
     };
 
-    Game_CharacterBase.prototype.getActiveMode = function() {
+    Game_CharacterBase.prototype.getActiveMode = function () {
         return parseInt(ConvSw(this._activeMode, this), 10);;
     };
 
-    Game_CharacterBase.prototype.setForceLost = function(forceLost) {
+    Game_CharacterBase.prototype.setForceLost = function (forceLost) {
         this._forceLost = forceLost;
     };
 
-    Game_CharacterBase.prototype.getForceLost = function() {
+    Game_CharacterBase.prototype.getForceLost = function () {
         return this._forceLost;
     };
 
-    Game_CharacterBase.prototype.isSensorFound = function() {
+    Game_CharacterBase.prototype.isSensorFound = function () {
         return this.getSensorStatus() === 1 && this.getFoundStatus() === 1;
     };
 
@@ -1827,7 +1827,7 @@
     //  探索開始処理の自動実行を定義します。
     //=========================================================================
     const _Game_Map_setupEvents = Game_Map.prototype.setupEvents;
-    Game_Map.prototype.setupEvents = function() {
+    Game_Map.prototype.setupEvents = function () {
         _Game_Map_setupEvents.call(this);
         if (DefAutoSensor[0]) {
             $gameSystem.startSensor();
@@ -1840,28 +1840,28 @@
     //  指定範囲内にプレイヤーがいる場合に指定されたスイッチをONにします。
     //=========================================================================
     const _Game_EventSetupPageSettings = Game_Event.prototype.setupPageSettings;
-    Game_Event.prototype.setupPageSettings = function() {
+    Game_Event.prototype.setupPageSettings = function () {
         _Game_EventSetupPageSettings.call(this);
         if (this.getSensorStatus() === -2) {
             this.setupSensor();
         }
     };
 
-    Game_Event.prototype.setupSensor = function() {
+    Game_Event.prototype.setupSensor = function () {
         const pattern = /<(.?)(?:psensor)(l|f|s|d)?(?:\:)(\\v\[\d+\]|\d+)([ 0-9a-z\[\]\\]*)?>/i
         const event = this.event();
         if (!event.note) return;
         note = event.note.toLowerCase();
         note = note.split(/ (?=<)/);
         cnt = note.length;
-        for (let i = 0;i < cnt;i++) {
+        for (let i = 0; i < cnt; i++) {
             const n = note[i].trim();
             if (n.match(pattern)) {
                 match = n.match(pattern);
                 if (match[1] && match[1] === "!") { // 探索一時無効
                     this.setSensorStatus(-1);
                 }
-                switch(match[2]) { // 探索種別
+                switch (match[2]) { // 探索種別
                     case "l":
                     case "f":
                     case "s":
@@ -1879,7 +1879,7 @@
                     if (this.getSensorType() === "df" &&
                         isFinite(value) &&
                         (value <= 1 || (value % 2))) {
-                         value = 2;
+                        value = 2;
                     }
                     this.setSensorRange(value);
                     this.setSensorRangeC(value);
@@ -1893,7 +1893,7 @@
     };
 
     function setupSensor_option(obj, options) {
-        options.forEach(function(op){
+        options.forEach(function (op) {
             op = op.replace(/\\/g, '\x1b');
             op = op.replace(/\x1b\x1b/g, '\\');
             if (op.match(/^sw([a-d]|\d+)$/)) { // スイッチ指定
@@ -1948,44 +1948,44 @@
     }
 
     const _Game_EventUpdate = Game_Event.prototype.update;
-    Game_Event.prototype.update = function() {
+    Game_Event.prototype.update = function () {
         _Game_EventUpdate.call(this);
         if (!this.isInvisible() && $gameSystem.isSensorStart()) {
             this.sensorUpdate();
         }
     };
 
-    Game_Event.prototype.sensorUpdate = function() {
+    Game_Event.prototype.sensorUpdate = function () {
         // 探索中のイベントであること
         // マップイベント実行中でないこと or 探索続行オプションが付与されている
         if (this.getSensorStatus() === 1 &&
-            (!this.isStarting() || this.getActiveMode() === 1)){
-             // プレイヤーを発見して、かつ強制ロストが無効
-             if (this.isFoundPlayer() && this.getForceLost() === 0) {
-                 if (this.getFoundStatus() === 0) {
-                     this.foundPlayer();
-                 }
-                 if (this.getLostDelay() < this.getLostMaxDelay()) this.resetLostDelay();
-             // 強制ロストが有効
-             } else if(this.getForceLost() > 0) {
-                 this.lostPlayer(true);
-             // プレイヤー発見状態
-             } else if(this.getFoundStatus() == 1) {
-                 this.lostPlayer();
-                 if (this.getFoundDelay() < this.getFoundMaxDelay()) {
-                     this.resetFoundDelay();
-                     this.setForceLost(0);
-                 }
-             } else {
-                 if (this.getFoundDelay() < this.getFoundMaxDelay()) {
-                     this.resetFoundDelay();
-                     this.setForceLost(0);
-                 }
-             }
+            (!this.isStarting() || this.getActiveMode() === 1)) {
+            // プレイヤーを発見して、かつ強制ロストが無効
+            if (this.isFoundPlayer() && this.getForceLost() === 0) {
+                if (this.getFoundStatus() === 0) {
+                    this.foundPlayer();
+                }
+                if (this.getLostDelay() < this.getLostMaxDelay()) this.resetLostDelay();
+                // 強制ロストが有効
+            } else if (this.getForceLost() > 0) {
+                this.lostPlayer(true);
+                // プレイヤー発見状態
+            } else if (this.getFoundStatus() == 1) {
+                this.lostPlayer();
+                if (this.getFoundDelay() < this.getFoundMaxDelay()) {
+                    this.resetFoundDelay();
+                    this.setForceLost(0);
+                }
+            } else {
+                if (this.getFoundDelay() < this.getFoundMaxDelay()) {
+                    this.resetFoundDelay();
+                    this.setForceLost(0);
+                }
+            }
         }
     };
 
-    Game_Event.prototype.foundPlayer = function() {
+    Game_Event.prototype.foundPlayer = function () {
         const delay = this.getFoundDelay();
         if (delay <= 0) {
             const sensorSwitch = DefSensorSwitch[0];
@@ -1996,14 +1996,14 @@
             this.resetFoundDelay();
             this.resetLostDelay();
             // 発見後スイッチON
-            const sw_on = 
+            const sw_on =
                 this.getSensorSwitch() !== null ?
-                this.getSensorSwitch() : sensorSwitch;
+                    this.getSensorSwitch() : sensorSwitch;
             foundPlayer_swon(sw_on, mapId, eventId);
             // ロスト後スイッチOFF
-            const sw_off = 
+            const sw_off =
                 this.getLostSensorSwitch() !== null ?
-                this.getLostSensorSwitch() : lostSensorSwitch;
+                    this.getLostSensorSwitch() : lostSensorSwitch;
             if (sw_off !== "") {
                 foundPlayer_swoff(sw_off, mapId, eventId);
             }
@@ -2024,7 +2024,7 @@
         }
     };
 
-    Game_Event.prototype.lostPlayer = function(forceLost = false) {
+    Game_Event.prototype.lostPlayer = function (forceLost = false) {
         const delay = this.getLostDelay();
         if (delay <= 0 || forceLost) {
             const sensorSwitch = DefSensorSwitch[0];
@@ -2036,14 +2036,14 @@
             this.resetLostDelay();
             this.resetFoundDelay();
             // 発見後スイッチOFF
-            const sw_off = 
+            const sw_off =
                 this.getSensorSwitch() !== null ?
-                this.getSensorSwitch() : sensorSwitch;
+                    this.getSensorSwitch() : sensorSwitch;
             foundPlayer_swoff(sw_off, mapId, eventId);
             // ロスト後スイッチON
-            const sw_on = 
+            const sw_on =
                 this.getLostSensorSwitch() !== null ?
-                this.getLostSensorSwitch() : lostSensorSwitch;
+                    this.getLostSensorSwitch() : lostSensorSwitch;
             if (sw_on !== "") {
                 foundPlayer_swon(sw_on, mapId, eventId);
             }
@@ -2097,7 +2097,7 @@
         }
     }
 
-    Game_Event.prototype.isFoundPlayer = function() {
+    Game_Event.prototype.isFoundPlayer = function () {
         switch (this.getSensorType()) {
             case "l": // 直線の探索
                 return this.sensorLine();
@@ -2112,7 +2112,7 @@
     };
 
     // 直線の探索
-    Game_Event.prototype.sensorLine = function() {
+    Game_Event.prototype.sensorLine = function () {
         const sensorRange = this.getSensorRange();
         const dirFixed = this.getDirectionFixed();
         const dir = dirFixed === -1 ? this.direction() : dirFixed;
@@ -2143,11 +2143,11 @@
                 if (cnt === 1) {
                     i = 0;
                     if (coordinates[i][0] !== 0 || coordinates[i][1] !== 0) {
-                        if (px >= ex + coordinates[i][0] - realX && 
+                        if (px >= ex + coordinates[i][0] - realX &&
                             px <= ex + coordinates[i][0] + realX &&
                             py >= ey - Math.abs(coordinates[i][1]) - realY &&
                             py <= ey + Math.abs(coordinates[i][0])) {
-                             return true;
+                            return true;
                         }
                     }
                 }
@@ -2171,7 +2171,7 @@
                             py <= ey + coordinates[i][1] + realY &&
                             px >= ex + Math.abs(coordinates[i][1]) - realX &&
                             px <= ex + coordinates[i][0] + realX) {
-                             return true;
+                            return true;
                         }
                     }
                 }
@@ -2195,7 +2195,7 @@
                             py >= ey + coordinates[i][1] - realY &&
                             px <= ex + Math.abs(coordinates[i][1]) + realX &&
                             px >= ex + coordinates[i][0] - realX) {
-                             return true;
+                            return true;
                         }
                     }
                 }
@@ -2219,7 +2219,7 @@
                             px <= ex + coordinates[i][0] + realX &&
                             py >= ey + Math.abs(coordinates[i][0]) &&
                             py <= ey + coordinates[i][1] + realY) {
-                             return true;
+                            return true;
                         }
                     }
                 }
@@ -2228,7 +2228,7 @@
     };
 
     // 扇範囲の探索
-    Game_Event.prototype.sensorFan = function() {
+    Game_Event.prototype.sensorFan = function () {
         const sensorRange = this.getSensorRange();
         const dirFixed = this.getDirectionFixed();
         const dir = dirFixed === -1 ? this.direction() : dirFixed;
@@ -2272,12 +2272,12 @@
                             }
                         }
                         if (this.getTerrainDecision() === 1 ||
-                           (this.getTerrainDecision() === -1 && terrainDecision) && (
-                            !this.isMapPassableEx(ex + j * sign, ey - j, diagoDir) ||
-                            !this.isMapPassableEx(ex + j * sign, ey - j, strDir) ||
-                            !this.isMapPassableEx(ex + j * sign, ey - j - 1, diagoDir) ||
-                            !this.isMapPassableEx(ex + (j + 1) * sign, ey - j, strDir))) {
-                             break;
+                            (this.getTerrainDecision() === -1 && terrainDecision) && (
+                                !this.isMapPassableEx(ex + j * sign, ey - j, diagoDir) ||
+                                !this.isMapPassableEx(ex + j * sign, ey - j, strDir) ||
+                                !this.isMapPassableEx(ex + j * sign, ey - j - 1, diagoDir) ||
+                                !this.isMapPassableEx(ex + (j + 1) * sign, ey - j, strDir))) {
+                            break;
                         }
                     }
                     // 配列の要素数合わせ
@@ -2334,15 +2334,15 @@
                                 noPassTemp = noPassTemp + j;
                             }
                         }
-                        if (this.getTerrainDecision() === 1 || 
-                           (this.getTerrainDecision() === -1 && terrainDecision)) {
-                           if (!this.isMapPassableEx(ex + j, ey + j * sign, diagoDir) ||
-                               !this.isMapPassableEx(ex + j, ey + j * sign, strDir) ||
-                               !this.isMapPassableEx(ex + j + 1, ey + j * sign, diagoDir) ||
-                               !this.isMapPassableEx(ex + j, ey + (j + 1) * sign, strDir)) {
+                        if (this.getTerrainDecision() === 1 ||
+                            (this.getTerrainDecision() === -1 && terrainDecision)) {
+                            if (!this.isMapPassableEx(ex + j, ey + j * sign, diagoDir) ||
+                                !this.isMapPassableEx(ex + j, ey + j * sign, strDir) ||
+                                !this.isMapPassableEx(ex + j + 1, ey + j * sign, diagoDir) ||
+                                !this.isMapPassableEx(ex + j, ey + (j + 1) * sign, strDir)) {
                                 break;
-                           }
-                       }
+                            }
+                        }
                     }
                     // 配列の要素数合わせ
                     this.addCoordinate(sensorRange * i + 1 + i);
@@ -2373,7 +2373,7 @@
                         py <= rey + coordinates[i][1] + realY &&
                         px >= rex + Math.abs(coordinates[i][1]) - realX &&
                         px <= rex + coordinates[i][0] + realX) {
-                         return true;
+                        return true;
                     }
                 }
                 break;
@@ -2388,7 +2388,7 @@
                 this.setCoordinate(0, 0, "C");
                 noPassTemp = noPass;
                 // 斜め直線上の範囲確定
-                for (let i = 1;i < 3; i++) {
+                for (let i = 1; i < 3; i++) {
                     for (let j = 0; j <= sensorRange; j++) {
                         if (j > 0) {
                             noPassTemp = this.rangeSearch(strDir, -j, j * sign, -1, 0, noPassTemp);
@@ -2399,12 +2399,12 @@
                             }
                         }
                         if (this.getTerrainDecision() === 1 ||
-                           (this.getTerrainDecision() === -1 && terrainDecision)) {
+                            (this.getTerrainDecision() === -1 && terrainDecision)) {
                             if (!this.isMapPassableEx(ex - j, ey + j * sign, diagoDir) ||
                                 !this.isMapPassableEx(ex - j, ey + j * sign, strDir) ||
                                 !this.isMapPassableEx(ex - j - 1, ey + j * sign, diagoDir) ||
                                 !this.isMapPassableEx(ex - j, ey + (j + 1) * sign, strDir)) {
-                                 break;
+                                break;
                             }
                         }
                     }
@@ -2452,7 +2452,7 @@
                 this.setCoordinate(0, 0, "C");
                 noPassTemp = noPass;
                 // 斜め直線上の範囲確定
-                for (let i = 1;i < 3; i++) {
+                for (let i = 1; i < 3; i++) {
                     for (let j = 0; j <= sensorRange; j++) {
                         if (j > 0) {
                             noPassTemp = this.rangeSearch(strDir, j * sign, j, 0, 1, noPassTemp);
@@ -2463,12 +2463,12 @@
                             }
                         }
                         if (this.getTerrainDecision() === 1 ||
-                           (this.getTerrainDecision() === -1 && terrainDecision)) {
+                            (this.getTerrainDecision() === -1 && terrainDecision)) {
                             if (!this.isMapPassableEx(ex + j * sign, ey + j, diagoDir) ||
                                 !this.isMapPassableEx(ex + j * sign, ey + j, strDir) ||
                                 !this.isMapPassableEx(ex + j * sign, ey + j + 1, diagoDir) ||
                                 !this.isMapPassableEx(ex + (j + 1) * sign, ey + j, strDir)) {
-                                 break;
+                                break;
                             }
                         }
                     }
@@ -2501,7 +2501,7 @@
                         px <= rex + coordinates[i][0] + realX &&
                         py >= rey + Math.abs(coordinates[i][0]) - realY &&
                         py <= rey + coordinates[i][1] + realY) {
-                         return true;
+                        return true;
                     }
                 }
         }
@@ -2509,7 +2509,7 @@
     };
 
     // 菱形範囲の探索(地形考慮完全無視)
-    Game_Event.prototype.sensorDiamond = function() {
+    Game_Event.prototype.sensorDiamond = function () {
         const sensorRange = this.getSensorRange();
         const sx = this.deltaXFrom($gamePlayer._realX);
         const sy = this.deltaYFrom($gamePlayer._realY);
@@ -2531,7 +2531,7 @@
     }
 
     // 四角範囲の探索(地形考慮完全無視)
-    Game_Event.prototype.sensorSquare = function() {
+    Game_Event.prototype.sensorSquare = function () {
         const sensorRange = this.getSensorRange();
         const sx = this.deltaXFrom($gamePlayer._realX);
         const sy = this.deltaYFrom($gamePlayer._realY);
@@ -2547,7 +2547,7 @@
         }
     }
 
-    Game_Event.prototype.isSideSearch = function(directionR, directionL, vx, vy) {
+    Game_Event.prototype.isSideSearch = function (directionR, directionL, vx, vy) {
         const bothSensor = CEC(DefBothSensor);
         const terrainDecision = CEC(DefTerrainDecision);
         const realX = DefRealRangeX[0];
@@ -2558,7 +2558,7 @@
         const ey = this.y;
         if (this.getBothSensor() === -1 && bothSensor) {
             if (this.getTerrainDecision() === 1
-                    || (this.getTerrainDecision() === -1 && terrainDecision)) {
+                || (this.getTerrainDecision() === -1 && terrainDecision)) {
                 this.setBothSensorRight(this.isMapPassableEx(ex, ey, directionR));
                 this.setBothSensorLeft(this.isMapPassableEx(ex, ey, directionL));
             } else {
@@ -2567,7 +2567,7 @@
             }
         } else if (this.getBothSensor() === 1) {
             if (this.getTerrainDecision() === 1
-                    || (this.getTerrainDecision() === -1 && terrainDecision)) {
+                || (this.getTerrainDecision() === -1 && terrainDecision)) {
                 this.setBothSensorRight(this.isMapPassableEx(ex, ey, directionR));
                 this.setBothSensorLeft(this.isMapPassableEx(ex, ey, directionL));
             } else {
@@ -2579,21 +2579,21 @@
             this.setBothSensorLeft(false);
         }
         if (this.getBothSensorRight() &&
-           sx >= vx - realX && sx <= vx + realX &&
-           sy >= vy - realY && sy <= vy + realY) {
+            sx >= vx - realX && sx <= vx + realX &&
+            sy >= vy - realY && sy <= vy + realY) {
             return true;
         }
         vx = vx === 0 ? vx : -vx;
         vy = vy === 0 ? vy : -vy;
         if (this.getBothSensorLeft() &&
-           sx >= vx - realX && sx <= vx + realX &&
-           sy >= vy - realY && sy <= vy + realY) {
+            sx >= vx - realX && sx <= vx + realX &&
+            sy >= vy - realY && sy <= vy + realY) {
             return true;
         }
         return false;
     };
 
-    Game_Event.prototype.rangeSearch = function(strDir, rx, ry, signX, signY, noPass) {
+    Game_Event.prototype.rangeSearch = function (strDir, rx, ry, signX, signY, noPass) {
         const sensorRange = this.getSensorRange();
         const cnt = sensorRange - Math.abs(rx);
         const noPassDir = signX !== 0 ? ry : rx;
@@ -2608,7 +2608,7 @@
             cx = rx + j * signX;
             cy = ry + j * signY;
             if (this.getTerrainDecision() === 1
-                    || (this.getTerrainDecision() === -1 && terrainDecision)) {
+                || (this.getTerrainDecision() === -1 && terrainDecision)) {
                 if (!this.isMapPassableEx(ex + cx, ey + cy, strDir) && j < sensorRange) {
                     obstacle = j + Math.abs(rx);
                     status = "Line";
@@ -2630,7 +2630,7 @@
     };
 
     const _GameEvent_lock = Game_Event.prototype.lock;
-    Game_Event.prototype.lock = function() {
+    Game_Event.prototype.lock = function () {
         if (this.getSensorStatus() !== 1) {
             _GameEvent_lock.call(this);
         } else {
@@ -2642,7 +2642,7 @@
         }
     };
 
-    Game_Event.prototype.addCoordinate = function(length) {
+    Game_Event.prototype.addCoordinate = function (length) {
         // 左右の配列要素数を指定数に合わせる
         const coordinates = this.getCoordinate();
         const cnt = coordinates.length;
@@ -2652,7 +2652,7 @@
     };
 
     const _Game_Event_erase = Game_Event.prototype.erase;
-    Game_Event.prototype.erase = function() {
+    Game_Event.prototype.erase = function () {
         this.setSensorStatus(0);
         this.setFoundStatus(0);
         this.setViewRangeStatus(0);
@@ -2660,7 +2660,7 @@
     };
 
     const _Game_Event_isCollidedWithEvents = Game_Event.prototype.isCollidedWithEvents;
-    Game_Event.prototype.isCollidedWithEvents = function(x, y) {
+    Game_Event.prototype.isCollidedWithEvents = function (x, y) {
         if (this.isSensorFound() && DefTrackingPriority[0]) {
             return Game_CharacterBase.prototype.isCollidedWithEvents.apply(this, arguments);
         } else {
@@ -2668,12 +2668,12 @@
         }
     };
 
-    Game_Event.prototype.isInvisible = function() {
+    Game_Event.prototype.isInvisible = function () {
         return this._erased || this.characterName() === "";
     }
 
     const _Game_Event_isCollidedWithPlayerCharacters = Game_Event.prototype.isCollidedWithPlayerCharacters;
-    Game_Event.prototype.isCollidedWithPlayerCharacters = function(x, y) {
+    Game_Event.prototype.isCollidedWithPlayerCharacters = function (x, y) {
         if (!this.isSensorFound() || !DefFollowerThrough[0]) {
             return _Game_Event_isCollidedWithPlayerCharacters.call(this, x, y);
         }
@@ -2689,12 +2689,12 @@
     //  探索者の視界範囲を表す図形を描画させる処理を追加定義します。
     //=========================================================================
     const _Spriteset_Map_createLowerLayer = Spriteset_Map.prototype.createLowerLayer;
-    Spriteset_Map.prototype.createLowerLayer = function() {
+    Spriteset_Map.prototype.createLowerLayer = function () {
         _Spriteset_Map_createLowerLayer.call(this);
         this.createViewRange();
     }
 
-    Spriteset_Map.prototype.createViewRange = function() {
+    Spriteset_Map.prototype.createViewRange = function () {
         this._viewRangeSprites = [];
         $gameMap.events().forEach(event => {
             if (event._sensorType) {
@@ -2709,14 +2709,14 @@
     };
 
     const _Spriteset_Map_update = Spriteset_Map.prototype.update;
-    Spriteset_Map.prototype.update = function() {
+    Spriteset_Map.prototype.update = function () {
         _Spriteset_Map_update.call(this);
         if (this._viewRangeSprites && ConvSw(DefRangeVisible[0])) {
             this.updateViewRange();
         }
     };
 
-    Spriteset_Map.prototype.updateViewRange = function() {
+    Spriteset_Map.prototype.updateViewRange = function () {
         const _cnt = this._viewRangeSprites.length - 1
         cnt = _cnt >= 0 ? _cnt : 0;
         $gameMap.events().filter(event => {
@@ -2743,7 +2743,7 @@
         sprite.opacity = opacity;
         sprite.blendMode = PIXI.BLEND_MODES.ADD;
         sprite.anchor.x = 0;
-        sprite.anchor.y = 0;      
+        sprite.anchor.y = 0;
         sprite.visible = true;
         bsprite._spriteSD = sprite;
         spriteset._tilemap.addChild(sprite);
@@ -2759,7 +2759,7 @@
     Sprite_ViewRange.prototype = Object.create(Sprite.prototype);
     Sprite_ViewRange.prototype.constructor = Sprite_ViewRange;
 
-    Sprite_ViewRange.prototype.initialize = function(character) {
+    Sprite_ViewRange.prototype.initialize = function (character) {
         Sprite.prototype.initialize.call(this);
         this.initMembers();
         this.setCharacter(character);
@@ -2767,16 +2767,16 @@
         this.z = DefRangePosition[0] === 1 ? 6 : 2;
     };
 
-    Sprite_ViewRange.prototype.initMembers = function() {
+    Sprite_ViewRange.prototype.initMembers = function () {
         this._character = null;
         this._coordinates = null;
     };
 
-    Sprite_ViewRange.prototype.setCharacter = function(character) {
+    Sprite_ViewRange.prototype.setCharacter = function (character) {
         this._character = character;
     };
 
-    Sprite_ViewRange.prototype.update = function() {
+    Sprite_ViewRange.prototype.update = function () {
         Sprite.prototype.update.call(this);
         const sensorStatus = this._character.getSensorStatus();
         const rangeStatus = this._character.getViewRangeStatus();
@@ -2789,25 +2789,25 @@
         if (this._character &&
             !this._character._erased &&
             sensorStatus === 1 && (rangeVisible === 1 ||
-            (rangeVisible === -1 && defVisible))) {
-             this.updatePosition();
-             if (this.bitmap) {
-                 if (rangeStatus === 1) {
-                     // 描画更新
-                     if (this._coordinate.length === 0) {
-                         this._coordinate = this._character.getCoordinate();
-                     }
-                     this.updateBitmap();
-                 } else if (rangeStatus === 2) {
-                     // 描画新規
-                     this._coordinate = this._character.getCoordinate();
-                     this.createBitmap();
-                 }
-             } else {
-                 // 描画新規
-                 this._coordinate = this._character.getCoordinate();
-                 this.createBitmap();
-             }
+                (rangeVisible === -1 && defVisible))) {
+            this.updatePosition();
+            if (this.bitmap) {
+                if (rangeStatus === 1) {
+                    // 描画更新
+                    if (this._coordinate.length === 0) {
+                        this._coordinate = this._character.getCoordinate();
+                    }
+                    this.updateBitmap();
+                } else if (rangeStatus === 2) {
+                    // 描画新規
+                    this._coordinate = this._character.getCoordinate();
+                    this.createBitmap();
+                }
+            } else {
+                // 描画新規
+                this._coordinate = this._character.getCoordinate();
+                this.createBitmap();
+            }
             this.visible = true;
             this._spriteSD.visible = true;
         } else {
@@ -2816,7 +2816,7 @@
         }
     };
 
-    Sprite_ViewRange.prototype.createBitmap = function() {
+    Sprite_ViewRange.prototype.createBitmap = function () {
         const _direction = this._character.direction();
         const dirFixed = this._character.getDirectionFixed();
         const direction = dirFixed === -1 ? _direction : dirFixed;
@@ -2831,10 +2831,10 @@
         const color = DefRangeColor[0];
         const opacity = DefRangeOpacity[0];
         const bias =
-            bothSensor ? 3 : 
-            this._character.getBothSensor() > 0 ? 3 : 1;
+            bothSensor ? 3 :
+                this._character.getBothSensor() > 0 ? 3 : 1;
         let width, height;
-        switch(sensorType) {
+        switch (sensorType) {
             case "l":
                 if (direction === DIR_UP) {
                     width = tileWidth * bias;
@@ -2915,7 +2915,7 @@
         this._character.setViewRangeStatus(1);
     };
 
-    Sprite_ViewRange.prototype.updateBitmap = function() {
+    Sprite_ViewRange.prototype.updateBitmap = function () {
         const _direction = this._character.direction();
         const dirFixed = this._character.getDirectionFixed();
         const direction = dirFixed === -1 ? _direction : dirFixed;
@@ -2924,16 +2924,16 @@
         const sensorRange = this._character.getSensorRange();
         const tileWidth = $gameMap.tileWidth();
         const tileHeight = $gameMap.tileHeight();
-        const tmpCoordinate =  this._coordinate;
+        const tmpCoordinate = this._coordinate;
         const coordinate = this._character.getCoordinate();
         const cnt = tmpCoordinate.length < coordinate.length ? tmpCoordinate.length : coordinate.length;
         color = DefRangeColor[0];
         opacity = DefRangeOpacity[0];
         bias =
             bothSensor ? 3 :
-            this._character.getBothSensor() > 0 ? 3 : 1;
+                this._character.getBothSensor() > 0 ? 3 : 1;
         for (let i = 0; i < cnt; i++) {
-            if (coordinate[i][0] !==tmpCoordinate[i][0] || coordinate[i][1] !== tmpCoordinate[i][1]) {
+            if (coordinate[i][0] !== tmpCoordinate[i][0] || coordinate[i][1] !== tmpCoordinate[i][1]) {
                 if (tmpCoordinate[i][3] === -1) {
                     tmpCoordinate[i][3] = $gameMap.tileWidth();
                 } else if (tmpCoordinate[i][3] !== 0) {
@@ -2943,7 +2943,7 @@
                 coordinate[i][3] = 0;
             }
         }
-        switch(sensorType) {
+        switch (sensorType) {
             case "l":
                 if (direction === DIR_UP) {
                     width = tileWidth * bias;
@@ -2966,7 +2966,7 @@
                     this.anchor.x = 0.5;
                     this.anchor.y = 0;
                 }
-                if(this.bitmap.width != width || this.bitmap.height != height) {
+                if (this.bitmap.width != width || this.bitmap.height != height) {
                     this.bitmap.clear();
                     this.bitmap = new Bitmap(width, height);
                 }
@@ -2995,7 +2995,7 @@
                     this.anchor.x = 0.5;
                     this.anchor.y = 0;
                 }
-                if(this.bitmap.width != width || this.bitmap.height != height) {
+                if (this.bitmap.width != width || this.bitmap.height != height) {
                     this.bitmap.clear();
                     this.bitmap = new Bitmap(width, height);
                 }
@@ -3011,7 +3011,7 @@
                 height = tileHeight * sensorRange * 2 + tileHeight * 2;
                 this.anchor.x = 0.5;
                 this.anchor.y = 0.5;
-                if(this.bitmap.width != width || this.bitmap.height != height) {
+                if (this.bitmap.width != width || this.bitmap.height != height) {
                     this.bitmap.clear();
                     this.bitmap = new Bitmap(width, height);
                 }
@@ -3022,7 +3022,7 @@
                 height = tileHeight * sensorRange * 2 + tileHeight * 2;
                 this.anchor.x = 0.5;
                 this.anchor.y = 0.5;
-                if(this.bitmap.width != width || this.bitmap.height != height) {
+                if (this.bitmap.width != width || this.bitmap.height != height) {
                     this.bitmap.clear();
                     this.bitmap = new Bitmap(width, height);
                 }
@@ -3034,7 +3034,7 @@
         this.visible = true;
     };
 
-    Sprite_ViewRange.prototype.updatePosition = function() {
+    Sprite_ViewRange.prototype.updatePosition = function () {
         const _direction = this._character.direction();
         const dirFixed = this._character.getDirectionFixed();
         const direction = _direction === -1 ? _direction : dirFixed;
@@ -3049,7 +3049,7 @@
         this.y = cy;
         this._spriteSD.x = posSD.x;
         this._spriteSD.y = posSD.y;
-        switch(sensorType) {
+        switch (sensorType) {
             case "l":
                 if (direction === DIR_UP) {
                     this.y = cy + bias;
@@ -3115,14 +3115,14 @@
         const offsetY = tileHeight - _sy / (_cy + 1);
         const sx = _sx - tileWidth * 1.5;
         const sy = _sy - tileHeight * 2;
-        return {"x":sx, "y":sy};
+        return { "x": sx, "y": sy };
     }
 
     //=========================================================================
     // Bitmap
     //  探索者の視界範囲を表す図形を描画させる処理を追加定義します。
     //=========================================================================
-    Bitmap.prototype.fillViewRangeLine = function(color, character, spriteSD) {
+    Bitmap.prototype.fillViewRangeLine = function (color, character, spriteSD) {
         const _direction = character.direction();
         const context = this._context;
         const contextSD = spriteSD.bitmap._context;
@@ -3186,7 +3186,7 @@
         context.restore();
     };
 
-    Bitmap.prototype.fillViewRangeFan = function(color, character, spriteSD) {
+    Bitmap.prototype.fillViewRangeFan = function (color, character, spriteSD) {
         const _direction = character.direction();
         const context = this._context;
         const contextSD = spriteSD.bitmap._context;
@@ -3255,7 +3255,7 @@
                     cx = tileWidth * i - tileWidth / 2;
                     cy = height / 2 + tileHeight / 2 * sign + tileHeight * i * sign;
                     cy -= tileHeight / 2;
-                    distanceX = tileWidth / 2 + Math.abs(coordinates[j][num]) * tileWidth ;
+                    distanceX = tileWidth / 2 + Math.abs(coordinates[j][num]) * tileWidth;
                     distanceY = cy + tileHeight * signChange(sign);
                     this.mkrDrawLine(context, cx, cy, distanceX, distanceY);
                 }
@@ -3267,7 +3267,7 @@
                 cx = width - tileWidth / 2;
                 cy = height / 2;
                 distanceX = width - Math.abs(coordinates[0][num]) * tileWidth;
-                distanceX -= tileWidth/ 2;
+                distanceX -= tileWidth / 2;
                 distanceY = cy - tileHeight;
                 this.mkrSideDrawLine(contextSD, [sideSensorL, sideSensorR, 4]);
                 this.mkrDrawLine(context, cx, cy, distanceX, distanceY);
@@ -3321,7 +3321,7 @@
         context.restore();
     };
 
-    Bitmap.prototype.fillViewRangeDiamond = function(color, character) {
+    Bitmap.prototype.fillViewRangeDiamond = function (color, character) {
         const context = this._context;
         const width = this.width;
         const height = this.height;
@@ -3343,10 +3343,10 @@
             for (let i = 0; i < cnt; i++) {
                 dx = coordinates[i][0];
                 dy = coordinates[i][1];
-                ndx = (i < cnt - 1)? coordinates[i+1][0] : coordinates[0][0];
-                ndy = (i < cnt - 1)? coordinates[i+1][1] : coordinates[0][1];
+                ndx = (i < cnt - 1) ? coordinates[i + 1][0] : coordinates[0][0];
+                ndy = (i < cnt - 1) ? coordinates[i + 1][1] : coordinates[0][1];
                 dir = coordinates[i][2];
-                switch(dir) {
+                switch (dir) {
                     case DIR_UP:
                         ry -= tileHeight;
                         break;
@@ -3361,8 +3361,8 @@
                         break;
                 }
                 context.lineTo(rx, ry);
-                while(dx !== ndx || dy !== ndy) {
-                    switch(dir) {
+                while (dx !== ndx || dy !== ndy) {
+                    switch (dir) {
                         case DIR_UP:
                         case DIR_DOWN:
                             if (dx < ndx) {
@@ -3409,7 +3409,7 @@
         context.restore();
     };
 
-    Bitmap.prototype.mkrDrawLine = function(context, cx, cy, distanceX, distanceY) {
+    Bitmap.prototype.mkrDrawLine = function (context, cx, cy, distanceX, distanceY) {
         const width = this.width;
         const height = this.height;
         const tileWidth = $gameMap.tileWidth();
@@ -3422,7 +3422,7 @@
         context.lineTo(cx, ly);
     };
 
-    Bitmap.prototype.mkrSideDrawLine = function(context, sideSensors) {
+    Bitmap.prototype.mkrSideDrawLine = function (context, sideSensors) {
         const color = DefRangeColor[0];
         const width = this.width;
         const height = this.height;
@@ -3442,9 +3442,9 @@
         context.fill();
         context.restore();
     };
-    
+
     function mkrSideDrawLineProc(context, d, tw, th) {
-        const dirTable = {8:[0, th], 6:[tw, 0], 4:[tw, th * 2], 2:[tw * 2, th]};
+        const dirTable = { 8: [0, th], 6: [tw, 0], 4: [tw, th * 2], 2: [tw * 2, th] };
         if (dirTable[d]) {
             const x1 = dirTable[d][0];
             const y1 = dirTable[d][1];
@@ -3474,9 +3474,9 @@
                 if (Array.isArray(arguments[i]) && arguments[i].length > 0) {
                     ArrayRegionId.push(CEC(arguments[i][0]));
                 } else if (typeof arguments[i] === "string") {
-                    const ary = arguments[i].split("_").filter(function(val){
+                    const ary = arguments[i].split("_").filter(function (val) {
                         return val !== "" && val !== "0";
-                    }).map(function(val) {
+                    }).map(function (val) {
                         return parseInt(ConvVb(val), 10);
                     });
                     Array.prototype.push.apply(ArrayRegionId, ary);
@@ -3486,7 +3486,7 @@
             }
         }
 
-        return ArrayRegionId.filter(function(val, i, self) {
+        return ArrayRegionId.filter(function (val, i, self) {
             return self.indexOf(val) === i && val > 0;
         });
     }

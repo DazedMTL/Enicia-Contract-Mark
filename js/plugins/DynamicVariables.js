@@ -160,7 +160,7 @@
  *  このプラグインはもうあなたのものです。
  */
 
-(function() {
+(function () {
     'use strict';
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
@@ -173,8 +173,8 @@
     // Game_Variables
     //  動的変数の取得処理を追加定義します。
     //=============================================================================
-    const _Game_Variables_value      = Game_Variables.prototype.value;
-    Game_Variables.prototype.value = function(variableId) {
+    const _Game_Variables_value = Game_Variables.prototype.value;
+    Game_Variables.prototype.value = function (variableId) {
         const value = _Game_Variables_value.apply(this, arguments);
         if (this.isDynamic(variableId)) {
             return this.getDynamicValue($dataSystem.variables[variableId], variableId, value);
@@ -183,15 +183,15 @@
         }
     };
 
-    Game_Variables.prototype.isDynamic = function(variableId) {
+    Game_Variables.prototype.isDynamic = function (variableId) {
         return variableId >= param.DynamicVariableStart && variableId <= param.DynamicVariableEnd;
     };
 
-    Game_Variables.prototype.getOriginalValue = function(variableId) {
+    Game_Variables.prototype.getOriginalValue = function (variableId) {
         return _Game_Variables_value.apply(this, arguments);
     };
 
-    Game_Variables.prototype.getDynamicValue = function(dynamicScript, id, value) {
+    Game_Variables.prototype.getDynamicValue = function (dynamicScript, id, value) {
         if (!dynamicScript) {
             return value;
         }
@@ -211,8 +211,8 @@
     // Game_Switches
     //  動的スイッチの取得処理を追加定義します。
     //=============================================================================
-    const _Game_Switches_value      = Game_Switches.prototype.value;
-    Game_Switches.prototype.value = function(switchId) {
+    const _Game_Switches_value = Game_Switches.prototype.value;
+    Game_Switches.prototype.value = function (switchId) {
         const value = _Game_Switches_value.apply(this, arguments);
         if (this.isDynamic(switchId)) {
             return !!this.getDynamicValue($dataSystem.switches[switchId], switchId, value);
@@ -221,11 +221,11 @@
         }
     };
 
-    Game_Switches.prototype.isDynamic = function(switchId) {
+    Game_Switches.prototype.isDynamic = function (switchId) {
         return switchId >= param.DynamicSwitchStart && switchId <= param.DynamicSwitchEnd;
     };
 
-    Game_Switches.prototype.getOriginalValue = function(switchId) {
+    Game_Switches.prototype.getOriginalValue = function (switchId) {
         return _Game_Switches_value.apply(this, arguments);
     };
 
@@ -235,13 +235,13 @@
     // Game_Event
     //  必要な場合、イベントページを毎フレームリフレッシュします。
     //=============================================================================
-    const _Game_Event_initialize      = Game_Event.prototype.initialize;
-    Game_Event.prototype.initialize = function(mapId, eventId) {
+    const _Game_Event_initialize = Game_Event.prototype.initialize;
+    Game_Event.prototype.initialize = function (mapId, eventId) {
         _Game_Event_initialize.apply(this, arguments);
         this._needsAlwaysRefresh = this.isNeedAlwaysRefresh();
     };
 
-    Game_Event.prototype.isNeedAlwaysRefresh = function() {
+    Game_Event.prototype.isNeedAlwaysRefresh = function () {
         if (PluginManagerEx.findMetaValue(this.event(), 'NoRefresh')) {
             return false;
         }
@@ -252,7 +252,7 @@
         return pages.some(page => this.isDynamicConditionPage(page));
     };
 
-    Game_Event.prototype.isDynamicConditionPage = function(page) {
+    Game_Event.prototype.isDynamicConditionPage = function (page) {
         const c = page.conditions;
         if (c.switch1Valid && $gameSwitches.isDynamic(c.switch1Id)) {
             return true;
@@ -264,21 +264,21 @@
         return false;
     };
 
-    const _Game_Event_update      = Game_Event.prototype.update;
-    Game_Event.prototype.update = function() {
+    const _Game_Event_update = Game_Event.prototype.update;
+    Game_Event.prototype.update = function () {
         if (this._needsAlwaysRefresh) {
             this.refresh();
         }
         _Game_Event_update.apply(this, arguments);
     };
 
-    const _Game_Event_meetsConditions      = Game_Event.prototype.meetsConditions;
-    Game_Event.prototype.meetsConditions = function(page) {
-        e          = this;
-        d          = this.event();
+    const _Game_Event_meetsConditions = Game_Event.prototype.meetsConditions;
+    Game_Event.prototype.meetsConditions = function (page) {
+        e = this;
+        d = this.event();
         const result = _Game_Event_meetsConditions.apply(this, arguments);
-        e          = null;
-        d          = null;
+        e = null;
+        d = null;
         return result;
     };
 
@@ -286,13 +286,13 @@
      * Game_Enemy
      * 敵キャラ情報をスクリプト実行用に記憶します。
      */
-    const _Game_Enemy_meetsSwitchCondition      = Game_Enemy.prototype.meetsSwitchCondition;
-    Game_Enemy.prototype.meetsSwitchCondition = function(param) {
-        e          = this;
-        d          = this.enemy();
+    const _Game_Enemy_meetsSwitchCondition = Game_Enemy.prototype.meetsSwitchCondition;
+    Game_Enemy.prototype.meetsSwitchCondition = function (param) {
+        e = this;
+        d = this.enemy();
         const result = _Game_Enemy_meetsSwitchCondition.apply(this, arguments);
-        e          = null;
-        d          = null;
+        e = null;
+        d = null;
         return result;
     };
 })();

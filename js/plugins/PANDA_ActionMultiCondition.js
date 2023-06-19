@@ -150,32 +150,32 @@
 
 (() => {
 	'use strict';
-	
+
 	// This Plugin Name
 	const pluginName = decodeURIComponent(document.currentScript.src).match(/([^\/]+)\.js$/)[1];
-	
+
 	// Parameters
 	const parameters = PluginManager.parameters(pluginName);
 	const AdditionalConditionSkillID = Number(parameters['AdditionalConditionSkillID']) || 0;
-	
-	
+
+
 	//--------------------------------------------------
 	// DataManager.onLoad
 	//  [Added Definition]
 	//--------------------------------------------------
 	const _DataManager_onLoad = DataManager.onLoad;
-	DataManager.onLoad = function(object) {
+	DataManager.onLoad = function (object) {
 		_DataManager_onLoad.call(this, object);
 		if (this.isEnemiesObject(object)) {
 			this.convertEnemiesActions(object);
 		}
 	};
-	
+
 	//--------------------------------------------------
 	// DataManager.isEnemiesObject
 	//  [New Definition]
 	//--------------------------------------------------
-	DataManager.isEnemiesObject = function(object) {
+	DataManager.isEnemiesObject = function (object) {
 		if (Array.isArray(object)) {
 			if (object[1]) {
 				return !!(object[1].actions);
@@ -183,12 +183,12 @@
 		}
 		return false;
 	};
-	
+
 	//--------------------------------------------------
 	// DataManager.convertEnemiesActions
 	//  [New Definition]
 	//--------------------------------------------------
-	DataManager.convertEnemiesActions = function(array) {
+	DataManager.convertEnemiesActions = function (array) {
 		if (Array.isArray(array)) {
 			for (const data of array) {
 				if (data && 'actions' in data) {
@@ -197,20 +197,21 @@
 			}
 		}
 	};
-	
+
 	//--------------------------------------------------
 	// DataManager.convertActions
 	//  [New Definition]
 	//--------------------------------------------------
-	DataManager.convertActions = function(data) {
+	DataManager.convertActions = function (data) {
 		const actions = [];
 		let conditions = [];
 		for (let i in data.actions) {
 			const action = data.actions[i];
-			conditions.push({'conditionType': action.conditionType,
-			                 'conditionParam1': action.conditionParam1,
-			                 'conditionParam2': action.conditionParam2
-			                });
+			conditions.push({
+				'conditionType': action.conditionType,
+				'conditionParam1': action.conditionParam1,
+				'conditionParam2': action.conditionParam2
+			});
 			if (action.skillId !== AdditionalConditionSkillID) {
 				action['conditions'] = conditions;
 				actions.push(action);
@@ -219,21 +220,21 @@
 		}
 		data.actions = actions;
 	};
-	
-	
+
+
 	//--------------------------------------------------
 	// Game_Enemy.meetsCondition
 	//  [Added Definition]
 	//--------------------------------------------------
 	const _Game_Enemy_meetsCondition = Game_Enemy.prototype.meetsCondition;
-	Game_Enemy.prototype.meetsCondition = function(action) {
+	Game_Enemy.prototype.meetsCondition = function (action) {
 		if (action.conditions) {
 			return action.conditions.every(value => _Game_Enemy_meetsCondition.call(this, value));
 		} else {
 			return _Game_Enemy_meetsCondition.call(this, action);
 		}
 	}
-	
-	
+
+
 })();
 

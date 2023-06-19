@@ -11,7 +11,7 @@ function Game_Temp() {
     this.initialize(...arguments);
 }
 
-Game_Temp.prototype.initialize = function() {
+Game_Temp.prototype.initialize = function () {
     this._isPlaytest = Utils.isOptionValid("test");
     this._destinationX = null;
     this._destinationY = null;
@@ -24,82 +24,82 @@ Game_Temp.prototype.initialize = function() {
     this._lastActionData = [0, 0, 0, 0, 0, 0];
 };
 
-Game_Temp.prototype.isPlaytest = function() {
+Game_Temp.prototype.isPlaytest = function () {
     return this._isPlaytest;
 };
 
-Game_Temp.prototype.setDestination = function(x, y) {
+Game_Temp.prototype.setDestination = function (x, y) {
     this._destinationX = x;
     this._destinationY = y;
 };
 
-Game_Temp.prototype.clearDestination = function() {
+Game_Temp.prototype.clearDestination = function () {
     this._destinationX = null;
     this._destinationY = null;
 };
 
-Game_Temp.prototype.isDestinationValid = function() {
+Game_Temp.prototype.isDestinationValid = function () {
     return this._destinationX !== null;
 };
 
-Game_Temp.prototype.destinationX = function() {
+Game_Temp.prototype.destinationX = function () {
     return this._destinationX;
 };
 
-Game_Temp.prototype.destinationY = function() {
+Game_Temp.prototype.destinationY = function () {
     return this._destinationY;
 };
 
-Game_Temp.prototype.setTouchState = function(target, state) {
+Game_Temp.prototype.setTouchState = function (target, state) {
     this._touchTarget = target;
     this._touchState = state;
 };
 
-Game_Temp.prototype.clearTouchState = function() {
+Game_Temp.prototype.clearTouchState = function () {
     this._touchTarget = null;
     this._touchState = "";
 };
 
-Game_Temp.prototype.touchTarget = function() {
+Game_Temp.prototype.touchTarget = function () {
     return this._touchTarget;
 };
 
-Game_Temp.prototype.touchState = function() {
+Game_Temp.prototype.touchState = function () {
     return this._touchState;
 };
 
-Game_Temp.prototype.requestBattleRefresh = function() {
+Game_Temp.prototype.requestBattleRefresh = function () {
     if ($gameParty.inBattle()) {
         this._needsBattleRefresh = true;
     }
 };
 
-Game_Temp.prototype.clearBattleRefreshRequest = function() {
+Game_Temp.prototype.clearBattleRefreshRequest = function () {
     this._needsBattleRefresh = false;
 };
 
-Game_Temp.prototype.isBattleRefreshRequested = function() {
+Game_Temp.prototype.isBattleRefreshRequested = function () {
     return this._needsBattleRefresh;
 };
 
-Game_Temp.prototype.reserveCommonEvent = function(commonEventId) {
+Game_Temp.prototype.reserveCommonEvent = function (commonEventId) {
     this._commonEventQueue.push(commonEventId);
 };
 
-Game_Temp.prototype.retrieveCommonEvent = function() {
+Game_Temp.prototype.retrieveCommonEvent = function () {
     return $dataCommonEvents[this._commonEventQueue.shift()];
 };
 
-Game_Temp.prototype.clearCommonEventReservation = function() {
+Game_Temp.prototype.clearCommonEventReservation = function () {
     this._commonEventQueue.length = 0;
 };
 
-Game_Temp.prototype.isCommonEventReserved = function() {
+Game_Temp.prototype.isCommonEventReserved = function () {
     return this._commonEventQueue.length > 0;
 };
 
 // prettier-ignore
-Game_Temp.prototype.requestAnimation = function(
+Game_Temp.prototype.requestAnimation = function (
     targets, animationId, mirror = false
 ) {
     if ($dataAnimations[animationId]) {
@@ -117,11 +117,11 @@ Game_Temp.prototype.requestAnimation = function(
     }
 };
 
-Game_Temp.prototype.retrieveAnimation = function() {
+Game_Temp.prototype.retrieveAnimation = function () {
     return this._animationQueue.shift();
 };
 
-Game_Temp.prototype.requestBalloon = function(target, balloonId) {
+Game_Temp.prototype.requestBalloon = function (target, balloonId) {
     const request = { target: target, balloonId: balloonId };
     this._balloonQueue.push(request);
     if (target.startBalloon) {
@@ -129,39 +129,39 @@ Game_Temp.prototype.requestBalloon = function(target, balloonId) {
     }
 };
 
-Game_Temp.prototype.retrieveBalloon = function() {
+Game_Temp.prototype.retrieveBalloon = function () {
     return this._balloonQueue.shift();
 };
 
-Game_Temp.prototype.lastActionData = function(type) {
+Game_Temp.prototype.lastActionData = function (type) {
     return this._lastActionData[type] || 0;
 };
 
-Game_Temp.prototype.setLastActionData = function(type, value) {
+Game_Temp.prototype.setLastActionData = function (type, value) {
     this._lastActionData[type] = value;
 };
 
-Game_Temp.prototype.setLastUsedSkillId = function(skillID) {
+Game_Temp.prototype.setLastUsedSkillId = function (skillID) {
     this.setLastActionData(0, skillID);
 };
 
-Game_Temp.prototype.setLastUsedItemId = function(itemID) {
+Game_Temp.prototype.setLastUsedItemId = function (itemID) {
     this.setLastActionData(1, itemID);
 };
 
-Game_Temp.prototype.setLastSubjectActorId = function(actorID) {
+Game_Temp.prototype.setLastSubjectActorId = function (actorID) {
     this.setLastActionData(2, actorID);
 };
 
-Game_Temp.prototype.setLastSubjectEnemyIndex = function(enemyIndex) {
+Game_Temp.prototype.setLastSubjectEnemyIndex = function (enemyIndex) {
     this.setLastActionData(3, enemyIndex);
 };
 
-Game_Temp.prototype.setLastTargetActorId = function(actorID) {
+Game_Temp.prototype.setLastTargetActorId = function (actorID) {
     this.setLastActionData(4, actorID);
 };
 
-Game_Temp.prototype.setLastTargetEnemyIndex = function(enemyIndex) {
+Game_Temp.prototype.setLastTargetEnemyIndex = function (enemyIndex) {
     this.setLastActionData(5, enemyIndex);
 };
 
@@ -174,7 +174,7 @@ function Game_System() {
     this.initialize(...arguments);
 }
 
-Game_System.prototype.initialize = function() {
+Game_System.prototype.initialize = function () {
     this._saveEnabled = true;
     this._menuEnabled = true;
     this._encounterEnabled = true;
@@ -196,155 +196,155 @@ Game_System.prototype.initialize = function() {
     this._walkingBgm = null;
 };
 
-Game_System.prototype.isJapanese = function() {
+Game_System.prototype.isJapanese = function () {
     return $dataSystem.locale.match(/^ja/);
 };
 
-Game_System.prototype.isChinese = function() {
+Game_System.prototype.isChinese = function () {
     return $dataSystem.locale.match(/^zh/);
 };
 
-Game_System.prototype.isKorean = function() {
+Game_System.prototype.isKorean = function () {
     return $dataSystem.locale.match(/^ko/);
 };
 
-Game_System.prototype.isCJK = function() {
+Game_System.prototype.isCJK = function () {
     return $dataSystem.locale.match(/^(ja|zh|ko)/);
 };
 
-Game_System.prototype.isRussian = function() {
+Game_System.prototype.isRussian = function () {
     return $dataSystem.locale.match(/^ru/);
 };
 
-Game_System.prototype.isSideView = function() {
+Game_System.prototype.isSideView = function () {
     return $dataSystem.optSideView;
 };
 
-Game_System.prototype.isAutosaveEnabled = function() {
+Game_System.prototype.isAutosaveEnabled = function () {
     return $dataSystem.optAutosave;
 };
 
-Game_System.prototype.isSaveEnabled = function() {
+Game_System.prototype.isSaveEnabled = function () {
     return this._saveEnabled;
 };
 
-Game_System.prototype.disableSave = function() {
+Game_System.prototype.disableSave = function () {
     this._saveEnabled = false;
 };
 
-Game_System.prototype.enableSave = function() {
+Game_System.prototype.enableSave = function () {
     this._saveEnabled = true;
 };
 
-Game_System.prototype.isMenuEnabled = function() {
+Game_System.prototype.isMenuEnabled = function () {
     return this._menuEnabled;
 };
 
-Game_System.prototype.disableMenu = function() {
+Game_System.prototype.disableMenu = function () {
     this._menuEnabled = false;
 };
 
-Game_System.prototype.enableMenu = function() {
+Game_System.prototype.enableMenu = function () {
     this._menuEnabled = true;
 };
 
-Game_System.prototype.isEncounterEnabled = function() {
+Game_System.prototype.isEncounterEnabled = function () {
     return this._encounterEnabled;
 };
 
-Game_System.prototype.disableEncounter = function() {
+Game_System.prototype.disableEncounter = function () {
     this._encounterEnabled = false;
 };
 
-Game_System.prototype.enableEncounter = function() {
+Game_System.prototype.enableEncounter = function () {
     this._encounterEnabled = true;
 };
 
-Game_System.prototype.isFormationEnabled = function() {
+Game_System.prototype.isFormationEnabled = function () {
     return this._formationEnabled;
 };
 
-Game_System.prototype.disableFormation = function() {
+Game_System.prototype.disableFormation = function () {
     this._formationEnabled = false;
 };
 
-Game_System.prototype.enableFormation = function() {
+Game_System.prototype.enableFormation = function () {
     this._formationEnabled = true;
 };
 
-Game_System.prototype.battleCount = function() {
+Game_System.prototype.battleCount = function () {
     return this._battleCount;
 };
 
-Game_System.prototype.winCount = function() {
+Game_System.prototype.winCount = function () {
     return this._winCount;
 };
 
-Game_System.prototype.escapeCount = function() {
+Game_System.prototype.escapeCount = function () {
     return this._escapeCount;
 };
 
-Game_System.prototype.saveCount = function() {
+Game_System.prototype.saveCount = function () {
     return this._saveCount;
 };
 
-Game_System.prototype.versionId = function() {
+Game_System.prototype.versionId = function () {
     return this._versionId;
 };
 
-Game_System.prototype.savefileId = function() {
+Game_System.prototype.savefileId = function () {
     return this._savefileId || 0;
 };
 
-Game_System.prototype.setSavefileId = function(savefileId) {
+Game_System.prototype.setSavefileId = function (savefileId) {
     this._savefileId = savefileId;
 };
 
-Game_System.prototype.windowTone = function() {
+Game_System.prototype.windowTone = function () {
     return this._windowTone || $dataSystem.windowTone;
 };
 
-Game_System.prototype.setWindowTone = function(value) {
+Game_System.prototype.setWindowTone = function (value) {
     this._windowTone = value;
 };
 
-Game_System.prototype.battleBgm = function() {
+Game_System.prototype.battleBgm = function () {
     return this._battleBgm || $dataSystem.battleBgm;
 };
 
-Game_System.prototype.setBattleBgm = function(value) {
+Game_System.prototype.setBattleBgm = function (value) {
     this._battleBgm = value;
 };
 
-Game_System.prototype.victoryMe = function() {
+Game_System.prototype.victoryMe = function () {
     return this._victoryMe || $dataSystem.victoryMe;
 };
 
-Game_System.prototype.setVictoryMe = function(value) {
+Game_System.prototype.setVictoryMe = function (value) {
     this._victoryMe = value;
 };
 
-Game_System.prototype.defeatMe = function() {
+Game_System.prototype.defeatMe = function () {
     return this._defeatMe || $dataSystem.defeatMe;
 };
 
-Game_System.prototype.setDefeatMe = function(value) {
+Game_System.prototype.setDefeatMe = function (value) {
     this._defeatMe = value;
 };
 
-Game_System.prototype.onBattleStart = function() {
+Game_System.prototype.onBattleStart = function () {
     this._battleCount++;
 };
 
-Game_System.prototype.onBattleWin = function() {
+Game_System.prototype.onBattleWin = function () {
     this._winCount++;
 };
 
-Game_System.prototype.onBattleEscape = function() {
+Game_System.prototype.onBattleEscape = function () {
     this._escapeCount++;
 };
 
-Game_System.prototype.onBeforeSave = function() {
+Game_System.prototype.onBeforeSave = function () {
     this._saveCount++;
     this._versionId = $dataSystem.versionId;
     this._framesOnSave = Graphics.frameCount;
@@ -352,64 +352,64 @@ Game_System.prototype.onBeforeSave = function() {
     this._bgsOnSave = AudioManager.saveBgs();
 };
 
-Game_System.prototype.onAfterLoad = function() {
+Game_System.prototype.onAfterLoad = function () {
     Graphics.frameCount = this._framesOnSave;
     AudioManager.playBgm(this._bgmOnSave);
     AudioManager.playBgs(this._bgsOnSave);
 };
 
-Game_System.prototype.playtime = function() {
+Game_System.prototype.playtime = function () {
     return Math.floor(Graphics.frameCount / 60);
 };
 
-Game_System.prototype.playtimeText = function() {
+Game_System.prototype.playtimeText = function () {
     const hour = Math.floor(this.playtime() / 60 / 60);
     const min = Math.floor(this.playtime() / 60) % 60;
     const sec = this.playtime() % 60;
     return hour.padZero(2) + ":" + min.padZero(2) + ":" + sec.padZero(2);
 };
 
-Game_System.prototype.saveBgm = function() {
+Game_System.prototype.saveBgm = function () {
     this._savedBgm = AudioManager.saveBgm();
 };
 
-Game_System.prototype.replayBgm = function() {
+Game_System.prototype.replayBgm = function () {
     if (this._savedBgm) {
         AudioManager.replayBgm(this._savedBgm);
     }
 };
 
-Game_System.prototype.saveWalkingBgm = function() {
+Game_System.prototype.saveWalkingBgm = function () {
     this._walkingBgm = AudioManager.saveBgm();
 };
 
-Game_System.prototype.replayWalkingBgm = function() {
+Game_System.prototype.replayWalkingBgm = function () {
     if (this._walkingBgm) {
         AudioManager.playBgm(this._walkingBgm);
     }
 };
 
-Game_System.prototype.saveWalkingBgm2 = function() {
+Game_System.prototype.saveWalkingBgm2 = function () {
     this._walkingBgm = $dataMap.bgm;
 };
 
-Game_System.prototype.mainFontFace = function() {
+Game_System.prototype.mainFontFace = function () {
     return "rmmz-mainfont, " + $dataSystem.advanced.fallbackFonts;
 };
 
-Game_System.prototype.numberFontFace = function() {
+Game_System.prototype.numberFontFace = function () {
     return "rmmz-numberfont, " + this.mainFontFace();
 };
 
-Game_System.prototype.mainFontSize = function() {
+Game_System.prototype.mainFontSize = function () {
     return $dataSystem.advanced.fontSize;
 };
 
-Game_System.prototype.windowPadding = function() {
+Game_System.prototype.windowPadding = function () {
     return 12;
 };
 
-Game_System.prototype.windowOpacity = function() {
+Game_System.prototype.windowOpacity = function () {
     if ("windowOpacity" in $dataSystem.advanced) {
         return $dataSystem.advanced.windowOpacity;
     } else {
@@ -426,12 +426,12 @@ function Game_Timer() {
     this.initialize(...arguments);
 }
 
-Game_Timer.prototype.initialize = function() {
+Game_Timer.prototype.initialize = function () {
     this._frames = 0;
     this._working = false;
 };
 
-Game_Timer.prototype.update = function(sceneActive) {
+Game_Timer.prototype.update = function (sceneActive) {
     if (sceneActive && this._working && this._frames > 0) {
         this._frames--;
         if (this._frames === 0) {
@@ -440,28 +440,28 @@ Game_Timer.prototype.update = function(sceneActive) {
     }
 };
 
-Game_Timer.prototype.start = function(count) {
+Game_Timer.prototype.start = function (count) {
     this._frames = count;
     this._working = true;
 };
 
-Game_Timer.prototype.stop = function() {
+Game_Timer.prototype.stop = function () {
     this._working = false;
 };
 
-Game_Timer.prototype.isWorking = function() {
+Game_Timer.prototype.isWorking = function () {
     return this._working;
 };
 
-Game_Timer.prototype.seconds = function() {
+Game_Timer.prototype.seconds = function () {
     return Math.floor(this._frames / 60);
 };
 
-Game_Timer.prototype.frames = function() {
+Game_Timer.prototype.frames = function () {
     return this._frames;
 };
 
-Game_Timer.prototype.onExpire = function() {
+Game_Timer.prototype.onExpire = function () {
     BattleManager.abort();
 };
 
@@ -475,11 +475,11 @@ function Game_Message() {
     this.initialize(...arguments);
 }
 
-Game_Message.prototype.initialize = function() {
+Game_Message.prototype.initialize = function () {
     this.clear();
 };
 
-Game_Message.prototype.clear = function() {
+Game_Message.prototype.clear = function () {
     this._texts = [];
     this._choices = [];
     this._speakerName = "";
@@ -501,153 +501,153 @@ Game_Message.prototype.clear = function() {
     this._choiceCallback = null;
 };
 
-Game_Message.prototype.choices = function() {
+Game_Message.prototype.choices = function () {
     return this._choices;
 };
 
-Game_Message.prototype.speakerName = function() {
+Game_Message.prototype.speakerName = function () {
     return this._speakerName;
 };
 
-Game_Message.prototype.faceName = function() {
+Game_Message.prototype.faceName = function () {
     return this._faceName;
 };
 
-Game_Message.prototype.faceIndex = function() {
+Game_Message.prototype.faceIndex = function () {
     return this._faceIndex;
 };
 
-Game_Message.prototype.background = function() {
+Game_Message.prototype.background = function () {
     return this._background;
 };
 
-Game_Message.prototype.positionType = function() {
+Game_Message.prototype.positionType = function () {
     return this._positionType;
 };
 
-Game_Message.prototype.choiceDefaultType = function() {
+Game_Message.prototype.choiceDefaultType = function () {
     return this._choiceDefaultType;
 };
 
-Game_Message.prototype.choiceCancelType = function() {
+Game_Message.prototype.choiceCancelType = function () {
     return this._choiceCancelType;
 };
 
-Game_Message.prototype.choiceBackground = function() {
+Game_Message.prototype.choiceBackground = function () {
     return this._choiceBackground;
 };
 
-Game_Message.prototype.choicePositionType = function() {
+Game_Message.prototype.choicePositionType = function () {
     return this._choicePositionType;
 };
 
-Game_Message.prototype.numInputVariableId = function() {
+Game_Message.prototype.numInputVariableId = function () {
     return this._numInputVariableId;
 };
 
-Game_Message.prototype.numInputMaxDigits = function() {
+Game_Message.prototype.numInputMaxDigits = function () {
     return this._numInputMaxDigits;
 };
 
-Game_Message.prototype.itemChoiceVariableId = function() {
+Game_Message.prototype.itemChoiceVariableId = function () {
     return this._itemChoiceVariableId;
 };
 
-Game_Message.prototype.itemChoiceItypeId = function() {
+Game_Message.prototype.itemChoiceItypeId = function () {
     return this._itemChoiceItypeId;
 };
 
-Game_Message.prototype.scrollMode = function() {
+Game_Message.prototype.scrollMode = function () {
     return this._scrollMode;
 };
 
-Game_Message.prototype.scrollSpeed = function() {
+Game_Message.prototype.scrollSpeed = function () {
     return this._scrollSpeed;
 };
 
-Game_Message.prototype.scrollNoFast = function() {
+Game_Message.prototype.scrollNoFast = function () {
     return this._scrollNoFast;
 };
 
-Game_Message.prototype.add = function(text) {
+Game_Message.prototype.add = function (text) {
     this._texts.push(text);
 };
 
-Game_Message.prototype.setSpeakerName = function(speakerName) {
+Game_Message.prototype.setSpeakerName = function (speakerName) {
     this._speakerName = speakerName ? speakerName : "";
 };
 
-Game_Message.prototype.setFaceImage = function(faceName, faceIndex) {
+Game_Message.prototype.setFaceImage = function (faceName, faceIndex) {
     this._faceName = faceName;
     this._faceIndex = faceIndex;
 };
 
-Game_Message.prototype.setBackground = function(background) {
+Game_Message.prototype.setBackground = function (background) {
     this._background = background;
 };
 
-Game_Message.prototype.setPositionType = function(positionType) {
+Game_Message.prototype.setPositionType = function (positionType) {
     this._positionType = positionType;
 };
 
-Game_Message.prototype.setChoices = function(choices, defaultType, cancelType) {
+Game_Message.prototype.setChoices = function (choices, defaultType, cancelType) {
     this._choices = choices;
     this._choiceDefaultType = defaultType;
     this._choiceCancelType = cancelType;
 };
 
-Game_Message.prototype.setChoiceBackground = function(background) {
+Game_Message.prototype.setChoiceBackground = function (background) {
     this._choiceBackground = background;
 };
 
-Game_Message.prototype.setChoicePositionType = function(positionType) {
+Game_Message.prototype.setChoicePositionType = function (positionType) {
     this._choicePositionType = positionType;
 };
 
-Game_Message.prototype.setNumberInput = function(variableId, maxDigits) {
+Game_Message.prototype.setNumberInput = function (variableId, maxDigits) {
     this._numInputVariableId = variableId;
     this._numInputMaxDigits = maxDigits;
 };
 
-Game_Message.prototype.setItemChoice = function(variableId, itemType) {
+Game_Message.prototype.setItemChoice = function (variableId, itemType) {
     this._itemChoiceVariableId = variableId;
     this._itemChoiceItypeId = itemType;
 };
 
-Game_Message.prototype.setScroll = function(speed, noFast) {
+Game_Message.prototype.setScroll = function (speed, noFast) {
     this._scrollMode = true;
     this._scrollSpeed = speed;
     this._scrollNoFast = noFast;
 };
 
-Game_Message.prototype.setChoiceCallback = function(callback) {
+Game_Message.prototype.setChoiceCallback = function (callback) {
     this._choiceCallback = callback;
 };
 
-Game_Message.prototype.onChoice = function(n) {
+Game_Message.prototype.onChoice = function (n) {
     if (this._choiceCallback) {
         this._choiceCallback(n);
         this._choiceCallback = null;
     }
 };
 
-Game_Message.prototype.hasText = function() {
+Game_Message.prototype.hasText = function () {
     return this._texts.length > 0;
 };
 
-Game_Message.prototype.isChoice = function() {
+Game_Message.prototype.isChoice = function () {
     return this._choices.length > 0;
 };
 
-Game_Message.prototype.isNumberInput = function() {
+Game_Message.prototype.isNumberInput = function () {
     return this._numInputVariableId > 0;
 };
 
-Game_Message.prototype.isItemChoice = function() {
+Game_Message.prototype.isItemChoice = function () {
     return this._itemChoiceVariableId > 0;
 };
 
-Game_Message.prototype.isBusy = function() {
+Game_Message.prototype.isBusy = function () {
     return (
         this.hasText() ||
         this.isChoice() ||
@@ -656,17 +656,17 @@ Game_Message.prototype.isBusy = function() {
     );
 };
 
-Game_Message.prototype.newPage = function() {
+Game_Message.prototype.newPage = function () {
     if (this._texts.length > 0) {
         this._texts[this._texts.length - 1] += "\f";
     }
 };
 
-Game_Message.prototype.allText = function() {
+Game_Message.prototype.allText = function () {
     return this._texts.join("\n");
 };
 
-Game_Message.prototype.isRTL = function() {
+Game_Message.prototype.isRTL = function () {
     return Utils.containsArabic(this.allText());
 };
 
@@ -679,26 +679,26 @@ function Game_Switches() {
     this.initialize(...arguments);
 }
 
-Game_Switches.prototype.initialize = function() {
+Game_Switches.prototype.initialize = function () {
     this.clear();
 };
 
-Game_Switches.prototype.clear = function() {
+Game_Switches.prototype.clear = function () {
     this._data = [];
 };
 
-Game_Switches.prototype.value = function(switchId) {
+Game_Switches.prototype.value = function (switchId) {
     return !!this._data[switchId];
 };
 
-Game_Switches.prototype.setValue = function(switchId, value) {
+Game_Switches.prototype.setValue = function (switchId, value) {
     if (switchId > 0 && switchId < $dataSystem.switches.length) {
         this._data[switchId] = value;
         this.onChange();
     }
 };
 
-Game_Switches.prototype.onChange = function() {
+Game_Switches.prototype.onChange = function () {
     $gameMap.requestRefresh();
 };
 
@@ -711,19 +711,19 @@ function Game_Variables() {
     this.initialize(...arguments);
 }
 
-Game_Variables.prototype.initialize = function() {
+Game_Variables.prototype.initialize = function () {
     this.clear();
 };
 
-Game_Variables.prototype.clear = function() {
+Game_Variables.prototype.clear = function () {
     this._data = [];
 };
 
-Game_Variables.prototype.value = function(variableId) {
+Game_Variables.prototype.value = function (variableId) {
     return this._data[variableId] || 0;
 };
 
-Game_Variables.prototype.setValue = function(variableId, value) {
+Game_Variables.prototype.setValue = function (variableId, value) {
     if (variableId > 0 && variableId < $dataSystem.variables.length) {
         if (typeof value === "number") {
             value = Math.floor(value);
@@ -733,7 +733,7 @@ Game_Variables.prototype.setValue = function(variableId, value) {
     }
 };
 
-Game_Variables.prototype.onChange = function() {
+Game_Variables.prototype.onChange = function () {
     $gameMap.requestRefresh();
 };
 
@@ -746,19 +746,19 @@ function Game_SelfSwitches() {
     this.initialize(...arguments);
 }
 
-Game_SelfSwitches.prototype.initialize = function() {
+Game_SelfSwitches.prototype.initialize = function () {
     this.clear();
 };
 
-Game_SelfSwitches.prototype.clear = function() {
+Game_SelfSwitches.prototype.clear = function () {
     this._data = {};
 };
 
-Game_SelfSwitches.prototype.value = function(key) {
+Game_SelfSwitches.prototype.value = function (key) {
     return !!this._data[key];
 };
 
-Game_SelfSwitches.prototype.setValue = function(key, value) {
+Game_SelfSwitches.prototype.setValue = function (key, value) {
     if (value) {
         this._data[key] = true;
     } else {
@@ -767,7 +767,7 @@ Game_SelfSwitches.prototype.setValue = function(key, value) {
     this.onChange();
 };
 
-Game_SelfSwitches.prototype.onChange = function() {
+Game_SelfSwitches.prototype.onChange = function () {
     $gameMap.requestRefresh();
 };
 
@@ -781,11 +781,11 @@ function Game_Screen() {
     this.initialize(...arguments);
 }
 
-Game_Screen.prototype.initialize = function() {
+Game_Screen.prototype.initialize = function () {
     this.clear();
 };
 
-Game_Screen.prototype.clear = function() {
+Game_Screen.prototype.clear = function () {
     this.clearFade();
     this.clearTone();
     this.clearFlash();
@@ -795,7 +795,7 @@ Game_Screen.prototype.clear = function() {
     this.clearPictures();
 };
 
-Game_Screen.prototype.onBattleStart = function() {
+Game_Screen.prototype.onBattleStart = function () {
     this.clearFade();
     this.clearFlash();
     this.clearShake();
@@ -803,48 +803,48 @@ Game_Screen.prototype.onBattleStart = function() {
     this.eraseBattlePictures();
 };
 
-Game_Screen.prototype.brightness = function() {
+Game_Screen.prototype.brightness = function () {
     return this._brightness;
 };
 
-Game_Screen.prototype.tone = function() {
+Game_Screen.prototype.tone = function () {
     return this._tone;
 };
 
-Game_Screen.prototype.flashColor = function() {
+Game_Screen.prototype.flashColor = function () {
     return this._flashColor;
 };
 
-Game_Screen.prototype.shake = function() {
+Game_Screen.prototype.shake = function () {
     return this._shake;
 };
 
-Game_Screen.prototype.zoomX = function() {
+Game_Screen.prototype.zoomX = function () {
     return this._zoomX;
 };
 
-Game_Screen.prototype.zoomY = function() {
+Game_Screen.prototype.zoomY = function () {
     return this._zoomY;
 };
 
-Game_Screen.prototype.zoomScale = function() {
+Game_Screen.prototype.zoomScale = function () {
     return this._zoomScale;
 };
 
-Game_Screen.prototype.weatherType = function() {
+Game_Screen.prototype.weatherType = function () {
     return this._weatherType;
 };
 
-Game_Screen.prototype.weatherPower = function() {
+Game_Screen.prototype.weatherPower = function () {
     return this._weatherPower;
 };
 
-Game_Screen.prototype.picture = function(pictureId) {
+Game_Screen.prototype.picture = function (pictureId) {
     const realPictureId = this.realPictureId(pictureId);
     return this._pictures[realPictureId];
 };
 
-Game_Screen.prototype.realPictureId = function(pictureId) {
+Game_Screen.prototype.realPictureId = function (pictureId) {
     if ($gameParty.inBattle()) {
         return pictureId + this.maxPictures();
     } else {
@@ -852,24 +852,24 @@ Game_Screen.prototype.realPictureId = function(pictureId) {
     }
 };
 
-Game_Screen.prototype.clearFade = function() {
+Game_Screen.prototype.clearFade = function () {
     this._brightness = 255;
     this._fadeOutDuration = 0;
     this._fadeInDuration = 0;
 };
 
-Game_Screen.prototype.clearTone = function() {
+Game_Screen.prototype.clearTone = function () {
     this._tone = [0, 0, 0, 0];
     this._toneTarget = [0, 0, 0, 0];
     this._toneDuration = 0;
 };
 
-Game_Screen.prototype.clearFlash = function() {
+Game_Screen.prototype.clearFlash = function () {
     this._flashColor = [0, 0, 0, 0];
     this._flashDuration = 0;
 };
 
-Game_Screen.prototype.clearShake = function() {
+Game_Screen.prototype.clearShake = function () {
     this._shakePower = 0;
     this._shakeSpeed = 0;
     this._shakeDuration = 0;
@@ -877,7 +877,7 @@ Game_Screen.prototype.clearShake = function() {
     this._shake = 0;
 };
 
-Game_Screen.prototype.clearZoom = function() {
+Game_Screen.prototype.clearZoom = function () {
     this._zoomX = 0;
     this._zoomY = 0;
     this._zoomScale = 1;
@@ -885,36 +885,36 @@ Game_Screen.prototype.clearZoom = function() {
     this._zoomDuration = 0;
 };
 
-Game_Screen.prototype.clearWeather = function() {
+Game_Screen.prototype.clearWeather = function () {
     this._weatherType = "none";
     this._weatherPower = 0;
     this._weatherPowerTarget = 0;
     this._weatherDuration = 0;
 };
 
-Game_Screen.prototype.clearPictures = function() {
+Game_Screen.prototype.clearPictures = function () {
     this._pictures = [];
 };
 
-Game_Screen.prototype.eraseBattlePictures = function() {
+Game_Screen.prototype.eraseBattlePictures = function () {
     this._pictures = this._pictures.slice(0, this.maxPictures() + 1);
 };
 
-Game_Screen.prototype.maxPictures = function() {
+Game_Screen.prototype.maxPictures = function () {
     return 100;
 };
 
-Game_Screen.prototype.startFadeOut = function(duration) {
+Game_Screen.prototype.startFadeOut = function (duration) {
     this._fadeOutDuration = duration;
     this._fadeInDuration = 0;
 };
 
-Game_Screen.prototype.startFadeIn = function(duration) {
+Game_Screen.prototype.startFadeIn = function (duration) {
     this._fadeInDuration = duration;
     this._fadeOutDuration = 0;
 };
 
-Game_Screen.prototype.startTint = function(tone, duration) {
+Game_Screen.prototype.startTint = function (tone, duration) {
     this._toneTarget = tone.clone();
     this._toneDuration = duration;
     if (this._toneDuration === 0) {
@@ -922,31 +922,31 @@ Game_Screen.prototype.startTint = function(tone, duration) {
     }
 };
 
-Game_Screen.prototype.startFlash = function(color, duration) {
+Game_Screen.prototype.startFlash = function (color, duration) {
     this._flashColor = color.clone();
     this._flashDuration = duration;
 };
 
-Game_Screen.prototype.startShake = function(power, speed, duration) {
+Game_Screen.prototype.startShake = function (power, speed, duration) {
     this._shakePower = power;
     this._shakeSpeed = speed;
     this._shakeDuration = duration;
 };
 
-Game_Screen.prototype.startZoom = function(x, y, scale, duration) {
+Game_Screen.prototype.startZoom = function (x, y, scale, duration) {
     this._zoomX = x;
     this._zoomY = y;
     this._zoomScaleTarget = scale;
     this._zoomDuration = duration;
 };
 
-Game_Screen.prototype.setZoom = function(x, y, scale) {
+Game_Screen.prototype.setZoom = function (x, y, scale) {
     this._zoomX = x;
     this._zoomY = y;
     this._zoomScale = scale;
 };
 
-Game_Screen.prototype.changeWeather = function(type, power, duration) {
+Game_Screen.prototype.changeWeather = function (type, power, duration) {
     if (type !== "none" || duration === 0) {
         this._weatherType = type;
     }
@@ -957,7 +957,7 @@ Game_Screen.prototype.changeWeather = function(type, power, duration) {
     }
 };
 
-Game_Screen.prototype.update = function() {
+Game_Screen.prototype.update = function () {
     this.updateFadeOut();
     this.updateFadeIn();
     this.updateTone();
@@ -968,7 +968,7 @@ Game_Screen.prototype.update = function() {
     this.updatePictures();
 };
 
-Game_Screen.prototype.updateFadeOut = function() {
+Game_Screen.prototype.updateFadeOut = function () {
     if (this._fadeOutDuration > 0) {
         const d = this._fadeOutDuration;
         this._brightness = (this._brightness * (d - 1)) / d;
@@ -976,7 +976,7 @@ Game_Screen.prototype.updateFadeOut = function() {
     }
 };
 
-Game_Screen.prototype.updateFadeIn = function() {
+Game_Screen.prototype.updateFadeIn = function () {
     if (this._fadeInDuration > 0) {
         const d = this._fadeInDuration;
         this._brightness = (this._brightness * (d - 1) + 255) / d;
@@ -984,7 +984,7 @@ Game_Screen.prototype.updateFadeIn = function() {
     }
 };
 
-Game_Screen.prototype.updateTone = function() {
+Game_Screen.prototype.updateTone = function () {
     if (this._toneDuration > 0) {
         const d = this._toneDuration;
         for (let i = 0; i < 4; i++) {
@@ -994,7 +994,7 @@ Game_Screen.prototype.updateTone = function() {
     }
 };
 
-Game_Screen.prototype.updateFlash = function() {
+Game_Screen.prototype.updateFlash = function () {
     if (this._flashDuration > 0) {
         const d = this._flashDuration;
         this._flashColor[3] *= (d - 1) / d;
@@ -1002,7 +1002,7 @@ Game_Screen.prototype.updateFlash = function() {
     }
 };
 
-Game_Screen.prototype.updateShake = function() {
+Game_Screen.prototype.updateShake = function () {
     if (this._shakeDuration > 0 || this._shake !== 0) {
         const delta =
             (this._shakePower * this._shakeSpeed * this._shakeDirection) / 10;
@@ -1024,7 +1024,7 @@ Game_Screen.prototype.updateShake = function() {
     }
 };
 
-Game_Screen.prototype.updateZoom = function() {
+Game_Screen.prototype.updateZoom = function () {
     if (this._zoomDuration > 0) {
         const d = this._zoomDuration;
         const t = this._zoomScaleTarget;
@@ -1033,7 +1033,7 @@ Game_Screen.prototype.updateZoom = function() {
     }
 };
 
-Game_Screen.prototype.updateWeather = function() {
+Game_Screen.prototype.updateWeather = function () {
     if (this._weatherDuration > 0) {
         const d = this._weatherDuration;
         const t = this._weatherPowerTarget;
@@ -1045,7 +1045,7 @@ Game_Screen.prototype.updateWeather = function() {
     }
 };
 
-Game_Screen.prototype.updatePictures = function() {
+Game_Screen.prototype.updatePictures = function () {
     for (const picture of this._pictures) {
         if (picture) {
             picture.update();
@@ -1053,12 +1053,12 @@ Game_Screen.prototype.updatePictures = function() {
     }
 };
 
-Game_Screen.prototype.startFlashForDamage = function() {
+Game_Screen.prototype.startFlashForDamage = function () {
     this.startFlash([255, 0, 0, 128], 8);
 };
 
 // prettier-ignore
-Game_Screen.prototype.showPicture = function(
+Game_Screen.prototype.showPicture = function (
     pictureId, name, origin, x, y, scaleX, scaleY, opacity, blendMode
 ) {
     const realPictureId = this.realPictureId(pictureId);
@@ -1068,7 +1068,7 @@ Game_Screen.prototype.showPicture = function(
 };
 
 // prettier-ignore
-Game_Screen.prototype.movePicture = function(
+Game_Screen.prototype.movePicture = function (
     pictureId, origin, x, y, scaleX, scaleY, opacity, blendMode, duration,
     easingType
 ) {
@@ -1076,25 +1076,25 @@ Game_Screen.prototype.movePicture = function(
     if (picture) {
         // prettier-ignore
         picture.move(origin, x, y, scaleX, scaleY, opacity, blendMode,
-                     duration, easingType);
+            duration, easingType);
     }
 };
 
-Game_Screen.prototype.rotatePicture = function(pictureId, speed) {
+Game_Screen.prototype.rotatePicture = function (pictureId, speed) {
     const picture = this.picture(pictureId);
     if (picture) {
         picture.rotate(speed);
     }
 };
 
-Game_Screen.prototype.tintPicture = function(pictureId, tone, duration) {
+Game_Screen.prototype.tintPicture = function (pictureId, tone, duration) {
     const picture = this.picture(pictureId);
     if (picture) {
         picture.tint(tone, duration);
     }
 };
 
-Game_Screen.prototype.erasePicture = function(pictureId) {
+Game_Screen.prototype.erasePicture = function (pictureId) {
     const realPictureId = this.realPictureId(pictureId);
     this._pictures[realPictureId] = null;
 };
@@ -1108,54 +1108,54 @@ function Game_Picture() {
     this.initialize(...arguments);
 }
 
-Game_Picture.prototype.initialize = function() {
+Game_Picture.prototype.initialize = function () {
     this.initBasic();
     this.initTarget();
     this.initTone();
     this.initRotation();
 };
 
-Game_Picture.prototype.name = function() {
+Game_Picture.prototype.name = function () {
     return this._name;
 };
 
-Game_Picture.prototype.origin = function() {
+Game_Picture.prototype.origin = function () {
     return this._origin;
 };
 
-Game_Picture.prototype.x = function() {
+Game_Picture.prototype.x = function () {
     return this._x;
 };
 
-Game_Picture.prototype.y = function() {
+Game_Picture.prototype.y = function () {
     return this._y;
 };
 
-Game_Picture.prototype.scaleX = function() {
+Game_Picture.prototype.scaleX = function () {
     return this._scaleX;
 };
 
-Game_Picture.prototype.scaleY = function() {
+Game_Picture.prototype.scaleY = function () {
     return this._scaleY;
 };
 
-Game_Picture.prototype.opacity = function() {
+Game_Picture.prototype.opacity = function () {
     return this._opacity;
 };
 
-Game_Picture.prototype.blendMode = function() {
+Game_Picture.prototype.blendMode = function () {
     return this._blendMode;
 };
 
-Game_Picture.prototype.tone = function() {
+Game_Picture.prototype.tone = function () {
     return this._tone;
 };
 
-Game_Picture.prototype.angle = function() {
+Game_Picture.prototype.angle = function () {
     return this._angle;
 };
 
-Game_Picture.prototype.initBasic = function() {
+Game_Picture.prototype.initBasic = function () {
     this._name = "";
     this._origin = 0;
     this._x = 0;
@@ -1166,7 +1166,7 @@ Game_Picture.prototype.initBasic = function() {
     this._blendMode = 0;
 };
 
-Game_Picture.prototype.initTarget = function() {
+Game_Picture.prototype.initTarget = function () {
     this._targetX = this._x;
     this._targetY = this._y;
     this._targetScaleX = this._scaleX;
@@ -1178,19 +1178,19 @@ Game_Picture.prototype.initTarget = function() {
     this._easingExponent = 0;
 };
 
-Game_Picture.prototype.initTone = function() {
+Game_Picture.prototype.initTone = function () {
     this._tone = null;
     this._toneTarget = null;
     this._toneDuration = 0;
 };
 
-Game_Picture.prototype.initRotation = function() {
+Game_Picture.prototype.initRotation = function () {
     this._angle = 0;
     this._rotationSpeed = 0;
 };
 
 // prettier-ignore
-Game_Picture.prototype.show = function(
+Game_Picture.prototype.show = function (
     name, origin, x, y, scaleX, scaleY, opacity, blendMode
 ) {
     this._name = name;
@@ -1207,7 +1207,7 @@ Game_Picture.prototype.show = function(
 };
 
 // prettier-ignore
-Game_Picture.prototype.move = function(
+Game_Picture.prototype.move = function (
     origin, x, y, scaleX, scaleY, opacity, blendMode, duration, easingType
 ) {
     this._origin = origin;
@@ -1223,11 +1223,11 @@ Game_Picture.prototype.move = function(
     this._easingExponent = 2;
 };
 
-Game_Picture.prototype.rotate = function(speed) {
+Game_Picture.prototype.rotate = function (speed) {
     this._rotationSpeed = speed;
 };
 
-Game_Picture.prototype.tint = function(tone, duration) {
+Game_Picture.prototype.tint = function (tone, duration) {
     if (!this._tone) {
         this._tone = [0, 0, 0, 0];
     }
@@ -1238,13 +1238,13 @@ Game_Picture.prototype.tint = function(tone, duration) {
     }
 };
 
-Game_Picture.prototype.update = function() {
+Game_Picture.prototype.update = function () {
     this.updateMove();
     this.updateTone();
     this.updateRotation();
 };
 
-Game_Picture.prototype.updateMove = function() {
+Game_Picture.prototype.updateMove = function () {
     if (this._duration > 0) {
         this._x = this.applyEasing(this._x, this._targetX);
         this._y = this.applyEasing(this._y, this._targetY);
@@ -1255,7 +1255,7 @@ Game_Picture.prototype.updateMove = function() {
     }
 };
 
-Game_Picture.prototype.updateTone = function() {
+Game_Picture.prototype.updateTone = function () {
     if (this._toneDuration > 0) {
         const d = this._toneDuration;
         for (let i = 0; i < 4; i++) {
@@ -1265,13 +1265,13 @@ Game_Picture.prototype.updateTone = function() {
     }
 };
 
-Game_Picture.prototype.updateRotation = function() {
+Game_Picture.prototype.updateRotation = function () {
     if (this._rotationSpeed !== 0) {
         this._angle += this._rotationSpeed / 2;
     }
 };
 
-Game_Picture.prototype.applyEasing = function(current, target) {
+Game_Picture.prototype.applyEasing = function (current, target) {
     const d = this._duration;
     const wd = this._wholeDuration;
     const lt = this.calcEasing((wd - d) / wd);
@@ -1280,7 +1280,7 @@ Game_Picture.prototype.applyEasing = function(current, target) {
     return start + (target - start) * t;
 };
 
-Game_Picture.prototype.calcEasing = function(t) {
+Game_Picture.prototype.calcEasing = function (t) {
     const exponent = this._easingExponent;
     switch (this._easingType) {
         case 1: // Slow start
@@ -1294,15 +1294,15 @@ Game_Picture.prototype.calcEasing = function(t) {
     }
 };
 
-Game_Picture.prototype.easeIn = function(t, exponent) {
+Game_Picture.prototype.easeIn = function (t, exponent) {
     return Math.pow(t, exponent);
 };
 
-Game_Picture.prototype.easeOut = function(t, exponent) {
+Game_Picture.prototype.easeOut = function (t, exponent) {
     return 1 - Math.pow(1 - t, exponent);
 };
 
-Game_Picture.prototype.easeInOut = function(t, exponent) {
+Game_Picture.prototype.easeInOut = function (t, exponent) {
     if (t < 0.5) {
         return this.easeIn(t * 2, exponent) / 2;
     } else {
@@ -1320,7 +1320,7 @@ function Game_Item() {
     this.initialize(...arguments);
 }
 
-Game_Item.prototype.initialize = function(item) {
+Game_Item.prototype.initialize = function (item) {
     this._dataClass = "";
     this._itemId = 0;
     if (item) {
@@ -1328,39 +1328,39 @@ Game_Item.prototype.initialize = function(item) {
     }
 };
 
-Game_Item.prototype.isSkill = function() {
+Game_Item.prototype.isSkill = function () {
     return this._dataClass === "skill";
 };
 
-Game_Item.prototype.isItem = function() {
+Game_Item.prototype.isItem = function () {
     return this._dataClass === "item";
 };
 
-Game_Item.prototype.isUsableItem = function() {
+Game_Item.prototype.isUsableItem = function () {
     return this.isSkill() || this.isItem();
 };
 
-Game_Item.prototype.isWeapon = function() {
+Game_Item.prototype.isWeapon = function () {
     return this._dataClass === "weapon";
 };
 
-Game_Item.prototype.isArmor = function() {
+Game_Item.prototype.isArmor = function () {
     return this._dataClass === "armor";
 };
 
-Game_Item.prototype.isEquipItem = function() {
+Game_Item.prototype.isEquipItem = function () {
     return this.isWeapon() || this.isArmor();
 };
 
-Game_Item.prototype.isNull = function() {
+Game_Item.prototype.isNull = function () {
     return this._dataClass === "";
 };
 
-Game_Item.prototype.itemId = function() {
+Game_Item.prototype.itemId = function () {
     return this._itemId;
 };
 
-Game_Item.prototype.object = function() {
+Game_Item.prototype.object = function () {
     if (this.isSkill()) {
         return $dataSkills[this._itemId];
     } else if (this.isItem()) {
@@ -1374,7 +1374,7 @@ Game_Item.prototype.object = function() {
     }
 };
 
-Game_Item.prototype.setObject = function(item) {
+Game_Item.prototype.setObject = function (item) {
     if (DataManager.isSkill(item)) {
         this._dataClass = "skill";
     } else if (DataManager.isItem(item)) {
@@ -1389,7 +1389,7 @@ Game_Item.prototype.setObject = function(item) {
     this._itemId = item ? item.id : 0;
 };
 
-Game_Item.prototype.setEquip = function(isWeapon, itemId) {
+Game_Item.prototype.setEquip = function (isWeapon, itemId) {
     this._dataClass = isWeapon ? "weapon" : "armor";
     this._itemId = itemId;
 };
@@ -1421,7 +1421,7 @@ Game_Action.HITTYPE_CERTAIN = 0;
 Game_Action.HITTYPE_PHYSICAL = 1;
 Game_Action.HITTYPE_MAGICAL = 2;
 
-Game_Action.prototype.initialize = function(subject, forcing) {
+Game_Action.prototype.initialize = function (subject, forcing) {
     this._subjectActorId = 0;
     this._subjectEnemyIndex = -1;
     this._forcing = forcing || false;
@@ -1429,12 +1429,12 @@ Game_Action.prototype.initialize = function(subject, forcing) {
     this.clear();
 };
 
-Game_Action.prototype.clear = function() {
+Game_Action.prototype.clear = function () {
     this._item = new Game_Item();
     this._targetIndex = -1;
 };
 
-Game_Action.prototype.setSubject = function(subject) {
+Game_Action.prototype.setSubject = function (subject) {
     if (subject.isActor()) {
         this._subjectActorId = subject.actorId();
         this._subjectEnemyIndex = -1;
@@ -1444,7 +1444,7 @@ Game_Action.prototype.setSubject = function(subject) {
     }
 };
 
-Game_Action.prototype.subject = function() {
+Game_Action.prototype.subject = function () {
     if (this._subjectActorId > 0) {
         return $gameActors.actor(this._subjectActorId);
     } else {
@@ -1452,15 +1452,15 @@ Game_Action.prototype.subject = function() {
     }
 };
 
-Game_Action.prototype.friendsUnit = function() {
+Game_Action.prototype.friendsUnit = function () {
     return this.subject().friendsUnit();
 };
 
-Game_Action.prototype.opponentsUnit = function() {
+Game_Action.prototype.opponentsUnit = function () {
     return this.subject().opponentsUnit();
 };
 
-Game_Action.prototype.setEnemyAction = function(action) {
+Game_Action.prototype.setEnemyAction = function (action) {
     if (action) {
         this.setSkill(action.skillId);
     } else {
@@ -1468,43 +1468,43 @@ Game_Action.prototype.setEnemyAction = function(action) {
     }
 };
 
-Game_Action.prototype.setAttack = function() {
+Game_Action.prototype.setAttack = function () {
     this.setSkill(this.subject().attackSkillId());
 };
 
-Game_Action.prototype.setGuard = function() {
+Game_Action.prototype.setGuard = function () {
     this.setSkill(this.subject().guardSkillId());
 };
 
-Game_Action.prototype.setSkill = function(skillId) {
+Game_Action.prototype.setSkill = function (skillId) {
     this._item.setObject($dataSkills[skillId]);
 };
 
-Game_Action.prototype.setItem = function(itemId) {
+Game_Action.prototype.setItem = function (itemId) {
     this._item.setObject($dataItems[itemId]);
 };
 
-Game_Action.prototype.setItemObject = function(object) {
+Game_Action.prototype.setItemObject = function (object) {
     this._item.setObject(object);
 };
 
-Game_Action.prototype.setTarget = function(targetIndex) {
+Game_Action.prototype.setTarget = function (targetIndex) {
     this._targetIndex = targetIndex;
 };
 
-Game_Action.prototype.item = function() {
+Game_Action.prototype.item = function () {
     return this._item.object();
 };
 
-Game_Action.prototype.isSkill = function() {
+Game_Action.prototype.isSkill = function () {
     return this._item.isSkill();
 };
 
-Game_Action.prototype.isItem = function() {
+Game_Action.prototype.isItem = function () {
     return this._item.isItem();
 };
 
-Game_Action.prototype.numRepeats = function() {
+Game_Action.prototype.numRepeats = function () {
     let repeats = this.item().repeats;
     if (this.isAttack()) {
         repeats += this.subject().attackTimesAdd();
@@ -1512,107 +1512,107 @@ Game_Action.prototype.numRepeats = function() {
     return Math.floor(repeats);
 };
 
-Game_Action.prototype.checkItemScope = function(list) {
+Game_Action.prototype.checkItemScope = function (list) {
     return list.includes(this.item().scope);
 };
 
-Game_Action.prototype.isForOpponent = function() {
+Game_Action.prototype.isForOpponent = function () {
     return this.checkItemScope([1, 2, 3, 4, 5, 6, 14]);
 };
 
-Game_Action.prototype.isForFriend = function() {
+Game_Action.prototype.isForFriend = function () {
     return this.checkItemScope([7, 8, 9, 10, 11, 12, 13, 14]);
 };
 
-Game_Action.prototype.isForEveryone = function() {
+Game_Action.prototype.isForEveryone = function () {
     return this.checkItemScope([14]);
 };
 
-Game_Action.prototype.isForAliveFriend = function() {
+Game_Action.prototype.isForAliveFriend = function () {
     return this.checkItemScope([7, 8, 11, 14]);
 };
 
-Game_Action.prototype.isForDeadFriend = function() {
+Game_Action.prototype.isForDeadFriend = function () {
     return this.checkItemScope([9, 10]);
 };
 
-Game_Action.prototype.isForUser = function() {
+Game_Action.prototype.isForUser = function () {
     return this.checkItemScope([11]);
 };
 
-Game_Action.prototype.isForOne = function() {
+Game_Action.prototype.isForOne = function () {
     return this.checkItemScope([1, 3, 7, 9, 11, 12]);
 };
 
-Game_Action.prototype.isForRandom = function() {
+Game_Action.prototype.isForRandom = function () {
     return this.checkItemScope([3, 4, 5, 6]);
 };
 
-Game_Action.prototype.isForAll = function() {
+Game_Action.prototype.isForAll = function () {
     return this.checkItemScope([2, 8, 10, 13, 14]);
 };
 
-Game_Action.prototype.needsSelection = function() {
+Game_Action.prototype.needsSelection = function () {
     return this.checkItemScope([1, 7, 9, 12]);
 };
 
-Game_Action.prototype.numTargets = function() {
+Game_Action.prototype.numTargets = function () {
     return this.isForRandom() ? this.item().scope - 2 : 0;
 };
 
-Game_Action.prototype.checkDamageType = function(list) {
+Game_Action.prototype.checkDamageType = function (list) {
     return list.includes(this.item().damage.type);
 };
 
-Game_Action.prototype.isHpEffect = function() {
+Game_Action.prototype.isHpEffect = function () {
     return this.checkDamageType([1, 3, 5]);
 };
 
-Game_Action.prototype.isMpEffect = function() {
+Game_Action.prototype.isMpEffect = function () {
     return this.checkDamageType([2, 4, 6]);
 };
 
-Game_Action.prototype.isDamage = function() {
+Game_Action.prototype.isDamage = function () {
     return this.checkDamageType([1, 2]);
 };
 
-Game_Action.prototype.isRecover = function() {
+Game_Action.prototype.isRecover = function () {
     return this.checkDamageType([3, 4]);
 };
 
-Game_Action.prototype.isDrain = function() {
+Game_Action.prototype.isDrain = function () {
     return this.checkDamageType([5, 6]);
 };
 
-Game_Action.prototype.isHpRecover = function() {
+Game_Action.prototype.isHpRecover = function () {
     return this.checkDamageType([3]);
 };
 
-Game_Action.prototype.isMpRecover = function() {
+Game_Action.prototype.isMpRecover = function () {
     return this.checkDamageType([4]);
 };
 
-Game_Action.prototype.isCertainHit = function() {
+Game_Action.prototype.isCertainHit = function () {
     return this.item().hitType === Game_Action.HITTYPE_CERTAIN;
 };
 
-Game_Action.prototype.isPhysical = function() {
+Game_Action.prototype.isPhysical = function () {
     return this.item().hitType === Game_Action.HITTYPE_PHYSICAL;
 };
 
-Game_Action.prototype.isMagical = function() {
+Game_Action.prototype.isMagical = function () {
     return this.item().hitType === Game_Action.HITTYPE_MAGICAL;
 };
 
-Game_Action.prototype.isAttack = function() {
+Game_Action.prototype.isAttack = function () {
     return this.item() === $dataSkills[this.subject().attackSkillId()];
 };
 
-Game_Action.prototype.isGuard = function() {
+Game_Action.prototype.isGuard = function () {
     return this.item() === $dataSkills[this.subject().guardSkillId()];
 };
 
-Game_Action.prototype.isMagicSkill = function() {
+Game_Action.prototype.isMagicSkill = function () {
     if (this.isSkill()) {
         return $dataSystem.magicSkills.includes(this.item().stypeId);
     } else {
@@ -1620,7 +1620,7 @@ Game_Action.prototype.isMagicSkill = function() {
     }
 };
 
-Game_Action.prototype.decideRandomTarget = function() {
+Game_Action.prototype.decideRandomTarget = function () {
     let target;
     if (this.isForDeadFriend()) {
         target = this.friendsUnit().randomDeadTarget();
@@ -1636,21 +1636,21 @@ Game_Action.prototype.decideRandomTarget = function() {
     }
 };
 
-Game_Action.prototype.setConfusion = function() {
+Game_Action.prototype.setConfusion = function () {
     this.setAttack();
 };
 
-Game_Action.prototype.prepare = function() {
+Game_Action.prototype.prepare = function () {
     if (this.subject().isConfused() && !this._forcing) {
         this.setConfusion();
     }
 };
 
-Game_Action.prototype.isValid = function() {
+Game_Action.prototype.isValid = function () {
     return (this._forcing && this.item()) || this.subject().canUse(this.item());
 };
 
-Game_Action.prototype.speed = function() {
+Game_Action.prototype.speed = function () {
     const agi = this.subject().agi;
     let speed = agi + Math.randomInt(Math.floor(5 + agi / 4));
     if (this.item()) {
@@ -1662,7 +1662,7 @@ Game_Action.prototype.speed = function() {
     return speed;
 };
 
-Game_Action.prototype.makeTargets = function() {
+Game_Action.prototype.makeTargets = function () {
     const targets = [];
     if (!this._forcing && this.subject().isConfused()) {
         targets.push(this.confusionTarget());
@@ -1676,7 +1676,7 @@ Game_Action.prototype.makeTargets = function() {
     return this.repeatTargets(targets);
 };
 
-Game_Action.prototype.repeatTargets = function(targets) {
+Game_Action.prototype.repeatTargets = function (targets) {
     const repeatedTargets = [];
     const repeats = this.numRepeats();
     for (const target of targets) {
@@ -1689,7 +1689,7 @@ Game_Action.prototype.repeatTargets = function(targets) {
     return repeatedTargets;
 };
 
-Game_Action.prototype.confusionTarget = function() {
+Game_Action.prototype.confusionTarget = function () {
     switch (this.subject().confusionLevel()) {
         case 1:
             return this.opponentsUnit().randomTarget();
@@ -1703,13 +1703,13 @@ Game_Action.prototype.confusionTarget = function() {
     }
 };
 
-Game_Action.prototype.targetsForEveryone = function() {
+Game_Action.prototype.targetsForEveryone = function () {
     const opponentMembers = this.opponentsUnit().aliveMembers();
     const friendMembers = this.friendsUnit().aliveMembers();
     return opponentMembers.concat(friendMembers);
 };
 
-Game_Action.prototype.targetsForOpponents = function() {
+Game_Action.prototype.targetsForOpponents = function () {
     const unit = this.opponentsUnit();
     if (this.isForRandom()) {
         return this.randomTargets(unit);
@@ -1718,7 +1718,7 @@ Game_Action.prototype.targetsForOpponents = function() {
     }
 };
 
-Game_Action.prototype.targetsForFriends = function() {
+Game_Action.prototype.targetsForFriends = function () {
     const unit = this.friendsUnit();
     if (this.isForUser()) {
         return [this.subject()];
@@ -1731,7 +1731,7 @@ Game_Action.prototype.targetsForFriends = function() {
     }
 };
 
-Game_Action.prototype.randomTargets = function(unit) {
+Game_Action.prototype.randomTargets = function (unit) {
     const targets = [];
     for (let i = 0; i < this.numTargets(); i++) {
         targets.push(unit.randomTarget());
@@ -1739,7 +1739,7 @@ Game_Action.prototype.randomTargets = function(unit) {
     return targets;
 };
 
-Game_Action.prototype.targetsForDead = function(unit) {
+Game_Action.prototype.targetsForDead = function (unit) {
     if (this.isForOne()) {
         return [unit.smoothDeadTarget(this._targetIndex)];
     } else {
@@ -1747,7 +1747,7 @@ Game_Action.prototype.targetsForDead = function(unit) {
     }
 };
 
-Game_Action.prototype.targetsForAlive = function(unit) {
+Game_Action.prototype.targetsForAlive = function (unit) {
     if (this.isForOne()) {
         if (this._targetIndex < 0) {
             return [unit.randomTarget()];
@@ -1759,7 +1759,7 @@ Game_Action.prototype.targetsForAlive = function(unit) {
     }
 };
 
-Game_Action.prototype.targetsForDeadAndAlive = function(unit) {
+Game_Action.prototype.targetsForDeadAndAlive = function (unit) {
     if (this.isForOne()) {
         return [unit.members()[this._targetIndex]];
     } else {
@@ -1767,7 +1767,7 @@ Game_Action.prototype.targetsForDeadAndAlive = function(unit) {
     }
 };
 
-Game_Action.prototype.evaluate = function() {
+Game_Action.prototype.evaluate = function () {
     let value = 0;
     for (const target of this.itemTargetCandidates()) {
         const targetValue = this.evaluateWithTarget(target);
@@ -1785,7 +1785,7 @@ Game_Action.prototype.evaluate = function() {
     return value;
 };
 
-Game_Action.prototype.itemTargetCandidates = function() {
+Game_Action.prototype.itemTargetCandidates = function () {
     if (!this.isValid()) {
         return [];
     } else if (this.isForOpponent()) {
@@ -1799,7 +1799,7 @@ Game_Action.prototype.itemTargetCandidates = function() {
     }
 };
 
-Game_Action.prototype.evaluateWithTarget = function(target) {
+Game_Action.prototype.evaluateWithTarget = function (target) {
     if (this.isHpEffect()) {
         const value = this.makeDamageValue(target, false);
         if (this.isForOpponent()) {
@@ -1811,7 +1811,7 @@ Game_Action.prototype.evaluateWithTarget = function(target) {
     }
 };
 
-Game_Action.prototype.testApply = function(target) {
+Game_Action.prototype.testApply = function (target) {
     return (
         this.testLifeAndDeath(target) &&
         ($gameParty.inBattle() ||
@@ -1821,7 +1821,7 @@ Game_Action.prototype.testApply = function(target) {
     );
 };
 
-Game_Action.prototype.testLifeAndDeath = function(target) {
+Game_Action.prototype.testLifeAndDeath = function (target) {
     if (this.isForOpponent() || this.isForAliveFriend()) {
         return target.isAlive();
     } else if (this.isForDeadFriend()) {
@@ -1831,13 +1831,13 @@ Game_Action.prototype.testLifeAndDeath = function(target) {
     }
 };
 
-Game_Action.prototype.hasItemAnyValidEffects = function(target) {
+Game_Action.prototype.hasItemAnyValidEffects = function (target) {
     return this.item().effects.some(effect =>
         this.testItemEffect(target, effect)
     );
 };
 
-Game_Action.prototype.testItemEffect = function(target, effect) {
+Game_Action.prototype.testItemEffect = function (target, effect) {
     switch (effect.code) {
         case Game_Action.EFFECT_RECOVER_HP:
             return (
@@ -1866,7 +1866,7 @@ Game_Action.prototype.testItemEffect = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemCnt = function(target) {
+Game_Action.prototype.itemCnt = function (target) {
     if (this.isPhysical() && target.canMove()) {
         return target.cnt;
     } else {
@@ -1874,7 +1874,7 @@ Game_Action.prototype.itemCnt = function(target) {
     }
 };
 
-Game_Action.prototype.itemMrf = function(target) {
+Game_Action.prototype.itemMrf = function (target) {
     if (this.isMagical()) {
         return target.mrf;
     } else {
@@ -1882,7 +1882,7 @@ Game_Action.prototype.itemMrf = function(target) {
     }
 };
 
-Game_Action.prototype.itemHit = function(/*target*/) {
+Game_Action.prototype.itemHit = function (/*target*/) {
     const successRate = this.item().successRate;
     if (this.isPhysical()) {
         return successRate * 0.01 * this.subject().hit;
@@ -1891,7 +1891,7 @@ Game_Action.prototype.itemHit = function(/*target*/) {
     }
 };
 
-Game_Action.prototype.itemEva = function(target) {
+Game_Action.prototype.itemEva = function (target) {
     if (this.isPhysical()) {
         return target.eva;
     } else if (this.isMagical()) {
@@ -1901,13 +1901,13 @@ Game_Action.prototype.itemEva = function(target) {
     }
 };
 
-Game_Action.prototype.itemCri = function(target) {
+Game_Action.prototype.itemCri = function (target) {
     return this.item().damage.critical
         ? this.subject().cri * (1 - target.cev)
         : 0;
 };
 
-Game_Action.prototype.apply = function(target) {
+Game_Action.prototype.apply = function (target) {
     const result = target.result();
     this.subject().clearResult();
     result.clear();
@@ -1930,7 +1930,7 @@ Game_Action.prototype.apply = function(target) {
     this.updateLastTarget(target);
 };
 
-Game_Action.prototype.makeDamageValue = function(target, critical) {
+Game_Action.prototype.makeDamageValue = function (target, critical) {
     const item = this.item();
     const baseValue = this.evalDamageFormula(target);
     let value = baseValue * this.calcElementRate(target);
@@ -1952,7 +1952,7 @@ Game_Action.prototype.makeDamageValue = function(target, critical) {
     return value;
 };
 
-Game_Action.prototype.evalDamageFormula = function(target) {
+Game_Action.prototype.evalDamageFormula = function (target) {
     try {
         const item = this.item();
         const a = this.subject(); // eslint-disable-line no-unused-vars
@@ -1966,7 +1966,7 @@ Game_Action.prototype.evalDamageFormula = function(target) {
     }
 };
 
-Game_Action.prototype.calcElementRate = function(target) {
+Game_Action.prototype.calcElementRate = function (target) {
     if (this.item().damage.elementId < 0) {
         return this.elementsMaxRate(target, this.subject().attackElements());
     } else {
@@ -1974,7 +1974,7 @@ Game_Action.prototype.calcElementRate = function(target) {
     }
 };
 
-Game_Action.prototype.elementsMaxRate = function(target, elements) {
+Game_Action.prototype.elementsMaxRate = function (target, elements) {
     if (elements.length > 0) {
         const rates = elements.map(elementId => target.elementRate(elementId));
         return Math.max(...rates);
@@ -1983,21 +1983,21 @@ Game_Action.prototype.elementsMaxRate = function(target, elements) {
     }
 };
 
-Game_Action.prototype.applyCritical = function(damage) {
+Game_Action.prototype.applyCritical = function (damage) {
     return damage * 3;
 };
 
-Game_Action.prototype.applyVariance = function(damage, variance) {
+Game_Action.prototype.applyVariance = function (damage, variance) {
     const amp = Math.floor(Math.max((Math.abs(damage) * variance) / 100, 0));
     const v = Math.randomInt(amp + 1) + Math.randomInt(amp + 1) - amp;
     return damage >= 0 ? damage + v : damage - v;
 };
 
-Game_Action.prototype.applyGuard = function(damage, target) {
+Game_Action.prototype.applyGuard = function (damage, target) {
     return damage / (damage > 0 && target.isGuard() ? 2 * target.grd : 1);
 };
 
-Game_Action.prototype.executeDamage = function(target, value) {
+Game_Action.prototype.executeDamage = function (target, value) {
     const result = target.result();
     if (value === 0) {
         result.critical = false;
@@ -2010,7 +2010,7 @@ Game_Action.prototype.executeDamage = function(target, value) {
     }
 };
 
-Game_Action.prototype.executeHpDamage = function(target, value) {
+Game_Action.prototype.executeHpDamage = function (target, value) {
     if (this.isDrain()) {
         value = Math.min(target.hp, value);
     }
@@ -2022,7 +2022,7 @@ Game_Action.prototype.executeHpDamage = function(target, value) {
     this.gainDrainedHp(value);
 };
 
-Game_Action.prototype.executeMpDamage = function(target, value) {
+Game_Action.prototype.executeMpDamage = function (target, value) {
     if (!this.isMpRecover()) {
         value = Math.min(target.mp, value);
     }
@@ -2033,7 +2033,7 @@ Game_Action.prototype.executeMpDamage = function(target, value) {
     this.gainDrainedMp(value);
 };
 
-Game_Action.prototype.gainDrainedHp = function(value) {
+Game_Action.prototype.gainDrainedHp = function (value) {
     if (this.isDrain()) {
         let gainTarget = this.subject();
         if (this._reflectionTarget) {
@@ -2043,7 +2043,7 @@ Game_Action.prototype.gainDrainedHp = function(value) {
     }
 };
 
-Game_Action.prototype.gainDrainedMp = function(value) {
+Game_Action.prototype.gainDrainedMp = function (value) {
     if (this.isDrain()) {
         let gainTarget = this.subject();
         if (this._reflectionTarget) {
@@ -2053,7 +2053,7 @@ Game_Action.prototype.gainDrainedMp = function(value) {
     }
 };
 
-Game_Action.prototype.applyItemEffect = function(target, effect) {
+Game_Action.prototype.applyItemEffect = function (target, effect) {
     switch (effect.code) {
         case Game_Action.EFFECT_RECOVER_HP:
             this.itemEffectRecoverHp(target, effect);
@@ -2097,7 +2097,7 @@ Game_Action.prototype.applyItemEffect = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectRecoverHp = function(target, effect) {
+Game_Action.prototype.itemEffectRecoverHp = function (target, effect) {
     let value = (target.mhp * effect.value1 + effect.value2) * target.rec;
     if (this.isItem()) {
         value *= this.subject().pha;
@@ -2109,7 +2109,7 @@ Game_Action.prototype.itemEffectRecoverHp = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectRecoverMp = function(target, effect) {
+Game_Action.prototype.itemEffectRecoverMp = function (target, effect) {
     let value = (target.mmp * effect.value1 + effect.value2) * target.rec;
     if (this.isItem()) {
         value *= this.subject().pha;
@@ -2121,7 +2121,7 @@ Game_Action.prototype.itemEffectRecoverMp = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectGainTp = function(target, effect) {
+Game_Action.prototype.itemEffectGainTp = function (target, effect) {
     let value = Math.floor(effect.value1);
     if (value !== 0) {
         target.gainTp(value);
@@ -2129,7 +2129,7 @@ Game_Action.prototype.itemEffectGainTp = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectAddState = function(target, effect) {
+Game_Action.prototype.itemEffectAddState = function (target, effect) {
     if (effect.dataId === 0) {
         this.itemEffectAddAttackState(target, effect);
     } else {
@@ -2137,7 +2137,7 @@ Game_Action.prototype.itemEffectAddState = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectAddAttackState = function(target, effect) {
+Game_Action.prototype.itemEffectAddAttackState = function (target, effect) {
     for (const stateId of this.subject().attackStates()) {
         let chance = effect.value1;
         chance *= target.stateRate(stateId);
@@ -2150,7 +2150,7 @@ Game_Action.prototype.itemEffectAddAttackState = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectAddNormalState = function(target, effect) {
+Game_Action.prototype.itemEffectAddNormalState = function (target, effect) {
     let chance = effect.value1;
     if (!this.isCertainHit()) {
         chance *= target.stateRate(effect.dataId);
@@ -2162,7 +2162,7 @@ Game_Action.prototype.itemEffectAddNormalState = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectRemoveState = function(target, effect) {
+Game_Action.prototype.itemEffectRemoveState = function (target, effect) {
     let chance = effect.value1;
     if (Math.random() < chance) {
         target.removeState(effect.dataId);
@@ -2170,12 +2170,12 @@ Game_Action.prototype.itemEffectRemoveState = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectAddBuff = function(target, effect) {
+Game_Action.prototype.itemEffectAddBuff = function (target, effect) {
     target.addBuff(effect.dataId, effect.value1);
     this.makeSuccess(target);
 };
 
-Game_Action.prototype.itemEffectAddDebuff = function(target, effect) {
+Game_Action.prototype.itemEffectAddDebuff = function (target, effect) {
     let chance = target.debuffRate(effect.dataId) * this.lukEffectRate(target);
     if (Math.random() < chance) {
         target.addDebuff(effect.dataId, effect.value1);
@@ -2183,57 +2183,57 @@ Game_Action.prototype.itemEffectAddDebuff = function(target, effect) {
     }
 };
 
-Game_Action.prototype.itemEffectRemoveBuff = function(target, effect) {
+Game_Action.prototype.itemEffectRemoveBuff = function (target, effect) {
     if (target.isBuffAffected(effect.dataId)) {
         target.removeBuff(effect.dataId);
         this.makeSuccess(target);
     }
 };
 
-Game_Action.prototype.itemEffectRemoveDebuff = function(target, effect) {
+Game_Action.prototype.itemEffectRemoveDebuff = function (target, effect) {
     if (target.isDebuffAffected(effect.dataId)) {
         target.removeBuff(effect.dataId);
         this.makeSuccess(target);
     }
 };
 
-Game_Action.prototype.itemEffectSpecial = function(target, effect) {
+Game_Action.prototype.itemEffectSpecial = function (target, effect) {
     if (effect.dataId === Game_Action.SPECIAL_EFFECT_ESCAPE) {
         target.escape();
         this.makeSuccess(target);
     }
 };
 
-Game_Action.prototype.itemEffectGrow = function(target, effect) {
+Game_Action.prototype.itemEffectGrow = function (target, effect) {
     target.addParam(effect.dataId, Math.floor(effect.value1));
     this.makeSuccess(target);
 };
 
-Game_Action.prototype.itemEffectLearnSkill = function(target, effect) {
+Game_Action.prototype.itemEffectLearnSkill = function (target, effect) {
     if (target.isActor()) {
         target.learnSkill(effect.dataId);
         this.makeSuccess(target);
     }
 };
 
-Game_Action.prototype.itemEffectCommonEvent = function(/*target, effect*/) {
+Game_Action.prototype.itemEffectCommonEvent = function (/*target, effect*/) {
     //
 };
 
-Game_Action.prototype.makeSuccess = function(target) {
+Game_Action.prototype.makeSuccess = function (target) {
     target.result().success = true;
 };
 
-Game_Action.prototype.applyItemUserEffect = function(/*target*/) {
+Game_Action.prototype.applyItemUserEffect = function (/*target*/) {
     const value = Math.floor(this.item().tpGain * this.subject().tcr);
     this.subject().gainSilentTp(value);
 };
 
-Game_Action.prototype.lukEffectRate = function(target) {
+Game_Action.prototype.lukEffectRate = function (target) {
     return Math.max(1.0 + (this.subject().luk - target.luk) * 0.001, 0.0);
 };
 
-Game_Action.prototype.applyGlobal = function() {
+Game_Action.prototype.applyGlobal = function () {
     for (const effect of this.item().effects) {
         if (effect.code === Game_Action.EFFECT_COMMON_EVENT) {
             $gameTemp.reserveCommonEvent(effect.dataId);
@@ -2243,7 +2243,7 @@ Game_Action.prototype.applyGlobal = function() {
     this.updateLastSubject();
 };
 
-Game_Action.prototype.updateLastUsed = function() {
+Game_Action.prototype.updateLastUsed = function () {
     const item = this.item();
     if (DataManager.isSkill(item)) {
         $gameTemp.setLastUsedSkillId(item.id);
@@ -2252,7 +2252,7 @@ Game_Action.prototype.updateLastUsed = function() {
     }
 };
 
-Game_Action.prototype.updateLastSubject = function() {
+Game_Action.prototype.updateLastSubject = function () {
     const subject = this.subject();
     if (subject.isActor()) {
         $gameTemp.setLastSubjectActorId(subject.actorId());
@@ -2261,7 +2261,7 @@ Game_Action.prototype.updateLastSubject = function() {
     }
 };
 
-Game_Action.prototype.updateLastTarget = function(target) {
+Game_Action.prototype.updateLastTarget = function (target) {
     if (target.isActor()) {
         $gameTemp.setLastTargetActorId(target.actorId());
     } else {
@@ -2279,11 +2279,11 @@ function Game_ActionResult() {
     this.initialize(...arguments);
 }
 
-Game_ActionResult.prototype.initialize = function() {
+Game_ActionResult.prototype.initialize = function () {
     this.clear();
 };
 
-Game_ActionResult.prototype.clear = function() {
+Game_ActionResult.prototype.clear = function () {
     this.used = false;
     this.missed = false;
     this.evaded = false;
@@ -2302,15 +2302,15 @@ Game_ActionResult.prototype.clear = function() {
     this.removedBuffs = [];
 };
 
-Game_ActionResult.prototype.addedStateObjects = function() {
+Game_ActionResult.prototype.addedStateObjects = function () {
     return this.addedStates.map(id => $dataStates[id]);
 };
 
-Game_ActionResult.prototype.removedStateObjects = function() {
+Game_ActionResult.prototype.removedStateObjects = function () {
     return this.removedStates.map(id => $dataStates[id]);
 };
 
-Game_ActionResult.prototype.isStatusAffected = function() {
+Game_ActionResult.prototype.isStatusAffected = function () {
     return (
         this.addedStates.length > 0 ||
         this.removedStates.length > 0 ||
@@ -2320,55 +2320,55 @@ Game_ActionResult.prototype.isStatusAffected = function() {
     );
 };
 
-Game_ActionResult.prototype.isHit = function() {
+Game_ActionResult.prototype.isHit = function () {
     return this.used && !this.missed && !this.evaded;
 };
 
-Game_ActionResult.prototype.isStateAdded = function(stateId) {
+Game_ActionResult.prototype.isStateAdded = function (stateId) {
     return this.addedStates.includes(stateId);
 };
 
-Game_ActionResult.prototype.pushAddedState = function(stateId) {
+Game_ActionResult.prototype.pushAddedState = function (stateId) {
     if (!this.isStateAdded(stateId)) {
         this.addedStates.push(stateId);
     }
 };
 
-Game_ActionResult.prototype.isStateRemoved = function(stateId) {
+Game_ActionResult.prototype.isStateRemoved = function (stateId) {
     return this.removedStates.includes(stateId);
 };
 
-Game_ActionResult.prototype.pushRemovedState = function(stateId) {
+Game_ActionResult.prototype.pushRemovedState = function (stateId) {
     if (!this.isStateRemoved(stateId)) {
         this.removedStates.push(stateId);
     }
 };
 
-Game_ActionResult.prototype.isBuffAdded = function(paramId) {
+Game_ActionResult.prototype.isBuffAdded = function (paramId) {
     return this.addedBuffs.includes(paramId);
 };
 
-Game_ActionResult.prototype.pushAddedBuff = function(paramId) {
+Game_ActionResult.prototype.pushAddedBuff = function (paramId) {
     if (!this.isBuffAdded(paramId)) {
         this.addedBuffs.push(paramId);
     }
 };
 
-Game_ActionResult.prototype.isDebuffAdded = function(paramId) {
+Game_ActionResult.prototype.isDebuffAdded = function (paramId) {
     return this.addedDebuffs.includes(paramId);
 };
 
-Game_ActionResult.prototype.pushAddedDebuff = function(paramId) {
+Game_ActionResult.prototype.pushAddedDebuff = function (paramId) {
     if (!this.isDebuffAdded(paramId)) {
         this.addedDebuffs.push(paramId);
     }
 };
 
-Game_ActionResult.prototype.isBuffRemoved = function(paramId) {
+Game_ActionResult.prototype.isBuffRemoved = function (paramId) {
     return this.removedBuffs.includes(paramId);
 };
 
-Game_ActionResult.prototype.pushRemovedBuff = function(paramId) {
+Game_ActionResult.prototype.pushRemovedBuff = function (paramId) {
     if (!this.isBuffRemoved(paramId)) {
         this.removedBuffs.push(paramId);
     }
@@ -2418,228 +2418,228 @@ Game_BattlerBase.ICON_DEBUFF_START = 48;
 Object.defineProperties(Game_BattlerBase.prototype, {
     // Hit Points
     hp: {
-        get: function() {
+        get: function () {
             return this._hp;
         },
         configurable: true
     },
     // Magic Points
     mp: {
-        get: function() {
+        get: function () {
             return this._mp;
         },
         configurable: true
     },
     // Tactical Points
     tp: {
-        get: function() {
+        get: function () {
             return this._tp;
         },
         configurable: true
     },
     // Maximum Hit Points
     mhp: {
-        get: function() {
+        get: function () {
             return this.param(0);
         },
         configurable: true
     },
     // Maximum Magic Points
     mmp: {
-        get: function() {
+        get: function () {
             return this.param(1);
         },
         configurable: true
     },
     // ATtacK power
     atk: {
-        get: function() {
+        get: function () {
             return this.param(2);
         },
         configurable: true
     },
     // DEFense power
     def: {
-        get: function() {
+        get: function () {
             return this.param(3);
         },
         configurable: true
     },
     // Magic ATtack power
     mat: {
-        get: function() {
+        get: function () {
             return this.param(4);
         },
         configurable: true
     },
     // Magic DeFense power
     mdf: {
-        get: function() {
+        get: function () {
             return this.param(5);
         },
         configurable: true
     },
     // AGIlity
     agi: {
-        get: function() {
+        get: function () {
             return this.param(6);
         },
         configurable: true
     },
     // LUcK
     luk: {
-        get: function() {
+        get: function () {
             return this.param(7);
         },
         configurable: true
     },
     // HIT rate
     hit: {
-        get: function() {
+        get: function () {
             return this.xparam(0);
         },
         configurable: true
     },
     // EVAsion rate
     eva: {
-        get: function() {
+        get: function () {
             return this.xparam(1);
         },
         configurable: true
     },
     // CRItical rate
     cri: {
-        get: function() {
+        get: function () {
             return this.xparam(2);
         },
         configurable: true
     },
     // Critical EVasion rate
     cev: {
-        get: function() {
+        get: function () {
             return this.xparam(3);
         },
         configurable: true
     },
     // Magic EVasion rate
     mev: {
-        get: function() {
+        get: function () {
             return this.xparam(4);
         },
         configurable: true
     },
     // Magic ReFlection rate
     mrf: {
-        get: function() {
+        get: function () {
             return this.xparam(5);
         },
         configurable: true
     },
     // CouNTer attack rate
     cnt: {
-        get: function() {
+        get: function () {
             return this.xparam(6);
         },
         configurable: true
     },
     // Hp ReGeneration rate
     hrg: {
-        get: function() {
+        get: function () {
             return this.xparam(7);
         },
         configurable: true
     },
     // Mp ReGeneration rate
     mrg: {
-        get: function() {
+        get: function () {
             return this.xparam(8);
         },
         configurable: true
     },
     // Tp ReGeneration rate
     trg: {
-        get: function() {
+        get: function () {
             return this.xparam(9);
         },
         configurable: true
     },
     // TarGet Rate
     tgr: {
-        get: function() {
+        get: function () {
             return this.sparam(0);
         },
         configurable: true
     },
     // GuaRD effect rate
     grd: {
-        get: function() {
+        get: function () {
             return this.sparam(1);
         },
         configurable: true
     },
     // RECovery effect rate
     rec: {
-        get: function() {
+        get: function () {
             return this.sparam(2);
         },
         configurable: true
     },
     // PHArmacology
     pha: {
-        get: function() {
+        get: function () {
             return this.sparam(3);
         },
         configurable: true
     },
     // Mp Cost Rate
     mcr: {
-        get: function() {
+        get: function () {
             return this.sparam(4);
         },
         configurable: true
     },
     // Tp Charge Rate
     tcr: {
-        get: function() {
+        get: function () {
             return this.sparam(5);
         },
         configurable: true
     },
     // Physical Damage Rate
     pdr: {
-        get: function() {
+        get: function () {
             return this.sparam(6);
         },
         configurable: true
     },
     // Magic Damage Rate
     mdr: {
-        get: function() {
+        get: function () {
             return this.sparam(7);
         },
         configurable: true
     },
     // Floor Damage Rate
     fdr: {
-        get: function() {
+        get: function () {
             return this.sparam(8);
         },
         configurable: true
     },
     // EXperience Rate
     exr: {
-        get: function() {
+        get: function () {
             return this.sparam(9);
         },
         configurable: true
     }
 });
 
-Game_BattlerBase.prototype.initialize = function() {
+Game_BattlerBase.prototype.initialize = function () {
     this.initMembers();
 };
 
-Game_BattlerBase.prototype.initMembers = function() {
+Game_BattlerBase.prototype.initMembers = function () {
     this._hp = 1;
     this._mp = 0;
     this._tp = 0;
@@ -2649,43 +2649,43 @@ Game_BattlerBase.prototype.initMembers = function() {
     this.clearBuffs();
 };
 
-Game_BattlerBase.prototype.clearParamPlus = function() {
+Game_BattlerBase.prototype.clearParamPlus = function () {
     this._paramPlus = [0, 0, 0, 0, 0, 0, 0, 0];
 };
 
-Game_BattlerBase.prototype.clearStates = function() {
+Game_BattlerBase.prototype.clearStates = function () {
     this._states = [];
     this._stateTurns = {};
 };
 
-Game_BattlerBase.prototype.eraseState = function(stateId) {
+Game_BattlerBase.prototype.eraseState = function (stateId) {
     this._states.remove(stateId);
     delete this._stateTurns[stateId];
 };
 
-Game_BattlerBase.prototype.isStateAffected = function(stateId) {
+Game_BattlerBase.prototype.isStateAffected = function (stateId) {
     return this._states.includes(stateId);
 };
 
-Game_BattlerBase.prototype.isDeathStateAffected = function() {
+Game_BattlerBase.prototype.isDeathStateAffected = function () {
     return this.isStateAffected(this.deathStateId());
 };
 
-Game_BattlerBase.prototype.deathStateId = function() {
+Game_BattlerBase.prototype.deathStateId = function () {
     return 1;
 };
 
-Game_BattlerBase.prototype.resetStateCounts = function(stateId) {
+Game_BattlerBase.prototype.resetStateCounts = function (stateId) {
     const state = $dataStates[stateId];
     const variance = 1 + Math.max(state.maxTurns - state.minTurns, 0);
     this._stateTurns[stateId] = state.minTurns + Math.randomInt(variance);
 };
 
-Game_BattlerBase.prototype.isStateExpired = function(stateId) {
+Game_BattlerBase.prototype.isStateExpired = function (stateId) {
     return this._stateTurns[stateId] === 0;
 };
 
-Game_BattlerBase.prototype.updateStateTurns = function() {
+Game_BattlerBase.prototype.updateStateTurns = function () {
     for (const stateId of this._states) {
         if (this._stateTurns[stateId] > 0) {
             this._stateTurns[stateId]--;
@@ -2693,67 +2693,67 @@ Game_BattlerBase.prototype.updateStateTurns = function() {
     }
 };
 
-Game_BattlerBase.prototype.clearBuffs = function() {
+Game_BattlerBase.prototype.clearBuffs = function () {
     this._buffs = [0, 0, 0, 0, 0, 0, 0, 0];
     this._buffTurns = [0, 0, 0, 0, 0, 0, 0, 0];
 };
 
-Game_BattlerBase.prototype.eraseBuff = function(paramId) {
+Game_BattlerBase.prototype.eraseBuff = function (paramId) {
     this._buffs[paramId] = 0;
     this._buffTurns[paramId] = 0;
 };
 
-Game_BattlerBase.prototype.buffLength = function() {
+Game_BattlerBase.prototype.buffLength = function () {
     return this._buffs.length;
 };
 
-Game_BattlerBase.prototype.buff = function(paramId) {
+Game_BattlerBase.prototype.buff = function (paramId) {
     return this._buffs[paramId];
 };
 
-Game_BattlerBase.prototype.isBuffAffected = function(paramId) {
+Game_BattlerBase.prototype.isBuffAffected = function (paramId) {
     return this._buffs[paramId] > 0;
 };
 
-Game_BattlerBase.prototype.isDebuffAffected = function(paramId) {
+Game_BattlerBase.prototype.isDebuffAffected = function (paramId) {
     return this._buffs[paramId] < 0;
 };
 
-Game_BattlerBase.prototype.isBuffOrDebuffAffected = function(paramId) {
+Game_BattlerBase.prototype.isBuffOrDebuffAffected = function (paramId) {
     return this._buffs[paramId] !== 0;
 };
 
-Game_BattlerBase.prototype.isMaxBuffAffected = function(paramId) {
+Game_BattlerBase.prototype.isMaxBuffAffected = function (paramId) {
     return this._buffs[paramId] === 2;
 };
 
-Game_BattlerBase.prototype.isMaxDebuffAffected = function(paramId) {
+Game_BattlerBase.prototype.isMaxDebuffAffected = function (paramId) {
     return this._buffs[paramId] === -2;
 };
 
-Game_BattlerBase.prototype.increaseBuff = function(paramId) {
+Game_BattlerBase.prototype.increaseBuff = function (paramId) {
     if (!this.isMaxBuffAffected(paramId)) {
         this._buffs[paramId]++;
     }
 };
 
-Game_BattlerBase.prototype.decreaseBuff = function(paramId) {
+Game_BattlerBase.prototype.decreaseBuff = function (paramId) {
     if (!this.isMaxDebuffAffected(paramId)) {
         this._buffs[paramId]--;
     }
 };
 
-Game_BattlerBase.prototype.overwriteBuffTurns = function(paramId, turns) {
+Game_BattlerBase.prototype.overwriteBuffTurns = function (paramId, turns) {
     if (this._buffTurns[paramId] < turns) {
         this._buffTurns[paramId] = turns;
     }
 };
 
-Game_BattlerBase.prototype.isBuffExpired = function(paramId) {
+Game_BattlerBase.prototype.isBuffExpired = function (paramId) {
     return this._buffTurns[paramId] === 0;
 };
 
-Game_BattlerBase.prototype.updateBuffTurns = function() {
+Game_BattlerBase.prototype.updateBuffTurns = function () {
     for (let i = 0; i < this._buffTurns.length; i++) {
         if (this._buffTurns[i] > 0) {
             this._buffTurns[i]--;
@@ -2761,29 +2761,29 @@ Game_BattlerBase.prototype.updateBuffTurns = function() {
     }
 };
 
-Game_BattlerBase.prototype.die = function() {
+Game_BattlerBase.prototype.die = function () {
     this._hp = 0;
     this.clearStates();
     this.clearBuffs();
 };
 
-Game_BattlerBase.prototype.revive = function() {
+Game_BattlerBase.prototype.revive = function () {
     if (this._hp === 0) {
         this._hp = 1;
     }
 };
 
-Game_BattlerBase.prototype.states = function() {
+Game_BattlerBase.prototype.states = function () {
     return this._states.map(id => $dataStates[id]);
 };
 
-Game_BattlerBase.prototype.stateIcons = function() {
+Game_BattlerBase.prototype.stateIcons = function () {
     return this.states()
         .map(state => state.iconIndex)
         .filter(iconIndex => iconIndex > 0);
 };
 
-Game_BattlerBase.prototype.buffIcons = function() {
+Game_BattlerBase.prototype.buffIcons = function () {
     const icons = [];
     for (let i = 0; i < this._buffs.length; i++) {
         if (this._buffs[i] !== 0) {
@@ -2793,7 +2793,7 @@ Game_BattlerBase.prototype.buffIcons = function() {
     return icons;
 };
 
-Game_BattlerBase.prototype.buffIconIndex = function(buffLevel, paramId) {
+Game_BattlerBase.prototype.buffIconIndex = function (buffLevel, paramId) {
     if (buffLevel > 0) {
         return Game_BattlerBase.ICON_BUFF_START + (buffLevel - 1) * 8 + paramId;
     } else if (buffLevel < 0) {
@@ -2805,58 +2805,58 @@ Game_BattlerBase.prototype.buffIconIndex = function(buffLevel, paramId) {
     }
 };
 
-Game_BattlerBase.prototype.allIcons = function() {
+Game_BattlerBase.prototype.allIcons = function () {
     return this.stateIcons().concat(this.buffIcons());
 };
 
-Game_BattlerBase.prototype.traitObjects = function() {
+Game_BattlerBase.prototype.traitObjects = function () {
     // Returns an array of the all objects having traits. States only here.
     return this.states();
 };
 
-Game_BattlerBase.prototype.allTraits = function() {
+Game_BattlerBase.prototype.allTraits = function () {
     return this.traitObjects().reduce((r, obj) => r.concat(obj.traits), []);
 };
 
-Game_BattlerBase.prototype.traits = function(code) {
+Game_BattlerBase.prototype.traits = function (code) {
     return this.allTraits().filter(trait => trait.code === code);
 };
 
-Game_BattlerBase.prototype.traitsWithId = function(code, id) {
+Game_BattlerBase.prototype.traitsWithId = function (code, id) {
     return this.allTraits().filter(
         trait => trait.code === code && trait.dataId === id
     );
 };
 
-Game_BattlerBase.prototype.traitsPi = function(code, id) {
+Game_BattlerBase.prototype.traitsPi = function (code, id) {
     return this.traitsWithId(code, id).reduce((r, trait) => r * trait.value, 1);
 };
 
-Game_BattlerBase.prototype.traitsSum = function(code, id) {
+Game_BattlerBase.prototype.traitsSum = function (code, id) {
     return this.traitsWithId(code, id).reduce((r, trait) => r + trait.value, 0);
 };
 
-Game_BattlerBase.prototype.traitsSumAll = function(code) {
+Game_BattlerBase.prototype.traitsSumAll = function (code) {
     return this.traits(code).reduce((r, trait) => r + trait.value, 0);
 };
 
-Game_BattlerBase.prototype.traitsSet = function(code) {
+Game_BattlerBase.prototype.traitsSet = function (code) {
     return this.traits(code).reduce((r, trait) => r.concat(trait.dataId), []);
 };
 
-Game_BattlerBase.prototype.paramBase = function(/*paramId*/) {
+Game_BattlerBase.prototype.paramBase = function (/*paramId*/) {
     return 0;
 };
 
-Game_BattlerBase.prototype.paramPlus = function(paramId) {
+Game_BattlerBase.prototype.paramPlus = function (paramId) {
     return this._paramPlus[paramId];
 };
 
-Game_BattlerBase.prototype.paramBasePlus = function(paramId) {
+Game_BattlerBase.prototype.paramBasePlus = function (paramId) {
     return Math.max(0, this.paramBase(paramId) + this.paramPlus(paramId));
 };
 
-Game_BattlerBase.prototype.paramMin = function(paramId) {
+Game_BattlerBase.prototype.paramMin = function (paramId) {
     if (paramId === 0) {
         return 1; // MHP
     } else {
@@ -2864,19 +2864,19 @@ Game_BattlerBase.prototype.paramMin = function(paramId) {
     }
 };
 
-Game_BattlerBase.prototype.paramMax = function(/*paramId*/) {
+Game_BattlerBase.prototype.paramMax = function (/*paramId*/) {
     return Infinity;
 };
 
-Game_BattlerBase.prototype.paramRate = function(paramId) {
+Game_BattlerBase.prototype.paramRate = function (paramId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_PARAM, paramId);
 };
 
-Game_BattlerBase.prototype.paramBuffRate = function(paramId) {
+Game_BattlerBase.prototype.paramBuffRate = function (paramId) {
     return this._buffs[paramId] * 0.25 + 1.0;
 };
 
-Game_BattlerBase.prototype.param = function(paramId) {
+Game_BattlerBase.prototype.param = function (paramId) {
     const value =
         this.paramBasePlus(paramId) *
         this.paramRate(paramId) *
@@ -2886,166 +2886,166 @@ Game_BattlerBase.prototype.param = function(paramId) {
     return Math.round(value.clamp(minValue, maxValue));
 };
 
-Game_BattlerBase.prototype.xparam = function(xparamId) {
+Game_BattlerBase.prototype.xparam = function (xparamId) {
     return this.traitsSum(Game_BattlerBase.TRAIT_XPARAM, xparamId);
 };
 
-Game_BattlerBase.prototype.sparam = function(sparamId) {
+Game_BattlerBase.prototype.sparam = function (sparamId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_SPARAM, sparamId);
 };
 
-Game_BattlerBase.prototype.elementRate = function(elementId) {
+Game_BattlerBase.prototype.elementRate = function (elementId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_ELEMENT_RATE, elementId);
 };
 
-Game_BattlerBase.prototype.debuffRate = function(paramId) {
+Game_BattlerBase.prototype.debuffRate = function (paramId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_DEBUFF_RATE, paramId);
 };
 
-Game_BattlerBase.prototype.stateRate = function(stateId) {
+Game_BattlerBase.prototype.stateRate = function (stateId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_STATE_RATE, stateId);
 };
 
-Game_BattlerBase.prototype.stateResistSet = function() {
+Game_BattlerBase.prototype.stateResistSet = function () {
     return this.traitsSet(Game_BattlerBase.TRAIT_STATE_RESIST);
 };
 
-Game_BattlerBase.prototype.isStateResist = function(stateId) {
+Game_BattlerBase.prototype.isStateResist = function (stateId) {
     return this.stateResistSet().includes(stateId);
 };
 
-Game_BattlerBase.prototype.attackElements = function() {
+Game_BattlerBase.prototype.attackElements = function () {
     return this.traitsSet(Game_BattlerBase.TRAIT_ATTACK_ELEMENT);
 };
 
-Game_BattlerBase.prototype.attackStates = function() {
+Game_BattlerBase.prototype.attackStates = function () {
     return this.traitsSet(Game_BattlerBase.TRAIT_ATTACK_STATE);
 };
 
-Game_BattlerBase.prototype.attackStatesRate = function(stateId) {
+Game_BattlerBase.prototype.attackStatesRate = function (stateId) {
     return this.traitsSum(Game_BattlerBase.TRAIT_ATTACK_STATE, stateId);
 };
 
-Game_BattlerBase.prototype.attackSpeed = function() {
+Game_BattlerBase.prototype.attackSpeed = function () {
     return this.traitsSumAll(Game_BattlerBase.TRAIT_ATTACK_SPEED);
 };
 
-Game_BattlerBase.prototype.attackTimesAdd = function() {
+Game_BattlerBase.prototype.attackTimesAdd = function () {
     return Math.max(this.traitsSumAll(Game_BattlerBase.TRAIT_ATTACK_TIMES), 0);
 };
 
-Game_BattlerBase.prototype.attackSkillId = function() {
+Game_BattlerBase.prototype.attackSkillId = function () {
     const set = this.traitsSet(Game_BattlerBase.TRAIT_ATTACK_SKILL);
     return set.length > 0 ? Math.max(...set) : 1;
 };
 
-Game_BattlerBase.prototype.addedSkillTypes = function() {
+Game_BattlerBase.prototype.addedSkillTypes = function () {
     return this.traitsSet(Game_BattlerBase.TRAIT_STYPE_ADD);
 };
 
-Game_BattlerBase.prototype.isSkillTypeSealed = function(stypeId) {
+Game_BattlerBase.prototype.isSkillTypeSealed = function (stypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_STYPE_SEAL).includes(stypeId);
 };
 
-Game_BattlerBase.prototype.addedSkills = function() {
+Game_BattlerBase.prototype.addedSkills = function () {
     return this.traitsSet(Game_BattlerBase.TRAIT_SKILL_ADD);
 };
 
-Game_BattlerBase.prototype.isSkillSealed = function(skillId) {
+Game_BattlerBase.prototype.isSkillSealed = function (skillId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_SKILL_SEAL).includes(skillId);
 };
 
-Game_BattlerBase.prototype.isEquipWtypeOk = function(wtypeId) {
+Game_BattlerBase.prototype.isEquipWtypeOk = function (wtypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_WTYPE).includes(wtypeId);
 };
 
-Game_BattlerBase.prototype.isEquipAtypeOk = function(atypeId) {
+Game_BattlerBase.prototype.isEquipAtypeOk = function (atypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_ATYPE).includes(atypeId);
 };
 
-Game_BattlerBase.prototype.isEquipTypeLocked = function(etypeId) {
+Game_BattlerBase.prototype.isEquipTypeLocked = function (etypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_LOCK).includes(etypeId);
 };
 
-Game_BattlerBase.prototype.isEquipTypeSealed = function(etypeId) {
+Game_BattlerBase.prototype.isEquipTypeSealed = function (etypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_SEAL).includes(etypeId);
 };
 
-Game_BattlerBase.prototype.slotType = function() {
+Game_BattlerBase.prototype.slotType = function () {
     const set = this.traitsSet(Game_BattlerBase.TRAIT_SLOT_TYPE);
     return set.length > 0 ? Math.max(...set) : 0;
 };
 
-Game_BattlerBase.prototype.isDualWield = function() {
+Game_BattlerBase.prototype.isDualWield = function () {
     return this.slotType() === 1;
 };
 
-Game_BattlerBase.prototype.actionPlusSet = function() {
+Game_BattlerBase.prototype.actionPlusSet = function () {
     return this.traits(Game_BattlerBase.TRAIT_ACTION_PLUS).map(
         trait => trait.value
     );
 };
 
-Game_BattlerBase.prototype.specialFlag = function(flagId) {
+Game_BattlerBase.prototype.specialFlag = function (flagId) {
     return this.traits(Game_BattlerBase.TRAIT_SPECIAL_FLAG).some(
         trait => trait.dataId === flagId
     );
 };
 
-Game_BattlerBase.prototype.collapseType = function() {
+Game_BattlerBase.prototype.collapseType = function () {
     const set = this.traitsSet(Game_BattlerBase.TRAIT_COLLAPSE_TYPE);
     return set.length > 0 ? Math.max(...set) : 0;
 };
 
-Game_BattlerBase.prototype.partyAbility = function(abilityId) {
+Game_BattlerBase.prototype.partyAbility = function (abilityId) {
     return this.traits(Game_BattlerBase.TRAIT_PARTY_ABILITY).some(
         trait => trait.dataId === abilityId
     );
 };
 
-Game_BattlerBase.prototype.isAutoBattle = function() {
+Game_BattlerBase.prototype.isAutoBattle = function () {
     return this.specialFlag(Game_BattlerBase.FLAG_ID_AUTO_BATTLE);
 };
 
-Game_BattlerBase.prototype.isGuard = function() {
+Game_BattlerBase.prototype.isGuard = function () {
     return this.specialFlag(Game_BattlerBase.FLAG_ID_GUARD) && this.canMove();
 };
 
-Game_BattlerBase.prototype.isSubstitute = function() {
+Game_BattlerBase.prototype.isSubstitute = function () {
     return (
         this.specialFlag(Game_BattlerBase.FLAG_ID_SUBSTITUTE) && this.canMove()
     );
 };
 
-Game_BattlerBase.prototype.isPreserveTp = function() {
+Game_BattlerBase.prototype.isPreserveTp = function () {
     return this.specialFlag(Game_BattlerBase.FLAG_ID_PRESERVE_TP);
 };
 
-Game_BattlerBase.prototype.addParam = function(paramId, value) {
+Game_BattlerBase.prototype.addParam = function (paramId, value) {
     this._paramPlus[paramId] += value;
     this.refresh();
 };
 
-Game_BattlerBase.prototype.setHp = function(hp) {
+Game_BattlerBase.prototype.setHp = function (hp) {
     this._hp = hp;
     this.refresh();
 };
 
-Game_BattlerBase.prototype.setMp = function(mp) {
+Game_BattlerBase.prototype.setMp = function (mp) {
     this._mp = mp;
     this.refresh();
 };
 
-Game_BattlerBase.prototype.setTp = function(tp) {
+Game_BattlerBase.prototype.setTp = function (tp) {
     this._tp = tp;
     this.refresh();
 };
 
-Game_BattlerBase.prototype.maxTp = function() {
+Game_BattlerBase.prototype.maxTp = function () {
     return 100;
 };
 
-Game_BattlerBase.prototype.refresh = function() {
+Game_BattlerBase.prototype.refresh = function () {
     for (const stateId of this.stateResistSet()) {
         this.eraseState(stateId);
     }
@@ -3054,85 +3054,85 @@ Game_BattlerBase.prototype.refresh = function() {
     this._tp = this._tp.clamp(0, this.maxTp());
 };
 
-Game_BattlerBase.prototype.recoverAll = function() {
+Game_BattlerBase.prototype.recoverAll = function () {
     this.clearStates();
     this._hp = this.mhp;
     this._mp = this.mmp;
 };
 
-Game_BattlerBase.prototype.hpRate = function() {
+Game_BattlerBase.prototype.hpRate = function () {
     return this.hp / this.mhp;
 };
 
-Game_BattlerBase.prototype.mpRate = function() {
+Game_BattlerBase.prototype.mpRate = function () {
     return this.mmp > 0 ? this.mp / this.mmp : 0;
 };
 
-Game_BattlerBase.prototype.tpRate = function() {
+Game_BattlerBase.prototype.tpRate = function () {
     return this.tp / this.maxTp();
 };
 
-Game_BattlerBase.prototype.hide = function() {
+Game_BattlerBase.prototype.hide = function () {
     this._hidden = true;
 };
 
-Game_BattlerBase.prototype.appear = function() {
+Game_BattlerBase.prototype.appear = function () {
     this._hidden = false;
 };
 
-Game_BattlerBase.prototype.isHidden = function() {
+Game_BattlerBase.prototype.isHidden = function () {
     return this._hidden;
 };
 
-Game_BattlerBase.prototype.isAppeared = function() {
+Game_BattlerBase.prototype.isAppeared = function () {
     return !this.isHidden();
 };
 
-Game_BattlerBase.prototype.isDead = function() {
+Game_BattlerBase.prototype.isDead = function () {
     return this.isAppeared() && this.isDeathStateAffected();
 };
 
-Game_BattlerBase.prototype.isAlive = function() {
+Game_BattlerBase.prototype.isAlive = function () {
     return this.isAppeared() && !this.isDeathStateAffected();
 };
 
-Game_BattlerBase.prototype.isDying = function() {
+Game_BattlerBase.prototype.isDying = function () {
     return this.isAlive() && this._hp < this.mhp / 4;
 };
 
-Game_BattlerBase.prototype.isRestricted = function() {
+Game_BattlerBase.prototype.isRestricted = function () {
     return this.isAppeared() && this.restriction() > 0;
 };
 
-Game_BattlerBase.prototype.canInput = function() {
+Game_BattlerBase.prototype.canInput = function () {
     // prettier-ignore
     return this.isAppeared() && this.isActor() &&
-            !this.isRestricted() && !this.isAutoBattle();
+        !this.isRestricted() && !this.isAutoBattle();
 };
 
-Game_BattlerBase.prototype.canMove = function() {
+Game_BattlerBase.prototype.canMove = function () {
     return this.isAppeared() && this.restriction() < 4;
 };
 
-Game_BattlerBase.prototype.isConfused = function() {
+Game_BattlerBase.prototype.isConfused = function () {
     return (
         this.isAppeared() && this.restriction() >= 1 && this.restriction() <= 3
     );
 };
 
-Game_BattlerBase.prototype.confusionLevel = function() {
+Game_BattlerBase.prototype.confusionLevel = function () {
     return this.isConfused() ? this.restriction() : 0;
 };
 
-Game_BattlerBase.prototype.isActor = function() {
+Game_BattlerBase.prototype.isActor = function () {
     return false;
 };
 
-Game_BattlerBase.prototype.isEnemy = function() {
+Game_BattlerBase.prototype.isEnemy = function () {
     return false;
 };
 
-Game_BattlerBase.prototype.sortStates = function() {
+Game_BattlerBase.prototype.sortStates = function () {
     this._states.sort((a, b) => {
         const p1 = $dataStates[a].priority;
         const p2 = $dataStates[b].priority;
@@ -3143,12 +3143,12 @@ Game_BattlerBase.prototype.sortStates = function() {
     });
 };
 
-Game_BattlerBase.prototype.restriction = function() {
+Game_BattlerBase.prototype.restriction = function () {
     const restrictions = this.states().map(state => state.restriction);
     return Math.max(0, ...restrictions);
 };
 
-Game_BattlerBase.prototype.addNewState = function(stateId) {
+Game_BattlerBase.prototype.addNewState = function (stateId) {
     if (stateId === this.deathStateId()) {
         this.die();
     }
@@ -3160,11 +3160,11 @@ Game_BattlerBase.prototype.addNewState = function(stateId) {
     }
 };
 
-Game_BattlerBase.prototype.onRestrict = function() {
+Game_BattlerBase.prototype.onRestrict = function () {
     //
 };
 
-Game_BattlerBase.prototype.mostImportantStateText = function() {
+Game_BattlerBase.prototype.mostImportantStateText = function () {
     for (const state of this.states()) {
         if (state.message3) {
             return state.message3;
@@ -3173,7 +3173,7 @@ Game_BattlerBase.prototype.mostImportantStateText = function() {
     return "";
 };
 
-Game_BattlerBase.prototype.stateMotionIndex = function() {
+Game_BattlerBase.prototype.stateMotionIndex = function () {
     const states = this.states();
     if (states.length > 0) {
         return states[0].motion;
@@ -3182,7 +3182,7 @@ Game_BattlerBase.prototype.stateMotionIndex = function() {
     }
 };
 
-Game_BattlerBase.prototype.stateOverlayIndex = function() {
+Game_BattlerBase.prototype.stateOverlayIndex = function () {
     const states = this.states();
     if (states.length > 0) {
         return states[0].overlay;
@@ -3191,31 +3191,31 @@ Game_BattlerBase.prototype.stateOverlayIndex = function() {
     }
 };
 
-Game_BattlerBase.prototype.isSkillWtypeOk = function(/*skill*/) {
+Game_BattlerBase.prototype.isSkillWtypeOk = function (/*skill*/) {
     return true;
 };
 
-Game_BattlerBase.prototype.skillMpCost = function(skill) {
+Game_BattlerBase.prototype.skillMpCost = function (skill) {
     return Math.floor(skill.mpCost * this.mcr);
 };
 
-Game_BattlerBase.prototype.skillTpCost = function(skill) {
+Game_BattlerBase.prototype.skillTpCost = function (skill) {
     return skill.tpCost;
 };
 
-Game_BattlerBase.prototype.canPaySkillCost = function(skill) {
+Game_BattlerBase.prototype.canPaySkillCost = function (skill) {
     return (
         this._tp >= this.skillTpCost(skill) &&
         this._mp >= this.skillMpCost(skill)
     );
 };
 
-Game_BattlerBase.prototype.paySkillCost = function(skill) {
+Game_BattlerBase.prototype.paySkillCost = function (skill) {
     this._mp -= this.skillMpCost(skill);
     this._tp -= this.skillTpCost(skill);
 };
 
-Game_BattlerBase.prototype.isOccasionOk = function(item) {
+Game_BattlerBase.prototype.isOccasionOk = function (item) {
     if ($gameParty.inBattle()) {
         return item.occasion === 0 || item.occasion === 1;
     } else {
@@ -3223,11 +3223,11 @@ Game_BattlerBase.prototype.isOccasionOk = function(item) {
     }
 };
 
-Game_BattlerBase.prototype.meetsUsableItemConditions = function(item) {
+Game_BattlerBase.prototype.meetsUsableItemConditions = function (item) {
     return this.canMove() && this.isOccasionOk(item);
 };
 
-Game_BattlerBase.prototype.meetsSkillConditions = function(skill) {
+Game_BattlerBase.prototype.meetsSkillConditions = function (skill) {
     return (
         this.meetsUsableItemConditions(skill) &&
         this.isSkillWtypeOk(skill) &&
@@ -3237,11 +3237,11 @@ Game_BattlerBase.prototype.meetsSkillConditions = function(skill) {
     );
 };
 
-Game_BattlerBase.prototype.meetsItemConditions = function(item) {
+Game_BattlerBase.prototype.meetsItemConditions = function (item) {
     return this.meetsUsableItemConditions(item) && $gameParty.hasItem(item);
 };
 
-Game_BattlerBase.prototype.canUse = function(item) {
+Game_BattlerBase.prototype.canUse = function (item) {
     if (!item) {
         return false;
     } else if (DataManager.isSkill(item)) {
@@ -3253,7 +3253,7 @@ Game_BattlerBase.prototype.canUse = function(item) {
     }
 };
 
-Game_BattlerBase.prototype.canEquip = function(item) {
+Game_BattlerBase.prototype.canEquip = function (item) {
     if (!item) {
         return false;
     } else if (DataManager.isWeapon(item)) {
@@ -3265,29 +3265,29 @@ Game_BattlerBase.prototype.canEquip = function(item) {
     }
 };
 
-Game_BattlerBase.prototype.canEquipWeapon = function(item) {
+Game_BattlerBase.prototype.canEquipWeapon = function (item) {
     return (
         this.isEquipWtypeOk(item.wtypeId) &&
         !this.isEquipTypeSealed(item.etypeId)
     );
 };
 
-Game_BattlerBase.prototype.canEquipArmor = function(item) {
+Game_BattlerBase.prototype.canEquipArmor = function (item) {
     return (
         this.isEquipAtypeOk(item.atypeId) &&
         !this.isEquipTypeSealed(item.etypeId)
     );
 };
 
-Game_BattlerBase.prototype.guardSkillId = function() {
+Game_BattlerBase.prototype.guardSkillId = function () {
     return 2;
 };
 
-Game_BattlerBase.prototype.canAttack = function() {
+Game_BattlerBase.prototype.canAttack = function () {
     return this.canUse($dataSkills[this.attackSkillId()]);
 };
 
-Game_BattlerBase.prototype.canGuard = function() {
+Game_BattlerBase.prototype.canGuard = function () {
     return this.canUse($dataSkills[this.guardSkillId()]);
 };
 
@@ -3304,11 +3304,11 @@ function Game_Battler() {
 Game_Battler.prototype = Object.create(Game_BattlerBase.prototype);
 Game_Battler.prototype.constructor = Game_Battler;
 
-Game_Battler.prototype.initialize = function() {
+Game_Battler.prototype.initialize = function () {
     Game_BattlerBase.prototype.initialize.call(this);
 };
 
-Game_Battler.prototype.initMembers = function() {
+Game_Battler.prototype.initMembers = function () {
     Game_BattlerBase.prototype.initMembers.call(this);
     this._actions = [];
     this._speed = 0;
@@ -3329,88 +3329,88 @@ Game_Battler.prototype.initMembers = function() {
     this._tpbTurnEnd = false;
 };
 
-Game_Battler.prototype.clearDamagePopup = function() {
+Game_Battler.prototype.clearDamagePopup = function () {
     this._damagePopup = false;
 };
 
-Game_Battler.prototype.clearWeaponAnimation = function() {
+Game_Battler.prototype.clearWeaponAnimation = function () {
     this._weaponImageId = 0;
 };
 
-Game_Battler.prototype.clearEffect = function() {
+Game_Battler.prototype.clearEffect = function () {
     this._effectType = null;
 };
 
-Game_Battler.prototype.clearMotion = function() {
+Game_Battler.prototype.clearMotion = function () {
     this._motionType = null;
     this._motionRefresh = false;
 };
 
-Game_Battler.prototype.requestEffect = function(effectType) {
+Game_Battler.prototype.requestEffect = function (effectType) {
     this._effectType = effectType;
 };
 
-Game_Battler.prototype.requestMotion = function(motionType) {
+Game_Battler.prototype.requestMotion = function (motionType) {
     this._motionType = motionType;
 };
 
-Game_Battler.prototype.requestMotionRefresh = function() {
+Game_Battler.prototype.requestMotionRefresh = function () {
     this._motionRefresh = true;
 };
 
-Game_Battler.prototype.cancelMotionRefresh = function() {
+Game_Battler.prototype.cancelMotionRefresh = function () {
     this._motionRefresh = false;
 };
 
-Game_Battler.prototype.select = function() {
+Game_Battler.prototype.select = function () {
     this._selected = true;
 };
 
-Game_Battler.prototype.deselect = function() {
+Game_Battler.prototype.deselect = function () {
     this._selected = false;
 };
 
-Game_Battler.prototype.isDamagePopupRequested = function() {
+Game_Battler.prototype.isDamagePopupRequested = function () {
     return this._damagePopup;
 };
 
-Game_Battler.prototype.isEffectRequested = function() {
+Game_Battler.prototype.isEffectRequested = function () {
     return !!this._effectType;
 };
 
-Game_Battler.prototype.isMotionRequested = function() {
+Game_Battler.prototype.isMotionRequested = function () {
     return !!this._motionType;
 };
 
-Game_Battler.prototype.isWeaponAnimationRequested = function() {
+Game_Battler.prototype.isWeaponAnimationRequested = function () {
     return this._weaponImageId > 0;
 };
 
-Game_Battler.prototype.isMotionRefreshRequested = function() {
+Game_Battler.prototype.isMotionRefreshRequested = function () {
     return this._motionRefresh;
 };
 
-Game_Battler.prototype.isSelected = function() {
+Game_Battler.prototype.isSelected = function () {
     return this._selected;
 };
 
-Game_Battler.prototype.effectType = function() {
+Game_Battler.prototype.effectType = function () {
     return this._effectType;
 };
 
-Game_Battler.prototype.motionType = function() {
+Game_Battler.prototype.motionType = function () {
     return this._motionType;
 };
 
-Game_Battler.prototype.weaponImageId = function() {
+Game_Battler.prototype.weaponImageId = function () {
     return this._weaponImageId;
 };
 
-Game_Battler.prototype.startDamagePopup = function() {
+Game_Battler.prototype.startDamagePopup = function () {
     this._damagePopup = true;
 };
 
-Game_Battler.prototype.shouldPopupDamage = function() {
+Game_Battler.prototype.shouldPopupDamage = function () {
     const result = this._result;
     return (
         result.missed ||
@@ -3420,45 +3420,45 @@ Game_Battler.prototype.shouldPopupDamage = function() {
     );
 };
 
-Game_Battler.prototype.startWeaponAnimation = function(weaponImageId) {
+Game_Battler.prototype.startWeaponAnimation = function (weaponImageId) {
     this._weaponImageId = weaponImageId;
 };
 
-Game_Battler.prototype.action = function(index) {
+Game_Battler.prototype.action = function (index) {
     return this._actions[index];
 };
 
-Game_Battler.prototype.setAction = function(index, action) {
+Game_Battler.prototype.setAction = function (index, action) {
     this._actions[index] = action;
 };
 
-Game_Battler.prototype.numActions = function() {
+Game_Battler.prototype.numActions = function () {
     return this._actions.length;
 };
 
-Game_Battler.prototype.clearActions = function() {
+Game_Battler.prototype.clearActions = function () {
     this._actions = [];
 };
 
-Game_Battler.prototype.result = function() {
+Game_Battler.prototype.result = function () {
     return this._result;
 };
 
-Game_Battler.prototype.clearResult = function() {
+Game_Battler.prototype.clearResult = function () {
     this._result.clear();
 };
 
-Game_Battler.prototype.clearTpbChargeTime = function() {
+Game_Battler.prototype.clearTpbChargeTime = function () {
     this._tpbState = "charging";
     this._tpbChargeTime = 0;
 };
 
-Game_Battler.prototype.applyTpbPenalty = function() {
+Game_Battler.prototype.applyTpbPenalty = function () {
     this._tpbState = "charging";
     this._tpbChargeTime -= 1;
 };
 
-Game_Battler.prototype.initTpbChargeTime = function(advantageous) {
+Game_Battler.prototype.initTpbChargeTime = function (advantageous) {
     const speed = this.tpbRelativeSpeed();
     this._tpbState = "charging";
     this._tpbChargeTime = advantageous ? 1 : speed * Math.random() * 0.5;
@@ -3467,32 +3467,32 @@ Game_Battler.prototype.initTpbChargeTime = function(advantageous) {
     }
 };
 
-Game_Battler.prototype.tpbChargeTime = function() {
+Game_Battler.prototype.tpbChargeTime = function () {
     return this._tpbChargeTime;
 };
 
-Game_Battler.prototype.startTpbCasting = function() {
+Game_Battler.prototype.startTpbCasting = function () {
     this._tpbState = "casting";
     this._tpbCastTime = 0;
 };
 
-Game_Battler.prototype.startTpbAction = function() {
+Game_Battler.prototype.startTpbAction = function () {
     this._tpbState = "acting";
 };
 
-Game_Battler.prototype.isTpbCharged = function() {
+Game_Battler.prototype.isTpbCharged = function () {
     return this._tpbState === "charged";
 };
 
-Game_Battler.prototype.isTpbReady = function() {
+Game_Battler.prototype.isTpbReady = function () {
     return this._tpbState === "ready";
 };
 
-Game_Battler.prototype.isTpbTimeout = function() {
+Game_Battler.prototype.isTpbTimeout = function () {
     return this._tpbIdleTime >= 1;
 };
 
-Game_Battler.prototype.updateTpb = function() {
+Game_Battler.prototype.updateTpb = function () {
     if (this.canMove()) {
         this.updateTpbChargeTime();
         this.updateTpbCastTime();
@@ -3503,7 +3503,7 @@ Game_Battler.prototype.updateTpb = function() {
     }
 };
 
-Game_Battler.prototype.updateTpbChargeTime = function() {
+Game_Battler.prototype.updateTpbChargeTime = function () {
     if (this._tpbState === "charging") {
         this._tpbChargeTime += this.tpbAcceleration();
         if (this._tpbChargeTime >= 1) {
@@ -3513,7 +3513,7 @@ Game_Battler.prototype.updateTpbChargeTime = function() {
     }
 };
 
-Game_Battler.prototype.updateTpbCastTime = function() {
+Game_Battler.prototype.updateTpbCastTime = function () {
     if (this._tpbState === "casting") {
         this._tpbCastTime += this.tpbAcceleration();
         if (this._tpbCastTime >= this.tpbRequiredCastTime()) {
@@ -3523,71 +3523,71 @@ Game_Battler.prototype.updateTpbCastTime = function() {
     }
 };
 
-Game_Battler.prototype.updateTpbAutoBattle = function() {
+Game_Battler.prototype.updateTpbAutoBattle = function () {
     if (this.isTpbCharged() && !this.isTpbTurnEnd() && this.isAutoBattle()) {
         this.makeTpbActions();
     }
 };
 
-Game_Battler.prototype.updateTpbIdleTime = function() {
+Game_Battler.prototype.updateTpbIdleTime = function () {
     if (!this.canMove() || this.isTpbCharged()) {
         this._tpbIdleTime += this.tpbAcceleration();
     }
 };
 
-Game_Battler.prototype.tpbAcceleration = function() {
+Game_Battler.prototype.tpbAcceleration = function () {
     const speed = this.tpbRelativeSpeed();
     const referenceTime = $gameParty.tpbReferenceTime();
     return speed / referenceTime;
 };
 
-Game_Battler.prototype.tpbRelativeSpeed = function() {
+Game_Battler.prototype.tpbRelativeSpeed = function () {
     return this.tpbSpeed() / $gameParty.tpbBaseSpeed();
 };
 
-Game_Battler.prototype.tpbSpeed = function() {
+Game_Battler.prototype.tpbSpeed = function () {
     return Math.sqrt(this.agi) + 1;
 };
 
-Game_Battler.prototype.tpbBaseSpeed = function() {
+Game_Battler.prototype.tpbBaseSpeed = function () {
     const baseAgility = this.paramBasePlus(6);
     return Math.sqrt(baseAgility) + 1;
 };
 
-Game_Battler.prototype.tpbRequiredCastTime = function() {
+Game_Battler.prototype.tpbRequiredCastTime = function () {
     const actions = this._actions.filter(action => action.isValid());
     const items = actions.map(action => action.item());
     const delay = items.reduce((r, item) => r + Math.max(0, -item.speed), 0);
     return Math.sqrt(delay) / this.tpbSpeed();
 };
 
-Game_Battler.prototype.onTpbCharged = function() {
+Game_Battler.prototype.onTpbCharged = function () {
     if (!this.shouldDelayTpbCharge()) {
         this.finishTpbCharge();
     }
 };
 
-Game_Battler.prototype.shouldDelayTpbCharge = function() {
+Game_Battler.prototype.shouldDelayTpbCharge = function () {
     return !BattleManager.isActiveTpb() && $gameParty.canInput();
 };
 
-Game_Battler.prototype.finishTpbCharge = function() {
+Game_Battler.prototype.finishTpbCharge = function () {
     this._tpbState = "charged";
     this._tpbTurnEnd = true;
     this._tpbIdleTime = 0;
 };
 
-Game_Battler.prototype.isTpbTurnEnd = function() {
+Game_Battler.prototype.isTpbTurnEnd = function () {
     return this._tpbTurnEnd;
 };
 
-Game_Battler.prototype.initTpbTurn = function() {
+Game_Battler.prototype.initTpbTurn = function () {
     this._tpbTurnEnd = false;
     this._tpbTurnCount = 0;
     this._tpbIdleTime = 0;
 };
 
-Game_Battler.prototype.startTpbTurn = function() {
+Game_Battler.prototype.startTpbTurn = function () {
     this._tpbTurnEnd = false;
     this._tpbTurnCount++;
     this._tpbIdleTime = 0;
@@ -3596,7 +3596,7 @@ Game_Battler.prototype.startTpbTurn = function() {
     }
 };
 
-Game_Battler.prototype.makeTpbActions = function() {
+Game_Battler.prototype.makeTpbActions = function () {
     this.makeActions();
     if (this.canInput()) {
         this.setActionState("undecided");
@@ -3606,13 +3606,13 @@ Game_Battler.prototype.makeTpbActions = function() {
     }
 };
 
-Game_Battler.prototype.onTpbTimeout = function() {
+Game_Battler.prototype.onTpbTimeout = function () {
     this.onAllActionsEnd();
     this._tpbTurnEnd = true;
     this._tpbIdleTime = 0;
 };
 
-Game_Battler.prototype.turnCount = function() {
+Game_Battler.prototype.turnCount = function () {
     if (BattleManager.isTpb()) {
         return this._tpbTurnCount;
     } else {
@@ -3620,14 +3620,14 @@ Game_Battler.prototype.turnCount = function() {
     }
 };
 
-Game_Battler.prototype.canInput = function() {
+Game_Battler.prototype.canInput = function () {
     if (BattleManager.isTpb() && !this.isTpbCharged()) {
         return false;
     }
     return Game_BattlerBase.prototype.canInput.call(this);
 };
 
-Game_Battler.prototype.refresh = function() {
+Game_Battler.prototype.refresh = function () {
     Game_BattlerBase.prototype.refresh.call(this);
     if (this.hp === 0) {
         this.addState(this.deathStateId());
@@ -3636,7 +3636,7 @@ Game_Battler.prototype.refresh = function() {
     }
 };
 
-Game_Battler.prototype.addState = function(stateId) {
+Game_Battler.prototype.addState = function (stateId) {
     if (this.isStateAddable(stateId)) {
         if (!this.isStateAffected(stateId)) {
             this.addNewState(stateId);
@@ -3647,7 +3647,7 @@ Game_Battler.prototype.addState = function(stateId) {
     }
 };
 
-Game_Battler.prototype.isStateAddable = function(stateId) {
+Game_Battler.prototype.isStateAddable = function (stateId) {
     return (
         this.isAlive() &&
         $dataStates[stateId] &&
@@ -3656,11 +3656,11 @@ Game_Battler.prototype.isStateAddable = function(stateId) {
     );
 };
 
-Game_Battler.prototype.isStateRestrict = function(stateId) {
+Game_Battler.prototype.isStateRestrict = function (stateId) {
     return $dataStates[stateId].removeByRestriction && this.isRestricted();
 };
 
-Game_Battler.prototype.onRestrict = function() {
+Game_Battler.prototype.onRestrict = function () {
     Game_BattlerBase.prototype.onRestrict.call(this);
     this.clearTpbChargeTime();
     this.clearActions();
@@ -3671,7 +3671,7 @@ Game_Battler.prototype.onRestrict = function() {
     }
 };
 
-Game_Battler.prototype.removeState = function(stateId) {
+Game_Battler.prototype.removeState = function (stateId) {
     if (this.isStateAffected(stateId)) {
         if (stateId === this.deathStateId()) {
             this.revive();
@@ -3682,7 +3682,7 @@ Game_Battler.prototype.removeState = function(stateId) {
     }
 };
 
-Game_Battler.prototype.escape = function() {
+Game_Battler.prototype.escape = function () {
     if ($gameParty.inBattle()) {
         this.hide();
     }
@@ -3691,7 +3691,7 @@ Game_Battler.prototype.escape = function() {
     SoundManager.playEscape();
 };
 
-Game_Battler.prototype.addBuff = function(paramId, turns) {
+Game_Battler.prototype.addBuff = function (paramId, turns) {
     if (this.isAlive()) {
         this.increaseBuff(paramId);
         if (this.isBuffAffected(paramId)) {
@@ -3702,7 +3702,7 @@ Game_Battler.prototype.addBuff = function(paramId, turns) {
     }
 };
 
-Game_Battler.prototype.addDebuff = function(paramId, turns) {
+Game_Battler.prototype.addDebuff = function (paramId, turns) {
     if (this.isAlive()) {
         this.decreaseBuff(paramId);
         if (this.isDebuffAffected(paramId)) {
@@ -3713,7 +3713,7 @@ Game_Battler.prototype.addDebuff = function(paramId, turns) {
     }
 };
 
-Game_Battler.prototype.removeBuff = function(paramId) {
+Game_Battler.prototype.removeBuff = function (paramId) {
     if (this.isAlive() && this.isBuffOrDebuffAffected(paramId)) {
         this.eraseBuff(paramId);
         this._result.pushRemovedBuff(paramId);
@@ -3721,7 +3721,7 @@ Game_Battler.prototype.removeBuff = function(paramId) {
     }
 };
 
-Game_Battler.prototype.removeBattleStates = function() {
+Game_Battler.prototype.removeBattleStates = function () {
     for (const state of this.states()) {
         if (state.removeAtBattleEnd) {
             this.removeState(state.id);
@@ -3729,13 +3729,13 @@ Game_Battler.prototype.removeBattleStates = function() {
     }
 };
 
-Game_Battler.prototype.removeAllBuffs = function() {
+Game_Battler.prototype.removeAllBuffs = function () {
     for (let i = 0; i < this.buffLength(); i++) {
         this.removeBuff(i);
     }
 };
 
-Game_Battler.prototype.removeStatesAuto = function(timing) {
+Game_Battler.prototype.removeStatesAuto = function (timing) {
     for (const state of this.states()) {
         if (
             this.isStateExpired(state.id) &&
@@ -3746,7 +3746,7 @@ Game_Battler.prototype.removeStatesAuto = function(timing) {
     }
 };
 
-Game_Battler.prototype.removeBuffsAuto = function() {
+Game_Battler.prototype.removeBuffsAuto = function () {
     for (let i = 0; i < this.buffLength(); i++) {
         if (this.isBuffExpired(i)) {
             this.removeBuff(i);
@@ -3754,7 +3754,7 @@ Game_Battler.prototype.removeBuffsAuto = function() {
     }
 };
 
-Game_Battler.prototype.removeStatesByDamage = function() {
+Game_Battler.prototype.removeStatesByDamage = function () {
     for (const state of this.states()) {
         if (
             state.removeByDamage &&
@@ -3765,12 +3765,12 @@ Game_Battler.prototype.removeStatesByDamage = function() {
     }
 };
 
-Game_Battler.prototype.makeActionTimes = function() {
+Game_Battler.prototype.makeActionTimes = function () {
     const actionPlusSet = this.actionPlusSet();
     return actionPlusSet.reduce((r, p) => (Math.random() < p ? r + 1 : r), 1);
 };
 
-Game_Battler.prototype.makeActions = function() {
+Game_Battler.prototype.makeActions = function () {
     this.clearActions();
     if (this.canMove()) {
         const actionTimes = this.makeActionTimes();
@@ -3781,27 +3781,27 @@ Game_Battler.prototype.makeActions = function() {
     }
 };
 
-Game_Battler.prototype.speed = function() {
+Game_Battler.prototype.speed = function () {
     return this._speed;
 };
 
-Game_Battler.prototype.makeSpeed = function() {
+Game_Battler.prototype.makeSpeed = function () {
     this._speed = Math.min(...this._actions.map(action => action.speed())) || 0;
 };
 
-Game_Battler.prototype.currentAction = function() {
+Game_Battler.prototype.currentAction = function () {
     return this._actions[0];
 };
 
-Game_Battler.prototype.removeCurrentAction = function() {
+Game_Battler.prototype.removeCurrentAction = function () {
     this._actions.shift();
 };
 
-Game_Battler.prototype.setLastTarget = function(target) {
+Game_Battler.prototype.setLastTarget = function (target) {
     this._lastTargetIndex = target ? target.index() : 0;
 };
 
-Game_Battler.prototype.forceAction = function(skillId, targetIndex) {
+Game_Battler.prototype.forceAction = function (skillId, targetIndex) {
     this.clearActions();
     const action = new Game_Action(this, true);
     action.setSkill(skillId);
@@ -3815,7 +3815,7 @@ Game_Battler.prototype.forceAction = function(skillId, targetIndex) {
     this._actions.push(action);
 };
 
-Game_Battler.prototype.useItem = function(item) {
+Game_Battler.prototype.useItem = function (item) {
     if (DataManager.isSkill(item)) {
         this.paySkillCost(item);
     } else if (DataManager.isItem(item)) {
@@ -3823,44 +3823,44 @@ Game_Battler.prototype.useItem = function(item) {
     }
 };
 
-Game_Battler.prototype.consumeItem = function(item) {
+Game_Battler.prototype.consumeItem = function (item) {
     $gameParty.consumeItem(item);
 };
 
-Game_Battler.prototype.gainHp = function(value) {
+Game_Battler.prototype.gainHp = function (value) {
     this._result.hpDamage = -value;
     this._result.hpAffected = true;
     this.setHp(this.hp + value);
 };
 
-Game_Battler.prototype.gainMp = function(value) {
+Game_Battler.prototype.gainMp = function (value) {
     this._result.mpDamage = -value;
     this.setMp(this.mp + value);
 };
 
-Game_Battler.prototype.gainTp = function(value) {
+Game_Battler.prototype.gainTp = function (value) {
     this._result.tpDamage = -value;
     this.setTp(this.tp + value);
 };
 
-Game_Battler.prototype.gainSilentTp = function(value) {
+Game_Battler.prototype.gainSilentTp = function (value) {
     this.setTp(this.tp + value);
 };
 
-Game_Battler.prototype.initTp = function() {
+Game_Battler.prototype.initTp = function () {
     this.setTp(Math.randomInt(25));
 };
 
-Game_Battler.prototype.clearTp = function() {
+Game_Battler.prototype.clearTp = function () {
     this.setTp(0);
 };
 
-Game_Battler.prototype.chargeTpByDamage = function(damageRate) {
+Game_Battler.prototype.chargeTpByDamage = function (damageRate) {
     const value = Math.floor(50 * damageRate * this.tcr);
     this.gainSilentTp(value);
 };
 
-Game_Battler.prototype.regenerateHp = function() {
+Game_Battler.prototype.regenerateHp = function () {
     const minRecover = -this.maxSlipDamage();
     const value = Math.max(Math.floor(this.mhp * this.hrg), minRecover);
     if (value !== 0) {
@@ -3868,23 +3868,23 @@ Game_Battler.prototype.regenerateHp = function() {
     }
 };
 
-Game_Battler.prototype.maxSlipDamage = function() {
+Game_Battler.prototype.maxSlipDamage = function () {
     return $dataSystem.optSlipDeath ? this.hp : Math.max(this.hp - 1, 0);
 };
 
-Game_Battler.prototype.regenerateMp = function() {
+Game_Battler.prototype.regenerateMp = function () {
     const value = Math.floor(this.mmp * this.mrg);
     if (value !== 0) {
         this.gainMp(value);
     }
 };
 
-Game_Battler.prototype.regenerateTp = function() {
+Game_Battler.prototype.regenerateTp = function () {
     const value = Math.floor(100 * this.trg);
     this.gainSilentTp(value);
 };
 
-Game_Battler.prototype.regenerateAll = function() {
+Game_Battler.prototype.regenerateAll = function () {
     if (this.isAlive()) {
         this.regenerateHp();
         this.regenerateMp();
@@ -3892,7 +3892,7 @@ Game_Battler.prototype.regenerateAll = function() {
     }
 };
 
-Game_Battler.prototype.onBattleStart = function(advantageous) {
+Game_Battler.prototype.onBattleStart = function (advantageous) {
     this.setActionState("undecided");
     this.clearMotion();
     this.initTpbChargeTime(advantageous);
@@ -3902,13 +3902,13 @@ Game_Battler.prototype.onBattleStart = function(advantageous) {
     }
 };
 
-Game_Battler.prototype.onAllActionsEnd = function() {
+Game_Battler.prototype.onAllActionsEnd = function () {
     this.clearResult();
     this.removeStatesAuto(1);
     this.removeBuffsAuto();
 };
 
-Game_Battler.prototype.onTurnEnd = function() {
+Game_Battler.prototype.onTurnEnd = function () {
     this.clearResult();
     this.regenerateAll();
     this.updateStateTurns();
@@ -3916,7 +3916,7 @@ Game_Battler.prototype.onTurnEnd = function() {
     this.removeStatesAuto(2);
 };
 
-Game_Battler.prototype.onBattleEnd = function() {
+Game_Battler.prototype.onBattleEnd = function () {
     this.clearResult();
     this.removeBattleStates();
     this.removeAllBuffs();
@@ -3927,93 +3927,93 @@ Game_Battler.prototype.onBattleEnd = function() {
     this.appear();
 };
 
-Game_Battler.prototype.onDamage = function(value) {
+Game_Battler.prototype.onDamage = function (value) {
     this.removeStatesByDamage();
     this.chargeTpByDamage(value / this.mhp);
 };
 
-Game_Battler.prototype.setActionState = function(actionState) {
+Game_Battler.prototype.setActionState = function (actionState) {
     this._actionState = actionState;
     this.requestMotionRefresh();
 };
 
-Game_Battler.prototype.isUndecided = function() {
+Game_Battler.prototype.isUndecided = function () {
     return this._actionState === "undecided";
 };
 
-Game_Battler.prototype.isInputting = function() {
+Game_Battler.prototype.isInputting = function () {
     return this._actionState === "inputting";
 };
 
-Game_Battler.prototype.isWaiting = function() {
+Game_Battler.prototype.isWaiting = function () {
     return this._actionState === "waiting";
 };
 
-Game_Battler.prototype.isActing = function() {
+Game_Battler.prototype.isActing = function () {
     return this._actionState === "acting";
 };
 
-Game_Battler.prototype.isChanting = function() {
+Game_Battler.prototype.isChanting = function () {
     if (this.isWaiting()) {
         return this._actions.some(action => action.isMagicSkill());
     }
     return false;
 };
 
-Game_Battler.prototype.isGuardWaiting = function() {
+Game_Battler.prototype.isGuardWaiting = function () {
     if (this.isWaiting()) {
         return this._actions.some(action => action.isGuard());
     }
     return false;
 };
 
-Game_Battler.prototype.performActionStart = function(action) {
+Game_Battler.prototype.performActionStart = function (action) {
     if (!action.isGuard()) {
         this.setActionState("acting");
     }
 };
 
-Game_Battler.prototype.performAction = function(/*action*/) {
+Game_Battler.prototype.performAction = function (/*action*/) {
     //
 };
 
-Game_Battler.prototype.performActionEnd = function() {
+Game_Battler.prototype.performActionEnd = function () {
     //
 };
 
-Game_Battler.prototype.performDamage = function() {
+Game_Battler.prototype.performDamage = function () {
     //
 };
 
-Game_Battler.prototype.performMiss = function() {
+Game_Battler.prototype.performMiss = function () {
     SoundManager.playMiss();
 };
 
-Game_Battler.prototype.performRecovery = function() {
+Game_Battler.prototype.performRecovery = function () {
     SoundManager.playRecovery();
 };
 
-Game_Battler.prototype.performEvasion = function() {
+Game_Battler.prototype.performEvasion = function () {
     SoundManager.playEvasion();
 };
 
-Game_Battler.prototype.performMagicEvasion = function() {
+Game_Battler.prototype.performMagicEvasion = function () {
     SoundManager.playMagicEvasion();
 };
 
-Game_Battler.prototype.performCounter = function() {
+Game_Battler.prototype.performCounter = function () {
     SoundManager.playEvasion();
 };
 
-Game_Battler.prototype.performReflection = function() {
+Game_Battler.prototype.performReflection = function () {
     SoundManager.playReflection();
 };
 
-Game_Battler.prototype.performSubstitute = function(/*target*/) {
+Game_Battler.prototype.performSubstitute = function (/*target*/) {
     //
 };
 
-Game_Battler.prototype.performCollapse = function() {
+Game_Battler.prototype.performCollapse = function () {
     //
 };
 
@@ -4030,18 +4030,18 @@ Game_Actor.prototype = Object.create(Game_Battler.prototype);
 Game_Actor.prototype.constructor = Game_Actor;
 
 Object.defineProperty(Game_Actor.prototype, "level", {
-    get: function() {
+    get: function () {
         return this._level;
     },
     configurable: true
 });
 
-Game_Actor.prototype.initialize = function(actorId) {
+Game_Actor.prototype.initialize = function (actorId) {
     Game_Battler.prototype.initialize.call(this);
     this.setup(actorId);
 };
 
-Game_Actor.prototype.initMembers = function() {
+Game_Actor.prototype.initMembers = function () {
     Game_Battler.prototype.initMembers.call(this);
     this._actorId = 0;
     this._name = "";
@@ -4062,7 +4062,7 @@ Game_Actor.prototype.initMembers = function() {
     this._lastCommandSymbol = "";
 };
 
-Game_Actor.prototype.setup = function(actorId) {
+Game_Actor.prototype.setup = function (actorId) {
     const actor = $dataActors[actorId];
     this._actorId = actorId;
     this._name = actor.name;
@@ -4078,74 +4078,74 @@ Game_Actor.prototype.setup = function(actorId) {
     this.recoverAll();
 };
 
-Game_Actor.prototype.actorId = function() {
+Game_Actor.prototype.actorId = function () {
     return this._actorId;
 };
 
-Game_Actor.prototype.actor = function() {
+Game_Actor.prototype.actor = function () {
     return $dataActors[this._actorId];
 };
 
-Game_Actor.prototype.name = function() {
+Game_Actor.prototype.name = function () {
     return this._name;
 };
 
-Game_Actor.prototype.setName = function(name) {
+Game_Actor.prototype.setName = function (name) {
     this._name = name;
 };
 
-Game_Actor.prototype.nickname = function() {
+Game_Actor.prototype.nickname = function () {
     return this._nickname;
 };
 
-Game_Actor.prototype.setNickname = function(nickname) {
+Game_Actor.prototype.setNickname = function (nickname) {
     this._nickname = nickname;
 };
 
-Game_Actor.prototype.profile = function() {
+Game_Actor.prototype.profile = function () {
     return this._profile;
 };
 
-Game_Actor.prototype.setProfile = function(profile) {
+Game_Actor.prototype.setProfile = function (profile) {
     this._profile = profile;
 };
 
-Game_Actor.prototype.characterName = function() {
+Game_Actor.prototype.characterName = function () {
     return this._characterName;
 };
 
-Game_Actor.prototype.characterIndex = function() {
+Game_Actor.prototype.characterIndex = function () {
     return this._characterIndex;
 };
 
-Game_Actor.prototype.faceName = function() {
+Game_Actor.prototype.faceName = function () {
     return this._faceName;
 };
 
-Game_Actor.prototype.faceIndex = function() {
+Game_Actor.prototype.faceIndex = function () {
     return this._faceIndex;
 };
 
-Game_Actor.prototype.battlerName = function() {
+Game_Actor.prototype.battlerName = function () {
     return this._battlerName;
 };
 
-Game_Actor.prototype.clearStates = function() {
+Game_Actor.prototype.clearStates = function () {
     Game_Battler.prototype.clearStates.call(this);
     this._stateSteps = {};
 };
 
-Game_Actor.prototype.eraseState = function(stateId) {
+Game_Actor.prototype.eraseState = function (stateId) {
     Game_Battler.prototype.eraseState.call(this, stateId);
     delete this._stateSteps[stateId];
 };
 
-Game_Actor.prototype.resetStateCounts = function(stateId) {
+Game_Actor.prototype.resetStateCounts = function (stateId) {
     Game_Battler.prototype.resetStateCounts.call(this, stateId);
     this._stateSteps[stateId] = $dataStates[stateId].stepsToRemove;
 };
 
-Game_Actor.prototype.initImages = function() {
+Game_Actor.prototype.initImages = function () {
     const actor = this.actor();
     this._characterName = actor.characterName;
     this._characterIndex = actor.characterIndex;
@@ -4154,7 +4154,7 @@ Game_Actor.prototype.initImages = function() {
     this._battlerName = actor.battlerName;
 };
 
-Game_Actor.prototype.expForLevel = function(level) {
+Game_Actor.prototype.expForLevel = function (level) {
     const c = this.currentClass();
     const basis = c.expParams[0];
     const extra = c.expParams[1];
@@ -4162,40 +4162,40 @@ Game_Actor.prototype.expForLevel = function(level) {
     const acc_b = c.expParams[3];
     return Math.round(
         (basis * Math.pow(level - 1, 0.9 + acc_a / 250) * level * (level + 1)) /
-            (6 + Math.pow(level, 2) / 50 / acc_b) +
-            (level - 1) * extra
+        (6 + Math.pow(level, 2) / 50 / acc_b) +
+        (level - 1) * extra
     );
 };
 
-Game_Actor.prototype.initExp = function() {
+Game_Actor.prototype.initExp = function () {
     this._exp[this._classId] = this.currentLevelExp();
 };
 
-Game_Actor.prototype.currentExp = function() {
+Game_Actor.prototype.currentExp = function () {
     return this._exp[this._classId];
 };
 
-Game_Actor.prototype.currentLevelExp = function() {
+Game_Actor.prototype.currentLevelExp = function () {
     return this.expForLevel(this._level);
 };
 
-Game_Actor.prototype.nextLevelExp = function() {
+Game_Actor.prototype.nextLevelExp = function () {
     return this.expForLevel(this._level + 1);
 };
 
-Game_Actor.prototype.nextRequiredExp = function() {
+Game_Actor.prototype.nextRequiredExp = function () {
     return this.nextLevelExp() - this.currentExp();
 };
 
-Game_Actor.prototype.maxLevel = function() {
+Game_Actor.prototype.maxLevel = function () {
     return this.actor().maxLevel;
 };
 
-Game_Actor.prototype.isMaxLevel = function() {
+Game_Actor.prototype.isMaxLevel = function () {
     return this._level >= this.maxLevel();
 };
 
-Game_Actor.prototype.initSkills = function() {
+Game_Actor.prototype.initSkills = function () {
     this._skills = [];
     for (const learning of this.currentClass().learnings) {
         if (learning.level <= this._level) {
@@ -4204,7 +4204,7 @@ Game_Actor.prototype.initSkills = function() {
     }
 };
 
-Game_Actor.prototype.initEquips = function(equips) {
+Game_Actor.prototype.initEquips = function (equips) {
     const slots = this.equipSlots();
     const maxSlots = slots.length;
     this._equips = [];
@@ -4220,7 +4220,7 @@ Game_Actor.prototype.initEquips = function(equips) {
     this.refresh();
 };
 
-Game_Actor.prototype.equipSlots = function() {
+Game_Actor.prototype.equipSlots = function () {
     const slots = [];
     for (let i = 1; i < $dataSystem.equipTypes.length; i++) {
         slots.push(i);
@@ -4231,34 +4231,34 @@ Game_Actor.prototype.equipSlots = function() {
     return slots;
 };
 
-Game_Actor.prototype.equips = function() {
+Game_Actor.prototype.equips = function () {
     return this._equips.map(item => item.object());
 };
 
-Game_Actor.prototype.weapons = function() {
+Game_Actor.prototype.weapons = function () {
     return this.equips().filter(item => item && DataManager.isWeapon(item));
 };
 
-Game_Actor.prototype.armors = function() {
+Game_Actor.prototype.armors = function () {
     return this.equips().filter(item => item && DataManager.isArmor(item));
 };
 
-Game_Actor.prototype.hasWeapon = function(weapon) {
+Game_Actor.prototype.hasWeapon = function (weapon) {
     return this.weapons().includes(weapon);
 };
 
-Game_Actor.prototype.hasArmor = function(armor) {
+Game_Actor.prototype.hasArmor = function (armor) {
     return this.armors().includes(armor);
 };
 
-Game_Actor.prototype.isEquipChangeOk = function(slotId) {
+Game_Actor.prototype.isEquipChangeOk = function (slotId) {
     return (
         !this.isEquipTypeLocked(this.equipSlots()[slotId]) &&
         !this.isEquipTypeSealed(this.equipSlots()[slotId])
     );
 };
 
-Game_Actor.prototype.changeEquip = function(slotId, item) {
+Game_Actor.prototype.changeEquip = function (slotId, item) {
     if (
         this.tradeItemWithParty(item, this.equips()[slotId]) &&
         (!item || this.equipSlots()[slotId] === item.etypeId)
@@ -4268,13 +4268,13 @@ Game_Actor.prototype.changeEquip = function(slotId, item) {
     }
 };
 
-Game_Actor.prototype.forceChangeEquip = function(slotId, item) {
+Game_Actor.prototype.forceChangeEquip = function (slotId, item) {
     this._equips[slotId].setObject(item);
     this.releaseUnequippableItems(true);
     this.refresh();
 };
 
-Game_Actor.prototype.tradeItemWithParty = function(newItem, oldItem) {
+Game_Actor.prototype.tradeItemWithParty = function (newItem, oldItem) {
     if (newItem && !$gameParty.hasItem(newItem)) {
         return false;
     } else {
@@ -4284,7 +4284,7 @@ Game_Actor.prototype.tradeItemWithParty = function(newItem, oldItem) {
     }
 };
 
-Game_Actor.prototype.changeEquipById = function(etypeId, itemId) {
+Game_Actor.prototype.changeEquipById = function (etypeId, itemId) {
     const slotId = etypeId - 1;
     if (this.equipSlots()[slotId] === 1) {
         this.changeEquip(slotId, $dataWeapons[itemId]);
@@ -4293,19 +4293,19 @@ Game_Actor.prototype.changeEquipById = function(etypeId, itemId) {
     }
 };
 
-Game_Actor.prototype.isEquipped = function(item) {
+Game_Actor.prototype.isEquipped = function (item) {
     return this.equips().includes(item);
 };
 
-Game_Actor.prototype.discardEquip = function(item) {
+Game_Actor.prototype.discardEquip = function (item) {
     const slotId = this.equips().indexOf(item);
     if (slotId >= 0) {
         this._equips[slotId].setObject(null);
     }
 };
 
-Game_Actor.prototype.releaseUnequippableItems = function(forcing) {
-    for (;;) {
+Game_Actor.prototype.releaseUnequippableItems = function (forcing) {
+    for (; ;) {
         const slots = this.equipSlots();
         const equips = this.equips();
         let changed = false;
@@ -4325,7 +4325,7 @@ Game_Actor.prototype.releaseUnequippableItems = function(forcing) {
     }
 };
 
-Game_Actor.prototype.clearEquipments = function() {
+Game_Actor.prototype.clearEquipments = function () {
     const maxSlots = this.equipSlots().length;
     for (let i = 0; i < maxSlots; i++) {
         if (this.isEquipChangeOk(i)) {
@@ -4334,7 +4334,7 @@ Game_Actor.prototype.clearEquipments = function() {
     }
 };
 
-Game_Actor.prototype.optimizeEquipments = function() {
+Game_Actor.prototype.optimizeEquipments = function () {
     const maxSlots = this.equipSlots().length;
     this.clearEquipments();
     for (let i = 0; i < maxSlots; i++) {
@@ -4344,7 +4344,7 @@ Game_Actor.prototype.optimizeEquipments = function() {
     }
 };
 
-Game_Actor.prototype.bestEquipItem = function(slotId) {
+Game_Actor.prototype.bestEquipItem = function (slotId) {
     const etypeId = this.equipSlots()[slotId];
     const items = $gameParty
         .equipItems()
@@ -4361,11 +4361,11 @@ Game_Actor.prototype.bestEquipItem = function(slotId) {
     return bestItem;
 };
 
-Game_Actor.prototype.calcEquipItemPerformance = function(item) {
+Game_Actor.prototype.calcEquipItemPerformance = function (item) {
     return item.params.reduce((a, b) => a + b);
 };
 
-Game_Actor.prototype.isSkillWtypeOk = function(skill) {
+Game_Actor.prototype.isSkillWtypeOk = function (skill) {
     const wtypeId1 = skill.requiredWtypeId1;
     const wtypeId2 = skill.requiredWtypeId2;
     if (
@@ -4379,58 +4379,58 @@ Game_Actor.prototype.isSkillWtypeOk = function(skill) {
     }
 };
 
-Game_Actor.prototype.isWtypeEquipped = function(wtypeId) {
+Game_Actor.prototype.isWtypeEquipped = function (wtypeId) {
     return this.weapons().some(weapon => weapon.wtypeId === wtypeId);
 };
 
-Game_Actor.prototype.refresh = function() {
+Game_Actor.prototype.refresh = function () {
     this.releaseUnequippableItems(false);
     Game_Battler.prototype.refresh.call(this);
 };
 
-Game_Actor.prototype.hide = function() {
+Game_Actor.prototype.hide = function () {
     Game_Battler.prototype.hide.call(this);
     $gameTemp.requestBattleRefresh();
 };
 
-Game_Actor.prototype.isActor = function() {
+Game_Actor.prototype.isActor = function () {
     return true;
 };
 
-Game_Actor.prototype.friendsUnit = function() {
+Game_Actor.prototype.friendsUnit = function () {
     return $gameParty;
 };
 
-Game_Actor.prototype.opponentsUnit = function() {
+Game_Actor.prototype.opponentsUnit = function () {
     return $gameTroop;
 };
 
-Game_Actor.prototype.index = function() {
+Game_Actor.prototype.index = function () {
     return $gameParty.members().indexOf(this);
 };
 
-Game_Actor.prototype.isBattleMember = function() {
+Game_Actor.prototype.isBattleMember = function () {
     return $gameParty.battleMembers().includes(this);
 };
 
-Game_Actor.prototype.isFormationChangeOk = function() {
+Game_Actor.prototype.isFormationChangeOk = function () {
     return true;
 };
 
-Game_Actor.prototype.currentClass = function() {
+Game_Actor.prototype.currentClass = function () {
     return $dataClasses[this._classId];
 };
 
-Game_Actor.prototype.isClass = function(gameClass) {
+Game_Actor.prototype.isClass = function (gameClass) {
     return gameClass && this._classId === gameClass.id;
 };
 
-Game_Actor.prototype.skillTypes = function() {
+Game_Actor.prototype.skillTypes = function () {
     const skillTypes = this.addedSkillTypes().sort((a, b) => a - b);
     return skillTypes.filter((x, i, self) => self.indexOf(x) === i);
 };
 
-Game_Actor.prototype.skills = function() {
+Game_Actor.prototype.skills = function () {
     const list = [];
     for (const id of this._skills.concat(this.addedSkills())) {
         if (!list.includes($dataSkills[id])) {
@@ -4440,11 +4440,11 @@ Game_Actor.prototype.skills = function() {
     return list;
 };
 
-Game_Actor.prototype.usableSkills = function() {
+Game_Actor.prototype.usableSkills = function () {
     return this.skills().filter(skill => this.canUse(skill));
 };
 
-Game_Actor.prototype.traitObjects = function() {
+Game_Actor.prototype.traitObjects = function () {
     const objects = Game_Battler.prototype.traitObjects.call(this);
     objects.push(this.actor(), this.currentClass());
     for (const item of this.equips()) {
@@ -4455,7 +4455,7 @@ Game_Actor.prototype.traitObjects = function() {
     return objects;
 };
 
-Game_Actor.prototype.attackElements = function() {
+Game_Actor.prototype.attackElements = function () {
     const set = Game_Battler.prototype.attackElements.call(this);
     if (this.hasNoWeapons() && !set.includes(this.bareHandsElementId())) {
         set.push(this.bareHandsElementId());
@@ -4463,19 +4463,19 @@ Game_Actor.prototype.attackElements = function() {
     return set;
 };
 
-Game_Actor.prototype.hasNoWeapons = function() {
+Game_Actor.prototype.hasNoWeapons = function () {
     return this.weapons().length === 0;
 };
 
-Game_Actor.prototype.bareHandsElementId = function() {
+Game_Actor.prototype.bareHandsElementId = function () {
     return 1;
 };
 
-Game_Actor.prototype.paramBase = function(paramId) {
+Game_Actor.prototype.paramBase = function (paramId) {
     return this.currentClass().params[paramId][this._level];
 };
 
-Game_Actor.prototype.paramPlus = function(paramId) {
+Game_Actor.prototype.paramPlus = function (paramId) {
     let value = Game_Battler.prototype.paramPlus.call(this, paramId);
     for (const item of this.equips()) {
         if (item) {
@@ -4485,7 +4485,7 @@ Game_Actor.prototype.paramPlus = function(paramId) {
     return value;
 };
 
-Game_Actor.prototype.attackAnimationId1 = function() {
+Game_Actor.prototype.attackAnimationId1 = function () {
     if (this.hasNoWeapons()) {
         return this.bareHandsAnimationId();
     } else {
@@ -4494,16 +4494,16 @@ Game_Actor.prototype.attackAnimationId1 = function() {
     }
 };
 
-Game_Actor.prototype.attackAnimationId2 = function() {
+Game_Actor.prototype.attackAnimationId2 = function () {
     const weapons = this.weapons();
     return weapons[1] ? weapons[1].animationId : 0;
 };
 
-Game_Actor.prototype.bareHandsAnimationId = function() {
+Game_Actor.prototype.bareHandsAnimationId = function () {
     return 1;
 };
 
-Game_Actor.prototype.changeExp = function(exp, show) {
+Game_Actor.prototype.changeExp = function (exp, show) {
     this._exp[this._classId] = Math.max(exp, 0);
     const lastLevel = this._level;
     const lastSkills = this.skills();
@@ -4519,7 +4519,7 @@ Game_Actor.prototype.changeExp = function(exp, show) {
     this.refresh();
 };
 
-Game_Actor.prototype.levelUp = function() {
+Game_Actor.prototype.levelUp = function () {
     this._level++;
     for (const learning of this.currentClass().learnings) {
         if (learning.level === this._level) {
@@ -4528,11 +4528,11 @@ Game_Actor.prototype.levelUp = function() {
     }
 };
 
-Game_Actor.prototype.levelDown = function() {
+Game_Actor.prototype.levelDown = function () {
     this._level--;
 };
 
-Game_Actor.prototype.findNewSkills = function(lastSkills) {
+Game_Actor.prototype.findNewSkills = function (lastSkills) {
     const newSkills = this.skills();
     for (const lastSkill of lastSkills) {
         newSkills.remove(lastSkill);
@@ -4540,7 +4540,7 @@ Game_Actor.prototype.findNewSkills = function(lastSkills) {
     return newSkills;
 };
 
-Game_Actor.prototype.displayLevelUp = function(newSkills) {
+Game_Actor.prototype.displayLevelUp = function (newSkills) {
     const text = TextManager.levelUp.format(
         this._name,
         TextManager.level,
@@ -4553,48 +4553,48 @@ Game_Actor.prototype.displayLevelUp = function(newSkills) {
     }
 };
 
-Game_Actor.prototype.gainExp = function(exp) {
+Game_Actor.prototype.gainExp = function (exp) {
     const newExp = this.currentExp() + Math.round(exp * this.finalExpRate());
     this.changeExp(newExp, this.shouldDisplayLevelUp());
 };
 
-Game_Actor.prototype.finalExpRate = function() {
+Game_Actor.prototype.finalExpRate = function () {
     return this.exr * (this.isBattleMember() ? 1 : this.benchMembersExpRate());
 };
 
-Game_Actor.prototype.benchMembersExpRate = function() {
+Game_Actor.prototype.benchMembersExpRate = function () {
     return $dataSystem.optExtraExp ? 1 : 0;
 };
 
-Game_Actor.prototype.shouldDisplayLevelUp = function() {
+Game_Actor.prototype.shouldDisplayLevelUp = function () {
     return true;
 };
 
-Game_Actor.prototype.changeLevel = function(level, show) {
+Game_Actor.prototype.changeLevel = function (level, show) {
     level = level.clamp(1, this.maxLevel());
     this.changeExp(this.expForLevel(level), show);
 };
 
-Game_Actor.prototype.learnSkill = function(skillId) {
+Game_Actor.prototype.learnSkill = function (skillId) {
     if (!this.isLearnedSkill(skillId)) {
         this._skills.push(skillId);
         this._skills.sort((a, b) => a - b);
     }
 };
 
-Game_Actor.prototype.forgetSkill = function(skillId) {
+Game_Actor.prototype.forgetSkill = function (skillId) {
     this._skills.remove(skillId);
 };
 
-Game_Actor.prototype.isLearnedSkill = function(skillId) {
+Game_Actor.prototype.isLearnedSkill = function (skillId) {
     return this._skills.includes(skillId);
 };
 
-Game_Actor.prototype.hasSkill = function(skillId) {
+Game_Actor.prototype.hasSkill = function (skillId) {
     return this.skills().includes($dataSkills[skillId]);
 };
 
-Game_Actor.prototype.changeClass = function(classId, keepExp) {
+Game_Actor.prototype.changeClass = function (classId, keepExp) {
     if (keepExp) {
         this._exp[classId] = this.currentExp();
     }
@@ -4604,7 +4604,7 @@ Game_Actor.prototype.changeClass = function(classId, keepExp) {
     this.refresh();
 };
 
-Game_Actor.prototype.setCharacterImage = function(
+Game_Actor.prototype.setCharacterImage = function (
     characterName,
     characterIndex
 ) {
@@ -4612,25 +4612,25 @@ Game_Actor.prototype.setCharacterImage = function(
     this._characterIndex = characterIndex;
 };
 
-Game_Actor.prototype.setFaceImage = function(faceName, faceIndex) {
+Game_Actor.prototype.setFaceImage = function (faceName, faceIndex) {
     this._faceName = faceName;
     this._faceIndex = faceIndex;
     $gameTemp.requestBattleRefresh();
 };
 
-Game_Actor.prototype.setBattlerImage = function(battlerName) {
+Game_Actor.prototype.setBattlerImage = function (battlerName) {
     this._battlerName = battlerName;
 };
 
-Game_Actor.prototype.isSpriteVisible = function() {
+Game_Actor.prototype.isSpriteVisible = function () {
     return $gameSystem.isSideView();
 };
 
-Game_Actor.prototype.performActionStart = function(action) {
+Game_Actor.prototype.performActionStart = function (action) {
     Game_Battler.prototype.performActionStart.call(this, action);
 };
 
-Game_Actor.prototype.performAction = function(action) {
+Game_Actor.prototype.performAction = function (action) {
     Game_Battler.prototype.performAction.call(this, action);
     if (action.isAttack()) {
         this.performAttack();
@@ -4645,11 +4645,11 @@ Game_Actor.prototype.performAction = function(action) {
     }
 };
 
-Game_Actor.prototype.performActionEnd = function() {
+Game_Actor.prototype.performActionEnd = function () {
     Game_Battler.prototype.performActionEnd.call(this);
 };
 
-Game_Actor.prototype.performAttack = function() {
+Game_Actor.prototype.performAttack = function () {
     const weapons = this.weapons();
     const wtypeId = weapons[0] ? weapons[0].wtypeId : 0;
     const attackMotion = $dataSystem.attackMotions[wtypeId];
@@ -4665,7 +4665,7 @@ Game_Actor.prototype.performAttack = function() {
     }
 };
 
-Game_Actor.prototype.performDamage = function() {
+Game_Actor.prototype.performDamage = function () {
     Game_Battler.prototype.performDamage.call(this);
     if (this.isSpriteVisible()) {
         this.requestMotion("damage");
@@ -4675,42 +4675,42 @@ Game_Actor.prototype.performDamage = function() {
     SoundManager.playActorDamage();
 };
 
-Game_Actor.prototype.performEvasion = function() {
+Game_Actor.prototype.performEvasion = function () {
     Game_Battler.prototype.performEvasion.call(this);
     this.requestMotion("evade");
 };
 
-Game_Actor.prototype.performMagicEvasion = function() {
+Game_Actor.prototype.performMagicEvasion = function () {
     Game_Battler.prototype.performMagicEvasion.call(this);
     this.requestMotion("evade");
 };
 
-Game_Actor.prototype.performCounter = function() {
+Game_Actor.prototype.performCounter = function () {
     Game_Battler.prototype.performCounter.call(this);
     this.performAttack();
 };
 
-Game_Actor.prototype.performCollapse = function() {
+Game_Actor.prototype.performCollapse = function () {
     Game_Battler.prototype.performCollapse.call(this);
     if ($gameParty.inBattle()) {
         SoundManager.playActorCollapse();
     }
 };
 
-Game_Actor.prototype.performVictory = function() {
+Game_Actor.prototype.performVictory = function () {
     this.setActionState("done");
     if (this.canMove()) {
         this.requestMotion("victory");
     }
 };
 
-Game_Actor.prototype.performEscape = function() {
+Game_Actor.prototype.performEscape = function () {
     if (this.canMove()) {
         this.requestMotion("escape");
     }
 };
 
-Game_Actor.prototype.makeActionList = function() {
+Game_Actor.prototype.makeActionList = function () {
     const list = [];
     const attackAction = new Game_Action(this);
     attackAction.setAttack();
@@ -4723,7 +4723,7 @@ Game_Actor.prototype.makeActionList = function() {
     return list;
 };
 
-Game_Actor.prototype.makeAutoBattleActions = function() {
+Game_Actor.prototype.makeAutoBattleActions = function () {
     for (let i = 0; i < this.numActions(); i++) {
         const list = this.makeActionList();
         let maxValue = -Number.MAX_VALUE;
@@ -4738,14 +4738,14 @@ Game_Actor.prototype.makeAutoBattleActions = function() {
     this.setActionState("waiting");
 };
 
-Game_Actor.prototype.makeConfusionActions = function() {
+Game_Actor.prototype.makeConfusionActions = function () {
     for (let i = 0; i < this.numActions(); i++) {
         this.action(i).setConfusion();
     }
     this.setActionState("waiting");
 };
 
-Game_Actor.prototype.makeActions = function() {
+Game_Actor.prototype.makeActions = function () {
     Game_Battler.prototype.makeActions.call(this);
     if (this.numActions() > 0) {
         this.setActionState("undecided");
@@ -4759,7 +4759,7 @@ Game_Actor.prototype.makeActions = function() {
     }
 };
 
-Game_Actor.prototype.onPlayerWalk = function() {
+Game_Actor.prototype.onPlayerWalk = function () {
     this.clearResult();
     this.checkFloorEffect();
     if ($gamePlayer.isNormal()) {
@@ -4772,7 +4772,7 @@ Game_Actor.prototype.onPlayerWalk = function() {
     }
 };
 
-Game_Actor.prototype.updateStateSteps = function(state) {
+Game_Actor.prototype.updateStateSteps = function (state) {
     if (state.removeByWalking) {
         if (this._stateSteps[state.id] > 0) {
             if (--this._stateSteps[state.id] === 0) {
@@ -4782,7 +4782,7 @@ Game_Actor.prototype.updateStateSteps = function(state) {
     }
 };
 
-Game_Actor.prototype.showAddedStates = function() {
+Game_Actor.prototype.showAddedStates = function () {
     for (const state of this.result().addedStateObjects()) {
         if (state.message1) {
             $gameMessage.add(state.message1.format(this._name));
@@ -4790,7 +4790,7 @@ Game_Actor.prototype.showAddedStates = function() {
     }
 };
 
-Game_Actor.prototype.showRemovedStates = function() {
+Game_Actor.prototype.showRemovedStates = function () {
     for (const state of this.result().removedStateObjects()) {
         if (state.message4) {
             $gameMessage.add(state.message4.format(this._name));
@@ -4798,11 +4798,11 @@ Game_Actor.prototype.showRemovedStates = function() {
     }
 };
 
-Game_Actor.prototype.stepsForTurn = function() {
+Game_Actor.prototype.stepsForTurn = function () {
     return 20;
 };
 
-Game_Actor.prototype.turnEndOnMap = function() {
+Game_Actor.prototype.turnEndOnMap = function () {
     if ($gameParty.steps() % this.stepsForTurn() === 0) {
         this.onTurnEnd();
         if (this.result().hpDamage > 0) {
@@ -4811,13 +4811,13 @@ Game_Actor.prototype.turnEndOnMap = function() {
     }
 };
 
-Game_Actor.prototype.checkFloorEffect = function() {
+Game_Actor.prototype.checkFloorEffect = function () {
     if ($gamePlayer.isOnDamageFloor()) {
         this.executeFloorDamage();
     }
 };
 
-Game_Actor.prototype.executeFloorDamage = function() {
+Game_Actor.prototype.executeFloorDamage = function () {
     const floorDamage = Math.floor(this.basicFloorDamage() * this.fdr);
     const realDamage = Math.min(floorDamage, this.maxFloorDamage());
     this.gainHp(-realDamage);
@@ -4826,30 +4826,30 @@ Game_Actor.prototype.executeFloorDamage = function() {
     }
 };
 
-Game_Actor.prototype.basicFloorDamage = function() {
+Game_Actor.prototype.basicFloorDamage = function () {
     return 10;
 };
 
-Game_Actor.prototype.maxFloorDamage = function() {
+Game_Actor.prototype.maxFloorDamage = function () {
     return $dataSystem.optFloorDeath ? this.hp : Math.max(this.hp - 1, 0);
 };
 
-Game_Actor.prototype.performMapDamage = function() {
+Game_Actor.prototype.performMapDamage = function () {
     if (!$gameParty.inBattle()) {
         $gameScreen.startFlashForDamage();
     }
 };
 
-Game_Actor.prototype.clearActions = function() {
+Game_Actor.prototype.clearActions = function () {
     Game_Battler.prototype.clearActions.call(this);
     this._actionInputIndex = 0;
 };
 
-Game_Actor.prototype.inputtingAction = function() {
+Game_Actor.prototype.inputtingAction = function () {
     return this.action(this._actionInputIndex);
 };
 
-Game_Actor.prototype.selectNextCommand = function() {
+Game_Actor.prototype.selectNextCommand = function () {
     if (this._actionInputIndex < this.numActions() - 1) {
         this._actionInputIndex++;
         return true;
@@ -4858,7 +4858,7 @@ Game_Actor.prototype.selectNextCommand = function() {
     }
 };
 
-Game_Actor.prototype.selectPreviousCommand = function() {
+Game_Actor.prototype.selectPreviousCommand = function () {
     if (this._actionInputIndex > 0) {
         this._actionInputIndex--;
         return true;
@@ -4867,7 +4867,7 @@ Game_Actor.prototype.selectPreviousCommand = function() {
     }
 };
 
-Game_Actor.prototype.lastSkill = function() {
+Game_Actor.prototype.lastSkill = function () {
     if ($gameParty.inBattle()) {
         return this.lastBattleSkill();
     } else {
@@ -4875,37 +4875,37 @@ Game_Actor.prototype.lastSkill = function() {
     }
 };
 
-Game_Actor.prototype.lastMenuSkill = function() {
+Game_Actor.prototype.lastMenuSkill = function () {
     return this._lastMenuSkill.object();
 };
 
-Game_Actor.prototype.setLastMenuSkill = function(skill) {
+Game_Actor.prototype.setLastMenuSkill = function (skill) {
     this._lastMenuSkill.setObject(skill);
 };
 
-Game_Actor.prototype.lastBattleSkill = function() {
+Game_Actor.prototype.lastBattleSkill = function () {
     return this._lastBattleSkill.object();
 };
 
-Game_Actor.prototype.setLastBattleSkill = function(skill) {
+Game_Actor.prototype.setLastBattleSkill = function (skill) {
     this._lastBattleSkill.setObject(skill);
 };
 
-Game_Actor.prototype.lastCommandSymbol = function() {
+Game_Actor.prototype.lastCommandSymbol = function () {
     return this._lastCommandSymbol;
 };
 
-Game_Actor.prototype.setLastCommandSymbol = function(symbol) {
+Game_Actor.prototype.setLastCommandSymbol = function (symbol) {
     this._lastCommandSymbol = symbol;
 };
 
-Game_Actor.prototype.testEscape = function(item) {
+Game_Actor.prototype.testEscape = function (item) {
     return item.effects.some(
         effect => effect && effect.code === Game_Action.EFFECT_SPECIAL
     );
 };
 
-Game_Actor.prototype.meetsUsableItemConditions = function(item) {
+Game_Actor.prototype.meetsUsableItemConditions = function (item) {
     if ($gameParty.inBattle()) {
         if (!BattleManager.canEscape() && this.testEscape(item)) {
             return false;
@@ -4917,7 +4917,7 @@ Game_Actor.prototype.meetsUsableItemConditions = function(item) {
     );
 };
 
-Game_Actor.prototype.onEscapeFailure = function() {
+Game_Actor.prototype.onEscapeFailure = function () {
     if (BattleManager.isTpb()) {
         this.applyTpbPenalty();
     }
@@ -4937,12 +4937,12 @@ function Game_Enemy() {
 Game_Enemy.prototype = Object.create(Game_Battler.prototype);
 Game_Enemy.prototype.constructor = Game_Enemy;
 
-Game_Enemy.prototype.initialize = function(enemyId, x, y) {
+Game_Enemy.prototype.initialize = function (enemyId, x, y) {
     Game_Battler.prototype.initialize.call(this);
     this.setup(enemyId, x, y);
 };
 
-Game_Enemy.prototype.initMembers = function() {
+Game_Enemy.prototype.initMembers = function () {
     Game_Battler.prototype.initMembers.call(this);
     this._enemyId = 0;
     this._letter = "";
@@ -4951,58 +4951,58 @@ Game_Enemy.prototype.initMembers = function() {
     this._screenY = 0;
 };
 
-Game_Enemy.prototype.setup = function(enemyId, x, y) {
+Game_Enemy.prototype.setup = function (enemyId, x, y) {
     this._enemyId = enemyId;
     this._screenX = x;
     this._screenY = y;
     this.recoverAll();
 };
 
-Game_Enemy.prototype.isEnemy = function() {
+Game_Enemy.prototype.isEnemy = function () {
     return true;
 };
 
-Game_Enemy.prototype.friendsUnit = function() {
+Game_Enemy.prototype.friendsUnit = function () {
     return $gameTroop;
 };
 
-Game_Enemy.prototype.opponentsUnit = function() {
+Game_Enemy.prototype.opponentsUnit = function () {
     return $gameParty;
 };
 
-Game_Enemy.prototype.index = function() {
+Game_Enemy.prototype.index = function () {
     return $gameTroop.members().indexOf(this);
 };
 
-Game_Enemy.prototype.isBattleMember = function() {
+Game_Enemy.prototype.isBattleMember = function () {
     return this.index() >= 0;
 };
 
-Game_Enemy.prototype.enemyId = function() {
+Game_Enemy.prototype.enemyId = function () {
     return this._enemyId;
 };
 
-Game_Enemy.prototype.enemy = function() {
+Game_Enemy.prototype.enemy = function () {
     return $dataEnemies[this._enemyId];
 };
 
-Game_Enemy.prototype.traitObjects = function() {
+Game_Enemy.prototype.traitObjects = function () {
     return Game_Battler.prototype.traitObjects.call(this).concat(this.enemy());
 };
 
-Game_Enemy.prototype.paramBase = function(paramId) {
+Game_Enemy.prototype.paramBase = function (paramId) {
     return this.enemy().params[paramId];
 };
 
-Game_Enemy.prototype.exp = function() {
+Game_Enemy.prototype.exp = function () {
     return this.enemy().exp;
 };
 
-Game_Enemy.prototype.gold = function() {
+Game_Enemy.prototype.gold = function () {
     return this.enemy().gold;
 };
 
-Game_Enemy.prototype.makeDropItems = function() {
+Game_Enemy.prototype.makeDropItems = function () {
     const rate = this.dropItemRate();
     return this.enemy().dropItems.reduce((r, di) => {
         if (di.kind > 0 && Math.random() * di.denominator < rate) {
@@ -5013,11 +5013,11 @@ Game_Enemy.prototype.makeDropItems = function() {
     }, []);
 };
 
-Game_Enemy.prototype.dropItemRate = function() {
+Game_Enemy.prototype.dropItemRate = function () {
     return $gameParty.hasDropItemDouble() ? 2 : 1;
 };
 
-Game_Enemy.prototype.itemObject = function(kind, dataId) {
+Game_Enemy.prototype.itemObject = function (kind, dataId) {
     if (kind === 1) {
         return $dataItems[dataId];
     } else if (kind === 2) {
@@ -5029,66 +5029,66 @@ Game_Enemy.prototype.itemObject = function(kind, dataId) {
     }
 };
 
-Game_Enemy.prototype.isSpriteVisible = function() {
+Game_Enemy.prototype.isSpriteVisible = function () {
     return true;
 };
 
-Game_Enemy.prototype.screenX = function() {
+Game_Enemy.prototype.screenX = function () {
     return this._screenX;
 };
 
-Game_Enemy.prototype.screenY = function() {
+Game_Enemy.prototype.screenY = function () {
     return this._screenY;
 };
 
-Game_Enemy.prototype.battlerName = function() {
+Game_Enemy.prototype.battlerName = function () {
     return this.enemy().battlerName;
 };
 
-Game_Enemy.prototype.battlerHue = function() {
+Game_Enemy.prototype.battlerHue = function () {
     return this.enemy().battlerHue;
 };
 
-Game_Enemy.prototype.originalName = function() {
+Game_Enemy.prototype.originalName = function () {
     return this.enemy().name;
 };
 
-Game_Enemy.prototype.name = function() {
+Game_Enemy.prototype.name = function () {
     return this.originalName() + (this._plural ? this._letter : "");
 };
 
-Game_Enemy.prototype.isLetterEmpty = function() {
+Game_Enemy.prototype.isLetterEmpty = function () {
     return this._letter === "";
 };
 
-Game_Enemy.prototype.setLetter = function(letter) {
+Game_Enemy.prototype.setLetter = function (letter) {
     this._letter = letter;
 };
 
-Game_Enemy.prototype.setPlural = function(plural) {
+Game_Enemy.prototype.setPlural = function (plural) {
     this._plural = plural;
 };
 
-Game_Enemy.prototype.performActionStart = function(action) {
+Game_Enemy.prototype.performActionStart = function (action) {
     Game_Battler.prototype.performActionStart.call(this, action);
     this.requestEffect("whiten");
 };
 
-Game_Enemy.prototype.performAction = function(action) {
+Game_Enemy.prototype.performAction = function (action) {
     Game_Battler.prototype.performAction.call(this, action);
 };
 
-Game_Enemy.prototype.performActionEnd = function() {
+Game_Enemy.prototype.performActionEnd = function () {
     Game_Battler.prototype.performActionEnd.call(this);
 };
 
-Game_Enemy.prototype.performDamage = function() {
+Game_Enemy.prototype.performDamage = function () {
     Game_Battler.prototype.performDamage.call(this);
     SoundManager.playEnemyDamage();
     this.requestEffect("blink");
 };
 
-Game_Enemy.prototype.performCollapse = function() {
+Game_Enemy.prototype.performCollapse = function () {
     Game_Battler.prototype.performCollapse.call(this);
     switch (this.collapseType()) {
         case 0:
@@ -5105,7 +5105,7 @@ Game_Enemy.prototype.performCollapse = function() {
     }
 };
 
-Game_Enemy.prototype.transform = function(enemyId) {
+Game_Enemy.prototype.transform = function (enemyId) {
     const name = this.originalName();
     this._enemyId = enemyId;
     if (this.originalName() !== name) {
@@ -5118,7 +5118,7 @@ Game_Enemy.prototype.transform = function(enemyId) {
     }
 };
 
-Game_Enemy.prototype.meetsCondition = function(action) {
+Game_Enemy.prototype.meetsCondition = function (action) {
     const param1 = action.conditionParam1;
     const param2 = action.conditionParam2;
     switch (action.conditionType) {
@@ -5139,7 +5139,7 @@ Game_Enemy.prototype.meetsCondition = function(action) {
     }
 };
 
-Game_Enemy.prototype.meetsTurnCondition = function(param1, param2) {
+Game_Enemy.prototype.meetsTurnCondition = function (param1, param2) {
     const n = this.turnCount();
     if (param2 === 0) {
         return n === param1;
@@ -5148,33 +5148,33 @@ Game_Enemy.prototype.meetsTurnCondition = function(param1, param2) {
     }
 };
 
-Game_Enemy.prototype.meetsHpCondition = function(param1, param2) {
+Game_Enemy.prototype.meetsHpCondition = function (param1, param2) {
     return this.hpRate() >= param1 && this.hpRate() <= param2;
 };
 
-Game_Enemy.prototype.meetsMpCondition = function(param1, param2) {
+Game_Enemy.prototype.meetsMpCondition = function (param1, param2) {
     return this.mpRate() >= param1 && this.mpRate() <= param2;
 };
 
-Game_Enemy.prototype.meetsStateCondition = function(param) {
+Game_Enemy.prototype.meetsStateCondition = function (param) {
     return this.isStateAffected(param);
 };
 
-Game_Enemy.prototype.meetsPartyLevelCondition = function(param) {
+Game_Enemy.prototype.meetsPartyLevelCondition = function (param) {
     return $gameParty.highestLevel() >= param;
 };
 
-Game_Enemy.prototype.meetsSwitchCondition = function(param) {
+Game_Enemy.prototype.meetsSwitchCondition = function (param) {
     return $gameSwitches.value(param);
 };
 
-Game_Enemy.prototype.isActionValid = function(action) {
+Game_Enemy.prototype.isActionValid = function (action) {
     return (
         this.meetsCondition(action) && this.canUse($dataSkills[action.skillId])
     );
 };
 
-Game_Enemy.prototype.selectAction = function(actionList, ratingZero) {
+Game_Enemy.prototype.selectAction = function (actionList, ratingZero) {
     const sum = actionList.reduce((r, a) => r + a.rating - ratingZero, 0);
     if (sum > 0) {
         let value = Math.randomInt(sum);
@@ -5189,7 +5189,7 @@ Game_Enemy.prototype.selectAction = function(actionList, ratingZero) {
     }
 };
 
-Game_Enemy.prototype.selectAllActions = function(actionList) {
+Game_Enemy.prototype.selectAllActions = function (actionList) {
     const ratingMax = Math.max(...actionList.map(a => a.rating));
     const ratingZero = ratingMax - 3;
     actionList = actionList.filter(a => a.rating > ratingZero);
@@ -5200,7 +5200,7 @@ Game_Enemy.prototype.selectAllActions = function(actionList) {
     }
 };
 
-Game_Enemy.prototype.makeActions = function() {
+Game_Enemy.prototype.makeActions = function () {
     Game_Battler.prototype.makeActions.call(this);
     if (this.numActions() > 0) {
         const actionList = this.enemy().actions.filter(a =>
@@ -5222,11 +5222,11 @@ function Game_Actors() {
     this.initialize(...arguments);
 }
 
-Game_Actors.prototype.initialize = function() {
+Game_Actors.prototype.initialize = function () {
     this._data = [];
 };
 
-Game_Actors.prototype.actor = function(actorId) {
+Game_Actors.prototype.actor = function (actorId) {
     if ($dataActors[actorId]) {
         if (!this._data[actorId]) {
             this._data[actorId] = new Game_Actor(actorId);
@@ -5245,47 +5245,47 @@ function Game_Unit() {
     this.initialize(...arguments);
 }
 
-Game_Unit.prototype.initialize = function() {
+Game_Unit.prototype.initialize = function () {
     this._inBattle = false;
 };
 
-Game_Unit.prototype.inBattle = function() {
+Game_Unit.prototype.inBattle = function () {
     return this._inBattle;
 };
 
-Game_Unit.prototype.members = function() {
+Game_Unit.prototype.members = function () {
     return [];
 };
 
-Game_Unit.prototype.aliveMembers = function() {
+Game_Unit.prototype.aliveMembers = function () {
     return this.members().filter(member => member.isAlive());
 };
 
-Game_Unit.prototype.deadMembers = function() {
+Game_Unit.prototype.deadMembers = function () {
     return this.members().filter(member => member.isDead());
 };
 
-Game_Unit.prototype.movableMembers = function() {
+Game_Unit.prototype.movableMembers = function () {
     return this.members().filter(member => member.canMove());
 };
 
-Game_Unit.prototype.clearActions = function() {
+Game_Unit.prototype.clearActions = function () {
     for (const member of this.members()) {
         member.clearActions();
     }
 };
 
-Game_Unit.prototype.agility = function() {
+Game_Unit.prototype.agility = function () {
     const members = this.members();
     const sum = members.reduce((r, member) => r + member.agi, 0);
     return Math.max(1, sum / Math.max(1, members.length));
 };
 
-Game_Unit.prototype.tgrSum = function() {
+Game_Unit.prototype.tgrSum = function () {
     return this.aliveMembers().reduce((r, member) => r + member.tgr, 0);
 };
 
-Game_Unit.prototype.randomTarget = function() {
+Game_Unit.prototype.randomTarget = function () {
     let tgrRand = Math.random() * this.tgrSum();
     let target = null;
     for (const member of this.aliveMembers()) {
@@ -5297,48 +5297,48 @@ Game_Unit.prototype.randomTarget = function() {
     return target;
 };
 
-Game_Unit.prototype.randomDeadTarget = function() {
+Game_Unit.prototype.randomDeadTarget = function () {
     const members = this.deadMembers();
     return members.length ? members[Math.randomInt(members.length)] : null;
 };
 
-Game_Unit.prototype.smoothTarget = function(index) {
+Game_Unit.prototype.smoothTarget = function (index) {
     const member = this.members()[Math.max(0, index)];
     return member && member.isAlive() ? member : this.aliveMembers()[0];
 };
 
-Game_Unit.prototype.smoothDeadTarget = function(index) {
+Game_Unit.prototype.smoothDeadTarget = function (index) {
     const member = this.members()[Math.max(0, index)];
     return member && member.isDead() ? member : this.deadMembers()[0];
 };
 
-Game_Unit.prototype.clearResults = function() {
+Game_Unit.prototype.clearResults = function () {
     for (const member of this.members()) {
         member.clearResult();
     }
 };
 
-Game_Unit.prototype.onBattleStart = function(advantageous) {
+Game_Unit.prototype.onBattleStart = function (advantageous) {
     for (const member of this.members()) {
         member.onBattleStart(advantageous);
     }
     this._inBattle = true;
 };
 
-Game_Unit.prototype.onBattleEnd = function() {
+Game_Unit.prototype.onBattleEnd = function () {
     this._inBattle = false;
     for (const member of this.members()) {
         member.onBattleEnd();
     }
 };
 
-Game_Unit.prototype.makeActions = function() {
+Game_Unit.prototype.makeActions = function () {
     for (const member of this.members()) {
         member.makeActions();
     }
 };
 
-Game_Unit.prototype.select = function(activeMember) {
+Game_Unit.prototype.select = function (activeMember) {
     for (const member of this.members()) {
         if (member === activeMember) {
             member.select();
@@ -5348,11 +5348,11 @@ Game_Unit.prototype.select = function(activeMember) {
     }
 };
 
-Game_Unit.prototype.isAllDead = function() {
+Game_Unit.prototype.isAllDead = function () {
     return this.aliveMembers().length === 0;
 };
 
-Game_Unit.prototype.substituteBattler = function() {
+Game_Unit.prototype.substituteBattler = function () {
     for (const member of this.members()) {
         if (member.isSubstitute()) {
             return member;
@@ -5361,16 +5361,16 @@ Game_Unit.prototype.substituteBattler = function() {
     return null;
 };
 
-Game_Unit.prototype.tpbBaseSpeed = function() {
+Game_Unit.prototype.tpbBaseSpeed = function () {
     const members = this.members();
     return Math.max(...members.map(member => member.tpbBaseSpeed()));
 };
 
-Game_Unit.prototype.tpbReferenceTime = function() {
+Game_Unit.prototype.tpbReferenceTime = function () {
     return BattleManager.isActiveTpb() ? 240 : 60;
 };
 
-Game_Unit.prototype.updateTpb = function() {
+Game_Unit.prototype.updateTpb = function () {
     for (const member of this.members()) {
         member.updateTpb();
     }
@@ -5396,7 +5396,7 @@ Game_Party.ABILITY_RAISE_PREEMPTIVE = 3;
 Game_Party.ABILITY_GOLD_DOUBLE = 4;
 Game_Party.ABILITY_DROP_ITEM_DOUBLE = 5;
 
-Game_Party.prototype.initialize = function() {
+Game_Party.prototype.initialize = function () {
     Game_Unit.prototype.initialize.call(this);
     this._gold = 0;
     this._steps = 0;
@@ -5407,53 +5407,53 @@ Game_Party.prototype.initialize = function() {
     this.initAllItems();
 };
 
-Game_Party.prototype.initAllItems = function() {
+Game_Party.prototype.initAllItems = function () {
     this._items = {};
     this._weapons = {};
     this._armors = {};
 };
 
-Game_Party.prototype.exists = function() {
+Game_Party.prototype.exists = function () {
     return this._actors.length > 0;
 };
 
-Game_Party.prototype.size = function() {
+Game_Party.prototype.size = function () {
     return this.members().length;
 };
 
-Game_Party.prototype.isEmpty = function() {
+Game_Party.prototype.isEmpty = function () {
     return this.size() === 0;
 };
 
-Game_Party.prototype.members = function() {
+Game_Party.prototype.members = function () {
     return this.inBattle() ? this.battleMembers() : this.allMembers();
 };
 
-Game_Party.prototype.allMembers = function() {
+Game_Party.prototype.allMembers = function () {
     return this._actors.map(id => $gameActors.actor(id));
 };
 
-Game_Party.prototype.battleMembers = function() {
+Game_Party.prototype.battleMembers = function () {
     return this.allBattleMembers().filter(actor => actor.isAppeared());
 };
 
-Game_Party.prototype.hiddenBattleMembers = function() {
+Game_Party.prototype.hiddenBattleMembers = function () {
     return this.allBattleMembers().filter(actor => actor.isHidden());
 };
 
-Game_Party.prototype.allBattleMembers = function() {
+Game_Party.prototype.allBattleMembers = function () {
     return this.allMembers().slice(0, this.maxBattleMembers());
 };
 
-Game_Party.prototype.maxBattleMembers = function() {
+Game_Party.prototype.maxBattleMembers = function () {
     return 4;
 };
 
-Game_Party.prototype.leader = function() {
+Game_Party.prototype.leader = function () {
     return this.battleMembers()[0];
 };
 
-Game_Party.prototype.removeInvalidMembers = function() {
+Game_Party.prototype.removeInvalidMembers = function () {
     for (const actorId of this._actors) {
         if (!$dataActors[actorId]) {
             this._actors.remove(actorId);
@@ -5461,7 +5461,7 @@ Game_Party.prototype.removeInvalidMembers = function() {
     }
 };
 
-Game_Party.prototype.reviveBattleMembers = function() {
+Game_Party.prototype.reviveBattleMembers = function () {
     for (const actor of this.battleMembers()) {
         if (actor.isDead()) {
             actor.setHp(1);
@@ -5469,27 +5469,27 @@ Game_Party.prototype.reviveBattleMembers = function() {
     }
 };
 
-Game_Party.prototype.items = function() {
+Game_Party.prototype.items = function () {
     return Object.keys(this._items).map(id => $dataItems[id]);
 };
 
-Game_Party.prototype.weapons = function() {
+Game_Party.prototype.weapons = function () {
     return Object.keys(this._weapons).map(id => $dataWeapons[id]);
 };
 
-Game_Party.prototype.armors = function() {
+Game_Party.prototype.armors = function () {
     return Object.keys(this._armors).map(id => $dataArmors[id]);
 };
 
-Game_Party.prototype.equipItems = function() {
+Game_Party.prototype.equipItems = function () {
     return this.weapons().concat(this.armors());
 };
 
-Game_Party.prototype.allItems = function() {
+Game_Party.prototype.allItems = function () {
     return this.items().concat(this.equipItems());
 };
 
-Game_Party.prototype.itemContainer = function(item) {
+Game_Party.prototype.itemContainer = function (item) {
     if (!item) {
         return null;
     } else if (DataManager.isItem(item)) {
@@ -5503,7 +5503,7 @@ Game_Party.prototype.itemContainer = function(item) {
     }
 };
 
-Game_Party.prototype.setupStartingMembers = function() {
+Game_Party.prototype.setupStartingMembers = function () {
     this._actors = [];
     for (const actorId of $dataSystem.partyMembers) {
         if ($gameActors.actor(actorId)) {
@@ -5512,7 +5512,7 @@ Game_Party.prototype.setupStartingMembers = function() {
     }
 };
 
-Game_Party.prototype.name = function() {
+Game_Party.prototype.name = function () {
     const numBattleMembers = this.battleMembers().length;
     if (numBattleMembers === 0) {
         return "";
@@ -5523,12 +5523,12 @@ Game_Party.prototype.name = function() {
     }
 };
 
-Game_Party.prototype.setupBattleTest = function() {
+Game_Party.prototype.setupBattleTest = function () {
     this.setupBattleTestMembers();
     this.setupBattleTestItems();
 };
 
-Game_Party.prototype.setupBattleTestMembers = function() {
+Game_Party.prototype.setupBattleTestMembers = function () {
     for (const battler of $dataSystem.testBattlers) {
         const actor = $gameActors.actor(battler.actorId);
         if (actor) {
@@ -5540,7 +5540,7 @@ Game_Party.prototype.setupBattleTestMembers = function() {
     }
 };
 
-Game_Party.prototype.setupBattleTestItems = function() {
+Game_Party.prototype.setupBattleTestItems = function () {
     for (const item of $dataItems) {
         if (item && item.name.length > 0) {
             this.gainItem(item, this.maxItems(item));
@@ -5548,11 +5548,11 @@ Game_Party.prototype.setupBattleTestItems = function() {
     }
 };
 
-Game_Party.prototype.highestLevel = function() {
+Game_Party.prototype.highestLevel = function () {
     return Math.max(...this.members().map(actor => actor.level));
 };
 
-Game_Party.prototype.addActor = function(actorId) {
+Game_Party.prototype.addActor = function (actorId) {
     if (!this._actors.includes(actorId)) {
         this._actors.push(actorId);
         $gamePlayer.refresh();
@@ -5567,7 +5567,7 @@ Game_Party.prototype.addActor = function(actorId) {
     }
 };
 
-Game_Party.prototype.removeActor = function(actorId) {
+Game_Party.prototype.removeActor = function (actorId) {
     if (this._actors.includes(actorId)) {
         const actor = $gameActors.actor(actorId);
         const wasBattleMember = this.battleMembers().includes(actor);
@@ -5581,44 +5581,44 @@ Game_Party.prototype.removeActor = function(actorId) {
     }
 };
 
-Game_Party.prototype.gold = function() {
+Game_Party.prototype.gold = function () {
     return this._gold;
 };
 
-Game_Party.prototype.gainGold = function(amount) {
+Game_Party.prototype.gainGold = function (amount) {
     this._gold = (this._gold + amount).clamp(0, this.maxGold());
 };
 
-Game_Party.prototype.loseGold = function(amount) {
+Game_Party.prototype.loseGold = function (amount) {
     this.gainGold(-amount);
 };
 
-Game_Party.prototype.maxGold = function() {
+Game_Party.prototype.maxGold = function () {
     return 99999999;
 };
 
-Game_Party.prototype.steps = function() {
+Game_Party.prototype.steps = function () {
     return this._steps;
 };
 
-Game_Party.prototype.increaseSteps = function() {
+Game_Party.prototype.increaseSteps = function () {
     this._steps++;
 };
 
-Game_Party.prototype.numItems = function(item) {
+Game_Party.prototype.numItems = function (item) {
     const container = this.itemContainer(item);
     return container ? container[item.id] || 0 : 0;
 };
 
-Game_Party.prototype.maxItems = function(/*item*/) {
+Game_Party.prototype.maxItems = function (/*item*/) {
     return 99;
 };
 
-Game_Party.prototype.hasMaxItems = function(item) {
+Game_Party.prototype.hasMaxItems = function (item) {
     return this.numItems(item) >= this.maxItems(item);
 };
 
-Game_Party.prototype.hasItem = function(item, includeEquip) {
+Game_Party.prototype.hasItem = function (item, includeEquip) {
     if (this.numItems(item) > 0) {
         return true;
     } else if (includeEquip && this.isAnyMemberEquipped(item)) {
@@ -5628,11 +5628,11 @@ Game_Party.prototype.hasItem = function(item, includeEquip) {
     }
 };
 
-Game_Party.prototype.isAnyMemberEquipped = function(item) {
+Game_Party.prototype.isAnyMemberEquipped = function (item) {
     return this.members().some(actor => actor.equips().includes(item));
 };
 
-Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
+Game_Party.prototype.gainItem = function (item, amount, includeEquip) {
     const container = this.itemContainer(item);
     if (container) {
         const lastNumber = this.numItems(item);
@@ -5648,7 +5648,7 @@ Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
     }
 };
 
-Game_Party.prototype.discardMembersEquip = function(item, amount) {
+Game_Party.prototype.discardMembersEquip = function (item, amount) {
     let n = amount;
     for (const actor of this.members()) {
         while (n > 0 && actor.isEquipped(item)) {
@@ -5658,25 +5658,25 @@ Game_Party.prototype.discardMembersEquip = function(item, amount) {
     }
 };
 
-Game_Party.prototype.loseItem = function(item, amount, includeEquip) {
+Game_Party.prototype.loseItem = function (item, amount, includeEquip) {
     this.gainItem(item, -amount, includeEquip);
 };
 
-Game_Party.prototype.consumeItem = function(item) {
+Game_Party.prototype.consumeItem = function (item) {
     if (DataManager.isItem(item) && item.consumable) {
         this.loseItem(item, 1);
     }
 };
 
-Game_Party.prototype.canUse = function(item) {
+Game_Party.prototype.canUse = function (item) {
     return this.members().some(actor => actor.canUse(item));
 };
 
-Game_Party.prototype.canInput = function() {
+Game_Party.prototype.canInput = function () {
     return this.members().some(actor => actor.canInput());
 };
 
-Game_Party.prototype.isAllDead = function() {
+Game_Party.prototype.isAllDead = function () {
     if (Game_Unit.prototype.isAllDead.call(this)) {
         return this.inBattle() || !this.isEmpty();
     } else {
@@ -5684,17 +5684,17 @@ Game_Party.prototype.isAllDead = function() {
     }
 };
 
-Game_Party.prototype.isEscaped = function() {
+Game_Party.prototype.isEscaped = function () {
     return this.isAllDead() && this.hiddenBattleMembers().length > 0;
 };
 
-Game_Party.prototype.onPlayerWalk = function() {
+Game_Party.prototype.onPlayerWalk = function () {
     for (const actor of this.members()) {
         actor.onPlayerWalk();
     }
 };
 
-Game_Party.prototype.menuActor = function() {
+Game_Party.prototype.menuActor = function () {
     let actor = $gameActors.actor(this._menuActorId);
     if (!this.members().includes(actor)) {
         actor = this.members()[0];
@@ -5702,11 +5702,11 @@ Game_Party.prototype.menuActor = function() {
     return actor;
 };
 
-Game_Party.prototype.setMenuActor = function(actor) {
+Game_Party.prototype.setMenuActor = function (actor) {
     this._menuActorId = actor.actorId();
 };
 
-Game_Party.prototype.makeMenuActorNext = function() {
+Game_Party.prototype.makeMenuActorNext = function () {
     let index = this.members().indexOf(this.menuActor());
     if (index >= 0) {
         index = (index + 1) % this.members().length;
@@ -5716,7 +5716,7 @@ Game_Party.prototype.makeMenuActorNext = function() {
     }
 };
 
-Game_Party.prototype.makeMenuActorPrevious = function() {
+Game_Party.prototype.makeMenuActorPrevious = function () {
     let index = this.members().indexOf(this.menuActor());
     if (index >= 0) {
         index = (index + this.members().length - 1) % this.members().length;
@@ -5726,7 +5726,7 @@ Game_Party.prototype.makeMenuActorPrevious = function() {
     }
 };
 
-Game_Party.prototype.targetActor = function() {
+Game_Party.prototype.targetActor = function () {
     let actor = $gameActors.actor(this._targetActorId);
     if (!this.members().includes(actor)) {
         actor = this.members()[0];
@@ -5734,68 +5734,68 @@ Game_Party.prototype.targetActor = function() {
     return actor;
 };
 
-Game_Party.prototype.setTargetActor = function(actor) {
+Game_Party.prototype.setTargetActor = function (actor) {
     this._targetActorId = actor.actorId();
 };
 
-Game_Party.prototype.lastItem = function() {
+Game_Party.prototype.lastItem = function () {
     return this._lastItem.object();
 };
 
-Game_Party.prototype.setLastItem = function(item) {
+Game_Party.prototype.setLastItem = function (item) {
     this._lastItem.setObject(item);
 };
 
-Game_Party.prototype.swapOrder = function(index1, index2) {
+Game_Party.prototype.swapOrder = function (index1, index2) {
     const temp = this._actors[index1];
     this._actors[index1] = this._actors[index2];
     this._actors[index2] = temp;
     $gamePlayer.refresh();
 };
 
-Game_Party.prototype.charactersForSavefile = function() {
+Game_Party.prototype.charactersForSavefile = function () {
     return this.battleMembers().map(actor => [
         actor.characterName(),
         actor.characterIndex()
     ]);
 };
 
-Game_Party.prototype.facesForSavefile = function() {
+Game_Party.prototype.facesForSavefile = function () {
     return this.battleMembers().map(actor => [
         actor.faceName(),
         actor.faceIndex()
     ]);
 };
 
-Game_Party.prototype.partyAbility = function(abilityId) {
+Game_Party.prototype.partyAbility = function (abilityId) {
     return this.battleMembers().some(actor => actor.partyAbility(abilityId));
 };
 
-Game_Party.prototype.hasEncounterHalf = function() {
+Game_Party.prototype.hasEncounterHalf = function () {
     return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_HALF);
 };
 
-Game_Party.prototype.hasEncounterNone = function() {
+Game_Party.prototype.hasEncounterNone = function () {
     return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_NONE);
 };
 
-Game_Party.prototype.hasCancelSurprise = function() {
+Game_Party.prototype.hasCancelSurprise = function () {
     return this.partyAbility(Game_Party.ABILITY_CANCEL_SURPRISE);
 };
 
-Game_Party.prototype.hasRaisePreemptive = function() {
+Game_Party.prototype.hasRaisePreemptive = function () {
     return this.partyAbility(Game_Party.ABILITY_RAISE_PREEMPTIVE);
 };
 
-Game_Party.prototype.hasGoldDouble = function() {
+Game_Party.prototype.hasGoldDouble = function () {
     return this.partyAbility(Game_Party.ABILITY_GOLD_DOUBLE);
 };
 
-Game_Party.prototype.hasDropItemDouble = function() {
+Game_Party.prototype.hasDropItemDouble = function () {
     return this.partyAbility(Game_Party.ABILITY_DROP_ITEM_DOUBLE);
 };
 
-Game_Party.prototype.ratePreemptive = function(troopAgi) {
+Game_Party.prototype.ratePreemptive = function (troopAgi) {
     let rate = this.agility() >= troopAgi ? 0.05 : 0.03;
     if (this.hasRaisePreemptive()) {
         rate *= 4;
@@ -5803,7 +5803,7 @@ Game_Party.prototype.ratePreemptive = function(troopAgi) {
     return rate;
 };
 
-Game_Party.prototype.rateSurprise = function(troopAgi) {
+Game_Party.prototype.rateSurprise = function (troopAgi) {
     let rate = this.agility() >= troopAgi ? 0.03 : 0.05;
     if (this.hasCancelSurprise()) {
         rate = 0;
@@ -5811,31 +5811,31 @@ Game_Party.prototype.rateSurprise = function(troopAgi) {
     return rate;
 };
 
-Game_Party.prototype.performVictory = function() {
+Game_Party.prototype.performVictory = function () {
     for (const actor of this.members()) {
         actor.performVictory();
     }
 };
 
-Game_Party.prototype.performEscape = function() {
+Game_Party.prototype.performEscape = function () {
     for (const actor of this.members()) {
         actor.performEscape();
     }
 };
 
-Game_Party.prototype.removeBattleStates = function() {
+Game_Party.prototype.removeBattleStates = function () {
     for (const actor of this.members()) {
         actor.removeBattleStates();
     }
 };
 
-Game_Party.prototype.requestMotionRefresh = function() {
+Game_Party.prototype.requestMotionRefresh = function () {
     for (const actor of this.members()) {
         actor.requestMotionRefresh();
     }
 };
 
-Game_Party.prototype.onEscapeFailure = function() {
+Game_Party.prototype.onEscapeFailure = function () {
     for (const actor of this.members()) {
         actor.onEscapeFailure();
     }
@@ -5855,38 +5855,38 @@ Game_Troop.prototype.constructor = Game_Troop;
 
 // prettier-ignore
 Game_Troop.LETTER_TABLE_HALF = [
-    " A"," B"," C"," D"," E"," F"," G"," H"," I"," J"," K"," L"," M",
-    " N"," O"," P"," Q"," R"," S"," T"," U"," V"," W"," X"," Y"," Z"
+    " A", " B", " C", " D", " E", " F", " G", " H", " I", " J", " K", " L", " M",
+    " N", " O", " P", " Q", " R", " S", " T", " U", " V", " W", " X", " Y", " Z"
 ];
 // prettier-ignore
 Game_Troop.LETTER_TABLE_FULL = [
-    "Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ","Ｊ","Ｋ","Ｌ","Ｍ",
-    "Ｎ","Ｏ","Ｐ","Ｑ","Ｒ","Ｓ","Ｔ","Ｕ","Ｖ","Ｗ","Ｘ","Ｙ","Ｚ"
+    "Ａ", "Ｂ", "Ｃ", "Ｄ", "Ｅ", "Ｆ", "Ｇ", "Ｈ", "Ｉ", "Ｊ", "Ｋ", "Ｌ", "Ｍ",
+    "Ｎ", "Ｏ", "Ｐ", "Ｑ", "Ｒ", "Ｓ", "Ｔ", "Ｕ", "Ｖ", "Ｗ", "Ｘ", "Ｙ", "Ｚ"
 ];
 
-Game_Troop.prototype.initialize = function() {
+Game_Troop.prototype.initialize = function () {
     Game_Unit.prototype.initialize.call(this);
     this._interpreter = new Game_Interpreter();
     this.clear();
 };
 
-Game_Troop.prototype.isEventRunning = function() {
+Game_Troop.prototype.isEventRunning = function () {
     return this._interpreter.isRunning();
 };
 
-Game_Troop.prototype.updateInterpreter = function() {
+Game_Troop.prototype.updateInterpreter = function () {
     this._interpreter.update();
 };
 
-Game_Troop.prototype.turnCount = function() {
+Game_Troop.prototype.turnCount = function () {
     return this._turnCount;
 };
 
-Game_Troop.prototype.members = function() {
+Game_Troop.prototype.members = function () {
     return this._enemies;
 };
 
-Game_Troop.prototype.clear = function() {
+Game_Troop.prototype.clear = function () {
     this._interpreter.clear();
     this._troopId = 0;
     this._eventFlags = {};
@@ -5895,11 +5895,11 @@ Game_Troop.prototype.clear = function() {
     this._namesCount = {};
 };
 
-Game_Troop.prototype.troop = function() {
+Game_Troop.prototype.troop = function () {
     return $dataTroops[this._troopId];
 };
 
-Game_Troop.prototype.setup = function(troopId) {
+Game_Troop.prototype.setup = function (troopId) {
     this.clear();
     this._troopId = troopId;
     this._enemies = [];
@@ -5918,7 +5918,7 @@ Game_Troop.prototype.setup = function(troopId) {
     this.makeUniqueNames();
 };
 
-Game_Troop.prototype.makeUniqueNames = function() {
+Game_Troop.prototype.makeUniqueNames = function () {
     const table = this.letterTable();
     for (const enemy of this.members()) {
         if (enemy.isAlive() && enemy.isLetterEmpty()) {
@@ -5931,7 +5931,7 @@ Game_Troop.prototype.makeUniqueNames = function() {
     this.updatePluralFlags();
 };
 
-Game_Troop.prototype.updatePluralFlags = function() {
+Game_Troop.prototype.updatePluralFlags = function () {
     for (const enemy of this.members()) {
         const name = enemy.originalName();
         if (this._namesCount[name] >= 2) {
@@ -5940,13 +5940,13 @@ Game_Troop.prototype.updatePluralFlags = function() {
     }
 };
 
-Game_Troop.prototype.letterTable = function() {
+Game_Troop.prototype.letterTable = function () {
     return $gameSystem.isCJK()
         ? Game_Troop.LETTER_TABLE_FULL
         : Game_Troop.LETTER_TABLE_HALF;
 };
 
-Game_Troop.prototype.enemyNames = function() {
+Game_Troop.prototype.enemyNames = function () {
     const names = [];
     for (const enemy of this.members()) {
         const name = enemy.originalName();
@@ -5957,7 +5957,7 @@ Game_Troop.prototype.enemyNames = function() {
     return names;
 };
 
-Game_Troop.prototype.meetsConditions = function(page) {
+Game_Troop.prototype.meetsConditions = function (page) {
     const c = page.conditions;
     if (
         !c.turnEnding &&
@@ -6004,7 +6004,7 @@ Game_Troop.prototype.meetsConditions = function(page) {
     return true;
 };
 
-Game_Troop.prototype.setupBattleEvent = function() {
+Game_Troop.prototype.setupBattleEvent = function () {
     if (!this._interpreter.isRunning()) {
         if (this._interpreter.setupReservedCommonEvent()) {
             return;
@@ -6023,7 +6023,7 @@ Game_Troop.prototype.setupBattleEvent = function() {
     }
 };
 
-Game_Troop.prototype.increaseTurn = function() {
+Game_Troop.prototype.increaseTurn = function () {
     const pages = this.troop().pages;
     for (let i = 0; i < pages.length; i++) {
         const page = pages[i];
@@ -6034,25 +6034,25 @@ Game_Troop.prototype.increaseTurn = function() {
     this._turnCount++;
 };
 
-Game_Troop.prototype.expTotal = function() {
+Game_Troop.prototype.expTotal = function () {
     return this.deadMembers().reduce((r, enemy) => r + enemy.exp(), 0);
 };
 
-Game_Troop.prototype.goldTotal = function() {
+Game_Troop.prototype.goldTotal = function () {
     const members = this.deadMembers();
     return members.reduce((r, enemy) => r + enemy.gold(), 0) * this.goldRate();
 };
 
-Game_Troop.prototype.goldRate = function() {
+Game_Troop.prototype.goldRate = function () {
     return $gameParty.hasGoldDouble() ? 2 : 1;
 };
 
-Game_Troop.prototype.makeDropItems = function() {
+Game_Troop.prototype.makeDropItems = function () {
     const members = this.deadMembers();
     return members.reduce((r, enemy) => r.concat(enemy.makeDropItems()), []);
 };
 
-Game_Troop.prototype.isTpbTurnEnd = function() {
+Game_Troop.prototype.isTpbTurnEnd = function () {
     const members = this.members();
     const turnMax = Math.max(...members.map(member => member.turnCount()));
     return turnMax > this._turnCount;
@@ -6068,7 +6068,7 @@ function Game_Map() {
     this.initialize(...arguments);
 }
 
-Game_Map.prototype.initialize = function() {
+Game_Map.prototype.initialize = function () {
     this._interpreter = new Game_Interpreter();
     this._mapId = 0;
     this._tilesetId = 0;
@@ -6094,7 +6094,7 @@ Game_Map.prototype.initialize = function() {
     this.createVehicles();
 };
 
-Game_Map.prototype.setup = function(mapId) {
+Game_Map.prototype.setup = function (mapId) {
     if (!$dataMap) {
         throw new Error("The map data is not available");
     }
@@ -6110,80 +6110,80 @@ Game_Map.prototype.setup = function(mapId) {
     this._needsRefresh = false;
 };
 
-Game_Map.prototype.isEventRunning = function() {
+Game_Map.prototype.isEventRunning = function () {
     return this._interpreter.isRunning() || this.isAnyEventStarting();
 };
 
-Game_Map.prototype.tileWidth = function() {
+Game_Map.prototype.tileWidth = function () {
     return 48;
 };
 
-Game_Map.prototype.tileHeight = function() {
+Game_Map.prototype.tileHeight = function () {
     return 48;
 };
 
-Game_Map.prototype.mapId = function() {
+Game_Map.prototype.mapId = function () {
     return this._mapId;
 };
 
-Game_Map.prototype.tilesetId = function() {
+Game_Map.prototype.tilesetId = function () {
     return this._tilesetId;
 };
 
-Game_Map.prototype.displayX = function() {
+Game_Map.prototype.displayX = function () {
     return this._displayX;
 };
 
-Game_Map.prototype.displayY = function() {
+Game_Map.prototype.displayY = function () {
     return this._displayY;
 };
 
-Game_Map.prototype.parallaxName = function() {
+Game_Map.prototype.parallaxName = function () {
     return this._parallaxName;
 };
 
-Game_Map.prototype.battleback1Name = function() {
+Game_Map.prototype.battleback1Name = function () {
     return this._battleback1Name;
 };
 
-Game_Map.prototype.battleback2Name = function() {
+Game_Map.prototype.battleback2Name = function () {
     return this._battleback2Name;
 };
 
-Game_Map.prototype.requestRefresh = function() {
+Game_Map.prototype.requestRefresh = function () {
     this._needsRefresh = true;
 };
 
-Game_Map.prototype.isNameDisplayEnabled = function() {
+Game_Map.prototype.isNameDisplayEnabled = function () {
     return this._nameDisplay;
 };
 
-Game_Map.prototype.disableNameDisplay = function() {
+Game_Map.prototype.disableNameDisplay = function () {
     this._nameDisplay = false;
 };
 
-Game_Map.prototype.enableNameDisplay = function() {
+Game_Map.prototype.enableNameDisplay = function () {
     this._nameDisplay = true;
 };
 
-Game_Map.prototype.createVehicles = function() {
+Game_Map.prototype.createVehicles = function () {
     this._vehicles = [];
     this._vehicles[0] = new Game_Vehicle("boat");
     this._vehicles[1] = new Game_Vehicle("ship");
     this._vehicles[2] = new Game_Vehicle("airship");
 };
 
-Game_Map.prototype.refereshVehicles = function() {
+Game_Map.prototype.refereshVehicles = function () {
     for (const vehicle of this._vehicles) {
         vehicle.refresh();
     }
 };
 
-Game_Map.prototype.vehicles = function() {
+Game_Map.prototype.vehicles = function () {
     return this._vehicles;
 };
 
-Game_Map.prototype.vehicle = function(type) {
+Game_Map.prototype.vehicle = function (type) {
     if (type === 0 || type === "boat") {
         return this.boat();
     } else if (type === 1 || type === "ship") {
@@ -6195,19 +6195,19 @@ Game_Map.prototype.vehicle = function(type) {
     }
 };
 
-Game_Map.prototype.boat = function() {
+Game_Map.prototype.boat = function () {
     return this._vehicles[0];
 };
 
-Game_Map.prototype.ship = function() {
+Game_Map.prototype.ship = function () {
     return this._vehicles[1];
 };
 
-Game_Map.prototype.airship = function() {
+Game_Map.prototype.airship = function () {
     return this._vehicles[2];
 };
 
-Game_Map.prototype.setupEvents = function() {
+Game_Map.prototype.setupEvents = function () {
     this._events = [];
     this._commonEvents = [];
     for (const event of $dataMap.events.filter(event => !!event)) {
@@ -6219,37 +6219,37 @@ Game_Map.prototype.setupEvents = function() {
     this.refreshTileEvents();
 };
 
-Game_Map.prototype.events = function() {
+Game_Map.prototype.events = function () {
     return this._events.filter(event => !!event);
 };
 
-Game_Map.prototype.event = function(eventId) {
+Game_Map.prototype.event = function (eventId) {
     return this._events[eventId];
 };
 
-Game_Map.prototype.eraseEvent = function(eventId) {
+Game_Map.prototype.eraseEvent = function (eventId) {
     this._events[eventId].erase();
 };
 
-Game_Map.prototype.autorunCommonEvents = function() {
+Game_Map.prototype.autorunCommonEvents = function () {
     return $dataCommonEvents.filter(
         commonEvent => commonEvent && commonEvent.trigger === 1
     );
 };
 
-Game_Map.prototype.parallelCommonEvents = function() {
+Game_Map.prototype.parallelCommonEvents = function () {
     return $dataCommonEvents.filter(
         commonEvent => commonEvent && commonEvent.trigger === 2
     );
 };
 
-Game_Map.prototype.setupScroll = function() {
+Game_Map.prototype.setupScroll = function () {
     this._scrollDirection = 2;
     this._scrollRest = 0;
     this._scrollSpeed = 4;
 };
 
-Game_Map.prototype.setupParallax = function() {
+Game_Map.prototype.setupParallax = function () {
     this._parallaxName = $dataMap.parallaxName || "";
     this._parallaxZero = ImageManager.isZeroParallax(this._parallaxName);
     this._parallaxLoopX = $dataMap.parallaxLoopX;
@@ -6260,7 +6260,7 @@ Game_Map.prototype.setupParallax = function() {
     this._parallaxY = 0;
 };
 
-Game_Map.prototype.setupBattleback = function() {
+Game_Map.prototype.setupBattleback = function () {
     if ($dataMap.specifyBattleback) {
         this._battleback1Name = $dataMap.battleback1Name;
         this._battleback2Name = $dataMap.battleback2Name;
@@ -6270,7 +6270,7 @@ Game_Map.prototype.setupBattleback = function() {
     }
 };
 
-Game_Map.prototype.setDisplayPos = function(x, y) {
+Game_Map.prototype.setDisplayPos = function (x, y) {
     if (this.isLoopHorizontal()) {
         this._displayX = x.mod(this.width());
         this._parallaxX = x;
@@ -6289,7 +6289,7 @@ Game_Map.prototype.setDisplayPos = function(x, y) {
     }
 };
 
-Game_Map.prototype.parallaxOx = function() {
+Game_Map.prototype.parallaxOx = function () {
     if (this._parallaxZero) {
         return this._parallaxX * this.tileWidth();
     } else if (this._parallaxLoopX) {
@@ -6299,7 +6299,7 @@ Game_Map.prototype.parallaxOx = function() {
     }
 };
 
-Game_Map.prototype.parallaxOy = function() {
+Game_Map.prototype.parallaxOy = function () {
     if (this._parallaxZero) {
         return this._parallaxY * this.tileHeight();
     } else if (this._parallaxLoopY) {
@@ -6309,11 +6309,11 @@ Game_Map.prototype.parallaxOy = function() {
     }
 };
 
-Game_Map.prototype.tileset = function() {
+Game_Map.prototype.tileset = function () {
     return $dataTilesets[this._tilesetId];
 };
 
-Game_Map.prototype.tilesetFlags = function() {
+Game_Map.prototype.tilesetFlags = function () {
     const tileset = this.tileset();
     if (tileset) {
         return tileset.flags;
@@ -6322,55 +6322,55 @@ Game_Map.prototype.tilesetFlags = function() {
     }
 };
 
-Game_Map.prototype.displayName = function() {
+Game_Map.prototype.displayName = function () {
     return $dataMap.displayName;
 };
 
-Game_Map.prototype.width = function() {
+Game_Map.prototype.width = function () {
     return $dataMap.width;
 };
 
-Game_Map.prototype.height = function() {
+Game_Map.prototype.height = function () {
     return $dataMap.height;
 };
 
-Game_Map.prototype.data = function() {
+Game_Map.prototype.data = function () {
     return $dataMap.data;
 };
 
-Game_Map.prototype.isLoopHorizontal = function() {
+Game_Map.prototype.isLoopHorizontal = function () {
     return $dataMap.scrollType === 2 || $dataMap.scrollType === 3;
 };
 
-Game_Map.prototype.isLoopVertical = function() {
+Game_Map.prototype.isLoopVertical = function () {
     return $dataMap.scrollType === 1 || $dataMap.scrollType === 3;
 };
 
-Game_Map.prototype.isDashDisabled = function() {
+Game_Map.prototype.isDashDisabled = function () {
     return $dataMap.disableDashing;
 };
 
-Game_Map.prototype.encounterList = function() {
+Game_Map.prototype.encounterList = function () {
     return $dataMap.encounterList;
 };
 
-Game_Map.prototype.encounterStep = function() {
+Game_Map.prototype.encounterStep = function () {
     return $dataMap.encounterStep;
 };
 
-Game_Map.prototype.isOverworld = function() {
+Game_Map.prototype.isOverworld = function () {
     return this.tileset() && this.tileset().mode === 0;
 };
 
-Game_Map.prototype.screenTileX = function() {
+Game_Map.prototype.screenTileX = function () {
     return Math.round((Graphics.width / this.tileWidth()) * 16) / 16;
 };
 
-Game_Map.prototype.screenTileY = function() {
+Game_Map.prototype.screenTileY = function () {
     return Math.round((Graphics.height / this.tileHeight()) * 16) / 16;
 };
 
-Game_Map.prototype.adjustX = function(x) {
+Game_Map.prototype.adjustX = function (x) {
     if (
         this.isLoopHorizontal() &&
         x < this._displayX - (this.width() - this.screenTileX()) / 2
@@ -6381,7 +6381,7 @@ Game_Map.prototype.adjustX = function(x) {
     }
 };
 
-Game_Map.prototype.adjustY = function(y) {
+Game_Map.prototype.adjustY = function (y) {
     if (
         this.isLoopVertical() &&
         y < this._displayY - (this.height() - this.screenTileY()) / 2
@@ -6392,31 +6392,31 @@ Game_Map.prototype.adjustY = function(y) {
     }
 };
 
-Game_Map.prototype.roundX = function(x) {
+Game_Map.prototype.roundX = function (x) {
     return this.isLoopHorizontal() ? x.mod(this.width()) : x;
 };
 
-Game_Map.prototype.roundY = function(y) {
+Game_Map.prototype.roundY = function (y) {
     return this.isLoopVertical() ? y.mod(this.height()) : y;
 };
 
-Game_Map.prototype.xWithDirection = function(x, d) {
+Game_Map.prototype.xWithDirection = function (x, d) {
     return x + (d === 6 ? 1 : d === 4 ? -1 : 0);
 };
 
-Game_Map.prototype.yWithDirection = function(y, d) {
+Game_Map.prototype.yWithDirection = function (y, d) {
     return y + (d === 2 ? 1 : d === 8 ? -1 : 0);
 };
 
-Game_Map.prototype.roundXWithDirection = function(x, d) {
+Game_Map.prototype.roundXWithDirection = function (x, d) {
     return this.roundX(x + (d === 6 ? 1 : d === 4 ? -1 : 0));
 };
 
-Game_Map.prototype.roundYWithDirection = function(y, d) {
+Game_Map.prototype.roundYWithDirection = function (y, d) {
     return this.roundY(y + (d === 2 ? 1 : d === 8 ? -1 : 0));
 };
 
-Game_Map.prototype.deltaX = function(x1, x2) {
+Game_Map.prototype.deltaX = function (x1, x2) {
     let result = x1 - x2;
     if (this.isLoopHorizontal() && Math.abs(result) > this.width() / 2) {
         if (result < 0) {
@@ -6428,7 +6428,7 @@ Game_Map.prototype.deltaX = function(x1, x2) {
     return result;
 };
 
-Game_Map.prototype.deltaY = function(y1, y2) {
+Game_Map.prototype.deltaY = function (y1, y2) {
     let result = y1 - y2;
     if (this.isLoopVertical() && Math.abs(result) > this.height() / 2) {
         if (result < 0) {
@@ -6440,25 +6440,25 @@ Game_Map.prototype.deltaY = function(y1, y2) {
     return result;
 };
 
-Game_Map.prototype.distance = function(x1, y1, x2, y2) {
+Game_Map.prototype.distance = function (x1, y1, x2, y2) {
     return Math.abs(this.deltaX(x1, x2)) + Math.abs(this.deltaY(y1, y2));
 };
 
-Game_Map.prototype.canvasToMapX = function(x) {
+Game_Map.prototype.canvasToMapX = function (x) {
     const tileWidth = this.tileWidth();
     const originX = this._displayX * tileWidth;
     const mapX = Math.floor((originX + x) / tileWidth);
     return this.roundX(mapX);
 };
 
-Game_Map.prototype.canvasToMapY = function(y) {
+Game_Map.prototype.canvasToMapY = function (y) {
     const tileHeight = this.tileHeight();
     const originY = this._displayY * tileHeight;
     const mapY = Math.floor((originY + y) / tileHeight);
     return this.roundY(mapY);
 };
 
-Game_Map.prototype.autoplay = function() {
+Game_Map.prototype.autoplay = function () {
     if ($dataMap.autoplayBgm) {
         if ($gamePlayer.isInVehicle()) {
             $gameSystem.saveWalkingBgm2();
@@ -6471,13 +6471,13 @@ Game_Map.prototype.autoplay = function() {
     }
 };
 
-Game_Map.prototype.refreshIfNeeded = function() {
+Game_Map.prototype.refreshIfNeeded = function () {
     if (this._needsRefresh) {
         this.refresh();
     }
 };
 
-Game_Map.prototype.refresh = function() {
+Game_Map.prototype.refresh = function () {
     for (const event of this.events()) {
         event.refresh();
     }
@@ -6488,28 +6488,28 @@ Game_Map.prototype.refresh = function() {
     this._needsRefresh = false;
 };
 
-Game_Map.prototype.refreshTileEvents = function() {
+Game_Map.prototype.refreshTileEvents = function () {
     this._tileEvents = this.events().filter(event => event.isTile());
 };
 
-Game_Map.prototype.eventsXy = function(x, y) {
+Game_Map.prototype.eventsXy = function (x, y) {
     return this.events().filter(event => event.pos(x, y));
 };
 
-Game_Map.prototype.eventsXyNt = function(x, y) {
+Game_Map.prototype.eventsXyNt = function (x, y) {
     return this.events().filter(event => event.posNt(x, y));
 };
 
-Game_Map.prototype.tileEventsXy = function(x, y) {
+Game_Map.prototype.tileEventsXy = function (x, y) {
     return this._tileEvents.filter(event => event.posNt(x, y));
 };
 
-Game_Map.prototype.eventIdXy = function(x, y) {
+Game_Map.prototype.eventIdXy = function (x, y) {
     const list = this.eventsXy(x, y);
     return list.length === 0 ? 0 : list[0].eventId();
 };
 
-Game_Map.prototype.scrollDown = function(distance) {
+Game_Map.prototype.scrollDown = function (distance) {
     if (this.isLoopVertical()) {
         this._displayY += distance;
         this._displayY %= $dataMap.height;
@@ -6526,7 +6526,7 @@ Game_Map.prototype.scrollDown = function(distance) {
     }
 };
 
-Game_Map.prototype.scrollLeft = function(distance) {
+Game_Map.prototype.scrollLeft = function (distance) {
     if (this.isLoopHorizontal()) {
         this._displayX += $dataMap.width - distance;
         this._displayX %= $dataMap.width;
@@ -6540,7 +6540,7 @@ Game_Map.prototype.scrollLeft = function(distance) {
     }
 };
 
-Game_Map.prototype.scrollRight = function(distance) {
+Game_Map.prototype.scrollRight = function (distance) {
     if (this.isLoopHorizontal()) {
         this._displayX += distance;
         this._displayX %= $dataMap.width;
@@ -6557,7 +6557,7 @@ Game_Map.prototype.scrollRight = function(distance) {
     }
 };
 
-Game_Map.prototype.scrollUp = function(distance) {
+Game_Map.prototype.scrollUp = function (distance) {
     if (this.isLoopVertical()) {
         this._displayY += $dataMap.height - distance;
         this._displayY %= $dataMap.height;
@@ -6571,11 +6571,11 @@ Game_Map.prototype.scrollUp = function(distance) {
     }
 };
 
-Game_Map.prototype.isValid = function(x, y) {
+Game_Map.prototype.isValid = function (x, y) {
     return x >= 0 && x < this.width() && y >= 0 && y < this.height();
 };
 
-Game_Map.prototype.checkPassage = function(x, y, bit) {
+Game_Map.prototype.checkPassage = function (x, y, bit) {
     const flags = this.tilesetFlags();
     const tiles = this.allTiles(x, y);
     for (const tile of tiles) {
@@ -6596,13 +6596,13 @@ Game_Map.prototype.checkPassage = function(x, y, bit) {
     return false;
 };
 
-Game_Map.prototype.tileId = function(x, y, z) {
+Game_Map.prototype.tileId = function (x, y, z) {
     const width = $dataMap.width;
     const height = $dataMap.height;
     return $dataMap.data[(z * height + y) * width + x] || 0;
 };
 
-Game_Map.prototype.layeredTiles = function(x, y) {
+Game_Map.prototype.layeredTiles = function (x, y) {
     const tiles = [];
     for (let i = 0; i < 4; i++) {
         tiles.push(this.tileId(x, y, 3 - i));
@@ -6610,54 +6610,54 @@ Game_Map.prototype.layeredTiles = function(x, y) {
     return tiles;
 };
 
-Game_Map.prototype.allTiles = function(x, y) {
+Game_Map.prototype.allTiles = function (x, y) {
     const tiles = this.tileEventsXy(x, y).map(event => event.tileId());
     return tiles.concat(this.layeredTiles(x, y));
 };
 
-Game_Map.prototype.autotileType = function(x, y, z) {
+Game_Map.prototype.autotileType = function (x, y, z) {
     const tileId = this.tileId(x, y, z);
     return tileId >= 2048 ? Math.floor((tileId - 2048) / 48) : -1;
 };
 
-Game_Map.prototype.isPassable = function(x, y, d) {
+Game_Map.prototype.isPassable = function (x, y, d) {
     return this.checkPassage(x, y, (1 << (d / 2 - 1)) & 0x0f);
 };
 
-Game_Map.prototype.isBoatPassable = function(x, y) {
+Game_Map.prototype.isBoatPassable = function (x, y) {
     return this.checkPassage(x, y, 0x0200);
 };
 
-Game_Map.prototype.isShipPassable = function(x, y) {
+Game_Map.prototype.isShipPassable = function (x, y) {
     return this.checkPassage(x, y, 0x0400);
 };
 
-Game_Map.prototype.isAirshipLandOk = function(x, y) {
+Game_Map.prototype.isAirshipLandOk = function (x, y) {
     return this.checkPassage(x, y, 0x0800) && this.checkPassage(x, y, 0x0f);
 };
 
-Game_Map.prototype.checkLayeredTilesFlags = function(x, y, bit) {
+Game_Map.prototype.checkLayeredTilesFlags = function (x, y, bit) {
     const flags = this.tilesetFlags();
     return this.layeredTiles(x, y).some(tileId => (flags[tileId] & bit) !== 0);
 };
 
-Game_Map.prototype.isLadder = function(x, y) {
+Game_Map.prototype.isLadder = function (x, y) {
     return this.isValid(x, y) && this.checkLayeredTilesFlags(x, y, 0x20);
 };
 
-Game_Map.prototype.isBush = function(x, y) {
+Game_Map.prototype.isBush = function (x, y) {
     return this.isValid(x, y) && this.checkLayeredTilesFlags(x, y, 0x40);
 };
 
-Game_Map.prototype.isCounter = function(x, y) {
+Game_Map.prototype.isCounter = function (x, y) {
     return this.isValid(x, y) && this.checkLayeredTilesFlags(x, y, 0x80);
 };
 
-Game_Map.prototype.isDamageFloor = function(x, y) {
+Game_Map.prototype.isDamageFloor = function (x, y) {
     return this.isValid(x, y) && this.checkLayeredTilesFlags(x, y, 0x100);
 };
 
-Game_Map.prototype.terrainTag = function(x, y) {
+Game_Map.prototype.terrainTag = function (x, y) {
     if (this.isValid(x, y)) {
         const flags = this.tilesetFlags();
         const tiles = this.layeredTiles(x, y);
@@ -6671,21 +6671,21 @@ Game_Map.prototype.terrainTag = function(x, y) {
     return 0;
 };
 
-Game_Map.prototype.regionId = function(x, y) {
+Game_Map.prototype.regionId = function (x, y) {
     return this.isValid(x, y) ? this.tileId(x, y, 5) : 0;
 };
 
-Game_Map.prototype.startScroll = function(direction, distance, speed) {
+Game_Map.prototype.startScroll = function (direction, distance, speed) {
     this._scrollDirection = direction;
     this._scrollRest = distance;
     this._scrollSpeed = speed;
 };
 
-Game_Map.prototype.isScrolling = function() {
+Game_Map.prototype.isScrolling = function () {
     return this._scrollRest > 0;
 };
 
-Game_Map.prototype.update = function(sceneActive) {
+Game_Map.prototype.update = function (sceneActive) {
     this.refreshIfNeeded();
     if (sceneActive) {
         this.updateInterpreter();
@@ -6696,7 +6696,7 @@ Game_Map.prototype.update = function(sceneActive) {
     this.updateParallax();
 };
 
-Game_Map.prototype.updateScroll = function() {
+Game_Map.prototype.updateScroll = function () {
     if (this.isScrolling()) {
         const lastX = this._displayX;
         const lastY = this._displayY;
@@ -6709,11 +6709,11 @@ Game_Map.prototype.updateScroll = function() {
     }
 };
 
-Game_Map.prototype.scrollDistance = function() {
+Game_Map.prototype.scrollDistance = function () {
     return Math.pow(2, this._scrollSpeed) / 256;
 };
 
-Game_Map.prototype.doScroll = function(direction, distance) {
+Game_Map.prototype.doScroll = function (direction, distance) {
     switch (direction) {
         case 2:
             this.scrollDown(distance);
@@ -6730,7 +6730,7 @@ Game_Map.prototype.doScroll = function(direction, distance) {
     }
 };
 
-Game_Map.prototype.updateEvents = function() {
+Game_Map.prototype.updateEvents = function () {
     for (const event of this.events()) {
         event.update();
     }
@@ -6739,13 +6739,13 @@ Game_Map.prototype.updateEvents = function() {
     }
 };
 
-Game_Map.prototype.updateVehicles = function() {
+Game_Map.prototype.updateVehicles = function () {
     for (const vehicle of this._vehicles) {
         vehicle.update();
     }
 };
 
-Game_Map.prototype.updateParallax = function() {
+Game_Map.prototype.updateParallax = function () {
     if (this._parallaxLoopX) {
         this._parallaxX += this._parallaxSx / this.tileWidth() / 2;
     }
@@ -6754,12 +6754,12 @@ Game_Map.prototype.updateParallax = function() {
     }
 };
 
-Game_Map.prototype.changeTileset = function(tilesetId) {
+Game_Map.prototype.changeTileset = function (tilesetId) {
     this._tilesetId = tilesetId;
     this.refresh();
 };
 
-Game_Map.prototype.changeBattleback = function(
+Game_Map.prototype.changeBattleback = function (
     battleback1Name,
     battleback2Name
 ) {
@@ -6767,7 +6767,7 @@ Game_Map.prototype.changeBattleback = function(
     this._battleback2Name = battleback2Name;
 };
 
-Game_Map.prototype.changeParallax = function(name, loopX, loopY, sx, sy) {
+Game_Map.prototype.changeParallax = function (name, loopX, loopY, sx, sy) {
     this._parallaxName = name;
     this._parallaxZero = ImageManager.isZeroParallax(this._parallaxName);
     if (this._parallaxLoopX && !loopX) {
@@ -6782,8 +6782,8 @@ Game_Map.prototype.changeParallax = function(name, loopX, loopY, sx, sy) {
     this._parallaxSy = sy;
 };
 
-Game_Map.prototype.updateInterpreter = function() {
-    for (;;) {
+Game_Map.prototype.updateInterpreter = function () {
+    for (; ;) {
         this._interpreter.update();
         if (this._interpreter.isRunning()) {
             return;
@@ -6798,13 +6798,13 @@ Game_Map.prototype.updateInterpreter = function() {
     }
 };
 
-Game_Map.prototype.unlockEvent = function(eventId) {
+Game_Map.prototype.unlockEvent = function (eventId) {
     if (this._events[eventId]) {
         this._events[eventId].unlock();
     }
 };
 
-Game_Map.prototype.setupStartingEvent = function() {
+Game_Map.prototype.setupStartingEvent = function () {
     this.refreshIfNeeded();
     if (this._interpreter.setupReservedCommonEvent()) {
         return true;
@@ -6821,7 +6821,7 @@ Game_Map.prototype.setupStartingEvent = function() {
     return false;
 };
 
-Game_Map.prototype.setupTestEvent = function() {
+Game_Map.prototype.setupTestEvent = function () {
     if (window.$testEvent) {
         this._interpreter.setup($testEvent, 0);
         $testEvent = null;
@@ -6830,7 +6830,7 @@ Game_Map.prototype.setupTestEvent = function() {
     return false;
 };
 
-Game_Map.prototype.setupStartingMapEvent = function() {
+Game_Map.prototype.setupStartingMapEvent = function () {
     for (const event of this.events()) {
         if (event.isStarting()) {
             event.clearStartingFlag();
@@ -6841,7 +6841,7 @@ Game_Map.prototype.setupStartingMapEvent = function() {
     return false;
 };
 
-Game_Map.prototype.setupAutorunCommonEvent = function() {
+Game_Map.prototype.setupAutorunCommonEvent = function () {
     for (const commonEvent of this.autorunCommonEvents()) {
         if ($gameSwitches.value(commonEvent.switchId)) {
             this._interpreter.setup(commonEvent.list);
@@ -6851,7 +6851,7 @@ Game_Map.prototype.setupAutorunCommonEvent = function() {
     return false;
 };
 
-Game_Map.prototype.isAnyEventStarting = function() {
+Game_Map.prototype.isAnyEventStarting = function () {
     return this.events().some(event => event.isStarting());
 };
 
@@ -6865,20 +6865,20 @@ function Game_CommonEvent() {
     this.initialize(...arguments);
 }
 
-Game_CommonEvent.prototype.initialize = function(commonEventId) {
+Game_CommonEvent.prototype.initialize = function (commonEventId) {
     this._commonEventId = commonEventId;
     this.refresh();
 };
 
-Game_CommonEvent.prototype.event = function() {
+Game_CommonEvent.prototype.event = function () {
     return $dataCommonEvents[this._commonEventId];
 };
 
-Game_CommonEvent.prototype.list = function() {
+Game_CommonEvent.prototype.list = function () {
     return this.event().list;
 };
 
-Game_CommonEvent.prototype.refresh = function() {
+Game_CommonEvent.prototype.refresh = function () {
     if (this.isActive()) {
         if (!this._interpreter) {
             this._interpreter = new Game_Interpreter();
@@ -6888,12 +6888,12 @@ Game_CommonEvent.prototype.refresh = function() {
     }
 };
 
-Game_CommonEvent.prototype.isActive = function() {
+Game_CommonEvent.prototype.isActive = function () {
     const event = this.event();
     return event.trigger === 2 && $gameSwitches.value(event.switchId);
 };
 
-Game_CommonEvent.prototype.update = function() {
+Game_CommonEvent.prototype.update = function () {
     if (this._interpreter) {
         if (!this._interpreter.isRunning()) {
             this._interpreter.setup(this.list());
@@ -6914,24 +6914,24 @@ function Game_CharacterBase() {
 
 Object.defineProperties(Game_CharacterBase.prototype, {
     x: {
-        get: function() {
+        get: function () {
             return this._x;
         },
         configurable: true
     },
     y: {
-        get: function() {
+        get: function () {
             return this._y;
         },
         configurable: true
     }
 });
 
-Game_CharacterBase.prototype.initialize = function() {
+Game_CharacterBase.prototype.initialize = function () {
     this.initMembers();
 };
 
-Game_CharacterBase.prototype.initMembers = function() {
+Game_CharacterBase.prototype.initMembers = function () {
     this._x = 0;
     this._y = 0;
     this._realX = 0;
@@ -6964,64 +6964,64 @@ Game_CharacterBase.prototype.initMembers = function() {
     this._movementSuccess = true;
 };
 
-Game_CharacterBase.prototype.pos = function(x, y) {
+Game_CharacterBase.prototype.pos = function (x, y) {
     return this._x === x && this._y === y;
 };
 
-Game_CharacterBase.prototype.posNt = function(x, y) {
+Game_CharacterBase.prototype.posNt = function (x, y) {
     // No through
     return this.pos(x, y) && !this.isThrough();
 };
 
-Game_CharacterBase.prototype.moveSpeed = function() {
+Game_CharacterBase.prototype.moveSpeed = function () {
     return this._moveSpeed;
 };
 
-Game_CharacterBase.prototype.setMoveSpeed = function(moveSpeed) {
+Game_CharacterBase.prototype.setMoveSpeed = function (moveSpeed) {
     this._moveSpeed = moveSpeed;
 };
 
-Game_CharacterBase.prototype.moveFrequency = function() {
+Game_CharacterBase.prototype.moveFrequency = function () {
     return this._moveFrequency;
 };
 
-Game_CharacterBase.prototype.setMoveFrequency = function(moveFrequency) {
+Game_CharacterBase.prototype.setMoveFrequency = function (moveFrequency) {
     this._moveFrequency = moveFrequency;
 };
 
-Game_CharacterBase.prototype.opacity = function() {
+Game_CharacterBase.prototype.opacity = function () {
     return this._opacity;
 };
 
-Game_CharacterBase.prototype.setOpacity = function(opacity) {
+Game_CharacterBase.prototype.setOpacity = function (opacity) {
     this._opacity = opacity;
 };
 
-Game_CharacterBase.prototype.blendMode = function() {
+Game_CharacterBase.prototype.blendMode = function () {
     return this._blendMode;
 };
 
-Game_CharacterBase.prototype.setBlendMode = function(blendMode) {
+Game_CharacterBase.prototype.setBlendMode = function (blendMode) {
     this._blendMode = blendMode;
 };
 
-Game_CharacterBase.prototype.isNormalPriority = function() {
+Game_CharacterBase.prototype.isNormalPriority = function () {
     return this._priorityType === 1;
 };
 
-Game_CharacterBase.prototype.setPriorityType = function(priorityType) {
+Game_CharacterBase.prototype.setPriorityType = function (priorityType) {
     this._priorityType = priorityType;
 };
 
-Game_CharacterBase.prototype.isMoving = function() {
+Game_CharacterBase.prototype.isMoving = function () {
     return this._realX !== this._x || this._realY !== this._y;
 };
 
-Game_CharacterBase.prototype.isJumping = function() {
+Game_CharacterBase.prototype.isJumping = function () {
     return this._jumpCount > 0;
 };
 
-Game_CharacterBase.prototype.jumpHeight = function() {
+Game_CharacterBase.prototype.jumpHeight = function () {
     return (
         (this._jumpPeak * this._jumpPeak -
             Math.pow(Math.abs(this._jumpCount - this._jumpPeak), 2)) /
@@ -7029,46 +7029,46 @@ Game_CharacterBase.prototype.jumpHeight = function() {
     );
 };
 
-Game_CharacterBase.prototype.isStopping = function() {
+Game_CharacterBase.prototype.isStopping = function () {
     return !this.isMoving() && !this.isJumping();
 };
 
-Game_CharacterBase.prototype.checkStop = function(threshold) {
+Game_CharacterBase.prototype.checkStop = function (threshold) {
     return this._stopCount > threshold;
 };
 
-Game_CharacterBase.prototype.resetStopCount = function() {
+Game_CharacterBase.prototype.resetStopCount = function () {
     this._stopCount = 0;
 };
 
-Game_CharacterBase.prototype.realMoveSpeed = function() {
+Game_CharacterBase.prototype.realMoveSpeed = function () {
     return this._moveSpeed + (this.isDashing() ? 1 : 0);
 };
 
-Game_CharacterBase.prototype.distancePerFrame = function() {
+Game_CharacterBase.prototype.distancePerFrame = function () {
     return Math.pow(2, this.realMoveSpeed()) / 256;
 };
 
-Game_CharacterBase.prototype.isDashing = function() {
+Game_CharacterBase.prototype.isDashing = function () {
     return false;
 };
 
-Game_CharacterBase.prototype.isDebugThrough = function() {
+Game_CharacterBase.prototype.isDebugThrough = function () {
     return false;
 };
 
-Game_CharacterBase.prototype.straighten = function() {
+Game_CharacterBase.prototype.straighten = function () {
     if (this.hasWalkAnime() || this.hasStepAnime()) {
         this._pattern = 1;
     }
     this._animationCount = 0;
 };
 
-Game_CharacterBase.prototype.reverseDir = function(d) {
+Game_CharacterBase.prototype.reverseDir = function (d) {
     return 10 - d;
 };
 
-Game_CharacterBase.prototype.canPass = function(x, y, d) {
+Game_CharacterBase.prototype.canPass = function (x, y, d) {
     const x2 = $gameMap.roundXWithDirection(x, d);
     const y2 = $gameMap.roundYWithDirection(y, d);
     if (!$gameMap.isValid(x2, y2)) {
@@ -7086,7 +7086,7 @@ Game_CharacterBase.prototype.canPass = function(x, y, d) {
     return true;
 };
 
-Game_CharacterBase.prototype.canPassDiagonally = function(x, y, horz, vert) {
+Game_CharacterBase.prototype.canPassDiagonally = function (x, y, horz, vert) {
     const x2 = $gameMap.roundXWithDirection(x, horz);
     const y2 = $gameMap.roundYWithDirection(y, vert);
     if (this.canPass(x, y, vert) && this.canPass(x, y2, horz)) {
@@ -7098,34 +7098,34 @@ Game_CharacterBase.prototype.canPassDiagonally = function(x, y, horz, vert) {
     return false;
 };
 
-Game_CharacterBase.prototype.isMapPassable = function(x, y, d) {
+Game_CharacterBase.prototype.isMapPassable = function (x, y, d) {
     const x2 = $gameMap.roundXWithDirection(x, d);
     const y2 = $gameMap.roundYWithDirection(y, d);
     const d2 = this.reverseDir(d);
     return $gameMap.isPassable(x, y, d) && $gameMap.isPassable(x2, y2, d2);
 };
 
-Game_CharacterBase.prototype.isCollidedWithCharacters = function(x, y) {
+Game_CharacterBase.prototype.isCollidedWithCharacters = function (x, y) {
     return this.isCollidedWithEvents(x, y) || this.isCollidedWithVehicles(x, y);
 };
 
-Game_CharacterBase.prototype.isCollidedWithEvents = function(x, y) {
+Game_CharacterBase.prototype.isCollidedWithEvents = function (x, y) {
     const events = $gameMap.eventsXyNt(x, y);
     return events.some(event => event.isNormalPriority());
 };
 
-Game_CharacterBase.prototype.isCollidedWithVehicles = function(x, y) {
+Game_CharacterBase.prototype.isCollidedWithVehicles = function (x, y) {
     return $gameMap.boat().posNt(x, y) || $gameMap.ship().posNt(x, y);
 };
 
-Game_CharacterBase.prototype.setPosition = function(x, y) {
+Game_CharacterBase.prototype.setPosition = function (x, y) {
     this._x = Math.round(x);
     this._y = Math.round(y);
     this._realX = x;
     this._realY = y;
 };
 
-Game_CharacterBase.prototype.copyPosition = function(character) {
+Game_CharacterBase.prototype.copyPosition = function (character) {
     this._x = character._x;
     this._y = character._y;
     this._realX = character._realX;
@@ -7133,60 +7133,60 @@ Game_CharacterBase.prototype.copyPosition = function(character) {
     this._direction = character._direction;
 };
 
-Game_CharacterBase.prototype.locate = function(x, y) {
+Game_CharacterBase.prototype.locate = function (x, y) {
     this.setPosition(x, y);
     this.straighten();
     this.refreshBushDepth();
 };
 
-Game_CharacterBase.prototype.direction = function() {
+Game_CharacterBase.prototype.direction = function () {
     return this._direction;
 };
 
-Game_CharacterBase.prototype.setDirection = function(d) {
+Game_CharacterBase.prototype.setDirection = function (d) {
     if (!this.isDirectionFixed() && d) {
         this._direction = d;
     }
     this.resetStopCount();
 };
 
-Game_CharacterBase.prototype.isTile = function() {
+Game_CharacterBase.prototype.isTile = function () {
     return this._tileId > 0 && this._priorityType === 0;
 };
 
-Game_CharacterBase.prototype.isObjectCharacter = function() {
+Game_CharacterBase.prototype.isObjectCharacter = function () {
     return this._isObjectCharacter;
 };
 
-Game_CharacterBase.prototype.shiftY = function() {
+Game_CharacterBase.prototype.shiftY = function () {
     return this.isObjectCharacter() ? 0 : 6;
 };
 
-Game_CharacterBase.prototype.scrolledX = function() {
+Game_CharacterBase.prototype.scrolledX = function () {
     return $gameMap.adjustX(this._realX);
 };
 
-Game_CharacterBase.prototype.scrolledY = function() {
+Game_CharacterBase.prototype.scrolledY = function () {
     return $gameMap.adjustY(this._realY);
 };
 
-Game_CharacterBase.prototype.screenX = function() {
+Game_CharacterBase.prototype.screenX = function () {
     const tw = $gameMap.tileWidth();
     return Math.floor(this.scrolledX() * tw + tw / 2);
 };
 
-Game_CharacterBase.prototype.screenY = function() {
+Game_CharacterBase.prototype.screenY = function () {
     const th = $gameMap.tileHeight();
     return Math.floor(
         this.scrolledY() * th + th - this.shiftY() - this.jumpHeight()
     );
 };
 
-Game_CharacterBase.prototype.screenZ = function() {
+Game_CharacterBase.prototype.screenZ = function () {
     return this._priorityType * 2 + 1;
 };
 
-Game_CharacterBase.prototype.isNearTheScreen = function() {
+Game_CharacterBase.prototype.isNearTheScreen = function () {
     const gw = Graphics.width;
     const gh = Graphics.height;
     const tw = $gameMap.tileWidth();
@@ -7196,7 +7196,7 @@ Game_CharacterBase.prototype.isNearTheScreen = function() {
     return px >= -gw && px <= gw && py >= -gh && py <= gh;
 };
 
-Game_CharacterBase.prototype.update = function() {
+Game_CharacterBase.prototype.update = function () {
     if (this.isStopping()) {
         this.updateStop();
     }
@@ -7208,11 +7208,11 @@ Game_CharacterBase.prototype.update = function() {
     this.updateAnimation();
 };
 
-Game_CharacterBase.prototype.updateStop = function() {
+Game_CharacterBase.prototype.updateStop = function () {
     this._stopCount++;
 };
 
-Game_CharacterBase.prototype.updateJump = function() {
+Game_CharacterBase.prototype.updateJump = function () {
     this._jumpCount--;
     this._realX =
         (this._realX * this._jumpCount + this._x) / (this._jumpCount + 1.0);
@@ -7225,7 +7225,7 @@ Game_CharacterBase.prototype.updateJump = function() {
     }
 };
 
-Game_CharacterBase.prototype.updateMove = function() {
+Game_CharacterBase.prototype.updateMove = function () {
     if (this._x < this._realX) {
         this._realX = Math.max(this._realX - this.distancePerFrame(), this._x);
     }
@@ -7243,7 +7243,7 @@ Game_CharacterBase.prototype.updateMove = function() {
     }
 };
 
-Game_CharacterBase.prototype.updateAnimation = function() {
+Game_CharacterBase.prototype.updateAnimation = function () {
     this.updateAnimationCount();
     if (this._animationCount >= this.animationWait()) {
         this.updatePattern();
@@ -7251,11 +7251,11 @@ Game_CharacterBase.prototype.updateAnimation = function() {
     }
 };
 
-Game_CharacterBase.prototype.animationWait = function() {
+Game_CharacterBase.prototype.animationWait = function () {
     return (9 - this.realMoveSpeed()) * 3;
 };
 
-Game_CharacterBase.prototype.updateAnimationCount = function() {
+Game_CharacterBase.prototype.updateAnimationCount = function () {
     if (this.isMoving() && this.hasWalkAnime()) {
         this._animationCount += 1.5;
     } else if (this.hasStepAnime() || !this.isOriginalPattern()) {
@@ -7263,7 +7263,7 @@ Game_CharacterBase.prototype.updateAnimationCount = function() {
     }
 };
 
-Game_CharacterBase.prototype.updatePattern = function() {
+Game_CharacterBase.prototype.updatePattern = function () {
     if (!this.hasStepAnime() && this._stopCount > 0) {
         this.resetPattern();
     } else {
@@ -7271,27 +7271,27 @@ Game_CharacterBase.prototype.updatePattern = function() {
     }
 };
 
-Game_CharacterBase.prototype.maxPattern = function() {
+Game_CharacterBase.prototype.maxPattern = function () {
     return 4;
 };
 
-Game_CharacterBase.prototype.pattern = function() {
+Game_CharacterBase.prototype.pattern = function () {
     return this._pattern < 3 ? this._pattern : 1;
 };
 
-Game_CharacterBase.prototype.setPattern = function(pattern) {
+Game_CharacterBase.prototype.setPattern = function (pattern) {
     this._pattern = pattern;
 };
 
-Game_CharacterBase.prototype.isOriginalPattern = function() {
+Game_CharacterBase.prototype.isOriginalPattern = function () {
     return this.pattern() === 1;
 };
 
-Game_CharacterBase.prototype.resetPattern = function() {
+Game_CharacterBase.prototype.resetPattern = function () {
     this.setPattern(1);
 };
 
-Game_CharacterBase.prototype.refreshBushDepth = function() {
+Game_CharacterBase.prototype.refreshBushDepth = function () {
     if (
         this.isNormalPriority() &&
         !this.isObjectCharacter() &&
@@ -7306,23 +7306,23 @@ Game_CharacterBase.prototype.refreshBushDepth = function() {
     }
 };
 
-Game_CharacterBase.prototype.isOnLadder = function() {
+Game_CharacterBase.prototype.isOnLadder = function () {
     return $gameMap.isLadder(this._x, this._y);
 };
 
-Game_CharacterBase.prototype.isOnBush = function() {
+Game_CharacterBase.prototype.isOnBush = function () {
     return $gameMap.isBush(this._x, this._y);
 };
 
-Game_CharacterBase.prototype.terrainTag = function() {
+Game_CharacterBase.prototype.terrainTag = function () {
     return $gameMap.terrainTag(this._x, this._y);
 };
 
-Game_CharacterBase.prototype.regionId = function() {
+Game_CharacterBase.prototype.regionId = function () {
     return $gameMap.regionId(this._x, this._y);
 };
 
-Game_CharacterBase.prototype.increaseSteps = function() {
+Game_CharacterBase.prototype.increaseSteps = function () {
     if (this.isOnLadder()) {
         this.setDirection(8);
     }
@@ -7330,19 +7330,19 @@ Game_CharacterBase.prototype.increaseSteps = function() {
     this.refreshBushDepth();
 };
 
-Game_CharacterBase.prototype.tileId = function() {
+Game_CharacterBase.prototype.tileId = function () {
     return this._tileId;
 };
 
-Game_CharacterBase.prototype.characterName = function() {
+Game_CharacterBase.prototype.characterName = function () {
     return this._characterName;
 };
 
-Game_CharacterBase.prototype.characterIndex = function() {
+Game_CharacterBase.prototype.characterIndex = function () {
     return this._characterIndex;
 };
 
-Game_CharacterBase.prototype.setImage = function(
+Game_CharacterBase.prototype.setImage = function (
     characterName,
     characterIndex
 ) {
@@ -7352,32 +7352,32 @@ Game_CharacterBase.prototype.setImage = function(
     this._isObjectCharacter = ImageManager.isObjectCharacter(characterName);
 };
 
-Game_CharacterBase.prototype.setTileImage = function(tileId) {
+Game_CharacterBase.prototype.setTileImage = function (tileId) {
     this._tileId = tileId;
     this._characterName = "";
     this._characterIndex = 0;
     this._isObjectCharacter = true;
 };
 
-Game_CharacterBase.prototype.checkEventTriggerTouchFront = function(d) {
+Game_CharacterBase.prototype.checkEventTriggerTouchFront = function (d) {
     const x2 = $gameMap.roundXWithDirection(this._x, d);
     const y2 = $gameMap.roundYWithDirection(this._y, d);
     this.checkEventTriggerTouch(x2, y2);
 };
 
-Game_CharacterBase.prototype.checkEventTriggerTouch = function(/*x, y*/) {
+Game_CharacterBase.prototype.checkEventTriggerTouch = function (/*x, y*/) {
     return false;
 };
 
-Game_CharacterBase.prototype.isMovementSucceeded = function(/*x, y*/) {
+Game_CharacterBase.prototype.isMovementSucceeded = function (/*x, y*/) {
     return this._movementSuccess;
 };
 
-Game_CharacterBase.prototype.setMovementSuccess = function(success) {
+Game_CharacterBase.prototype.setMovementSuccess = function (success) {
     this._movementSuccess = success;
 };
 
-Game_CharacterBase.prototype.moveStraight = function(d) {
+Game_CharacterBase.prototype.moveStraight = function (d) {
     this.setMovementSuccess(this.canPass(this._x, this._y, d));
     if (this.isMovementSucceeded()) {
         this.setDirection(d);
@@ -7392,7 +7392,7 @@ Game_CharacterBase.prototype.moveStraight = function(d) {
     }
 };
 
-Game_CharacterBase.prototype.moveDiagonally = function(horz, vert) {
+Game_CharacterBase.prototype.moveDiagonally = function (horz, vert) {
     this.setMovementSuccess(
         this.canPassDiagonally(this._x, this._y, horz, vert)
     );
@@ -7411,7 +7411,7 @@ Game_CharacterBase.prototype.moveDiagonally = function(horz, vert) {
     }
 };
 
-Game_CharacterBase.prototype.jump = function(xPlus, yPlus) {
+Game_CharacterBase.prototype.jump = function (xPlus, yPlus) {
     if (Math.abs(xPlus) > Math.abs(yPlus)) {
         if (xPlus !== 0) {
             this.setDirection(xPlus < 0 ? 4 : 6);
@@ -7430,71 +7430,71 @@ Game_CharacterBase.prototype.jump = function(xPlus, yPlus) {
     this.straighten();
 };
 
-Game_CharacterBase.prototype.hasWalkAnime = function() {
+Game_CharacterBase.prototype.hasWalkAnime = function () {
     return this._walkAnime;
 };
 
-Game_CharacterBase.prototype.setWalkAnime = function(walkAnime) {
+Game_CharacterBase.prototype.setWalkAnime = function (walkAnime) {
     this._walkAnime = walkAnime;
 };
 
-Game_CharacterBase.prototype.hasStepAnime = function() {
+Game_CharacterBase.prototype.hasStepAnime = function () {
     return this._stepAnime;
 };
 
-Game_CharacterBase.prototype.setStepAnime = function(stepAnime) {
+Game_CharacterBase.prototype.setStepAnime = function (stepAnime) {
     this._stepAnime = stepAnime;
 };
 
-Game_CharacterBase.prototype.isDirectionFixed = function() {
+Game_CharacterBase.prototype.isDirectionFixed = function () {
     return this._directionFix;
 };
 
-Game_CharacterBase.prototype.setDirectionFix = function(directionFix) {
+Game_CharacterBase.prototype.setDirectionFix = function (directionFix) {
     this._directionFix = directionFix;
 };
 
-Game_CharacterBase.prototype.isThrough = function() {
+Game_CharacterBase.prototype.isThrough = function () {
     return this._through;
 };
 
-Game_CharacterBase.prototype.setThrough = function(through) {
+Game_CharacterBase.prototype.setThrough = function (through) {
     this._through = through;
 };
 
-Game_CharacterBase.prototype.isTransparent = function() {
+Game_CharacterBase.prototype.isTransparent = function () {
     return this._transparent;
 };
 
-Game_CharacterBase.prototype.bushDepth = function() {
+Game_CharacterBase.prototype.bushDepth = function () {
     return this._bushDepth;
 };
 
-Game_CharacterBase.prototype.setTransparent = function(transparent) {
+Game_CharacterBase.prototype.setTransparent = function (transparent) {
     this._transparent = transparent;
 };
 
-Game_CharacterBase.prototype.startAnimation = function() {
+Game_CharacterBase.prototype.startAnimation = function () {
     this._animationPlaying = true;
 };
 
-Game_CharacterBase.prototype.startBalloon = function() {
+Game_CharacterBase.prototype.startBalloon = function () {
     this._balloonPlaying = true;
 };
 
-Game_CharacterBase.prototype.isAnimationPlaying = function() {
+Game_CharacterBase.prototype.isAnimationPlaying = function () {
     return this._animationPlaying;
 };
 
-Game_CharacterBase.prototype.isBalloonPlaying = function() {
+Game_CharacterBase.prototype.isBalloonPlaying = function () {
     return this._balloonPlaying;
 };
 
-Game_CharacterBase.prototype.endAnimation = function() {
+Game_CharacterBase.prototype.endAnimation = function () {
     this._animationPlaying = false;
 };
 
-Game_CharacterBase.prototype.endBalloon = function() {
+Game_CharacterBase.prototype.endBalloon = function () {
     this._balloonPlaying = false;
 };
 
@@ -7557,11 +7557,11 @@ Game_Character.ROUTE_CHANGE_BLEND_MODE = 43;
 Game_Character.ROUTE_PLAY_SE = 44;
 Game_Character.ROUTE_SCRIPT = 45;
 
-Game_Character.prototype.initialize = function() {
+Game_Character.prototype.initialize = function () {
     Game_CharacterBase.prototype.initialize.call(this);
 };
 
-Game_Character.prototype.initMembers = function() {
+Game_Character.prototype.initMembers = function () {
     Game_CharacterBase.prototype.initMembers.call(this);
     this._moveRouteForcing = false;
     this._moveRoute = null;
@@ -7571,22 +7571,22 @@ Game_Character.prototype.initMembers = function() {
     this._waitCount = 0;
 };
 
-Game_Character.prototype.memorizeMoveRoute = function() {
+Game_Character.prototype.memorizeMoveRoute = function () {
     this._originalMoveRoute = this._moveRoute;
     this._originalMoveRouteIndex = this._moveRouteIndex;
 };
 
-Game_Character.prototype.restoreMoveRoute = function() {
+Game_Character.prototype.restoreMoveRoute = function () {
     this._moveRoute = this._originalMoveRoute;
     this._moveRouteIndex = this._originalMoveRouteIndex;
     this._originalMoveRoute = null;
 };
 
-Game_Character.prototype.isMoveRouteForcing = function() {
+Game_Character.prototype.isMoveRouteForcing = function () {
     return this._moveRouteForcing;
 };
 
-Game_Character.prototype.setMoveRoute = function(moveRoute) {
+Game_Character.prototype.setMoveRoute = function (moveRoute) {
     if (this._moveRouteForcing) {
         this._originalMoveRoute = moveRoute;
         this._originalMoveRouteIndex = 0;
@@ -7596,7 +7596,7 @@ Game_Character.prototype.setMoveRoute = function(moveRoute) {
     }
 };
 
-Game_Character.prototype.forceMoveRoute = function(moveRoute) {
+Game_Character.prototype.forceMoveRoute = function (moveRoute) {
     if (!this._originalMoveRoute) {
         this.memorizeMoveRoute();
     }
@@ -7606,14 +7606,14 @@ Game_Character.prototype.forceMoveRoute = function(moveRoute) {
     this._waitCount = 0;
 };
 
-Game_Character.prototype.updateStop = function() {
+Game_Character.prototype.updateStop = function () {
     Game_CharacterBase.prototype.updateStop.call(this);
     if (this._moveRouteForcing) {
         this.updateRoutineMove();
     }
 };
 
-Game_Character.prototype.updateRoutineMove = function() {
+Game_Character.prototype.updateRoutineMove = function () {
     if (this._waitCount > 0) {
         this._waitCount--;
     } else {
@@ -7626,7 +7626,7 @@ Game_Character.prototype.updateRoutineMove = function() {
     }
 };
 
-Game_Character.prototype.processMoveCommand = function(command) {
+Game_Character.prototype.processMoveCommand = function (command) {
     const gc = Game_Character;
     const params = command.parameters;
     switch (command.code) {
@@ -7771,22 +7771,22 @@ Game_Character.prototype.processMoveCommand = function(command) {
     }
 };
 
-Game_Character.prototype.deltaXFrom = function(x) {
+Game_Character.prototype.deltaXFrom = function (x) {
     return $gameMap.deltaX(this.x, x);
 };
 
-Game_Character.prototype.deltaYFrom = function(y) {
+Game_Character.prototype.deltaYFrom = function (y) {
     return $gameMap.deltaY(this.y, y);
 };
 
-Game_Character.prototype.moveRandom = function() {
+Game_Character.prototype.moveRandom = function () {
     const d = 2 + Math.randomInt(4) * 2;
     if (this.canPass(this.x, this.y, d)) {
         this.moveStraight(d);
     }
 };
 
-Game_Character.prototype.moveTowardCharacter = function(character) {
+Game_Character.prototype.moveTowardCharacter = function (character) {
     const sx = this.deltaXFrom(character.x);
     const sy = this.deltaYFrom(character.y);
     if (Math.abs(sx) > Math.abs(sy)) {
@@ -7802,7 +7802,7 @@ Game_Character.prototype.moveTowardCharacter = function(character) {
     }
 };
 
-Game_Character.prototype.moveAwayFromCharacter = function(character) {
+Game_Character.prototype.moveAwayFromCharacter = function (character) {
     const sx = this.deltaXFrom(character.x);
     const sy = this.deltaYFrom(character.y);
     if (Math.abs(sx) > Math.abs(sy)) {
@@ -7818,7 +7818,7 @@ Game_Character.prototype.moveAwayFromCharacter = function(character) {
     }
 };
 
-Game_Character.prototype.turnTowardCharacter = function(character) {
+Game_Character.prototype.turnTowardCharacter = function (character) {
     const sx = this.deltaXFrom(character.x);
     const sy = this.deltaYFrom(character.y);
     if (Math.abs(sx) > Math.abs(sy)) {
@@ -7828,7 +7828,7 @@ Game_Character.prototype.turnTowardCharacter = function(character) {
     }
 };
 
-Game_Character.prototype.turnAwayFromCharacter = function(character) {
+Game_Character.prototype.turnAwayFromCharacter = function (character) {
     const sx = this.deltaXFrom(character.x);
     const sy = this.deltaYFrom(character.y);
     if (Math.abs(sx) > Math.abs(sy)) {
@@ -7838,34 +7838,34 @@ Game_Character.prototype.turnAwayFromCharacter = function(character) {
     }
 };
 
-Game_Character.prototype.turnTowardPlayer = function() {
+Game_Character.prototype.turnTowardPlayer = function () {
     this.turnTowardCharacter($gamePlayer);
 };
 
-Game_Character.prototype.turnAwayFromPlayer = function() {
+Game_Character.prototype.turnAwayFromPlayer = function () {
     this.turnAwayFromCharacter($gamePlayer);
 };
 
-Game_Character.prototype.moveTowardPlayer = function() {
+Game_Character.prototype.moveTowardPlayer = function () {
     this.moveTowardCharacter($gamePlayer);
 };
 
-Game_Character.prototype.moveAwayFromPlayer = function() {
+Game_Character.prototype.moveAwayFromPlayer = function () {
     this.moveAwayFromCharacter($gamePlayer);
 };
 
-Game_Character.prototype.moveForward = function() {
+Game_Character.prototype.moveForward = function () {
     this.moveStraight(this.direction());
 };
 
-Game_Character.prototype.moveBackward = function() {
+Game_Character.prototype.moveBackward = function () {
     const lastDirectionFix = this.isDirectionFixed();
     this.setDirectionFix(true);
     this.moveStraight(this.reverseDir(this.direction()));
     this.setDirectionFix(lastDirectionFix);
 };
 
-Game_Character.prototype.processRouteEnd = function() {
+Game_Character.prototype.processRouteEnd = function () {
     if (this._moveRoute.repeat) {
         this._moveRouteIndex = -1;
     } else if (this._moveRouteForcing) {
@@ -7875,7 +7875,7 @@ Game_Character.prototype.processRouteEnd = function() {
     }
 };
 
-Game_Character.prototype.advanceMoveRouteIndex = function() {
+Game_Character.prototype.advanceMoveRouteIndex = function () {
     const moveRoute = this._moveRoute;
     if (moveRoute && (this.isMovementSucceeded() || moveRoute.skippable)) {
         let numCommands = moveRoute.list.length - 1;
@@ -7886,7 +7886,7 @@ Game_Character.prototype.advanceMoveRouteIndex = function() {
     }
 };
 
-Game_Character.prototype.turnRight90 = function() {
+Game_Character.prototype.turnRight90 = function () {
     switch (this.direction()) {
         case 2:
             this.setDirection(4);
@@ -7903,7 +7903,7 @@ Game_Character.prototype.turnRight90 = function() {
     }
 };
 
-Game_Character.prototype.turnLeft90 = function() {
+Game_Character.prototype.turnLeft90 = function () {
     switch (this.direction()) {
         case 2:
             this.setDirection(6);
@@ -7920,11 +7920,11 @@ Game_Character.prototype.turnLeft90 = function() {
     }
 };
 
-Game_Character.prototype.turn180 = function() {
+Game_Character.prototype.turn180 = function () {
     this.setDirection(this.reverseDir(this.direction()));
 };
 
-Game_Character.prototype.turnRightOrLeft90 = function() {
+Game_Character.prototype.turnRightOrLeft90 = function () {
     switch (Math.randomInt(2)) {
         case 0:
             this.turnRight90();
@@ -7935,18 +7935,18 @@ Game_Character.prototype.turnRightOrLeft90 = function() {
     }
 };
 
-Game_Character.prototype.turnRandom = function() {
+Game_Character.prototype.turnRandom = function () {
     this.setDirection(2 + Math.randomInt(4) * 2);
 };
 
-Game_Character.prototype.swap = function(character) {
+Game_Character.prototype.swap = function (character) {
     const newX = character.x;
     const newY = character.y;
     character.locate(this.x, this.y);
     this.locate(newX, newY);
 };
 
-Game_Character.prototype.findDirectionTo = function(goalX, goalY) {
+Game_Character.prototype.findDirectionTo = function (goalX, goalY) {
     const searchLimit = this.searchLimit();
     const mapWidth = $gameMap.width();
     const nodeList = [];
@@ -8058,7 +8058,7 @@ Game_Character.prototype.findDirectionTo = function(goalX, goalY) {
     return 0;
 };
 
-Game_Character.prototype.searchLimit = function() {
+Game_Character.prototype.searchLimit = function () {
     return 12;
 };
 
@@ -8075,12 +8075,12 @@ function Game_Player() {
 Game_Player.prototype = Object.create(Game_Character.prototype);
 Game_Player.prototype.constructor = Game_Player;
 
-Game_Player.prototype.initialize = function() {
+Game_Player.prototype.initialize = function () {
     Game_Character.prototype.initialize.call(this);
     this.setTransparent($dataSystem.optTransparent);
 };
 
-Game_Player.prototype.initMembers = function() {
+Game_Player.prototype.initMembers = function () {
     Game_Character.prototype.initMembers.call(this);
     this._vehicleType = "walk";
     this._vehicleGettingOn = false;
@@ -8097,7 +8097,7 @@ Game_Player.prototype.initMembers = function() {
     this._encounterCount = 0;
 };
 
-Game_Player.prototype.clearTransferInfo = function() {
+Game_Player.prototype.clearTransferInfo = function () {
     this._transferring = false;
     this._newMapId = 0;
     this._newX = 0;
@@ -8105,11 +8105,11 @@ Game_Player.prototype.clearTransferInfo = function() {
     this._newDirection = 0;
 };
 
-Game_Player.prototype.followers = function() {
+Game_Player.prototype.followers = function () {
     return this._followers;
 };
 
-Game_Player.prototype.refresh = function() {
+Game_Player.prototype.refresh = function () {
     const actor = $gameParty.leader();
     const characterName = actor ? actor.characterName() : "";
     const characterIndex = actor ? actor.characterIndex() : 0;
@@ -8117,14 +8117,14 @@ Game_Player.prototype.refresh = function() {
     this._followers.refresh();
 };
 
-Game_Player.prototype.isStopping = function() {
+Game_Player.prototype.isStopping = function () {
     if (this._vehicleGettingOn || this._vehicleGettingOff) {
         return false;
     }
     return Game_Character.prototype.isStopping.call(this);
 };
 
-Game_Player.prototype.reserveTransfer = function(mapId, x, y, d, fadeType) {
+Game_Player.prototype.reserveTransfer = function (mapId, x, y, d, fadeType) {
     this._transferring = true;
     this._newMapId = mapId;
     this._newX = x;
@@ -8133,30 +8133,30 @@ Game_Player.prototype.reserveTransfer = function(mapId, x, y, d, fadeType) {
     this._fadeType = fadeType;
 };
 
-Game_Player.prototype.setupForNewGame = function() {
+Game_Player.prototype.setupForNewGame = function () {
     const mapId = $dataSystem.startMapId;
     const x = $dataSystem.startX;
     const y = $dataSystem.startY;
     this.reserveTransfer(mapId, x, y, 2, 0);
 };
 
-Game_Player.prototype.requestMapReload = function() {
+Game_Player.prototype.requestMapReload = function () {
     this._needsMapReload = true;
 };
 
-Game_Player.prototype.isTransferring = function() {
+Game_Player.prototype.isTransferring = function () {
     return this._transferring;
 };
 
-Game_Player.prototype.newMapId = function() {
+Game_Player.prototype.newMapId = function () {
     return this._newMapId;
 };
 
-Game_Player.prototype.fadeType = function() {
+Game_Player.prototype.fadeType = function () {
     return this._fadeType;
 };
 
-Game_Player.prototype.performTransfer = function() {
+Game_Player.prototype.performTransfer = function () {
     if (this.isTransferring()) {
         this.setDirection(this._newDirection);
         if (this._newMapId !== $gameMap.mapId() || this._needsMapReload) {
@@ -8169,7 +8169,7 @@ Game_Player.prototype.performTransfer = function() {
     }
 };
 
-Game_Player.prototype.isMapPassable = function(x, y, d) {
+Game_Player.prototype.isMapPassable = function (x, y, d) {
     const vehicle = this.vehicle();
     if (vehicle) {
         return vehicle.isMapPassable(x, y, d);
@@ -8178,39 +8178,39 @@ Game_Player.prototype.isMapPassable = function(x, y, d) {
     }
 };
 
-Game_Player.prototype.vehicle = function() {
+Game_Player.prototype.vehicle = function () {
     return $gameMap.vehicle(this._vehicleType);
 };
 
-Game_Player.prototype.isInBoat = function() {
+Game_Player.prototype.isInBoat = function () {
     return this._vehicleType === "boat";
 };
 
-Game_Player.prototype.isInShip = function() {
+Game_Player.prototype.isInShip = function () {
     return this._vehicleType === "ship";
 };
 
-Game_Player.prototype.isInAirship = function() {
+Game_Player.prototype.isInAirship = function () {
     return this._vehicleType === "airship";
 };
 
-Game_Player.prototype.isInVehicle = function() {
+Game_Player.prototype.isInVehicle = function () {
     return this.isInBoat() || this.isInShip() || this.isInAirship();
 };
 
-Game_Player.prototype.isNormal = function() {
+Game_Player.prototype.isNormal = function () {
     return this._vehicleType === "walk" && !this.isMoveRouteForcing();
 };
 
-Game_Player.prototype.isDashing = function() {
+Game_Player.prototype.isDashing = function () {
     return this._dashing;
 };
 
-Game_Player.prototype.isDebugThrough = function() {
+Game_Player.prototype.isDebugThrough = function () {
     return Input.isPressed("control") && $gameTemp.isPlaytest();
 };
 
-Game_Player.prototype.isCollided = function(x, y) {
+Game_Player.prototype.isCollided = function (x, y) {
     if (this.isThrough()) {
         return false;
     } else {
@@ -8218,19 +8218,19 @@ Game_Player.prototype.isCollided = function(x, y) {
     }
 };
 
-Game_Player.prototype.centerX = function() {
+Game_Player.prototype.centerX = function () {
     return ($gameMap.screenTileX() - 1) / 2;
 };
 
-Game_Player.prototype.centerY = function() {
+Game_Player.prototype.centerY = function () {
     return ($gameMap.screenTileY() - 1) / 2;
 };
 
-Game_Player.prototype.center = function(x, y) {
+Game_Player.prototype.center = function (x, y) {
     return $gameMap.setDisplayPos(x - this.centerX(), y - this.centerY());
 };
 
-Game_Player.prototype.locate = function(x, y) {
+Game_Player.prototype.locate = function (x, y) {
     Game_Character.prototype.locate.call(this, x, y);
     this.center(x, y);
     this.makeEncounterCount();
@@ -8240,19 +8240,19 @@ Game_Player.prototype.locate = function(x, y) {
     this._followers.synchronize(x, y, this.direction());
 };
 
-Game_Player.prototype.increaseSteps = function() {
+Game_Player.prototype.increaseSteps = function () {
     Game_Character.prototype.increaseSteps.call(this);
     if (this.isNormal()) {
         $gameParty.increaseSteps();
     }
 };
 
-Game_Player.prototype.makeEncounterCount = function() {
+Game_Player.prototype.makeEncounterCount = function () {
     const n = $gameMap.encounterStep();
     this._encounterCount = Math.randomInt(n) + Math.randomInt(n) + 1;
 };
 
-Game_Player.prototype.makeEncounterTroopId = function() {
+Game_Player.prototype.makeEncounterTroopId = function () {
     const encounterList = [];
     let weightSum = 0;
     for (const encounter of $gameMap.encounterList()) {
@@ -8273,14 +8273,14 @@ Game_Player.prototype.makeEncounterTroopId = function() {
     return 0;
 };
 
-Game_Player.prototype.meetsEncounterConditions = function(encounter) {
+Game_Player.prototype.meetsEncounterConditions = function (encounter) {
     return (
         encounter.regionSet.length === 0 ||
         encounter.regionSet.includes(this.regionId())
     );
 };
 
-Game_Player.prototype.executeEncounter = function() {
+Game_Player.prototype.executeEncounter = function () {
     if (!$gameMap.isEventRunning() && this._encounterCount <= 0) {
         this.makeEncounterCount();
         const troopId = this.makeEncounterTroopId();
@@ -8296,7 +8296,7 @@ Game_Player.prototype.executeEncounter = function() {
     }
 };
 
-Game_Player.prototype.startMapEvent = function(x, y, triggers, normal) {
+Game_Player.prototype.startMapEvent = function (x, y, triggers, normal) {
     if (!$gameMap.isEventRunning()) {
         for (const event of $gameMap.eventsXy(x, y)) {
             if (
@@ -8309,7 +8309,7 @@ Game_Player.prototype.startMapEvent = function(x, y, triggers, normal) {
     }
 };
 
-Game_Player.prototype.moveByInput = function() {
+Game_Player.prototype.moveByInput = function () {
     if (!this.isMoving() && this.canMove()) {
         let direction = this.getInputDirection();
         if (direction > 0) {
@@ -8325,7 +8325,7 @@ Game_Player.prototype.moveByInput = function() {
     }
 };
 
-Game_Player.prototype.canMove = function() {
+Game_Player.prototype.canMove = function () {
     if ($gameMap.isEventRunning() || $gameMessage.isBusy()) {
         return false;
     }
@@ -8341,15 +8341,15 @@ Game_Player.prototype.canMove = function() {
     return true;
 };
 
-Game_Player.prototype.getInputDirection = function() {
+Game_Player.prototype.getInputDirection = function () {
     return Input.dir4;
 };
 
-Game_Player.prototype.executeMove = function(direction) {
+Game_Player.prototype.executeMove = function (direction) {
     this.moveStraight(direction);
 };
 
-Game_Player.prototype.update = function(sceneActive) {
+Game_Player.prototype.update = function (sceneActive) {
     const lastScrolledX = this.scrolledX();
     const lastScrolledY = this.scrolledY();
     const wasMoving = this.isMoving();
@@ -8366,7 +8366,7 @@ Game_Player.prototype.update = function(sceneActive) {
     this._followers.update();
 };
 
-Game_Player.prototype.updateDashing = function() {
+Game_Player.prototype.updateDashing = function () {
     if (this.isMoving()) {
         return;
     }
@@ -8378,7 +8378,7 @@ Game_Player.prototype.updateDashing = function() {
     }
 };
 
-Game_Player.prototype.isDashButtonPressed = function() {
+Game_Player.prototype.isDashButtonPressed = function () {
     const shift = Input.isPressed("shift");
     if (ConfigManager.alwaysDash) {
         return !shift;
@@ -8387,7 +8387,7 @@ Game_Player.prototype.isDashButtonPressed = function() {
     }
 };
 
-Game_Player.prototype.updateScroll = function(lastScrolledX, lastScrolledY) {
+Game_Player.prototype.updateScroll = function (lastScrolledX, lastScrolledY) {
     const x1 = lastScrolledX;
     const y1 = lastScrolledY;
     const x2 = this.scrolledX();
@@ -8406,7 +8406,7 @@ Game_Player.prototype.updateScroll = function(lastScrolledX, lastScrolledY) {
     }
 };
 
-Game_Player.prototype.updateVehicle = function() {
+Game_Player.prototype.updateVehicle = function () {
     if (this.isInVehicle() && !this.areFollowersGathering()) {
         if (this._vehicleGettingOn) {
             this.updateVehicleGetOn();
@@ -8418,7 +8418,7 @@ Game_Player.prototype.updateVehicle = function() {
     }
 };
 
-Game_Player.prototype.updateVehicleGetOn = function() {
+Game_Player.prototype.updateVehicleGetOn = function () {
     if (!this.areFollowersGathering() && !this.isMoving()) {
         this.setDirection(this.vehicle().direction());
         this.setMoveSpeed(this.vehicle().moveSpeed());
@@ -8431,7 +8431,7 @@ Game_Player.prototype.updateVehicleGetOn = function() {
     }
 };
 
-Game_Player.prototype.updateVehicleGetOff = function() {
+Game_Player.prototype.updateVehicleGetOff = function () {
     if (!this.areFollowersGathering() && this.vehicle().isLowest()) {
         this._vehicleGettingOff = false;
         this._vehicleType = "walk";
@@ -8439,7 +8439,7 @@ Game_Player.prototype.updateVehicleGetOff = function() {
     }
 };
 
-Game_Player.prototype.updateNonmoving = function(wasMoving, sceneActive) {
+Game_Player.prototype.updateNonmoving = function (wasMoving, sceneActive) {
     if (!$gameMap.isEventRunning()) {
         if (wasMoving) {
             $gameParty.onPlayerWalk();
@@ -8459,7 +8459,7 @@ Game_Player.prototype.updateNonmoving = function(wasMoving, sceneActive) {
     }
 };
 
-Game_Player.prototype.triggerAction = function() {
+Game_Player.prototype.triggerAction = function () {
     if (this.canMove()) {
         if (this.triggerButtonAction()) {
             return true;
@@ -8471,7 +8471,7 @@ Game_Player.prototype.triggerAction = function() {
     return false;
 };
 
-Game_Player.prototype.triggerButtonAction = function() {
+Game_Player.prototype.triggerButtonAction = function () {
     if (Input.isTriggered("ok")) {
         if (this.getOnOffVehicle()) {
             return true;
@@ -8488,7 +8488,7 @@ Game_Player.prototype.triggerButtonAction = function() {
     return false;
 };
 
-Game_Player.prototype.triggerTouchAction = function() {
+Game_Player.prototype.triggerTouchAction = function () {
     if ($gameTemp.isDestinationValid()) {
         const direction = this.direction();
         const x1 = this.x;
@@ -8510,7 +8510,7 @@ Game_Player.prototype.triggerTouchAction = function() {
     return false;
 };
 
-Game_Player.prototype.triggerTouchActionD1 = function(x1, y1) {
+Game_Player.prototype.triggerTouchActionD1 = function (x1, y1) {
     if ($gameMap.airship().pos(x1, y1)) {
         if (TouchInput.isTriggered() && this.getOnOffVehicle()) {
             return true;
@@ -8520,7 +8520,7 @@ Game_Player.prototype.triggerTouchActionD1 = function(x1, y1) {
     return $gameMap.setupStartingEvent();
 };
 
-Game_Player.prototype.triggerTouchActionD2 = function(x2, y2) {
+Game_Player.prototype.triggerTouchActionD2 = function (x2, y2) {
     if ($gameMap.boat().pos(x2, y2) || $gameMap.ship().pos(x2, y2)) {
         if (TouchInput.isTriggered() && this.getOnVehicle()) {
             return true;
@@ -8535,20 +8535,20 @@ Game_Player.prototype.triggerTouchActionD2 = function(x2, y2) {
     return $gameMap.setupStartingEvent();
 };
 
-Game_Player.prototype.triggerTouchActionD3 = function(x2, y2) {
+Game_Player.prototype.triggerTouchActionD3 = function (x2, y2) {
     if ($gameMap.isCounter(x2, y2)) {
         this.checkEventTriggerThere([0, 1, 2]);
     }
     return $gameMap.setupStartingEvent();
 };
 
-Game_Player.prototype.updateEncounterCount = function() {
+Game_Player.prototype.updateEncounterCount = function () {
     if (this.canEncounter()) {
         this._encounterCount -= this.encounterProgressValue();
     }
 };
 
-Game_Player.prototype.canEncounter = function() {
+Game_Player.prototype.canEncounter = function () {
     return (
         !$gameParty.hasEncounterNone() &&
         $gameSystem.isEncounterEnabled() &&
@@ -8558,7 +8558,7 @@ Game_Player.prototype.canEncounter = function() {
     );
 };
 
-Game_Player.prototype.encounterProgressValue = function() {
+Game_Player.prototype.encounterProgressValue = function () {
     let value = $gameMap.isBush(this.x, this.y) ? 2 : 1;
     if ($gameParty.hasEncounterHalf()) {
         value *= 0.5;
@@ -8569,13 +8569,13 @@ Game_Player.prototype.encounterProgressValue = function() {
     return value;
 };
 
-Game_Player.prototype.checkEventTriggerHere = function(triggers) {
+Game_Player.prototype.checkEventTriggerHere = function (triggers) {
     if (this.canStartLocalEvents()) {
         this.startMapEvent(this.x, this.y, triggers, false);
     }
 };
 
-Game_Player.prototype.checkEventTriggerThere = function(triggers) {
+Game_Player.prototype.checkEventTriggerThere = function (triggers) {
     if (this.canStartLocalEvents()) {
         const direction = this.direction();
         const x1 = this.x;
@@ -8591,17 +8591,17 @@ Game_Player.prototype.checkEventTriggerThere = function(triggers) {
     }
 };
 
-Game_Player.prototype.checkEventTriggerTouch = function(x, y) {
+Game_Player.prototype.checkEventTriggerTouch = function (x, y) {
     if (this.canStartLocalEvents()) {
         this.startMapEvent(x, y, [1, 2], true);
     }
 };
 
-Game_Player.prototype.canStartLocalEvents = function() {
+Game_Player.prototype.canStartLocalEvents = function () {
     return !this.isInAirship();
 };
 
-Game_Player.prototype.getOnOffVehicle = function() {
+Game_Player.prototype.getOnOffVehicle = function () {
     if (this.isInVehicle()) {
         return this.getOffVehicle();
     } else {
@@ -8609,7 +8609,7 @@ Game_Player.prototype.getOnOffVehicle = function() {
     }
 };
 
-Game_Player.prototype.getOnVehicle = function() {
+Game_Player.prototype.getOnVehicle = function () {
     const direction = this.direction();
     const x1 = this.x;
     const y1 = this.y;
@@ -8632,7 +8632,7 @@ Game_Player.prototype.getOnVehicle = function() {
     return this._vehicleGettingOn;
 };
 
-Game_Player.prototype.getOffVehicle = function() {
+Game_Player.prototype.getOffVehicle = function () {
     if (this.vehicle().isLandOk(this.x, this.y, this.direction())) {
         if (this.isInAirship()) {
             this.setDirection(2);
@@ -8652,52 +8652,52 @@ Game_Player.prototype.getOffVehicle = function() {
     return this._vehicleGettingOff;
 };
 
-Game_Player.prototype.forceMoveForward = function() {
+Game_Player.prototype.forceMoveForward = function () {
     this.setThrough(true);
     this.moveForward();
     this.setThrough(false);
 };
 
-Game_Player.prototype.isOnDamageFloor = function() {
+Game_Player.prototype.isOnDamageFloor = function () {
     return $gameMap.isDamageFloor(this.x, this.y) && !this.isInAirship();
 };
 
-Game_Player.prototype.moveStraight = function(d) {
+Game_Player.prototype.moveStraight = function (d) {
     if (this.canPass(this.x, this.y, d)) {
         this._followers.updateMove();
     }
     Game_Character.prototype.moveStraight.call(this, d);
 };
 
-Game_Player.prototype.moveDiagonally = function(horz, vert) {
+Game_Player.prototype.moveDiagonally = function (horz, vert) {
     if (this.canPassDiagonally(this.x, this.y, horz, vert)) {
         this._followers.updateMove();
     }
     Game_Character.prototype.moveDiagonally.call(this, horz, vert);
 };
 
-Game_Player.prototype.jump = function(xPlus, yPlus) {
+Game_Player.prototype.jump = function (xPlus, yPlus) {
     Game_Character.prototype.jump.call(this, xPlus, yPlus);
     this._followers.jumpAll();
 };
 
-Game_Player.prototype.showFollowers = function() {
+Game_Player.prototype.showFollowers = function () {
     this._followers.show();
 };
 
-Game_Player.prototype.hideFollowers = function() {
+Game_Player.prototype.hideFollowers = function () {
     this._followers.hide();
 };
 
-Game_Player.prototype.gatherFollowers = function() {
+Game_Player.prototype.gatherFollowers = function () {
     this._followers.gather();
 };
 
-Game_Player.prototype.areFollowersGathering = function() {
+Game_Player.prototype.areFollowersGathering = function () {
     return this._followers.areGathering();
 };
 
-Game_Player.prototype.areFollowersGathered = function() {
+Game_Player.prototype.areFollowersGathered = function () {
     return this._followers.areGathered();
 };
 
@@ -8714,32 +8714,32 @@ function Game_Follower() {
 Game_Follower.prototype = Object.create(Game_Character.prototype);
 Game_Follower.prototype.constructor = Game_Follower;
 
-Game_Follower.prototype.initialize = function(memberIndex) {
+Game_Follower.prototype.initialize = function (memberIndex) {
     Game_Character.prototype.initialize.call(this);
     this._memberIndex = memberIndex;
     this.setTransparent($dataSystem.optTransparent);
     this.setThrough(true);
 };
 
-Game_Follower.prototype.refresh = function() {
+Game_Follower.prototype.refresh = function () {
     const characterName = this.isVisible() ? this.actor().characterName() : "";
     const characterIndex = this.isVisible() ? this.actor().characterIndex() : 0;
     this.setImage(characterName, characterIndex);
 };
 
-Game_Follower.prototype.actor = function() {
+Game_Follower.prototype.actor = function () {
     return $gameParty.battleMembers()[this._memberIndex];
 };
 
-Game_Follower.prototype.isVisible = function() {
+Game_Follower.prototype.isVisible = function () {
     return this.actor() && $gamePlayer.followers().isVisible();
 };
 
-Game_Follower.prototype.isGathered = function() {
+Game_Follower.prototype.isGathered = function () {
     return !this.isMoving() && this.pos($gamePlayer.x, $gamePlayer.y);
 };
 
-Game_Follower.prototype.update = function() {
+Game_Follower.prototype.update = function () {
     Game_Character.prototype.update.call(this);
     this.setMoveSpeed($gamePlayer.realMoveSpeed());
     this.setOpacity($gamePlayer.opacity());
@@ -8750,7 +8750,7 @@ Game_Follower.prototype.update = function() {
     this.setTransparent($gamePlayer.isTransparent());
 };
 
-Game_Follower.prototype.chaseCharacter = function(character) {
+Game_Follower.prototype.chaseCharacter = function (character) {
     const sx = this.deltaXFrom(character.x);
     const sy = this.deltaYFrom(character.y);
     if (sx !== 0 && sy !== 0) {
@@ -8772,51 +8772,51 @@ function Game_Followers() {
     this.initialize(...arguments);
 }
 
-Game_Followers.prototype.initialize = function() {
+Game_Followers.prototype.initialize = function () {
     this._visible = $dataSystem.optFollowers;
     this._gathering = false;
     this._data = [];
     this.setup();
 };
 
-Game_Followers.prototype.setup = function() {
+Game_Followers.prototype.setup = function () {
     this._data = [];
     for (let i = 1; i < $gameParty.maxBattleMembers(); i++) {
         this._data.push(new Game_Follower(i));
     }
 };
 
-Game_Followers.prototype.isVisible = function() {
+Game_Followers.prototype.isVisible = function () {
     return this._visible;
 };
 
-Game_Followers.prototype.show = function() {
+Game_Followers.prototype.show = function () {
     this._visible = true;
 };
 
-Game_Followers.prototype.hide = function() {
+Game_Followers.prototype.hide = function () {
     this._visible = false;
 };
 
-Game_Followers.prototype.data = function() {
+Game_Followers.prototype.data = function () {
     return this._data.clone();
 };
 
-Game_Followers.prototype.reverseData = function() {
+Game_Followers.prototype.reverseData = function () {
     return this._data.clone().reverse();
 };
 
-Game_Followers.prototype.follower = function(index) {
+Game_Followers.prototype.follower = function (index) {
     return this._data[index];
 };
 
-Game_Followers.prototype.refresh = function() {
+Game_Followers.prototype.refresh = function () {
     for (const follower of this._data) {
         follower.refresh();
     }
 };
 
-Game_Followers.prototype.update = function() {
+Game_Followers.prototype.update = function () {
     if (this.areGathering()) {
         if (!this.areMoving()) {
             this.updateMove();
@@ -8830,14 +8830,14 @@ Game_Followers.prototype.update = function() {
     }
 };
 
-Game_Followers.prototype.updateMove = function() {
+Game_Followers.prototype.updateMove = function () {
     for (let i = this._data.length - 1; i >= 0; i--) {
         const precedingCharacter = i > 0 ? this._data[i - 1] : $gamePlayer;
         this._data[i].chaseCharacter(precedingCharacter);
     }
 };
 
-Game_Followers.prototype.jumpAll = function() {
+Game_Followers.prototype.jumpAll = function () {
     if ($gamePlayer.isJumping()) {
         for (const follower of this._data) {
             const sx = $gamePlayer.deltaXFrom(follower.x);
@@ -8847,34 +8847,34 @@ Game_Followers.prototype.jumpAll = function() {
     }
 };
 
-Game_Followers.prototype.synchronize = function(x, y, d) {
+Game_Followers.prototype.synchronize = function (x, y, d) {
     for (const follower of this._data) {
         follower.locate(x, y);
         follower.setDirection(d);
     }
 };
 
-Game_Followers.prototype.gather = function() {
+Game_Followers.prototype.gather = function () {
     this._gathering = true;
 };
 
-Game_Followers.prototype.areGathering = function() {
+Game_Followers.prototype.areGathering = function () {
     return this._gathering;
 };
 
-Game_Followers.prototype.visibleFollowers = function() {
+Game_Followers.prototype.visibleFollowers = function () {
     return this._data.filter(follower => follower.isVisible());
 };
 
-Game_Followers.prototype.areMoving = function() {
+Game_Followers.prototype.areMoving = function () {
     return this.visibleFollowers().some(follower => follower.isMoving());
 };
 
-Game_Followers.prototype.areGathered = function() {
+Game_Followers.prototype.areGathered = function () {
     return this.visibleFollowers().every(follower => follower.isGathered());
 };
 
-Game_Followers.prototype.isSomeoneCollided = function(x, y) {
+Game_Followers.prototype.isSomeoneCollided = function (x, y) {
     return this.visibleFollowers().some(follower => follower.pos(x, y));
 };
 
@@ -8890,7 +8890,7 @@ function Game_Vehicle() {
 Game_Vehicle.prototype = Object.create(Game_Character.prototype);
 Game_Vehicle.prototype.constructor = Game_Vehicle;
 
-Game_Vehicle.prototype.initialize = function(type) {
+Game_Vehicle.prototype.initialize = function (type) {
     Game_Character.prototype.initialize.call(this);
     this._type = type;
     this.resetDirection();
@@ -8898,7 +8898,7 @@ Game_Vehicle.prototype.initialize = function(type) {
     this.loadSystemSettings();
 };
 
-Game_Vehicle.prototype.initMembers = function() {
+Game_Vehicle.prototype.initMembers = function () {
     Game_Character.prototype.initMembers.call(this);
     this._type = "";
     this._mapId = 0;
@@ -8907,23 +8907,23 @@ Game_Vehicle.prototype.initMembers = function() {
     this._bgm = null;
 };
 
-Game_Vehicle.prototype.isBoat = function() {
+Game_Vehicle.prototype.isBoat = function () {
     return this._type === "boat";
 };
 
-Game_Vehicle.prototype.isShip = function() {
+Game_Vehicle.prototype.isShip = function () {
     return this._type === "ship";
 };
 
-Game_Vehicle.prototype.isAirship = function() {
+Game_Vehicle.prototype.isAirship = function () {
     return this._type === "airship";
 };
 
-Game_Vehicle.prototype.resetDirection = function() {
+Game_Vehicle.prototype.resetDirection = function () {
     this.setDirection(4);
 };
 
-Game_Vehicle.prototype.initMoveSpeed = function() {
+Game_Vehicle.prototype.initMoveSpeed = function () {
     if (this.isBoat()) {
         this.setMoveSpeed(4);
     } else if (this.isShip()) {
@@ -8933,7 +8933,7 @@ Game_Vehicle.prototype.initMoveSpeed = function() {
     }
 };
 
-Game_Vehicle.prototype.vehicle = function() {
+Game_Vehicle.prototype.vehicle = function () {
     if (this.isBoat()) {
         return $dataSystem.boat;
     } else if (this.isShip()) {
@@ -8945,14 +8945,14 @@ Game_Vehicle.prototype.vehicle = function() {
     }
 };
 
-Game_Vehicle.prototype.loadSystemSettings = function() {
+Game_Vehicle.prototype.loadSystemSettings = function () {
     const vehicle = this.vehicle();
     this._mapId = vehicle.startMapId;
     this.setPosition(vehicle.startX, vehicle.startY);
     this.setImage(vehicle.characterName, vehicle.characterIndex);
 };
 
-Game_Vehicle.prototype.refresh = function() {
+Game_Vehicle.prototype.refresh = function () {
     if (this._driving) {
         this._mapId = $gameMap.mapId();
         this.syncWithPlayer();
@@ -8969,13 +8969,13 @@ Game_Vehicle.prototype.refresh = function() {
     this.setTransparent(this._mapId !== $gameMap.mapId());
 };
 
-Game_Vehicle.prototype.setLocation = function(mapId, x, y) {
+Game_Vehicle.prototype.setLocation = function (mapId, x, y) {
     this._mapId = mapId;
     this.setPosition(x, y);
     this.refresh();
 };
 
-Game_Vehicle.prototype.pos = function(x, y) {
+Game_Vehicle.prototype.pos = function (x, y) {
     if (this._mapId === $gameMap.mapId()) {
         return Game_Character.prototype.pos.call(this, x, y);
     } else {
@@ -8983,7 +8983,7 @@ Game_Vehicle.prototype.pos = function(x, y) {
     }
 };
 
-Game_Vehicle.prototype.isMapPassable = function(x, y, d) {
+Game_Vehicle.prototype.isMapPassable = function (x, y, d) {
     const x2 = $gameMap.roundXWithDirection(x, d);
     const y2 = $gameMap.roundYWithDirection(y, d);
     if (this.isBoat()) {
@@ -8997,7 +8997,7 @@ Game_Vehicle.prototype.isMapPassable = function(x, y, d) {
     }
 };
 
-Game_Vehicle.prototype.getOn = function() {
+Game_Vehicle.prototype.getOn = function () {
     this._driving = true;
     this.setWalkAnime(true);
     this.setStepAnime(true);
@@ -9005,7 +9005,7 @@ Game_Vehicle.prototype.getOn = function() {
     this.playBgm();
 };
 
-Game_Vehicle.prototype.getOff = function() {
+Game_Vehicle.prototype.getOff = function () {
     this._driving = false;
     this.setWalkAnime(false);
     this.setStepAnime(false);
@@ -9013,36 +9013,36 @@ Game_Vehicle.prototype.getOff = function() {
     $gameSystem.replayWalkingBgm();
 };
 
-Game_Vehicle.prototype.setBgm = function(bgm) {
+Game_Vehicle.prototype.setBgm = function (bgm) {
     this._bgm = bgm;
 };
 
-Game_Vehicle.prototype.playBgm = function() {
+Game_Vehicle.prototype.playBgm = function () {
     AudioManager.playBgm(this._bgm || this.vehicle().bgm);
 };
 
-Game_Vehicle.prototype.syncWithPlayer = function() {
+Game_Vehicle.prototype.syncWithPlayer = function () {
     this.copyPosition($gamePlayer);
     this.refreshBushDepth();
 };
 
-Game_Vehicle.prototype.screenY = function() {
+Game_Vehicle.prototype.screenY = function () {
     return Game_Character.prototype.screenY.call(this) - this._altitude;
 };
 
-Game_Vehicle.prototype.shadowX = function() {
+Game_Vehicle.prototype.shadowX = function () {
     return this.screenX();
 };
 
-Game_Vehicle.prototype.shadowY = function() {
+Game_Vehicle.prototype.shadowY = function () {
     return this.screenY() + this._altitude;
 };
 
-Game_Vehicle.prototype.shadowOpacity = function() {
+Game_Vehicle.prototype.shadowOpacity = function () {
     return (255 * this._altitude) / this.maxAltitude();
 };
 
-Game_Vehicle.prototype.canMove = function() {
+Game_Vehicle.prototype.canMove = function () {
     if (this.isAirship()) {
         return this.isHighest();
     } else {
@@ -9050,20 +9050,20 @@ Game_Vehicle.prototype.canMove = function() {
     }
 };
 
-Game_Vehicle.prototype.update = function() {
+Game_Vehicle.prototype.update = function () {
     Game_Character.prototype.update.call(this);
     if (this.isAirship()) {
         this.updateAirship();
     }
 };
 
-Game_Vehicle.prototype.updateAirship = function() {
+Game_Vehicle.prototype.updateAirship = function () {
     this.updateAirshipAltitude();
     this.setStepAnime(this.isHighest());
     this.setPriorityType(this.isLowest() ? 0 : 2);
 };
 
-Game_Vehicle.prototype.updateAirshipAltitude = function() {
+Game_Vehicle.prototype.updateAirshipAltitude = function () {
     if (this._driving && !this.isHighest()) {
         this._altitude++;
     }
@@ -9072,23 +9072,23 @@ Game_Vehicle.prototype.updateAirshipAltitude = function() {
     }
 };
 
-Game_Vehicle.prototype.maxAltitude = function() {
+Game_Vehicle.prototype.maxAltitude = function () {
     return 48;
 };
 
-Game_Vehicle.prototype.isLowest = function() {
+Game_Vehicle.prototype.isLowest = function () {
     return this._altitude <= 0;
 };
 
-Game_Vehicle.prototype.isHighest = function() {
+Game_Vehicle.prototype.isHighest = function () {
     return this._altitude >= this.maxAltitude();
 };
 
-Game_Vehicle.prototype.isTakeoffOk = function() {
+Game_Vehicle.prototype.isTakeoffOk = function () {
     return $gamePlayer.areFollowersGathered();
 };
 
-Game_Vehicle.prototype.isLandOk = function(x, y, d) {
+Game_Vehicle.prototype.isLandOk = function (x, y, d) {
     if (this.isAirship()) {
         if (!$gameMap.isAirshipLandOk(x, y)) {
             return false;
@@ -9125,7 +9125,7 @@ function Game_Event() {
 Game_Event.prototype = Object.create(Game_Character.prototype);
 Game_Event.prototype.constructor = Game_Event;
 
-Game_Event.prototype.initialize = function(mapId, eventId) {
+Game_Event.prototype.initialize = function (mapId, eventId) {
     Game_Character.prototype.initialize.call(this);
     this._mapId = mapId;
     this._eventId = eventId;
@@ -9133,7 +9133,7 @@ Game_Event.prototype.initialize = function(mapId, eventId) {
     this.refresh();
 };
 
-Game_Event.prototype.initMembers = function() {
+Game_Event.prototype.initMembers = function () {
     Game_Character.prototype.initMembers.call(this);
     this._moveType = 0;
     this._trigger = 0;
@@ -9146,39 +9146,39 @@ Game_Event.prototype.initMembers = function() {
     this._locked = false;
 };
 
-Game_Event.prototype.eventId = function() {
+Game_Event.prototype.eventId = function () {
     return this._eventId;
 };
 
-Game_Event.prototype.event = function() {
+Game_Event.prototype.event = function () {
     return $dataMap.events[this._eventId];
 };
 
-Game_Event.prototype.page = function() {
+Game_Event.prototype.page = function () {
     return this.event().pages[this._pageIndex];
 };
 
-Game_Event.prototype.list = function() {
+Game_Event.prototype.list = function () {
     return this.page().list;
 };
 
-Game_Event.prototype.isCollidedWithCharacters = function(x, y) {
+Game_Event.prototype.isCollidedWithCharacters = function (x, y) {
     return (
         Game_Character.prototype.isCollidedWithCharacters.call(this, x, y) ||
         this.isCollidedWithPlayerCharacters(x, y)
     );
 };
 
-Game_Event.prototype.isCollidedWithEvents = function(x, y) {
+Game_Event.prototype.isCollidedWithEvents = function (x, y) {
     const events = $gameMap.eventsXyNt(x, y);
     return events.length > 0;
 };
 
-Game_Event.prototype.isCollidedWithPlayerCharacters = function(x, y) {
+Game_Event.prototype.isCollidedWithPlayerCharacters = function (x, y) {
     return this.isNormalPriority() && $gamePlayer.isCollided(x, y);
 };
 
-Game_Event.prototype.lock = function() {
+Game_Event.prototype.lock = function () {
     if (!this._locked) {
         this._prelockDirection = this.direction();
         this.turnTowardPlayer();
@@ -9186,14 +9186,14 @@ Game_Event.prototype.lock = function() {
     }
 };
 
-Game_Event.prototype.unlock = function() {
+Game_Event.prototype.unlock = function () {
     if (this._locked) {
         this._locked = false;
         this.setDirection(this._prelockDirection);
     }
 };
 
-Game_Event.prototype.updateStop = function() {
+Game_Event.prototype.updateStop = function () {
     if (this._locked) {
         this.resetStopCount();
     }
@@ -9203,7 +9203,7 @@ Game_Event.prototype.updateStop = function() {
     }
 };
 
-Game_Event.prototype.updateSelfMovement = function() {
+Game_Event.prototype.updateSelfMovement = function () {
     if (
         !this._locked &&
         this.isNearTheScreen() &&
@@ -9223,11 +9223,11 @@ Game_Event.prototype.updateSelfMovement = function() {
     }
 };
 
-Game_Event.prototype.stopCountThreshold = function() {
+Game_Event.prototype.stopCountThreshold = function () {
     return 30 * (5 - this.moveFrequency());
 };
 
-Game_Event.prototype.moveTypeRandom = function() {
+Game_Event.prototype.moveTypeRandom = function () {
     switch (Math.randomInt(6)) {
         case 0:
         case 1:
@@ -9244,7 +9244,7 @@ Game_Event.prototype.moveTypeRandom = function() {
     }
 };
 
-Game_Event.prototype.moveTypeTowardPlayer = function() {
+Game_Event.prototype.moveTypeTowardPlayer = function () {
     if (this.isNearThePlayer()) {
         switch (Math.randomInt(6)) {
             case 0:
@@ -9265,29 +9265,29 @@ Game_Event.prototype.moveTypeTowardPlayer = function() {
     }
 };
 
-Game_Event.prototype.isNearThePlayer = function() {
+Game_Event.prototype.isNearThePlayer = function () {
     const sx = Math.abs(this.deltaXFrom($gamePlayer.x));
     const sy = Math.abs(this.deltaYFrom($gamePlayer.y));
     return sx + sy < 20;
 };
 
-Game_Event.prototype.moveTypeCustom = function() {
+Game_Event.prototype.moveTypeCustom = function () {
     this.updateRoutineMove();
 };
 
-Game_Event.prototype.isStarting = function() {
+Game_Event.prototype.isStarting = function () {
     return this._starting;
 };
 
-Game_Event.prototype.clearStartingFlag = function() {
+Game_Event.prototype.clearStartingFlag = function () {
     this._starting = false;
 };
 
-Game_Event.prototype.isTriggerIn = function(triggers) {
+Game_Event.prototype.isTriggerIn = function (triggers) {
     return triggers.includes(this._trigger);
 };
 
-Game_Event.prototype.start = function() {
+Game_Event.prototype.start = function () {
     const list = this.list();
     if (list && list.length > 1) {
         this._starting = true;
@@ -9297,12 +9297,12 @@ Game_Event.prototype.start = function() {
     }
 };
 
-Game_Event.prototype.erase = function() {
+Game_Event.prototype.erase = function () {
     this._erased = true;
     this.refresh();
 };
 
-Game_Event.prototype.refresh = function() {
+Game_Event.prototype.refresh = function () {
     const newPageIndex = this._erased ? -1 : this.findProperPageIndex();
     if (this._pageIndex !== newPageIndex) {
         this._pageIndex = newPageIndex;
@@ -9310,7 +9310,7 @@ Game_Event.prototype.refresh = function() {
     }
 };
 
-Game_Event.prototype.findProperPageIndex = function() {
+Game_Event.prototype.findProperPageIndex = function () {
     const pages = this.event().pages;
     for (let i = pages.length - 1; i >= 0; i--) {
         const page = pages[i];
@@ -9321,7 +9321,7 @@ Game_Event.prototype.findProperPageIndex = function() {
     return -1;
 };
 
-Game_Event.prototype.meetsConditions = function(page) {
+Game_Event.prototype.meetsConditions = function (page) {
     const c = page.conditions;
     if (c.switch1Valid) {
         if (!$gameSwitches.value(c.switch1Id)) {
@@ -9359,7 +9359,7 @@ Game_Event.prototype.meetsConditions = function(page) {
     return true;
 };
 
-Game_Event.prototype.setupPage = function() {
+Game_Event.prototype.setupPage = function () {
     if (this._pageIndex >= 0) {
         this.setupPageSettings();
     } else {
@@ -9370,7 +9370,7 @@ Game_Event.prototype.setupPage = function() {
     this.checkEventTriggerAuto();
 };
 
-Game_Event.prototype.clearPageSettings = function() {
+Game_Event.prototype.clearPageSettings = function () {
     this.setImage("", 0);
     this._moveType = 0;
     this._trigger = null;
@@ -9378,7 +9378,7 @@ Game_Event.prototype.clearPageSettings = function() {
     this.setThrough(true);
 };
 
-Game_Event.prototype.setupPageSettings = function() {
+Game_Event.prototype.setupPageSettings = function () {
     const page = this.page();
     const image = page.image;
     if (image.tileId > 0) {
@@ -9413,15 +9413,15 @@ Game_Event.prototype.setupPageSettings = function() {
     }
 };
 
-Game_Event.prototype.isOriginalPattern = function() {
+Game_Event.prototype.isOriginalPattern = function () {
     return this.pattern() === this._originalPattern;
 };
 
-Game_Event.prototype.resetPattern = function() {
+Game_Event.prototype.resetPattern = function () {
     this.setPattern(this._originalPattern);
 };
 
-Game_Event.prototype.checkEventTriggerTouch = function(x, y) {
+Game_Event.prototype.checkEventTriggerTouch = function (x, y) {
     if (!$gameMap.isEventRunning()) {
         if (this._trigger === 2 && $gamePlayer.pos(x, y)) {
             if (!this.isJumping() && this.isNormalPriority()) {
@@ -9431,19 +9431,19 @@ Game_Event.prototype.checkEventTriggerTouch = function(x, y) {
     }
 };
 
-Game_Event.prototype.checkEventTriggerAuto = function() {
+Game_Event.prototype.checkEventTriggerAuto = function () {
     if (this._trigger === 3) {
         this.start();
     }
 };
 
-Game_Event.prototype.update = function() {
+Game_Event.prototype.update = function () {
     Game_Character.prototype.update.call(this);
     this.checkEventTriggerAuto();
     this.updateParallel();
 };
 
-Game_Event.prototype.updateParallel = function() {
+Game_Event.prototype.updateParallel = function () {
     if (this._interpreter) {
         if (!this._interpreter.isRunning()) {
             this._interpreter.setup(this.list(), this._eventId);
@@ -9452,12 +9452,12 @@ Game_Event.prototype.updateParallel = function() {
     }
 };
 
-Game_Event.prototype.locate = function(x, y) {
+Game_Event.prototype.locate = function (x, y) {
     Game_Character.prototype.locate.call(this, x, y);
     this._prelockDirection = 0;
 };
 
-Game_Event.prototype.forceMoveRoute = function(moveRoute) {
+Game_Event.prototype.forceMoveRoute = function (moveRoute) {
     Game_Character.prototype.forceMoveRoute.call(this, moveRoute);
     this._prelockDirection = 0;
 };
@@ -9471,7 +9471,7 @@ function Game_Interpreter() {
     this.initialize(...arguments);
 }
 
-Game_Interpreter.prototype.initialize = function(depth) {
+Game_Interpreter.prototype.initialize = function (depth) {
     this._depth = depth || 0;
     this.checkOverflow();
     this.clear();
@@ -9481,13 +9481,13 @@ Game_Interpreter.prototype.initialize = function(depth) {
     this._freezeChecker = 0;
 };
 
-Game_Interpreter.prototype.checkOverflow = function() {
+Game_Interpreter.prototype.checkOverflow = function () {
     if (this._depth >= 100) {
         throw new Error("Common event calls exceeded the limit");
     }
 };
 
-Game_Interpreter.prototype.clear = function() {
+Game_Interpreter.prototype.clear = function () {
     this._mapId = 0;
     this._eventId = 0;
     this._list = null;
@@ -9499,7 +9499,7 @@ Game_Interpreter.prototype.clear = function() {
     this._childInterpreter = null;
 };
 
-Game_Interpreter.prototype.setup = function(list, eventId) {
+Game_Interpreter.prototype.setup = function (list, eventId) {
     this.clear();
     this._mapId = $gameMap.mapId();
     this._eventId = eventId || 0;
@@ -9507,7 +9507,7 @@ Game_Interpreter.prototype.setup = function(list, eventId) {
     this.loadImages();
 };
 
-Game_Interpreter.prototype.loadImages = function() {
+Game_Interpreter.prototype.loadImages = function () {
     // [Note] The certain versions of MV had a more complicated preload scheme.
     //   However it is usually sufficient to preload face and picture images.
     const list = this._list.slice(0, 200);
@@ -9523,15 +9523,15 @@ Game_Interpreter.prototype.loadImages = function() {
     }
 };
 
-Game_Interpreter.prototype.eventId = function() {
+Game_Interpreter.prototype.eventId = function () {
     return this._eventId;
 };
 
-Game_Interpreter.prototype.isOnCurrentMap = function() {
+Game_Interpreter.prototype.isOnCurrentMap = function () {
     return this._mapId === $gameMap.mapId();
 };
 
-Game_Interpreter.prototype.setupReservedCommonEvent = function() {
+Game_Interpreter.prototype.setupReservedCommonEvent = function () {
     if ($gameTemp.isCommonEventReserved()) {
         const commonEvent = $gameTemp.retrieveCommonEvent();
         if (commonEvent) {
@@ -9542,11 +9542,11 @@ Game_Interpreter.prototype.setupReservedCommonEvent = function() {
     return false;
 };
 
-Game_Interpreter.prototype.isRunning = function() {
+Game_Interpreter.prototype.isRunning = function () {
     return !!this._list;
 };
 
-Game_Interpreter.prototype.update = function() {
+Game_Interpreter.prototype.update = function () {
     while (this.isRunning()) {
         if (this.updateChild() || this.updateWait()) {
             break;
@@ -9563,7 +9563,7 @@ Game_Interpreter.prototype.update = function() {
     }
 };
 
-Game_Interpreter.prototype.updateChild = function() {
+Game_Interpreter.prototype.updateChild = function () {
     if (this._childInterpreter) {
         this._childInterpreter.update();
         if (this._childInterpreter.isRunning()) {
@@ -9575,11 +9575,11 @@ Game_Interpreter.prototype.updateChild = function() {
     return false;
 };
 
-Game_Interpreter.prototype.updateWait = function() {
+Game_Interpreter.prototype.updateWait = function () {
     return this.updateWaitCount() || this.updateWaitMode();
 };
 
-Game_Interpreter.prototype.updateWaitCount = function() {
+Game_Interpreter.prototype.updateWaitCount = function () {
     if (this._waitCount > 0) {
         this._waitCount--;
         return true;
@@ -9587,7 +9587,7 @@ Game_Interpreter.prototype.updateWaitCount = function() {
     return false;
 };
 
-Game_Interpreter.prototype.updateWaitMode = function() {
+Game_Interpreter.prototype.updateWaitMode = function () {
     let character = null;
     let waiting = false;
     switch (this._waitMode) {
@@ -9631,19 +9631,19 @@ Game_Interpreter.prototype.updateWaitMode = function() {
     return waiting;
 };
 
-Game_Interpreter.prototype.setWaitMode = function(waitMode) {
+Game_Interpreter.prototype.setWaitMode = function (waitMode) {
     this._waitMode = waitMode;
 };
 
-Game_Interpreter.prototype.wait = function(duration) {
+Game_Interpreter.prototype.wait = function (duration) {
     this._waitCount = duration;
 };
 
-Game_Interpreter.prototype.fadeSpeed = function() {
+Game_Interpreter.prototype.fadeSpeed = function () {
     return 24;
 };
 
-Game_Interpreter.prototype.executeCommand = function() {
+Game_Interpreter.prototype.executeCommand = function () {
     const command = this.currentCommand();
     if (command) {
         this._indent = command.indent;
@@ -9660,7 +9660,7 @@ Game_Interpreter.prototype.executeCommand = function() {
     return true;
 };
 
-Game_Interpreter.prototype.checkFreeze = function() {
+Game_Interpreter.prototype.checkFreeze = function () {
     if (this._frameCount !== Graphics.frameCount) {
         this._frameCount = Graphics.frameCount;
         this._freezeChecker = 0;
@@ -9672,22 +9672,22 @@ Game_Interpreter.prototype.checkFreeze = function() {
     }
 };
 
-Game_Interpreter.prototype.terminate = function() {
+Game_Interpreter.prototype.terminate = function () {
     this._list = null;
     this._comments = "";
 };
 
-Game_Interpreter.prototype.skipBranch = function() {
+Game_Interpreter.prototype.skipBranch = function () {
     while (this._list[this._index + 1].indent > this._indent) {
         this._index++;
     }
 };
 
-Game_Interpreter.prototype.currentCommand = function() {
+Game_Interpreter.prototype.currentCommand = function () {
     return this._list[this._index];
 };
 
-Game_Interpreter.prototype.nextEventCode = function() {
+Game_Interpreter.prototype.nextEventCode = function () {
     const command = this._list[this._index + 1];
     if (command) {
         return command.code;
@@ -9696,7 +9696,7 @@ Game_Interpreter.prototype.nextEventCode = function() {
     }
 };
 
-Game_Interpreter.prototype.iterateActorId = function(param, callback) {
+Game_Interpreter.prototype.iterateActorId = function (param, callback) {
     if (param === 0) {
         $gameParty.members().forEach(callback);
     } else {
@@ -9707,7 +9707,7 @@ Game_Interpreter.prototype.iterateActorId = function(param, callback) {
     }
 };
 
-Game_Interpreter.prototype.iterateActorEx = function(param1, param2, callback) {
+Game_Interpreter.prototype.iterateActorEx = function (param1, param2, callback) {
     if (param1 === 0) {
         this.iterateActorId(param2, callback);
     } else {
@@ -9715,7 +9715,7 @@ Game_Interpreter.prototype.iterateActorEx = function(param1, param2, callback) {
     }
 };
 
-Game_Interpreter.prototype.iterateActorIndex = function(param, callback) {
+Game_Interpreter.prototype.iterateActorIndex = function (param, callback) {
     if (param < 0) {
         $gameParty.members().forEach(callback);
     } else {
@@ -9726,7 +9726,7 @@ Game_Interpreter.prototype.iterateActorIndex = function(param, callback) {
     }
 };
 
-Game_Interpreter.prototype.iterateEnemyIndex = function(param, callback) {
+Game_Interpreter.prototype.iterateEnemyIndex = function (param, callback) {
     if (param < 0) {
         $gameTroop.members().forEach(callback);
     } else {
@@ -9737,7 +9737,7 @@ Game_Interpreter.prototype.iterateEnemyIndex = function(param, callback) {
     }
 };
 
-Game_Interpreter.prototype.iterateBattler = function(param1, param2, callback) {
+Game_Interpreter.prototype.iterateBattler = function (param1, param2, callback) {
     if ($gameParty.inBattle()) {
         if (param1 === 0) {
             this.iterateEnemyIndex(param2, callback);
@@ -9747,7 +9747,7 @@ Game_Interpreter.prototype.iterateBattler = function(param1, param2, callback) {
     }
 };
 
-Game_Interpreter.prototype.character = function(param) {
+Game_Interpreter.prototype.character = function (param) {
     if ($gameParty.inBattle()) {
         return null;
     } else if (param < 0) {
@@ -9760,14 +9760,14 @@ Game_Interpreter.prototype.character = function(param) {
 };
 
 // prettier-ignore
-Game_Interpreter.prototype.operateValue = function(
+Game_Interpreter.prototype.operateValue = function (
     operation, operandType, operand
 ) {
     const value = operandType === 0 ? operand : $gameVariables.value(operand);
     return operation === 0 ? value : -value;
 };
 
-Game_Interpreter.prototype.changeHp = function(target, value, allowDeath) {
+Game_Interpreter.prototype.changeHp = function (target, value, allowDeath) {
     if (target.isAlive()) {
         if (!allowDeath && target.hp <= -value) {
             value = 1 - target.hp;
@@ -9780,7 +9780,7 @@ Game_Interpreter.prototype.changeHp = function(target, value, allowDeath) {
 };
 
 // Show Text
-Game_Interpreter.prototype.command101 = function(params) {
+Game_Interpreter.prototype.command101 = function (params) {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -9812,7 +9812,7 @@ Game_Interpreter.prototype.command101 = function(params) {
 };
 
 // Show Choices
-Game_Interpreter.prototype.command102 = function(params) {
+Game_Interpreter.prototype.command102 = function (params) {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -9821,7 +9821,7 @@ Game_Interpreter.prototype.command102 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.setupChoices = function(params) {
+Game_Interpreter.prototype.setupChoices = function (params) {
     const choices = params[0].clone();
     const cancelType = params[1] < choices.length ? params[1] : -2;
     const defaultType = params.length > 2 ? params[2] : 0;
@@ -9836,7 +9836,7 @@ Game_Interpreter.prototype.setupChoices = function(params) {
 };
 
 // When [**]
-Game_Interpreter.prototype.command402 = function(params) {
+Game_Interpreter.prototype.command402 = function (params) {
     if (this._branch[this._indent] !== params[0]) {
         this.skipBranch();
     }
@@ -9844,7 +9844,7 @@ Game_Interpreter.prototype.command402 = function(params) {
 };
 
 // When Cancel
-Game_Interpreter.prototype.command403 = function() {
+Game_Interpreter.prototype.command403 = function () {
     if (this._branch[this._indent] >= 0) {
         this.skipBranch();
     }
@@ -9852,7 +9852,7 @@ Game_Interpreter.prototype.command403 = function() {
 };
 
 // Input Number
-Game_Interpreter.prototype.command103 = function(params) {
+Game_Interpreter.prototype.command103 = function (params) {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -9861,12 +9861,12 @@ Game_Interpreter.prototype.command103 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.setupNumInput = function(params) {
+Game_Interpreter.prototype.setupNumInput = function (params) {
     $gameMessage.setNumberInput(params[0], params[1]);
 };
 
 // Select Item
-Game_Interpreter.prototype.command104 = function(params) {
+Game_Interpreter.prototype.command104 = function (params) {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -9875,12 +9875,12 @@ Game_Interpreter.prototype.command104 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.setupItemChoice = function(params) {
+Game_Interpreter.prototype.setupItemChoice = function (params) {
     $gameMessage.setItemChoice(params[0], params[1] || 2);
 };
 
 // Show Scrolling Text
-Game_Interpreter.prototype.command105 = function(params) {
+Game_Interpreter.prototype.command105 = function (params) {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -9894,7 +9894,7 @@ Game_Interpreter.prototype.command105 = function(params) {
 };
 
 // Comment
-Game_Interpreter.prototype.command108 = function(params) {
+Game_Interpreter.prototype.command108 = function (params) {
     this._comments = [params[0]];
     while (this.nextEventCode() === 408) {
         this._index++;
@@ -9904,7 +9904,7 @@ Game_Interpreter.prototype.command108 = function(params) {
 };
 
 // Conditional Branch
-Game_Interpreter.prototype.command111 = function(params) {
+Game_Interpreter.prototype.command111 = function (params) {
     let result = false;
     let value1, value2;
     let actor, enemy, character;
@@ -10054,7 +10054,7 @@ Game_Interpreter.prototype.command111 = function(params) {
 };
 
 // Else
-Game_Interpreter.prototype.command411 = function() {
+Game_Interpreter.prototype.command411 = function () {
     if (this._branch[this._indent] !== false) {
         this.skipBranch();
     }
@@ -10062,12 +10062,12 @@ Game_Interpreter.prototype.command411 = function() {
 };
 
 // Loop
-Game_Interpreter.prototype.command112 = function() {
+Game_Interpreter.prototype.command112 = function () {
     return true;
 };
 
 // Repeat Above
-Game_Interpreter.prototype.command413 = function() {
+Game_Interpreter.prototype.command413 = function () {
     do {
         this._index--;
     } while (this.currentCommand().indent !== this._indent);
@@ -10075,7 +10075,7 @@ Game_Interpreter.prototype.command413 = function() {
 };
 
 // Break Loop
-Game_Interpreter.prototype.command113 = function() {
+Game_Interpreter.prototype.command113 = function () {
     let depth = 0;
     while (this._index < this._list.length - 1) {
         this._index++;
@@ -10095,13 +10095,13 @@ Game_Interpreter.prototype.command113 = function() {
 };
 
 // Exit Event Processing
-Game_Interpreter.prototype.command115 = function() {
+Game_Interpreter.prototype.command115 = function () {
     this._index = this._list.length;
     return true;
 };
 
 // Common Event
-Game_Interpreter.prototype.command117 = function(params) {
+Game_Interpreter.prototype.command117 = function (params) {
     const commonEvent = $dataCommonEvents[params[0]];
     if (commonEvent) {
         const eventId = this.isOnCurrentMap() ? this._eventId : 0;
@@ -10110,18 +10110,18 @@ Game_Interpreter.prototype.command117 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.setupChild = function(list, eventId) {
+Game_Interpreter.prototype.setupChild = function (list, eventId) {
     this._childInterpreter = new Game_Interpreter(this._depth + 1);
     this._childInterpreter.setup(list, eventId);
 };
 
 // Label
-Game_Interpreter.prototype.command118 = function() {
+Game_Interpreter.prototype.command118 = function () {
     return true;
 };
 
 // Jump to Label
-Game_Interpreter.prototype.command119 = function(params) {
+Game_Interpreter.prototype.command119 = function (params) {
     const labelName = params[0];
     for (let i = 0; i < this._list.length; i++) {
         const command = this._list[i];
@@ -10133,7 +10133,7 @@ Game_Interpreter.prototype.command119 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.jumpTo = function(index) {
+Game_Interpreter.prototype.jumpTo = function (index) {
     const lastIndex = this._index;
     const startIndex = Math.min(index, lastIndex);
     const endIndex = Math.max(index, lastIndex);
@@ -10149,7 +10149,7 @@ Game_Interpreter.prototype.jumpTo = function(index) {
 };
 
 // Control Switches
-Game_Interpreter.prototype.command121 = function(params) {
+Game_Interpreter.prototype.command121 = function (params) {
     for (let i = params[0]; i <= params[1]; i++) {
         $gameSwitches.setValue(i, params[2] === 0);
     }
@@ -10157,7 +10157,7 @@ Game_Interpreter.prototype.command121 = function(params) {
 };
 
 // Control Variables
-Game_Interpreter.prototype.command122 = function(params) {
+Game_Interpreter.prototype.command122 = function (params) {
     const startId = params[0];
     const endId = params[1];
     const operationType = params[2];
@@ -10194,7 +10194,7 @@ Game_Interpreter.prototype.command122 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.gameDataOperand = function(type, param1, param2) {
+Game_Interpreter.prototype.gameDataOperand = function (type, param1, param2) {
     let actor, enemy, character;
     switch (type) {
         case 0: // Item
@@ -10293,7 +10293,7 @@ Game_Interpreter.prototype.gameDataOperand = function(type, param1, param2) {
     return 0;
 };
 
-Game_Interpreter.prototype.operateVariable = function(
+Game_Interpreter.prototype.operateVariable = function (
     variableId,
     operationType,
     value
@@ -10326,7 +10326,7 @@ Game_Interpreter.prototype.operateVariable = function(
 };
 
 // Control Self Switch
-Game_Interpreter.prototype.command123 = function(params) {
+Game_Interpreter.prototype.command123 = function (params) {
     if (this._eventId > 0) {
         const key = [this._mapId, this._eventId, params[0]];
         $gameSelfSwitches.setValue(key, params[1] === 0);
@@ -10335,7 +10335,7 @@ Game_Interpreter.prototype.command123 = function(params) {
 };
 
 // Control Timer
-Game_Interpreter.prototype.command124 = function(params) {
+Game_Interpreter.prototype.command124 = function (params) {
     if (params[0] === 0) {
         // Start
         $gameTimer.start(params[1] * 60);
@@ -10347,35 +10347,35 @@ Game_Interpreter.prototype.command124 = function(params) {
 };
 
 // Change Gold
-Game_Interpreter.prototype.command125 = function(params) {
+Game_Interpreter.prototype.command125 = function (params) {
     const value = this.operateValue(params[0], params[1], params[2]);
     $gameParty.gainGold(value);
     return true;
 };
 
 // Change Items
-Game_Interpreter.prototype.command126 = function(params) {
+Game_Interpreter.prototype.command126 = function (params) {
     const value = this.operateValue(params[1], params[2], params[3]);
     $gameParty.gainItem($dataItems[params[0]], value);
     return true;
 };
 
 // Change Weapons
-Game_Interpreter.prototype.command127 = function(params) {
+Game_Interpreter.prototype.command127 = function (params) {
     const value = this.operateValue(params[1], params[2], params[3]);
     $gameParty.gainItem($dataWeapons[params[0]], value, params[4]);
     return true;
 };
 
 // Change Armors
-Game_Interpreter.prototype.command128 = function(params) {
+Game_Interpreter.prototype.command128 = function (params) {
     const value = this.operateValue(params[1], params[2], params[3]);
     $gameParty.gainItem($dataArmors[params[0]], value, params[4]);
     return true;
 };
 
 // Change Party Member
-Game_Interpreter.prototype.command129 = function(params) {
+Game_Interpreter.prototype.command129 = function (params) {
     const actor = $gameActors.actor(params[0]);
     if (actor) {
         if (params[1] === 0) {
@@ -10394,19 +10394,19 @@ Game_Interpreter.prototype.command129 = function(params) {
 };
 
 // Change Battle BGM
-Game_Interpreter.prototype.command132 = function(params) {
+Game_Interpreter.prototype.command132 = function (params) {
     $gameSystem.setBattleBgm(params[0]);
     return true;
 };
 
 // Change Victory ME
-Game_Interpreter.prototype.command133 = function(params) {
+Game_Interpreter.prototype.command133 = function (params) {
     $gameSystem.setVictoryMe(params[0]);
     return true;
 };
 
 // Change Save Access
-Game_Interpreter.prototype.command134 = function(params) {
+Game_Interpreter.prototype.command134 = function (params) {
     if (params[0] === 0) {
         $gameSystem.disableSave();
     } else {
@@ -10416,7 +10416,7 @@ Game_Interpreter.prototype.command134 = function(params) {
 };
 
 // Change Menu Access
-Game_Interpreter.prototype.command135 = function(params) {
+Game_Interpreter.prototype.command135 = function (params) {
     if (params[0] === 0) {
         $gameSystem.disableMenu();
     } else {
@@ -10426,7 +10426,7 @@ Game_Interpreter.prototype.command135 = function(params) {
 };
 
 // Change Encounter
-Game_Interpreter.prototype.command136 = function(params) {
+Game_Interpreter.prototype.command136 = function (params) {
     if (params[0] === 0) {
         $gameSystem.disableEncounter();
     } else {
@@ -10437,7 +10437,7 @@ Game_Interpreter.prototype.command136 = function(params) {
 };
 
 // Change Formation Access
-Game_Interpreter.prototype.command137 = function(params) {
+Game_Interpreter.prototype.command137 = function (params) {
     if (params[0] === 0) {
         $gameSystem.disableFormation();
     } else {
@@ -10447,19 +10447,19 @@ Game_Interpreter.prototype.command137 = function(params) {
 };
 
 // Change Window Color
-Game_Interpreter.prototype.command138 = function(params) {
+Game_Interpreter.prototype.command138 = function (params) {
     $gameSystem.setWindowTone(params[0]);
     return true;
 };
 
 // Change Defeat ME
-Game_Interpreter.prototype.command139 = function(params) {
+Game_Interpreter.prototype.command139 = function (params) {
     $gameSystem.setDefeatMe(params[0]);
     return true;
 };
 
 // Change Vehicle BGM
-Game_Interpreter.prototype.command140 = function(params) {
+Game_Interpreter.prototype.command140 = function (params) {
     const vehicle = $gameMap.vehicle(params[0]);
     if (vehicle) {
         vehicle.setBgm(params[1]);
@@ -10468,7 +10468,7 @@ Game_Interpreter.prototype.command140 = function(params) {
 };
 
 // Transfer Player
-Game_Interpreter.prototype.command201 = function(params) {
+Game_Interpreter.prototype.command201 = function (params) {
     if ($gameParty.inBattle() || $gameMessage.isBusy()) {
         return false;
     }
@@ -10490,7 +10490,7 @@ Game_Interpreter.prototype.command201 = function(params) {
 };
 
 // Set Vehicle Location
-Game_Interpreter.prototype.command202 = function(params) {
+Game_Interpreter.prototype.command202 = function (params) {
     let mapId, x, y;
     if (params[1] === 0) {
         // Direct designation
@@ -10511,7 +10511,7 @@ Game_Interpreter.prototype.command202 = function(params) {
 };
 
 // Set Event Location
-Game_Interpreter.prototype.command203 = function(params) {
+Game_Interpreter.prototype.command203 = function (params) {
     const character = this.character(params[0]);
     if (character) {
         if (params[1] === 0) {
@@ -10537,7 +10537,7 @@ Game_Interpreter.prototype.command203 = function(params) {
 };
 
 // Scroll Map
-Game_Interpreter.prototype.command204 = function(params) {
+Game_Interpreter.prototype.command204 = function (params) {
     if (!$gameParty.inBattle()) {
         if ($gameMap.isScrolling()) {
             this.setWaitMode("scroll");
@@ -10552,7 +10552,7 @@ Game_Interpreter.prototype.command204 = function(params) {
 };
 
 // Set Movement Route
-Game_Interpreter.prototype.command205 = function(params) {
+Game_Interpreter.prototype.command205 = function (params) {
     $gameMap.refreshIfNeeded();
     this._characterId = params[0];
     const character = this.character(this._characterId);
@@ -10566,19 +10566,19 @@ Game_Interpreter.prototype.command205 = function(params) {
 };
 
 // Get on/off Vehicle
-Game_Interpreter.prototype.command206 = function() {
+Game_Interpreter.prototype.command206 = function () {
     $gamePlayer.getOnOffVehicle();
     return true;
 };
 
 // Change Transparency
-Game_Interpreter.prototype.command211 = function(params) {
+Game_Interpreter.prototype.command211 = function (params) {
     $gamePlayer.setTransparent(params[0] === 0);
     return true;
 };
 
 // Show Animation
-Game_Interpreter.prototype.command212 = function(params) {
+Game_Interpreter.prototype.command212 = function (params) {
     this._characterId = params[0];
     const character = this.character(this._characterId);
     if (character) {
@@ -10591,7 +10591,7 @@ Game_Interpreter.prototype.command212 = function(params) {
 };
 
 // Show Balloon Icon
-Game_Interpreter.prototype.command213 = function(params) {
+Game_Interpreter.prototype.command213 = function (params) {
     this._characterId = params[0];
     const character = this.character(this._characterId);
     if (character) {
@@ -10604,7 +10604,7 @@ Game_Interpreter.prototype.command213 = function(params) {
 };
 
 // Erase Event
-Game_Interpreter.prototype.command214 = function() {
+Game_Interpreter.prototype.command214 = function () {
     if (this.isOnCurrentMap() && this._eventId > 0) {
         $gameMap.eraseEvent(this._eventId);
     }
@@ -10612,7 +10612,7 @@ Game_Interpreter.prototype.command214 = function() {
 };
 
 // Change Player Followers
-Game_Interpreter.prototype.command216 = function(params) {
+Game_Interpreter.prototype.command216 = function (params) {
     if (params[0] === 0) {
         $gamePlayer.showFollowers();
     } else {
@@ -10623,7 +10623,7 @@ Game_Interpreter.prototype.command216 = function(params) {
 };
 
 // Gather Followers
-Game_Interpreter.prototype.command217 = function() {
+Game_Interpreter.prototype.command217 = function () {
     if (!$gameParty.inBattle()) {
         $gamePlayer.gatherFollowers();
         this.setWaitMode("gather");
@@ -10632,7 +10632,7 @@ Game_Interpreter.prototype.command217 = function() {
 };
 
 // Fadeout Screen
-Game_Interpreter.prototype.command221 = function() {
+Game_Interpreter.prototype.command221 = function () {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -10642,7 +10642,7 @@ Game_Interpreter.prototype.command221 = function() {
 };
 
 // Fadein Screen
-Game_Interpreter.prototype.command222 = function() {
+Game_Interpreter.prototype.command222 = function () {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -10652,7 +10652,7 @@ Game_Interpreter.prototype.command222 = function() {
 };
 
 // Tint Screen
-Game_Interpreter.prototype.command223 = function(params) {
+Game_Interpreter.prototype.command223 = function (params) {
     $gameScreen.startTint(params[0], params[1]);
     if (params[2]) {
         this.wait(params[1]);
@@ -10661,7 +10661,7 @@ Game_Interpreter.prototype.command223 = function(params) {
 };
 
 // Flash Screen
-Game_Interpreter.prototype.command224 = function(params) {
+Game_Interpreter.prototype.command224 = function (params) {
     $gameScreen.startFlash(params[0], params[1]);
     if (params[2]) {
         this.wait(params[1]);
@@ -10670,7 +10670,7 @@ Game_Interpreter.prototype.command224 = function(params) {
 };
 
 // Shake Screen
-Game_Interpreter.prototype.command225 = function(params) {
+Game_Interpreter.prototype.command225 = function (params) {
     $gameScreen.startShake(params[0], params[1], params[2]);
     if (params[3]) {
         this.wait(params[2]);
@@ -10679,13 +10679,13 @@ Game_Interpreter.prototype.command225 = function(params) {
 };
 
 // Wait
-Game_Interpreter.prototype.command230 = function(params) {
+Game_Interpreter.prototype.command230 = function (params) {
     this.wait(params[0]);
     return true;
 };
 
 // Show Picture
-Game_Interpreter.prototype.command231 = function(params) {
+Game_Interpreter.prototype.command231 = function (params) {
     const point = this.picturePoint(params);
     // prettier-ignore
     $gameScreen.showPicture(
@@ -10696,7 +10696,7 @@ Game_Interpreter.prototype.command231 = function(params) {
 };
 
 // Move Picture
-Game_Interpreter.prototype.command232 = function(params) {
+Game_Interpreter.prototype.command232 = function (params) {
     const point = this.picturePoint(params);
     // prettier-ignore
     $gameScreen.movePicture(
@@ -10709,7 +10709,7 @@ Game_Interpreter.prototype.command232 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.picturePoint = function(params) {
+Game_Interpreter.prototype.picturePoint = function (params) {
     const point = new Point();
     if (params[3] === 0) {
         // Direct designation
@@ -10724,13 +10724,13 @@ Game_Interpreter.prototype.picturePoint = function(params) {
 };
 
 // Rotate Picture
-Game_Interpreter.prototype.command233 = function(params) {
+Game_Interpreter.prototype.command233 = function (params) {
     $gameScreen.rotatePicture(params[0], params[1]);
     return true;
 };
 
 // Tint Picture
-Game_Interpreter.prototype.command234 = function(params) {
+Game_Interpreter.prototype.command234 = function (params) {
     $gameScreen.tintPicture(params[0], params[1], params[2]);
     if (params[3]) {
         this.wait(params[2]);
@@ -10739,13 +10739,13 @@ Game_Interpreter.prototype.command234 = function(params) {
 };
 
 // Erase Picture
-Game_Interpreter.prototype.command235 = function(params) {
+Game_Interpreter.prototype.command235 = function (params) {
     $gameScreen.erasePicture(params[0]);
     return true;
 };
 
 // Set Weather Effect
-Game_Interpreter.prototype.command236 = function(params) {
+Game_Interpreter.prototype.command236 = function (params) {
     if (!$gameParty.inBattle()) {
         $gameScreen.changeWeather(params[0], params[1], params[2]);
         if (params[3]) {
@@ -10756,61 +10756,61 @@ Game_Interpreter.prototype.command236 = function(params) {
 };
 
 // Play BGM
-Game_Interpreter.prototype.command241 = function(params) {
+Game_Interpreter.prototype.command241 = function (params) {
     AudioManager.playBgm(params[0]);
     return true;
 };
 
 // Fadeout BGM
-Game_Interpreter.prototype.command242 = function(params) {
+Game_Interpreter.prototype.command242 = function (params) {
     AudioManager.fadeOutBgm(params[0]);
     return true;
 };
 
 // Save BGM
-Game_Interpreter.prototype.command243 = function() {
+Game_Interpreter.prototype.command243 = function () {
     $gameSystem.saveBgm();
     return true;
 };
 
 // Resume BGM
-Game_Interpreter.prototype.command244 = function() {
+Game_Interpreter.prototype.command244 = function () {
     $gameSystem.replayBgm();
     return true;
 };
 
 // Play BGS
-Game_Interpreter.prototype.command245 = function(params) {
+Game_Interpreter.prototype.command245 = function (params) {
     AudioManager.playBgs(params[0]);
     return true;
 };
 
 // Fadeout BGS
-Game_Interpreter.prototype.command246 = function(params) {
+Game_Interpreter.prototype.command246 = function (params) {
     AudioManager.fadeOutBgs(params[0]);
     return true;
 };
 
 // Play ME
-Game_Interpreter.prototype.command249 = function(params) {
+Game_Interpreter.prototype.command249 = function (params) {
     AudioManager.playMe(params[0]);
     return true;
 };
 
 // Play SE
-Game_Interpreter.prototype.command250 = function(params) {
+Game_Interpreter.prototype.command250 = function (params) {
     AudioManager.playSe(params[0]);
     return true;
 };
 
 // Stop SE
-Game_Interpreter.prototype.command251 = function() {
+Game_Interpreter.prototype.command251 = function () {
     AudioManager.stopSe();
     return true;
 };
 
 // Play Movie
-Game_Interpreter.prototype.command261 = function(params) {
+Game_Interpreter.prototype.command261 = function (params) {
     if ($gameMessage.isBusy()) {
         return false;
     }
@@ -10823,7 +10823,7 @@ Game_Interpreter.prototype.command261 = function(params) {
     return true;
 };
 
-Game_Interpreter.prototype.videoFileExt = function() {
+Game_Interpreter.prototype.videoFileExt = function () {
     if (Utils.canPlayWebm()) {
         return ".webm";
     } else {
@@ -10832,7 +10832,7 @@ Game_Interpreter.prototype.videoFileExt = function() {
 };
 
 // Change Map Name Display
-Game_Interpreter.prototype.command281 = function(params) {
+Game_Interpreter.prototype.command281 = function (params) {
     if (params[0] === 0) {
         $gameMap.enableNameDisplay();
     } else {
@@ -10842,7 +10842,7 @@ Game_Interpreter.prototype.command281 = function(params) {
 };
 
 // Change Tileset
-Game_Interpreter.prototype.command282 = function(params) {
+Game_Interpreter.prototype.command282 = function (params) {
     const tileset = $dataTilesets[params[0]];
     const allReady = tileset.tilesetNames
         .map(tilesetName => ImageManager.loadTileset(tilesetName))
@@ -10856,13 +10856,13 @@ Game_Interpreter.prototype.command282 = function(params) {
 };
 
 // Change Battle Background
-Game_Interpreter.prototype.command283 = function(params) {
+Game_Interpreter.prototype.command283 = function (params) {
     $gameMap.changeBattleback(params[0], params[1]);
     return true;
 };
 
 // Change Parallax
-Game_Interpreter.prototype.command284 = function(params) {
+Game_Interpreter.prototype.command284 = function (params) {
     // prettier-ignore
     $gameMap.changeParallax(
         params[0], params[1], params[2], params[3], params[4]
@@ -10871,7 +10871,7 @@ Game_Interpreter.prototype.command284 = function(params) {
 };
 
 // Get Location Info
-Game_Interpreter.prototype.command285 = function(params) {
+Game_Interpreter.prototype.command285 = function (params) {
     let x, y, value;
     if (params[2] === 0) {
         // Direct designation
@@ -10910,7 +10910,7 @@ Game_Interpreter.prototype.command285 = function(params) {
 };
 
 // Battle Processing
-Game_Interpreter.prototype.command301 = function(params) {
+Game_Interpreter.prototype.command301 = function (params) {
     if (!$gameParty.inBattle()) {
         let troopId;
         if (params[0] === 0) {
@@ -10936,7 +10936,7 @@ Game_Interpreter.prototype.command301 = function(params) {
 };
 
 // If Win
-Game_Interpreter.prototype.command601 = function() {
+Game_Interpreter.prototype.command601 = function () {
     if (this._branch[this._indent] !== 0) {
         this.skipBranch();
     }
@@ -10944,7 +10944,7 @@ Game_Interpreter.prototype.command601 = function() {
 };
 
 // If Escape
-Game_Interpreter.prototype.command602 = function() {
+Game_Interpreter.prototype.command602 = function () {
     if (this._branch[this._indent] !== 1) {
         this.skipBranch();
     }
@@ -10952,7 +10952,7 @@ Game_Interpreter.prototype.command602 = function() {
 };
 
 // If Lose
-Game_Interpreter.prototype.command603 = function() {
+Game_Interpreter.prototype.command603 = function () {
     if (this._branch[this._indent] !== 2) {
         this.skipBranch();
     }
@@ -10960,9 +10960,9 @@ Game_Interpreter.prototype.command603 = function() {
 };
 
 // Shop Processing
-Game_Interpreter.prototype.command302 = function(params) {
+Game_Interpreter.prototype.command302 = function (params) {
 
-    if (!$gameParty.inBattle()) {        
+    if (!$gameParty.inBattle()) {
         const goods = [params];
         while (this.nextEventCode() === 605) {
             this._index++;
@@ -10975,7 +10975,7 @@ Game_Interpreter.prototype.command302 = function(params) {
 };
 
 // Name Input Processing
-Game_Interpreter.prototype.command303 = function(params) {
+Game_Interpreter.prototype.command303 = function (params) {
     if (!$gameParty.inBattle()) {
         if ($dataActors[params[0]]) {
             SceneManager.push(Scene_Name);
@@ -10986,7 +10986,7 @@ Game_Interpreter.prototype.command303 = function(params) {
 };
 
 // Change HP
-Game_Interpreter.prototype.command311 = function(params) {
+Game_Interpreter.prototype.command311 = function (params) {
     const value = this.operateValue(params[2], params[3], params[4]);
     this.iterateActorEx(params[0], params[1], actor => {
         this.changeHp(actor, value, params[5]);
@@ -10995,7 +10995,7 @@ Game_Interpreter.prototype.command311 = function(params) {
 };
 
 // Change MP
-Game_Interpreter.prototype.command312 = function(params) {
+Game_Interpreter.prototype.command312 = function (params) {
     const value = this.operateValue(params[2], params[3], params[4]);
     this.iterateActorEx(params[0], params[1], actor => {
         actor.gainMp(value);
@@ -11004,7 +11004,7 @@ Game_Interpreter.prototype.command312 = function(params) {
 };
 
 // Change TP
-Game_Interpreter.prototype.command326 = function(params) {
+Game_Interpreter.prototype.command326 = function (params) {
     const value = this.operateValue(params[2], params[3], params[4]);
     this.iterateActorEx(params[0], params[1], actor => {
         actor.gainTp(value);
@@ -11013,7 +11013,7 @@ Game_Interpreter.prototype.command326 = function(params) {
 };
 
 // Change State
-Game_Interpreter.prototype.command313 = function(params) {
+Game_Interpreter.prototype.command313 = function (params) {
     this.iterateActorEx(params[0], params[1], actor => {
         const alreadyDead = actor.isDead();
         if (params[2] === 0) {
@@ -11030,7 +11030,7 @@ Game_Interpreter.prototype.command313 = function(params) {
 };
 
 // Recover All
-Game_Interpreter.prototype.command314 = function(params) {
+Game_Interpreter.prototype.command314 = function (params) {
     this.iterateActorEx(params[0], params[1], actor => {
         actor.recoverAll();
     });
@@ -11038,7 +11038,7 @@ Game_Interpreter.prototype.command314 = function(params) {
 };
 
 // Change EXP
-Game_Interpreter.prototype.command315 = function(params) {
+Game_Interpreter.prototype.command315 = function (params) {
     const value = this.operateValue(params[2], params[3], params[4]);
     this.iterateActorEx(params[0], params[1], actor => {
         actor.changeExp(actor.currentExp() + value, params[5]);
@@ -11047,7 +11047,7 @@ Game_Interpreter.prototype.command315 = function(params) {
 };
 
 // Change Level
-Game_Interpreter.prototype.command316 = function(params) {
+Game_Interpreter.prototype.command316 = function (params) {
     const value = this.operateValue(params[2], params[3], params[4]);
     this.iterateActorEx(params[0], params[1], actor => {
         actor.changeLevel(actor.level + value, params[5]);
@@ -11056,7 +11056,7 @@ Game_Interpreter.prototype.command316 = function(params) {
 };
 
 // Change Parameter
-Game_Interpreter.prototype.command317 = function(params) {
+Game_Interpreter.prototype.command317 = function (params) {
     const value = this.operateValue(params[3], params[4], params[5]);
     this.iterateActorEx(params[0], params[1], actor => {
         actor.addParam(params[2], value);
@@ -11065,7 +11065,7 @@ Game_Interpreter.prototype.command317 = function(params) {
 };
 
 // Change Skill
-Game_Interpreter.prototype.command318 = function(params) {
+Game_Interpreter.prototype.command318 = function (params) {
     this.iterateActorEx(params[0], params[1], actor => {
         if (params[2] === 0) {
             actor.learnSkill(params[3]);
@@ -11077,7 +11077,7 @@ Game_Interpreter.prototype.command318 = function(params) {
 };
 
 // Change Equipment
-Game_Interpreter.prototype.command319 = function(params) {
+Game_Interpreter.prototype.command319 = function (params) {
     const actor = $gameActors.actor(params[0]);
     if (actor) {
         actor.changeEquipById(params[1], params[2]);
@@ -11086,7 +11086,7 @@ Game_Interpreter.prototype.command319 = function(params) {
 };
 
 // Change Name
-Game_Interpreter.prototype.command320 = function(params) {
+Game_Interpreter.prototype.command320 = function (params) {
     const actor = $gameActors.actor(params[0]);
     if (actor) {
         actor.setName(params[1]);
@@ -11095,7 +11095,7 @@ Game_Interpreter.prototype.command320 = function(params) {
 };
 
 // Change Class
-Game_Interpreter.prototype.command321 = function(params) {
+Game_Interpreter.prototype.command321 = function (params) {
     const actor = $gameActors.actor(params[0]);
     if (actor && $dataClasses[params[1]]) {
         actor.changeClass(params[1], params[2]);
@@ -11104,7 +11104,7 @@ Game_Interpreter.prototype.command321 = function(params) {
 };
 
 // Change Actor Images
-Game_Interpreter.prototype.command322 = function(params) {
+Game_Interpreter.prototype.command322 = function (params) {
     const actor = $gameActors.actor(params[0]);
     if (actor) {
         actor.setCharacterImage(params[1], params[2]);
@@ -11116,7 +11116,7 @@ Game_Interpreter.prototype.command322 = function(params) {
 };
 
 // Change Vehicle Image
-Game_Interpreter.prototype.command323 = function(params) {
+Game_Interpreter.prototype.command323 = function (params) {
     const vehicle = $gameMap.vehicle(params[0]);
     if (vehicle) {
         vehicle.setImage(params[1], params[2]);
@@ -11125,7 +11125,7 @@ Game_Interpreter.prototype.command323 = function(params) {
 };
 
 // Change Nickname
-Game_Interpreter.prototype.command324 = function(params) {
+Game_Interpreter.prototype.command324 = function (params) {
     const actor = $gameActors.actor(params[0]);
     if (actor) {
         actor.setNickname(params[1]);
@@ -11134,7 +11134,7 @@ Game_Interpreter.prototype.command324 = function(params) {
 };
 
 // Change Profile
-Game_Interpreter.prototype.command325 = function(params) {
+Game_Interpreter.prototype.command325 = function (params) {
     const actor = $gameActors.actor(params[0]);
     if (actor) {
         actor.setProfile(params[1]);
@@ -11143,7 +11143,7 @@ Game_Interpreter.prototype.command325 = function(params) {
 };
 
 // Change Enemy HP
-Game_Interpreter.prototype.command331 = function(params) {
+Game_Interpreter.prototype.command331 = function (params) {
     const value = this.operateValue(params[1], params[2], params[3]);
     this.iterateEnemyIndex(params[0], enemy => {
         this.changeHp(enemy, value, params[4]);
@@ -11152,7 +11152,7 @@ Game_Interpreter.prototype.command331 = function(params) {
 };
 
 // Change Enemy MP
-Game_Interpreter.prototype.command332 = function(params) {
+Game_Interpreter.prototype.command332 = function (params) {
     const value = this.operateValue(params[1], params[2], params[3]);
     this.iterateEnemyIndex(params[0], enemy => {
         enemy.gainMp(value);
@@ -11161,7 +11161,7 @@ Game_Interpreter.prototype.command332 = function(params) {
 };
 
 // Change Enemy TP
-Game_Interpreter.prototype.command342 = function(params) {
+Game_Interpreter.prototype.command342 = function (params) {
     const value = this.operateValue(params[1], params[2], params[3]);
     this.iterateEnemyIndex(params[0], enemy => {
         enemy.gainTp(value);
@@ -11170,7 +11170,7 @@ Game_Interpreter.prototype.command342 = function(params) {
 };
 
 // Change Enemy State
-Game_Interpreter.prototype.command333 = function(params) {
+Game_Interpreter.prototype.command333 = function (params) {
     this.iterateEnemyIndex(params[0], enemy => {
         const alreadyDead = enemy.isDead();
         if (params[1] === 0) {
@@ -11187,7 +11187,7 @@ Game_Interpreter.prototype.command333 = function(params) {
 };
 
 // Enemy Recover All
-Game_Interpreter.prototype.command334 = function(params) {
+Game_Interpreter.prototype.command334 = function (params) {
     this.iterateEnemyIndex(params[0], enemy => {
         enemy.recoverAll();
     });
@@ -11195,7 +11195,7 @@ Game_Interpreter.prototype.command334 = function(params) {
 };
 
 // Enemy Appear
-Game_Interpreter.prototype.command335 = function(params) {
+Game_Interpreter.prototype.command335 = function (params) {
     this.iterateEnemyIndex(params[0], enemy => {
         enemy.appear();
         $gameTroop.makeUniqueNames();
@@ -11204,7 +11204,7 @@ Game_Interpreter.prototype.command335 = function(params) {
 };
 
 // Enemy Transform
-Game_Interpreter.prototype.command336 = function(params) {
+Game_Interpreter.prototype.command336 = function (params) {
     this.iterateEnemyIndex(params[0], enemy => {
         enemy.transform(params[1]);
         $gameTroop.makeUniqueNames();
@@ -11213,7 +11213,7 @@ Game_Interpreter.prototype.command336 = function(params) {
 };
 
 // Show Battle Animation
-Game_Interpreter.prototype.command337 = function(params) {
+Game_Interpreter.prototype.command337 = function (params) {
     let param = params[0];
     if (params[2]) {
         param = -1;
@@ -11229,7 +11229,7 @@ Game_Interpreter.prototype.command337 = function(params) {
 };
 
 // Force Action
-Game_Interpreter.prototype.command339 = function(params) {
+Game_Interpreter.prototype.command339 = function (params) {
     this.iterateBattler(params[0], params[1], battler => {
         if (!battler.isDeathStateAffected()) {
             battler.forceAction(params[2], params[3]);
@@ -11241,13 +11241,13 @@ Game_Interpreter.prototype.command339 = function(params) {
 };
 
 // Abort Battle
-Game_Interpreter.prototype.command340 = function() {
+Game_Interpreter.prototype.command340 = function () {
     BattleManager.abort();
     return true;
 };
 
 // Open Menu Screen
-Game_Interpreter.prototype.command351 = function() {
+Game_Interpreter.prototype.command351 = function () {
     if (!$gameParty.inBattle()) {
         SceneManager.push(Scene_Menu);
         Window_MenuCommand.initCommandPosition();
@@ -11256,7 +11256,7 @@ Game_Interpreter.prototype.command351 = function() {
 };
 
 // Open Save Screen
-Game_Interpreter.prototype.command352 = function() {
+Game_Interpreter.prototype.command352 = function () {
     if (!$gameParty.inBattle()) {
         SceneManager.push(Scene_Save);
     }
@@ -11264,19 +11264,19 @@ Game_Interpreter.prototype.command352 = function() {
 };
 
 // Game Over
-Game_Interpreter.prototype.command353 = function() {
+Game_Interpreter.prototype.command353 = function () {
     SceneManager.goto(Scene_Gameover);
     return true;
 };
 
 // Return to Title Screen
-Game_Interpreter.prototype.command354 = function() {
+Game_Interpreter.prototype.command354 = function () {
     SceneManager.goto(Scene_Title);
     return true;
 };
 
 // Script
-Game_Interpreter.prototype.command355 = function() {
+Game_Interpreter.prototype.command355 = function () {
     let script = this.currentCommand().parameters[0] + "\n";
     while (this.nextEventCode() === 655) {
         this._index++;
@@ -11287,19 +11287,19 @@ Game_Interpreter.prototype.command355 = function() {
 };
 
 // Plugin Command MV (deprecated)
-Game_Interpreter.prototype.command356 = function(params) {
+Game_Interpreter.prototype.command356 = function (params) {
     const args = params[0].split(" ");
     const command = args.shift();
     this.pluginCommand(command, args);
     return true;
 };
 
-Game_Interpreter.prototype.pluginCommand = function() {
+Game_Interpreter.prototype.pluginCommand = function () {
     // deprecated
 };
 
 // Plugin Command
-Game_Interpreter.prototype.command357 = function(params) {
+Game_Interpreter.prototype.command357 = function (params) {
     const pluginName = Utils.extractFileName(params[0]);
     PluginManager.callCommand(this, pluginName, params[1], params[3]);
     return true;

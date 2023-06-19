@@ -145,7 +145,7 @@
 
 (() => {
     'use strict';
-    
+
     const pluginName = 'MPP_HiddenPassage';
 
     const parameters = PluginManager.parameters(pluginName);
@@ -161,16 +161,16 @@
             }
         }, []);
     };
-    
+
     const param_PassableRegionIds = convertToArray(parameters['Passable Region Ids']);
     const param_ImpassableRegionIds = convertToArray(parameters['Impassable Region Ids']);
-        
+
     //-------------------------------------------------------------------------
     // Tilemap
 
     // MV
     const _Tilemap__paintTiles = Tilemap.prototype._paintTiles;
-    Tilemap.prototype._paintTiles = function(startX, startY, x, y) {
+    Tilemap.prototype._paintTiles = function (startX, startY, x, y) {
         const regionId = this._readMapData(startX + x, startY + y, 5);
         this._forceHigher = $gamePlayer.isUpperRegion(regionId);
         _Tilemap__paintTiles.apply(this, arguments);
@@ -178,14 +178,14 @@
 
     //MZ
     const _Tilemap__addSpot = Tilemap.prototype._addSpot;
-    Tilemap.prototype._addSpot = function(startX, startY, x, y) {
+    Tilemap.prototype._addSpot = function (startX, startY, x, y) {
         const regionId = this._readMapData(startX + x, startY + y, 5);
         this._forceHigher = $gamePlayer.isUpperRegion(regionId);
         _Tilemap__addSpot.apply(this, arguments);
     };
 
     const _Tilemap__isHigherTile = Tilemap.prototype._isHigherTile;
-    Tilemap.prototype._isHigherTile = function(tileId) {
+    Tilemap.prototype._isHigherTile = function (tileId) {
         return (
             this._forceHigher ||
             _Tilemap__isHigherTile.apply(this, arguments)
@@ -196,9 +196,9 @@
     // ShaderTilemap
 
     if (Utils.RPGMAKER_NAME === 'MV') {
-        
+
         const _ShaderTilemap__paintTiles = ShaderTilemap.prototype._paintTiles;
-        ShaderTilemap.prototype._paintTiles = function(startX, startY, x, y) {
+        ShaderTilemap.prototype._paintTiles = function (startX, startY, x, y) {
             const regionId = this._readMapData(startX + x, startY + y, 5);
             this._forceHigher = $gamePlayer.isUpperRegion(regionId);
             _ShaderTilemap__paintTiles.apply(this, arguments);
@@ -210,7 +210,7 @@
     // Game_Map
 
     const _Game_Map_checkPassage = Game_Map.prototype.checkPassage;
-    Game_Map.prototype.checkPassage = function(x, y, bit) {
+    Game_Map.prototype.checkPassage = function (x, y, bit) {
         const regionId = this.regionId(x, y);
         if ($gamePlayer.isUpperRegion(regionId)) {
             return param_PassableRegionIds.includes(regionId);
@@ -221,7 +221,7 @@
     //-------------------------------------------------------------------------
     // Game_Player
 
-    Game_Player.prototype.isUpperRegion = function(regionId) {
+    Game_Player.prototype.isUpperRegion = function (regionId) {
         const z = this.mppHidPasZ || 0;
         return z < regionId && (
             param_PassableRegionIds.includes(regionId) ||
@@ -233,19 +233,19 @@
     // Game_Interpreter
 
     const _mzCommands = {
-        SetPlayerZ: { name:'setPlayerZ', keys:['z'] }
+        SetPlayerZ: { name: 'setPlayerZ', keys: ['z'] }
     };
     Object.assign(_mzCommands, {
         'エフェクトタイプ変更': _mzCommands.SetPlayerZ
     });
 
     const _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
-    Game_Interpreter.prototype.pluginCommand = function(command, args) {
+    Game_Interpreter.prototype.pluginCommand = function (command, args) {
         _Game_Interpreter_pluginCommand.apply(this, arguments);
         const mzCommand = _mzCommands[command];
         if (mzCommand) {
             const args2 = Object.assign(
-                ...mzCommand.keys.map((k, i) => ({[k]: args[i]}))
+                ...mzCommand.keys.map((k, i) => ({ [k]: args[i] }))
             );
             PluginManager.callCommandMV(this, pluginName, mzCommand.name, args2);
         }
@@ -253,16 +253,16 @@
 
     //-------------------------------------------------------------------------
     // PluginManager
-    
+
     if (!PluginManager.registerCommand) {
         PluginManager._commandsMV = PluginManager._commandsMV || {};
 
-        PluginManager.registerCommandMV = function(pluginName, commandName, func) {
+        PluginManager.registerCommandMV = function (pluginName, commandName, func) {
             const key = pluginName + ':' + commandName;
             this._commandsMV[key] = func;
         };
-        
-        PluginManager.callCommandMV = function(self, pluginName, commandName, args) {
+
+        PluginManager.callCommandMV = function (self, pluginName, commandName, args) {
             const key = pluginName + ':' + commandName;
             const func = this._commandsMV[key];
             if (typeof func === 'function') {
@@ -282,7 +282,7 @@
         });
     }
 
-    PluginManager.mppValue = function(value) {
+    PluginManager.mppValue = function (value) {
         const match = /^V\[(\d+)\]$/i.exec(value);
         return match ? $gameVariables.value(+match[1]) : +value;
     };

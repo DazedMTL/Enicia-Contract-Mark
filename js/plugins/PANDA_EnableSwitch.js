@@ -57,13 +57,13 @@
 
 (() => {
 	'use strict';
-	
+
 	//--------------------------------------------------
 	// Game_BattlerBase.canUse
 	//  [Added Definition]
 	//--------------------------------------------------
 	const _Game_BattlerBase_canUse = Game_BattlerBase.prototype.canUse;
-	Game_BattlerBase.prototype.canUse = function(item) {
+	Game_BattlerBase.prototype.canUse = function (item) {
 		if (_Game_BattlerBase_canUse.call(this, item)) {
 			const s = item.meta.enableSwitch;
 			if (s) {
@@ -75,6 +75,6 @@
 			return false;
 		}
 	};
-	
+
 })();
 

@@ -145,31 +145,31 @@
     'use strict';
     const script = document.currentScript;
 
-    PluginManagerEx.registerCommand(script, 'SHOW_ANIMATION', function(args) {
-        
+    PluginManagerEx.registerCommand(script, 'SHOW_ANIMATION', function (args) {
+
         args.id = $gameVariables.value(args.id)
         args.x = $gameVariables.value(args.x)
         args.y = $gameVariables.value(args.y)
         this.requestAnimationByPoint(args);
     });
 
-    PluginManagerEx.registerCommand(script, 'SHOW_ANIMATION_BY_MAP_POINT', function(args) {
+    PluginManagerEx.registerCommand(script, 'SHOW_ANIMATION_BY_MAP_POINT', function (args) {
         args.x = $gameMap.convertToScreenX(args.x);
         args.y = $gameMap.convertToScreenY(args.y);
         this.requestAnimationByPoint(args);
     });
 
-    Game_Map.prototype.convertToScreenX = function(mapX) {
+    Game_Map.prototype.convertToScreenX = function (mapX) {
         const tw = $gameMap.tileWidth();
         return Math.floor($gameMap.adjustX(mapX) * tw + tw / 2);
     };
 
-    Game_Map.prototype.convertToScreenY = function(mapY) {
+    Game_Map.prototype.convertToScreenY = function (mapY) {
         const th = $gameMap.tileHeight();
         return Math.floor($gameMap.adjustY(mapY) * th + th / 2);
     };
 
-    Game_Interpreter.prototype.requestAnimationByPoint = function(args) {
+    Game_Interpreter.prototype.requestAnimationByPoint = function (args) {
         const point = new Game_AnimationPoint(args);
         $gameTemp.requestAnimation([point], args.id);
         if (args.wait) {
@@ -177,7 +177,7 @@
         }
     };
 
-    Spriteset_Base.prototype.findPointTargetSprite = function(point) {
+    Spriteset_Base.prototype.findPointTargetSprite = function (point) {
         if (point instanceof Point) {
             const sprite = new Sprite_AnimationPoint(point);
             this.addChild(sprite);
@@ -188,7 +188,7 @@
     };
 
     const _Spriteset_Base_removeAnimation = Spriteset_Base.prototype.removeAnimation;
-    Spriteset_Base.prototype.removeAnimation = function(sprite) {
+    Spriteset_Base.prototype.removeAnimation = function (sprite) {
         _Spriteset_Base_removeAnimation.apply(this, arguments);
         sprite._targets.forEach(targetSprite => {
             if (targetSprite instanceof Sprite_AnimationPoint) {
@@ -198,13 +198,13 @@
     };
 
     const _Spriteset_Map_findTargetSprite = Spriteset_Map.prototype.findTargetSprite
-    Spriteset_Map.prototype.findTargetSprite = function(target) {
+    Spriteset_Map.prototype.findTargetSprite = function (target) {
         const sprite = _Spriteset_Map_findTargetSprite.apply(this, arguments);
         return sprite ? sprite : this.findPointTargetSprite(target);
     };
 
     const _Spriteset_Battle_findTargetSprite = Spriteset_Battle.prototype.findTargetSprite
-    Spriteset_Battle.prototype.findTargetSprite = function(target) {
+    Spriteset_Battle.prototype.findTargetSprite = function (target) {
         const sprite = _Spriteset_Battle_findTargetSprite.apply(this, arguments);
         return sprite ? sprite : this.findPointTargetSprite(target);
     };
@@ -212,7 +212,7 @@
     let pointAnimationCount = 0;
 
     const _Game_Interpreter_updateWaitMode = Game_Interpreter.prototype.updateWaitMode;
-    Game_Interpreter.prototype.updateWaitMode = function() {
+    Game_Interpreter.prototype.updateWaitMode = function () {
         if (this._waitMode === 'pointAnimation') {
             if (pointAnimationCount === 0) {
                 this._waitMode = '';

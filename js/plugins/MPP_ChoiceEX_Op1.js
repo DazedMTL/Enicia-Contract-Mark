@@ -347,26 +347,26 @@
 
 (() => {
     'use strict';
-    
+
     const pluginName = 'MPP_ChoiceEX_Op1';
-    
+
     //-----------------------------------------------------------------------------
     // Game_System
 
     const _Game_System_initialize = Game_System.prototype.initialize;
-    Game_System.prototype.initialize = function() {
+    Game_System.prototype.initialize = function () {
         _Game_System_initialize.apply(this, arguments);
         this._customChoices = [];
     };
-    
-    Game_System.prototype.addCustomChoice = function(id, params) {
+
+    Game_System.prototype.addCustomChoice = function (id, params) {
         if (!this._customChoices[id]) {
             this._customChoices[id] = [];
         }
         this._customChoices[id].push(params);
     };
 
-    Game_System.prototype.deleteCustomChoice = function(id, text) {
+    Game_System.prototype.deleteCustomChoice = function (id, text) {
         const customChoices = this.getCustomChoices(id);
         if (customChoices) {
             this._customChoices[id] = customChoices.filter(params =>
@@ -378,18 +378,18 @@
         }
     };
 
-    Game_System.prototype.clearCustomChoices = function(id) {
+    Game_System.prototype.clearCustomChoices = function (id) {
         this._customChoices[id] = null;
     };
 
-    Game_System.prototype.getCustomChoices = function(id) {
+    Game_System.prototype.getCustomChoices = function (id) {
         return this._customChoices[id];
     };
 
     //-------------------------------------------------------------------------
     // Game_Message
 
-    Game_Message.prototype.isTextOnly = function() {
+    Game_Message.prototype.isTextOnly = function () {
         return (
             this.hasText() &&
             !this.isChoice() &&
@@ -402,7 +402,7 @@
     // Game_Interpreter
 
     const _Game_Interpreter_command101 = Game_Interpreter.prototype.command101;
-    Game_Interpreter.prototype.command101 = function(params) {
+    Game_Interpreter.prototype.command101 = function (params) {
         const result = _Game_Interpreter_command101.apply(this, arguments);
         if ($gameMessage.isTextOnly()) {
             if (Utils.RPGMAKER_NAME === 'MV') {
@@ -434,18 +434,18 @@
 
     const _mzCommands = {
         AddCustomChoice: {
-            name:'addCustomChoice',
-            keys:['id', 'choiceText', 'returnValue']
+            name: 'addCustomChoice',
+            keys: ['id', 'choiceText', 'returnValue']
         },
         ShowCustomChoices: {
-            name:'showCustomChoices',
-            keys:['id', 'variableId', 'background', 'positionType', 'defaultType', 'cancelType']
+            name: 'showCustomChoices',
+            keys: ['id', 'variableId', 'background', 'positionType', 'defaultType', 'cancelType']
         },
         DeleteCustomChoice: {
-            name:'deleteCustomChoice',
-            keys:['id', 'choiceText']
+            name: 'deleteCustomChoice',
+            keys: ['id', 'choiceText']
         },
-        ClearCustomChoices: { name:'clearCustomChoices', keys:['id'] }
+        ClearCustomChoices: { name: 'clearCustomChoices', keys: ['id'] }
     };
     Object.assign(_mzCommands, {
         '選択肢追加': _mzCommands.AddCustomChoice,
@@ -455,29 +455,29 @@
     });
 
     const _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
-    Game_Interpreter.prototype.pluginCommand = function(command, args) {
+    Game_Interpreter.prototype.pluginCommand = function (command, args) {
         _Game_Interpreter_pluginCommand.apply(this, arguments);
         const mzCommand = _mzCommands[command];
         if (mzCommand) {
-            const args2 = Object.assign(...mzCommand.keys.map((k,i) => ({[k]:args[i]})));
+            const args2 = Object.assign(...mzCommand.keys.map((k, i) => ({ [k]: args[i] })));
             PluginManager.callCommand(this, pluginName, mzCommand.name, args2);
         }
     };
-    
+
     //-------------------------------------------------------------------------
     // PluginManager
-    
+
     PluginManager._commands = PluginManager._commands || {};
-    
+
     if (!PluginManager.registerCommand) {
-        PluginManager.registerCommand = function(pluginName, commandName, func) {
+        PluginManager.registerCommand = function (pluginName, commandName, func) {
             const key = pluginName + ":" + commandName;
             this._commands[key] = func;
         };
     }
 
     if (!PluginManager.callCommand) {
-        PluginManager.callCommand = function(self, pluginName, commandName, args) {
+        PluginManager.callCommand = function (self, pluginName, commandName, args) {
             const key = pluginName + ":" + commandName;
             const func = this._commands[key];
             if (typeof func === "function") {
@@ -495,7 +495,7 @@
         $gameSystem.addCustomChoice(id, choiceParams);
     });
 
-    PluginManager.registerCommand(pluginName, 'showCustomChoices', function(args) {
+    PluginManager.registerCommand(pluginName, 'showCustomChoices', function (args) {
         const id = PluginManager.mppValue(args.id)
         const customChoices = $gameSystem.getCustomChoices(id);
         if (customChoices) {
@@ -536,9 +536,9 @@
         $gameSystem.clearCustomChoices(id);
     });
 
-    PluginManager.mppValue = function(value) {
+    PluginManager.mppValue = function (value) {
         const match = /^V\[(\d+)\]$/i.exec(value);
         return match ? $gameVariables.value(+match[1]) : +value;
     };
-    
+
 })();

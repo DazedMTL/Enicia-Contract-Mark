@@ -482,7 +482,7 @@
     'use strict';
     const script = document.currentScript;
 
-    PluginManagerEx.registerCommand(script, 'execute', function(args) {
+    PluginManagerEx.registerCommand(script, 'execute', function (args) {
         const methodName = "command" + args.code;
         if (typeof this[methodName] === "function") {
             this[methodName](args.parameters);

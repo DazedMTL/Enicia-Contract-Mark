@@ -1052,16 +1052,16 @@
  * @type boolean
  */
 
-(function() {
+(function () {
     'use strict';
     var metaTagPrefix = 'SG';
 
-    var getMetaValue = function(object, name) {
+    var getMetaValue = function (object, name) {
         var metaTagName = metaTagPrefix + (name ? name : '');
         return object.meta.hasOwnProperty(metaTagName) ? object.meta[metaTagName] : undefined;
     };
 
-    var getMetaValues = function(object, names, index) {
+    var getMetaValues = function (object, names, index) {
         var footer = index > 0 ? String(index + 1) : '';
         if (!Array.isArray(names)) return getMetaValue(object, names + footer);
         for (var i = 0, n = names.length; i < n; i++) {
@@ -1071,14 +1071,14 @@
         return undefined;
     };
 
-    var getArgNumber = function(arg, min, max) {
+    var getArgNumber = function (arg, min, max) {
         if (arguments.length < 2) min = -Infinity;
         if (arguments.length < 3) max = Infinity;
         return convertEscapeCharactersAndParse(arg, true).clamp(min, max);
     };
 
 
-    var getArgString = function(arg, upperFlg) {
+    var getArgString = function (arg, upperFlg) {
         if (arg !== String(arg)) {
             return arg;
         }
@@ -1086,7 +1086,7 @@
         return upperFlg ? arg.toUpperCase() : arg;
     };
 
-    var convertEscapeCharactersAndParse = function(text, toNumber) {
+    var convertEscapeCharactersAndParse = function (text, toNumber) {
         if (text === null || text === undefined) {
             text = toNumber ? '0' : '';
         }
@@ -1100,15 +1100,15 @@
         param.GlossaryInfo = [];
     }
 
-    PluginManagerEx.registerCommand(script, 'GLOSSARY_GAIN_ALL', function(args) {
+    PluginManagerEx.registerCommand(script, 'GLOSSARY_GAIN_ALL', function (args) {
         $gameParty.gainGlossaryAll();
     });
 
-    PluginManagerEx.registerCommand(script, 'GLOSSARY_LOSE_ALL', function(args) {
+    PluginManagerEx.registerCommand(script, 'GLOSSARY_LOSE_ALL', function (args) {
         $gameParty.loseGlossaryAll();
     });
 
-    PluginManagerEx.registerCommand(script, 'GLOSSARY_CALL', function(args) {
+    PluginManagerEx.registerCommand(script, 'GLOSSARY_CALL', function (args) {
         console.log(args)
         $gameParty.clearGlossaryIndex();
         $gameParty.setSelectedGlossaryType(args.type);
@@ -1121,15 +1121,15 @@
         SceneManager.push(Scene_Glossary);
     });
 
-    PluginManagerEx.registerCommand(script, 'GLOSSARY_BACK', function(args) {
+    PluginManagerEx.registerCommand(script, 'GLOSSARY_BACK', function (args) {
         SceneManager.push(Scene_Glossary);
     });
 
-    PluginManagerEx.registerCommand(script, 'GLOSSARY_ITEM_CHANGE_CATEGORY', function(args) {
+    PluginManagerEx.registerCommand(script, 'GLOSSARY_ITEM_CHANGE_CATEGORY', function (args) {
         $gameParty.changeGlossaryCategory(args.itemId, args.category);
     });
 
-    PluginManagerEx.registerCommand(script, 'GLOSSARY_ITEM_CHANGE_USABLE', function(args) {
+    PluginManagerEx.registerCommand(script, 'GLOSSARY_ITEM_CHANGE_USABLE', function (args) {
         $gameParty.changeGlossaryItemUsable(args.itemId, args.enable);
     });
 
@@ -1137,7 +1137,7 @@
     // DataManager
     //  種別コードを返します。
     //=============================================================================
-    DataManager.getItemTypeCode = function(item) {
+    DataManager.getItemTypeCode = function (item) {
         if (this.isItem(item)) {
             return 0;
         } else if (this.isWeapon(item)) {
@@ -1153,26 +1153,26 @@
     // Game_Message
     //  戦闘開始時メッセージフラグを追加定義します。
     //=============================================================================
-    var _Game_Message_clear      = Game_Message.prototype.clear;
-    Game_Message.prototype.clear = function() {
-      _Game_Message_clear.call(this, arguments);
-      this._isStartBattleMessage = false;
+    var _Game_Message_clear = Game_Message.prototype.clear;
+    Game_Message.prototype.clear = function () {
+        _Game_Message_clear.call(this, arguments);
+        this._isStartBattleMessage = false;
     };
 
-    Game_Message.prototype.startBattleMessage = function() {
-      this._isStartBattleMessage = true;
+    Game_Message.prototype.startBattleMessage = function () {
+        this._isStartBattleMessage = true;
     };
 
-    Game_Message.prototype.isStartBattleMessage = function() {
-      return this._isStartBattleMessage;
+    Game_Message.prototype.isStartBattleMessage = function () {
+        return this._isStartBattleMessage;
     };
 
     //=============================================================================
     // Game_System
     //  ロード完了時に履歴情報フィールドを必要に応じて初期化します。
     //=============================================================================
-    var _Game_System_onAfterLoad      = Game_System.prototype.onAfterLoad;
-    Game_System.prototype.onAfterLoad = function() {
+    var _Game_System_onAfterLoad = Game_System.prototype.onAfterLoad;
+    Game_System.prototype.onAfterLoad = function () {
         _Game_System_onAfterLoad.apply(this, arguments);
         $gameParty.initAllItemHistory();
     };
@@ -1181,54 +1181,54 @@
     // Game_Party
     //  用語集アイテムの管理を追加定義します。
     //=============================================================================
-    var _Game_Party_initAllItems      = Game_Party.prototype.initAllItems;
-    Game_Party.prototype.initAllItems = function() {
+    var _Game_Party_initAllItems = Game_Party.prototype.initAllItems;
+    Game_Party.prototype.initAllItems = function () {
         _Game_Party_initAllItems.apply(this, arguments);
         this.initAllItemHistory();
     };
 
-    Game_Party.prototype.initAllItemHistory = function() {
-        this._itemHistory   = this._itemHistory || {};
+    Game_Party.prototype.initAllItemHistory = function () {
+        this._itemHistory = this._itemHistory || {};
         this._weaponHistory = this._weaponHistory || {};
-        this._armorHistory  = this._armorHistory || {};
-        this.items().concat(this.weapons()).concat(this.armors()).forEach(function(item) {
+        this._armorHistory = this._armorHistory || {};
+        this.items().concat(this.weapons()).concat(this.armors()).forEach(function (item) {
             this.gainItemHistory(item);
         }, this);
     };
 
-    Game_Party.prototype.isGlossaryItem = function(item) {
+    Game_Party.prototype.isGlossaryItem = function (item) {
         return item && getMetaValues(item, ['説明', 'Description']) !== undefined;
     };
 
-    Game_Party.prototype.isGlossaryHiddenItem = function(item) {
+    Game_Party.prototype.isGlossaryHiddenItem = function (item) {
         return this.isGlossaryItem(item) && item.itypeId > 2;
     };
 
-    Game_Party.prototype.isSameGlossaryType = function(item) {
-        var type     = this.getSelectedGlossaryType();
+    Game_Party.prototype.isSameGlossaryType = function (item) {
+        var type = this.getSelectedGlossaryType();
         var itemType = getArgNumber(getMetaValues(item, ['種別', 'Type']));
         return type > 1 ? itemType === type : !itemType || itemType === type;
     };
 
-    Game_Party.prototype.getGlossaryCategory = function(item) {
+    Game_Party.prototype.getGlossaryCategory = function (item) {
         var customCategory = this._customGlossaryCategoryList ? this._customGlossaryCategoryList[item.id] : undefined;
         return customCategory ? customCategory : getMetaValues(item, ['カテゴリ', 'Category']) || '';
     };
 
-    Game_Party.prototype.getGlossaryCategoryList = function(item) {
+    Game_Party.prototype.getGlossaryCategoryList = function (item) {
         return this.getGlossaryCategory(item).split(',');
     };
 
-    Game_Party.prototype.hasGlossary = function(item) {
+    Game_Party.prototype.hasGlossary = function (item) {
         return this._glossarySetting.UseItemHistory ? this.hasItemHistory(item) : this.hasItem(item);
     };
 
-    Game_Party.prototype.hasItemHistory = function(item) {
+    Game_Party.prototype.hasItemHistory = function (item) {
         return this.swapItemHash(this.hasItem.bind(this), [item]);
     };
 
-    Game_Party.prototype.getAllGlossaryList = function(needTypeCheck, needHavingCheck, categoryName) {
-        return $dataItems.concat($dataWeapons).concat($dataArmors).filter(function(item) {
+    Game_Party.prototype.getAllGlossaryList = function (needTypeCheck, needHavingCheck, categoryName) {
+        return $dataItems.concat($dataWeapons).concat($dataArmors).filter(function (item) {
             return item && this.isGlossaryItem(item) &&
                 (!needTypeCheck || this.isSameGlossaryType(item)) &&
                 (!needHavingCheck || this.hasGlossary(item)) &&
@@ -1236,15 +1236,15 @@
         }.bind(this));
     };
 
-    Game_Party.prototype.getAllHiddenGlossaryList = function() {
-        return $dataItems.filter(function(item) {
+    Game_Party.prototype.getAllHiddenGlossaryList = function () {
+        return $dataItems.filter(function (item) {
             return item && this.isGlossaryHiddenItem(item);
         }.bind(this));
     };
 
-    Game_Party.prototype.getHasGlossaryPercent = function(categoryName) {
+    Game_Party.prototype.getHasGlossaryPercent = function (categoryName) {
         var hasCount = 0, allCount = 0;
-        this.getAllGlossaryList(true, false, categoryName).forEach(function(item) {
+        this.getAllGlossaryList(true, false, categoryName).forEach(function (item) {
             if (this.isNoCollect(item)) {
                 return;
             }
@@ -1256,15 +1256,15 @@
         return allCount > 0 ? Math.floor(hasCount / allCount * 100) : 0;
     };
 
-    Game_Party.prototype.isNoCollect = function(item) {
+    Game_Party.prototype.isNoCollect = function (item) {
         return getMetaValues(item, ['収集対象外', 'NoCollect']) || this.isIndependentItem(item);
     };
 
-    Game_Party.prototype.isIndependentItem = function(item) {
+    Game_Party.prototype.isIndependentItem = function (item) {
         return typeof Yanfly !== 'undefined' && Yanfly.Param && Yanfly.Param.ItemStartingId <= item.id;
     };
 
-    Game_Party.prototype.getCompleteRate = function(categoryName, typeName) {
+    Game_Party.prototype.getCompleteRate = function (categoryName, typeName) {
         if (!typeName) {
             typeName = 1;
         }
@@ -1272,15 +1272,15 @@
         return this.getHasGlossaryPercent(categoryName);
     };
 
-    Game_Party.prototype.hasGlossaryCategory = function(item, categoryName) {
+    Game_Party.prototype.hasGlossaryCategory = function (item, categoryName) {
         return this.getGlossaryCategoryList(item).contains(categoryName);
     };
 
-    Game_Party.prototype.getAllGlossaryCategory = function() {
-        var list          = [];
+    Game_Party.prototype.getAllGlossaryCategory = function () {
+        var list = [];
         var visibleNotYet = this.isUseGlossaryVisibleItemNotYet();
-        this.getAllGlossaryList(true, !visibleNotYet, '').forEach(function(item) {
-            this.getGlossaryCategoryList(item).forEach(function(category) {
+        this.getAllGlossaryList(true, !visibleNotYet, '').forEach(function (item) {
+            this.getGlossaryCategoryList(item).forEach(function (category) {
                 if (category && !list.contains(category)) {
                     list.push(category);
                 }
@@ -1292,16 +1292,16 @@
     /**
      * @private
      */
-    Game_Party.prototype._compareOrderGlossaryCategory = function(a, b) {
-        var order       = param.CategoryOrder;
+    Game_Party.prototype._compareOrderGlossaryCategory = function (a, b) {
+        var order = param.CategoryOrder;
         var orderLength = order.length + 1;
-        var orderA      = order.indexOf(a) + 1 || orderLength;
-        var orderB      = order.indexOf(b) + 1 || orderLength;
+        var orderA = order.indexOf(a) + 1 || orderLength;
+        var orderB = order.indexOf(b) + 1 || orderLength;
         return orderA - orderB;
     };
 
-    Game_Party.prototype.gainGlossaryFromText = function(text, likeFlag) {
-        this.getAllHiddenGlossaryList().forEach(function(item) {
+    Game_Party.prototype.gainGlossaryFromText = function (text, likeFlag) {
+        this.getAllHiddenGlossaryList().forEach(function (item) {
             if (!this.hasItem(item) && this.isAutoGlossaryWord(item)) {
                 if (likeFlag && !text.contains(item.name)) {
                     return;
@@ -1315,7 +1315,7 @@
         }.bind(this));
     };
 
-    Game_Party.prototype.setAutoAdditionTrigger = function(item) {
+    Game_Party.prototype.setAutoAdditionTrigger = function (item) {
         if (param.SwitchAutoAdd > 0) {
             $gameSwitches.setValue(param.SwitchAutoAdd, true);
         }
@@ -1324,12 +1324,12 @@
         }
     };
 
-    Game_Party.prototype.isAutoGlossaryWord = function(item) {
+    Game_Party.prototype.isAutoGlossaryWord = function (item) {
         return !getMetaValues(item, ['手動', 'Manual']);
     };
 
-    Game_Party.prototype.gainGlossaryAll = function() {
-        this.getAllGlossaryList(false, false, '').forEach(function(item) {
+    Game_Party.prototype.gainGlossaryAll = function () {
+        this.getAllGlossaryList(false, false, '').forEach(function (item) {
             if (this.hasItem(item)) {
                 return;
             }
@@ -1341,54 +1341,54 @@
         }.bind(this));
     };
 
-    Game_Party.prototype.loseGlossaryAll = function() {
-        this.getAllGlossaryList(false, false, '').forEach(function(item) {
+    Game_Party.prototype.loseGlossaryAll = function () {
+        this.getAllGlossaryList(false, false, '').forEach(function (item) {
             if (this.hasItem(item)) {
                 this.loseGlossary(item);
             }
         }.bind(this));
     };
 
-    Game_Party.prototype.gainGlossary = function(item) {
+    Game_Party.prototype.gainGlossary = function (item) {
         this.gainItem(item, 1, false);
     };
 
-    Game_Party.prototype.loseGlossary = function(item) {
+    Game_Party.prototype.loseGlossary = function (item) {
         this.loseItem(item, this.maxItems(), false);
     };
 
-    var _Game_Party_gainItem      = Game_Party.prototype.gainItem;
-    Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
+    var _Game_Party_gainItem = Game_Party.prototype.gainItem;
+    Game_Party.prototype.gainItem = function (item, amount, includeEquip) {
         _Game_Party_gainItem.apply(this, arguments);
         if (amount > 0) this.gainItemHistory(item);
     };
 
-    Game_Party.prototype.gainItemHistory = function(item) {
+    Game_Party.prototype.gainItemHistory = function (item) {
         var container = this.itemHistoryContainer(item);
         if (container) {
             container[item.id] = true;
         }
     };
 
-    Game_Party.prototype.itemHistoryContainer = function(item) {
+    Game_Party.prototype.itemHistoryContainer = function (item) {
         return this.swapItemHash(this.itemContainer.bind(this), [item]);
     };
 
-    Game_Party.prototype.swapItemHash = function(caller, args) {
-        var prevItems   = this._items;
+    Game_Party.prototype.swapItemHash = function (caller, args) {
+        var prevItems = this._items;
         var prevWeapons = this._weapons;
-        var prevArmor   = this._armors;
-        this._items     = this._itemHistory;
-        this._weapons   = this._weaponHistory;
-        this._armors    = this._armorHistory;
-        var result      = caller.apply(this, args);
-        this._items     = prevItems;
-        this._weapons   = prevWeapons;
-        this._armors    = prevArmor;
+        var prevArmor = this._armors;
+        this._items = this._itemHistory;
+        this._weapons = this._weaponHistory;
+        this._armors = this._armorHistory;
+        var result = caller.apply(this, args);
+        this._items = prevItems;
+        this._weapons = prevWeapons;
+        this._armors = prevArmor;
         return result;
     };
 
-    Game_Party.prototype.setConfirmedGlossaryItem = function(item) {
+    Game_Party.prototype.setConfirmedGlossaryItem = function (item) {
         if (!this._confirmedGlossaryItems) {
             this._confirmedGlossaryItems = [];
         }
@@ -1402,20 +1402,20 @@
         return false;
     };
 
-    Game_Party.prototype.isConfirmedGlossaryItem = function(item) {
+    Game_Party.prototype.isConfirmedGlossaryItem = function (item) {
         if (!this.hasGlossary(item)) {
             return true;
         }
         return this._confirmedGlossaryItems ? this._confirmedGlossaryItems.contains(item.id) : false;
     };
 
-    Game_Party.prototype.setGlossaryCategoryIndex = function(index) {
+    Game_Party.prototype.setGlossaryCategoryIndex = function (index) {
         this.initGlossaryIndex();
         this._glossaryCategoryIndex[this.getSelectedGlossaryType()] = index;
     };
 
-    Game_Party.prototype.setGlossaryCategoryIndexByName = function(name) {
-        var list  = this.getAllGlossaryCategory();
+    Game_Party.prototype.setGlossaryCategoryIndexByName = function (name) {
+        var list = this.getAllGlossaryCategory();
         var index = list.indexOf(name);
         if (index >= 0) {
             this.setGlossaryCategoryIndex(index);
@@ -1423,29 +1423,29 @@
         return index;
     };
 
-    Game_Party.prototype.getGlossaryCategoryIndex = function() {
+    Game_Party.prototype.getGlossaryCategoryIndex = function () {
         this.initGlossaryIndex();
         return this._glossaryCategoryIndex[this.getSelectedGlossaryType()];
     };
 
-    Game_Party.prototype.setGlossaryListIndex = function(index) {
+    Game_Party.prototype.setGlossaryListIndex = function (index) {
         this.initGlossaryIndex();
         this._glossaryListIndex[this.getSelectedGlossaryType()] = index;
     };
 
-    Game_Party.prototype.getGlossaryListIndex = function() {
+    Game_Party.prototype.getGlossaryListIndex = function () {
         this.initGlossaryIndex();
         return this._glossaryListIndex[this.getSelectedGlossaryType()];
     };
 
-    Game_Party.prototype.clearGlossaryIndex = function() {
+    Game_Party.prototype.clearGlossaryIndex = function () {
         var type = this.getSelectedGlossaryType();
         this.initGlossaryIndex();
-        this._glossaryListIndex[type]     = -1;
+        this._glossaryListIndex[type] = -1;
         this._glossaryCategoryIndex[type] = -1;
     };
 
-    Game_Party.prototype.initGlossaryIndex = function() {
+    Game_Party.prototype.initGlossaryIndex = function () {
         if (!this._glossaryCategoryIndex) {
             this._glossaryCategoryIndex = {};
         }
@@ -1454,18 +1454,18 @@
         }
     };
 
-    Game_Party.prototype.setSelectedGlossaryType = function(type, index) {
+    Game_Party.prototype.setSelectedGlossaryType = function (type, index) {
         this._selectedGlossaryType = this.setupGlossary(type, index);
     };
 
-    Game_Party.prototype.setupGlossary = function(type, index) {
+    Game_Party.prototype.setupGlossary = function (type, index) {
         var glossary = param.GlossaryInfo;
         if (glossary.length === 0) {
             var errMes = $gameSystem.isJapanese() ? '用語情報が設定されていません。パラメータで設定してください。' :
                 'Glossary Info is empty. Please set plugin parameter.';
             throw new Error(errMes);
         }
-        this._glossarySetting = glossary.filter(function(glossaryItem) {
+        this._glossarySetting = glossary.filter(function (glossaryItem) {
             return glossaryItem.GlossaryType === type;
         })[0];
         if (!this._glossarySetting) {
@@ -1474,87 +1474,87 @@
         return this._glossarySetting.GlossaryType;
     };
 
-    Game_Party.prototype.getSelectedGlossaryType = function() {
+    Game_Party.prototype.getSelectedGlossaryType = function () {
         return this._selectedGlossaryType || 0;
     };
 
-    Game_Party.prototype.isUseGlossaryCategory = function() {
+    Game_Party.prototype.isUseGlossaryCategory = function () {
         return this._glossarySetting.UseCategory;
     };
 
-    Game_Party.prototype.getGlossaryBackPicture = function() {
+    Game_Party.prototype.getGlossaryBackPicture = function () {
         return this._glossarySetting.BackPicture;
     };
 
-    Game_Party.prototype.getGlossarySelectAction = function() {
+    Game_Party.prototype.getGlossarySelectAction = function () {
         return this._glossarySetting.SelectAction;
     };
 
-    Game_Party.prototype.setGlossarySelectSwitchValue = function(value) {
+    Game_Party.prototype.setGlossarySelectSwitchValue = function (value) {
         $gameSwitches.setValue(this._glossarySetting.SelectSwitchId, value);
     };
 
-    Game_Party.prototype.setGlossarySelectVariableValue = function(itemId) {
+    Game_Party.prototype.setGlossarySelectVariableValue = function (itemId) {
         $gameVariables.setValue(this._glossarySetting.SelectVariableId, itemId);
     };
 
-    Game_Party.prototype.isUseGlossaryConfirm = function() {
+    Game_Party.prototype.isUseGlossaryConfirm = function () {
         return this._glossarySetting.ConfirmMessage;
     };
 
-    Game_Party.prototype.getGlossaryConfirmMessages = function() {
+    Game_Party.prototype.getGlossaryConfirmMessages = function () {
         return [this._glossarySetting.ConfirmUse, this._glossarySetting.ConfirmNoUse];
     };
 
-    Game_Party.prototype.getGlossaryHelpMessages = function() {
+    Game_Party.prototype.getGlossaryHelpMessages = function () {
         var setting = this._glossarySetting;
         return [setting.GlossaryHelp, setting.CategoryHelp, setting.ConfirmHelp, setting.UsingHelp];
     };
 
-    Game_Party.prototype.isUseGlossaryComplete = function() {
+    Game_Party.prototype.isUseGlossaryComplete = function () {
         return this._glossarySetting.CompleteView;
     };
 
-    Game_Party.prototype.getGlossaryCompleteMessage = function() {
+    Game_Party.prototype.getGlossaryCompleteMessage = function () {
         return this._glossarySetting.CompleteMessage;
     };
 
-    Game_Party.prototype.isUseGlossaryItemNumber = function() {
+    Game_Party.prototype.isUseGlossaryItemNumber = function () {
         return this._glossarySetting.ShowingItemNumber;
     };
 
-    Game_Party.prototype.isUseGlossaryVisibleItemNotYet = function() {
+    Game_Party.prototype.isUseGlossaryVisibleItemNotYet = function () {
         return !!this._glossarySetting.VisibleItemNotYet;
     };
 
-    Game_Party.prototype.getTextItemNotYet = function() {
+    Game_Party.prototype.getTextItemNotYet = function () {
         return this._glossarySetting.VisibleItemNotYet;
     };
 
-    Game_Party.prototype.changeGlossaryCategory = function(itemId, newCategory) {
+    Game_Party.prototype.changeGlossaryCategory = function (itemId, newCategory) {
         if (!this._customGlossaryCategoryList) {
             this._customGlossaryCategoryList = [];
         }
         this._customGlossaryCategoryList[itemId] = newCategory;
     };
 
-    Game_Party.prototype.changeGlossaryItemUsable = function(itemId, usable) {
+    Game_Party.prototype.changeGlossaryItemUsable = function (itemId, usable) {
         if (!this._customGlossaryUsableList) {
             this._customGlossaryUsableList = [];
         }
         this._customGlossaryUsableList[itemId] = usable;
     };
 
-    Game_Party.prototype.isUsableGlossaryItem = function(itemId) {
+    Game_Party.prototype.isUsableGlossaryItem = function (itemId) {
         var usable = this._customGlossaryUsableList ? this._customGlossaryUsableList[itemId] : undefined;
         return usable !== undefined ? usable : this._glossarySetting.UsableDefault;
     };
 
-    Game_Party.prototype.getGlossaryListWidth = function() {
+    Game_Party.prototype.getGlossaryListWidth = function () {
         return this._glossarySetting.GlossaryListWidth || 160;
     };
 
-    Game_Party.prototype.isHideGlossaryIcon = function() {
+    Game_Party.prototype.isHideGlossaryIcon = function () {
         return this._glossarySetting.HideIcon;
     };
 
@@ -1562,14 +1562,14 @@
     // Game_Troop
     //  敵キャラの名前を自動登録します。
     //=============================================================================
-    Game_Troop.prototype.addEnemyGlossary = function() {
-        this.deadMembers().forEach(function(enemy) {
+    Game_Troop.prototype.addEnemyGlossary = function () {
+        this.deadMembers().forEach(function (enemy) {
             $gameParty.gainGlossaryFromText(enemy.originalName(), false);
         });
     };
 
     var _BattleManager_gainRewards = BattleManager.gainRewards;
-    BattleManager.gainRewards = function() {
+    BattleManager.gainRewards = function () {
         _BattleManager_gainRewards.apply(this, arguments);
         if (param.AutoAdditionEnemy) {
             $gameTroop.addEnemyGlossary();
@@ -1577,16 +1577,16 @@
     };
 
     var _BattleManager_displayStartMessages = BattleManager.displayStartMessages;
-    BattleManager.displayStartMessages = function() {
-      $gameMessage.startBattleMessage();
-      _BattleManager_displayStartMessages.apply(this, arguments);
+    BattleManager.displayStartMessages = function () {
+        $gameMessage.startBattleMessage();
+        _BattleManager_displayStartMessages.apply(this, arguments);
     };
 
     //=============================================================================
     // Scene_Menu
     //  用語集画面の呼び出しを追加します。
     //=============================================================================
-    Scene_Menu.isVisibleGlossaryCommand = function(index) {
+    Scene_Menu.isVisibleGlossaryCommand = function (index) {
         var glossaryItem = param.GlossaryInfo[index];
         if (!glossaryItem || !glossaryItem.CommandName) {
             return false;
@@ -1594,8 +1594,8 @@
         return !glossaryItem.CommandSwitchId || $gameSwitches.value(glossaryItem.CommandSwitchId);
     };
 
-    var _Scene_Menu_createCommandWindow      = Scene_Menu.prototype.createCommandWindow;
-    Scene_Menu.prototype.createCommandWindow = function() {
+    var _Scene_Menu_createCommandWindow = Scene_Menu.prototype.createCommandWindow;
+    Scene_Menu.prototype.createCommandWindow = function () {
         _Scene_Menu_createCommandWindow.apply(this, arguments);
         for (var i = 0; i < param.GlossaryInfo.length; i++) {
             if (Scene_Menu.isVisibleGlossaryCommand(i)) {
@@ -1604,7 +1604,7 @@
         }
     };
 
-    Scene_Menu.prototype.commandGlossary = function(type, typeIndex) {
+    Scene_Menu.prototype.commandGlossary = function (type, typeIndex) {
         $gameParty.clearGlossaryIndex();
         $gameParty.setSelectedGlossaryType(type, typeIndex);
         SceneManager.push(Scene_Glossary);
@@ -1614,14 +1614,14 @@
     // Window_MenuCommand
     //  用語集画面の呼び出しの選択肢を追加定義します。
     //=============================================================================
-    var _Window_MenuCommand_addOriginalCommands      = Window_MenuCommand.prototype.addOriginalCommands;
-    Window_MenuCommand.prototype.addOriginalCommands = function() {
+    var _Window_MenuCommand_addOriginalCommands = Window_MenuCommand.prototype.addOriginalCommands;
+    Window_MenuCommand.prototype.addOriginalCommands = function () {
         _Window_MenuCommand_addOriginalCommands.apply(this, arguments);
-        param.GlossaryInfo.forEach(function(glossaryInfo, index) {
+        param.GlossaryInfo.forEach(function (glossaryInfo, index) {
             var glossaryName = glossaryInfo.CommandName;
             if (Scene_Menu.isVisibleGlossaryCommand(index)) {
                 if (typeof TranslationManager !== 'undefined') {
-                    TranslationManager.translateIfNeed(glossaryName, function(translatedText) {
+                    TranslationManager.translateIfNeed(glossaryName, function (translatedText) {
                         glossaryName = translatedText;
                     });
                 }
@@ -1630,7 +1630,7 @@
         }, this);
     };
 
-    Window_MenuCommand.prototype.isGlossaryEnabled = function() {
+    Window_MenuCommand.prototype.isGlossaryEnabled = function () {
         return true;
     };
 
@@ -1638,8 +1638,8 @@
     // Window_EventItem
     //  用語集アイテムをアイテム選択の候補から除外します。
     //=============================================================================
-    var _Window_EventItem_includes      = Window_EventItem.prototype.includes;
-    Window_EventItem.prototype.includes = function(item) {
+    var _Window_EventItem_includes = Window_EventItem.prototype.includes;
+    Window_EventItem.prototype.includes = function (item) {
         return _Window_EventItem_includes.apply(this, arguments) && !$gameParty.isGlossaryHiddenItem(item);
     };
 
@@ -1647,8 +1647,8 @@
     // Window_BattleItem
     //  用語集アイテムをアイテム選択の候補から除外します。
     //=============================================================================
-    var _Window_BattleItem_includes      = Window_BattleItem.prototype.includes;
-    Window_BattleItem.prototype.includes = function(item) {
+    var _Window_BattleItem_includes = Window_BattleItem.prototype.includes;
+    Window_BattleItem.prototype.includes = function (item) {
         return _Window_BattleItem_includes.apply(this, arguments) && !$gameParty.isGlossaryHiddenItem(item);
     };
 
@@ -1656,8 +1656,8 @@
     // Window_Message
     //  メッセージに登場した単語を用語集に加えます。
     //=============================================================================
-    var _Window_Message_startMessage      = Window_Message.prototype.startMessage;
-    Window_Message.prototype.startMessage = function() {
+    var _Window_Message_startMessage = Window_Message.prototype.startMessage;
+    Window_Message.prototype.startMessage = function () {
         _Window_Message_startMessage.apply(this, arguments);
         if (param.AutoAddition) $gameParty.gainGlossaryFromText(this.convertEscapeCharacters(this._textState.text), !$gameMessage.isStartBattleMessage());
     };
@@ -1666,8 +1666,8 @@
     // Window_ScrollText
     //  メッセージに登場した単語を用語集に加えます。
     //=============================================================================
-    var _Window_ScrollText_startMessage      = Window_ScrollText.prototype.startMessage;
-    Window_ScrollText.prototype.startMessage = function() {
+    var _Window_ScrollText_startMessage = Window_ScrollText.prototype.startMessage;
+    Window_ScrollText.prototype.startMessage = function () {
         _Window_ScrollText_startMessage.apply(this, arguments);
         if (param.AutoAddition) $gameParty.gainGlossaryFromText(this.convertEscapeCharacters(this._text), true);
     };
@@ -1684,10 +1684,10 @@
         this.initialize.apply(this, arguments);
     }
     window.Scene_Glossary = Scene_Glossary;
-    Scene_Glossary.prototype             = Object.create(Scene_ItemBase.prototype);
+    Scene_Glossary.prototype = Object.create(Scene_ItemBase.prototype);
     Scene_Glossary.prototype.constructor = Scene_Glossary;
 
-    Scene_Glossary.prototype.create = function() {
+    Scene_Glossary.prototype.create = function () {
         Scene_ItemBase.prototype.create.call(this);
         this.createHelpWindow();
         this.createGlossaryWindow();
@@ -1703,7 +1703,7 @@
         return param.BottomHelpMode;
     };
 
-    Scene_Glossary.prototype.createHelpWindow = function() {
+    Scene_Glossary.prototype.createHelpWindow = function () {
         Scene_MenuBase.prototype.createHelpWindow.apply(this, arguments);
         this._helpTexts = $gameParty.getGlossaryHelpMessages();
         this.updateHelp('');
@@ -1711,19 +1711,19 @@
         this._helpWindow.setGlossaryWindowSkin();
     };
 
-    Scene_Glossary.prototype.createGlossaryWindow = function() {
+    Scene_Glossary.prototype.createGlossaryWindow = function () {
         this._glossaryWindow = new Window_Glossary($gameParty.getGlossaryListWidth(), this.mainAreaTop(), this._helpWindow);
         this.addWindow(this._glossaryWindow);
     };
 
-    Scene_Glossary.prototype.createGlossaryListWindow = function() {
+    Scene_Glossary.prototype.createGlossaryListWindow = function () {
         this._glossaryListWindow = new Window_GlossaryList(this._glossaryWindow);
         this._glossaryListWindow.setHandler('cancel', this.onCancelGlossaryList.bind(this));
         this._itemWindow = this._glossaryListWindow;
         this.addWindow(this._glossaryListWindow);
     };
 
-    Scene_Glossary.prototype.createGlossaryCategoryWindow = function() {
+    Scene_Glossary.prototype.createGlossaryCategoryWindow = function () {
         this._glossaryCategoryWindow = new Window_GlossaryCategory(this._glossaryListWindow);
         this._glossaryCategoryWindow.setHandler('cancel', this.escapeScene.bind(this));
         this._glossaryCategoryWindow.setHandler('select', this.refreshCompleteWindow.bind(this));
@@ -1731,7 +1731,7 @@
         this.addWindow(this._glossaryCategoryWindow);
     };
 
-    Scene_Glossary.prototype.createConfirmWindow = function() {
+    Scene_Glossary.prototype.createConfirmWindow = function () {
         this._confirmWindow = new Window_GlossaryConfirm(this._glossaryListWindow);
         this._confirmWindow.setHandler('cancel', this.onItemCancel.bind(this));
         this._confirmWindow.setHandler('use', this.onItemOk.bind(this));
@@ -1739,21 +1739,21 @@
         this.addChild(this._confirmWindow);
     };
 
-    Scene_Glossary.prototype.createGlossaryCompleteWindow = function() {
+    Scene_Glossary.prototype.createGlossaryCompleteWindow = function () {
         this._glossaryCompleteWindow = new Window_GlossaryComplete(this._glossaryListWindow, this._helpWindow);
         if (!$gameParty.isUseGlossaryComplete()) this._glossaryCompleteWindow.hide();
         this.addWindow(this._glossaryCompleteWindow);
     };
 
-    Scene_Glossary.prototype.createBackground = function() {
+    Scene_Glossary.prototype.createBackground = function () {
         var pictureName = this.getBackPictureName();
         if (pictureName) {
             if (param.ThroughBackPicture) {
                 Scene_ItemBase.prototype.createBackground.apply(this, arguments);
             }
-            var sprite    = new Sprite();
+            var sprite = new Sprite();
             sprite.bitmap = ImageManager.loadPicture(pictureName, 0);
-            sprite.bitmap.addLoadListener(function() {
+            sprite.bitmap.addLoadListener(function () {
                 sprite.scale.x = Graphics.boxWidth / sprite.width;
                 sprite.scale.y = Graphics.boxHeight / sprite.height;
             }.bind(this));
@@ -1764,14 +1764,14 @@
         }
     };
 
-    Scene_Glossary.prototype.getBackPictureName = function() {
+    Scene_Glossary.prototype.getBackPictureName = function () {
         return $gameParty.getGlossaryBackPicture();
     };
 
-    Scene_Glossary.prototype.updateHelp = function(helpText) {
+    Scene_Glossary.prototype.updateHelp = function (helpText) {
         if (this._helpTexts[0]) {
             if (typeof TranslationManager !== 'undefined') {
-                TranslationManager.getTranslatePromise(helpText).then(function(translatedText) {
+                TranslationManager.getTranslatePromise(helpText).then(function (translatedText) {
                     this._helpWindow.setText(translatedText.replace(/\x1bn/g, '\n'));
                 }.bind(this));
             } else {
@@ -1779,11 +1779,11 @@
             }
         } else {
             this._helpWindow.visible = false;
-            this._helpWindow.height  = 0;
+            this._helpWindow.height = 0;
         }
     };
 
-    Scene_Glossary.prototype.setInitActivateWindow = function() {
+    Scene_Glossary.prototype.setInitActivateWindow = function () {
         var clearIndex = !($gameParty.getGlossaryListIndex() >= 0);
         if ($gameParty.isUseGlossaryCategory() && clearIndex) {
             this.activateCategoryWindow(clearIndex);
@@ -1793,11 +1793,11 @@
         }
     };
 
-    Scene_Glossary.prototype.onOkGlossaryCategory = function() {
+    Scene_Glossary.prototype.onOkGlossaryCategory = function () {
         this.activateListWindow(true);
     };
 
-    Scene_Glossary.prototype.onOkGlossaryList = function() {
+    Scene_Glossary.prototype.onOkGlossaryList = function () {
         if ($gameParty.isUseGlossaryConfirm()) {
             this.activateConfirmWindow();
         } else {
@@ -1805,7 +1805,7 @@
         }
     };
 
-    Scene_Glossary.prototype.onItemOk = function() {
+    Scene_Glossary.prototype.onItemOk = function () {
         this._confirmWindow.hide();
         this._confirmWindow.deactivate();
         var action = $gameParty.getGlossarySelectAction();
@@ -1822,24 +1822,24 @@
         }
     };
 
-    Scene_Glossary.prototype.onItemCancel = function() {
+    Scene_Glossary.prototype.onItemCancel = function () {
         $gameParty.setGlossarySelectVariableValue(-1);
         $gameParty.setGlossarySelectSwitchValue(false);
         this.updateHelp(this._helpTexts[0]);
         this.activateListWindow();
     };
 
-    Scene_Glossary.prototype.playSeForItem = function() {
+    Scene_Glossary.prototype.playSeForItem = function () {
         SoundManager.playUseItem();
     };
 
-    Scene_Glossary.prototype.isCursorLeft = function() {
+    Scene_Glossary.prototype.isCursorLeft = function () {
         return true;
     };
 
     Scene_Glossary.prototype.user = Scene_Item.prototype.user;
 
-    Scene_Glossary.prototype.onCancelGlossaryList = function() {
+    Scene_Glossary.prototype.onCancelGlossaryList = function () {
         if ($gameParty.isUseGlossaryCategory()) {
             this.activateCategoryWindow(false);
         } else {
@@ -1847,7 +1847,7 @@
         }
     };
 
-    Scene_Glossary.prototype.activateCategoryWindow = function(indexInit) {
+    Scene_Glossary.prototype.activateCategoryWindow = function (indexInit) {
         this._glossaryCategoryWindow.activateAndShow();
         if (indexInit) {
             this._glossaryCategoryWindow.select(0);
@@ -1860,7 +1860,7 @@
         this.updateHelp(this._helpTexts[1]);
     };
 
-    Scene_Glossary.prototype.activateListWindow = function(indexInit) {
+    Scene_Glossary.prototype.activateListWindow = function (indexInit) {
         this._glossaryListWindow.setItemHandler(this.onOkGlossaryList.bind(this));
         this._glossaryListWindow.refresh();
         this._glossaryListWindow.activateAndShow();
@@ -1873,7 +1873,7 @@
         this.updateHelp(this._helpTexts[0]);
     };
 
-    Scene_Glossary.prototype.activateConfirmWindow = function() {
+    Scene_Glossary.prototype.activateConfirmWindow = function () {
         this._glossaryListWindow.deactivate();
         this._confirmWindow.updatePlacement();
         this._confirmWindow.select(0);
@@ -1883,11 +1883,11 @@
         }
     };
 
-    Scene_Glossary.prototype.escapeScene = function() {
+    Scene_Glossary.prototype.escapeScene = function () {
         this.popScene();
     };
 
-    Scene_Glossary.prototype.refreshCompleteWindow = function() {
+    Scene_Glossary.prototype.refreshCompleteWindow = function () {
         if (this._glossaryCompleteWindow.visible) {
             this._glossaryCompleteWindow.refresh();
         }
@@ -1897,7 +1897,7 @@
     // Window_Base
     //  必要なら制御文字変換を行ってテキストを表示します。
     //=============================================================================
-    Window_Base.prototype.drawTextExIfNeed = function(text, x, y, maxWidth, align) {
+    Window_Base.prototype.drawTextExIfNeed = function (text, x, y, maxWidth, align) {
         if (text.match(/\\/)) {
             if (align && align !== 'left') {
                 var width = this.drawTextEx(text, x, -this.lineHeight());
@@ -1909,14 +1909,14 @@
         }
     };
 
-    Window_Base.prototype.setFramelessDesign = function() {
+    Window_Base.prototype.setFramelessDesign = function () {
         if (param.FramelessDesign) {
             this.backOpacity = 0;
-            this.opacity     = 0;
+            this.opacity = 0;
         }
     };
 
-    Window_Base.prototype.setGlossaryWindowSkin = function() {
+    Window_Base.prototype.setGlossaryWindowSkin = function () {
         if (!param.WindowSkin) {
             return;
         }
@@ -1927,12 +1927,12 @@
     // Window_Selectable
     //  アクティブウィンドウを切り替えます。
     //=============================================================================
-    Window_Selectable.prototype.activateAndShow = function() {
+    Window_Selectable.prototype.activateAndShow = function () {
         this.activate();
         this.show();
     };
 
-    Window_Selectable.prototype.deactivateAndHide = function() {
+    Window_Selectable.prototype.deactivateAndHide = function () {
         this.deactivate();
         this.hide();
     };
@@ -1944,10 +1944,10 @@
     function Window_GlossaryCategory() {
         this.initialize.apply(this, arguments);
     }
-    Window_GlossaryCategory.prototype             = Object.create(Window_Selectable.prototype);
+    Window_GlossaryCategory.prototype = Object.create(Window_Selectable.prototype);
     Window_GlossaryCategory.prototype.constructor = Window_GlossaryCategory;
 
-    Window_GlossaryCategory.prototype.initialize = function(glWindow) {
+    Window_GlossaryCategory.prototype.initialize = function (glWindow) {
         this._glossaryListWindow = glWindow;
         Window_Selectable.prototype.initialize.call(this, glWindow);
         this._data = null;
@@ -1957,31 +1957,31 @@
         this.setFramelessDesign();
     };
 
-    Window_GlossaryCategory.prototype.selectLastIndex = function() {
+    Window_GlossaryCategory.prototype.selectLastIndex = function () {
         var lastIndex = $gameParty.getGlossaryCategoryIndex();
         if (lastIndex >= 0) {
             this.select(Math.min(lastIndex, this.maxItems() - 1));
         }
     };
 
-    Window_GlossaryCategory.prototype.maxItems = function() {
+    Window_GlossaryCategory.prototype.maxItems = function () {
         return this._data ? this._data.length : 1;
     };
 
-    Window_GlossaryCategory.prototype.item = function() {
+    Window_GlossaryCategory.prototype.item = function () {
         var index = this.index();
         return this._data && index >= 0 ? this._data[index] : null;
     };
 
-    Window_GlossaryCategory.prototype.isCurrentItemEnabled = function() {
+    Window_GlossaryCategory.prototype.isCurrentItemEnabled = function () {
         return !!this.item();
     };
 
-    Window_GlossaryCategory.prototype.makeItemList = function() {
+    Window_GlossaryCategory.prototype.makeItemList = function () {
         this._data = $gameParty.getAllGlossaryCategory();
     };
 
-    Window_GlossaryCategory.prototype.select = function(index) {
+    Window_GlossaryCategory.prototype.select = function (index) {
         Window_Selectable.prototype.select.apply(this, arguments);
         this._glossaryListWindow.setGlossaryOnly(this.item());
         if (index >= 0) {
@@ -1990,13 +1990,13 @@
         }
     };
 
-    Window_GlossaryCategory.prototype.refresh = function() {
+    Window_GlossaryCategory.prototype.refresh = function () {
         this.makeItemList();
         this.createContents();
         this.drawAllItems();
     };
 
-    Window_GlossaryCategory.prototype.drawItem = function(index) {
+    Window_GlossaryCategory.prototype.drawItem = function (index) {
         var text = this._data[index];
         if (text) {
             var rect = this.itemRect(index);
@@ -2011,12 +2011,12 @@
     function Window_GlossaryList() {
         this.initialize.apply(this, arguments);
     }
-    Window_GlossaryList.prototype             = Object.create(Window_ItemList.prototype);
+    Window_GlossaryList.prototype = Object.create(Window_ItemList.prototype);
     Window_GlossaryList.prototype.constructor = Window_GlossaryList;
 
-    Window_GlossaryList.prototype.initialize = function(gWindow) {
+    Window_GlossaryList.prototype.initialize = function (gWindow) {
         this._glossaryWindow = gWindow;
-        var height           = gWindow.height;
+        var height = gWindow.height;
         if ($gameParty.isUseGlossaryComplete()) {
             height -= this.lineHeight() + $gameSystem.windowPadding() * 2;
         }
@@ -2028,26 +2028,26 @@
         this.setFramelessDesign();
     };
 
-    Window_GlossaryList.prototype.selectLastIndex = function() {
+    Window_GlossaryList.prototype.selectLastIndex = function () {
         var lastIndex = $gameParty.getGlossaryListIndex();
         if (lastIndex >= 0) {
             this.select(Math.min(lastIndex, this.maxItems() - 1));
         }
     };
 
-    Window_GlossaryList.prototype.maxCols = function() {
+    Window_GlossaryList.prototype.maxCols = function () {
         return 1;
     };
 
-    Window_GlossaryList.prototype.numberWidth = function() {
+    Window_GlossaryList.prototype.numberWidth = function () {
         return this.needsNumber() ? Window_ItemList.prototype.numberWidth.apply(this, arguments) : 0;
     };
 
-    Window_GlossaryList.prototype.needsNumber = function() {
+    Window_GlossaryList.prototype.needsNumber = function () {
         return $gameParty.isUseGlossaryItemNumber();
     };
 
-    Window_GlossaryList.prototype.drawItemName = function(item, x, y, width) {
+    Window_GlossaryList.prototype.drawItemName = function (item, x, y, width) {
         if (!item) {
             return;
         }
@@ -2067,16 +2067,16 @@
         this.resetTextColor();
     };
 
-    Window_GlossaryList.prototype.isShowIcon = function(item) {
+    Window_GlossaryList.prototype.isShowIcon = function (item) {
         return item.iconIndex > 0 && !$gameParty.isHideGlossaryIcon();
     };
 
-    Window_GlossaryList.prototype.setGlossaryColor = function(item) {
+    Window_GlossaryList.prototype.setGlossaryColor = function (item) {
         this.changePaintOpacity(this.isEnabled(item));
         this.changeTextColor(ColorManager.textColor(this.getGlossaryColorIndex(item)));
     };
 
-    Window_GlossaryList.prototype.getGlossaryColorIndex = function(item) {
+    Window_GlossaryList.prototype.getGlossaryColorIndex = function (item) {
         if (!$gameParty.isConfirmedGlossaryItem(item)) {
             return param.NewGlossaryColor;
         }
@@ -2090,7 +2090,7 @@
         return 0;
     };
 
-    Window_GlossaryList.prototype.isEnabled = function(item) {
+    Window_GlossaryList.prototype.isEnabled = function (item) {
         if (!$gameParty.hasGlossary(item)) {
             return false;
         }
@@ -2104,7 +2104,7 @@
         return action === 1 ? Window_ItemList.prototype.isEnabled.call(this, item) : true;
     };
 
-    Window_GlossaryList.prototype.includes = function(item) {
+    Window_GlossaryList.prototype.includes = function (item) {
         // Resolve conflict for YEP_ItemCore.js
         if ($gameParty.isIndependentItem(item)) {
             return false;
@@ -2112,11 +2112,11 @@
         return $gameParty.isGlossaryItem(item) && this.isCategoryMatch(item) && $gameParty.isSameGlossaryType(item);
     };
 
-    Window_GlossaryList.prototype.isCategoryMatch = function(item) {
+    Window_GlossaryList.prototype.isCategoryMatch = function (item) {
         return !$gameParty.isUseGlossaryCategory() || $gameParty.hasGlossaryCategory(item, this._category);
     };
 
-    Window_GlossaryList.prototype.select = function(index) {
+    Window_GlossaryList.prototype.select = function (index) {
         var prevItem = this.item();
         if (prevItem) {
             var result = $gameParty.setConfirmedGlossaryItem(prevItem);
@@ -2135,20 +2135,20 @@
         }
     };
 
-    Window_GlossaryList.prototype.cursorRight = function(wrap) {
+    Window_GlossaryList.prototype.cursorRight = function (wrap) {
         this._glossaryWindow.cursorRight(wrap);
     };
 
-    Window_GlossaryList.prototype.cursorLeft = function(wrap) {
+    Window_GlossaryList.prototype.cursorLeft = function (wrap) {
         this._glossaryWindow.cursorLeft(wrap);
     };
 
-    Window_GlossaryList.prototype.getCategory = function() {
+    Window_GlossaryList.prototype.getCategory = function () {
         return this._category !== 'none' ? this._category : null;
     };
 
-    Window_GlossaryList.prototype.makeItemList = function() {
-        this._data = this.getItemList().filter(function(item) {
+    Window_GlossaryList.prototype.makeItemList = function () {
+        this._data = this.getItemList().filter(function (item) {
             var isInclude = this.includes(item);
             if (isInclude) {
                 item.sortOrder = getMetaValues(item, ['Order', '表示順']) || item.id;
@@ -2157,26 +2157,26 @@
         }, this).sort(this.compareOrder);
     };
 
-    Window_GlossaryList.prototype.compareOrder = function(itemA, itemB) {
+    Window_GlossaryList.prototype.compareOrder = function (itemA, itemB) {
         return DataManager.getItemTypeCode(itemA) - DataManager.getItemTypeCode(itemB) ||
             itemA.sortOrder - itemB.sortOrder || itemA.id - itemB.id;
     };
 
-    Window_GlossaryList.prototype.getItemList = function() {
+    Window_GlossaryList.prototype.getItemList = function () {
         var visibleNotYet = $gameParty.isUseGlossaryVisibleItemNotYet();
         return $gameParty.getAllGlossaryList(true, !visibleNotYet, this._category);
     };
 
-    Window_GlossaryList.prototype.canItemUse = function() {
+    Window_GlossaryList.prototype.canItemUse = function () {
         var action = $gameParty.getGlossarySelectAction();
         return action > 0 && !param.CategoryUnusable.contains(this._category);
     };
 
-    Window_GlossaryList.prototype.removeHandler = function(symbol) {
+    Window_GlossaryList.prototype.removeHandler = function (symbol) {
         delete this._handlers[symbol];
     };
 
-    Window_GlossaryList.prototype.setItemHandler = function(handler) {
+    Window_GlossaryList.prototype.setItemHandler = function (handler) {
         if (this.canItemUse()) {
             this.setHandler('ok', handler);
         } else {
@@ -2184,12 +2184,12 @@
         }
     };
 
-    Window_GlossaryList.prototype.setGlossaryOnly = function(category) {
+    Window_GlossaryList.prototype.setGlossaryOnly = function (category) {
         this._category = category;
     };
 
     // Resolve conflict for YEP_ItemCore.js
-    Window_GlossaryList.prototype.drawEquippedActor = function() {
+    Window_GlossaryList.prototype.drawEquippedActor = function () {
     };
 
     /**
@@ -2199,17 +2199,17 @@
     function Window_GlossaryConfirm() {
         this.initialize.apply(this, arguments);
     }
-    Window_GlossaryConfirm.prototype             = Object.create(Window_Command.prototype);
+    Window_GlossaryConfirm.prototype = Object.create(Window_Command.prototype);
     Window_GlossaryConfirm.prototype.constructor = Window_GlossaryConfirm;
 
-    Window_GlossaryConfirm.prototype.initialize = function(listWindow) {
+    Window_GlossaryConfirm.prototype.initialize = function (listWindow) {
         this._listWindow = listWindow;
         Window_Command.prototype.initialize.call(this, this.getWindowRect());
         this.setGlossaryWindowSkin();
     };
 
-    Window_GlossaryConfirm.prototype.updatePlacement = function() {
-        this.x   = this._listWindow.x + 64;
+    Window_GlossaryConfirm.prototype.updatePlacement = function () {
+        this.x = this._listWindow.x + 64;
         var line = this._listWindow.index() - this._listWindow.topRow();
         if (line >= this._listWindow.maxPageRows() - 2) {
             line -= 3;
@@ -2217,17 +2217,17 @@
         this.y = this._listWindow.y + line * this._listWindow.itemHeight() + 32;
     };
 
-    Window_GlossaryConfirm.prototype.itemTextAlign = function() {
+    Window_GlossaryConfirm.prototype.itemTextAlign = function () {
         return "left";
     };
 
-    Window_GlossaryConfirm.prototype.makeCommandList = function() {
+    Window_GlossaryConfirm.prototype.makeCommandList = function () {
         var confirmMessages = $gameParty.getGlossaryConfirmMessages();
         this.addCommand(confirmMessages[0], 'use');
         this.addCommand(confirmMessages[1], 'noUse');
     };
 
-    Window_GlossaryConfirm.prototype.getWindowRect = function() {
+    Window_GlossaryConfirm.prototype.getWindowRect = function () {
         var width = 120;
         var height = this.fittingHeight(2);
         return new Rectangle(0, 0, width, height);
@@ -2240,25 +2240,25 @@
     function Window_GlossaryComplete() {
         this.initialize.apply(this, arguments);
     }
-    Window_GlossaryComplete.prototype             = Object.create(Window_Base.prototype);
+    Window_GlossaryComplete.prototype = Object.create(Window_Base.prototype);
     Window_GlossaryComplete.prototype.constructor = Window_GlossaryComplete;
 
-    Window_GlossaryComplete.prototype.initialize = function(listWindow, helpWindow) {
-        var x            = listWindow.x;
-        var y            = listWindow.y + listWindow.height;
-        var width        = listWindow.width;
-        var height       = Graphics.boxHeight - y - (param.BottomHelpMode ? helpWindow.height : 0);
+    Window_GlossaryComplete.prototype.initialize = function (listWindow, helpWindow) {
+        var x = listWindow.x;
+        var y = listWindow.y + listWindow.height;
+        var width = listWindow.width;
+        var height = Graphics.boxHeight - y - (param.BottomHelpMode ? helpWindow.height : 0);
         this._listWindow = listWindow;
         Window_Base.prototype.initialize.call(this, new Rectangle(x, y, width, height));
         this.setGlossaryWindowSkin();
         this.setFramelessDesign();
     };
 
-    Window_GlossaryComplete.prototype.clear = function() {
+    Window_GlossaryComplete.prototype.clear = function () {
         this.contents.clear();
     };
 
-    Window_GlossaryComplete.prototype.refresh = function() {
+    Window_GlossaryComplete.prototype.refresh = function () {
         this.clear();
         var percent = $gameParty.getHasGlossaryPercent(this._listWindow.getCategory());
         this.drawTextEx($gameParty.getGlossaryCompleteMessage().format(percent.padZero(3)), 0, 0);
@@ -2271,46 +2271,46 @@
     function Window_Glossary() {
         this.initialize.apply(this, arguments);
     }
-    Window_Glossary.prototype             = Object.create(Window_Base.prototype);
+    Window_Glossary.prototype = Object.create(Window_Base.prototype);
     Window_Glossary.prototype.constructor = Window_Glossary;
 
-    Window_Glossary.prototype.initialize = function(x, y, helpWindow) {
-        var height      = Graphics.boxHeight - y - (param.BottomHelpMode ? helpWindow.height : 0);
-        var width       = Graphics.boxWidth - x;
-        this._maxPages  = 1;
-        this._itemData  = null;
+    Window_Glossary.prototype.initialize = function (x, y, helpWindow) {
+        var height = Graphics.boxHeight - y - (param.BottomHelpMode ? helpWindow.height : 0);
+        var width = Graphics.boxWidth - x;
+        this._maxPages = 1;
+        this._itemData = null;
         this._pageIndex = 0;
-        this._enemy     = null;
+        this._enemy = null;
         Window_Base.prototype.initialize.call(this, new Rectangle(x, y, width, height));
         this.setGlossaryWindowSkin();
         this.setFramelessDesign();
     };
 
     var _Window_Glossary_resetFontSettings = Window_Glossary.prototype.resetFontSettings;
-    Window_Glossary.prototype.resetFontSettings = function() {
+    Window_Glossary.prototype.resetFontSettings = function () {
         _Window_Glossary_resetFontSettings.apply(this, arguments);
         if (param.FontSize) {
             this.contents.fontSize = param.FontSize;
         }
     };
 
-    Window_Glossary.prototype.calcMaxPages = function(index) {
+    Window_Glossary.prototype.calcMaxPages = function (index) {
         var exist = this.isViewablePage(index) && (!!this.getPictureName(index) || !!this.getDescription(index));
         return (exist && index < 100) ? this.calcMaxPages(index + 1) : index;
     };
 
-    Window_Glossary.prototype.getPictureName = function(index) {
+    Window_Glossary.prototype.getPictureName = function (index) {
         return this.getMetaContents(['ピクチャ', 'Picture'], index);
     };
 
-    Window_Glossary.prototype.getEnemyData = function(index) {
+    Window_Glossary.prototype.getEnemyData = function (index) {
         var id = this.getMetaContents(['敵キャラ', 'Enemy'], index);
         var enemy;
         if (id === true) {
-            var optEnemy = $dataEnemies.filter(function(enemy) {
+            var optEnemy = $dataEnemies.filter(function (enemy) {
                 return enemy && enemy.name === this._itemData.name;
             }, this);
-            enemy        = optEnemy.length > 0 ? optEnemy[0] : null;
+            enemy = optEnemy.length > 0 ? optEnemy[0] : null;
         } else {
             enemy = $dataEnemies[parseInt(id)] || null;
         }
@@ -2320,27 +2320,27 @@
         return enemy;
     };
 
-    Window_Glossary.prototype.getPlusPictureData = function(imageIndex, index) {
+    Window_Glossary.prototype.getPlusPictureData = function (imageIndex, index) {
         return this.getMetaContents([`追加${imageIndex}ピクチャ`, `Plus${imageIndex}Picture`], index);
     };
 
-    Window_Glossary.prototype.getDescription = function(index) {
+    Window_Glossary.prototype.getDescription = function (index) {
         var description = this.getMetaContents(['説明', 'Description'], index);
         if (!description) {
             return '';
         }
-        var data       = this._itemData;
-        description    = description.replace(/\x1bEFFECT_TYPE\[(\d+)]/gi, function() {
+        var data = this._itemData;
+        description = description.replace(/\x1bEFFECT_TYPE\[(\d+)]/gi, function () {
             var code = data.effects[parseInt(arguments[1])].code;
             return Window_Glossary.effectCodeDesc[code];
         }.bind(this));
-        description    = description.replace(/\x1bDATA\[(\w+)]/gi, function() {
+        description = description.replace(/\x1bDATA\[(\w+)]/gi, function () {
             return data[arguments[1]];
         }.bind(this));
-        description    = description.replace(/\x1bSCRIPT{(.+)}/gi, function() {
+        description = description.replace(/\x1bSCRIPT{(.+)}/gi, function () {
             return eval(arguments[1]);
         }.bind(this));
-        description    = description.replace(/\x1bCOMMON\[(\d+)]/gi, function() {
+        description = description.replace(/\x1bCOMMON\[(\d+)]/gi, function () {
             this._itemData = $dataItems[parseInt(arguments[1])];
             return this.getCommonDescription();
         }.bind(this));
@@ -2367,40 +2367,40 @@
         44: 'コモンイベント'
     };
 
-    Window_Glossary.prototype.isViewablePage = function(index) {
+    Window_Glossary.prototype.isViewablePage = function (index) {
         var switchId = parseInt(getMetaValues(this._itemData, ['VisibleSwitch', '表示スイッチ'], index)) || 0;
         return switchId > 0 ? $gameSwitches.value(switchId) : true;
     };
 
-    Window_Glossary.prototype.getCommonDescription = function() {
+    Window_Glossary.prototype.getCommonDescription = function () {
         return this.getMetaContents(['共通説明', 'CommonDescription'], 0);
     };
 
-    Window_Glossary.prototype.getMetaContents = function(names, index) {
-        var item  = this._itemData;
+    Window_Glossary.prototype.getMetaContents = function (names, index) {
+        var item = this._itemData;
         var value = getMetaValues(item, names, index);
         if (!value) return null;
         var contents = getArgString(value);
         return contents && contents !== '0' ? contents : null;
     };
 
-    Window_Glossary.prototype.refresh = function(item, index) {
+    Window_Glossary.prototype.refresh = function (item, index) {
         this._listIndex = index;
-        this._itemData  = item;
-        this._enemy     = null;
-        this._maxPages  = item && $gameParty.hasGlossary(item) ? this.calcMaxPages(0) : 1;
+        this._itemData = item;
+        this._enemy = null;
+        this._maxPages = item && $gameParty.hasGlossary(item) ? this.calcMaxPages(0) : 1;
         this.drawItem(0, true);
         this.applyViewingSwitch();
     };
 
-    Window_Glossary.prototype.applyViewingSwitch = function() {
+    Window_Glossary.prototype.applyViewingSwitch = function () {
         var metaValue = this.getMetaContents(['用語閲覧スイッチ', 'ViewingSwitch'], 0);
         if (metaValue) {
             $gameSwitches.setValue(parseInt(metaValue), true);
         }
     };
 
-    Window_Glossary.prototype.cursorRight = function(wrap) {
+    Window_Glossary.prototype.cursorRight = function (wrap) {
         if (this._maxPages === 1) return;
         if (this.canMoveRight()) {
             this.drawItem(this._pageIndex + 1);
@@ -2409,7 +2409,7 @@
         }
     };
 
-    Window_Glossary.prototype.cursorLeft = function(wrap) {
+    Window_Glossary.prototype.cursorLeft = function (wrap) {
         if (this._maxPages === 1) return;
         if (this.canMoveLeft()) {
             this.drawItem(this._pageIndex - 1);
@@ -2418,15 +2418,15 @@
         }
     };
 
-    Window_Glossary.prototype.canMoveLeft = function() {
+    Window_Glossary.prototype.canMoveLeft = function () {
         return this._pageIndex > 0;
     };
 
-    Window_Glossary.prototype.canMoveRight = function() {
+    Window_Glossary.prototype.canMoveRight = function () {
         return this._pageIndex < this._maxPages - 1;
     };
 
-    Window_Glossary.prototype.drawItem = function(pageIndex, noSound) {
+    Window_Glossary.prototype.drawItem = function (pageIndex, noSound) {
         this.contents.clear();
         this._pageIndex = pageIndex;
         this.updateArrows();
@@ -2437,7 +2437,7 @@
             this.drawNoItemText();
             return;
         }
-        var bitmap    = this.getGlossaryBitmap(pageIndex);
+        var bitmap = this.getGlossaryBitmap(pageIndex);
         var listIndex = this._listIndex;
         if (bitmap) {
             bitmap.addLoadListener(this.drawItemSub.bind(this, bitmap, listIndex, pageIndex));
@@ -2447,22 +2447,22 @@
         if (!noSound) SoundManager.playCursor();
     };
 
-    Window_Glossary.prototype.drawNoItemText = function() {
+    Window_Glossary.prototype.drawNoItemText = function () {
         var text = this.getMetaContents(['未入手説明', 'NoItemText']);
         if (text) {
             this.drawItemText(text, 0);
         }
     };
 
-    Window_Glossary.prototype.clearItem = function() {
+    Window_Glossary.prototype.clearItem = function () {
         this._listIndex = -1;
         this.contents.clear();
         this.hiddenArrows();
     };
 
-    Window_Glossary.prototype.getGlossaryBitmap = function(index) {
+    Window_Glossary.prototype.getGlossaryBitmap = function (index) {
         var pictureName = this.getPictureName(index);
-        var enemy       = this.getEnemyData(index);
+        var enemy = this.getEnemyData(index);
         if (pictureName) {
             return ImageManager.loadPicture(pictureName, 0);
         } else {
@@ -2475,22 +2475,22 @@
         }
     };
 
-    Window_Glossary.prototype.updateArrows = function() {
+    Window_Glossary.prototype.updateArrows = function () {
         this.downArrowVisible = this.canMoveLeft();
-        this.upArrowVisible   = this.canMoveRight();
+        this.upArrowVisible = this.canMoveRight();
     };
 
-    Window_Glossary.prototype.hiddenArrows = function() {
+    Window_Glossary.prototype.hiddenArrows = function () {
         this.downArrowVisible = false;
-        this.upArrowVisible   = false;
+        this.upArrowVisible = false;
     };
 
-    Window_Glossary.prototype.drawItemSub = function(bitmap, listIndex, pageIndex) {
+    Window_Glossary.prototype.drawItemSub = function (bitmap, listIndex, pageIndex) {
         // for async draw
         if (this._listIndex !== listIndex || this._pageIndex !== pageIndex) {
             return;
         }
-        var text    = this.getDescription(this._pageIndex);
+        var text = this.getDescription(this._pageIndex);
         var textPos = this.getTextPosition();
         var textHandler;
         var pictureHandler;
@@ -2500,18 +2500,18 @@
                 if (!textPos) {
                     textPos = this.calcItemPictureHeight(bitmap, text);
                 }
-                textHandler    = this.drawItemText.bind(this, text, textPos);
+                textHandler = this.drawItemText.bind(this, text, textPos);
                 pictureHandler = this.drawPicture.bind(this, bitmap, text, 0);
                 break;
             case 'bottom':
-                textHandler    = this.drawItemText.bind(this, text, textPos);
-                y              = this.contentsHeight() - this.calcItemPictureHeight(bitmap, text);
+                textHandler = this.drawItemText.bind(this, text, textPos);
+                y = this.contentsHeight() - this.calcItemPictureHeight(bitmap, text);
                 pictureHandler = this.drawPicture.bind(this, bitmap, text, y);
                 break;
             case 'text':
-            default :
-                textHandler    = this.drawItemText.bind(this, text, textPos);
-                y              = this.calcItemTextHeight(text) + textPos;
+            default:
+                textHandler = this.drawItemText.bind(this, text, textPos);
+                y = this.calcItemTextHeight(text) + textPos;
                 pictureHandler = this.drawPicture.bind(this, bitmap, text, y);
                 break;
         }
@@ -2526,7 +2526,7 @@
         this.drawPageNumber();
     };
 
-    Window_Glossary.prototype.drawPageNumber= function() {
+    Window_Glossary.prototype.drawPageNumber = function () {
         if (!this.isNeedPageNumber()) {
             return;
         }
@@ -2534,17 +2534,17 @@
         this.drawText(this.getPageNumberText(), 0, this.height - frame - 30, this.width - frame, 'center');
     };
 
-    Window_Glossary.prototype.getPageNumberText= function() {
+    Window_Glossary.prototype.getPageNumberText = function () {
         return (this._pageIndex + 1) + '/' + this._maxPages;
     };
 
-    Window_Glossary.prototype.isNeedPageNumber= function() {
+    Window_Glossary.prototype.isNeedPageNumber = function () {
         return param.ShowPageNumber && this._maxPages > 1 && !this.getMetaContents(['NoPageNum', 'ページ番号不要'])
     };
 
-    Window_Glossary.prototype.drawPlusPictures = function() {
+    Window_Glossary.prototype.drawPlusPictures = function () {
         var pictureData = null;
-        var imageIndex  = 1;
+        var imageIndex = 1;
         do {
             pictureData = this.getPlusPictureData(imageIndex, this._pageIndex);
             if (pictureData) {
@@ -2554,7 +2554,7 @@
         } while (pictureData);
     };
 
-    Window_Glossary.prototype.drawPlusPicture = function(pictureName, xText, yText) {
+    Window_Glossary.prototype.drawPlusPicture = function (pictureName, xText, yText) {
         if (!pictureName) {
             pictureName = '';
         }
@@ -2562,44 +2562,44 @@
         if (!bitmap) {
             return;
         }
-        bitmap.addLoadListener(function() {
+        bitmap.addLoadListener(function () {
             var x = parseInt(xText) || 0;
             var y = parseInt(yText) || 0;
             this.contents.blt(bitmap, 0, 0, bitmap.width, bitmap.height, x, y);
         }.bind(this));
     };
 
-    Window_Glossary.prototype.getPicturePosition = function() {
+    Window_Glossary.prototype.getPicturePosition = function () {
         var position = getMetaValues(this._itemData, ['ピクチャ位置', 'PicturePosition'], this._pageIndex);
         return position ? position.toLowerCase() : param.PicturePosition;
     };
 
-    Window_Glossary.prototype.getTextPosition = function() {
+    Window_Glossary.prototype.getTextPosition = function () {
         var position = getMetaValues(this._itemData, ['テキスト位置', 'TextPosition'], this._pageIndex);
         return position ? parseInt(position) : param.TextPosition || 0;
     };
 
-    Window_Glossary.prototype.getPictureAlign = function() {
+    Window_Glossary.prototype.getPictureAlign = function () {
         var align = getMetaValues(this._itemData, ['ピクチャ揃え', 'PictureAlign'], this._pageIndex);
         return align ? align.toLowerCase() : param.PictureAlign;
     };
 
-    Window_Glossary.prototype.getPicturePriority = function() {
+    Window_Glossary.prototype.getPicturePriority = function () {
         var align = getMetaValues(this._itemData, ['ピクチャ優先度', 'PicturePriority'], this._pageIndex);
         return align ? align.toLowerCase() : param.PicturePriority;
     };
 
-    Window_Glossary.prototype.calcItemTextHeight = function(text) {
+    Window_Glossary.prototype.calcItemTextHeight = function (text) {
         return this.textSizeEx(text).height + 4;
     };
 
-    Window_Glossary.prototype.calcItemPictureHeight = function(bitmap, text) {
+    Window_Glossary.prototype.calcItemPictureHeight = function (bitmap, text) {
         return bitmap ? bitmap.height * this.getPictureScale(this._itemData, bitmap, text) + 4 : 0;
     };
 
-    Window_Glossary.prototype.drawItemText = function(text, y) {
+    Window_Glossary.prototype.drawItemText = function (text, y) {
         if (typeof TranslationManager !== 'undefined') {
-            TranslationManager.getTranslatePromise(text).then(function(translatedText) {
+            TranslationManager.getTranslatePromise(text).then(function (translatedText) {
                 this.drawTextEx(translatedText, 0, y);
             }.bind(this));
         } else {
@@ -2611,21 +2611,21 @@
         'MHP', 'MMP', 'ATK', 'DEF', 'MAG', 'MDF', 'AGI', 'LUK'
     ];
 
-    Window_Glossary.prototype.convertEnemyData = function(text) {
-        var enemy     = this._enemy;
+    Window_Glossary.prototype.convertEnemyData = function (text) {
+        var enemy = this._enemy;
         var gameEnemy = new Game_Enemy(enemy.id, 0, 0);
-        text          = text.replace(/\x1b(MHP|MMP|ATK|DEF|MAG|MDF|AGI|LUK)\[(\d+)]/gi, function() {
+        text = text.replace(/\x1b(MHP|MMP|ATK|DEF|MAG|MDF|AGI|LUK)\[(\d+)]/gi, function () {
             var index = Window_Glossary._paramNames.indexOf(arguments[1].toUpperCase());
             var param = enemy.params[index];
             return param.padZero(parseInt(arguments[2]));
         });
-        text          = text.replace(/\x1bEXP\[(\d+)]/gi, function() {
+        text = text.replace(/\x1bEXP\[(\d+)]/gi, function () {
             return enemy.exp.padZero(parseInt(arguments[1]));
         });
-        text          = text.replace(/\x1bMONEY\[(\d+)]/gi, function() {
+        text = text.replace(/\x1bMONEY\[(\d+)]/gi, function () {
             return enemy.gold.padZero(parseInt(arguments[1]));
         });
-        text          = text.replace(/\x1bDROP\[(\d+)]/gi, function() {
+        text = text.replace(/\x1bDROP\[(\d+)]/gi, function () {
             var drop = enemy.dropItems[parseInt(arguments[1]) - 1];
             if (drop) {
                 var item = gameEnemy.itemObject(drop.kind, drop.dataId);
@@ -2633,13 +2633,13 @@
             }
             return '';
         });
-        text          = text.replace(/\x1bSCRIPT{(\s+)}/gi, function() {
+        text = text.replace(/\x1bSCRIPT{(\s+)}/gi, function () {
             return eval(arguments[1]);
         });
         return text;
     };
 
-    Window_Glossary.prototype.processAllText = function(textState) {
+    Window_Glossary.prototype.processAllText = function (textState) {
         var x = 0;
         while (textState.index < textState.text.length) {
             var c = textState.text[textState.index];
@@ -2659,13 +2659,13 @@
         this.flushTextState(textState);
     };
 
-    Window_Glossary.prototype.drawPicture = function(bitmap, text, y) {
+    Window_Glossary.prototype.drawPicture = function (bitmap, text, y) {
         if (!bitmap) return;
-        var item  = this._itemData;
+        var item = this._itemData;
         var scale = this.getPictureScale(item, bitmap, text);
-        var dw    = bitmap.width * scale;
-        var dy    = bitmap.height * scale;
-        var x     = 0;
+        var dw = bitmap.width * scale;
+        var dy = bitmap.height * scale;
+        var x = 0;
         switch (this.getPictureAlign(item)) {
             case 'left':
                 x = 0;
@@ -2683,35 +2683,35 @@
         this.drawPlusPicture();
     };
 
-    Window_Glossary.prototype.getPictureAdjustX = function(item) {
+    Window_Glossary.prototype.getPictureAdjustX = function (item) {
         var metaValue = getMetaValues(item, ['ピクチャX', 'PictureX'], this._pageIndex);
         return metaValue ? getArgNumber(metaValue) : 0;
     };
 
-    Window_Glossary.prototype.getPictureAdjustY = function(item) {
+    Window_Glossary.prototype.getPictureAdjustY = function (item) {
         var metaValue = getMetaValues(item, ['ピクチャY', 'PictureY'], this._pageIndex);
         return metaValue ? getArgNumber(metaValue) : 0;
     };
 
-    Window_Glossary.prototype.getPictureScale = function(item, bitmap, text) {
-        var scale     = 1;
+    Window_Glossary.prototype.getPictureScale = function (item, bitmap, text) {
+        var scale = 1;
         var metaValue = getMetaValues(item, ['ピクチャ拡大率', 'PictureScale'], this._pageIndex);
         if (metaValue) {
             scale = getArgNumber(metaValue);
         } else if (param.AutoResizePicture && this.getTextPosition() === 0) {
             var mw = this.contentsWidth();
             var mh = this.contentsHeight() - this.calcItemTextHeight(text);
-            scale  = Math.min(mw / bitmap.width, mh / bitmap.height, 1);
+            scale = Math.min(mw / bitmap.width, mh / bitmap.height, 1);
         }
         return scale;
     };
 
-    Window_Glossary.prototype.update = function() {
+    Window_Glossary.prototype.update = function () {
         Window_Base.prototype.update.call(this);
         this.processTouch();
     };
 
-    Window_Glossary.prototype.processTouch = function() {
+    Window_Glossary.prototype.processTouch = function () {
         if (this._listIndex < 0 || !TouchInput.isTriggered()) {
             return;
         }
@@ -2725,7 +2725,7 @@
         }
     };
 
-    Window_Glossary.prototype._refreshArrows = function() {
+    Window_Glossary.prototype._refreshArrows = function () {
         Window.prototype._refreshArrows.call(this);
         var w = this._width;
         var h = this._height;

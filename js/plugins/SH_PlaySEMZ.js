@@ -106,59 +106,59 @@
 
 (() => {
   const pluginName = "SH_PlaySEMZ";
-  PluginManager.registerCommand(pluginName, "PlaySE", function(args){
-      var parameters = PluginManager.parameters('SH_PlaySEMZ');
-      var seid = args.seid
-      var sevolume = args.volume
-      var sepan = args.pan
-      var sepitch = args.pitch
-      if (sevolume == "default"){sevolume = parameters.defvolume}
-      if (sevolume == "variable"){sevolume = $gameVariables.value(parameters.varvolume)}
-      if(sevolume > 100){sevolume = 100}
+  PluginManager.registerCommand(pluginName, "PlaySE", function (args) {
+    var parameters = PluginManager.parameters('SH_PlaySEMZ');
+    var seid = args.seid
+    var sevolume = args.volume
+    var sepan = args.pan
+    var sepitch = args.pitch
+    if (sevolume == "default") { sevolume = parameters.defvolume }
+    if (sevolume == "variable") { sevolume = $gameVariables.value(parameters.varvolume) }
+    if (sevolume > 100) { sevolume = 100 }
 
-      if(seid != -1){
-          //var index = $dataUniques.selist.Id.indexOf(seid);
+    if (seid != -1) {
+      //var index = $dataUniques.selist.Id.indexOf(seid);
 
-          //var sefile = $dataUniques.selist.File[index];
-          var sefile = $dataUniques.selist[seid]          
-          AudioManager.playSe({
-                      name: sefile,
-                      volume: isNaN(sevolume) ? 90 : sevolume,
-                      pitch: isNaN(sepitch) ? 100 : sepitch,
-                      pan: isNaN(sepan) ? 0 : sepan
-                    });
-        }else{
-            console.error(seid + ' は見つかりません');
-        }
+      //var sefile = $dataUniques.selist.File[index];
+      var sefile = $dataUniques.selist[seid]
+      AudioManager.playSe({
+        name: sefile,
+        volume: isNaN(sevolume) ? 90 : sevolume,
+        pitch: isNaN(sepitch) ? 100 : sepitch,
+        pan: isNaN(sepan) ? 0 : sepan
+      });
+    } else {
+      console.error(seid + ' は見つかりません');
+    }
   });
 
-  PluginManager.registerCommand(pluginName, "PlayVoice", function(args){
+  PluginManager.registerCommand(pluginName, "PlayVoice", function (args) {
     var parameters = PluginManager.parameters('SH_PlaySEMZ');
     var seid = args.seid
     var sevolume = args.volume
     var sepan = args.pan
     var sepitch = args.pitch
     var voiceSwitch = Number(parameters.voiceswitch)
-    if (sevolume == "default"){sevolume = parameters.defvolume}
-    if (sevolume == "variable"){sevolume = $gameVariables.value(parameters.varvolume)}
-    if(sevolume > 100){sevolume = 100}
+    if (sevolume == "default") { sevolume = parameters.defvolume }
+    if (sevolume == "variable") { sevolume = $gameVariables.value(parameters.varvolume) }
+    if (sevolume > 100) { sevolume = 100 }
 
-    if(seid != -1 && $gameSwitches.value(voiceSwitch)){
-        //var index = $dataUniques.selist.Id.indexOf(seid);
+    if (seid != -1 && $gameSwitches.value(voiceSwitch)) {
+      //var index = $dataUniques.selist.Id.indexOf(seid);
 
-        //var sefile = $dataUniques.selist.File[index];
-        var sefile = $dataUniques.talklist[seid] 
-        console.log(sefile)
-        AudioManager.playSe({
-                    name: sefile,
-                    volume: isNaN(sevolume) ? 90 : sevolume,
-                    pitch: isNaN(sepitch) ? 100 : sepitch,
-                    pan: isNaN(sepan) ? 0 : sepan
-                  });
-      }else{
-        if(seid == -1)console.error(seid + ' は見つかりません');
-      }
-});
+      //var sefile = $dataUniques.selist.File[index];
+      var sefile = $dataUniques.talklist[seid]
+      console.log(sefile)
+      AudioManager.playSe({
+        name: sefile,
+        volume: isNaN(sevolume) ? 90 : sevolume,
+        pitch: isNaN(sepitch) ? 100 : sepitch,
+        pan: isNaN(sepan) ? 0 : sepan
+      });
+    } else {
+      if (seid == -1) console.error(seid + ' は見つかりません');
+    }
+  });
 
 
 })();

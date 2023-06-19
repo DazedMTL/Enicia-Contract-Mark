@@ -372,16 +372,16 @@
  * @type number
  */
 
-(function() {
+(function () {
     'use strict';
     var script = document.currentScript;
 
-    PluginManagerEx.registerCommand(script, 'UNLOCK', function(args) {
+    PluginManagerEx.registerCommand(script, 'UNLOCK', function (args) {
         ConfigManager.customParamUnlock(args.name);
     });
 
-    var iterate = function(that, handler) {
-        Object.keys(that).forEach(function(key, index) {
+    var iterate = function (that, handler) {
+        Object.keys(that).forEach(function (key, index) {
             handler.call(that, key, that[key], index);
         });
     };
@@ -409,100 +409,100 @@
     // ConfigManager
     //  追加項目の設定値や初期値を管理します。
     //=============================================================================
-    ConfigManager.customParams   = null;
-    ConfigManager.hiddenInfo     = {};
-    ConfigManager._symbolNumber  = 'Number';
+    ConfigManager.customParams = null;
+    ConfigManager.hiddenInfo = {};
+    ConfigManager._symbolNumber = 'Number';
     ConfigManager._symbolBoolean = 'Boolean';
-    ConfigManager._symbolString  = 'String';
-    ConfigManager._symbolVolume  = 'Volume';
+    ConfigManager._symbolString = 'String';
+    ConfigManager._symbolVolume = 'Volume';
 
-    ConfigManager.getCustomParams = function() {
+    ConfigManager.getCustomParams = function () {
         if (this.customParams) {
             return this.customParams;
         }
         this.customParams = {};
-        param.NumberOptions.forEach(function(optionItem, index) {
+        param.NumberOptions.forEach(function (optionItem, index) {
             this.makeNumberOption(optionItem, index);
         }, this);
-        param.StringOptions.forEach(function(optionItem, index) {
+        param.StringOptions.forEach(function (optionItem, index) {
             this.makeStringOption(optionItem, index);
         }, this);
-        param.SwitchOptions.forEach(function(optionItem, index) {
+        param.SwitchOptions.forEach(function (optionItem, index) {
             this.makeSwitchOption(optionItem, index);
         }, this);
-        param.VolumeOptions.forEach(function(optionItem, index) {
+        param.VolumeOptions.forEach(function (optionItem, index) {
             this.makeVolumeOption(optionItem, index);
         }, this);
         return this.customParams;
     };
 
-    ConfigManager.makeNumberOption = function(optionItem, index) {
-        var data    = this.makeCommonOption(optionItem, index, this._symbolNumber);
-        data.min    = optionItem.NumberMin;
-        data.max    = optionItem.NumberMax;
+    ConfigManager.makeNumberOption = function (optionItem, index) {
+        var data = this.makeCommonOption(optionItem, index, this._symbolNumber);
+        data.min = optionItem.NumberMin;
+        data.max = optionItem.NumberMax;
         data.offset = optionItem.NumberStep;
         this.pushOptionData(data);
     };
 
-    ConfigManager.makeStringOption = function(optionItem, index) {
-        var data    = this.makeCommonOption(optionItem, index, this._symbolString);
+    ConfigManager.makeStringOption = function (optionItem, index) {
+        var data = this.makeCommonOption(optionItem, index, this._symbolString);
         data.values = optionItem.StringItems || ['no item'];
-        data.min    = 0;
-        data.max    = data.values.length - 1;
+        data.min = 0;
+        data.max = data.values.length - 1;
         this.pushOptionData(data);
     };
 
-    ConfigManager.makeSwitchOption = function(optionItem, index) {
-        var data       = this.makeCommonOption(optionItem, index, this._symbolBoolean);
-        data.variable  = optionItem.SwitchID;
-        data.onText    = optionItem.OnText;
-        data.offText   = optionItem.OffText;
+    ConfigManager.makeSwitchOption = function (optionItem, index) {
+        var data = this.makeCommonOption(optionItem, index, this._symbolBoolean);
+        data.variable = optionItem.SwitchID;
+        data.onText = optionItem.OnText;
+        data.offText = optionItem.OffText;
         this.pushOptionData(data);
     };
 
-    ConfigManager.makeVolumeOption = function(optionItem, index) {
+    ConfigManager.makeVolumeOption = function (optionItem, index) {
         var data = this.makeCommonOption(optionItem, index, this._symbolVolume);
         this.pushOptionData(data);
     };
 
-    ConfigManager.makeCommonOption = function(optionItem, index, type) {
-        var data       = {};
-        data.symbol    = `${type}${index + 1}`;
-        data.name      = optionItem.Name;
-        data.hidden    = optionItem.HiddenFlag;
-        data.script    = optionItem.Script;
+    ConfigManager.makeCommonOption = function (optionItem, index, type) {
+        var data = {};
+        data.symbol = `${type}${index + 1}`;
+        data.name = optionItem.Name;
+        data.hidden = optionItem.HiddenFlag;
+        data.script = optionItem.Script;
         data.initValue = optionItem.DefaultValue;
-        data.variable  = optionItem.VariableID || 0;
+        data.variable = optionItem.VariableID || 0;
         data.addPotion = optionItem.AddPosition;
-        data.padding   = optionItem.PaddingTop;
+        data.padding = optionItem.PaddingTop;
         return data;
     };
 
-    ConfigManager.pushOptionData = function(data) {
+    ConfigManager.pushOptionData = function (data) {
         this.customParams[data.symbol] = data;
     };
 
     var _ConfigManager_makeData = ConfigManager.makeData;
-    ConfigManager.makeData      = function() {
-        var config        = _ConfigManager_makeData.apply(this, arguments);
+    ConfigManager.makeData = function () {
+        var config = _ConfigManager_makeData.apply(this, arguments);
         config.hiddenInfo = {};
-        iterate(this.getCustomParams(), function(symbol) {
-            config[symbol]            = this[symbol];
+        iterate(this.getCustomParams(), function (symbol) {
+            config[symbol] = this[symbol];
             config.hiddenInfo[symbol] = this.hiddenInfo[symbol];
         }.bind(this));
         return config;
     };
 
     var _ConfigManager_load = ConfigManager.load;
-    ConfigManager.load = function() {
+    ConfigManager.load = function () {
         this.applyData({});
         _ConfigManager_load.apply(this, arguments);
     };
 
     var _ConfigManager_applyData = ConfigManager.applyData;
-    ConfigManager.applyData      = function(config) {
+    ConfigManager.applyData = function (config) {
         _ConfigManager_applyData.apply(this, arguments);
-        iterate(this.getCustomParams(), function(symbol, item) {
+        iterate(this.getCustomParams(), function (symbol, item) {
             if (symbol.contains(this._symbolBoolean)) {
                 this[symbol] = this.readFlagCustom(config, symbol, item);
             } else if (symbol.contains(this._symbolVolume)) {
@@ -518,14 +518,14 @@
         }.bind(this));
     };
 
-    ConfigManager.customParamUnlock = function(name) {
-        iterate(this.getCustomParams(), function(symbol, item) {
+    ConfigManager.customParamUnlock = function (name) {
+        iterate(this.getCustomParams(), function (symbol, item) {
             if (item.name === name) this.hiddenInfo[symbol] = false;
         }.bind(this));
         this.save();
     };
 
-    ConfigManager.readOther = function(config, name, item) {
+    ConfigManager.readOther = function (config, name, item) {
         var value = config[name];
         if (value !== undefined) {
             return Number(value).clamp(item.min, item.max);
@@ -534,7 +534,7 @@
         }
     };
 
-    ConfigManager.readFlagCustom = function(config, name, item) {
+    ConfigManager.readFlagCustom = function (config, name, item) {
         if (config[name] !== undefined) {
             return this.readFlag(config, name);
         } else {
@@ -542,7 +542,7 @@
         }
     };
 
-    ConfigManager.readVolumeCustom = function(config, name, item) {
+    ConfigManager.readVolumeCustom = function (config, name, item) {
         if (config[name] !== undefined) {
             return this.readVolume(config, name);
         } else {
@@ -550,9 +550,9 @@
         }
     };
 
-    ConfigManager.exportCustomParams = function() {
+    ConfigManager.exportCustomParams = function () {
         if (!$gameVariables || !$gameSwitches) return;
-        iterate(this.getCustomParams(), function(symbol, item) {
+        iterate(this.getCustomParams(), function (symbol, item) {
             if (item.variable > 0) {
                 if (symbol.contains(this._symbolBoolean)) {
                     $gameSwitches.setValue(item.variable, !!this[symbol]);
@@ -563,9 +563,9 @@
         }.bind(this));
     };
 
-    ConfigManager.importCustomParams = function() {
+    ConfigManager.importCustomParams = function () {
         if (!$gameVariables || !$gameSwitches) return;
-        iterate(this.getCustomParams(), function(symbol, item) {
+        iterate(this.getCustomParams(), function (symbol, item) {
             if (item.variable > 0) {
                 if (symbol.contains(this._symbolBoolean)) {
                     this[symbol] = $gameSwitches.value(item.variable);
@@ -579,7 +579,7 @@
     };
 
     var _ConfigManager_save = ConfigManager.save;
-    ConfigManager.save      = function() {
+    ConfigManager.save = function () {
         _ConfigManager_save.apply(this, arguments);
         this.exportCustomParams();
     };
@@ -588,8 +588,8 @@
     // Game_Map
     //  リフレッシュ時にオプション値を同期します。
     //=============================================================================
-    var _Game_Map_refresh      = Game_Map.prototype.refresh;
-    Game_Map.prototype.refresh = function() {
+    var _Game_Map_refresh = Game_Map.prototype.refresh;
+    Game_Map.prototype.refresh = function () {
         _Game_Map_refresh.apply(this, arguments);
         ConfigManager.importCustomParams();
     };
@@ -599,38 +599,38 @@
     //  セーブ時とロード時にオプション値を同期します。
     //=============================================================================
     var _DataManager_setupNewGame = DataManager.setupNewGame;
-    DataManager.setupNewGame      = function() {
+    DataManager.setupNewGame = function () {
         _DataManager_setupNewGame.apply(this, arguments);
         ConfigManager.exportCustomParams();
     };
 
     var _DataManager_extractSaveContents = DataManager.extractSaveContents;
-    DataManager.extractSaveContents = function(contents) {
+    DataManager.extractSaveContents = function (contents) {
         _DataManager_extractSaveContents.apply(this, arguments);
         ConfigManager.exportCustomParams();
     };
 
     var _Scene_Options_maxCommands = Scene_Options.prototype.maxCommands;
-    Scene_Options.prototype.maxCommands = function() {
+    Scene_Options.prototype.maxCommands = function () {
         return _Scene_Options_maxCommands.apply(this, arguments) +
             param.NumberOptions.length + param.StringOptions.length +
             param.SwitchOptions.length + param.VolumeOptions.length;
     };
 
     var _Scene_Options_maxVisibleCommands = Scene_Options.prototype.maxVisibleCommands;
-    Scene_Options.prototype.maxVisibleCommands = function() {
+    Scene_Options.prototype.maxVisibleCommands = function () {
         var result = _Scene_Options_maxVisibleCommands.apply(this, arguments);
         return this.findPaddingHeight() > 0 ? Infinity : result;
     };
 
     var _Scene_Options_optionsWindowRect = Scene_Options.prototype.optionsWindowRect;
-    Scene_Options.prototype.optionsWindowRect = function() {
+    Scene_Options.prototype.optionsWindowRect = function () {
         var rect = _Scene_Options_optionsWindowRect.apply(this, arguments);
         rect.height += this.findPaddingHeight();
         return rect;
     };
 
-    Scene_Options.prototype.findPaddingHeight = function() {
+    Scene_Options.prototype.findPaddingHeight = function () {
         var params = ConfigManager.getCustomParams();
         return Object.keys(params).reduce(function (prev, key) {
             return prev + (params[key].padding || 0);
@@ -641,8 +641,8 @@
     // Window_Options
     //  追加項目を描画します。
     //=============================================================================
-    var _Window_Options_initialize      = Window_Options.prototype.initialize;
-    Window_Options.prototype.initialize = function() {
+    var _Window_Options_initialize = Window_Options.prototype.initialize;
+    Window_Options.prototype.initialize = function () {
         this._customParams = ConfigManager.getCustomParams();
         _Window_Options_initialize.apply(this, arguments);
         this.select(localOptionWindowIndex);
@@ -650,26 +650,26 @@
     };
 
     var _Window_Options_itemRect = Window_Options.prototype.itemRect;
-    Window_Options.prototype.itemRect = function(index) {
+    Window_Options.prototype.itemRect = function (index) {
         var rect = _Window_Options_itemRect.apply(this, arguments);
         rect.y += this.findPaddingHeight(index);
         return rect;
     };
 
-    Window_Options.prototype.findPaddingHeight = function(index) {
-        return this._list.reduce(function(prev, item, itemIndex) {
+    Window_Options.prototype.findPaddingHeight = function (index) {
+        return this._list.reduce(function (prev, item, itemIndex) {
             return prev + (itemIndex <= index && item.ext ? item.ext : 0);
         }, 0);
     };
 
-    var _Window_Options_makeCommandList      = Window_Options.prototype.makeCommandList;
-    Window_Options.prototype.makeCommandList = function() {
+    var _Window_Options_makeCommandList = Window_Options.prototype.makeCommandList;
+    Window_Options.prototype.makeCommandList = function () {
         _Window_Options_makeCommandList.apply(this, arguments);
         this.addCustomOptions();
     };
 
-    Window_Options.prototype.addCustomOptions = function() {
-        iterate(this._customParams, function(key, item) {
+    Window_Options.prototype.addCustomOptions = function () {
+        iterate(this._customParams, function (key, item) {
             if (!ConfigManager.hiddenInfo[key]) {
                 this.addCommand(item.name, key, undefined, item.padding);
                 if (item.addPotion) {
@@ -679,8 +679,8 @@
         }.bind(this));
     };
 
-    Window_Options.prototype.shiftCustomOptions = function(addPotion) {
-        var targetCommand = this._list.filter(function(command) {
+    Window_Options.prototype.shiftCustomOptions = function (addPotion) {
+        var targetCommand = this._list.filter(function (command) {
             return command.symbol === addPotion;
         })[0];
         if (!targetCommand) {
@@ -692,7 +692,7 @@
         this._list.splice(targetIndex, 0, newCommand);
     };
 
-    Window_Options.prototype.addIndexForManoInputConfig = function(index) {
+    Window_Options.prototype.addIndexForManoInputConfig = function (index) {
         if (this._gamepadOptionIndex > index) {
             this._gamepadOptionIndex += 1;
         }
@@ -701,11 +701,11 @@
         }
     };
 
-    var _Window_Options_statusText      = Window_Options.prototype.statusText;
-    Window_Options.prototype.statusText = function(index) {
+    var _Window_Options_statusText = Window_Options.prototype.statusText;
+    Window_Options.prototype.statusText = function (index) {
         var result = _Window_Options_statusText.apply(this, arguments);
         var symbol = this.commandSymbol(index);
-        var value  = this.getConfigValue(symbol);
+        var value = this.getConfigValue(symbol);
         if (this.isNumberSymbol(symbol)) {
             result = this.numberStatusText(value);
         } else if (this.isStringSymbol(symbol)) {
@@ -716,31 +716,31 @@
         return result;
     };
 
-    Window_Options.prototype.isNumberSymbol = function(symbol) {
+    Window_Options.prototype.isNumberSymbol = function (symbol) {
         return symbol.contains(ConfigManager._symbolNumber);
     };
 
-    Window_Options.prototype.isStringSymbol = function(symbol) {
+    Window_Options.prototype.isStringSymbol = function (symbol) {
         return symbol.contains(ConfigManager._symbolString);
     };
 
-    Window_Options.prototype.isBooleanSymbol = function(symbol) {
+    Window_Options.prototype.isBooleanSymbol = function (symbol) {
         return symbol.contains(ConfigManager._symbolBoolean);
     };
 
-    Window_Options.prototype.isCustomSymbol = function(symbol) {
+    Window_Options.prototype.isCustomSymbol = function (symbol) {
         return !!this._customParams[symbol];
     };
 
-    Window_Options.prototype.numberStatusText = function(value) {
+    Window_Options.prototype.numberStatusText = function (value) {
         return value;
     };
 
-    Window_Options.prototype.stringStatusText = function(value, symbol) {
+    Window_Options.prototype.stringStatusText = function (value, symbol) {
         return this._customParams[symbol].values[value];
     };
 
-    Window_Options.prototype.booleanCustomStatusText = function(value, symbol) {
+    Window_Options.prototype.booleanCustomStatusText = function (value, symbol) {
         var data = this._customParams[symbol];
         var property = value ? 'onText' : 'offText';
         if (data && data[property]) {
@@ -750,25 +750,25 @@
         }
     };
 
-    var _Window_Options_processOk      = Window_Options.prototype.processOk;
-    Window_Options.prototype.processOk = function() {
+    var _Window_Options_processOk = Window_Options.prototype.processOk;
+    Window_Options.prototype.processOk = function () {
         if (!this._shiftValue(1, true)) _Window_Options_processOk.apply(this, arguments);
         this.execScript();
     };
 
-    var _Window_Options_cursorRight      = Window_Options.prototype.cursorRight;
-    Window_Options.prototype.cursorRight = function(wrap) {
+    var _Window_Options_cursorRight = Window_Options.prototype.cursorRight;
+    Window_Options.prototype.cursorRight = function (wrap) {
         if (!this._shiftValue(1, false)) _Window_Options_cursorRight.apply(this, arguments);
     };
 
-    var _Window_Options_cursorLeft      = Window_Options.prototype.cursorLeft;
-    Window_Options.prototype.cursorLeft = function(wrap) {
+    var _Window_Options_cursorLeft = Window_Options.prototype.cursorLeft;
+    Window_Options.prototype.cursorLeft = function (wrap) {
         if (!this._shiftValue(-1, false)) _Window_Options_cursorLeft.apply(this, arguments);
     };
 
-    Window_Options.prototype._shiftValue = function(sign, loopFlg) {
+    Window_Options.prototype._shiftValue = function (sign, loopFlg) {
         var symbol = this.commandSymbol(this.index());
-        var value  = this.getConfigValue(symbol);
+        var value = this.getConfigValue(symbol);
         if (this.isNumberSymbol(symbol)) {
             value += this.numberOffset(symbol) * sign;
             this.changeValue(symbol, this._clampValue(value, symbol, loopFlg));
@@ -782,7 +782,7 @@
         return false;
     };
 
-    Window_Options.prototype.execScript = function() {
+    Window_Options.prototype.execScript = function () {
         var symbol = this.commandSymbol(this.index());
         if (!this.isCustomSymbol(symbol)) return;
         var script = this._customParams[symbol].script;
@@ -790,7 +790,7 @@
         localOptionWindowIndex = this.index();
     };
 
-    Window_Options.prototype._clampValue = function(value, symbol, loopFlg) {
+    Window_Options.prototype._clampValue = function (value, symbol, loopFlg) {
         var maxValue = this._customParams[symbol].max;
         var minValue = this._customParams[symbol].min;
         if (loopFlg) {
@@ -800,7 +800,7 @@
         return value.clamp(this._customParams[symbol].min, this._customParams[symbol].max);
     };
 
-    Window_Options.prototype.numberOffset = function(symbol) {
+    Window_Options.prototype.numberOffset = function (symbol) {
         var value = this._customParams[symbol].offset;
         if (Input.isPressed('shift')) value *= 10;
         return value;

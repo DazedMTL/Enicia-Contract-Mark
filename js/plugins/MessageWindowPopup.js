@@ -627,15 +627,15 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
-    const findEventByName = function(eventName) {
+    const findEventByName = function (eventName) {
         return $gameMap.events().filter(event => {
             return event.event().name === eventName;
         })[0] || null;
     };
 
-    PluginManagerEx.registerCommand(script, 'POPUP_VALID', function(args) {
+    PluginManagerEx.registerCommand(script, 'POPUP_VALID', function (args) {
         $gameSystem.clearMessagePopupFree();
         let eventId = 0;
         if (args.name) {
@@ -650,20 +650,20 @@
         this.setPopupWindowPosition(args.windowPosition, eventId);
     });
 
-    PluginManagerEx.registerCommand(script, 'POPUP_INVALID', function(args) {
+    PluginManagerEx.registerCommand(script, 'POPUP_INVALID', function (args) {
         $gameSystem.clearMessagePopupFree();
         $gameSystem.clearMessagePopup();
     });
 
-    PluginManagerEx.registerCommand(script, 'FREE_POPUP_VALID', function(args) {
+    PluginManagerEx.registerCommand(script, 'FREE_POPUP_VALID', function (args) {
         $gameSystem.setMessagePopupFree(args.x, args.y);
     });
 
-    PluginManagerEx.registerCommand(script, 'SUB_WINDOW_SETTING', function(args) {
+    PluginManagerEx.registerCommand(script, 'SUB_WINDOW_SETTING', function (args) {
         $gameSystem.setPopupSubWindowPosition(args.type);
     });
 
-    PluginManagerEx.registerCommand(script, 'POPUP_WINDOW_SETTING', function(args) {
+    PluginManagerEx.registerCommand(script, 'POPUP_WINDOW_SETTING', function (args) {
         this.setPopupWindowPosition(args.windowPosition, null);
         if (args.skin) {
             $gameSystem.setPopupWindowSkin(args.skin);
@@ -671,19 +671,19 @@
         }
     });
 
-    PluginManagerEx.registerCommand(script, 'POPUP_ADJUST_POSITION', function(args) {
+    PluginManagerEx.registerCommand(script, 'POPUP_ADJUST_POSITION', function (args) {
         $gameSystem.setPopupAdjustPosition(args.x, args.y);
     });
 
-    PluginManagerEx.registerCommand(script, 'POPUP_ADJUST_SIZE', function(args) {
+    PluginManagerEx.registerCommand(script, 'POPUP_ADJUST_SIZE', function (args) {
         $gameSystem.setPopupAdjustSize(args.width, args.height);
     });
 
-    PluginManagerEx.registerCommand(script, 'CHANGE_TAIL', function(args) {
+    PluginManagerEx.registerCommand(script, 'CHANGE_TAIL', function (args) {
         $gameSystem.setTailImage(args.tailImage);
     });
 
-    Game_Interpreter.prototype.setPopupWindowPosition = function(windowPosition, characterId) {
+    Game_Interpreter.prototype.setPopupWindowPosition = function (windowPosition, characterId) {
         switch (windowPosition) {
             case 'upper':
                 $gameSystem.setPopupFixUpper(characterId);
@@ -696,8 +696,8 @@
         }
     };
 
-    const _Game_Interpreter_terminate    = Game_Interpreter.prototype.terminate;
-    Game_Interpreter.prototype.terminate = function() {
+    const _Game_Interpreter_terminate = Game_Interpreter.prototype.terminate;
+    Game_Interpreter.prototype.terminate = function () {
         _Game_Interpreter_terminate.apply(this, arguments);
         if (this._depth === 0 && $gameMap.isInterpreterOf(this)) {
             $gameSystem.clearMessagePopup();
@@ -708,83 +708,83 @@
     // Game_System
     //  ポップアップフラグを保持します。
     //=============================================================================
-    const _Game_System_initialize    = Game_System.prototype.initialize;
-    Game_System.prototype.initialize = function() {
+    const _Game_System_initialize = Game_System.prototype.initialize;
+    Game_System.prototype.initialize = function () {
         _Game_System_initialize.apply(this, arguments);
-        this._messagePopupCharacterId       = 0;
-        this._messagePopupPosition          = null;
-        this._messagePopupAdjustSize        = null;
-        this._messagePopupAdjustPosition    = null;
-        this._messagePopupWindowSkin        = null;
+        this._messagePopupCharacterId = 0;
+        this._messagePopupPosition = null;
+        this._messagePopupAdjustSize = null;
+        this._messagePopupAdjustPosition = null;
+        this._messagePopupWindowSkin = null;
         this._messagePopupSubWindowPosition = 0;
     };
 
-    Game_System.prototype.initMessagePositionEvents = function() {
+    Game_System.prototype.initMessagePositionEvents = function () {
         if (!this._messagePopupPositionEvents) {
             this._messagePopupPositionEvents = [];
         }
     };
 
-    Game_System.prototype.setPopupSubWindowPosition = function(position) {
+    Game_System.prototype.setPopupSubWindowPosition = function (position) {
         this._messagePopupSubWindowPosition = position.clamp(0, 3);
     };
 
-    Game_System.prototype.getPopupSubWindowPosition = function() {
+    Game_System.prototype.getPopupSubWindowPosition = function () {
         return this._messagePopupSubWindowPosition;
     };
 
-    Game_System.prototype.setPopupWindowSkin = function(fileName) {
+    Game_System.prototype.setPopupWindowSkin = function (fileName) {
         this._messagePopupWindowSkin = fileName;
         ImageManager.loadSystem(fileName);
     };
 
-    Game_System.prototype.getPopupWindowSkin = function() {
+    Game_System.prototype.getPopupWindowSkin = function () {
         return this._messagePopupWindowSkin;
     };
 
-    Game_System.prototype.setMessagePopup = function(id) {
+    Game_System.prototype.setMessagePopup = function (id) {
         this._messagePopupCharacterId = id;
     };
 
-    Game_System.prototype.clearMessagePopup = function() {
-        this._messagePopupCharacterId    = 0;
+    Game_System.prototype.clearMessagePopup = function () {
+        this._messagePopupCharacterId = 0;
         this._messagePopupPositionEvents = [];
     };
 
-    Game_System.prototype.setMessagePopupFree = function(x, y) {
-        this._messagePopupFreeX       = x;
-        this._messagePopupFreeY       = y;
+    Game_System.prototype.setMessagePopupFree = function (x, y) {
+        this._messagePopupFreeX = x;
+        this._messagePopupFreeY = y;
         this._messagePopupCharacterId = 1;
     };
 
-    Game_System.prototype.clearMessagePopupFree = function() {
+    Game_System.prototype.clearMessagePopupFree = function () {
         this.setMessagePopupFree(undefined, undefined);
     };
 
-    Game_System.prototype.getMessagePopupId = function() {
+    Game_System.prototype.getMessagePopupId = function () {
         return this._messagePopupCharacterId !== 0 ? this._messagePopupCharacterId : null;
     };
 
-    Game_System.prototype.getMessagePopupFree = function() {
+    Game_System.prototype.getMessagePopupFree = function () {
         if (this._messagePopupFreeX === undefined || this._messagePopupFreeY === undefined) {
             return null;
         }
-        return {x: this._messagePopupFreeX, y: this._messagePopupFreeY};
+        return { x: this._messagePopupFreeX, y: this._messagePopupFreeY };
     };
 
-    Game_System.prototype.setPopupFixUpper = function(characterId) {
+    Game_System.prototype.setPopupFixUpper = function (characterId) {
         this.setPopupFixPosition(characterId, 1);
     };
 
-    Game_System.prototype.setPopupFixLower = function(characterId) {
+    Game_System.prototype.setPopupFixLower = function (characterId) {
         this.setPopupFixPosition(characterId, 2);
     };
 
-    Game_System.prototype.setPopupAuto = function(characterId) {
+    Game_System.prototype.setPopupAuto = function (characterId) {
         this.setPopupFixPosition(characterId, 0);
     };
 
-    Game_System.prototype.setPopupFixPosition = function(characterId, position) {
+    Game_System.prototype.setPopupFixPosition = function (characterId, position) {
         if (characterId !== null) {
             this.initMessagePositionEvents();
             this._messagePopupPositionEvents[characterId] = position;
@@ -793,35 +793,35 @@
         }
     };
 
-    Game_System.prototype.setPopupAdjustSize = function(w, h) {
+    Game_System.prototype.setPopupAdjustSize = function (w, h) {
         this._messagePopupAdjustSize = [w, h];
     };
 
-    Game_System.prototype.getPopupAdjustSize = function() {
+    Game_System.prototype.getPopupAdjustSize = function () {
         return this._messagePopupAdjustSize;
     };
 
-    Game_System.prototype.setPopupAdjustPosition = function(x, y) {
+    Game_System.prototype.setPopupAdjustPosition = function (x, y) {
         this._messagePopupAdjustPosition = [x, y];
     };
 
-    Game_System.prototype.getPopupAdjustPosition = function() {
+    Game_System.prototype.getPopupAdjustPosition = function () {
         return this._messagePopupAdjustPosition;
     };
 
-    Game_System.prototype.isPopupFixUpper = function(eventId) {
+    Game_System.prototype.isPopupFixUpper = function (eventId) {
         return this.isPopupFixPosition(1, eventId);
     };
 
-    Game_System.prototype.isPopupFixLower = function(eventId) {
+    Game_System.prototype.isPopupFixLower = function (eventId) {
         return this.isPopupFixPosition(2, eventId);
     };
 
-    Game_System.prototype.isPopupFixPosition = function(position, eventId) {
+    Game_System.prototype.isPopupFixPosition = function (position, eventId) {
         const id = eventId || this._messagePopupCharacterId;
         this.initMessagePositionEvents();
-        const positionFixForId   = this._messagePopupPositionEvents[id];
-        const event              = $gameMap.event(id);
+        const positionFixForId = this._messagePopupPositionEvents[id];
+        const event = $gameMap.event(id);
         const positionFixForName = event ? this._messagePopupPositionEvents[event.event().name] : 0;
         if (positionFixForId > 0) {
             return positionFixForId === position;
@@ -832,15 +832,15 @@
         }
     };
 
-    Game_System.prototype.getTailImage = function() {
+    Game_System.prototype.getTailImage = function () {
         return this._tailImage || param.tailImage;
     };
 
-    Game_System.prototype.isExistTailImage = function() {
+    Game_System.prototype.isExistTailImage = function () {
         return !!this.getTailImage();
     };
 
-    Game_System.prototype.setTailImage = function(value) {
+    Game_System.prototype.setTailImage = function (value) {
         this._tailImage = value;
     };
 
@@ -848,8 +848,8 @@
     // Game_Map
     //  イベント起動時に自動設定を適用します。
     //=============================================================================
-    const _Game_Map_setupStartingMapEvent    = Game_Map.prototype.setupStartingMapEvent;
-    Game_Map.prototype.setupStartingMapEvent = function() {
+    const _Game_Map_setupStartingMapEvent = Game_Map.prototype.setupStartingMapEvent;
+    Game_Map.prototype.setupStartingMapEvent = function () {
         const result = _Game_Map_setupStartingMapEvent.apply(this, arguments);
         if (result) {
             if (param.AutoPopup) {
@@ -865,8 +865,8 @@
     // Game_Troop
     //  戦闘開始時にポップアップフラグを解除します。
     //=============================================================================
-    const _Game_Troop_setup    = Game_Troop.prototype.setup;
-    Game_Troop.prototype.setup = function(troopId) {
+    const _Game_Troop_setup = Game_Troop.prototype.setup;
+    Game_Troop.prototype.setup = function (troopId) {
         _Game_Troop_setup.apply(this, arguments);
         $gameSystem.clearMessagePopup();
     };
@@ -875,25 +875,25 @@
     // Game_CharacterBase
     //  キャラクターの高さを設定します。
     //=============================================================================
-    const _Game_CharacterBase_initMembers    = Game_CharacterBase.prototype.initMembers;
-    Game_CharacterBase.prototype.initMembers = function() {
+    const _Game_CharacterBase_initMembers = Game_CharacterBase.prototype.initMembers;
+    Game_CharacterBase.prototype.initMembers = function () {
         _Game_CharacterBase_initMembers.apply(this, arguments);
         this.setSizeForMessagePopup(0, 0);
     };
 
-    Game_CharacterBase.prototype.setSizeForMessagePopup = function(width, height) {
+    Game_CharacterBase.prototype.setSizeForMessagePopup = function (width, height) {
         this._size = [width, height];
     };
 
-    Game_CharacterBase.prototype.getHeightForPopup = function() {
+    Game_CharacterBase.prototype.getHeightForPopup = function () {
         return $gameScreen.zoomScale() * this._size[1];
     };
 
-    Game_CharacterBase.prototype.getRealScreenX = function() {
+    Game_CharacterBase.prototype.getRealScreenX = function () {
         return $gameScreen.convertRealX(this.screenX());
     };
 
-    Game_CharacterBase.prototype.getRealScreenY = function() {
+    Game_CharacterBase.prototype.getRealScreenY = function () {
         return $gameScreen.convertRealY(this.screenY());
     };
 
@@ -901,12 +901,12 @@
     // Game_Screen
     //  画面座標をズームを考慮した座標に変換します。
     //=============================================================================
-    Game_Screen.prototype.convertRealX = function(x) {
+    Game_Screen.prototype.convertRealX = function (x) {
         const scale = this.zoomScale();
         return scale * x - (scale - 1.0) * this.zoomX();
     };
 
-    Game_Screen.prototype.convertRealY = function(y) {
+    Game_Screen.prototype.convertRealY = function (y) {
         const scale = this.zoomScale();
         return scale * y - (scale - 1.0) * this.zoomY();
     };
@@ -915,9 +915,9 @@
     // Scene_Map
     //  ポップアップ用のウィンドウスキンをロードします。
     //=============================================================================
-    const _Scene_Map_isReady    = Scene_Map.prototype.isReady;
-    Scene_Map.prototype.isReady = function() {
-        const ready   = _Scene_Map_isReady.apply(this, arguments);
+    const _Scene_Map_isReady = Scene_Map.prototype.isReady;
+    Scene_Map.prototype.isReady = function () {
+        const ready = _Scene_Map_isReady.apply(this, arguments);
         const popSkin = $gameSystem.getPopupWindowSkin();
         if (popSkin && ready) {
             const bitmap = ImageManager.loadSystem(popSkin);
@@ -930,13 +930,13 @@
     // Sprite_Character
     //  キャラクターの高さを逆設定します。
     //=============================================================================
-    const _Sprite_Character_updateBitmap    = Sprite_Character.prototype.updateBitmap;
-    Sprite_Character.prototype.updateBitmap = function() {
+    const _Sprite_Character_updateBitmap = Sprite_Character.prototype.updateBitmap;
+    Sprite_Character.prototype.updateBitmap = function () {
         if (this.isImageChanged()) this._imageChange = true;
         _Sprite_Character_updateBitmap.apply(this, arguments);
         if (this._imageChange) {
             this.bitmap.addLoadListener(() => {
-                const width  = this.bitmap.width === 1 ? $gameMap.tileWidth() : this.patternWidth();
+                const width = this.bitmap.width === 1 ? $gameMap.tileWidth() : this.patternWidth();
                 const height = this.bitmap.height === 1 ? $gameMap.tileHeight() : this.patternHeight();
                 this._character.setSizeForMessagePopup(width, height);
             });
@@ -948,8 +948,8 @@
     // Window_Base
     //  共通処理を定義します。
     //=============================================================================
-    const _Window_Base_loadWindowskin    = Window_Base.prototype.loadWindowskin;
-    Window_Base.prototype.loadWindowskin = function() {
+    const _Window_Base_loadWindowskin = Window_Base.prototype.loadWindowskin;
+    Window_Base.prototype.loadWindowskin = function () {
         const popSkin = $gameSystem.getPopupWindowSkin();
         if (this.isPopup() && popSkin) {
             this.windowskin = ImageManager.loadSystem(popSkin);
@@ -958,53 +958,53 @@
         }
     };
 
-    Window_Base.prototype.setPauseSignToTail = function(lowerFlg) {
+    Window_Base.prototype.setPauseSignToTail = function (lowerFlg) {
         if (lowerFlg) {
             this._pauseSignSprite.rotation = 180 * Math.PI / 180;
-            this._pauseSignSprite.y        = 12;
+            this._pauseSignSprite.y = 12;
             this._pauseSignSprite.anchor.y = 0;
         } else {
             this._pauseSignSprite.rotation = 0;
-            this._pauseSignSprite.y        = this.height + 12;
+            this._pauseSignSprite.y = this.height + 12;
             this._pauseSignSprite.anchor.y = 1;
         }
-        this._pauseSignLower  = lowerFlg;
+        this._pauseSignLower = lowerFlg;
         this._pauseSignToTail = true;
     };
 
-    Window_Base.prototype.setPauseSignImageToTail = function(lowerFlg) {
+    Window_Base.prototype.setPauseSignImageToTail = function (lowerFlg) {
         this._pauseSignSprite.visible = false;
         if (lowerFlg) {
             this._messageTailImage.rotation = 180 * Math.PI / 180;
-            this._messageTailImage.y        = -param.tailImageAdjustY;
+            this._messageTailImage.y = -param.tailImageAdjustY;
             this._messageTailImage.anchor.y = 0;
         } else {
             this._messageTailImage.rotation = 0;
-            this._messageTailImage.y        = this.height + param.tailImageAdjustY;
+            this._messageTailImage.y = this.height + param.tailImageAdjustY;
             this._messageTailImage.anchor.y = 0;
         }
     };
 
-    Window_Base.prototype.setPauseSignToNormal = function() {
+    Window_Base.prototype.setPauseSignToNormal = function () {
         this._pauseSignSprite.rotation = 0;
         this._pauseSignSprite.anchor.y = 1.0;
         this._pauseSignSprite.move(this._width / 2, this._height);
         this._pauseSignToTail = false;
     };
 
-    const _Window_Base_updatePauseSign     = Window_Base.prototype._updatePauseSign;
-    Window_Base.prototype._updatePauseSign = function() {
+    const _Window_Base_updatePauseSign = Window_Base.prototype._updatePauseSign;
+    Window_Base.prototype._updatePauseSign = function () {
         _Window_Base_updatePauseSign.apply(this, arguments);
         if (this._pauseSignToTail) this._pauseSignSprite.alpha = 1.0;
     };
 
-    Window_Base.prototype.isPopupLower = function() {
+    Window_Base.prototype.isPopupLower = function () {
         return $gameSystem.isPopupFixLower() || (!$gameSystem.isPopupFixUpper() && this.y < 0);
     };
 
-    Window_Base.prototype.setPopupPosition = function(character) {
+    Window_Base.prototype.setPopupPosition = function (character) {
         this._popupCharacter = character;
-        this._popupFreePos   = $gameSystem.getMessagePopupFree();
+        this._popupFreePos = $gameSystem.getMessagePopupFree();
         this.setPopupBasePosition();
         this.setPopupLowerPosition();
         this.setPopupAdjustInnerScreen();
@@ -1014,7 +1014,7 @@
         this.setPopupAdjustBoxSize();
     };
 
-    Window_Base.prototype.setPopupAdjustBoxSize = function() {
+    Window_Base.prototype.setPopupAdjustBoxSize = function () {
         if (Graphics.boxWidth !== Graphics.width) {
             this.x += (Graphics.boxWidth - Graphics.width) / 2 + 3;
         }
@@ -1023,34 +1023,34 @@
         }
     };
 
-    Window_Base.prototype.getPopupBaseX = function() {
+    Window_Base.prototype.getPopupBaseX = function () {
         return this._popupFreePos ? this._popupFreePos.x : this._popupCharacter.getRealScreenX();
     };
 
-    Window_Base.prototype.getPopupBaseY = function() {
+    Window_Base.prototype.getPopupBaseY = function () {
         return this._popupFreePos ? this._popupFreePos.y : this._popupCharacter.getRealScreenY();
     };
 
-    Window_Base.prototype.getHeightForPopup = function() {
+    Window_Base.prototype.getHeightForPopup = function () {
         return this._popupFreePos ? 0 : (this._popupCharacter.getHeightForPopup() + 8);
     };
 
-    Window_Base.prototype.setPopupBasePosition = function() {
+    Window_Base.prototype.setPopupBasePosition = function () {
         const pos = $gameSystem.getPopupAdjustPosition();
-        this.x    = this.getPopupBaseX() - this.width / 2 + (pos ? pos[0] : 0) - 4;
-        this.y    = this.getPopupBaseY() - this.height - this.getHeightForPopup() + (pos ? pos[1] : 0);
+        this.x = this.getPopupBaseX() - this.width / 2 + (pos ? pos[0] : 0) - 4;
+        this.y = this.getPopupBaseY() - this.height - this.getHeightForPopup() + (pos ? pos[1] : 0);
     };
 
-    const _Window_Base_updatePadding    = Window_Base.prototype.updatePadding;
-    Window_Base.prototype.updatePadding = function() {
+    const _Window_Base_updatePadding = Window_Base.prototype.updatePadding;
+    Window_Base.prototype.updatePadding = function () {
         _Window_Base_updatePadding.apply(this, arguments);
         if (this.isPopup() && param.Padding) {
             this.padding = param.Padding;
         }
     };
 
-    const _Window_Base_fittingHeight    = Window_Base.prototype.fittingHeight;
-    Window_Base.prototype.fittingHeight = function(numLines) {
+    const _Window_Base_fittingHeight = Window_Base.prototype.fittingHeight;
+    Window_Base.prototype.fittingHeight = function (numLines) {
         if (this.isPopup()) {
             return numLines * this.itemHeight() + this.padding * 2;
         } else {
@@ -1058,7 +1058,7 @@
         }
     };
 
-    Window_Base.prototype.setPopupShakePosition = function() {
+    Window_Base.prototype.setPopupShakePosition = function () {
         const duration = param.ShakeDuration;
         if (duration && this._shakeCount > duration) {
             this.setWindowShake(0);
@@ -1070,7 +1070,7 @@
         this._shakeCount++;
     };
 
-    Window_Base.prototype.setPopupLowerPosition = function() {
+    Window_Base.prototype.setPopupLowerPosition = function () {
         const lowerFlg = this.isPopupLower();
         if (lowerFlg) {
             this.y += this.height + this.getHeightForPopup() + 8;
@@ -1083,12 +1083,12 @@
         }
     };
 
-    Window_Base.prototype.setPopupAdjustInnerScreen = function() {
+    Window_Base.prototype.setPopupAdjustInnerScreen = function () {
         if (param.InnerScreen) {
             this.adjustPopupPositionY();
         }
         const adjustResultX = this.adjustPopupPositionX();
-        const tailX         = this._width / 2 + adjustResultX;
+        const tailX = this._width / 2 + adjustResultX;
         if (!this.isUsePauseSignTextEnd()) {
             this._pauseSignSprite.x = tailX;
         }
@@ -1097,12 +1097,12 @@
         }
     };
 
-    Window_Base.prototype.setWindowShake = function(power) {
+    Window_Base.prototype.setWindowShake = function (power) {
         this._shakePower = power;
         this._shakeCount = 0;
     };
 
-    Window_Base.prototype.adjustPopupPositionX = function() {
+    Window_Base.prototype.adjustPopupPositionX = function () {
         let deltaX = 0;
         const minX = param.LowerLimitX || 0;
         const maxX = param.UpperLimitX || Graphics.boxWidth;
@@ -1117,7 +1117,7 @@
         return deltaX;
     };
 
-    Window_Base.prototype.adjustPopupPositionY = function() {
+    Window_Base.prototype.adjustPopupPositionY = function () {
         let minY = (this._pauseSignLower ? this._pauseSignSprite.height / 2 : 0);
         minY += param.LowerLimitY || 0;
         if (this.y < minY) {
@@ -1129,7 +1129,7 @@
         }
     };
 
-    Window_Base.prototype.updatePlacementPopup = function() {
+    Window_Base.prototype.updatePlacementPopup = function () {
         if (!this._messageWindow) {
             return;
         }
@@ -1145,8 +1145,8 @@
                     break;
                 case 2:
                     const pos = this._messageWindow.getSubWindowPosition();
-                    this.x    = pos.x;
-                    this.y    = pos.y;
+                    this.x = pos.x;
+                    this.y = pos.y;
                     this.setPauseSignToNormal();
                     this.opacity = 0;
                     break;
@@ -1161,15 +1161,15 @@
         }
     };
 
-    const _Window_Base_resetFontSettings    = Window_Base.prototype.resetFontSettings;
-    Window_Base.prototype.resetFontSettings = function() {
+    const _Window_Base_resetFontSettings = Window_Base.prototype.resetFontSettings;
+    Window_Base.prototype.resetFontSettings = function () {
         _Window_Base_resetFontSettings.apply(this, arguments);
         if (this.isPopup()) {
             this.contents.fontSize = param.FontSize;
         }
     };
 
-    Window_Base.prototype.isPopup = function() {
+    Window_Base.prototype.isPopup = function () {
         if (this._messageWindow) {
             return this._messageWindow.isPopup() && this._messageWindow.isOpen();
         } else {
@@ -1177,21 +1177,21 @@
         }
     };
 
-    Window_Base.prototype.isPopupLinkage = function() {
+    Window_Base.prototype.isPopupLinkage = function () {
         return this.isPopup() && param.WindowLinkage;
     };
 
-    Window_Base.prototype.resetLayout = function() {
-        this.width             = this.windowWidth();
-        this.height            = this.windowHeight();
+    Window_Base.prototype.resetLayout = function () {
+        this.width = this.windowWidth();
+        this.height = this.windowHeight();
         this.contents.fontSize = param.FontSize;
         this.loadWindowskin();
         this.updatePadding();
         this.setPauseSignToNormal();
     };
 
-    const _Window_Base_makeFontBigger    = Window_Base.prototype.makeFontBigger;
-    Window_Base.prototype.makeFontBigger = function() {
+    const _Window_Base_makeFontBigger = Window_Base.prototype.makeFontBigger;
+    Window_Base.prototype.makeFontBigger = function () {
         if (this.isValidFontRangeForPopup()) {
             if (this.contents.fontSize <= param.FontUpperLimit) {
                 this.contents.fontSize += param.FontSizeRange;
@@ -1201,8 +1201,8 @@
         }
     };
 
-    const _Window_Base_makeFontSmaller    = Window_Base.prototype.makeFontSmaller;
-    Window_Base.prototype.makeFontSmaller = function() {
+    const _Window_Base_makeFontSmaller = Window_Base.prototype.makeFontSmaller;
+    Window_Base.prototype.makeFontSmaller = function () {
         if (this.isValidFontRangeForPopup()) {
             if (this.contents.fontSize >= param.FontLowerLimit) {
                 this.contents.fontSize -= param.FontSizeRange;
@@ -1212,16 +1212,16 @@
         }
     };
 
-    Window_Base.prototype.isValidFontRangeForPopup = function() {
+    Window_Base.prototype.isValidFontRangeForPopup = function () {
         return this.isPopup() && param.FontSizeRange > 0;
     };
 
-    Window_Base.prototype.isUsePauseSignTextEnd = function() {
+    Window_Base.prototype.isUsePauseSignTextEnd = function () {
         return this.isValidPauseSignTextEnd && this.isValidPauseSignTextEnd();
     };
 
     const _Window_Base_processDrawIcon = Window_Base.prototype.processDrawIcon;
-    Window_Base.prototype.processDrawIcon = function(iconIndex, textState) {
+    Window_Base.prototype.processDrawIcon = function (iconIndex, textState) {
         _Window_Base_processDrawIcon.apply(this, arguments);
         const iconHeight = ImageManager.iconHeight + 4;
         if (!textState.drawing && textState.height < iconHeight) {
@@ -1233,24 +1233,24 @@
     // ImageManager
     //  ポップアップ用のフェイスグラフィックサイズを設定します。
     //=============================================================================
-    ImageManager.popUpfaceWidth  = Math.floor(ImageManager.faceWidth * param.FaceScale / 100);
+    ImageManager.popUpfaceWidth = Math.floor(ImageManager.faceWidth * param.FaceScale / 100);
     ImageManager.popUpfaceHeight = Math.floor(ImageManager.faceHeight * param.FaceScale / 100);
 
     //=============================================================================
     // Window_Message
     //  ポップアップする場合、表示内容により座標とサイズを自動設定します。
     //=============================================================================
-    const _Window_Message_initialize    = Window_Message.prototype.initialize;
-    Window_Message.prototype.initialize = function(rect) {
+    const _Window_Message_initialize = Window_Message.prototype.initialize;
+    Window_Message.prototype.initialize = function (rect) {
         this._defaultRect = rect;
         _Window_Message_initialize.apply(this, arguments);
     };
 
-    const _Window_Message__createAllParts    = Window_Message.prototype._createAllParts;
-    Window_Message.prototype._createAllParts = function() {
+    const _Window_Message__createAllParts = Window_Message.prototype._createAllParts;
+    Window_Message.prototype._createAllParts = function () {
         _Window_Message__createAllParts.apply(this, arguments);
         this._messageTailImage = new Sprite();
-        this._messageTailImage.visible  = false;
+        this._messageTailImage.visible = false;
         this._messageTailImage.anchor.x = 0.5;
         this.addChild(this._messageTailImage);
         if ($gameSystem.isExistTailImage()) {
@@ -1258,7 +1258,7 @@
         }
     };
 
-    Window_Message.prototype.refreshTailImage = function() {
+    Window_Message.prototype.refreshTailImage = function () {
         const tailImage = $gameSystem.getTailImage();
         if (tailImage === this._tailImageName) {
             return;
@@ -1268,35 +1268,35 @@
         this.setPauseSignImageToTail(this.isPopupLower());
     };
 
-    Window_Message.prototype.clearTailImage = function() {
-        this._messageTailImage.bitmap   = null;
+    Window_Message.prototype.clearTailImage = function () {
+        this._messageTailImage.bitmap = null;
         this._tailImageName = null;
     };
 
-    Window_Message.prototype.windowWidth = function() {
+    Window_Message.prototype.windowWidth = function () {
         return this._defaultRect.width;
     };
 
-    Window_Message.prototype.windowHeight = function() {
+    Window_Message.prototype.windowHeight = function () {
         return this._defaultRect.height;
     };
 
-    const _Window_Message_calcTextHeight    = Window_Message.prototype.calcTextHeight;
-    Window_Message.prototype.calcTextHeight = function(textState, all) {
+    const _Window_Message_calcTextHeight = Window_Message.prototype.calcTextHeight;
+    Window_Message.prototype.calcTextHeight = function (textState, all) {
         const height = _Window_Message_calcTextHeight.apply(this, arguments);
         return this.isPopup() ? height - 8 + (param.BetweenLines || 0) : height;
     };
 
-    const _Window_Message_startMessage    = Window_Message.prototype.startMessage;
-    Window_Message.prototype.startMessage = function() {
+    const _Window_Message_startMessage = Window_Message.prototype.startMessage;
+    Window_Message.prototype.startMessage = function () {
         this.updateTargetCharacterId();
         this.loadWindowskin();
         _Window_Message_startMessage.apply(this, arguments);
         this.resetLayout();
     };
 
-    const _Window_Message_loadWindowskin    = Window_Message.prototype.loadWindowskin;
-    Window_Message.prototype.loadWindowskin = function() {
+    const _Window_Message_loadWindowskin = Window_Message.prototype.loadWindowskin;
+    Window_Message.prototype.loadWindowskin = function () {
         const popupWindowSkin = $gameSystem.getPopupWindowSkin();
         if (this._windowSkinName !== popupWindowSkin || !popupWindowSkin) {
             if (this.isPopup()) {
@@ -1306,11 +1306,11 @@
         _Window_Message_loadWindowskin.apply(this, arguments);
     };
 
-    Window_Message.prototype.updateTargetCharacterId = function() {
+    Window_Message.prototype.updateTargetCharacterId = function () {
         this._targetCharacterId = $gameSystem.getMessagePopupId();
     };
 
-    Window_Message.prototype.getPopupTargetCharacter = function() {
+    Window_Message.prototype.getPopupTargetCharacter = function () {
         const id = this._targetCharacterId;
         if (id < -1) {
             return $gamePlayer.followers().follower((id * -1) - 2);
@@ -1323,17 +1323,17 @@
         }
     };
 
-    Window_Message.prototype.isPopup = function() {
+    Window_Message.prototype.isPopup = function () {
         return !!this.getPopupTargetCharacter();
     };
 
-    const _Window_Message_update    = Window_Message.prototype.update;
-    Window_Message.prototype.update = function() {
+    const _Window_Message_update = Window_Message.prototype.update;
+    Window_Message.prototype.update = function () {
         _Window_Message_update.apply(this, arguments);
         this.updatePlacementPopupIfNeed();
     };
 
-    Window_Message.prototype.updatePlacementPopupIfNeed = function() {
+    Window_Message.prototype.updatePlacementPopupIfNeed = function () {
         const prevX = this.x;
         const prevY = this.y;
         if (this.openness > 0 && this.isPopup()) {
@@ -1344,8 +1344,8 @@
         }
     };
 
-    const _Window_Message_updatePlacement    = Window_Message.prototype.updatePlacement;
-    Window_Message.prototype.updatePlacement = function() {
+    const _Window_Message_updatePlacement = Window_Message.prototype.updatePlacement;
+    Window_Message.prototype.updatePlacement = function () {
         this.x = this._defaultRect.x;
         _Window_Message_updatePlacement.apply(this, arguments);
         this._nameBoxWindow.updatePlacement();
@@ -1355,9 +1355,9 @@
         this.updatePlacementPopup();
     };
 
-    const _Window_Message__updatePauseSign    = Window_Message.prototype.hasOwnProperty('_updatePauseSign') ?
+    const _Window_Message__updatePauseSign = Window_Message.prototype.hasOwnProperty('_updatePauseSign') ?
         Window_Message.prototype._updatePauseSign : null;
-    Window_Message.prototype._updatePauseSign = function() {
+    Window_Message.prototype._updatePauseSign = function () {
         if (_Window_Message__updatePauseSign) {
             _Window_Message__updatePauseSign.apply(this, arguments);
         } else {
@@ -1366,16 +1366,16 @@
         this.updateTailImage();
     };
 
-    Window_Message.prototype.isPopupLower = function() {
+    Window_Message.prototype.isPopupLower = function () {
         const id = this._targetCharacterId;
         return $gameSystem.isPopupFixLower(id) || (!$gameSystem.isPopupFixUpper(id) && this.getWindowTopY() < 0);
     };
 
-    Window_Message.prototype.getWindowTopY = function() {
+    Window_Message.prototype.getWindowTopY = function () {
         return this.y;
     };
 
-    Window_Message.prototype.updatePlacementPopup = function() {
+    Window_Message.prototype.updatePlacementPopup = function () {
         if (this.isClosing()) {
             return;
         }
@@ -1387,7 +1387,7 @@
         this._nameBoxWindow.updatePlacement();
     };
 
-    Window_Message.prototype.updateTailImage = function() {
+    Window_Message.prototype.updateTailImage = function () {
         if (!this.isPopup()) {
             this._messageTailImage.visible = false;
         } else if ($gameSystem.isExistTailImage()) {
@@ -1401,11 +1401,11 @@
         }
     };
 
-    Window_Message.prototype.resetLayout = function() {
+    Window_Message.prototype.resetLayout = function () {
         if (this.getPopupTargetCharacter()) {
             this.processVirtual();
         } else {
-            this.width  = this.windowWidth();
+            this.width = this.windowWidth();
             this.height = this.windowHeight();
             this.setPauseSignToNormal();
         }
@@ -1413,11 +1413,11 @@
         this.updateBackground();
     };
 
-    Window_Message.prototype.processVirtual = function() {
+    Window_Message.prototype.processVirtual = function () {
         this.updatePadding();
         const virtual = this.createVirtualTextState();
-        let width    = virtual.outputWidth + this.padding * 2;
-        let height   = Math.max(this.getFaceHeight(), virtual.y) + this.padding * 2;
+        let width = virtual.outputWidth + this.padding * 2;
+        let height = Math.max(this.getFaceHeight(), virtual.y) + this.padding * 2;
         const adjust = $gameSystem.getPopupAdjustSize();
         if (adjust) {
             width += adjust[0];
@@ -1428,16 +1428,16 @@
         } else if (param.NoUseTail) {
             height += 8;
         }
-        this.width  = Math.max(width, this.getMinimumWidth());
+        this.width = Math.max(width, this.getMinimumWidth());
         this.height = Math.max(height, this.getMinimumHeight());
         this.resetFontSettings();
     };
 
-    Window_Message.prototype.createVirtualTextState = function() {
+    Window_Message.prototype.createVirtualTextState = function () {
         const text = this.convertEscapeCharacters($gameMessage.allText());
         const virtual = this.createTextState(text, 0, 0, 0);
         virtual.drawing = false;
-        virtual.startX  = this.newLineX();
+        virtual.startX = this.newLineX();
         this.newPage(virtual);
         this.processAllText(virtual);
         virtual.outputWidth += virtual.startX;
@@ -1457,23 +1457,23 @@
         return virtual;
     };
 
-    Window_Message.prototype.getMinimumWidth = function() {
+    Window_Message.prototype.getMinimumWidth = function () {
         return $gameVariables.value(param.MinWidthVariableId);
     };
 
-    Window_Message.prototype.getMinimumHeight = function() {
+    Window_Message.prototype.getMinimumHeight = function () {
         return $gameVariables.value(param.MinHeightVariableId);
     };
 
-    Window_Message.prototype.getSubWindowPosition = function() {
+    Window_Message.prototype.getSubWindowPosition = function () {
         const pos = new Point();
-        pos.x     = this.x + this.newLineX();
-        pos.y     = this.y + this._subWindowY;
+        pos.x = this.x + this.newLineX();
+        pos.y = this.y + this._subWindowY;
         return pos;
     };
 
-    const _Window_Message_newLineX    = Window_Message.prototype.newLineX;
-    Window_Message.prototype.newLineX = function() {
+    const _Window_Message_newLineX = Window_Message.prototype.newLineX;
+    Window_Message.prototype.newLineX = function () {
         if (this.isPopup()) {
             return $gameMessage.faceName() === '' ? 0 : ImageManager.popUpfaceWidth + 8;
         } else {
@@ -1481,12 +1481,12 @@
         }
     };
 
-    Window_Message.prototype.getFaceHeight = function() {
+    Window_Message.prototype.getFaceHeight = function () {
         return $gameMessage.faceName() === '' ? 0 : ImageManager.popUpfaceHeight;
     };
 
-    const _Window_Message_drawFace    = Window_Message.prototype.drawFace;
-    Window_Message.prototype.drawFace = function(faceName, faceIndex, x, y, width, height) {
+    const _Window_Message_drawFace = Window_Message.prototype.drawFace;
+    Window_Message.prototype.drawFace = function (faceName, faceIndex, x, y, width, height) {
         if (this.isPopup()) {
             arguments[4] = ImageManager.faceWidth;
             arguments[5] = ImageManager.faceHeight;
@@ -1495,8 +1495,8 @@
         _Window_Message_drawFace.apply(this, arguments);
     };
 
-    const _Window_Message_processEscapeCharacter    = Window_Message.prototype.processEscapeCharacter;
-    Window_Message.prototype.processEscapeCharacter = function(code, textState) {
+    const _Window_Message_processEscapeCharacter = Window_Message.prototype.processEscapeCharacter;
+    Window_Message.prototype.processEscapeCharacter = function (code, textState) {
         if (code === 'SH') {
             this.setWindowShake(this.obtainEscapeParam(textState));
         } else {
@@ -1508,8 +1508,8 @@
         }
     };
 
-    const _Window_Message_terminateMessage    = Window_Message.prototype.terminateMessage;
-    Window_Message.prototype.terminateMessage = function() {
+    const _Window_Message_terminateMessage = Window_Message.prototype.terminateMessage;
+    Window_Message.prototype.terminateMessage = function () {
         this.setWindowShake(0);
         _Window_Message_terminateMessage.apply(this, arguments);
     };
@@ -1518,13 +1518,13 @@
     // Window_ChoiceList
     //  ポップアップする場合、メッセージウィンドウに連動して表示位置と余白を調整します。
     //=============================================================================
-    const _Window_ChoiceList_lineHeight    = Window_ChoiceList.prototype.lineHeight;
-    Window_ChoiceList.prototype.lineHeight = function() {
+    const _Window_ChoiceList_lineHeight = Window_ChoiceList.prototype.lineHeight;
+    Window_ChoiceList.prototype.lineHeight = function () {
         return this.isPopupLinkage() ? param.FontSize + 8 : _Window_ChoiceList_lineHeight.apply(this, arguments);
     };
 
-    const _Window_ChoiceList_start    = Window_ChoiceList.prototype.start;
-    Window_ChoiceList.prototype.start = function() {
+    const _Window_ChoiceList_start = Window_ChoiceList.prototype.start;
+    Window_ChoiceList.prototype.start = function () {
         this._messageWindow.updateTargetCharacterId();
         if (!this.isPopup()) {
             this._messageWindow.resetLayout();
@@ -1532,8 +1532,8 @@
         return _Window_ChoiceList_start.apply(this, arguments);
     };
 
-    const _Window_ChoiceList_updatePlacement    = Window_ChoiceList.prototype.updatePlacement;
-    Window_ChoiceList.prototype.updatePlacement = function() {
+    const _Window_ChoiceList_updatePlacement = Window_ChoiceList.prototype.updatePlacement;
+    Window_ChoiceList.prototype.updatePlacement = function () {
         this.resetLayout();
         _Window_ChoiceList_updatePlacement.apply(this, arguments);
         if (this.isPopup()) {
@@ -1541,14 +1541,14 @@
         }
     };
 
-    const _Window_ChoiceList_refresh    = Window_ChoiceList.prototype.refresh;
-    Window_ChoiceList.prototype.refresh = function() {
+    const _Window_ChoiceList_refresh = Window_ChoiceList.prototype.refresh;
+    Window_ChoiceList.prototype.refresh = function () {
         this.resetLayout();
         _Window_ChoiceList_refresh.apply(this, arguments);
     };
 
-    const _Window_ChoiceList_numVisibleRows    = Window_ChoiceList.prototype.numVisibleRows;
-    Window_ChoiceList.prototype.numVisibleRows = function() {
+    const _Window_ChoiceList_numVisibleRows = Window_ChoiceList.prototype.numVisibleRows;
+    Window_ChoiceList.prototype.numVisibleRows = function () {
         const result = _Window_ChoiceList_numVisibleRows.apply(this, arguments);
         if (this.isPopupLinkage()) {
             return Math.min($gameMessage.choices().length, 8);
@@ -1556,25 +1556,25 @@
         return result;
     };
 
-    const _Window_NameBox_refresh    = Window_NameBox.prototype.refresh;
-    Window_NameBox.prototype.refresh = function() {
+    const _Window_NameBox_refresh = Window_NameBox.prototype.refresh;
+    Window_NameBox.prototype.refresh = function () {
         this.resetLayout();
         _Window_NameBox_refresh.apply(this, arguments);
     };
 
-    const _Window_NameBox_lineHeight    = Window_NameBox.prototype.lineHeight;
-    Window_NameBox.prototype.lineHeight = function() {
+    const _Window_NameBox_lineHeight = Window_NameBox.prototype.lineHeight;
+    Window_NameBox.prototype.lineHeight = function () {
         return this.isPopup() ? param.FontSize : _Window_NameBox_lineHeight.apply(this, arguments);
     };
 
-    const _Window_NameBox_baseTextRect    = Window_NameBox.prototype.baseTextRect;
-    Window_NameBox.prototype.baseTextRect = function() {
+    const _Window_NameBox_baseTextRect = Window_NameBox.prototype.baseTextRect;
+    Window_NameBox.prototype.baseTextRect = function () {
         const rect = _Window_NameBox_baseTextRect.apply(this, arguments);
         rect.y += 2;
         return rect;
     };
 
-    Window_NameBox.prototype.isPopup = function() {
+    Window_NameBox.prototype.isPopup = function () {
         return this._messageWindow && this._messageWindow.isPopup();
     };
 
@@ -1583,7 +1583,7 @@
      * dw, dhの値を予約できるようにします。
      */
     const _Bitmap_blt = Bitmap.prototype.blt;
-    Bitmap.prototype.blt = function(source, sx, sy, sw, sh, dx, dy, dw, dh) {
+    Bitmap.prototype.blt = function (source, sx, sy, sw, sh, dx, dy, dw, dh) {
         if (this._prepareDw) {
             dw = this._prepareDw;
             this._prepareDw = null;
@@ -1596,7 +1596,7 @@
         _Bitmap_blt.call(this, source, sx, sy, sw, sh, dx, dy, dw, dh);
     };
 
-    Bitmap.prototype.prepareDwDh = function(dw, dh) {
+    Bitmap.prototype.prepareDwDh = function (dw, dh) {
         this._prepareDw = dw;
         this._prepareDh = dh;
     };

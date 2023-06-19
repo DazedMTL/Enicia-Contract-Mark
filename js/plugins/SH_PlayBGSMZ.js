@@ -180,107 +180,107 @@
   const defvolume = parameters.defvolume
   const defbgvvolume = parameters.defbgvvolume
   const defevevolume = parameters.defevevolume
-  
-  PluginManager.registerCommand(pluginName, "PlayBGS", function(args){
-      
-      var Time = Number(parameters['TimeVariable'])
-      var bgsid = args.bgsid
-      var bgsvolume = args.volume
-      var bgspan = args.pan
-      var bgspitch = args.pitch
-      var args = {line:'1'}
-      PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-      if (bgsid == "MAP"){bgsid = map}
-      if (bgsvolume == "default"){bgsvolume = defvolume}
-      if (bgsvolume == "variable"){bgsvolume = $gameVariables.value(parameters.varvolume)}
-      if (bgsvolume > 100){bgsvolume = 100}
-      if(bgsid == "map"){
-        var nobgs = 1
-        if($dataMap.meta.MAPBGS){bgsid = $dataMap.meta.MAPBGS;nobgs = 0}
-        if($gameVariables.value(Time) >= 0 && $gameVariables.value(Time) < 2 && $dataMap.meta.MAPBGS){bgsid = $dataMap.meta.MAPBGS;nobgs = 0};
-        if($gameVariables.value(Time) == 0 && $dataMap.meta.MAPBGS_M){bgsid = $dataMap.meta.MAPBGS_M;nobgs = 0};
-        if($gameVariables.value(Time) == 2 && $dataMap.meta.MAPBGS_E){bgsid = $dataMap.meta.MAPBGS_E;nobgs = 0};
-        if($gameVariables.value(Time) >= 3 && $dataMap.meta.MAPBGS_N){bgsid = $dataMap.meta.MAPBGS_N;nobgs = 0};
-      }//戦闘中はエラーが出るかも
-      
-      if(nobgs == 1){//停止
-        AudioManager.playBgs({
+
+  PluginManager.registerCommand(pluginName, "PlayBGS", function (args) {
+
+    var Time = Number(parameters['TimeVariable'])
+    var bgsid = args.bgsid
+    var bgsvolume = args.volume
+    var bgspan = args.pan
+    var bgspitch = args.pitch
+    var args = { line: '1' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
+    if (bgsid == "MAP") { bgsid = map }
+    if (bgsvolume == "default") { bgsvolume = defvolume }
+    if (bgsvolume == "variable") { bgsvolume = $gameVariables.value(parameters.varvolume) }
+    if (bgsvolume > 100) { bgsvolume = 100 }
+    if (bgsid == "map") {
+      var nobgs = 1
+      if ($dataMap.meta.MAPBGS) { bgsid = $dataMap.meta.MAPBGS; nobgs = 0 }
+      if ($gameVariables.value(Time) >= 0 && $gameVariables.value(Time) < 2 && $dataMap.meta.MAPBGS) { bgsid = $dataMap.meta.MAPBGS; nobgs = 0 };
+      if ($gameVariables.value(Time) == 0 && $dataMap.meta.MAPBGS_M) { bgsid = $dataMap.meta.MAPBGS_M; nobgs = 0 };
+      if ($gameVariables.value(Time) == 2 && $dataMap.meta.MAPBGS_E) { bgsid = $dataMap.meta.MAPBGS_E; nobgs = 0 };
+      if ($gameVariables.value(Time) >= 3 && $dataMap.meta.MAPBGS_N) { bgsid = $dataMap.meta.MAPBGS_N; nobgs = 0 };
+    }//戦闘中はエラーが出るかも
+
+    if (nobgs == 1) {//停止
+      AudioManager.playBgs({
         name: "",
         volume: 0,
         pitch: 100,
         pan: 0
       });
 
-      }
+    }
 
-      if(bgsid != -1 && bgsid != "map"){
-        //var index = $dataUniques.bgslist.Id.indexOf(bgsid);
-        //var bgsfile = $dataUniques.bgslist.File[index];
-        var bgsfile = $dataUniques.bgslist[bgsid]
-        AudioManager.playBgs({
-          name: bgsfile,
-          volume: isNaN(bgsvolume) ? 90 : bgsvolume,
-            pitch: isNaN(bgspitch) ? 100 : bgspitch,
-            pan: isNaN(bgspan) ? 0 : bgspan
-        });
-      }else{
-        if(bgsid != "map")console.error(bgsid + ' は見つかりません');
-      }
-      args = {line:'1'}
-      PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
+    if (bgsid != -1 && bgsid != "map") {
+      //var index = $dataUniques.bgslist.Id.indexOf(bgsid);
+      //var bgsfile = $dataUniques.bgslist.File[index];
+      var bgsfile = $dataUniques.bgslist[bgsid]
+      AudioManager.playBgs({
+        name: bgsfile,
+        volume: isNaN(bgsvolume) ? 90 : bgsvolume,
+        pitch: isNaN(bgspitch) ? 100 : bgspitch,
+        pan: isNaN(bgspan) ? 0 : bgspan
+      });
+    } else {
+      if (bgsid != "map") console.error(bgsid + ' は見つかりません');
+    }
+    args = { line: '1' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
   });
 
-    PluginManager.registerCommand(pluginName, "PlayEventBGS", function(args){
-        var bgsid = args.bgsid
-        var bgsvolume = args.volume
-        var bgspan = args.pan
-        var bgspitch = args.pitch
-        var args = {line:'2'}
-        if (bgsvolume == "default"){bgsvolume = defevevolume}
-        if (bgsvolume == "variable"){bgsvolume = $gameVariables.value(parameters.varvolume)}
-        if (bgsvolume > 100){bgsvolume = 100}
-        PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-        if(bgsid != -1){
-          //var index = $dataUniques.bgslist.Id.indexOf(bgsid);
-        //var bgsfile = $dataUniques.bgslist.File[index];
-        var bgsfile = $dataUniques.bgslist[bgsid]
-          AudioManager.playBgs({
-            name: bgsfile,
-            volume: isNaN(bgsvolume) ? 90 : bgsvolume,
-            pitch: isNaN(bgspitch) ? 100 : bgspitch,
-            pan: isNaN(bgspan) ? 0 : bgspan
-          });
-        }else{
-          console.error(bgsid + ' は見つかりません');
-        }
-        args = {line:'1'}
-        PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-    });
+  PluginManager.registerCommand(pluginName, "PlayEventBGS", function (args) {
+    var bgsid = args.bgsid
+    var bgsvolume = args.volume
+    var bgspan = args.pan
+    var bgspitch = args.pitch
+    var args = { line: '2' }
+    if (bgsvolume == "default") { bgsvolume = defevevolume }
+    if (bgsvolume == "variable") { bgsvolume = $gameVariables.value(parameters.varvolume) }
+    if (bgsvolume > 100) { bgsvolume = 100 }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
+    if (bgsid != -1) {
+      //var index = $dataUniques.bgslist.Id.indexOf(bgsid);
+      //var bgsfile = $dataUniques.bgslist.File[index];
+      var bgsfile = $dataUniques.bgslist[bgsid]
+      AudioManager.playBgs({
+        name: bgsfile,
+        volume: isNaN(bgsvolume) ? 90 : bgsvolume,
+        pitch: isNaN(bgspitch) ? 100 : bgspitch,
+        pan: isNaN(bgspan) ? 0 : bgspan
+      });
+    } else {
+      console.error(bgsid + ' は見つかりません');
+    }
+    args = { line: '1' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
+  });
 
-  PluginManager.registerCommand(pluginName, "PlayBGV", function(args){
+  PluginManager.registerCommand(pluginName, "PlayBGV", function (args) {
     var bgsid = args.bgvid
     var bgsvolume = args.volume
     var bgspan = args.pan
     var bgspitch = args.pitch
     var bgvSwitch = Number(parameters.bgvswitch)
-    if (bgsvolume == "default"){bgsvolume = defbgvvolume}
-    if (bgsvolume == "variable"){bgsvolume = $gameVariables.value(parameters.varvolume)}
-    if (bgsvolume > 100){bgsvolume = 100}
-    var args = {line : '5'}
+    if (bgsvolume == "default") { bgsvolume = defbgvvolume }
+    if (bgsvolume == "variable") { bgsvolume = $gameVariables.value(parameters.varvolume) }
+    if (bgsvolume > 100) { bgsvolume = 100 }
+    var args = { line: '5' }
     //console.log(args)
-    PluginManager.callCommand(this,'ParallelBgs','CHANGE_LINE', args);
-    if(bgsid != -1 && $gameSwitches.value(bgvSwitch) && $dataUniques.bgvlist[bgsid]){
+    PluginManager.callCommand(this, 'ParallelBgs', 'CHANGE_LINE', args);
+    if (bgsid != -1 && $gameSwitches.value(bgvSwitch) && $dataUniques.bgvlist[bgsid]) {
       var index = $dataUniques.bgvlist[bgsid]
       var bgsfile = index.File;
       var noLoopFlag = index.noLoopFlag || 0;
-      if(noLoopFlag == "on"){
+      if (noLoopFlag == "on") {
         AudioManager.playMeEx({
           name: bgsfile,
           volume: isNaN(bgsvolume) ? 90 : bgsvolume,
           pitch: isNaN(bgspitch) ? 100 : bgspitch,
           pan: isNaN(bgspan) ? 0 : bgspan
         });
-      }else{
+      } else {
         //var bgsfile = $dataUniques.bgvlist[bgsid]
         AudioManager.playBgs({
           name: bgsfile,
@@ -289,67 +289,67 @@
           pan: isNaN(bgspan) ? 0 : bgspan
         });
       }
-      
-    }else{
+
+    } else {
       console.error(bgsid + ' は見つかりません');
     }
-    args = {line:'1'}
-    PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-});
-
-
-
-PluginManager.registerCommand(pluginName, "StopEventBGS", function(args){//イベント用BGS(2)停止
-  var args = {line:'2'}
-  PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-  AudioManager.playBgs({
-    name: "",
-    volume: 0,
-    pitch: 100,
-    pan: 0
+    args = { line: '1' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
   });
-  args = {line:'1'}
-  PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-});
 
-PluginManager.registerCommand(pluginName, "StopBGV", function(args){//イベント用BGV(5)停止
-  var args = {line:'5'}
-  PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-  AudioManager.playBgs({
-    name: "",
-    volume: 0,
-    pitch: 100,
-    pan: 0
+
+
+  PluginManager.registerCommand(pluginName, "StopEventBGS", function (args) {//イベント用BGS(2)停止
+    var args = { line: '2' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
+    AudioManager.playBgs({
+      name: "",
+      volume: 0,
+      pitch: 100,
+      pan: 0
+    });
+    args = { line: '1' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
   });
-  args = {line:'1'}
-  PluginManager.callCommand(this,"ParallelBgs","CHANGE_LINE", args);
-});
 
-// AudioManager.playMeEx = function(me) {
-//   this.stopMe();
-//   if (me.name) {
-//       if (this._bgmBuffer && this._currentBgm) {
-//           this._currentBgm.pos = this._bgmBuffer.seek();
-//           this._bgmBuffer.stop();
-//       }
-//       this._meBuffer = this.createBuffer("bgs/", me.name);
-//       this.updateMeParameters(me);
-//       this._meBuffer.play(false);
-//       this._meBuffer.addStopListener(this.stopMe.bind(this));
-//   }
-// };
+  PluginManager.registerCommand(pluginName, "StopBGV", function (args) {//イベント用BGV(5)停止
+    var args = { line: '5' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
+    AudioManager.playBgs({
+      name: "",
+      volume: 0,
+      pitch: 100,
+      pan: 0
+    });
+    args = { line: '1' }
+    PluginManager.callCommand(this, "ParallelBgs", "CHANGE_LINE", args);
+  });
 
-  AudioManager.playMeEx = function(me) {//BGSフォルダからME再生中し、ME再生中はBGSをフェード
+  // AudioManager.playMeEx = function(me) {
+  //   this.stopMe();
+  //   if (me.name) {
+  //       if (this._bgmBuffer && this._currentBgm) {
+  //           this._currentBgm.pos = this._bgmBuffer.seek();
+  //           this._bgmBuffer.stop();
+  //       }
+  //       this._meBuffer = this.createBuffer("bgs/", me.name);
+  //       this.updateMeParameters(me);
+  //       this._meBuffer.play(false);
+  //       this._meBuffer.addStopListener(this.stopMe.bind(this));
+  //   }
+  // };
+
+  AudioManager.playMeEx = function (me) {//BGSフォルダからME再生中し、ME再生中はBGSをフェード
     this.stopMe();
     if (me.name) {
-        if (this._bgsBuffer && this._currentBgs) {
-            this._currentBgs.pos = this._bgsBuffer.seek();
-            this._bgsBuffer.stop();
-        }
-        this._meBuffer = this.createBuffer("bgs/", me.name);
-        this.updateMeParameters(me);
-        this._meBuffer.play(false);
-        this._meBuffer.addStopListener(this.stopMe.bind(this));
+      if (this._bgsBuffer && this._currentBgs) {
+        this._currentBgs.pos = this._bgsBuffer.seek();
+        this._bgsBuffer.stop();
+      }
+      this._meBuffer = this.createBuffer("bgs/", me.name);
+      this.updateMeParameters(me);
+      this._meBuffer.play(false);
+      this._meBuffer.addStopListener(this.stopMe.bind(this));
     }
   };
 

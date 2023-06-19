@@ -61,7 +61,7 @@
     });
 
     const _Game_Picture_show = Game_Picture.prototype.show;
-    Game_Picture.prototype.show = function() {
+    Game_Picture.prototype.show = function () {
         _Game_Picture_show.apply(this, arguments);
         if (this._name === "" && textPictureText) {
             this.mzkp_text = textPictureText;
@@ -71,13 +71,13 @@
     };
 
     const _Sprite_Picture_destroy = Sprite_Picture.prototype.destroy;
-    Sprite_Picture.prototype.destroy = function() {
+    Sprite_Picture.prototype.destroy = function () {
         destroyTextPictureBitmap(this.bitmap);
         _Sprite_Picture_destroy.apply(this, arguments);
     };
 
     const _Sprite_Picture_updateBitmap = Sprite_Picture.prototype.updateBitmap;
-    Sprite_Picture.prototype.updateBitmap = function() {
+    Sprite_Picture.prototype.updateBitmap = function () {
         _Sprite_Picture_updateBitmap.apply(this, arguments);
         if (this.visible && this._pictureName === "") {
             const picture = this.picture();

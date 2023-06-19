@@ -78,14 +78,14 @@ FTKR.EMD = FTKR.EMD || {};
 //=============================================================================
 FTKR.EMD.parameters = PluginManager.parameters('FTKR_ExMetaData');
 
-var readMetadata = function(data, note) {
+var readMetadata = function (data, note) {
     var re = /<([^<>:]+)(:?)([^>]*)>/g;
     data.meta = data.meta || {};
-    for (;;) {
+    for (; ;) {
         var match = re.exec(note);
         if (match) {
             if (match[2] === ':') {
-                data.meta[match[1]] = match[3]; 
+                data.meta[match[1]] = match[3];
             } else {
                 data.meta[match[1]] = true;
             }
@@ -95,7 +95,7 @@ var readMetadata = function(data, note) {
     }
 };
 
-var readPagesCommentMetadata = function(obj, pages) {
+var readPagesCommentMetadata = function (obj, pages) {
     for (var v = 0; v < pages[0].list.length; v++) {
         var list = pages[0].list[v];
         if (list && ([108, 408].contains(list.code))) {
@@ -115,17 +115,17 @@ Game_Map.prototype.setupEvents = function() {
 };
 */
 
-Game_Map.prototype.readEventsCommentMetadata = function() {
-    for (var i = 1; i < $dataMap.events.length; i++ ) {
+Game_Map.prototype.readEventsCommentMetadata = function () {
+    for (var i = 1; i < $dataMap.events.length; i++) {
         var event = $dataMap.events[i];
-        if(event && event.pages.length) {
+        if (event && event.pages.length) {
             readPagesCommentMetadata(event, event.pages);
         }
     }
 };
 
 FTKR.EMD.Scene_Map_start = Scene_Map.prototype.start;
-Scene_Map.prototype.start = function() {
+Scene_Map.prototype.start = function () {
     FTKR.EMD.Scene_Map_start.call(this);
     $gameMap.readEventsCommentMetadata();
 };
@@ -135,7 +135,7 @@ Scene_Map.prototype.start = function() {
 //=============================================================================
 FTKR.EMD.DatabaseLoaded = false;
 FTKR.EMD.DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
-DataManager.isDatabaseLoaded = function() {
+DataManager.isDatabaseLoaded = function () {
     if (!FTKR.EMD.DataManager_isDatabaseLoaded.call(this)) return false;
     if (!FTKR.EMD.DatabaseLoaded) {
         this.readCommentNotetags($dataTroops);
@@ -144,7 +144,7 @@ DataManager.isDatabaseLoaded = function() {
     return true;
 };
 
-DataManager.readCommentNotetags = function(group) {
+DataManager.readCommentNotetags = function (group) {
     for (var n = 1; n < group.length; n++) {
         var obj = group[n];
         obj.meta = {};

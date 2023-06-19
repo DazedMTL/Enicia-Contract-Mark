@@ -185,7 +185,7 @@
  *
  */
 
-(()=> {
+(() => {
     'use strict';
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
@@ -194,22 +194,22 @@
         $gameTemp.setDisableWindowControl(args.disable);
     });
 
-    PluginManagerEx.registerCommand(script, 'STOP_EVENT', function() {
+    PluginManagerEx.registerCommand(script, 'STOP_EVENT', function () {
         this._menuCommonStop = true;
     });
 
-    Game_Interpreter.prototype.isWindowActive = function(windowName) {
+    Game_Interpreter.prototype.isWindowActive = function (windowName) {
         const sceneWindow = this.getSceneWindow(windowName);
         return sceneWindow ? sceneWindow.active : false;
     };
 
-    Game_Interpreter.prototype.getSceneWindow = function(windowName) {
+    Game_Interpreter.prototype.getSceneWindow = function (windowName) {
         return SceneManager.getSceneWindow('_' + windowName);
     };
 
-    Game_Interpreter.prototype.getSceneWindowIndex = function() {
+    Game_Interpreter.prototype.getSceneWindowIndex = function () {
         let index = -1;
-        SceneManager.getSceneWindowList().some(function(sceneWindow) {
+        SceneManager.getSceneWindowList().some(function (sceneWindow) {
             if (sceneWindow instanceof Window_Selectable && sceneWindow.active) {
                 index = sceneWindow.index();
                 return true;
@@ -220,7 +220,7 @@
         return index;
     };
 
-    Game_Interpreter.prototype.refreshGlossary = function() {
+    Game_Interpreter.prototype.refreshGlossary = function () {
         const glossaryWindow = this.getSceneWindow('glossaryWindow');
         if (glossaryWindow.visible) {
             const glossaryListWindow = this.getSceneWindow('glossaryListWindow');
@@ -228,11 +228,11 @@
         }
     };
 
-    Game_Interpreter.prototype.execStopEvent = function() {
+    Game_Interpreter.prototype.execStopEvent = function () {
         this._menuCommonStop = true;
     };
 
-    Game_Interpreter.prototype.isMenuCommonStop = function() {
+    Game_Interpreter.prototype.isMenuCommonStop = function () {
         return this._menuCommonStop;
     };
 
@@ -240,15 +240,15 @@
     // Game_Temp
     //  メニューコモンイベントを作成、更新します。
     //=============================================================================
-    const _Game_Temp_initialize      = Game_Temp.prototype.initialize;
-    Game_Temp.prototype.initialize = function() {
+    const _Game_Temp_initialize = Game_Temp.prototype.initialize;
+    Game_Temp.prototype.initialize = function () {
         _Game_Temp_initialize.apply(this, arguments);
         this._menuCommonEvent = {};
         this.clearSceneInformation();
     };
 
-    Game_Temp.prototype.setupMenuCommonEvent = function(commonEventId, sceneName, sceneIndex) {
-        this._sceneName  = sceneName;
+    Game_Temp.prototype.setupMenuCommonEvent = function (commonEventId, sceneName, sceneIndex) {
+        this._sceneName = sceneName;
         this._sceneIndex = sceneIndex;
         if (param.saveInterpreterIndex && this.isExistSameCommonEvent(commonEventId)) {
             return this._menuCommonEvent[sceneName];
@@ -256,7 +256,7 @@
         return this._menuCommonEvent[sceneName] = this.createMenuCommonEvent(commonEventId);
     };
 
-    Game_Temp.prototype.createMenuCommonEvent = function(commonEventId) {
+    Game_Temp.prototype.createMenuCommonEvent = function (commonEventId) {
         if (commonEventId > 0) {
             const commonEvent = new Game_MenuCommonEvent(commonEventId);
             if (commonEvent.event()) {
@@ -266,30 +266,30 @@
         return null;
     };
 
-    Game_Temp.prototype.isExistSameCommonEvent = function(commonEventId) {
+    Game_Temp.prototype.isExistSameCommonEvent = function (commonEventId) {
         const commonEvent = this._menuCommonEvent[this._sceneName];
         return commonEvent && commonEvent.isSameEvent(commonEventId);
     };
 
-    Game_Temp.prototype.setDisableWindowControl = function(value) {
+    Game_Temp.prototype.setDisableWindowControl = function (value) {
         this._disableWindowControl = value;
     };
 
-    Game_Temp.prototype.isDisableWindowControl = function() {
+    Game_Temp.prototype.isDisableWindowControl = function () {
         return !!this._disableWindowControl;
     };
 
-    Game_Temp.prototype.getSceneIndex = function() {
+    Game_Temp.prototype.getSceneIndex = function () {
         return this._sceneIndex;
     };
 
-    Game_Temp.prototype.isInMenu = function() {
+    Game_Temp.prototype.isInMenu = function () {
         return this.getSceneIndex() >= 0;
     };
 
-    Game_Temp.prototype.clearSceneInformation = function() {
+    Game_Temp.prototype.clearSceneInformation = function () {
         this._sceneIndex = -1;
-        this._sceneName  = '';
+        this._sceneName = '';
     };
 
     //=============================================================================
@@ -297,8 +297,8 @@
     //  シーンごとにピクチャを管理できるようにします。
     //=============================================================================
     if (param.maxMenuPicture > 0) {
-        const _Game_Screen_realPictureId      = Game_Screen.prototype.realPictureId;
-        Game_Screen.prototype.realPictureId = function(pictureId) {
+        const _Game_Screen_realPictureId = Game_Screen.prototype.realPictureId;
+        Game_Screen.prototype.realPictureId = function (pictureId) {
             const sceneIndex = $gameTemp.getSceneIndex();
             if (sceneIndex >= 0) {
                 return pictureId + this.maxMapPictures() * 2 + sceneIndex * this.maxPictures();
@@ -307,12 +307,12 @@
             }
         };
 
-        const _Game_Screen_maxPictures      = Game_Screen.prototype.maxPictures;
-        Game_Screen.prototype.maxPictures = function() {
+        const _Game_Screen_maxPictures = Game_Screen.prototype.maxPictures;
+        Game_Screen.prototype.maxPictures = function () {
             return $gameTemp.isInMenu() ? param.maxMenuPicture : _Game_Screen_maxPictures.apply(this, arguments);
         };
 
-        Game_Screen.prototype.maxMapPictures = function() {
+        Game_Screen.prototype.maxMapPictures = function () {
             return _Game_Screen_maxPictures.apply(this, arguments);
         };
     }
@@ -325,19 +325,19 @@
         this.initialize.apply(this, arguments);
     }
 
-    Game_MenuCommonEvent.prototype             = Object.create(Game_CommonEvent.prototype);
+    Game_MenuCommonEvent.prototype = Object.create(Game_CommonEvent.prototype);
     Game_MenuCommonEvent.prototype.constructor = Game_MenuCommonEvent;
 
-    Game_MenuCommonEvent.prototype.isActive = function() {
+    Game_MenuCommonEvent.prototype.isActive = function () {
         return true;
     };
 
-    Game_MenuCommonEvent.prototype.isSameEvent = function(commonEventId) {
+    Game_MenuCommonEvent.prototype.isSameEvent = function (commonEventId) {
         return this._commonEventId === commonEventId;
     };
 
-    const _Game_MenuCommonEvent_update      = Game_MenuCommonEvent.prototype.update;
-    Game_MenuCommonEvent.prototype.update = function() {
+    const _Game_MenuCommonEvent_update = Game_MenuCommonEvent.prototype.update;
+    Game_MenuCommonEvent.prototype.update = function () {
         if (this._interpreter) {
             if (!this._interpreter.isRunning()) {
                 $gameTemp.setDisableWindowControl(false);
@@ -353,13 +353,13 @@
     // Scene_MenuBase
     //  メニューコモンイベントを実行します。
     //=============================================================================
-    const _Scene_MenuBase_create      = Scene_MenuBase.prototype.create;
-    Scene_MenuBase.prototype.create = function() {
+    const _Scene_MenuBase_create = Scene_MenuBase.prototype.create;
+    Scene_MenuBase.prototype.create = function () {
         _Scene_MenuBase_create.apply(this, arguments);
         this.createCommonEvent();
     };
 
-    Scene_MenuBase.prototype.createCommonEvent = function() {
+    Scene_MenuBase.prototype.createCommonEvent = function () {
         this.setupCommonEvent();
         if (!this.hasCommonEvent()) {
             return;
@@ -371,11 +371,11 @@
         this.changeParentMessageWindow();
     };
 
-    Scene_MenuBase.prototype.hasCommonEvent = function() {
+    Scene_MenuBase.prototype.hasCommonEvent = function () {
         return !!this._commonEvent;
     };
 
-    Scene_MenuBase.prototype.createAllMessageWindow = function() {
+    Scene_MenuBase.prototype.createAllMessageWindow = function () {
         Scene_Message.prototype.createMessageWindow.call(this);
         Scene_Message.prototype.createScrollTextWindow.call(this);
         Scene_Message.prototype.createGoldWindow.call(this);
@@ -386,66 +386,66 @@
         Scene_Message.prototype.associateWindows.call(this);
     };
 
-    Scene_MenuBase.prototype.messageWindowRect = function() {
+    Scene_MenuBase.prototype.messageWindowRect = function () {
         return Scene_Message.prototype.messageWindowRect.call(this);
     }
 
-    Scene_MenuBase.prototype.scrollTextWindowRect = function() {
+    Scene_MenuBase.prototype.scrollTextWindowRect = function () {
         return Scene_Message.prototype.scrollTextWindowRect.call(this);
     }
 
-    Scene_MenuBase.prototype.goldWindowRect = function() {
+    Scene_MenuBase.prototype.goldWindowRect = function () {
         return Scene_Message.prototype.goldWindowRect.call(this);
     }
 
-    Scene_MenuBase.prototype.eventItemWindowRect = function() {
+    Scene_MenuBase.prototype.eventItemWindowRect = function () {
         return Scene_Message.prototype.eventItemWindowRect.call(this);
     }
 
-    Scene_MenuBase.prototype.changeParentMessageWindow = function() {
+    Scene_MenuBase.prototype.changeParentMessageWindow = function () {
         const windows = [this._messageWindow, this._scrollTextWindow,
-            this._goldWindow, this._nameBoxWindow, this._choiceListWindow,
-            this._numberInputWindow, this._eventItemWindow];
+        this._goldWindow, this._nameBoxWindow, this._choiceListWindow,
+        this._numberInputWindow, this._eventItemWindow];
         windows.forEach(win => this.addChild(this._windowLayer.removeChild(win)));
     };
 
     // Resolve conflict for NobleMushroom.js
-    Scene_MenuBase.prototype.changeImplementationWindowMessage  = Scene_Map.prototype.changeImplementationWindowMessage;
+    Scene_MenuBase.prototype.changeImplementationWindowMessage = Scene_Map.prototype.changeImplementationWindowMessage;
     Scene_MenuBase.prototype.restoreImplementationWindowMessage = Scene_Map.prototype.restoreImplementationWindowMessage;
-    Scene_MenuBase.prototype.onPause                            = Scene_Map.prototype.onPause;
-    Scene_MenuBase.prototype.offPause                           = Scene_Map.prototype.offPause;
+    Scene_MenuBase.prototype.onPause = Scene_Map.prototype.onPause;
+    Scene_MenuBase.prototype.offPause = Scene_Map.prototype.offPause;
     Scene_MenuBase._stopWindow = false;
 
-    Scene_MenuBase.prototype.createSpriteset = function() {
+    Scene_MenuBase.prototype.createSpriteset = function () {
         this._spriteset = new Spriteset_Menu();
         this.addChild(this._spriteset);
     };
 
-    Scene_MenuBase.prototype.setupCommonEvent = function() {
+    Scene_MenuBase.prototype.setupCommonEvent = function () {
         const commonEventItem = this.getCommonEventData();
-        const commonEventId   = commonEventItem ? parseInt(commonEventItem['CommonEventId']) : 0;
-        const sceneIndex      = param.commonEventInfo.indexOf(commonEventItem);
-        this._commonEvent   = $gameTemp.setupMenuCommonEvent(commonEventId, this._sceneName, sceneIndex);
+        const commonEventId = commonEventItem ? parseInt(commonEventItem['CommonEventId']) : 0;
+        const sceneIndex = param.commonEventInfo.indexOf(commonEventItem);
+        this._commonEvent = $gameTemp.setupMenuCommonEvent(commonEventId, this._sceneName, sceneIndex);
     };
 
-    Scene_MenuBase.prototype.getCommonEventData = function() {
+    Scene_MenuBase.prototype.getCommonEventData = function () {
         this._sceneName = PluginManagerEx.findClassName(this);
-        return param.commonEventInfo.filter(function(data) {
+        return param.commonEventInfo.filter(function (data) {
             return data['SceneName'] === this._sceneName;
         }, this)[0];
     };
 
-    const _Scene_MenuBase_updateChildren      = Scene_MenuBase.prototype.updateChildren;
-    Scene_MenuBase.prototype.updateChildren = function() {
+    const _Scene_MenuBase_updateChildren = Scene_MenuBase.prototype.updateChildren;
+    Scene_MenuBase.prototype.updateChildren = function () {
         Scene_MenuBase._stopWindow = this.hasCommonEvent() && this.isNeedStopWindow();
         _Scene_MenuBase_updateChildren.apply(this, arguments);
     };
 
-    Scene_MenuBase.prototype.isNeedStopWindow = function() {
+    Scene_MenuBase.prototype.isNeedStopWindow = function () {
         return $gameTemp.isDisableWindowControl() || $gameMessage.isBusy();
     };
 
-    Scene_MenuBase.prototype.updateCommonEvent = function() {
+    Scene_MenuBase.prototype.updateCommonEvent = function () {
         if (!this.hasCommonEvent()) {
             return;
         }
@@ -461,18 +461,18 @@
     // Scene_Base
     //  メニューコモンイベントを更新します。
     //=============================================================================
-    const _Scene_Base_update      = Scene_Base.prototype.update;
-    Scene_Base.prototype.update = function() {
+    const _Scene_Base_update = Scene_Base.prototype.update;
+    Scene_Base.prototype.update = function () {
         this.updateCommonEvent();
         _Scene_Base_update.apply(this, arguments);
     };
 
-    Scene_Base.prototype.updateCommonEvent = function() {
+    Scene_Base.prototype.updateCommonEvent = function () {
         // do nothing
     };
 
-    const _Scene_Base_terminate      = Scene_Base.prototype.terminate;
-    Scene_Base.prototype.terminate = function() {
+    const _Scene_Base_terminate = Scene_Base.prototype.terminate;
+    Scene_Base.prototype.terminate = function () {
         _Scene_Base_terminate.apply(this, arguments);
         if ($gameTemp) {
             $gameTemp.clearSceneInformation();
@@ -487,40 +487,40 @@
         this.initialize.apply(this, arguments);
     }
 
-    Spriteset_Menu.prototype             = Object.create(Spriteset_Base.prototype);
+    Spriteset_Menu.prototype = Object.create(Spriteset_Base.prototype);
     Spriteset_Menu.prototype.constructor = Spriteset_Menu;
 
-    const _Spriteset_Menu_createBaseSprite      = Spriteset_Menu.prototype.createBaseSprite;
-    Spriteset_Menu.prototype.createBaseSprite = function() {
+    const _Spriteset_Menu_createBaseSprite = Spriteset_Menu.prototype.createBaseSprite;
+    Spriteset_Menu.prototype.createBaseSprite = function () {
         _Spriteset_Menu_createBaseSprite.apply(this, arguments);
         this._blackScreen.opacity = 0;
     };
 
-    const _Spriteset_Menu_createTimer      = Spriteset_Menu.prototype.createTimer;
-    Spriteset_Menu.prototype.createTimer = function() {
+    const _Spriteset_Menu_createTimer = Spriteset_Menu.prototype.createTimer;
+    Spriteset_Menu.prototype.createTimer = function () {
         if (param.activateTimer) {
             _Spriteset_Menu_createTimer.apply(this, arguments);
         }
     };
 
-    Spriteset_Menu.prototype.createDynamicWindow = function() {};
+    Spriteset_Menu.prototype.createDynamicWindow = function () { };
 
-    Spriteset_Menu.prototype.createToneChanger = function() {};
+    Spriteset_Menu.prototype.createToneChanger = function () { };
 
-    Spriteset_Menu.prototype.updateToneChanger = function() {};
+    Spriteset_Menu.prototype.updateToneChanger = function () { };
 
-    Spriteset_Menu.prototype.reloadWeatherEX = function() {};
+    Spriteset_Menu.prototype.reloadWeatherEX = function () { };
 
     //=============================================================================
     // SceneManager
     //  ウィンドウオブジェクトを取得します。
     //=============================================================================
-    SceneManager.getSceneWindow = function(windowName) {
+    SceneManager.getSceneWindow = function (windowName) {
         const sceneWindow = this._scene[windowName];
         return sceneWindow instanceof Window ? sceneWindow : null;
     };
 
-    SceneManager.getSceneWindowList = function() {
+    SceneManager.getSceneWindowList = function () {
         const windowList = [];
         for (const sceneWindow in this._scene) {
             if (this._scene.hasOwnProperty(sceneWindow) && this._scene[sceneWindow] instanceof Window) {
@@ -535,14 +535,14 @@
     //  必要な場合にウィンドウの状態更新を停止します。
     //=============================================================================
     const _Window_Selectable_update = Window_Selectable.prototype.update;
-    Window_Selectable.prototype.update = function() {
+    Window_Selectable.prototype.update = function () {
         if (Scene_MenuBase._stopWindow && this.isStopWindow()) {
             return;
         }
         _Window_Selectable_update.apply(this, arguments);
     };
 
-    Window_Selectable.prototype.isStopWindow = function() {
+    Window_Selectable.prototype.isStopWindow = function () {
         return !this._messageWindow;
     };
 })();

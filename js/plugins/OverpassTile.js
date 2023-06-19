@@ -113,13 +113,13 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
     /**
      * Game_CharacterBase
      */
     const _Game_CharacterBase_isMapPassable = Game_CharacterBase.prototype.isMapPassable;
-    Game_CharacterBase.prototype.isMapPassable = function(x, y, d) {
+    Game_CharacterBase.prototype.isMapPassable = function (x, y, d) {
         const passable = this.isMapPassableOnOverPath(x, y, d);
         if (passable !== undefined) {
             return passable;
@@ -128,21 +128,21 @@
     };
 
     const _Game_CharacterBase_isCollidedWithEvents = Game_CharacterBase.prototype.isCollidedWithEvents;
-    Game_CharacterBase.prototype.isCollidedWithEvents = function(x, y) {
+    Game_CharacterBase.prototype.isCollidedWithEvents = function (x, y) {
         return _Game_CharacterBase_isCollidedWithEvents.apply(this, arguments) &&
             this.isCollidedWithSameHigherEvents(x, y);
     };
 
-    Game_CharacterBase.prototype.isCollidedWithSameHigherEvents = function(x, y) {
+    Game_CharacterBase.prototype.isCollidedWithSameHigherEvents = function (x, y) {
         const events = $gameMap.eventsXyNt(x, y);
         return events.some(event => this.isSameHigher(event));
     };
 
-    Game_CharacterBase.prototype.isSameHigher = function(target) {
+    Game_CharacterBase.prototype.isSameHigher = function (target) {
         return Math.abs(this.getHigherLevel() - target.getHigherLevel()) <= 1;
     };
 
-    Game_CharacterBase.prototype.getHigherLevel = function() {
+    Game_CharacterBase.prototype.getHigherLevel = function () {
         if (!this._higher) {
             return this.isOnOverPath() ? -1 : 0;
         } else {
@@ -150,7 +150,7 @@
         }
     };
 
-    Game_CharacterBase.prototype.isMapPassableOnOverPath = function(x, y, d) {
+    Game_CharacterBase.prototype.isMapPassableOnOverPath = function (x, y, d) {
         const overPath = $gameMap.isOverPath(x, y);
         const gateway = $gameMap.isGatewayOverPath(x, y);
         const advancedX = $gameMap.roundXWithDirection(x, d);
@@ -170,12 +170,12 @@
     };
 
     const _Game_CharacterBase_refreshBushDepth = Game_CharacterBase.prototype.refreshBushDepth;
-    Game_CharacterBase.prototype.refreshBushDepth = function() {
+    Game_CharacterBase.prototype.refreshBushDepth = function () {
         _Game_CharacterBase_refreshBushDepth.apply(this, arguments);
         this.updateOverPath();
     };
 
-    Game_CharacterBase.prototype.updateOverPath = function() {
+    Game_CharacterBase.prototype.updateOverPath = function () {
         if (this.isOnGateway()) {
             this._higher = true;
         } else if (!this.isOnOverPath()) {
@@ -183,25 +183,25 @@
         }
     };
 
-    Game_CharacterBase.prototype.isOnGateway = function() {
+    Game_CharacterBase.prototype.isOnGateway = function () {
         return $gameMap.isGatewayOverPath(this.x, this.y);
     };
 
-    Game_CharacterBase.prototype.isOnOverPath = function() {
+    Game_CharacterBase.prototype.isOnOverPath = function () {
         return $gameMap.isOverPath(this.x, this.y);
     };
 
     const _Game_CharacterBase_screenZ = Game_CharacterBase.prototype.screenZ;
-    Game_CharacterBase.prototype.screenZ = function() {
+    Game_CharacterBase.prototype.screenZ = function () {
         const z = _Game_CharacterBase_screenZ.apply(this, arguments);
         return this.isHigherPriority() ? z + 3 : z;
     };
 
-    Game_CharacterBase.prototype.isHigherPriority = function() {
+    Game_CharacterBase.prototype.isHigherPriority = function () {
         return this._higher;
     };
 
-    Game_CharacterBase.prototype.updateOverPathOnLocate = function() {
+    Game_CharacterBase.prototype.updateOverPathOnLocate = function () {
         this._higher = this.isOnOverPath() || this.isOnGateway();
     };
 
@@ -209,7 +209,7 @@
      * Game_Character
      */
     const _Game_Character_findDirectionTo = Game_Character.prototype.findDirectionTo;
-    Game_Character.prototype.findDirectionTo = function(goalX, goalY) {
+    Game_Character.prototype.findDirectionTo = function (goalX, goalY) {
         let result = _Game_Character_findDirectionTo.apply(this, arguments);
         if (result + this._prevFindDirectionTo === 10) {
             result = 0;
@@ -219,7 +219,7 @@
     };
 
     const _Game_Player_moveByInput = Game_Player.prototype.moveByInput;
-    Game_Player.prototype.moveByInput = function() {
+    Game_Player.prototype.moveByInput = function () {
         if (!$gameTemp.isDestinationValid()) {
             this._prevFindDirectionTo = 0;
         }
@@ -230,7 +230,7 @@
      * Game_Event
      */
     const _Game_Event_start = Game_Event.prototype.start;
-    Game_Event.prototype.start = function() {
+    Game_Event.prototype.start = function () {
         if (this.isTriggerIn([0, 1, 2]) && !this.isSameHigher($gamePlayer)) {
             return;
         }
@@ -238,13 +238,13 @@
     };
 
     const _Game_Event_isCollidedWithEvents = Game_Event.prototype.isCollidedWithEvents;
-    Game_Event.prototype.isCollidedWithEvents = function(x, y) {
+    Game_Event.prototype.isCollidedWithEvents = function (x, y) {
         return _Game_Event_isCollidedWithEvents.apply(this, arguments) &&
             this.isCollidedWithSameHigherEvents(x, y);
     };
 
     const _Game_Event_isCollidedWithPlayerCharacters = Game_Event.prototype.isCollidedWithPlayerCharacters;
-    Game_Event.prototype.isCollidedWithPlayerCharacters = function(x, y) {
+    Game_Event.prototype.isCollidedWithPlayerCharacters = function (x, y) {
         if (!this.isSameHigher($gamePlayer)) {
             return false;
         }
@@ -254,7 +254,7 @@
     /**
      * Game_Followers
      */
-    Game_Followers.prototype.updateOverPathOnLocate = function() {
+    Game_Followers.prototype.updateOverPathOnLocate = function () {
         this._data.forEach(follower => {
             follower.updateOverPathOnLocate();
         })
@@ -263,7 +263,7 @@
     /**
      * Game_Map
      */
-    Game_Map.prototype.isRegionOrTerrainTag = function(x, y, regionId, terrainTag) {
+    Game_Map.prototype.isRegionOrTerrainTag = function (x, y, regionId, terrainTag) {
         if (regionId > 0 && this.regionId(x, y) === regionId) {
             return true;
         } else if (terrainTag > 0 && this.terrainTag(x, y) === terrainTag) {
@@ -273,16 +273,16 @@
         }
     };
 
-    Game_Map.prototype.isOverPath = function(x, y) {
+    Game_Map.prototype.isOverPath = function (x, y) {
         return this.isRegionOrTerrainTag(x, y, param.overPathRegion, param.overPathTerrainTag);
     };
 
-    Game_Map.prototype.isGatewayOverPath = function(x, y) {
+    Game_Map.prototype.isGatewayOverPath = function (x, y) {
         return this.isRegionOrTerrainTag(x, y, param.gatewayRegion, param.gatewayTerrainTag);
     };
 
     const _Tilemap_isOverpassPosition = Tilemap.prototype._isOverpassPosition;
-    Tilemap.prototype._isOverpassPosition = function(mx, my) {
+    Tilemap.prototype._isOverpassPosition = function (mx, my) {
         const result = _Tilemap_isOverpassPosition.apply(this, arguments);
         return result || ($gameMap && $gameMap.isOverPath(mx, my));
     };

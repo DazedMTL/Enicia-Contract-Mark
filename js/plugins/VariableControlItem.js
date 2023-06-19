@@ -77,7 +77,7 @@
  *  このプラグインはもうあなたのものです。
  */
 
-(function() {
+(function () {
     'use strict';
 
     //=============================================================================
@@ -85,7 +85,7 @@
     //  行動が成功した場合、変数の操作を実行します。
     //=============================================================================
     const _Game_Action_applyItemUserEffect = Game_Action.prototype.applyItemUserEffect;
-    Game_Action.prototype.applyItemUserEffect = function(target) {
+    Game_Action.prototype.applyItemUserEffect = function (target) {
         _Game_Action_applyItemUserEffect.apply(this, arguments);
         if (!this.isForNone()) {
             this.applyVariableControl();
@@ -93,18 +93,18 @@
     };
 
     const _Game_Action_applyGlobal = Game_Action.prototype.applyGlobal;
-    Game_Action.prototype.applyGlobal = function(target) {
+    Game_Action.prototype.applyGlobal = function (target) {
         _Game_Action_applyGlobal.apply(this, arguments);
         if (this.isForNone()) {
             this.applyVariableControl();
         }
     };
 
-    Game_Action.prototype.isForNone = function() {
+    Game_Action.prototype.isForNone = function () {
         return this.checkItemScope([0]);
     };
 
-    Game_Action.prototype.applyVariableControl = function() {
+    Game_Action.prototype.applyVariableControl = function () {
         if (!this.isVariableControlSubject()) {
             return;
         }
@@ -125,7 +125,7 @@
         }
     };
 
-    Game_Action.prototype.isVariableControlSubject = function() {
+    Game_Action.prototype.isVariableControlSubject = function () {
         let subject = this.findMetaForVariableControl(['Subject', '実行者']);
         if (!subject || subject === true) {
             return true;
@@ -140,7 +140,7 @@
         return true;
     };
 
-    Game_Action.prototype.findMetaForVariableControl = function(tags) {
+    Game_Action.prototype.findMetaForVariableControl = function (tags) {
         return PluginManagerEx.findMetaValue(this.item(), tags.map(tag => 'VCI' + tag))
     };
 })();

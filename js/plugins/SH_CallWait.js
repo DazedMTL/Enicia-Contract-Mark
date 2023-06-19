@@ -17,15 +17,15 @@
 
 (() => {
   const pluginName = "SH_CallWaitMZ";
-  PluginManager.registerCommand(pluginName, "CallWait", function(args){
-    let WaitTime = Number(args.time);    
+  PluginManager.registerCommand(pluginName, "CallWait", function (args) {
+    let WaitTime = Number(args.time);
     console.log(WaitTime)
-    if(Input.isPressed('control')){
-        //スキップ中
-    }else{
+    if (Input.isPressed('control')) {
+      //スキップ中
+    } else {
       this.wait(WaitTime)
     }
 
-    
+
   });
 })();

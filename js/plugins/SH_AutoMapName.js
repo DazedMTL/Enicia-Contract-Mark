@@ -23,19 +23,19 @@
 
 
 (() => {
-    const pluginName = "SH_AutoMapName"; 
+    const pluginName = "SH_AutoMapName";
 
-    PluginManager.registerCommand(pluginName, "DisMapName", function(args){
+    PluginManager.registerCommand(pluginName, "DisMapName", function (args) {
         var parameters = PluginManager.parameters(pluginName);
         var MapName = $dataMapInfos[$gameMap.mapId()].name;
         var BeforeMapVar = Number(parameters['before'])
         var Before = $gameVariables.value(BeforeMapVar)
 
-        if(!$dataMap.meta.NOMAPNAME || MapName != Before){
-            
+        if (!$dataMap.meta.NOMAPNAME || MapName != Before) {
+
             $TM.show(MapName)
-        }  
+        }
         $gameVariables._data[BeforeMapVar] = MapName
 
     });
-  })();
+})();

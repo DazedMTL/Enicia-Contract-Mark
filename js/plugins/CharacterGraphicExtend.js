@@ -240,24 +240,24 @@
  *  についても制限はありません。
  *  このプラグインはもうあなたのものです。
  */
-(function() {
+(function () {
     'use strict';
 
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
 
-    const getArgArrayString = function(args, upperFlg) {
+    const getArgArrayString = function (args, upperFlg) {
         const values = getArgString(args, upperFlg).split(',');
         for (let i = 0; i < values.length; i++) values[i] = values[i].trim();
         return values;
     };
 
-    const getArgString = function(args, upperFlg) {
+    const getArgString = function (args, upperFlg) {
         args = PluginManagerEx.convertEscapeCharacters(args);
         return upperFlg ? args.toUpperCase() : args;
     };
 
-    const getArgNumber = function(arg, min, max) {
+    const getArgNumber = function (arg, min, max) {
         if (arguments.length < 2) min = -Infinity;
         if (arguments.length < 3) max = Infinity;
         if (!arg) {
@@ -271,19 +271,19 @@
     //  拡張するプロパティを定義します。
     //=============================================================================
     const _DataManager_extractMetadata = DataManager.extractMetadata;
-    DataManager.extractMetadata      = function(data) {
+    DataManager.extractMetadata = function (data) {
         _DataManager_extractMetadata.apply(this, arguments);
         this.extractMetadataArray(data);
     };
 
-    DataManager.extractMetadataArray = function(data) {
-        const re         = /<([^<>:]+)(:?)([^>]*)>/g;
+    DataManager.extractMetadataArray = function (data) {
+        const re = /<([^<>:]+)(:?)([^>]*)>/g;
         data.metaArray = {};
-        let match      = true;
+        let match = true;
         while (match) {
             match = re.exec(data.note);
             if (match) {
-                const metaName             = match[1];
+                const metaName = match[1];
                 data.metaArray[metaName] = data.metaArray[metaName] || [];
                 data.metaArray[metaName].push(match[2] === ':' ? match[3] : true);
             }
@@ -294,8 +294,8 @@
     // Game_System
     //  ロード時にプレイヤーの初期化が必要な場合は初期化します。
     //=============================================================================
-    const _Game_System_onAfterLoad      = Game_System.prototype.onAfterLoad;
-    Game_System.prototype.onAfterLoad = function() {
+    const _Game_System_onAfterLoad = Game_System.prototype.onAfterLoad;
+    Game_System.prototype.onAfterLoad = function () {
         _Game_System_onAfterLoad.apply(this, arguments);
         if (!$gamePlayer.hasOwnProperty('_customResource')) {
             $gamePlayer.clearCgInfo();
@@ -308,127 +308,127 @@
     // Game_CharacterBase
     //  拡張するプロパティを定義します。
     //=============================================================================
-    const _Game_CharacterBase_initMembers      = Game_CharacterBase.prototype.initMembers;
-    Game_CharacterBase.prototype.initMembers = function() {
+    const _Game_CharacterBase_initMembers = Game_CharacterBase.prototype.initMembers;
+    Game_CharacterBase.prototype.initMembers = function () {
         _Game_CharacterBase_initMembers.apply(this, arguments);
         this.clearCgInfo();
     };
 
-    Game_CharacterBase.prototype.clearCgInfo = function() {
-        this._customResource  = null;
-        this._graphicColumns  = 1;
-        this._graphicRows     = 1;
-        this._additionalX     = 0;
-        this._additionalY     = 0;
-        this._customPriority  = null;
-        this._scaleX          = 100;
-        this._scaleY          = 100;
-        this._tileBlockWidth  = 1;
+    Game_CharacterBase.prototype.clearCgInfo = function () {
+        this._customResource = null;
+        this._graphicColumns = 1;
+        this._graphicRows = 1;
+        this._additionalX = 0;
+        this._additionalY = 0;
+        this._customPriority = null;
+        this._scaleX = 100;
+        this._scaleY = 100;
+        this._tileBlockWidth = 1;
         this._tileBlockHeight = 1;
-        this._angle           = 0;
-        this._originX         = null;
-        this._originY         = null;
-        this._absoluteX       = null;
-        this._absoluteY       = null;
+        this._angle = 0;
+        this._originX = null;
+        this._originY = null;
+        this._absoluteX = null;
+        this._absoluteY = null;
         this._customTilesetId = 0;
-        this._graphicHue      = 0;
+        this._graphicHue = 0;
         this.setBlendMode(0);
     };
 
-    Game_CharacterBase.prototype.customResource = function() {
+    Game_CharacterBase.prototype.customResource = function () {
         return this._customResource;
     };
 
-    Game_CharacterBase.prototype.customResourceHue = function() {
+    Game_CharacterBase.prototype.customResourceHue = function () {
         return this._graphicHue;
     };
 
-    Game_CharacterBase.prototype.customTilesetId = function() {
+    Game_CharacterBase.prototype.customTilesetId = function () {
         return this._customTilesetId;
     };
 
-    Game_CharacterBase.prototype.graphicColumns = function() {
+    Game_CharacterBase.prototype.graphicColumns = function () {
         return this._graphicColumns;
     };
 
-    Game_CharacterBase.prototype.graphicRows = function() {
+    Game_CharacterBase.prototype.graphicRows = function () {
         return this._graphicRows;
     };
 
-    Game_CharacterBase.prototype.scaleX = function() {
+    Game_CharacterBase.prototype.scaleX = function () {
         return this._scaleX;
     };
 
-    Game_CharacterBase.prototype.scaleY = function() {
+    Game_CharacterBase.prototype.scaleY = function () {
         return this._scaleY;
     };
 
-    Game_CharacterBase.prototype.setScale = function(x, y) {
+    Game_CharacterBase.prototype.setScale = function (x, y) {
         this._scaleX = x;
         this._scaleY = y;
     };
 
-    Game_CharacterBase.prototype.originX = function() {
+    Game_CharacterBase.prototype.originX = function () {
         return this._originX;
     };
 
-    Game_CharacterBase.prototype.originY = function() {
+    Game_CharacterBase.prototype.originY = function () {
         return this._originY;
     };
 
-    Game_CharacterBase.prototype.setOrigin = function(x, y) {
+    Game_CharacterBase.prototype.setOrigin = function (x, y) {
         this._originX = x / 100;
         this._originY = y / 100;
     };
 
-    Game_CharacterBase.prototype.absoluteX = function() {
+    Game_CharacterBase.prototype.absoluteX = function () {
         return this._absoluteX;
     };
 
-    Game_CharacterBase.prototype.absoluteY = function() {
+    Game_CharacterBase.prototype.absoluteY = function () {
         return this._absoluteY;
     };
 
-    Game_CharacterBase.prototype.setAbsolute = function(x, y) {
+    Game_CharacterBase.prototype.setAbsolute = function (x, y) {
         this._absoluteX = x;
         this._absoluteY = y;
     };
 
-    Game_CharacterBase.prototype.tone = function() {
+    Game_CharacterBase.prototype.tone = function () {
         return this._tone;
     };
 
-    Game_CharacterBase.prototype.setTone = function(r, g, b, gray) {
+    Game_CharacterBase.prototype.setTone = function (r, g, b, gray) {
         this._tone = [r, g, b, gray || 0];
     };
 
-    Game_CharacterBase.prototype.angle = function() {
+    Game_CharacterBase.prototype.angle = function () {
         return this._angle;
     };
 
-    Game_CharacterBase.prototype.setAngle = function(angle) {
+    Game_CharacterBase.prototype.setAngle = function (angle) {
         this._angle = angle;
     };
 
-    Game_CharacterBase.prototype.shiftPosition = function(x, y) {
+    Game_CharacterBase.prototype.shiftPosition = function (x, y) {
         this._additionalX = x;
         this._additionalY = y;
     };
 
-    Game_CharacterBase.prototype.tileBlockWidth = function() {
+    Game_CharacterBase.prototype.tileBlockWidth = function () {
         return this._tileBlockWidth;
     };
 
-    Game_CharacterBase.prototype.tileBlockHeight = function() {
+    Game_CharacterBase.prototype.tileBlockHeight = function () {
         return this._tileBlockHeight;
     };
 
-    Game_CharacterBase.prototype.getTrimRect = function() {
+    Game_CharacterBase.prototype.getTrimRect = function () {
         return this._trimRect || null;
     };
 
-    const _Game_CharacterBase_pos      = Game_CharacterBase.prototype.pos;
-    Game_CharacterBase.prototype.pos = function(x, y) {
+    const _Game_CharacterBase_pos = Game_CharacterBase.prototype.pos;
+    Game_CharacterBase.prototype.pos = function (x, y) {
         if (this.tileBlockWidth() >= 2) {
             return (this._x - this.tileBlockWidth() / 2 <= x && this._x + this.tileBlockWidth() / 2 >= x) && this._y === y;
         } else {
@@ -436,22 +436,22 @@
         }
     };
 
-    const _Game_CharacterBase_screenX      = Game_CharacterBase.prototype.screenX;
-    Game_CharacterBase.prototype.screenX = function() {
+    const _Game_CharacterBase_screenX = Game_CharacterBase.prototype.screenX;
+    Game_CharacterBase.prototype.screenX = function () {
         return this._absoluteX > 0 ? this.absoluteX() : _Game_CharacterBase_screenX.apply(this, arguments) + this._additionalX;
     };
 
-    const _Game_CharacterBase_screenY      = Game_CharacterBase.prototype.screenY;
-    Game_CharacterBase.prototype.screenY = function() {
+    const _Game_CharacterBase_screenY = Game_CharacterBase.prototype.screenY;
+    Game_CharacterBase.prototype.screenY = function () {
         return this._absoluteY > 0 ? this.absoluteY() : _Game_CharacterBase_screenY.apply(this, arguments) + this._additionalY;
     };
 
-    const _Game_CharacterBase_screenZ      = Game_CharacterBase.prototype.screenZ;
-    Game_CharacterBase.prototype.screenZ = function() {
+    const _Game_CharacterBase_screenZ = Game_CharacterBase.prototype.screenZ;
+    Game_CharacterBase.prototype.screenZ = function () {
         return this._customPriority !== null ? this._customPriority : _Game_CharacterBase_screenZ.apply(this, arguments);
     };
 
-    Game_CharacterBase.prototype.changeImage = function(fileName, fileIndex) {
+    Game_CharacterBase.prototype.changeImage = function (fileName, fileIndex) {
         if (arguments.length < 2) {
             fileIndex = this._characterIndex;
         }
@@ -468,7 +468,7 @@
         '3': 3, 'スクリーン': 3
     };
 
-    Game_Event.prototype.getMetaCg = function(names) {
+    Game_Event.prototype.getMetaCg = function (names) {
         if (!this.event().metaArray) {
             return null;
         }
@@ -476,7 +476,7 @@
         const metaParams = this.getMetaParameter(names);
         if (!metaParams) return null;
         let result = null;
-        metaParams.some(function(metaParam) {
+        metaParams.some(function (metaParam) {
             const params = getArgArrayString(metaParam);
             if (this.isValidCgeParam(params)) {
                 result = params;
@@ -489,9 +489,9 @@
         return result;
     };
 
-    Game_Event.prototype.getMetaParameter = function(names) {
+    Game_Event.prototype.getMetaParameter = function (names) {
         let metaParams = null;
-        names.some(function(name) {
+        names.some(function (name) {
             if (!metaParams || metaParams[0] === '') {
                 metaParams = this.event().metaArray['CG' + name];
             }
@@ -500,18 +500,18 @@
         return metaParams;
     };
 
-    Game_Event.prototype.isValidCgeParam = function(params) {
+    Game_Event.prototype.isValidCgeParam = function (params) {
         const pageIndex = getArgNumber(params[0]);
         return params.length > 1 && (pageIndex === this._pageIndex + 1 || params[0].toUpperCase() === 'A');
     };
 
-    const _Game_Event_refresh      = Game_Event.prototype.refresh;
-    Game_Event.prototype.refresh = function() {
+    const _Game_Event_refresh = Game_Event.prototype.refresh;
+    Game_Event.prototype.refresh = function () {
         // added by nekoma start
-        const moveRoute        = this._moveRoute;
-        const moveRouteIndex   = this._moveRouteIndex;
+        const moveRoute = this._moveRoute;
+        const moveRouteIndex = this._moveRouteIndex;
         const moveRouteForcing = this._moveRouteForcing;
-        const starting         = this._starting;
+        const starting = this._starting;
         // added by nekoma end
         if (this._graphicDynamic) {
             this._pageIndex = -1;
@@ -519,16 +519,16 @@
         _Game_Event_refresh.apply(this, arguments);
         // added by nekoma start
         if (this._graphicDynamic) {
-            this._moveRoute        = moveRoute;
-            this._moveRouteIndex   = moveRouteIndex;
+            this._moveRoute = moveRoute;
+            this._moveRouteIndex = moveRouteIndex;
             this._moveRouteForcing = moveRouteForcing;
-            this._starting         = starting;
+            this._starting = starting;
         }
         // added by nekoma end
     };
 
-    const _Game_Event_setupPageSettings      = Game_Event.prototype.setupPageSettings;
-    Game_Event.prototype.setupPageSettings = function() {
+    const _Game_Event_setupPageSettings = Game_Event.prototype.setupPageSettings;
+    Game_Event.prototype.setupPageSettings = function () {
         this.clearCgInfo();
         _Game_Event_setupPageSettings.apply(this, arguments);
         let cgParams = this.getMetaCg(['シフト', 'Shift']);
@@ -576,12 +576,12 @@
         }
     };
 
-    const _Game_Event_setTileImage      = Game_Event.prototype.setTileImage;
-    Game_Event.prototype.setTileImage = function(tileId) {
+    const _Game_Event_setTileImage = Game_Event.prototype.setTileImage;
+    Game_Event.prototype.setTileImage = function (tileId) {
         _Game_Event_setTileImage.apply(this, arguments);
         let cgParams = this.getMetaCg(['タイル', 'Tile']);
         if (cgParams) {
-            this._tileBlockWidth  = getArgNumber(cgParams[1]);
+            this._tileBlockWidth = getArgNumber(cgParams[1]);
             this._tileBlockHeight = getArgNumber(cgParams[2]);
         }
         cgParams = this.getMetaCg(['タイルセット', 'Tileset']);
@@ -590,62 +590,62 @@
         }
     };
 
-    const _Game_Event_setImage      = Game_Event.prototype.setImage;
-    Game_Event.prototype.setImage = function(characterName, characterIndex) {
+    const _Game_Event_setImage = Game_Event.prototype.setImage;
+    Game_Event.prototype.setImage = function (characterName, characterIndex) {
         this._graphicHue = 0;
         let cgParams = this.getMetaCg(['ピクチャ', 'Picture']);
         if (cgParams) {
             this._customResource = 'Picture';
             this._graphicColumns = 1;
-            this._graphicRows    = 1;
-            this._graphicHue     = getArgNumber(cgParams[2]);
-            arguments[0]         = cgParams[1];
-            arguments[1]         = 0;
+            this._graphicRows = 1;
+            this._graphicHue = getArgNumber(cgParams[2]);
+            arguments[0] = cgParams[1];
+            arguments[1] = 0;
         }
         cgParams = this.getMetaCg(['敵キャラ', 'Enemy']);
         if (cgParams) {
             this._customResource = $gameSystem.isSideView() ? 'SvEnemy' : 'Enemy';
             this._graphicColumns = 1;
-            this._graphicRows    = 1;
-            this._graphicHue     = getArgNumber(cgParams[2]);
-            arguments[0]         = cgParams[1];
-            arguments[1]         = 0;
+            this._graphicRows = 1;
+            this._graphicHue = getArgNumber(cgParams[2]);
+            arguments[0] = cgParams[1];
+            arguments[1] = 0;
         }
         cgParams = this.getMetaCg(['アイコン', 'Icon']);
         if (cgParams) {
             const bitmap = ImageManager.loadSystem('IconSet');
             this._customResource = 'System';
             this._graphicColumns = 16;
-            this._graphicRows    = (bitmap.height / ImageManager.iconHeight) || 20;
-            arguments[0]         = 'IconSet';
-            arguments[1]         = getArgNumber(cgParams[1], 0, this._graphicColumns * this._graphicRows - 1);
+            this._graphicRows = (bitmap.height / ImageManager.iconHeight) || 20;
+            arguments[0] = 'IconSet';
+            arguments[1] = getArgNumber(cgParams[1], 0, this._graphicColumns * this._graphicRows - 1);
         }
         cgParams = this.getMetaCg(['フェイス', 'Face']);
         if (cgParams) {
             this._customResource = 'Face';
             this._graphicColumns = 4;
-            this._graphicRows    = 2;
-            this._graphicHue     = getArgNumber(cgParams[3]);
-            arguments[0]         = cgParams[1];
-            arguments[1]         = getArgNumber(cgParams[2], 0, this._graphicColumns * this._graphicRows - 1);
+            this._graphicRows = 2;
+            this._graphicHue = getArgNumber(cgParams[3]);
+            arguments[0] = cgParams[1];
+            arguments[1] = getArgNumber(cgParams[2], 0, this._graphicColumns * this._graphicRows - 1);
         }
         cgParams = this.getMetaCg(['遠景', 'Parallax']);
         if (cgParams) {
             this._customResource = 'Parallax';
             this._graphicColumns = 1;
-            this._graphicRows    = 1;
-            this._graphicHue     = getArgNumber(cgParams[2]);
-            arguments[0]         = cgParams[1];
-            arguments[1]         = 0;
+            this._graphicRows = 1;
+            this._graphicHue = getArgNumber(cgParams[2]);
+            arguments[0] = cgParams[1];
+            arguments[1] = 0;
         }
         cgParams = this.getMetaCg(['アクター', 'Actor']);
         if (cgParams) {
             this._customResource = 'SvActor';
             this._graphicColumns = 9;
-            this._graphicRows    = 6;
-            this._graphicHue     = getArgNumber(cgParams[3]);
-            arguments[0]         = cgParams[1];
-            arguments[1]         = getArgNumber(cgParams[2], 0, this._graphicColumns * this._graphicRows - 1);
+            this._graphicRows = 6;
+            this._graphicHue = getArgNumber(cgParams[3]);
+            arguments[0] = cgParams[1];
+            arguments[1] = getArgNumber(cgParams[2], 0, this._graphicColumns * this._graphicRows - 1);
         }
         _Game_Event_setImage.apply(this, arguments);
     };
@@ -654,8 +654,8 @@
     // Spriteset_Map
     //  イベントを消去するエフェクトを無効にします。
     //=============================================================================
-    const _Spriteset_Map_hideCharacters      = Spriteset_Map.prototype.hideCharacters;
-    Spriteset_Map.prototype.hideCharacters = function() {
+    const _Spriteset_Map_hideCharacters = Spriteset_Map.prototype.hideCharacters;
+    Spriteset_Map.prototype.hideCharacters = function () {
         if (!param.EventHideInvalid) _Spriteset_Map_hideCharacters.apply(this, arguments);
     };
 
@@ -664,13 +664,13 @@
     //  拡張したプロパティに基づいてエフェクトを反映させます。
     //=============================================================================
     const _Sprite_Character_initMembers = Sprite_Character.prototype.initMembers;
-    Sprite_Character.prototype.initMembers = function() {
+    Sprite_Character.prototype.initMembers = function () {
         _Sprite_Character_initMembers.apply(this, arguments);
         this._customTilesetId = 0;
     };
 
-    const _Sprite_Character_tilesetBitmap      = Sprite_Character.prototype.tilesetBitmap;
-    Sprite_Character.prototype.tilesetBitmap = function(tileId) {
+    const _Sprite_Character_tilesetBitmap = Sprite_Character.prototype.tilesetBitmap;
+    Sprite_Character.prototype.tilesetBitmap = function (tileId) {
         this._customTilesetId = this._character.customTilesetId();
         const tileSet = $dataTilesets[this._customTilesetId];
         if (this._customTilesetId && tileSet) {
@@ -681,8 +681,8 @@
         }
     };
 
-    const _Sprite_Character_updateBitmap      = Sprite_Character.prototype.updateBitmap;
-    Sprite_Character.prototype.updateBitmap = function() {
+    const _Sprite_Character_updateBitmap = Sprite_Character.prototype.updateBitmap;
+    Sprite_Character.prototype.updateBitmap = function () {
         if (this.isImageChanged()) this._customResource = this._character.customResource();
         _Sprite_Character_updateBitmap.apply(this, arguments);
         this.updateExtend();
@@ -690,15 +690,15 @@
 
     // Resolve conflict for MOG_CharPoses.js
     const _Sprite_Character_setBitmapCache = Sprite_Character.prototype.setBitmapCache;
-    Sprite_Character.prototype.setBitmapCache = function() {
+    Sprite_Character.prototype.setBitmapCache = function () {
         if (this._customResource) {
             return;
         }
         _Sprite_Character_setBitmapCache.apply(this, arguments);
     };
 
-    const _Sprite_Character_update      = Sprite_Character.prototype.update;
-    Sprite_Character.prototype.update = function() {
+    const _Sprite_Character_update = Sprite_Character.prototype.update;
+    Sprite_Character.prototype.update = function () {
         _Sprite_Character_update.apply(this, arguments);
         // for T_dashMotion.js
         if (this.updateDashMotion) {
@@ -712,7 +712,7 @@
     };
 
     // PRTN added ---------
-    Sprite_Character.prototype.resolveConflictForUltraMode7 = function() {
+    Sprite_Character.prototype.resolveConflictForUltraMode7 = function () {
         if (this._character.scaleY() !== 100) {
             this.scale.x = this._character.scaleX() / 100 * this.scale.x;
             this.scale.y = this._character.scaleY() / 100 * this.scale.y;
@@ -724,7 +724,7 @@
     };
     // --------------------
 
-    Sprite_Character.prototype.resolveConflictForDashMotion = function() {
+    Sprite_Character.prototype.resolveConflictForDashMotion = function () {
         if (this._character.scaleY() / 100 !== this.scale.y) {
             this.scale.y = this._character.scaleY() / 100 * this.scale.y;
         }
@@ -734,7 +734,7 @@
         }
     };
 
-    Sprite_Character.prototype.updateExtend = function() {
+    Sprite_Character.prototype.updateExtend = function () {
         const scaleX = this._character.scaleX() / 100;
         const scaleY = this._character.scaleY() / 100;
         this.scale.x = scaleX;
@@ -744,7 +744,7 @@
             this._namePopSprite.scale.x = scaleX;
             this._namePopSprite.scale.y = scaleY;
         }
-        const originX  = this._character.originX();
+        const originX = this._character.originX();
         if (originX != null) this.anchor.x = originX;
         const originY = this._character.originY();
         if (originY != null) this.anchor.y = originY;
@@ -755,16 +755,16 @@
     };
 
     // Resolve conflict by EventEffects.js
-    const _Sprite_Character_updateAngle      = Sprite_Character.prototype.updateAngle;
-    Sprite_Character.prototype.updateAngle = function() {
+    const _Sprite_Character_updateAngle = Sprite_Character.prototype.updateAngle;
+    Sprite_Character.prototype.updateAngle = function () {
         if (this._character.originY() != null) {
             return;
         }
         _Sprite_Character_updateAngle.apply(this, arguments);
     };
 
-    const _Sprite_Character_setFrame      = Sprite_Character.prototype.setFrame;
-    Sprite_Character.prototype.setFrame = function(sx, sy, pw, ph) {
+    const _Sprite_Character_setFrame = Sprite_Character.prototype.setFrame;
+    Sprite_Character.prototype.setFrame = function (sx, sy, pw, ph) {
         const rect = this._character.getTrimRect();
         if (rect) {
             _Sprite_Character_setFrame.call(this, sx + rect.x, sy + rect.y, rect.width, rect.height);
@@ -774,18 +774,18 @@
         }
     };
 
-    const _Sprite_Character_isImageChanged      = Sprite_Character.prototype.isImageChanged;
-    Sprite_Character.prototype.isImageChanged = function() {
+    const _Sprite_Character_isImageChanged = Sprite_Character.prototype.isImageChanged;
+    Sprite_Character.prototype.isImageChanged = function () {
         return _Sprite_Character_isImageChanged.apply(this, arguments) || this.isCustomImageChanged();
     };
 
-    Sprite_Character.prototype.isCustomImageChanged = function() {
+    Sprite_Character.prototype.isCustomImageChanged = function () {
         return this._customResource !== this._character.customResource() ||
             this._customTilesetId !== this._character.customTilesetId();
     };
 
-    const _Sprite_Character_setCharacterBitmap      = Sprite_Character.prototype.setCharacterBitmap;
-    Sprite_Character.prototype.setCharacterBitmap = function() {
+    const _Sprite_Character_setCharacterBitmap = Sprite_Character.prototype.setCharacterBitmap;
+    Sprite_Character.prototype.setCharacterBitmap = function () {
         if (this._customResource) {
             const hue = this._character.customResourceHue() || 0;
             this.bitmap = ImageManager['load' + this._customResource](this._characterName);
@@ -797,8 +797,8 @@
         }
     };
 
-    const _Sprite_Character_characterBlockX      = Sprite_Character.prototype.characterBlockX;
-    Sprite_Character.prototype.characterBlockX = function() {
+    const _Sprite_Character_characterBlockX = Sprite_Character.prototype.characterBlockX;
+    Sprite_Character.prototype.characterBlockX = function () {
         if (this._customResource) {
             return this._characterIndex % this._character.graphicColumns();
         } else {
@@ -806,8 +806,8 @@
         }
     };
 
-    const _Sprite_Character_characterBlockY      = Sprite_Character.prototype.characterBlockY;
-    Sprite_Character.prototype.characterBlockY = function() {
+    const _Sprite_Character_characterBlockY = Sprite_Character.prototype.characterBlockY;
+    Sprite_Character.prototype.characterBlockY = function () {
         if (this._customResource) {
             return Math.floor(this._characterIndex / this._character.graphicColumns());
         } else {
@@ -815,8 +815,8 @@
         }
     };
 
-    const _Sprite_Character_patternWidth      = Sprite_Character.prototype.patternWidth;
-    Sprite_Character.prototype.patternWidth = function() {
+    const _Sprite_Character_patternWidth = Sprite_Character.prototype.patternWidth;
+    Sprite_Character.prototype.patternWidth = function () {
         if (this._customResource) {
             return this.bitmap.width / this._character.graphicColumns();
         } else {
@@ -824,8 +824,8 @@
         }
     };
 
-    const _Sprite_Character_patternHeight      = Sprite_Character.prototype.patternHeight;
-    Sprite_Character.prototype.patternHeight = function() {
+    const _Sprite_Character_patternHeight = Sprite_Character.prototype.patternHeight;
+    Sprite_Character.prototype.patternHeight = function () {
         if (this._customResource) {
             return this.bitmap.height / this._character.graphicRows();
         } else {
@@ -833,8 +833,8 @@
         }
     };
 
-    const _Sprite_Character_characterPatternX      = Sprite_Character.prototype.characterPatternX;
-    Sprite_Character.prototype.characterPatternX = function() {
+    const _Sprite_Character_characterPatternX = Sprite_Character.prototype.characterPatternX;
+    Sprite_Character.prototype.characterPatternX = function () {
         if (this._customResource) {
             return 0;
         } else {
@@ -842,8 +842,8 @@
         }
     };
 
-    const _Sprite_Character_characterPatternY      = Sprite_Character.prototype.characterPatternY;
-    Sprite_Character.prototype.characterPatternY = function() {
+    const _Sprite_Character_characterPatternY = Sprite_Character.prototype.characterPatternY;
+    Sprite_Character.prototype.characterPatternY = function () {
         if (this._customResource) {
             return 0;
         } else {
@@ -853,14 +853,14 @@
 
     // for ApngPicture.js
     var _Sprite_Character_setCharacterBitmap2 = Sprite_Character.prototype.setCharacterBitmap;
-    Sprite_Character.prototype.setCharacterBitmap = function() {
+    Sprite_Character.prototype.setCharacterBitmap = function () {
         _Sprite_Character_setCharacterBitmap2.apply(this, arguments);
         if (this.addApngChild) {
             this.addApngChild(this._characterName);
         }
     };
 
-    Sprite_Character.prototype.loadApngSprite = function(name) {
+    Sprite_Character.prototype.loadApngSprite = function (name) {
         switch (this._customResource) {
             case 'Picture':
                 return SceneManager.tryLoadApngPicture(name);
@@ -874,15 +874,15 @@
     };
 
     var _Scene_Base_terminate = Scene_Base.prototype.terminate;
-    Scene_Base.prototype.terminate = function() {
+    Scene_Base.prototype.terminate = function () {
         _Scene_Base_terminate.apply(this, arguments);
         if (this._spriteset && this._spriteset.destroyApngCharacter) {
             this._spriteset.destroyApngCharacter();
         }
     };
 
-    Spriteset_Map.prototype.destroyApngCharacter = function() {
-        this._characterSprites.forEach(function(sprite) {
+    Spriteset_Map.prototype.destroyApngCharacter = function () {
+        this._characterSprites.forEach(function (sprite) {
             if (sprite.destroyApngIfNeed) {
                 sprite.destroyApngIfNeed();
             }

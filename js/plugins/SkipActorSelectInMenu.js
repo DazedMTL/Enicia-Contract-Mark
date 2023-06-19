@@ -30,7 +30,7 @@
 
 (() => {
     const _Scene_Menu_commandPersonal = Scene_Menu.prototype.commandPersonal;
-    Scene_Menu.prototype.commandPersonal = function() {
+    Scene_Menu.prototype.commandPersonal = function () {
         if ($gameParty.size() === 1) {
             $gameParty.setMenuActor($gameParty.members()[0]);
             this.onPersonalOk();

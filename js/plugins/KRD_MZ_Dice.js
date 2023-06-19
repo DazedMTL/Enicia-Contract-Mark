@@ -96,210 +96,210 @@
  * 
  */
 
-(function() {
+(function () {
 
-'use strict';
+	'use strict';
 
-const PLUGIN_NAME	= "KRD_MZ_Dice";
-const PARAM			= PluginManager.parameters(PLUGIN_NAME);
+	const PLUGIN_NAME = "KRD_MZ_Dice";
+	const PARAM = PluginManager.parameters(PLUGIN_NAME);
 
-// Switch ID
-const SW_ROLLING	= Number(PARAM["swRolling"]) || 1;
+	// Switch ID
+	const SW_ROLLING = Number(PARAM["swRolling"]) || 1;
 
-// Variable ID
-const VAR_DICE			= Number(PARAM["varDice"]) || 1;
-const VAR_ROLL_TYPE		= VAR_DICE + 1;
-const VAR_ROLL_RESULT	= VAR_DICE + 2;
+	// Variable ID
+	const VAR_DICE = Number(PARAM["varDice"]) || 1;
+	const VAR_ROLL_TYPE = VAR_DICE + 1;
+	const VAR_ROLL_RESULT = VAR_DICE + 2;
 
-// Dice Image Position
-const PLUS_X	= Number(PARAM["plusX"]) || 0;
-const PLUS_Y	= Number(PARAM["plusY"]) || 0;
-const dx		= 408 + PLUS_X;
-const dNext		= 120;
-const dHalf		= 60;
-const dy		= 140 + PLUS_Y;
+	// Dice Image Position
+	const PLUS_X = Number(PARAM["plusX"]) || 0;
+	const PLUS_Y = Number(PARAM["plusY"]) || 0;
+	const dx = 408 + PLUS_X;
+	const dNext = 120;
+	const dHalf = 60;
+	const dy = 140 + PLUS_Y;
 
-//------------------------------------------------
-// Plugin Command for MV
+	//------------------------------------------------
+	// Plugin Command for MV
 
-const KRD_Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
-Game_Interpreter.prototype.pluginCommand = function(command, args) {
-	KRD_Game_Interpreter_pluginCommand.call(this, command, args);
+	const KRD_Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
+	Game_Interpreter.prototype.pluginCommand = function (command, args) {
+		KRD_Game_Interpreter_pluginCommand.call(this, command, args);
 
-	switch (command) {
-		case 'KRD_eraseDice':
-			$gameScreen.eraseDice();
-			break;
-	}
-};
-
-//------------------------------------------------
-// Plugin Command for MZ
-
-PluginManager.registerCommand(PLUGIN_NAME, "KRD_eraseDice", () => {
-	$gameScreen.eraseDice();
-});
-
-//------------------------------------------------
-// Dice Roll
-
-const maxDice = 15;
-
-Game_Screen.prototype.rollDice = function(count = 0, max = 1){
-	const name = [
-		'Dice_01'
-		, 'Dice_02'
-		, 'Dice_03'
-		, 'Dice_04'
-		, 'Dice_05'
-		, 'Dice_06'
-	];
-	const d4 = dNext + dHalf;
-	const d5 = dNext + dNext;
-	const baseX = [
-		  [dx] // 1
-		, [dx - dHalf, dx + dHalf] // 2
-		, [dx - dNext, dx, dx + dNext] // 3
-		, [dx - dNext, dx, dx + dNext, dx] // 4
-		, [dx - dNext, dx, dx + dNext, dx - dHalf, dx + dHalf] // 5
-		, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext] // 6
-		, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext, dx] // 7
-		, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext, dx - dHalf, dx + dHalf] // 8
-		, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext] // 9
-		, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - dNext, dx] //10
-		, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d4, dx - dHalf, dx + dHalf] //11
-		, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext] //12
-		, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - dHalf] //13
-		, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - dNext, dx] //14
-		, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d4, dx - dHalf, dx + dHalf] //15
-	];
-	const xx = baseX[max - 1][count];
-	const y3 = dy + Math.floor(count / 3) * dNext;
-	const y4 = dy + Math.floor(count / 4) * dNext;
-	const y5 = dy + Math.floor(count / 4) * dNext;
-	const dice = Math.randomInt(6) + 1;
-	if (max <= 9) {
-		//   showPicture(pictureId, name, origin, x, y, scaleX, scaleY, opacity, blendMode);
-		this.showPicture(count + 1, name[dice - 1], 1, xx, y3, 100, 100, 255, 0);
-	} else if (max <= 12) {
-		//   showPicture(pictureId, name, origin, x, y, scaleX, scaleY, opacity, blendMode);
-		this.showPicture(count + 1, name[dice - 1], 1, xx, y4, 100, 100, 255, 0);
-	} else if (max <= 15) {
-		//   showPicture(pictureId, name, origin, x, y, scaleX, scaleY, opacity, blendMode);
-		this.showPicture(count + 1, name[dice - 1], 1, xx, y5, 100, 100, 255, 0);
-	}
-	return dice;
-};
-
-Game_Screen.prototype.rollAllDice = function() {
-	$gameVariables.setValue(VAR_ROLL_RESULT, 0);
-	const max = Math.min($gameVariables.value(VAR_DICE), maxDice);
-	let result = 0;
-	for (let i = 0; i < max; i++) {
-		result += this.rollDice(i, max);
-	}
-	$gameVariables.setValue(VAR_ROLL_RESULT, result);
-};
-
-Game_Screen.prototype.rollD66 = function() {
-	$gameVariables.setValue(VAR_DICE, 2);
-	const dice1 = this.rollDice(0, 2);
-	const dice2 = this.rollDice(1, 2);
-	const result = dice1 * 10 + dice2;
-	$gameVariables.setValue(VAR_ROLL_RESULT, result);
-};
-
-Game_Screen.prototype.rollD66aA = function() {
-	$gameVariables.setValue(VAR_DICE, 2);
-	const dice1 = this.rollDice(0, 2);
-	const dice2 = this.rollDice(1, 2);
-	const result = dice1 <= dice2 ? dice1 * 10 + dice2 : dice2 * 10 + dice1;
-	$gameVariables.setValue(VAR_ROLL_RESULT, result);
-};
-
-Game_Screen.prototype.rollD66Bb = function() {
-	$gameVariables.setValue(VAR_DICE, 2);
-	const dice1 = this.rollDice(0, 2);
-	const dice2 = this.rollDice(1, 2);
-	const result = dice1 > dice2 ? dice1 * 10 + dice2 : dice2 * 10 + dice1;
-	$gameVariables.setValue(VAR_ROLL_RESULT, result);
-};
-
-Game_Screen.prototype.rollUpper = function(border = 3) {
-	$gameVariables.setValue(VAR_ROLL_RESULT, 0);
-	const max = Math.min($gameVariables.value(VAR_DICE), maxDice);
-	let result = 0;
-	for (let i = 0; i < max; i++) {
-		result += this.rollDice(i, max) >= border ? 1 : 0;
-	}
-	$gameVariables.setValue(VAR_ROLL_RESULT, result);
-};
-
-Game_Screen.prototype.selectRollType = function() {
-	if ($gameSwitches.value(SW_ROLLING)) {
-		switch ($gameVariables.value(VAR_ROLL_TYPE)) {
-			case 1:
-				this.rollAllDice();
-				break;
-			case 2:
-				this.rollD66();
-				break;
-			case 3:
-				this.rollUpper();
-				break;
-			case 4:
-				this.rollUpper(4);
-				break;
-			case 5:
-				this.rollD66aA();
-				break;
-			case 6:
-				this.rollD66Bb();
-				break;
-			default:
-				this.rollAllDice();
+		switch (command) {
+			case 'KRD_eraseDice':
+				$gameScreen.eraseDice();
 				break;
 		}
-	}
-};
+	};
 
-const KRD_Game_Screen_updatePictures = Game_Screen.prototype.updatePictures;
-Game_Screen.prototype.updatePictures = function() {
-	this.selectRollType();
-	KRD_Game_Screen_updatePictures.call(this);
-};
+	//------------------------------------------------
+	// Plugin Command for MZ
 
-Game_Screen.prototype.startDiceRoll = function(dices) {
-	$gameVariables.setValue(VAR_DICE, dices);
-	$gameVariables.setValue(VAR_ROLL_TYPE, 1);
-	$gameSwitches.setValue(SW_ROLLING, true);
-};
+	PluginManager.registerCommand(PLUGIN_NAME, "KRD_eraseDice", () => {
+		$gameScreen.eraseDice();
+	});
 
-Game_Screen.prototype.stopDiceRoll = function() {
-	$gameSwitches.setValue(SW_ROLLING, false);
-};
+	//------------------------------------------------
+	// Dice Roll
 
-Game_Screen.prototype.getInstantDiceResult = function(dices) {
-	const result = dices + Math.randomInt(dices * 6 - dices + 1);
-	$gameVariables.setValue(VAR_ROLL_RESULT, result);
-	return result;
-};
+	const maxDice = 15;
 
-Game_Screen.prototype.cheatDiceResult = function(num) {
-	$gameVariables.setValue(VAR_ROLL_RESULT, num);
-};
+	Game_Screen.prototype.rollDice = function (count = 0, max = 1) {
+		const name = [
+			'Dice_01'
+			, 'Dice_02'
+			, 'Dice_03'
+			, 'Dice_04'
+			, 'Dice_05'
+			, 'Dice_06'
+		];
+		const d4 = dNext + dHalf;
+		const d5 = dNext + dNext;
+		const baseX = [
+			[dx] // 1
+			, [dx - dHalf, dx + dHalf] // 2
+			, [dx - dNext, dx, dx + dNext] // 3
+			, [dx - dNext, dx, dx + dNext, dx] // 4
+			, [dx - dNext, dx, dx + dNext, dx - dHalf, dx + dHalf] // 5
+			, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext] // 6
+			, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext, dx] // 7
+			, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext, dx - dHalf, dx + dHalf] // 8
+			, [dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext, dx - dNext, dx, dx + dNext] // 9
+			, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - dNext, dx] //10
+			, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d4, dx - dHalf, dx + dHalf] //11
+			, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext] //12
+			, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - dHalf] //13
+			, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - dNext, dx] //14
+			, [dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d5, dx - dNext, dx, dx + dNext, dx - d4, dx - dHalf, dx + dHalf] //15
+		];
+		const xx = baseX[max - 1][count];
+		const y3 = dy + Math.floor(count / 3) * dNext;
+		const y4 = dy + Math.floor(count / 4) * dNext;
+		const y5 = dy + Math.floor(count / 4) * dNext;
+		const dice = Math.randomInt(6) + 1;
+		if (max <= 9) {
+			//   showPicture(pictureId, name, origin, x, y, scaleX, scaleY, opacity, blendMode);
+			this.showPicture(count + 1, name[dice - 1], 1, xx, y3, 100, 100, 255, 0);
+		} else if (max <= 12) {
+			//   showPicture(pictureId, name, origin, x, y, scaleX, scaleY, opacity, blendMode);
+			this.showPicture(count + 1, name[dice - 1], 1, xx, y4, 100, 100, 255, 0);
+		} else if (max <= 15) {
+			//   showPicture(pictureId, name, origin, x, y, scaleX, scaleY, opacity, blendMode);
+			this.showPicture(count + 1, name[dice - 1], 1, xx, y5, 100, 100, 255, 0);
+		}
+		return dice;
+	};
 
-Game_Screen.prototype.getDiceResult = function() {
-	return $gameVariables.value(VAR_ROLL_RESULT);
-};
+	Game_Screen.prototype.rollAllDice = function () {
+		$gameVariables.setValue(VAR_ROLL_RESULT, 0);
+		const max = Math.min($gameVariables.value(VAR_DICE), maxDice);
+		let result = 0;
+		for (let i = 0; i < max; i++) {
+			result += this.rollDice(i, max);
+		}
+		$gameVariables.setValue(VAR_ROLL_RESULT, result);
+	};
 
-Game_Screen.prototype.eraseDice = function() {
-	const max = Math.min($gameVariables.value(VAR_DICE), maxDice);
-	for (let i = 1; i <= max; i++) {
-		const realPictureId = this.realPictureId(i);
-		this._pictures[realPictureId] = null;
-	}
-};
+	Game_Screen.prototype.rollD66 = function () {
+		$gameVariables.setValue(VAR_DICE, 2);
+		const dice1 = this.rollDice(0, 2);
+		const dice2 = this.rollDice(1, 2);
+		const result = dice1 * 10 + dice2;
+		$gameVariables.setValue(VAR_ROLL_RESULT, result);
+	};
 
-//------------------------------------------------
+	Game_Screen.prototype.rollD66aA = function () {
+		$gameVariables.setValue(VAR_DICE, 2);
+		const dice1 = this.rollDice(0, 2);
+		const dice2 = this.rollDice(1, 2);
+		const result = dice1 <= dice2 ? dice1 * 10 + dice2 : dice2 * 10 + dice1;
+		$gameVariables.setValue(VAR_ROLL_RESULT, result);
+	};
+
+	Game_Screen.prototype.rollD66Bb = function () {
+		$gameVariables.setValue(VAR_DICE, 2);
+		const dice1 = this.rollDice(0, 2);
+		const dice2 = this.rollDice(1, 2);
+		const result = dice1 > dice2 ? dice1 * 10 + dice2 : dice2 * 10 + dice1;
+		$gameVariables.setValue(VAR_ROLL_RESULT, result);
+	};
+
+	Game_Screen.prototype.rollUpper = function (border = 3) {
+		$gameVariables.setValue(VAR_ROLL_RESULT, 0);
+		const max = Math.min($gameVariables.value(VAR_DICE), maxDice);
+		let result = 0;
+		for (let i = 0; i < max; i++) {
+			result += this.rollDice(i, max) >= border ? 1 : 0;
+		}
+		$gameVariables.setValue(VAR_ROLL_RESULT, result);
+	};
+
+	Game_Screen.prototype.selectRollType = function () {
+		if ($gameSwitches.value(SW_ROLLING)) {
+			switch ($gameVariables.value(VAR_ROLL_TYPE)) {
+				case 1:
+					this.rollAllDice();
+					break;
+				case 2:
+					this.rollD66();
+					break;
+				case 3:
+					this.rollUpper();
+					break;
+				case 4:
+					this.rollUpper(4);
+					break;
+				case 5:
+					this.rollD66aA();
+					break;
+				case 6:
+					this.rollD66Bb();
+					break;
+				default:
+					this.rollAllDice();
+					break;
+			}
+		}
+	};
+
+	const KRD_Game_Screen_updatePictures = Game_Screen.prototype.updatePictures;
+	Game_Screen.prototype.updatePictures = function () {
+		this.selectRollType();
+		KRD_Game_Screen_updatePictures.call(this);
+	};
+
+	Game_Screen.prototype.startDiceRoll = function (dices) {
+		$gameVariables.setValue(VAR_DICE, dices);
+		$gameVariables.setValue(VAR_ROLL_TYPE, 1);
+		$gameSwitches.setValue(SW_ROLLING, true);
+	};
+
+	Game_Screen.prototype.stopDiceRoll = function () {
+		$gameSwitches.setValue(SW_ROLLING, false);
+	};
+
+	Game_Screen.prototype.getInstantDiceResult = function (dices) {
+		const result = dices + Math.randomInt(dices * 6 - dices + 1);
+		$gameVariables.setValue(VAR_ROLL_RESULT, result);
+		return result;
+	};
+
+	Game_Screen.prototype.cheatDiceResult = function (num) {
+		$gameVariables.setValue(VAR_ROLL_RESULT, num);
+	};
+
+	Game_Screen.prototype.getDiceResult = function () {
+		return $gameVariables.value(VAR_ROLL_RESULT);
+	};
+
+	Game_Screen.prototype.eraseDice = function () {
+		const max = Math.min($gameVariables.value(VAR_DICE), maxDice);
+		for (let i = 1; i <= max; i++) {
+			const realPictureId = this.realPictureId(i);
+			this._pictures[realPictureId] = null;
+		}
+	};
+
+	//------------------------------------------------
 }());

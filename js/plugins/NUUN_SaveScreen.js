@@ -6,7 +6,7 @@
  * http://opensource.org/licenses/mit-license.php
  * -------------------------------------------------------------------------------------
  * 
- */ 
+ */
 /*:
  * @target MZ
  * @plugindesc セーブ画面拡張
@@ -551,7 +551,7 @@ Imported.NUUN_SaveScreen = true;
   });
 
   const _DataManager_loadSavefileImages = DataManager.loadSavefileImages;
-  DataManager.loadSavefileImages = function(info) {
+  DataManager.loadSavefileImages = function (info) {
     _DataManager_loadSavefileImages.call(this, info);
     if (info.svActor && Symbol.iterator in info.svActor) {
       for (const character of info.svActor) {
@@ -563,8 +563,8 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  const _DataManager_makeSavefileInfo  = DataManager.makeSavefileInfo ;
-  DataManager.makeSavefileInfo = function() {
+  const _DataManager_makeSavefileInfo = DataManager.makeSavefileInfo;
+  DataManager.makeSavefileInfo = function () {
     const info = _DataManager_makeSavefileInfo.call(this);
     info.svActor = $gameParty.svActorForSavefile();
     info.AnyName = $gameSystem.saveAnyName ? $gameSystem.saveAnyName : $gameVariables.value(AnyNameVariable);
@@ -582,12 +582,12 @@ Imported.NUUN_SaveScreen = true;
     return info;
   };
 
-  DataManager.getOrgParams = function() {
+  DataManager.getOrgParams = function () {
     return OrgParamList.map(data => eval(data));
   };
 
 
-  DataManager.loadBackground = function() {
+  DataManager.loadBackground = function () {
     const globalInfo = this._globalInfo;
     const validInfo = globalInfo.slice(1).filter(x => x);
     const id = Math.max(...validInfo.map(x => this.backgroundId(x)));
@@ -595,25 +595,25 @@ Imported.NUUN_SaveScreen = true;
     return globalInfo[index].background ? globalInfo[index].background[0] : null;
   };
 
-  DataManager.backgroundId = function(x) {
+  DataManager.backgroundId = function (x) {
     return x.background ? x.background[1] : 0;
   };
 
-  DataManager.snapBitmap = function() {
+  DataManager.snapBitmap = function () {
     return SceneManager.getSnapBitmap();
   };
 
-  DataManager.urlBitmapData = function() {
+  DataManager.urlBitmapData = function () {
     this.urlBitmap = this.toDataURL();
   };
 
-  DataManager.toDataURL = function() {
+  DataManager.toDataURL = function () {
     const png = this.svaeSnapBitmap()._canvas.toDataURL('image/png', SaveSnapQuality);
     const jpeg = this.svaeSnapBitmap()._canvas.toDataURL('image/jpeg', SaveSnapQuality);
     return (png.length < jpeg.length) ? png : jpeg;
   };
 
-  DataManager.svaeSnapBitmap = function(){
+  DataManager.svaeSnapBitmap = function () {
     const bitmap = this.snapBitmap();
     if (bitmap) {
       const width = bitmap.width * SaveSnapScale / 100;
@@ -625,7 +625,7 @@ Imported.NUUN_SaveScreen = true;
     return null;
   };
 
-  SceneManager.snapSaveBitmap = function(mode) {
+  SceneManager.snapSaveBitmap = function (mode) {
     $gameSystem.onSnap = mode;
     if (mode) {
       if (this._snapBitmap) {
@@ -635,11 +635,11 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  SceneManager.getSnapBitmap = function() {
+  SceneManager.getSnapBitmap = function () {
     return this._snapBitmap;
   };
 
-  SceneManager.snapSaveBackground = function() {
+  SceneManager.snapSaveBackground = function () {
     $gameSystem.onSnap = InfoSaveSnap;
     if (InfoSaveSnap) {
       if (this._snapBitmap) {
@@ -650,12 +650,12 @@ Imported.NUUN_SaveScreen = true;
   };
 
   const _SceneManager_snapForBackground = SceneManager.snapForBackground;
-  SceneManager.snapForBackground = function() {
+  SceneManager.snapForBackground = function () {
     _SceneManager_snapForBackground.call(this);
     this.snapSaveBackground();
   };
 
-  ImageManager.loadSaveSnapBitmap = function(url) {
+  ImageManager.loadSaveSnapBitmap = function (url) {
     const has = Utils.hasEncryptedImages();
     let bitmap = null;
     if (has) {
@@ -669,18 +669,18 @@ Imported.NUUN_SaveScreen = true;
   };
 
   const _DataManager_maxSavefiles = DataManager.maxSavefiles;
-  DataManager.maxSavefiles = function() {
+  DataManager.maxSavefiles = function () {
     return MaxSave ? MaxSave : _DataManager_maxSavefiles.call(this);
   };
 
   const _Scene_File_create = Scene_File.prototype.create;
-  Scene_File.prototype.create = function() {
+  Scene_File.prototype.create = function () {
     this.createBackground();
     _Scene_File_create.call(this);
   };
 
   const _Scene_File_createListWindow = Scene_File.prototype.createListWindow;
-  Scene_File.prototype.createListWindow = function() {
+  Scene_File.prototype.createListWindow = function () {
     _Scene_File_createListWindow.call(this);
     if ($gameSystem.getSaveBuckGround()) {
       this._listWindow.opacity = 0;
@@ -688,14 +688,14 @@ Imported.NUUN_SaveScreen = true;
   };
 
   const _Scene_File_createHelpWindow = Scene_File.prototype.createHelpWindow;
-  Scene_File.prototype.createHelpWindow = function() {
+  Scene_File.prototype.createHelpWindow = function () {
     _Scene_File_createHelpWindow.call(this);
     if ($gameSystem.getSaveBuckGround()) {
       this._helpWindow.opacity = 0;
     }
   };
 
-  Scene_File.prototype.createBackground = function() {
+  Scene_File.prototype.createBackground = function () {
     Scene_MenuBase.prototype.createBackground.call(this);
     if (BackGroundImg) {
       let data = null;
@@ -719,7 +719,7 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  Scene_File.prototype.setBackGround = function(sprite) {
+  Scene_File.prototype.setBackGround = function (sprite) {
     if (BackUiWidth) {
       sprite.x = (Graphics.width - (Graphics.boxWidth + 8)) / 2;
       sprite.y = (Graphics.height - (Graphics.boxHeight + 8)) / 2;
@@ -732,22 +732,22 @@ Imported.NUUN_SaveScreen = true;
   };
 
   const _Window_SavefileList_initialize = Window_SavefileList.prototype.initialize;
-  Window_SavefileList.prototype.initialize = function(rect) {
+  Window_SavefileList.prototype.initialize = function (rect) {
     _Window_SavefileList_initialize.call(this, rect);
     this._contentsBackVisible = ContentsBackVisible;
   };
 
-  Window_SavefileList.prototype.maxContentsCols = function() {
+  Window_SavefileList.prototype.maxContentsCols = function () {
     return 2;
   };
 
   const _Window_SavefileList_numVisibleRows = Window_SavefileList.prototype.numVisibleRows;
-  Window_SavefileList.prototype.numVisibleRows = function() {
+  Window_SavefileList.prototype.numVisibleRows = function () {
     return NumSaveRows ? NumSaveRows : _Window_SavefileList_numVisibleRows.call(this);
   };
 
   const _Window_SavefileList_drawItemBackground = Window_SavefileList.prototype.drawItemBackground;
-  Window_SavefileList.prototype.drawItemBackground = function(index) {
+  Window_SavefileList.prototype.drawItemBackground = function (index) {
     if (ContentsBackGroundImg) {
       const bitmap = ImageManager.nuun_LoadPictures(ContentsBackGroundImg);
       if (bitmap && !bitmap.isReady()) {
@@ -760,13 +760,13 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  Window_SavefileList.prototype.drawContentsBack = function(bitmap, index) {
+  Window_SavefileList.prototype.drawContentsBack = function (bitmap, index) {
     const rect = this.itemRect(index);
     this.contentsBack.blt(bitmap, 0, 0, rect.width, rect.height, rect.x + 1, rect.y + 1, rect.width - 2, rect.height - 2);
   };
 
   const _Window_SavefileList_drawItem = Window_SavefileList.prototype.drawItem;
-  Window_SavefileList.prototype.drawItem = function(index) {
+  Window_SavefileList.prototype.drawItem = function (index) {
     this._FaceOn = false;
     _Window_SavefileList_drawItem.call(this, index);
     const savefileId = this.indexToSavefileId(index);
@@ -778,7 +778,7 @@ Imported.NUUN_SaveScreen = true;
   };
 
   const _Window_SavefileList_drawTitle = Window_SavefileList.prototype.drawTitle;
-  Window_SavefileList.prototype.drawTitle = function(savefileId, x, y) {
+  Window_SavefileList.prototype.drawTitle = function (savefileId, x, y) {
     if (this._FaceOn) {
       this.contents.fontSize = MainFontSizeMainFontSize;
       _Window_SavefileList_drawTitle.call(this, savefileId, x, y - 4);
@@ -787,7 +787,7 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  Window_SavefileList.prototype.drawActors = function(info, x, y, width, height) {
+  Window_SavefileList.prototype.drawActors = function (info, x, y, width, height) {
     if (width >= 420) {
       this._maxHeight = height - 4;
       let x2 = ActorX + x;
@@ -803,7 +803,7 @@ Imported.NUUN_SaveScreen = true;
         if (heightScale === h) {
           h = Math.min(h, this._maxHeight);
           scaleMode = 0;
-        } else if (heightScale > this._maxHeight){
+        } else if (heightScale > this._maxHeight) {
           scaleMode = 1;
         }
         this.drawPartyFace(info, x2, y2, w, h, scaleMode);
@@ -818,7 +818,7 @@ Imported.NUUN_SaveScreen = true;
     this._FaceOn = true;
   };
 
-  Window_SavefileList.prototype.drawContents = function(info, rect) {
+  Window_SavefileList.prototype.drawContents = function (info, rect) {
     const width = Math.floor(rect.width / this.maxContentsCols()) - this.colSpacing();
     this.drawSnapBitmap(info, rect.x + SaveSnapX, rect.y + SaveSnapY);
     this.drawActors(info, rect.x, rect.y, rect.width, rect.height);
@@ -826,7 +826,7 @@ Imported.NUUN_SaveScreen = true;
     this.drawAnyName(info, rect.x + 200, rect.y + 2, rect.width - 200);
   };
 
-  Window_SavefileList.prototype.drawContentsData = function(info, x, y, width) {
+  Window_SavefileList.prototype.drawContentsData = function (info, x, y, width) {
     const CWidth = (_ContentsWidth > 0 ? _ContentsWidth : width);
     width = Math.min(CWidth, width - ContentsX);
     const itemWidth = this.itemContentsWidth(width);
@@ -844,18 +844,18 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  Window_SavefileList.prototype.widthMode = function(mode, width) {
+  Window_SavefileList.prototype.widthMode = function (mode, width) {
     if (mode) {
       width = width * 2 + this.colSpacing();
     }
     return width;
   };
 
-  Window_SavefileList.prototype.itemContentsWidth = function(width) {
+  Window_SavefileList.prototype.itemContentsWidth = function (width) {
     return Math.floor(width / 2) - this.colSpacing();
   };
 
-  Window_SavefileList.prototype.drawContentsBase = function(info, x, y, width, data) {
+  Window_SavefileList.prototype.drawContentsBase = function (info, x, y, width, data) {
     switch (data.DateSelect) {
       case 0:
         break;
@@ -881,37 +881,37 @@ Imported.NUUN_SaveScreen = true;
   };
 
   const _Window_SavefileList_drawPartyCharacters = Window_SavefileList.prototype.drawPartyCharacters;
-  Window_SavefileList.prototype.drawPartyCharacters = function(info, x, y) {
+  Window_SavefileList.prototype.drawPartyCharacters = function (info, x, y) {
     _Window_SavefileList_drawPartyCharacters.call(this, info, x, y);
     if (info.characters) {
       this.drawPartyLeval(info, x - 21, y, 48, 0, 0);
     }
   };
 
-  Window_SavefileList.prototype.drawPartySvActors = function(info, x, y) {
+  Window_SavefileList.prototype.drawPartySvActors = function (info, x, y) {
     if (info.svActor) {
       let characterX = x;
       for (const data of info.svActor) {
-          this.drawSvActor(data[0], characterX, y);
-          characterX += 64;
+        this.drawSvActor(data[0], characterX, y);
+        characterX += 64;
       }
       this.drawPartyLeval(info, x, y, 64, 0, 0);
     }
   };
 
-  Window_SavefileList.prototype.drawPartyFace = function(info, x, y, width, height, scaleMode) {
+  Window_SavefileList.prototype.drawPartyFace = function (info, x, y, width, height, scaleMode) {
     if (info.faces) {
-        let characterX = x;
-        const faceWidth = this._scaleMode === 1 ? this._maxHeight : Math.floor(width * FaceScale / 100);
-        for (const data of info.faces) {
-          this.drawFace(data[0], data[1], characterX, y, width, height, scaleMode);
-          characterX += faceWidth;
-        }
-        this.drawPartyLeval(info, x + 8, y, faceWidth, height, 1);
+      let characterX = x;
+      const faceWidth = this._scaleMode === 1 ? this._maxHeight : Math.floor(width * FaceScale / 100);
+      for (const data of info.faces) {
+        this.drawFace(data[0], data[1], characterX, y, width, height, scaleMode);
+        characterX += faceWidth;
+      }
+      this.drawPartyLeval(info, x + 8, y, faceWidth, height, 1);
     }
   };
 
-  Window_SavefileList.prototype.drawSvActor = function(data, x, y) {
+  Window_SavefileList.prototype.drawSvActor = function (data, x, y) {
     if (data) {
       const motionIndex = 0;
       const bitmap = ImageManager.loadSvActor(data);
@@ -923,7 +923,7 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  Window_SavefileList.prototype.drawPartyLeval = function(info, x, y, width, height, mode) {
+  Window_SavefileList.prototype.drawPartyLeval = function (info, x, y, width, height, mode) {
     this.contents.fontSize = mode === 0 ? 16 : ContentsFontSizeMainFontSize;
     if (info.levelActor && LevelPosition > 0) {
       let levelActorX = x;
@@ -952,25 +952,25 @@ Imported.NUUN_SaveScreen = true;
     this.resetFontSettings();
   };
 
-  Window_SavefileList.prototype.drawSnapBitmap = function(info, x, y) {
+  Window_SavefileList.prototype.drawSnapBitmap = function (info, x, y) {
     if (info.snap) {
       const bitmap = ImageManager.loadSaveSnapBitmap(info.snap);
       this.contents.blt(bitmap, 0, 0, bitmap.width, bitmap.height, x, y);
     }
   };
 
-  Window_SavefileList.prototype.drawAnyName = function(info, x, y, width) {
+  Window_SavefileList.prototype.drawAnyName = function (info, x, y, width) {
     this.contents.fontSize = MainFontSizeMainFontSize;
     this.resetTextColor();
     const anyName = eval(AnyNameEval);
     if (anyName) {
-      this.drawText(anyName , x, y, width, "left");
+      this.drawText(anyName, x, y, width, "left");
     }
     this.contents.fontSize = $gameSystem.mainFontSize();
   };
 
   const _Window_SavefileList_drawPlaytime = Window_SavefileList.prototype.drawPlaytime;
-  Window_SavefileList.prototype.drawPlaytime = function(info, x, y, width, data) {
+  Window_SavefileList.prototype.drawPlaytime = function (info, x, y, width, data) {
     const text = data.ParamName || 'Playtime';
     const textWidth = this.systemWidth(data.SystemItemWidth, width);
     this.contents.fontSize = ContentsFontSizeMainFontSize;
@@ -981,7 +981,7 @@ Imported.NUUN_SaveScreen = true;
     this.contents.fontSize = $gameSystem.mainFontSize();
   };
 
-  Window_SavefileList.prototype.drawDayTime = function(info, x, y, width, data) {
+  Window_SavefileList.prototype.drawDayTime = function (info, x, y, width, data) {
     this.resetTextColor();
     if (info.timestamp) {
       this.contents.fontSize = ContentsFontSizeMainFontSize;
@@ -992,7 +992,7 @@ Imported.NUUN_SaveScreen = true;
     this.contents.fontSize = $gameSystem.mainFontSize();
   };
 
-  Window_SavefileList.prototype.drawMapName = function(info, x, y, width, data) {
+  Window_SavefileList.prototype.drawMapName = function (info, x, y, width, data) {
     const text = data.ParamName || 'Location';
     const textWidth = this.systemWidth(data.SystemItemWidth, width);
     this.contents.fontSize = ContentsFontSizeMainFontSize;
@@ -1004,7 +1004,7 @@ Imported.NUUN_SaveScreen = true;
     }
   };
 
-  Window_SavefileList.prototype.drawGold = function(info, x, y, width, data) {
+  Window_SavefileList.prototype.drawGold = function (info, x, y, width, data) {
     const text = data.ParamName || 'Money';
     const textWidth = this.systemWidth(data.SystemItemWidth, width);
     this.contents.fontSize = ContentsFontSizeMainFontSize;
@@ -1018,7 +1018,7 @@ Imported.NUUN_SaveScreen = true;
     this.contents.fontSize = $gameSystem.mainFontSize();
   };
 
-  Window_SavefileList.prototype.drawOriginal = function(info, x, y, width, data) {
+  Window_SavefileList.prototype.drawOriginal = function (info, x, y, width, data) {
     const text = data.ParamName;
     let textWidth = 0;
     if (text) {
@@ -1034,7 +1034,7 @@ Imported.NUUN_SaveScreen = true;
     this.contents.fontSize = $gameSystem.mainFontSize();
   };
 
-  Window_SavefileList.prototype.drawFace = function(faceName, faceIndex, x, y, width, height, scaleMode) {
+  Window_SavefileList.prototype.drawFace = function (faceName, faceIndex, x, y, width, height, scaleMode) {
     width = width || ImageManager.faceWidth;
     height = height || ImageManager.faceHeight;
     const scale = FaceScale / 100;
@@ -1052,45 +1052,45 @@ Imported.NUUN_SaveScreen = true;
     this.contents.blt(bitmap, sx, sy, sw, sh, dx, dy, dw, dh);
   };
 
-  Window_SavefileList.prototype.systemWidth = function(swidth, width) {
+  Window_SavefileList.prototype.systemWidth = function (swidth, width) {
     return swidth > 0 ? swidth : Math.floor(width / 2);
   };
 
   const _Game_System_initialize = Game_System.prototype.initialize;
-  Game_System.prototype.initialize = function() {
+  Game_System.prototype.initialize = function () {
     _Game_System_initialize.call(this);
     this.saveBuckgroundImg = [BackGroundImg, 0];
     this.onSnap = false;
   };
 
-  Game_System.prototype.setSaveBuckGround = function(img, id) {
+  Game_System.prototype.setSaveBuckGround = function (img, id) {
     const buckgroundId = AutomaticSetting ? (this.buckgroundId || 0) + 1 : id;
     this.saveBuckgroundImg = [img, buckgroundId];
   };
 
-  Game_System.prototype.getSaveBuckGround = function() {
+  Game_System.prototype.getSaveBuckGround = function () {
     this.saveBuckgroundImg = this.saveBuckgroundImg || [BackGroundImg, 0];
     return this.saveBuckgroundImg[0];
   };
 
-  Game_System.prototype.getSaveBuckGroundId = function() {
+  Game_System.prototype.getSaveBuckGroundId = function () {
     return this.saveBuckgroundImg[1] || 0;
   };
 
-  Game_Party.prototype.actorLevelForSavefile = function() {
+  Game_Party.prototype.actorLevelForSavefile = function () {
     return this.battleMembers().map(actor => [
-        actor._level
+      actor._level
     ]);
   };
 
-  Game_Party.prototype.svActorForSavefile = function() {
+  Game_Party.prototype.svActorForSavefile = function () {
     return this.battleMembers().map(actor => [
-        actor.battlerName()
+      actor.battlerName()
     ]);
   };
 
   function getColorCode(color) {
-    if (typeof(color) === "string") {
+    if (typeof (color) === "string") {
       return color;
     }
     return ColorManager.textColor(color);

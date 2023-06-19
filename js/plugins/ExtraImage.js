@@ -310,18 +310,18 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
-    const _Scene_Base_create    = Scene_Base.prototype.create;
-    Scene_Base.prototype.create = function() {
+    const _Scene_Base_create = Scene_Base.prototype.create;
+    Scene_Base.prototype.create = function () {
         _Scene_Base_create.apply(this, arguments);
         this._extraImages = this.findExtraImageList().map(imageData => {
             return new Sprite_SceneExtra(imageData);
         });
     };
 
-    const _Scene_Base_start    = Scene_Base.prototype.start;
-    Scene_Base.prototype.start = function() {
+    const _Scene_Base_start = Scene_Base.prototype.start;
+    Scene_Base.prototype.start = function () {
         _Scene_Base_start.apply(this, arguments);
         let windowLayerIndex = this._windowLayer ? this.getChildIndex(this._windowLayer) : 0;
         this._extraImages.forEach(extraImage => {
@@ -339,9 +339,9 @@
         });
     };
 
-    Scene_Base.prototype.findExtraImageList = function() {
+    Scene_Base.prototype.findExtraImageList = function () {
         const currentSceneName = PluginManagerEx.findClassName(this);
-        return (param.ImageList || []).filter(function(data) {
+        return (param.ImageList || []).filter(function (data) {
             return data.SceneName === currentSceneName;
         }, this);
     };

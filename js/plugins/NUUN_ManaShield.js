@@ -6,7 +6,7 @@
  * http://opensource.org/licenses/mit-license.php
  * -------------------------------------------------------------------------------------
  * 
- */ 
+ */
 /*:
  * @target MZ
  * @plugindesc マナシールド
@@ -106,12 +106,12 @@ Imported.NUUN_ManaShield = true;
   const pan = Number(parameters['pan'] || 50);
 
   const _Game_Action_executeHpDamage = Game_Action.prototype.executeHpDamage;
-  Game_Action.prototype.executeHpDamage = function(target, value) {
+  Game_Action.prototype.executeHpDamage = function (target, value) {
     value = this.manaShield(target, value);
     _Game_Action_executeHpDamage.call(this, target, value);
   };
 
-  Game_Action.prototype.manaShield = function(target, value) {
+  Game_Action.prototype.manaShield = function (target, value) {
     if (value > 0) {
       const rate = target.traitsManaShieldPi();
       let newValue = Math.floor(value * rate);
@@ -119,8 +119,8 @@ Imported.NUUN_ManaShield = true;
         const mpValue = this.getManaShieldDamage(target, newValue);
         newValue = Math.min(newValue, target.mp);
         this.executeMpDamage(target, mpValue);
-        if(mpValue > 0 && ManaShieldSE) {
-          AudioManager.playSe({"name":ManaShieldSE,"volume":volume,"pitch":pitch,"pan":pan});
+        if (mpValue > 0 && ManaShieldSE) {
+          AudioManager.playSe({ "name": ManaShieldSE, "volume": volume, "pitch": pitch, "pan": pan });
         }
       }
       return value - newValue;
@@ -128,7 +128,7 @@ Imported.NUUN_ManaShield = true;
     return value;
   };
 
-  Game_Action.prototype.getManaShieldDamage = function(target, value) {
+  Game_Action.prototype.getManaShieldDamage = function (target, value) {
     if (MPShieldMode === 'HpDamage') {
       return Math.floor(Math.min(value * (MPBurdenRate / 100), target.mp))
     } else if (MPShieldMode === 'MaxHpRate') {
@@ -136,7 +136,7 @@ Imported.NUUN_ManaShield = true;
     }
   };
 
-  Game_BattlerBase.prototype.traitsManaShieldPi = function() {
+  Game_BattlerBase.prototype.traitsManaShieldPi = function () {
     const traits = this.traitsManaShield();
     if (traits.length > 0) {
       return traits.reduce((r, obj) => r * (Number(obj.meta.ManaShield) / 100), 1);
@@ -144,8 +144,8 @@ Imported.NUUN_ManaShield = true;
     return 0;
   };
 
-  Game_BattlerBase.prototype.traitsManaShield = function() {
+  Game_BattlerBase.prototype.traitsManaShield = function () {
     return this.traitObjects().filter(trait => trait.meta.ManaShield && Number(trait.meta.ManaShield) > 0);
   };
-  
+
 })();

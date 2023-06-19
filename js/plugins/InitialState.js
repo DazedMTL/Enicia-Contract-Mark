@@ -43,16 +43,16 @@
  *  このプラグインはもうあなたのものです。
  */
 
-(()=> {
+(() => {
     'use strict';
 
     const _Game_Enemy_setup = Game_Enemy.prototype.setup;
-    Game_Enemy.prototype.setup = function(enemyId, x, y) {
+    Game_Enemy.prototype.setup = function (enemyId, x, y) {
         _Game_Enemy_setup.apply(this, arguments);
         this.setupInitialState();
     };
 
-    Game_Enemy.prototype.setupInitialState = function() {
+    Game_Enemy.prototype.setupInitialState = function () {
         const race = PluginManagerEx.findMetaValue(this.enemy(), ['種族', 'race']);
         if (race) {
             let raceStateId = SH_raceStateId(race)
@@ -71,8 +71,8 @@
             let BossStateId = 421
             String(BossStateId).split(',').forEach(state => this.addState(parseInt(state)));
         }
-        
-        
+
+
         const stateList = PluginManagerEx.findMetaValue(this.enemy(), ['初期ステート', 'InitialState']);
         if (!stateList) {
             return;

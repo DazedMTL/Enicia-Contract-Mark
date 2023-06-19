@@ -64,22 +64,22 @@
  * dlc/BasicResources/plugins/official
  */
 
-(()=> {
+(() => {
     'use strict';
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
 
     const _Game_BattlerBase_canEquipWeapon = Game_BattlerBase.prototype.canEquipWeapon;
-    Game_BattlerBase.prototype.canEquipWeapon = function(item) {
+    Game_BattlerBase.prototype.canEquipWeapon = function (item) {
         return _Game_BattlerBase_canEquipWeapon.apply(this, arguments) && this.canEquipExtend(item);
     };
 
     const _Game_BattlerBase_canEquipArmor = Game_BattlerBase.prototype.canEquipArmor;
-    Game_BattlerBase.prototype.canEquipArmor = function(item) {
+    Game_BattlerBase.prototype.canEquipArmor = function (item) {
         return _Game_BattlerBase_canEquipArmor.apply(this, arguments) && this.canEquipExtend(item);
     };
 
-    Game_BattlerBase.prototype.canEquipExtend = function(item) {
+    Game_BattlerBase.prototype.canEquipExtend = function (item) {
         if (!item) {
             return false;
         }
@@ -106,7 +106,7 @@
         return true;
     };
 
-    Game_BattlerBase.prototype.canEquipExtendSkill = function(item) {
+    Game_BattlerBase.prototype.canEquipExtendSkill = function (item) {
         const metaValue = this.findEquipExtendValue(item, ['装備条件スキル', 'EquipCondSkill']);
         if (!metaValue) return true;
         return metaValue[this.findEquipExtendConditionMethod()](skillId => {
@@ -115,7 +115,7 @@
         });
     };
 
-    Game_BattlerBase.prototype.canEquipExtendState = function(item) {
+    Game_BattlerBase.prototype.canEquipExtendState = function (item) {
         const metaValue = this.findEquipExtendValue(item, ['装備条件ステート', 'EquipCondState']);
         if (!metaValue) return true;
         return metaValue[this.findEquipExtendConditionMethod()](stateId => {
@@ -124,13 +124,13 @@
         });
     };
 
-    Game_BattlerBase.prototype.canEquipExtendActor = function(item) {
+    Game_BattlerBase.prototype.canEquipExtendActor = function (item) {
         const metaValue = this.findEquipExtendValue(item, ['装備条件アクター', 'EquipCondActor']);
         if (!metaValue) return true;
         return this.isActor() ? metaValue.contains(this.actorId()) : false;
     };
 
-    Game_BattlerBase.prototype.canEquipExtendSwitch = function(item) {
+    Game_BattlerBase.prototype.canEquipExtendSwitch = function (item) {
         const metaValue = this.findEquipExtendValue(item, ['装備条件スイッチ', 'EquipCondSwitch']);
         if (!metaValue) return true;
         return metaValue[this.findEquipExtendConditionMethod()](switchId => {
@@ -138,7 +138,7 @@
         });
     };
 
-    Game_BattlerBase.prototype.canEquipExtendParam = function(item, paramId) {
+    Game_BattlerBase.prototype.canEquipExtendParam = function (item, paramId) {
         const tags = [
             ['装備条件HP', 'EquipCondHp'],
             ['装備条件MP', 'EquipCondMp'],
@@ -154,7 +154,7 @@
     };
 
 
-    Game_BattlerBase.prototype.findEquipExtendValue = function(item, tags) {
+    Game_BattlerBase.prototype.findEquipExtendValue = function (item, tags) {
         const metaValue = PluginManagerEx.findMetaValue(item, tags);
         if (metaValue === undefined) {
             return undefined;
@@ -165,11 +165,11 @@
         }
     };
 
-    Game_BattlerBase.prototype.findEquipExtendConditionMethod = function() {
+    Game_BattlerBase.prototype.findEquipExtendConditionMethod = function () {
         return param.MultiConditionAnd ? 'every' : 'some';
     };
 
-    Game_BattlerBase.prototype.canEquipExtendFormula = function(item) {
+    Game_BattlerBase.prototype.canEquipExtendFormula = function (item) {
         const metaValue = PluginManagerEx.findMetaValue(item, ['装備条件計算式', 'EquipCondFormula']);
         if (!metaValue) return true;
         try {

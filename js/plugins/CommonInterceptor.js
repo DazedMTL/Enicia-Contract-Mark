@@ -105,36 +105,36 @@
     };
 
     var _Game_Temp_initialize = Game_Temp.prototype.initialize;
-    Game_Temp.prototype.initialize = function() {
+    Game_Temp.prototype.initialize = function () {
         _Game_Temp_initialize.apply(this, arguments);
         this._interceptorType = 0;
     };
 
     Object.defineProperty(Game_Temp.prototype, 'interceptorType', {
-        get: function() {
+        get: function () {
             return this._interceptorType;
         },
-        set: function(value) {
+        set: function (value) {
             this._interceptorType = value.clamp(0, 3);
         },
         configurable: false
     });
 
     var _DataManager_setupNewGame = DataManager.setupNewGame;
-    DataManager.setupNewGame = function() {
+    DataManager.setupNewGame = function () {
         _DataManager_setupNewGame.apply(this, arguments);
         $gameTemp.interceptorType = 1;
     };
 
     var _DataManager_loadGame = DataManager.loadGame;
-    DataManager.loadGame = function(savefileId) {
-        return _DataManager_loadGame.apply(this, arguments).then(()=> {
+    DataManager.loadGame = function (savefileId) {
+        return _DataManager_loadGame.apply(this, arguments).then(() => {
             $gameTemp.interceptorType = 2;
         })
     };
 
     var _Scene_Menu_terminate = Scene_Menu.prototype.terminate;
-    Scene_Menu.prototype.terminate = function() {
+    Scene_Menu.prototype.terminate = function () {
         _Scene_Menu_terminate.apply(this, arguments);
         $gameTemp.interceptorType = 3;
     };
@@ -143,15 +143,15 @@
     //  条件を満たした場合のコモンイベント呼び出し処理を追加定義します。
     //=============================================================================
     var _Game_Map_setupStartingEvent = Game_Map.prototype.setupStartingEvent;
-    Game_Map.prototype.setupStartingEvent = function() {
+    Game_Map.prototype.setupStartingEvent = function () {
         var result = _Game_Map_setupStartingEvent.apply(this, arguments);
         return result || this.setupInterceptorCommonEvent();
     };
 
-    Game_Map.prototype.setupInterceptorCommonEvent = function() {
+    Game_Map.prototype.setupInterceptorCommonEvent = function () {
         var commonId = getParamNumber(paramNames[$gameTemp.interceptorType]);
-        var event    = $dataCommonEvents[commonId];
-        var result   = false;
+        var event = $dataCommonEvents[commonId];
+        var result = false;
         if (commonId > 0 && !this.isEventRunning() && event) {
             this._interpreter.setup(event.list);
             $gameTemp.interceptorType = 0;

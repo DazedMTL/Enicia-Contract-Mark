@@ -130,20 +130,20 @@
 
 (() => {
 	'use strict';
-	
+
 	// This Plugin Name
 	const pluginName = decodeURIComponent(document.currentScript.src).match(/([^\/]+)\.js$/)[1];
-	
+
 	// Parameters
 	const parameters = PluginManager.parameters(pluginName);
 	const MaxMultiAction = Number(parameters['MaxMultiAction']) || 3;
-	
-	
+
+
 	//--------------------------------------------------
 	// Game_Enemy.selectAllActions
 	//  [Modified Definition]
 	//--------------------------------------------------
-	Game_Enemy.prototype.selectAllActions = function(actionList) {
+	Game_Enemy.prototype.selectAllActions = function (actionList) {
 		const ratingMax = Math.max(...actionList.map(a => a.rating));
 		const ratingZero = ratingMax - 3;
 		actionList = actionList.filter(a => a.rating > ratingZero);
@@ -154,13 +154,13 @@
 			this._actions.length = this._actionIndex + 1;
 		}
 	}
-	
-	
+
+
 	//--------------------------------------------------
 	// Game_Enemy.makeActions
 	//  [Modified Definition]
 	//--------------------------------------------------
-	Game_Enemy.prototype.makeActions = function() {
+	Game_Enemy.prototype.makeActions = function () {
 		Game_Battler.prototype.makeActions.call(this);
 		// make multi action list
 		this.makeMultiActionList();
@@ -175,13 +175,13 @@
 		}
 		this.setActionState("waiting");
 	}
-	
-	
+
+
 	//--------------------------------------------------
 	// Game_Enemy.makeMultiActionList
 	//  [New Definition]
 	//--------------------------------------------------
-	Game_Enemy.prototype.makeMultiActionList = function() {
+	Game_Enemy.prototype.makeMultiActionList = function () {
 		// make last action list
 		this._lastActionList = this.parseActionList(this.enemy().meta.LastAction).map(n => this.enemy().actions[n - 1]);
 		// get meta data and initialize multi action list
@@ -208,18 +208,18 @@
 			}
 		}
 	}
-	
+
 	//--------------------------------------------------
 	// Game_Enemy.parseActionList
 	//  [New Definition]
 	//--------------------------------------------------
-	Game_Enemy.prototype.parseActionList = function(actionList) {
+	Game_Enemy.prototype.parseActionList = function (actionList) {
 		if (actionList) {
 			return actionList.split(',').map(Number);
 		} else {
 			return [];
 		}
 	}
-	
+
 })();
 

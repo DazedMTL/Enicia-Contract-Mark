@@ -80,7 +80,7 @@
  *
  */
 
-(()=> {
+(() => {
     'use strict';
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
@@ -90,7 +90,7 @@
     });
 
     const _Scene_Boot_loadGameFonts = Scene_Boot.prototype.loadGameFonts;
-    Scene_Boot.prototype.loadGameFonts = function() {
+    Scene_Boot.prototype.loadGameFonts = function () {
         _Scene_Boot_loadGameFonts.apply(this, arguments);
         param.fontList.forEach(font => {
             const name = font.name || font.fileName.replace(/\..*/, '');
@@ -99,7 +99,7 @@
     };
 
     const _Window_Message_newPage = Window_Message.prototype.newPage;
-    Window_Message.prototype.newPage = function(textState) {
+    Window_Message.prototype.newPage = function (textState) {
         _Window_Message_newPage.apply(this, arguments);
         if ($gameMessage.getFontFace()) {
             this.contents.fontFace = $gameMessage.getFontFace();
@@ -107,7 +107,7 @@
     };
 
     const _Window_Message_processEscapeCharacter = Window_Message.prototype.processEscapeCharacter;
-    Window_Message.prototype.processEscapeCharacter = function(code, textState) {
+    Window_Message.prototype.processEscapeCharacter = function (code, textState) {
         _Window_Message_processEscapeCharacter.apply(this, arguments);
         if (code === 'FN') {
             const font = this.obtainEscapeParamForFontLoad(textState);
@@ -115,7 +115,7 @@
         }
     };
 
-    Window_Message.prototype.obtainEscapeParamForFontLoad = function(textState) {
+    Window_Message.prototype.obtainEscapeParamForFontLoad = function (textState) {
         const arr = /^\[.+?]/.exec(textState.text.slice(textState.index));
         if (arr) {
             textState.index += arr[0].length;
@@ -125,11 +125,11 @@
         }
     };
 
-    Game_Message.prototype.getFontFace = function() {
+    Game_Message.prototype.getFontFace = function () {
         return this._faceFace;
     };
 
-    Game_Message.prototype.setFontFace = function(font) {
+    Game_Message.prototype.setFontFace = function (font) {
         this._faceFace = font;
     };
 })();

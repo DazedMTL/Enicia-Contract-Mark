@@ -79,12 +79,12 @@
   // for efficiency, process the note at first.
   //
   const _Scene_Boot_start = Scene_Boot.prototype.start;
-  Scene_Boot.prototype.start = function() {
+  Scene_Boot.prototype.start = function () {
     _Scene_Boot_start.call(this);
     DataManager.processPassiveSkill();
   };
 
-  DataManager.processPassiveSkill = function() {
+  DataManager.processPassiveSkill = function () {
     let id = 0;
     for (let skill of $dataSkills) {
       if (!skill) {
@@ -100,7 +100,7 @@
   //
   // get the skills that have passive skill
   //
-  Game_Actor.prototype.passiveSkills = function() {
+  Game_Actor.prototype.passiveSkills = function () {
     let _passiveSkills = [];
     for (const id of this._skills) {
       const skill = $dataSkills[id];
@@ -115,7 +115,7 @@
   // Add the parameters and traits
   //
   const _Game_Actor_paramPlus = Game_Actor.prototype.paramPlus;
-  Game_Actor.prototype.paramPlus = function(paramId) {
+  Game_Actor.prototype.paramPlus = function (paramId) {
     let value = _Game_Actor_paramPlus.call(this, paramId);
     for (const passive of this.passiveSkills()) {
       if (passive) {
@@ -126,7 +126,7 @@
   };
 
   const _Game_Actor_traitObjects = Game_Actor.prototype.traitObjects;
-  Game_Actor.prototype.traitObjects = function() {
+  Game_Actor.prototype.traitObjects = function () {
     let objects = _Game_Actor_traitObjects.call(this);
     return objects.concat(this.passiveSkills());
   };

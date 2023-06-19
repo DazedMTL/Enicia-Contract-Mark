@@ -99,28 +99,28 @@
 
 (() => {
     const pluginName = "SH_Addvar";
-    PluginManager.registerCommand(pluginName, "AddVar", function(args){
+    PluginManager.registerCommand(pluginName, "AddVar", function (args) {
         var VarId = Number(args.VarName)
         var VarNum = Number(args.VarNumber)
-        $gameVariables._data[VarId] = $gameVariables.value(VarId) + VarNum 
+        $gameVariables._data[VarId] = $gameVariables.value(VarId) + VarNum
         var DisVarName = TextManager.paraname(VarId)
         var icon = args.Icon
 
 
         var Limit = args.VarLimit
-        if(Limit == 'MIN0MAX999'){
+        if (Limit == 'MIN0MAX999') {
             Paramax0_999(VarId) //上限下限の処理
-        }else if(Limit == 'MIN-999MAX999'){
+        } else if (Limit == 'MIN-999MAX999') {
             ParamaxUnder999(VarId)
-        }else if(Limit == 'MIN0MAX100'){
+        } else if (Limit == 'MIN0MAX100') {
             Paramax0_100(VarId)
-        }else if(Limit == 'MIN-100MAX100'){
+        } else if (Limit == 'MIN-100MAX100') {
             ParamaxUnder100(VarId)
-        }else if(Limit == 'Lust'){
-            ParamaxLust(VarId)            
+        } else if (Limit == 'Lust') {
+            ParamaxLust(VarId)
         }
-        if(icon >= 1){var iconnum = "\\i[" + icon +"]" }else{var iconnum = ""}
-        if(args.Ticker){$TM.show(iconnum + DisVarName + " + " + VarNum)};
+        if (icon >= 1) { var iconnum = "\\i[" + icon + "]" } else { var iconnum = "" }
+        if (args.Ticker) { $TM.show(iconnum + DisVarName + " + " + VarNum) };
 
 
         //Ticker等で数値を出す場合
@@ -132,53 +132,53 @@
     function Paramax0_999(VarId) {
         var high = 999
         var low = 0
-        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low,high)
+        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low, high)
     }
 
     function ParamaxUnder999(VarId) {
         var high = 999
         var low = -999
-        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low,high)
+        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low, high)
     }
 
     function Paramax0_100(VarId) {
         var high = 100
         var low = 0
-        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low,high)
+        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low, high)
     }
 
     function ParamaxUnder100(VarId) {
         var high = 100
         var low = -100
-        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low,high)
+        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low, high)
     }
 
     function ParamaxLust(VarId) {
         var high = 100
         var low = 0
-        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low,high)
+        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low, high)
     }
 
-    function ParaLimit(VarId,Over,Under) {
+    function ParaLimit(VarId, Over, Under) {
         var high = Over
         var low = Under
-        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low,high)
+        $gameVariables._data[VarId] = $gameVariables.value(VarId).clamp(low, high)
     }
 
 
-    PluginManager.registerCommand(pluginName, "AddParams", function(args){
+    PluginManager.registerCommand(pluginName, "AddParams", function (args) {
         var VarId = Number(args.VarName)
         var VarNum = Number(args.VarNumber)
-        $gameVariables._data[VarId] = $gameVariables.value(VarId) + VarNum 
+        $gameVariables._data[VarId] = $gameVariables.value(VarId) + VarNum
         var DisVarName = TextManager.paraname(VarId)
         var icon = Number($dataUniques.eroparams[VarId].icon)
         var limit = Number($dataUniques.eroparams[VarId].overlimit)
         var underlimit = Number($dataUniques.eroparams[VarId].underlimit)
-        ParaLimit(VarId,limit,underlimit)    
-        if(icon >= 1){var iconnum = "\\i[" + icon +"]" }else{var iconnum = ""}
-        if(VarNum >= 0){
+        ParaLimit(VarId, limit, underlimit)
+        if (icon >= 1) { var iconnum = "\\i[" + icon + "]" } else { var iconnum = "" }
+        if (VarNum >= 0) {
             $TM.show(iconnum + DisVarName + " + " + VarNum)
-        }else{
+        } else {
             $TM.show(iconnum + DisVarName + " " + VarNum)
         };
 
@@ -191,7 +191,7 @@
 
 
 
-    PluginManager.registerCommand(pluginName, "EroHistory", function(args){
+    PluginManager.registerCommand(pluginName, "EroHistory", function (args) {
         var text = args.text
         console.log(text)
         $gameVariables._data[146] = text

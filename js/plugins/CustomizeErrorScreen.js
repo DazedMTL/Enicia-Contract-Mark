@@ -86,7 +86,7 @@
  *  このプラグインはもうあなたのものです。
  */
 
-(function() {
+(function () {
     'use strict';
     const script = document.currentScript;
     const param = PluginManagerEx.createParameter(script);
@@ -96,7 +96,7 @@
     //  エラー情報の出力処理を追加します。
     //=============================================================================
     const _SceneManager_onError = SceneManager.onError;
-    SceneManager.onError      = function(e) {
+    SceneManager.onError = function (e) {
         _SceneManager_onError.apply(this, arguments);
         try {
             Graphics.printErrorDetail(e.error, decodeURIComponent(e.filename));
@@ -105,7 +105,7 @@
     };
 
     const _SceneManager_catchException = SceneManager.catchException;
-    SceneManager.catchException      = function(e) {
+    SceneManager.catchException = function (e) {
         _SceneManager_catchException.apply(this, arguments);
         Graphics.printErrorDetail(e);
     };
@@ -115,12 +115,12 @@
     //  エラー情報を出力します。
     //=============================================================================
     const _Graphics__makeErrorHtml = Graphics._makeErrorHtml;
-    Graphics._makeErrorHtml      = function(name, message) {
+    Graphics._makeErrorHtml = function (name, message) {
         arguments[1] = decodeURIComponent(message);
         return _Graphics__makeErrorHtml.apply(this, arguments);
     };
 
-    Graphics.printErrorDetail = function(e) {
+    Graphics.printErrorDetail = function (e) {
         if (this._errorPrinter) {
             this._makeMainMessage();
             if (param.HyperLink) {
@@ -137,30 +137,30 @@
         }
     };
 
-    Graphics._makeMainMessage = function() {
-        const mainMessage     = document.createElement('div');
-        const style           = mainMessage.style;
-        style.color           = 'white';
-        style.textAlign       = 'center';
-        style.fontSize        = '18px';
+    Graphics._makeMainMessage = function () {
+        const mainMessage = document.createElement('div');
+        const style = mainMessage.style;
+        style.color = 'white';
+        style.textAlign = 'center';
+        style.fontSize = '18px';
         mainMessage.innerHTML = '<hr>' + param.MainMessage;
         this._errorPrinter.appendChild(mainMessage);
     };
 
-    Graphics._makeHyperLink = function() {
-        const hyperLink          = document.createElement('a');
-        const style              = hyperLink.style;
-        style.color              = 'blue';
-        style.textAlign          = 'left';
-        style.fontSize           = '20px';
+    Graphics._makeHyperLink = function () {
+        const hyperLink = document.createElement('a');
+        const style = hyperLink.style;
+        style.color = 'blue';
+        style.textAlign = 'left';
+        style.fontSize = '20px';
         style['text-decoration'] = 'underline';
-        style.cursor             = 'pointer';
+        style.cursor = 'pointer';
         hyperLink.addEventListener('click', this._openUrl.bind(this, param.HyperLink));
         hyperLink.innerHTML = param.HyperLink;
         this._errorPrinter.appendChild(hyperLink);
     };
 
-    Graphics._openUrl = function(url) {
+    Graphics._openUrl = function (url) {
         if (!Utils.isNwjs()) {
             window.open(url);
             return;
@@ -176,24 +176,24 @@
         }
     };
 
-    Graphics._makeStackTrace = function(stack) {
-        const stackTrace       = document.createElement('div');
-        const style            = stackTrace.style;
-        style.color            = 'white';
-        style.textAlign        = 'left';
-        style.fontSize         = '12px';
-        style.userSelect       = 'text';
-        style.msUserSelect     = 'text';
-        style.mozUserSelect    = 'text';
+    Graphics._makeStackTrace = function (stack) {
+        const stackTrace = document.createElement('div');
+        const style = stackTrace.style;
+        style.color = 'white';
+        style.textAlign = 'left';
+        style.fontSize = '12px';
+        style.userSelect = 'text';
+        style.msUserSelect = 'text';
+        style.mozUserSelect = 'text';
         style['overflow-wrap'] = 'break-word';
-        stackTrace.innerHTML   = '<br><hr>' + stack + '<hr>';
+        stackTrace.innerHTML = '<br><hr>' + stack + '<hr>';
         this._errorPrinter.appendChild(stackTrace);
     };
 
     const _Graphics__updateErrorPrinter = Graphics._updateErrorPrinter;
-    Graphics._updateErrorPrinter = function() {
+    Graphics._updateErrorPrinter = function () {
         _Graphics__updateErrorPrinter.apply(this, arguments);
-        this._errorPrinter.style.width  = `${this._width * 0.9}px`;
+        this._errorPrinter.style.width = `${this._width * 0.9}px`;
         this._errorPrinter.style.height = `${this._height * 0.9}px`;
     };
 })();

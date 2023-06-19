@@ -74,65 +74,65 @@
  * @type multiline_string
  */
 
- /*:ja
- * @target MZ
- * @plugindesc テキストやスクリプトをデータベースとして登録、参照できます。
- * @author トリアコンタン
- * @base PluginCommonBase
- * @beforeThan PluginCommonBase
- *
- * @param TextList
- * @text テキストベースリスト
- * @desc 登録するテキストやスクリプトのリストです。
- * @default []
- * @type struct<TextItem>[]
- *
- * @command CHANGE_TEXT
- * @text テキスト変更
- * @desc 指定した識別子のテキストを別のテキストに置き換えます。変更状態はセーブファイルに保存されます。
- *
- * @arg Id
- * @text 識別子
- * @desc テキストを一意に特定するための識別子です。
- *
- * @arg Text
- * @text テキスト
- * @desc 変更後のテキストです。
- * @default
- * @type multiline_string
- *
- * @help TextScriptBase.js
- *
- * テキストやスクリプトなどの複数行の文字列を登録、管理できるデータベースです。
- * 登録したテキストは以下の制御文字で参照できます。
- * \tx[aaa] // 識別子[aaa]で登録したテキストに置き換わります。
- * \js[bbb] // 識別子[bbb]で登録したテキストをその場でスクリプトとして評価して
- *             結果に置き換わります。
- *
- * スクリプトを実行する場合、引数を渡すことができます。
- * 引数は自働で型変換され、配列「args」から参照できます。
- * \js[bbb,10,ccc] // 配列[10, 'ccc']が変数argsに格納されます。
- *
- * スクリプトを直接記述して埋め込むこともできます。
- * \js<xxx> // スクリプトxxxの実行結果に置き換わります。
- *
- * ただし、スクリプト中で記号「<」「>」を使う場合は以下の通り
- * エスケープする必要があります。
- * > : &gt;
- * < : &lt;
- *
- * 制御文字を利用可能な場面は以下の通りです。
- * ・文章の表示
- * ・メモ欄(※)
- * ・プラグインコマンド(※)
- * ・プラグインパラメータ(※)
- * ・スキルなどの説明欄
- * ※ PluginCommonBase.jsをベースとして取り込んだプラグインのみ
- *
- * 本プラグインの利用により、よく使うスクリプトやテキストを登録して簡単に呼び出したり
- * データベースの入力欄が限られている場合でも長い文字列を設定できます。
- *
- */
+/*:ja
+* @target MZ
+* @plugindesc テキストやスクリプトをデータベースとして登録、参照できます。
+* @author トリアコンタン
+* @base PluginCommonBase
+* @beforeThan PluginCommonBase
+*
+* @param TextList
+* @text テキストベースリスト
+* @desc 登録するテキストやスクリプトのリストです。
+* @default []
+* @type struct<TextItem>[]
+*
+* @command CHANGE_TEXT
+* @text テキスト変更
+* @desc 指定した識別子のテキストを別のテキストに置き換えます。変更状態はセーブファイルに保存されます。
+*
+* @arg Id
+* @text 識別子
+* @desc テキストを一意に特定するための識別子です。
+*
+* @arg Text
+* @text テキスト
+* @desc 変更後のテキストです。
+* @default
+* @type multiline_string
+*
+* @help TextScriptBase.js
+*
+* テキストやスクリプトなどの複数行の文字列を登録、管理できるデータベースです。
+* 登録したテキストは以下の制御文字で参照できます。
+* \tx[aaa] // 識別子[aaa]で登録したテキストに置き換わります。
+* \js[bbb] // 識別子[bbb]で登録したテキストをその場でスクリプトとして評価して
+*             結果に置き換わります。
+*
+* スクリプトを実行する場合、引数を渡すことができます。
+* 引数は自働で型変換され、配列「args」から参照できます。
+* \js[bbb,10,ccc] // 配列[10, 'ccc']が変数argsに格納されます。
+*
+* スクリプトを直接記述して埋め込むこともできます。
+* \js<xxx> // スクリプトxxxの実行結果に置き換わります。
+*
+* ただし、スクリプト中で記号「<」「>」を使う場合は以下の通り
+* エスケープする必要があります。
+* > : &gt;
+* < : &lt;
+*
+* 制御文字を利用可能な場面は以下の通りです。
+* ・文章の表示
+* ・メモ欄(※)
+* ・プラグインコマンド(※)
+* ・プラグインパラメータ(※)
+* ・スキルなどの説明欄
+* ※ PluginCommonBase.jsをベースとして取り込んだプラグインのみ
+*
+* 本プラグインの利用により、よく使うスクリプトやテキストを登録して簡単に呼び出したり
+* データベースの入力欄が限られている場合でも長い文字列を設定できます。
+*
+*/
 /*~struct~TextItem:ja
  *
  * @param Id
@@ -149,21 +149,21 @@
 (() => {
     'use strict';
     const script = document.currentScript;
-    const param  = PluginManagerEx.createParameter(script);
+    const param = PluginManagerEx.createParameter(script);
 
     PluginManagerEx.registerCommand(script, 'CHANGE_TEXT', args => {
         $gameSystem.setTextBase(args.Id, args.Text);
     });
 
     const _PluginManagerEx_convertEscapeCharactersEx = PluginManagerEx.convertEscapeCharactersEx;
-    PluginManagerEx.convertEscapeCharactersEx        = function(text) {
+    PluginManagerEx.convertEscapeCharactersEx = function (text) {
         text = _PluginManagerEx_convertEscapeCharactersEx.apply(this, arguments);
         text = text.replace(/\x1bTX\[(.+?)]/gi, (_, p1) =>
             $gameSystem ? $gameSystem.getTextBase(p1) : findTextParam(param.TextList, p1)
         );
         text = text.replace(/\x1bJS\[(.+?)]/gi, (_, p1) => {
             const args = p1.split(',').map(arg => this.convertVariables(arg));
-            const id   = args.shift();
+            const id = args.shift();
             const item = $gameSystem ? $gameSystem.getTextBase(id) : findTextParam(param.TextList, id);
             const scriptText = this.convertVariables(item);
             try {
@@ -176,14 +176,14 @@
         return text;
     };
 
-    Game_System.prototype.setTextBase = function(id, text) {
+    Game_System.prototype.setTextBase = function (id, text) {
         if (!this._textBase) {
             this._textBase = {};
         }
         this._textBase[id || fileName] = text;
     };
 
-    Game_System.prototype.getTextBase = function(id) {
+    Game_System.prototype.getTextBase = function (id) {
         if (!this._textBase) {
             this._textBase = {};
         }
