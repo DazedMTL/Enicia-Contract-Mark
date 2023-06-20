@@ -8551,7 +8551,7 @@
         ],
         "gold": 0,
         "name": "Evil spirit",
-        "note": "<Dice:1>\n<Critical:99>\n<Unique:3>\n<enemyLv:1>\n<race:Entity>\n<desc1:A spirit that is said to be a collection of lingering attachment and resentment, but has\nno actual existence.>\n<desc2:It can not only be eerie, but also cause spiritual disturbances.>",
+        "note": "<Dice:1>\n<Critical:99>\n<Unique:3>\n<enemyLv:1>\n<race:Ghost>\n<desc1:A spirit that is said to be a collection of lingering attachment and resentment, but has\nno actual existence.>\n<desc2:It can not only be eerie, but also cause spiritual disturbances.>",
         "params": [
             10,
             0,
@@ -8610,7 +8610,7 @@
         ],
         "gold": 0,
         "name": "Evil spirit",
-        "note": "<Dice:1>\n<Critical:99>\n<Unique:3>\n<enemyLv:3>\n<race:Entity>\n<desc1:A spirit that is said to be a collection of attachment and resentment, but has no actual\nform.>\n<desc2:Especially possessing evil thoughts and actively causing spiritual disturbances.>",
+        "note": "<Dice:1>\n<Critical:99>\n<Unique:3>\n<enemyLv:3>\n<race:Ghost>\n<desc1:A spirit that is said to be a collection of attachment and resentment, but has no actual\nform.>\n<desc2:Especially possessing evil thoughts and actively causing spiritual disturbances.>",
         "params": [
             20,
             0,
@@ -8683,7 +8683,7 @@
         ],
         "gold": 0,
         "name": "Resentful spirit",
-        "note": "<Dice:2>\n<Critical:99>\n<Unique:3>\n<enemyLv:5>\n<race:Entity>\n<desc1:An evil spirit with a clear intention to harm the living.>\n<desc2:Actively attacks people with powerful spiritual interference.>",
+        "note": "<Dice:2>\n<Critical:99>\n<Unique:3>\n<enemyLv:5>\n<race:Ghost>\n<desc1:An evil spirit with a clear intention to harm the living.>\n<desc2:Actively attacks people with powerful spiritual interference.>",
         "params": [
             43,
             0,
@@ -8811,7 +8811,7 @@
         ],
         "gold": 0,
         "name": "Pretty Bear",
-        "note": "<Dice:2>\n<Critical:99>\n<Unique:0>\n<enemyLv:4>\n<race:Entity>\n<desc1:A grudge spirit that has taken residence in a stuffed animal.>\n<desc2:Since the main body is a spiritual body, attacking the stuffed animal has no effect.>",
+        "note": "<Dice:2>\n<Critical:99>\n<Unique:0>\n<enemyLv:4>\n<race:Ghost>\n<desc1:A grudge spirit that has taken residence in a stuffed animal.>\n<desc2:Since the main body is a spiritual body, attacking the stuffed animal has no effect.>",
         "params": [
             39,
             33,
@@ -8877,7 +8877,7 @@
         ],
         "gold": 0,
         "name": "Larva",
-        "note": "<Dice:1>\n<Critical:99>\n<Unique:0>\n<enemyLv:6>\n<race:Entity>\n<desc1:The grudges of the formed dead.>\n<desc2:It clings to the living and takes away their life.>",
+        "note": "<Dice:1>\n<Critical:99>\n<Unique:0>\n<enemyLv:6>\n<race:Ghost>\n<desc1:The grudges of the formed dead.>\n<desc2:It clings to the living and takes away their life.>",
         "params": [
             55,
             0,
@@ -8950,7 +8950,7 @@
         ],
         "gold": 0,
         "name": "Cursed Grudge Larvaki Queen",
-        "note": "<Dice:2>\n<Critical:99>\n<Unique:0>\n<enemyLv:7>\n<race:Entity>\n<desc1:A collective of the lamentations of the dead.>\n<desc2:It is highly dangerous as it actively causes harm to others.>",
+        "note": "<Dice:2>\n<Critical:99>\n<Unique:0>\n<enemyLv:7>\n<race:Ghost>\n<desc1:A collective of the lamentations of the dead.>\n<desc2:It is highly dangerous as it actively causes harm to others.>",
         "params": [
             99,
             79,
@@ -9016,7 +9016,7 @@
         ],
         "gold": 0,
         "name": "Remres",
-        "note": "<Dice:2>\n<Critical:99>\n<Unique:0>\n<enemyLv:5>\n<race:Entity><strong>\n<desc1:A powerful evil spirit that settles in a house.>\n<desc2:Relentlessly giving fear to people and cornering them.>",
+        "note": "<Dice:2>\n<Critical:99>\n<Unique:0>\n<enemyLv:5>\n<race:Ghost><strong>\n<desc1:A powerful evil spirit that settles in a house.>\n<desc2:Relentlessly giving fear to people and cornering them.>",
         "params": [
             56,
             33,
