@@ -22889,7 +22889,7 @@
             "type": 1,
             "variance": 20
         },
-        "description": "Purify the opponent with a holy prayer. It only works on <Spirit> and <Undead>.\n[dice][param][special]",
+        "description": "Purify the opponent with a holy prayer. It only works on <Ghost> and <Undead>.\n[dice][param][special]",
         "effects": [
             {
                 "code": 21,
