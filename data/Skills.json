@@ -35439,7 +35439,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases the power of attacks with swords and greatswords by 2. (Invalid for\n[1]) \n[special]",
+        "description": "<Passive> Increases the power of attacks with swords and greatswords by 2. (Invalid for \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 97,
@@ -35501,7 +35501,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases the power of attacks with a bow by 2. (Invalid for [1]) \n[special]",
+        "description": "<Passive> Increases the power of attacks with a bow by 2. (Invalid for \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 103,
@@ -35563,7 +35563,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> Increases the power of attacks with a dagger by 2. (Invalid for [1]) \n[special]",
+        "description": "<PASSIVE> Increases the power of attacks with a dagger by 2. (Invalid for \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 96,
@@ -35625,7 +35625,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Allows the user to equip heavy weapons such as greatswords. (Invalid for very\nfew equipment in [1]) \n[special]",
+        "description": "<Passive> Allows the user to equip heavy weapons such as greatswords. (Invalid for very\nfew equipment in \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 115,
@@ -35687,7 +35687,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> Can equip high defense armor. (Invalid for [1]) \n[special]",
+        "description": "<PASSIVE> Can equip high defense armor. (Invalid for \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 542,
