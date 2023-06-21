@@ -35470,7 +35470,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases damage dealt by spear attacks by 2. (Nullified for [1]) \n[special]",
+        "description": "<Passive> Increases damage dealt by spear attacks by 2. (Invalid for \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 112,
