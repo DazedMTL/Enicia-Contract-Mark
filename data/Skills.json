@@ -29115,7 +29115,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] Enicia is a slave to the pleasure of having sex with men. Obtained if\nvar1 is equal to or greater than num1. [Unholy]",
+        "description": "[Sexual preference] I have become a prisoner of pleasure from having sex with men. \nObtained by having \\c[6]\\v[231] [var1] or more. [Unholy]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
