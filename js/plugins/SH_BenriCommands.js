@@ -3647,7 +3647,7 @@ function SH_NeedItemArray(Num) {
     }
 
     itemList = 621 + i
-    $gameVariables._data[itemList] = `\\c[${fontColor}]\\i[${itemIcon}]` + itemName + `* ${itemNum} (所持数:${hasNum})`
+    $gameVariables._data[itemList] = `\\c[${fontColor}]\\i[${itemIcon}]` + itemName + `* ${itemNum} (Possessed:${hasNum})`
     return
   } else {
     var hasNum = $gameParty.gold()
@@ -3656,7 +3656,7 @@ function SH_NeedItemArray(Num) {
       fontColor = 8
     }
     itemList = 621 + i
-    $gameVariables._data[itemList] = `\\c[${fontColor}]\\i[${itemIcon}]` + `${itemNum} \\G (所持金:${hasNum}　\\G)`
+    $gameVariables._data[itemList] = `\\c[${fontColor}]\\i[${itemIcon}]` + `${itemNum} \\G (Money:${hasNum}　\\G)`
     return
 
   }
