@@ -3470,7 +3470,7 @@
         "iconIndex": 0,
         "itypeId": 3,
         "name": "★Kidnapped Arin",
-        "note": "<Type:MiniGame><MaxItems: 1>\n<Money:0><Bustle:3>\n<questvar:648><Exp:100>\n\n<SG説明:\\OW[5]\\c[0]\n\\n[12] hasn't come back. According to the stories of the other\nchildren, she disappeared without telling anyone where she\nwas going. I'm worried, so let's search for her immediately.\n\\c[4]Basic Reward:\\c[6] 0 \\g \n\\c[4]Client:\\c[6] Enicia \n\\c[4]Location:\\c[6] Rista Small Church \\n[1] (... \\n[12] ... Please be safe.) \n>\n\\ROC>\n<SGカテゴリ:クエスト>",
+        "note": "<Type:MiniGame><MaxItems: 1>\n<Money:0><Bustle:3>\n<questvar:648><Exp:100>\n\n<SG説明:\\OW[5]\\c[0]\n\\n[12] hasn't come back. According to the stories of the other\nchildren, she disappeared without telling anyone where she\nwas going. I'm worried, so let's search for her immediately.\n\\c[4]Basic Reward:\\c[6] 0 \\g \n\\c[4]Client:\\c[6] Enicia \n\\c[4]Location:\\c[6] Rista Small Church \\n[1] (... \\n[12] ... Please be safe.) \n\\ROC>\n<SGカテゴリ:クエスト>",
         "occasion": 0,
         "price": 0,
         "repeats": 1,
