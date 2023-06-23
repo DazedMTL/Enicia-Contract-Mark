@@ -4913,7 +4913,7 @@
             }
         ],
         "gold": 0,
-        "name": "Frosline Warrior",
+        "name": "Froslin Warrior",
         "note": "<Dice:2>\n<Critical:99>\n<Unique:2>\n<enemyLv:3>\n<race:Demon>\n<desc1:A subspecies of goblins found in the northern part of the continent.>\n<desc2:A well-trained and strong warrior.>",
         "params": [
             30,
@@ -5125,7 +5125,7 @@
             }
         ],
         "gold": 0,
-        "name": "Frosline Fighter",
+        "name": "Froslin Fighter",
         "note": "<Dice:2>\n<Critical:99>\n<Unique:2>\n<enemyLv:6>\n<race:Demon>\n<desc1:A subspecies of goblins found in the northern part of the continent.>\n<desc2:They are the elite of a large tribe and are comparable to human knights.>",
         "params": [
             60,
