@@ -3287,7 +3287,7 @@
         ],
         "iconIndex": 108,
         "name": "Staff of Flames' Devotion",
-        "note": "<Dice:1>\n<Unique:1>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:SR>\n<addElement:[2,2]>\n<addText:[Attribute bonus: Flame +2][\"炎の矢\"習得]>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nThe staff of a shrine maiden who dances in a ritual to express gratitude to the flame\nspirit that greatly affects people's lives. A flame spirit stone is attached to the tip.\n\n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:1>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:SR>\n<addElement:[2,2]>\n<addText:[Attribute bonus: Flame +2][Acquire Flame Arrow]>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nThe staff of a shrine maiden who dances in a ritual to express gratitude to the flame\nspirit that greatly affects people's lives. A flame spirit stone is attached to the tip.\n\n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             5,
