@@ -1,7 +1,7 @@
 # Apply Patch
 1. Click Code
 2. Click Download ZIP
-3. Place Data and Js in /www. Replace All.
+3. Place Data and Js in game folder. Replace All.
 
 # Unpacking Boxed Game
 1. Use https://f95zone.to/threads/enigma-vb-unpacker-v0-61.10201/ to decrypt the exe.
