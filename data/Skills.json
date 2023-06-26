@@ -32215,7 +32215,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Hobby] Fishing is great, even the old man is smiling. Obtained by fishing \\v[229] times\nor more",
+        "description": "[Hobby] Fishing is great, even the old man is smiling. Obtained by fishing \\v[229]/[num1] times\nor more",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -32246,7 +32246,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Hobby] I've completely fallen into it... Obtained by fishing \\v[229] times or more",
+        "description": "[Hobby] I've completely fallen into it... Obtained by fishing \\v[229]//[num1] times or more",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
