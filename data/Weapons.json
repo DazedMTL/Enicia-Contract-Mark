@@ -453,7 +453,7 @@
         ],
         "iconIndex": 376,
         "name": "Holy Shroud",
-        "note": "<Dice:1>\n<Unique:0>\n<Critical:99>\n<Type:Mat>\n<weapon><装備条件アクター:1>\n<uniqueItem><rate:SSR>\n<addElement:[8,1]><addText:[Attribute bonus: Holy +1][Sacred Attribute]>\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A cloth that is said to wrap the remains of an ancient saint of the Rista\nreligion. Its specific name is unknown, but it is believed to be a person from at least\nthe time of the Carvain Dynasty. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:0>\n<Critical:99>\n<Type:Mat>\n<weapon><装備条件アクター:1>\n<uniqueItem><rate:SSR>\n<addElement:[8,1]><addText:[Attribute bonus: Holy +1][Sacred Attribute]>\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA cloth that is said to wrap the remains of an ancient saint of the Rista\nreligion. Its specific name is unknown, but it is believed to be a person from at least\nthe time of the Carvain Dynasty. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -887,7 +887,7 @@
         ],
         "iconIndex": 120,
         "name": "Rapier",
-        "note": "<Dice:2>\n<Unique:2>\n<Critical:11>\n<Type:Atk>\n<weapon>\n<rate:R>\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A thrusting sword used in conjunction with a unique swordsmanship from a\ncountry that crossed the sea. It is said to be commonly used in duels that are fought for\nhonor. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<Unique:2>\n<Critical:11>\n<Type:Atk>\n<weapon>\n<rate:R>\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA thrusting sword used in conjunction with a unique swordsmanship from a\ncountry that crossed the sea. It is said to be commonly used in duels that are fought for\nhonor. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1052,7 +1052,7 @@
         ],
         "iconIndex": 115,
         "name": "★Ancient King's Sword",
-        "note": "<Dice:2>\n<Unique:18>\n<Critical:12>\n<Type:Atk>\n<weapon>\n<uniqueItem><rate:UR>\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\n: Legendary  Translation: A sword said to have been carried by the last king of the\nancient country of Carvain. The blade is made of a precious alloy of divine brass and has\nnot rusted even after many years. It is of the highest quality as a weapon. \n\nRarity: \nLegendary.:\\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<Unique:18>\n<Critical:12>\n<Type:Atk>\n<weapon>\n<uniqueItem><rate:UR>\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\n: Legendary  A sword said to have been carried by the last king of the\nancient country of Carvain. The blade is made of a precious alloy of divine brass and has\nnot rusted even after many years. It is of the highest quality as a weapon. \n\nRarity: \nLegendary.:\\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1217,7 +1217,7 @@
         ],
         "iconIndex": 96,
         "name": "Hornet",
-        "note": "<Dice:2>\n<Unique:2>\n<Critical:10>\n<Type:Agi>\n<weapon>\n<rate:R>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A stabbing knife with a very sharp tip. It is not very durable, but it can\naccurately hit vital points. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<Unique:2>\n<Critical:10>\n<Type:Agi>\n<weapon>\n<rate:R>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA stabbing knife with a very sharp tip. It is not very durable, but it can\naccurately hit vital points. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1359,7 +1359,7 @@
         ],
         "iconIndex": 96,
         "name": "Quick Knife",
-        "note": "<Dice:2>\n<DualAttack>\n<Unique:0>\n<Critical:12>\n<Type:Agi>\n<weapon>\n<rate:SSR>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A very lightweight and sturdy sharp knife. Its extreme lightness and thin\nblade make it difficult for amateurs to handle, and if mishandled, they may end up cutting\ntheir own hands. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<DualAttack>\n<Unique:0>\n<Critical:12>\n<Type:Agi>\n<weapon>\n<rate:SSR>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA very lightweight and sturdy sharp knife. Its extreme lightness and thin\nblade make it difficult for amateurs to handle, and if mishandled, they may end up cutting\ntheir own hands. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             2,
@@ -1539,7 +1539,7 @@
         ],
         "iconIndex": 96,
         "name": "Frost Knife",
-        "note": "<Dice:2>\n<Unique:3>\n<Critical:11>\n<Type:Agi>\n<weapon>\n<rate:SR>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A short sword with an attached ice crystal that slows down the movements of\nenemies with strong cold air. Gloves are required because it is very cold. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<Unique:3>\n<Critical:11>\n<Type:Agi>\n<weapon>\n<rate:SR>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA short sword with an attached ice crystal that slows down the movements of\nenemies with strong cold air. Gloves are required because it is very cold. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1638,7 +1638,7 @@
         ],
         "iconIndex": 122,
         "name": "Punishment Mace",
-        "note": "<Dice:1>\n<Unique:6>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UC>\n<装備条件攻撃:3>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nText to Translate: A striking weapon with spikes. It may be a bit harsh for punishment.\n\n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:6>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UC>\n<装備条件攻撃:3>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA striking weapon with spikes. It may be a bit harsh for punishment.\n\n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1704,7 +1704,7 @@
         ],
         "iconIndex": 110,
         "name": "Club",
-        "note": "<Dice:1>\n<Unique:3>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:C>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\n\n\nRarity:  Common  Translation: A crude club made by simply whittling a piece of wood.\nAlthough primitive, it has the minimum performance required of a weapon, and\nunderestimating it can be dangerous. \n\nRarity:  Common.:\\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:3>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:C>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\n\n\nRarity:  Common  A crude club made by simply whittling a piece of wood.\nAlthough primitive, it has the minimum performance required of a weapon, and\nunderestimating it can be dangerous. \n\nRarity:  Common.:\\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1940,7 +1940,7 @@
         ],
         "iconIndex": 111,
         "name": "Gravity Hammer",
-        "note": "<Dice:2>\n<Unique:13>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:SSR>\n<addSpeed:-5>\n<addText:[Heavy Pressure: Acquired]>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nText to Translate: A hammer with a magic mechanism that distorts gravity. It is\nlightweight but not actually small in mass, and only the directionality of gravity is\ncontrolled. When hitting an enemy, it goes without saying that the directionality is aimed\nat them. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<Unique:13>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:SSR>\n<addSpeed:-5>\n<addText:[Heavy Pressure: Acquired]>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA hammer with a magic mechanism that distorts gravity. It is\nlightweight but not actually small in mass, and only the directionality of gravity is\ncontrolled. When hitting an enemy, it goes without saying that the directionality is aimed\nat them. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1973,7 +1973,7 @@
         ],
         "iconIndex": 122,
         "name": "Earthbreaker",
-        "note": "<Dice:2>\n<Unique:18>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UR>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A mace with enough power to cause the ground to crack upon impact. It's\nimpossible to destroy the earth, but with effort, it might be possible to destroy an\nisland. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<Unique:18>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UR>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA mace with enough power to cause the ground to crack upon impact. It's\nimpossible to destroy the earth, but with effort, it might be possible to destroy an\nisland. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -2379,7 +2379,7 @@
         ],
         "iconIndex": 102,
         "name": "Old Bow",
-        "note": "<Dice:1>\n<Unique:4>\n<Fold:2>\n<Critical:99>\n<Type:Agi>\n<Twohanded>\n<weapon><junkWeapon>\n<rate:C>\n<addSpeed:2>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nText to Translate: A tattered bow with a string that seems about to break. It can still be\nused somehow. \n\nRarity: :\\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:4>\n<Fold:2>\n<Critical:99>\n<Type:Agi>\n<Twohanded>\n<weapon><junkWeapon>\n<rate:C>\n<addSpeed:2>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA tattered bow with a string that seems about to break. It can still be\nused somehow. \n\nRarity: :\\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -2729,7 +2729,7 @@
         ],
         "iconIndex": 117,
         "name": "Old Spear",
-        "note": "<Dice:2>\n<Unique:2>\n<Fold:2>\n<Critical:12>\n<Type:Atk>\n<Twohanded>\n<weapon><junkWeapon>\n<rate:C>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nText to Translate: A tattered spear. It has been used extensively and the handle seems to\nbe on the verge of breaking. \n\nRarity: \\SCRIPT{data.meta.rate}\n> \n",
+        "note": "<Dice:2>\n<Unique:2>\n<Fold:2>\n<Critical:12>\n<Type:Atk>\n<Twohanded>\n<weapon><junkWeapon>\n<rate:C>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA tattered spear. It has been used extensively and the handle seems to\nbe on the verge of breaking. \n\nRarity: \\SCRIPT{data.meta.rate}\n> \n",
         "params": [
             0,
             0,
@@ -3008,7 +3008,7 @@
         ],
         "iconIndex": 117,
         "name": "Spear of Flash Attack",
-        "note": "<Dice:2>\n<Unique:9>\n<Critical:12>\n<Fold:2>\n<Type:Atk>\n<weapon>\n<Twohanded>\n<rate:UR>\n<Penetrate>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A magic spear that pierces through any defense. It is wrapped in extremely\nstrong magic power and emits a flash of light every time it is swung. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:2>\n<Unique:9>\n<Critical:12>\n<Fold:2>\n<Type:Atk>\n<weapon>\n<Twohanded>\n<rate:UR>\n<Penetrate>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA magic spear that pierces through any defense. It is wrapped in extremely\nstrong magic power and emits a flash of light every time it is swung. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -3107,7 +3107,7 @@
         ],
         "iconIndex": 108,
         "name": "Ritual Staff of Frosleen",
-        "note": "<Dice:1>\n<Unique:1>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UC>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\n: Rare  Translation: A ritual staff for the prayer priest of Frosleen to offer prayers to\nthe evil god. It is decorated with human bones. \n\nRarity:  Rare.:\\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:1>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UC>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\n: Rare  A ritual staff for the prayer priest of Frosleen to offer prayers to\nthe evil god. It is decorated with human bones. \n\nRarity:  Rare.:\\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             3,
@@ -3140,7 +3140,7 @@
         ],
         "iconIndex": 107,
         "name": "Iron Rod",
-        "note": "<Dice:1>\n<Unique:4>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UC>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nText to Translate: A steel cane that can be used for close combat in case of emergency. It\nmay only serve as a charm for weak magicians, but it might also save their lives. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:4>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:UC>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA steel cane that can be used for close combat in case of emergency. It\nmay only serve as a charm for weak magicians, but it might also save their lives. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             5,
@@ -3401,7 +3401,7 @@
         ],
         "iconIndex": 108,
         "name": "Sage's Staff",
-        "note": "<Dice:1>\n<Unique:2>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:SSR>\n<addText:[Magic Spear: Acquired]>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nTranslation: A staff said to have been used by a great ancient wizard of the \"Round Table\nof Wise Men\" magic academy. Originally, it was capable of amplifying the owner's magical\npower up to about double, but it is quite old and has lost its original performance.\n\n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<Dice:1>\n<Unique:2>\n<Critical:99>\n<Type:Atk>\n<weapon>\n<rate:SSR>\n<addText:[Magic Spear: Acquired]>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA staff said to have been used by a great ancient wizard of the \"Round Table\nof Wise Men\" magic academy. Originally, it was capable of amplifying the owner's magical\npower up to about double, but it is quite old and has lost its original performance.\n\n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             10,

@@ -1342,7 +1342,7 @@
         ],
         "iconIndex": 554,
         "name": "Thief's Gloves",
-        "note": "<armor><UniqueEquip>\n<rate:SR>\n<EquipTag:arm>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nTranslation: A must-have tool for thieves, suitable for opening locks and the like. Made\nof a thin material that is slip-resistant and does not hinder the delicate sense of\nfingertips. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<armor><UniqueEquip>\n<rate:SR>\n<EquipTag:arm>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nA must-have tool for thieves, suitable for opening locks and the like. Made\nof a thin material that is slip-resistant and does not hinder the delicate sense of\nfingertips. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1428,7 +1428,7 @@
         ],
         "iconIndex": 554,
         "name": "Hydra Leather Gloves",
-        "note": "<armor><UniqueEquip>\n<rate:SSR>\n<EquipTag:arm>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nTranslation: Gloves made from the skin of a multi-headed snake monster that inhabits a\nswamp in a certain region. The monster was defeated by fire, but the skin itself is\ncompletely fireproof. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<armor><UniqueEquip>\n<rate:SSR>\n<EquipTag:arm>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nGloves made from the skin of a multi-headed snake monster that inhabits a\nswamp in a certain region. The monster was defeated by fire, but the skin itself is\ncompletely fireproof. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -1752,7 +1752,7 @@
         ],
         "iconIndex": 540,
         "name": "Stealth Leather Armor",
-        "note": "<armor><UniqueEquip>\n<rate:SR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nText to Translate: Armor that prioritizes silence, with joints that make almost no sound\nwhen rubbed together. A master can literally move in complete silence. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<armor><UniqueEquip>\n<rate:SR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nArmor that prioritizes silence, with joints that make almost no sound\nwhen rubbed together. A master can literally move in complete silence. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -2167,7 +2167,7 @@
         ],
         "iconIndex": 470,
         "name": "Nosferatu",
-        "note": "<armor><UniqueEquip>\n<rate:UR><装備条件スキル:1083><flotsam>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nTranslation: A strange armor made of bones from something external. Wearing it gives a\ncursed-like survival ability. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<armor><UniqueEquip>\n<rate:UR><装備条件スキル:1083><flotsam>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nA strange armor made of bones from something external. Wearing it gives a\ncursed-like survival ability. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             5,
             0,
@@ -2715,7 +2715,7 @@
         ],
         "iconIndex": 297,
         "name": "Feather of Liberation",
-        "note": "<armor><UniqueEquip>\n<rate:SR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nTranslation: Feathers of a giant bird that rules the sky of a certain mountain range. It\nhas the property of anti-curse that repels bindings, and is also considered a symbol of\nfreedom. \n\nRarity: \\SCRIPT{data.meta.rate}\n>",
+        "note": "<armor><UniqueEquip>\n<rate:SR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nFeathers of a giant bird that rules the sky of a certain mountain range. It\nhas the property of anti-curse that repels bindings, and is also considered a symbol of\nfreedom. \n\nRarity: \\SCRIPT{data.meta.rate}\n>",
         "params": [
             0,
             0,
@@ -2816,7 +2816,7 @@
         ],
         "iconIndex": 915,
         "name": "Antidote Charm",
-        "note": "<armor><UniqueEquip>\n<rate:SSR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\n: Rare  Translation: An accessory that repurposes stones enchanted with detoxification\nmagic to confirm that a drink is not poisoned by royalty. It has a powerful purification\neffect on toxins. \n\nRarity: Rare.:\\SCRIPT{data.meta.rate}\n>",
+        "note": "<armor><UniqueEquip>\n<rate:SSR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\n: Rare  An accessory that repurposes stones enchanted with detoxification\nmagic to confirm that a drink is not poisoned by royalty. It has a powerful purification\neffect on toxins. \n\nRarity: Rare.:\\SCRIPT{data.meta.rate}\n>",
         "params": [
             0,
             0,
@@ -3013,7 +3013,7 @@
         ],
         "iconIndex": 942,
         "name": "Magician's Lifeline",
-        "note": "<armor>\n<rate:SSR><UniqueEquip>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nTranslation: An accessory that nullifies interference with magic. For a magician who may\nbe in a predicament due to malicious sealing traps, it is truly a lifeline. \n\nRarity: \\SCRIPT{data.meta.rate}\n>",
+        "note": "<armor>\n<rate:SSR><UniqueEquip>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nAn accessory that nullifies interference with magic. For a magician who may\nbe in a predicament due to malicious sealing traps, it is truly a lifeline. \n\nRarity: \\SCRIPT{data.meta.rate}\n>",
         "params": [
             0,
             0,
@@ -5005,7 +5005,7 @@
         ],
         "iconIndex": 167,
         "name": "Corpse Dragon's Miasma Stone",
-        "note": "<armor><UniqueEquip>\n<rate:SSR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nTranslation: A spirit organ held by a dragon that has decayed and become a dwelling place\nfor miasma. It can be useful depending on how it is handled, but it is a dangerous item\nthat can cause great disaster if one mistake is made. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<armor><UniqueEquip>\n<rate:SSR>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nA spirit organ held by a dragon that has decayed and become a dwelling place\nfor miasma. It can be useful depending on how it is handled, but it is a dangerous item\nthat can cause great disaster if one mistake is made. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             10,
@@ -5281,7 +5281,7 @@
         ],
         "iconIndex": 402,
         "name": "Magic Fishing Line",
-        "note": "<armor><uniqueItem>\n<rate:UR><UniqueEquip><装備条件アクター:1>\n<addText:Fishing progresses automatically.>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nText to Translate: When a fish is caught, it automatically winds up the thread at the\nappropriate timing. It cannot do anything else skillful. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<armor><uniqueItem>\n<rate:UR><UniqueEquip><装備条件アクター:1>\n<addText:Fishing progresses automatically.>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nWhen a fish is caught, it automatically winds up the thread at the\nappropriate timing. It cannot do anything else skillful. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -5389,7 +5389,7 @@
         ],
         "iconIndex": 637,
         "name": "Enchanting Lip",
-        "note": "<desire:10><装備条件アクター:1><rate:SR>\n<armor><uniqueItem>\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nText to Translate: Just by drawing this on your lips, it enhances a bewitching atmosphere.\nFor those who want to capture the heart of their beloved. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<desire:10><装備条件アクター:1><rate:SR>\n<armor><uniqueItem>\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nJust by drawing this on your lips, it enhances a bewitching atmosphere.\nFor those who want to capture the heart of their beloved. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -5470,7 +5470,7 @@
         ],
         "iconIndex": 1020,
         "name": "Pervert-Avoiding Charm",
-        "note": "<装備条件アクター:1><rate:SR>\n<armor><uniqueItem>\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nText to Translate: A charm that emits a smell that repels perverts. Wearing this makes\nperverts disappear. It's like a bug. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<装備条件アクター:1><rate:SR>\n<armor><uniqueItem>\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nA charm that emits a smell that repels perverts. Wearing this makes\nperverts disappear. It's like a bug. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -5605,7 +5605,7 @@
         ],
         "iconIndex": 925,
         "name": "Guidance of Temptation",
-        "note": "<装備条件アクター:1><rate:SSR>\n<armor><uniqueItem>\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nText to Translate: A magic spell has been cast to guide the sperm and make it easier to\nconceive. For those who desire a child with their beloved. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<装備条件アクター:1><rate:SSR>\n<armor><uniqueItem>\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nA magic spell has been cast to guide the sperm and make it easier to\nconceive. For those who desire a child with their beloved. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
             0,
@@ -6042,7 +6042,7 @@
         ],
         "iconIndex": 139,
         "name": "Red Hood",
-        "note": "<armor><UniqueEquip>\n<rate:R><EquipTag:hat>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nTranslation: A cute red hood with strong, flame-resistant fibers woven in, making it a\npractical item. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
+        "note": "<armor><UniqueEquip>\n<rate:R><EquipTag:hat>\n\n<SG種別:6><SGカテゴリ：防具>\n<SG説明:\nA cute red hood with strong, flame-resistant fibers woven in, making it a\npractical item. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             7,
             0,
