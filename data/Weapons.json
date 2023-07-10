@@ -470,7 +470,7 @@
     {
         "id": 15,
         "animationId": 2,
-        "description": "A staff once wielded by a saint. Has a bonus to holy attribute attacks.\n\n[dice][param][special]",
+        "description": "A staff once wielded by a saint. Has a bonus to holy attribute attacks.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -503,7 +503,7 @@
     {
         "id": 16,
         "animationId": 2,
-        "description": "A staff imbued with external logic. Has a bonus to holy attribute attacks.\n\n[dice][param][special]",
+        "description": "A staff imbued with external logic. Has a bonus to holy attribute attacks.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -1003,7 +1003,7 @@
     {
         "id": 31,
         "animationId": 6,
-        "description": "A sword that enhances the power of its owner with the protection of a battle maiden.\n\n[dice][param][special]",
+        "description": "A sword that enhances the power of its owner with the protection of a battle maiden.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -1036,7 +1036,7 @@
     {
         "id": 32,
         "animationId": 6,
-        "description": "A decorative sword made of magical metal carried by the ancient king.\n\n[dice][param][special]",
+        "description": "A decorative sword made of magical metal carried by the ancient king.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -1201,7 +1201,7 @@
     {
         "id": 37,
         "animationId": 11,
-        "description": "A thin and sharp pointed short sword. Its strike accurately pierces vital points.\n\n[dice][param][special]",
+        "description": "A thin and sharp pointed short sword. Its strike accurately pierces vital points.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -1414,7 +1414,7 @@
     {
         "id": 43,
         "animationId": 11,
-        "description": "A legendary short sword that brings good luck just by possessing it.\n\n[dice][param][special]",
+        "description": "A legendary short sword that brings good luck just by possessing it.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -1990,7 +1990,7 @@
     {
         "id": 60,
         "animationId": 282,
-        "description": "A terrifying hammer that causes meteors to fall from above just by swinging it.\n\n[dice][param][special]",
+        "description": "A terrifying hammer that causes meteors to fall from above just by swinging it.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -2160,7 +2160,7 @@
     {
         "id": 65,
         "animationId": 6,
-        "description": "A two-handed sword with a sinister appearance. Critical hits are more likely to occur.\n\n[dice][param][special]",
+        "description": "A two-handed sword with a sinister appearance. Critical hits are more likely to occur.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -2604,7 +2604,7 @@
     {
         "id": 78,
         "animationId": 11,
-        "description": "A bow inhabited by a tree spirit. It attacks twice with a single shot.\n\n[dice][param][special]",
+        "description": "A bow inhabited by a tree spirit. It attacks twice with a single shot.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -2680,7 +2680,7 @@
     {
         "id": 80,
         "animationId": 12,
-        "description": "Requires [Strength] to pull, but it fires an extremely powerful shot.\n\n[dice][param][special]",
+        "description": "Requires [Strength] to pull, but it fires an extremely powerful shot.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -2878,7 +2878,7 @@
     {
         "id": 86,
         "animationId": 11,
-        "description": "A spear of a renowned soldier who protected the people from external enemies.\n\n[dice][param][special]",
+        "description": "A spear of a renowned soldier who protected the people from external enemies.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -2911,7 +2911,7 @@
     {
         "id": 87,
         "animationId": 11,
-        "description": "A spear imbued with the power of thunder. It makes it easier to take the initiative.\n\n[dice][param][special]",
+        "description": "A spear imbued with the power of thunder. It makes it easier to take the initiative.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -2954,7 +2954,7 @@
     {
         "id": 88,
         "animationId": 11,
-        "description": "A spear purified by the blood of a saint. Effective against spiritual bodies.\n\n[dice][param][special]",
+        "description": "A spear purified by the blood of a saint. Effective against spiritual bodies.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -3195,7 +3195,7 @@
     {
         "id": 95,
         "animationId": 1,
-        "description": "A wand that consumes magic power to create a thin barrier and increase defense value.\n\n[dice][param][special]",
+        "description": "A wand that consumes magic power to create a thin barrier and increase defense value.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
@@ -3560,7 +3560,7 @@
     {
         "id": 105,
         "animationId": 6,
-        "description": "A sword engraved with ancient characters that amplifies the owner's magical power.\n\n[dice][param][special]",
+        "description": "A sword engraved with ancient characters that amplifies the owner's magical power.\n[dice][param][special]",
         "etypeId": 1,
         "traits": [
             {
