@@ -2142,7 +2142,7 @@
             }
         ],
         "iconIndex": 116,
-        "name": "Zweihander",
+        "name": "Dreihander",
         "note": "<Dice:3>\n<Unique:7>\n<Critical:18>\n<Fold:2>\n<Type:Atk>\n<weapon>\n<Twohanded>\n<rate:SR>\n<装備条件スキル:1081>\n\n<SG種別:5><SGカテゴリ:武器>\n<SG説明:\nA large sword with a long and wide blade. It is used to crush enemies. It is said to be so\nheavy that an ordinary person cannot handle it without three arms. \n\nRarity: \\SCRIPT{data.meta.rate}\n> ",
         "params": [
             0,
