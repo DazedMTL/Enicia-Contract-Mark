@@ -27038,7 +27038,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent/Unconsciousness] The talent of loving many things sexually. Obtained by\n\\c[6][var1] \\v[153] or more. [unHoly]",
+        "description": "[Talent/Subconscience] The talent of loving many things sexually. \n\\c[6]Obtained when [var1] \\v[153] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27069,7 +27069,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent/Unawareness] A lewd sister who has been with many men. Obtained by \\c[6][var1]\n\\v[153] or more. [unHoly]",
+        "description": "[Talent/Subconscience] A lewd sister who has been with many men. \\c[6]Obtained when [var1]\n\\v[153] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27100,7 +27100,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent/Unawareness] She's sleeping around with men everywhere... Obtained by \\c[6][var1]\n\\v[153] or more. [unHoly]",
+        "description": "[Talent/Subconscience] She's sleeping around with men everywhere... \\c[6]Obtained when [var1]\n\\v[153] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27286,7 +27286,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Quality/Unconsciousness] Innate charming quality",
+        "description": "[Quality/Subconscience] Innate charming quality",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27317,7 +27317,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent/Unawareness] Has a small personal space. Unconsciously gets too close during\nconversations",
+        "description": "[Talent/Subconscience] Has a small personal space. Unconsciously gets too close during\nconversations",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27410,7 +27410,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent/Unawareness] When she lets her guard down around someone she trusts, she becomes\nvulnerable",
+        "description": "[Talent/Subconscience] When around someone she trusts, she lets her guard down\n and becomes vulnerable.",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27503,7 +27503,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Innate/Unaware] At this age, there is a certain level of interest. Obtained by\n\\c[6][var1] \\v[205] or higher. [unHoly]",
+        "description": "[Innate/Subconscience] At this age, there is a certain level of interest. \n\\c[6]Obtained when [var1] \\v[205] or higher. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27565,7 +27565,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Innate/Acquired] Realized the charm hidden within oneself. Obtained by \\c[6][var1]\n\\v[205] or higher. [unHoly]",
+        "description": "[Innate/Acquired] Realized the charm hidden within oneself. \\c[6]Obtained when [var1]\n\\v[205] or higher. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27782,7 +27782,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Physical constitution] A virgin who learned about sex through the back hole",
+        "description": "[Physical Condition] A virgin who learned about sex through the back hole",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27875,7 +27875,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Latent Talent/Unaware] Lewd talent hidden within. Obtained in event at \\c[6][var1]\n\\v[205] / [num1]. \\c[31][Increases upper limit of lewdness level.]",
+        "description": "[Innate/Subconscience] Lewd talent hidden within. \\c[6]Obtained in an event when\n[var1] \\v[205] / [num1]. \\c[31][Increases upper limit of lewdness level.]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27906,7 +27906,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Unconscious] Desire for corruption that sprouted in the depths of the heart. Obtained in\nan event at \\c[6][var1] \\v[205] /[num1]. Increases the upper limit of \\c[31][lewdness\nlevel]",
+        "description": "[Subconscience] Desire for corruption that sprouted in the depths of the heart. \\c[6]Obtained in\nan event at [var1] \\v[205] /[num1]. \\c[31][Increases the upper limit of lewdness level]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -27937,7 +27937,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "Reached the extreme of lewdness that doesn't know how to stop blooming. Obtained with\n\\c[6][var1] \\v[205] /[num1]",
+        "description": "Reached the extreme of lewdness that doesn't know how to stop blooming. \\c[6]Obtained with\n[var1] \\v[205] /[num1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28030,7 +28030,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Fetish] Gets excited by the smell of semen. Obtained by \\c[6][var1] \\v[233] /[num1] or\nmore. [unHoly]",
+        "description": "[Fetish] Gets excited by the smell of semen. \\c[6]Obtained when [var1] \\v[233] /[num1] or\nmore. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28061,7 +28061,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual tendency] Becomes aroused just by bathing or drinking semen. Obtained by\n\\c[6][var1] \\v[233] / [num1] or more. [unHoly]",
+        "description": "[Fetish] Becomes aroused just by bathing in or drinking semen. \n\\c[6]Obtained when [var1] \\v[233] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28092,7 +28092,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Fetish] Semen is my favorite thing above all else. Obtained by \\c[6][var1] \\v[233] /\n[num1] or more. [unHoly]",
+        "description": "[Fetish] Semen is her favorite thing above all else. \\c[6]Obtained when [var1] \\v[233] /\n[num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28123,7 +28123,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual tendency] I really want to take off my clothes in front of people... <Hidden\nexhibitionist> \\c[6]Repeatedly trying to expose oneself without giving up [shameLimit]",
+        "description": "[Fetish] Really wants to take off her clothes in front of people... <Hidden\nexhibitionist> \\c[6]Repeatedly trying to expose oneself without giving up [shameLimit]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28154,7 +28154,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] When feeling a lewd gaze, I get excited for some reason. Obtained by\n\\c[6][var1] \\v[234] or more. [shameLimit][unHoly]",
+        "description": "[Fetish] When feeling a lewd gaze, gets excited for some reason. \n\\c[6]Obtained when [var1] \\v[234] or more. [shameLimit][unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28185,7 +28185,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] Feels extremely pleasurable when someone sees her embarrassing parts.\nObtained by having \\c[6][var1] \\v[234] or more. [shameLimit][unHoly]",
+        "description": "[Fetish] Finds someone seeing her embarrassing parts extremely pleasurable.\n\\c[6]Obtained when [var1] \\v[234] or more. [shameLimit][unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28216,7 +28216,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] Gets excited by exposing embarrassing parts. Obtained by \\c[6][var1]\n\\v[234] / reaching [num1] or more. [shameLimit][unHoly]",
+        "description": "[Fetish] Gets excited by exposing embarrassing parts. \\c[6]Obtained when [var1]\n\\v[234] / [num1] or more. [shameLimit][unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28247,7 +28247,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] Exposed herself in front of people and danced. Acquired by dancing in\nfront of people \\c[6]at least \\v[180] / [num1] times. [shameLimit]",
+        "description": "[Fetish] Exposed herself in front of people and danced. \\c[6]Acquired by dancing in\nfront of people \\v[180] / [num1] or more times. [shameLimit]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28278,7 +28278,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] Enjoys the feeling of being watched. Obtained by dancing in public\n\\v[180] or more times. [shameLimit]",
+        "description": "[Fetish] Enjoys the feeling of being watched. \\c[6]Obtained by dancing in public\n\\v[180] / [num1] or more times. [shameLimit]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28309,7 +28309,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] I get shivers when I dance while feeling someone's gaze on me.\nObtained by dancing in front of others at least \\v[180] /[num1] times. [shameLimit]",
+        "description": "[Fetish] Gets shivers when others gaze upon her dancing.\n\\c[6]Obtained by dancing in front of others \\v[180] /[num1] or more times. [shameLimit]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28340,7 +28340,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I've gradually become accustomed to being touched by men all the time.\nObtained by \\c[6][var1] \\v[239] or more. [unHoly]",
+        "description": "[Fetish] Has gradually become accustomed to being touched by men all the time.\n\\c[6]Obtained when [var1] \\v[239] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28371,7 +28371,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I became addicted to being touched by men. Obtained by \\c[6][var1]\n\\v[239] or more. [unHoly]",
+        "description": "[Fetish] Has become addicted to being touched by men.\n\\c[6]Obtained when [var1] \\v[239] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28402,7 +28402,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I have become unable to refuse being touched by men. Obtained by\n\\c[6][var1] \\v[239] or more. [unHoly]",
+        "description": "[Fetish] Has become unable to refuse being touched by men. \n\\c[6]Obtained when [var1] \\v[239] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28495,7 +28495,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I have come to know the pleasure of self- gratification. Obtained by\n\\c[6][var1] \\v[226] or more. [unHoly]",
+        "description": "[Fetish] Has come to know the pleasure of self-gratification.\n\\c[6]Obtained when [var1] \\v[226] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28526,7 +28526,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual tendency] Developing a habit of masturbation. Obtained by \\c[6][var1] \\v[226] or\nmore. [unHoly]",
+        "description": "[Fetish] Developing a habit of masturbation. \\c[6]Obtained when [var1] \\v[226] / [num1] or\nmore. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28557,7 +28557,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I've become crazy about masturbation. Obtained by \\c[6][var1] \\v[226]\n/ [num1] or more. [unHoly]",
+        "description": "[Fetish] I've become crazy about masturbation.\n\\c[6]Obtained when [var1] \\v[226] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28588,7 +28588,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] A girl who frequents mixed-gender public baths. Obtained by visiting\nthe bathhouse \\v[246] /[num1] times or more. [shameLimit][unHoly]",
+        "description": "[Fetish] A girl who frequents mixed-gender public baths. \\c[6]Obtained by visiting\nthe bathhouse \\v[246] /[num1] or more times. [shameLimit][unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28619,7 +28619,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] Exposing her body to men in a mixed-gender public bath. Obtained by\nvisiting the bathhouse \\v[246] /[num1] times or more. [shameLimit][unHoly]",
+        "description": "[Fetish] Exposing her body to men in a mixed-gender public bath.\n\\c[6]Obtained by visiting the bathhouse \\v[246] /[num1] or more times. [shameLimit][unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28650,7 +28650,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] I like being dominated by a lewd old man. Obtained by\n\\c[6][var1][num1] or more. [unHoly]",
+        "description": "[Fetish] Likes being dominated by lewd old men.\n\\c[6]Obtained by [var1]/[num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28681,7 +28681,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I've become addicted to being embraced by middle- aged men. Obtained\nby [var1] [num1] or more. [unHoly]",
+        "description": "[Fetish] Has become addicted to being embraced by middle-aged men.\n\\c[6]Obtained by [var1] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28712,7 +28712,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Reputation] Had clothes stolen and wandered around the streets of Megista nearly naked.\nObtained through playing the \"Strip Dice\" event \\v[247] /[num1] times or more.\n[shameLimit][unHoly]",
+        "description": "[Reputation] Had clothes stolen and wandered around the streets of Megista nearly naked.\n\\c[6]Obtained through playing the \"Strip Board\" event \\v[247] /[num1] times or more.\n[shameLimit][unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28743,7 +28743,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[False Rumor] I wandered around the streets of Megista several times dressed in clothes\nthat were stolen from me. It feels familiar... Obtained by participating in the \"Strip\nSugoroku Event\" [num1] times or more. [shameLimit][unHoly]",
+        "description": "[Reputation] Has wandered naked around the streets of Megista several times\nafter having her clothes stolen. It feels familiar...\n\\c[6]Obtained by playing the \"Strip Board\" Event \\v[247] /[num1] times or more. [shameLimit][unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28805,7 +28805,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] When I see a cute younger boy, I feel an indescribable emotion welling\nup inside me. Obtained by having an experience with a younger boy \\v[242] / \n[num1]. [unHoly]",
+        "description": "[Fetish] Feels an indescribable emotion well up inside her upon seeing a \ncute young boy. \\c[6]Obtained by having an experience with a younger boy\n\\v[242] / [num1] or more times. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28836,7 +28836,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] A naughty older sister who wants to eat a younger boy. Obtained by\nexperience with a younger boy of \\c[6] at least \\v[242] /[num1]. [unHoly]",
+        "description": "[Fetish] A naughty older sister who wants to eat a younger boy.\n\\c[6]Obtained by experience with a younger boy \\v[242] /[num1] or more times. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28960,7 +28960,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] Takes pleasure in giving pleasure to others. Has a natural talent for\nit. Obtained by \\c[6][var1] \\v[222] or more. [unHoly]",
+        "description": "[Fetish] Takes pleasure in giving pleasure to others. Has a natural talent for it.\n\\c[6]Obtained when [var1] \\v[222] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -28991,7 +28991,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] Feels deeply ecstatic by pleasing others. Obtained by \\c[6][var1]\n\\v[222] or higher. [unHoly]",
+        "description": "[Fetish] Feels deeply ecstatic by pleasing others.\n\\c[6]Obtained when [var1] \\v[222] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29022,7 +29022,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual tendency] Feels a sense of climax through lewd service. Obtained by \\c[6][var1]\n\\v[222] or more. [unHoly]",
+        "description": "[Fetish] Feels a sense of climax through lewd service.\n\\c[6]Obtained when [var1] \\v[222] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29115,7 +29115,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I have become a prisoner of pleasure from having sex with men. \nObtained by having \\c[6]\\v[231] [var1] or more. [Unholy]",
+        "description": "[Fetish] Has become a prisoner of pleasure from having sex with men.\n\\c[6]Obtained when [var1] \\v[231] / [num1] or more. [Unholy]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29146,7 +29146,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] A lewd body that is not satisfied without frequent sex. Obtained by\n\\c[6][var1] \\v[231] / [num1] or more. [unHoly]",
+        "description": "[Fetish] A lewd body that is not satisfied without frequent sex.\n\\c[6]Obtained when [var1] \\v[231] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29270,7 +29270,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] Since experiencing pleasure from the back hole, I feel an ache that I\nhave never felt before. Obtained by \\c[6][var1] \\v[232] or more. [unHoly]",
+        "description": "[Fetish] Has an unprecedented ache since experiencing pleasure from her back hole.\n\\c[6]Obtained when [var1] \\v[232] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29301,7 +29301,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] Enicia is a slave to indecent anal sex. Obtained by \\c[6][var1]\n\\v[232] /[num1] or more. [unHoly]",
+        "description": "[Fetish] A slave to indecent anal sex.\n\\c[6]Obtained when [var1] \\v[232] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29425,7 +29425,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] The supreme pleasure is to have both the front and back holes gouged\nat the same time. Obtained by \\c[6][var1] \\v[231] / [num1], and \\c[6][var2] \\v[232] /\n[num2] or more. [unHoly]",
+        "description": "[Fetish] The supreme pleasure is to have both the front and back holes\ngouged simultaneously. \\c[6]Obtained when [var1] \\v[231] / [num1], [var2] \\v[232] / [num2] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29456,7 +29456,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] Only satisfied with sex involving both the front and back holes.\nObtained by \\c[6][var1] \\v[231] /[num1] and \\v[232] \\c[6][var2] /[num2] or more. [unHoly]",
+        "description": "[Fetish] Only satisfied with sex involving both the front and back holes.\n\\c[6]Obtained when [var1] \\v[231] / [num1], [var2] \\v[232] / [num2] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29580,7 +29580,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual tendency] I have become excited about selling my body for money. Obtained by\n\\c[6][var1] \\v[225] or more. [unHoly]",
+        "description": "[Fetish] Has become excited about selling my body for money.\n\\c[6]Obtained when [var1] \\v[225] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29611,7 +29611,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual tendency] Repeatedly engaging in prostitution, and it has become a part of\noneself. Obtained by \\c[6][var1] \\v[225] or more. [unHoly]",
+        "description": "[Fetish] After repeatedly engaging in prostitution, it has become a part of her.\n\\c[6]Obtained when [var1] \\v[225] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29642,7 +29642,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual tendency] Repeatedly engages in prostitution, considering it as a way of serving\nothers. Obtained by \\c[6][var1] \\v[225] or more. [unHoly]",
+        "description": "[Fetish] After repeatedly engaging in prostitution, considers it as a way of serving others.\n\\c[6]Obtained when [var1] \\v[225] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29890,7 +29890,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Physical Condition] I was unknowingly put under a hypnosis spell... Obtained by\n\\c[6][var1] \\v[240] or higher. [unHoly]",
+        "description": "[Physical Condition] Was unknowingly placed under a hypnosis spell...\n\\c[6]Obtained by [var1] \\v[240] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -29921,7 +29921,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Physical Condition] I have been repeatedly put under hypnosis magic and brainwashed...\nObtained by \\c[6][var1] \\v[240] /[num1] or more. [unHoly]",
+        "description": "[Physical Condition] Has been repeatedly put under hypnosis magic and brainwashed...\n\\c[6]Obtained when [var1] \\v[240] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30045,7 +30045,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] Attacked by monsters and mated repeatedly. Obtained by \\c[6][var1]\n\\v[241] or more. [unHoly]",
+        "description": "[Fetish] Has been attacked by monsters and mated repeatedly.\n\\c[6]Obtained when [var1]\\v[241] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30076,7 +30076,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] I have been subjected to obscene acts by countless monsters. Obtained\nby \\c[6][var1] \\v[241] or more. [unHoly]",
+        "description": "[Fetish] Has been subjected to obscene acts by countless monsters.\n\\c[6]Obtained when [var1] \\v[241] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30200,7 +30200,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual preference] Defeated in battle and subjected to humiliation. Obtained by\n\\c[6][var1] \\v[250] or more. [unHoly]",
+        "description": "[Fetish] Defeated in battle and subjected to humiliation.\n\\c[6]Obtained when [var1] \\v[250] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30355,7 +30355,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Sexual Preference] Getting used to being defiled by many men. \\c[6][var1] \\v[235] /\nObtained by [num1] or more. [unHoly]",
+        "description": "[Fetish] Getting used to being defiled by many men.\n\\c[6]Obtained when [var1] \\v[235] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30386,7 +30386,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Rumor] She feels pleasure in being defiled by many men.  Obtained by \\c[6][var1] \\v[235]\nor more. [unHoly]",
+        "description": "[Reputation] Feels pleasure in being defiled by many men.\n\\c[6]Obtained when [var1] \\v[235] / [num1] or more. [unHoly]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30820,7 +30820,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Has been slightly trained through harsh field work. Obtained by performing\n\\c[6]exploration \\v[255] times or more",
+        "description": "[Talent] Has been slightly trained through harsh field work. \\c[6]Obtained by exploring\n\\v[255] / [num1] or more times",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30828,7 +30828,7 @@
         "message2": "",
         "mpCost": 0,
         "name": "Novice Explorer",
-        "note": "<eroskill><autoLearn>\n<condVar:255>//条件変数\n<condNum:5>//値\n<passiveWeapon:201>\n<trial>\n<addText:\\\\c[4] Maximum HP[+2] Maximum SP[+2]\\\\c[0]>",
+        "note": "<eroskill><autoLearn>\n<condVar:255>//条件変数\n<condNum:5>//値\n<passiveWeapon:201>\n<trial>\n<addText:\\\\c[4] [Maximum HP+2] [Maximum SP+2]\\\\c[0]>",
         "occasion": 3,
         "repeats": 1,
         "requiredWtypeId1": 0,
@@ -30851,7 +30851,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Completely accustomed to adventure. Obtained by exploring [num1] or more times:\n\\c[6]Exploration Count\\v[255]",
+        "description": "[Talent] Completely accustomed to adventure. \\c[6]Obtained after exploring\n\\v[255] / [num1] or more times.",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30882,7 +30882,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Quality] Conqueror of ancient ruins. Acquired by conquering the Deacil ruins",
+        "description": "[Talent] Conqueror of ancient ruins. \\c[6]Acquired by conquering the Deacil ruins",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -30975,7 +30975,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Became accustomed to holy magic and can handle it efficiently. Acquired at\n\\c[6]Holy Magic Rank [num1].\\c[4] Holy attribute attack correction [+1]",
+        "description": "[Talent] Accustomed to holy magic and can handle it efficiently. \\c[6]Acquired at\nHoly Magic Rank [num1].\\c[4] Holy attribute attack correction [+1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31006,7 +31006,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Became accustomed to divine magic and can handle it more efficiently. Acquired at\n\\c[6]Divine Magic Rank [num1]\\c[0]. Increases \\c[4]divine attribute attack power by [+1]",
+        "description": "[Talent] Became accustomed to divine magic and can handle it more efficiently. \\c[6]Acquired at\nDivine Magic Rank [num1]\\c[0]. \\c[4][Holy Attribute Attack Power +1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31130,7 +31130,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Ability] Defeated many evil spirits. \\c[6]\\v[175] Defeat [num1] evil spirits. Maximum\n[SP+1]",
+        "description": "[Talent] Defeated many evil spirits. \\c[6]Defeat \\v[175] / [num1] evil spirits. \\c[4][Maximum SP +1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31161,7 +31161,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Ability] Purified countless evil spirits. \\c[6]\\v[175] Defeat [num1] evil spirits.\nMaximum [SP+2]",
+        "description": "[Talent] Purified countless evil spirits. \\c[6]Defeat \\v[175] / [num1] evil spirits. \\c[4][Maximum SP+2]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31192,7 +31192,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Ability] All evil spirits are now fleeing. Defeat \\c[6]\\v[175] /[num1] evil spirits.\nMaximum [SP+2]",
+        "description": "[Talent] All evil spirits are now fleeing. \\c[6]Defeat \\v[175] / [num1] evil spirits.[Maximum SP+2]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31285,7 +31285,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Gained a little strength from helping with the transportation of warehouse goods.\n\\c[6]\\v[256] Helped with the transportation [num1] times.\\c[4] Strength [+1]",
+        "description": "[Talent] Gained a little strength from helping with the transportation of warehouse goods.\n\\c[6]Helped with the transportation \\v[256] / [num1] times.\\c[4] [Strength +1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31595,7 +31595,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent/Unawareness] She has become the idol of the bar. \\v[509] serves customers [num1]\ntimes. Customer satisfaction is more likely to increase",
+        "description": "[Talent/Subconscience] She has become the idol of the bar. \\c[6]Serve customers\n\\v[509] / [num1] or more times.\\c[4] [Customer satisfaction more likely to increase]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31626,7 +31626,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent/Unawareness] She works efficiently while captivating many men. \\v[509] times of\nserving customers.  Customer satisfaction is more likely to increase",
+        "description": "[Talent/Subconscience] Works efficiently while captivating many men. \\c[6]Serve customers\n\\v[509] / [num1] or more times.\\c[4] [Customer satisfaction more likely to increase]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31750,7 +31750,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Used healing magic on many people. \\c[6]\\v[529] Healed [num1] people",
+        "description": "[Talent] Used healing magic on many people. \\c[6]Heal \\v[529] / [num1] people",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31781,7 +31781,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Used her miracle to heal many people. \\c[6]\\v[529] Healed [num1] people",
+        "description": "[Talent] Has miraculously healed many people. \\c[6]Heal \\v[529] / [num1] people",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31905,7 +31905,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Increases the number of times you can eat. Be careful with your weight.\n\\c[6]\\v[257] / Eat [num1] times. \\c[4]Meal limit [+1]",
+        "description": "[Talent] Increases the number of times you can eat. Be careful with your weight.\n\\c[6]Eat \\v[257] / [num1] times. \\c[4][Meal Limit +1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31936,7 +31936,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Increases the number of times you can eat. Where is it located? \\c[6]\\v[257] /\nEat [num1] times. \\c[4]Increase the maximum number of meals by [+1]",
+        "description": "[Talent] Increases the number of times you can eat. Where does it go?\n\\c[6]Eat \\v[257] / [num1] times. \\c[4][Meal Limit +1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -31967,7 +31967,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Talent] Increases the number of times you can eat. Overeating. \\c[6]\\v[257] / Eat [num1]\ntimes. \\c[4]Increase the maximum number of meals by [+1]",
+        "description": "[Talent] Increases the number of times you can eat. Overeating.\n\\c[6]Eat \\v[257] / [num1] times. \\c[4][Meal Limit +1]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -32029,7 +32029,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Hobby] Ate a lot of crabs. Eat \\v[230] /[num1] crabs",
+        "description": "[Hobby] Ate a lot of crabs. \\c[6]Eat \\v[230] / [num1] crabs",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -32060,7 +32060,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Hobby] Ate a lot of crabs. Eat crabs \\v[230] /[num1] times",
+        "description": "[Hobby] Ate a lot of crabs. \\c[6]Eat \\v[230] / [num1] crabs.",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -32184,7 +32184,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Hobby] I'm getting hooked on fishing. I patiently wait for fish no matter what. Obtained\nby fishing \\v[229] times or more",
+        "description": "[Hobby] Hooked on fishing. Patiently waits for fish no matter what.\n\\c[6]Obtained by fishing \\v[229] / [num1] times or more",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -32215,7 +32215,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Hobby] Fishing is great, even the old man is smiling. Obtained by fishing \\v[229]/[num1] times\nor more",
+        "description": "[Hobby] Fishing is great, even the old man is smiling. \\c[6]Obtained by fishing \\v[229] / [num1] or more times",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -32246,7 +32246,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "[Hobby] I've completely fallen into it... Obtained by fishing \\v[229]/[num1] times or more",
+        "description": "[Hobby] I've completely fallen into it... \\c[6]Obtained by fishing \\v[229] / [num1] or more times",
         "effects": [],
         "hitType": 0,
         "iconIndex": 0,
@@ -33641,7 +33641,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Trap evasion correction [+1] \n[special]",
+        "description": "<Passive> Trap evasion modifier [+1]\n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33672,7 +33672,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Trap evasion correction [+1] \n[special]",
+        "description": "<Passive> Trap evasion modifier [+1]\n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33703,7 +33703,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases the number of times items can be obtained from treasure chests by\nchance [+1] \n[special]",
+        "description": "<Passive> Increases the number of items obtained from treasure chests by 1.\n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33734,7 +33734,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases the number of times items can be obtained from treasure chests by\nchance [+1] \n[special]",
+        "description": "<Passive> Increases the number of items obtained from treasure chests by 1.\n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33765,7 +33765,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases the drop rate of items after battles \n[special]",
+        "description": "<Passive> Increases the drop rate of items after battles\n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33796,7 +33796,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases the number of items obtained from gathering by [+1][special]",
+        "description": "<Passive> Increases the number of items obtained from gathering by 1.[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33827,7 +33827,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Increases the number of items obtained from gathering by [+1][special]",
+        "description": "<Passive> Increases the number of items obtained from gathering by 1.[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33889,7 +33889,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> When a skill holder chooses to escape, the success target value for escaping is\nlowered by 2. \n[special]",
+        "description": "<Passive> When skill holder chooses to escape, the necessary value for success is lowered by 2.\n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -33920,7 +33920,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> When a skill holder chooses to escape, the success target value for escaping is\nlowered by 8. \n[special]",
+        "description": "<Passive> When skill holder chooses to escape, the necessary value for success is lowered by 8.\n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -34168,7 +34168,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> At the start of battle, a [Defense] buff is automatically applied. Duration: 3\nturns. \n[special]",
+        "description": "<Passive> At the start of battle, a [Defense] buff is automatically applied. Duration: 3 turns. \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -34292,7 +34292,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<Passive> Flirting Correction [+1]",
+        "description": "<Passive> Flirting Modifier [+1]",
         "effects": [],
         "hitType": 1,
         "iconIndex": 86,
@@ -34602,7 +34602,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> When winning a battle, recover [+2] SP for the entire party. \n[special]",
+        "description": "<Passive> When winning a battle, recover [+2] SP for the entire party. \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -34633,7 +34633,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> When winning a battle, recover [+2] HP for the entire party. \n[special]",
+        "description": "<Passive> When winning a battle, recover [+2] HP for the entire party. \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -34819,7 +34819,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> Enables the ability to handle magic. \n[special]",
+        "description": "<Passive> Enables the ability to handle magic. \n[special]",
         "effects": [],
         "hitType": 1,
         "iconIndex": 815,
@@ -34881,7 +34881,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> When winning a battle, the skill owner recovers [+3] HP. \n[special]",
+        "description": "<Passive> When winning a battle, the skill owner recovers [+3] HP. \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -34912,7 +34912,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> When winning a battle, the skill owner recovers [+1] SP. \n[special]",
+        "description": "<Passive> When winning a battle, the skill owner recovers [+1] SP. \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -35563,7 +35563,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> Increases the power of attacks with a dagger by 2. (Invalid for \\n[1]) \n[special]",
+        "description": "<Passive> Increases the power of attacks with a dagger by 2. (Invalid for \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 96,
@@ -35687,7 +35687,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> Can equip high defense armor. (Invalid for \\n[1]) \n[special]",
+        "description": "<Passive> Can equip high defense armor. (Invalid for \\n[1]) \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 542,
@@ -35811,7 +35811,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> At the start of battle, [Skill] buff is automatically applied. Duration: 3\nturns. \n[special]",
+        "description": "<Passive> At the start of battle, [Skill] buff is automatically applied. Duration: 3\nturns. \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -35842,7 +35842,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> At the start of battle, [Provoke] is automatically applied. Duration: 3 turns.\n[SPECIAL]",
+        "description": "<Passive> At the start of battle, [Provoke] is automatically applied. Duration: 3 turns.\n[SPECIAL]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 858,
@@ -36159,7 +36159,7 @@
             "type": 0,
             "variance": 20
         },
-        "description": "<PASSIVE> Allows the acquisition of skills related to demons/animals. \n[special]",
+        "description": "<Passive> Allows the acquisition of skills related to demons/animals. \n[special]",
         "effects": [],
         "hitType": 0,
         "iconIndex": 91,
